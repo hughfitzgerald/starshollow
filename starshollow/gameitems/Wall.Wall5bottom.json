@@ -48,7 +48,7 @@
       },
       {
         "x": 850.0,
-        "y": 2117.647,
+        "y": 2149.831,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -61,7 +61,7 @@
       },
       {
         "x": 875.0,
-        "y": 2117.647,
+        "y": 2150.0,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -85,6 +85,7 @@
         "editor_layer_name": "",
         "editor_layer_visibility": true
       }
-    ]
+    ],
+    "part_group_name": "Collidable_Misc"
   }
 }

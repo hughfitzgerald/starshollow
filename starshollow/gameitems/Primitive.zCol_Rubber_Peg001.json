@@ -1,19 +1,19 @@
 {
   "Primitive": {
     "position": {
-      "x": 94.994354,
-      "y": 1331.5393,
+      "x": 90.61862,
+      "y": 1488.7432,
       "z": 25.0
     },
     "size": {
-      "x": 23.0,
-      "y": 23.0,
+      "x": 22.0,
+      "y": 22.0,
       "z": 50.0
     },
     "rot_and_tra": [
       0.0,
       0.0,
-      10.0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -26,7 +26,7 @@
     "sides": 16,
     "name": "zCol_Rubber_Peg001",
     "material": "zCol_RubberPegs",
-    "side_color": "#96009696",
+    "side_color": "#969696",
     "is_visible": false,
     "draw_textures_inside": false,
     "hit_event": true,
@@ -43,7 +43,7 @@
     "static_rendering": false,
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
-    "disable_lighting_below": 1.0,
+    "disable_lighting_below": 0.0,
     "is_reflection_enabled": false,
     "backfaces_enabled": false,
     "physics_material": "zCol_RubberPegs",
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Collidable_Rubbers"
   }
 }

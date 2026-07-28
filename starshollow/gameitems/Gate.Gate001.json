@@ -1,17 +1,17 @@
 {
   "Gate": {
     "center": {
-      "x": 872.311,
-      "y": 1807.6072
+      "x": 861.64435,
+      "y": 1848.497
     },
-    "length": 80.0,
+    "length": 70.0,
     "height": 50.0,
     "rotation": 90.0,
     "material": "",
     "is_timer_enabled": false,
+    "timer_interval": 100,
     "show_bracket": true,
     "is_collidable": true,
-    "timer_interval": 100,
     "imgf": null,
     "imgb": null,
     "surface": "",
@@ -25,6 +25,7 @@
     "name": "Gate001",
     "two_way": false,
     "is_reflection_enabled": true,
-    "gate_type": "WireW"
+    "gate_type": "wire_w",
+    "part_group_name": "Collidable_Misc"
   }
 }

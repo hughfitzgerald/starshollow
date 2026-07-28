@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 720.0595,
-      "y": 2066.5527,
+      "x": 600.30975,
+      "y": 2092.0,
       "z": 0.0
     },
     "size": {
@@ -26,7 +26,7 @@
     "sides": 4,
     "name": "BallShadow1",
     "material": "BallShadow",
-    "side_color": "#96009696",
+    "side_color": "#969696",
     "is_visible": false,
     "draw_textures_inside": false,
     "hit_event": false,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": false,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Shadows"
   }
 }

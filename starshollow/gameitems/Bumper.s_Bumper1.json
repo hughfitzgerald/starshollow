@@ -1,14 +1,14 @@
 {
   "Bumper": {
     "center": {
-      "x": 332.33527,
-      "y": 359.35013
+      "x": 447.74847,
+      "y": 650.3157
     },
-    "radius": 40.0,
+    "radius": 45.0,
     "is_timer_enabled": false,
     "timer_interval": 200,
     "threshold": 1.6,
-    "force": 14.0,
+    "force": 10.0,
     "scatter": 2.0,
     "height_scale": 70.0,
     "ring_speed": 1.0,
@@ -16,16 +16,17 @@
     "ring_drop_offset": 52.295856,
     "cap_material": "PlasticTrigger",
     "base_material": "Plastic",
-    "socket_material": "Plastic White",
+    "socket_material": "Plastic Cobalt Blue",
     "ring_material": "bumpermetal",
     "surface": "",
     "name": "s_Bumper1",
     "is_cap_visible": false,
-    "is_base_visible": true,
+    "is_base_visible": false,
     "is_ring_visible": true,
-    "is_socket_visible": true,
+    "is_socket_visible": false,
     "hit_event": true,
     "is_collidable": true,
-    "is_reflection_enabled": true
+    "is_reflection_enabled": true,
+    "part_group_name": "Bumpers"
   }
 }

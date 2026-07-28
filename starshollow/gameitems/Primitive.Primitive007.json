@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 758.62256,
-      "y": 1683.0514,
+      "x": 757.7666,
+      "y": 1688.8567,
       "z": 0.0
     },
     "size": {
@@ -26,7 +26,7 @@
     "sides": 4,
     "name": "Primitive007",
     "material": "Metal0.8",
-    "side_color": "#ff00ffff",
+    "side_color": "#ffffff",
     "is_visible": true,
     "draw_textures_inside": true,
     "hit_event": false,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Visual_Rubbers"
   }
 }

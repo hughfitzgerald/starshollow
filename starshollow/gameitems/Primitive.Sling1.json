@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 658.74945,
-      "y": 1555.0076,
+      "x": 659.88885,
+      "y": 1560.638,
       "z": -30.0
     },
     "size": {
@@ -19,14 +19,14 @@
       0.0,
       0.0,
       0.0,
-      -70.0
+      -68.0
     ],
-    "image": "emkicker-t1",
+    "image": "",
     "normal_map": "",
     "sides": 4,
     "name": "Sling1",
     "material": "Metal",
-    "side_color": "#96009696",
+    "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
     "hit_event": false,
@@ -43,7 +43,7 @@
     "static_rendering": false,
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
+    "disable_lighting_below": 1.0,
     "is_reflection_enabled": true,
     "backfaces_enabled": false,
     "physics_material": "",
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Slingshots"
   }
 }

@@ -1,31 +1,24 @@
-
 '*******************************************
 '	ZFLP: Flippers
 '*******************************************
-' Documentation: https://mpcarr.github.io/vpx-glf/flipper/
-
-
-' Flipper callbacks
 
 Const ReflipAngle = 20
 
-Sub LeftFlipperAction(Enabled)
+' Flipper Solenoid Callbacks (these subs mimics how you would handle flippers in ROM based tables)
+Sub SolLFlipper(Enabled) 'Left flipper solenoid callback
 	If Enabled Then
-		DOF 101, DOFOn
 		FlipperActivate LeftFlipper, LFPress
-		LF.Fire
-		If StagedFlipper = 0 Then LeftFlipper1.rotatetoend
-		If LeftFlipper.currentangle < LeftFlipper.endangle + ReflipAngle Then 
+		LF.Fire  'leftflipper.rotatetoend
+		
+		If leftflipper.currentangle < leftflipper.endangle + ReflipAngle Then
 			RandomSoundReflipUpLeft LeftFlipper
-		Else 
+		Else
 			SoundFlipperUpAttackLeft LeftFlipper
 			RandomSoundFlipperUpLeft LeftFlipper
 		End If
 	Else
-		DOF 101, DOFOff
 		FlipperDeActivate LeftFlipper, LFPress
 		LeftFlipper.RotateToStart
-		If StagedFlipper = 0 Then LeftFlipper1.RotateToStart
 		If LeftFlipper.currentangle < LeftFlipper.startAngle - 5 Then
 			RandomSoundFlipperDownLeft LeftFlipper
 		End If
@@ -33,47 +26,26 @@ Sub LeftFlipperAction(Enabled)
 	End If
 End Sub
 
-Sub RightFlipperAction(Enabled)
+Sub SolRFlipper(Enabled) 'Right flipper solenoid callback
 	If Enabled Then
-		DOF 102, DOFOn
 		FlipperActivate RightFlipper, RFPress
-		RF.Fire 
-		If RightFlipper.currentangle > RightFlipper.endangle - ReflipAngle Then
+		RF.Fire 'rightflipper.rotatetoend
+		
+		If rightflipper.currentangle > rightflipper.endangle - ReflipAngle Then
 			RandomSoundReflipUpRight RightFlipper
-		Else 
+		Else
 			SoundFlipperUpAttackRight RightFlipper
 			RandomSoundFlipperUpRight RightFlipper
 		End If
 	Else
-		DOF 102, DOFOff
 		FlipperDeActivate RightFlipper, RFPress
 		RightFlipper.RotateToStart
 		If RightFlipper.currentangle > RightFlipper.startAngle + 5 Then
 			RandomSoundFlipperDownRight RightFlipper
-		End If	
+		End If
 		FlipperRightHitParm = FlipperUpSoundLevel
 	End If
 End Sub
-
-Sub LeftFlipper1Action(Enabled)
-	If StagedFlipper = 0 Then Exit Sub
-	If Enabled Then
-		LeftFlipper1.rotatetoend
-		If LeftFlipper1.currentangle > LeftFlipper1.endangle - ReflipAngle Then
-			RandomSoundReflipUpLeft LeftFlipper1
-		Else 
-			SoundFlipperUpAttackLeft LeftFlipper1
-			RandomSoundFlipperUpLeft LeftFlipper1
-		End If
-	Else
-		LeftFlipper1.RotateToStart
-		If LeftFlipper1.currentangle > LeftFlipper1.startAngle + 5 Then
-			RandomSoundFlipperDownLeft LeftFlipper1
-		End If	
-		FlipperLeftHitParm = FlipperUpSoundLevel
-	End If
-End Sub
-
 
 ' Flipper collide subs
 Sub LeftFlipper_Collide(parm)
@@ -88,38 +60,196 @@ Sub RightFlipper_Collide(parm)
 	RightFlipperCollide parm
 End Sub
 
-Sub LeftFlipper1_Collide(parm)
-	LeftFlipperCollide parm
-End Sub
-
-
-
-
 
 
 '******************************************************
-'  FLIPPER CORRECTION FUNCTIONS
+'	ZNFF:  FLIPPER CORRECTIONS by nFozzy
+'******************************************************
+'
+' There are several steps for taking advantage of nFozzy's flipper solution.  At a high level we'll need the following:
+'	1. flippers with specific physics settings
+'	2. custom triggers for each flipper (TriggerLF, TriggerRF)
+'	3. and, special scripting
+'
+' TriggerLF and RF should now be 27 vp units from the flippers. In addition, 3 degrees should be added to the end angle
+' when creating these triggers.
+'
+' RF.ReProcessBalls Activeball and LF.ReProcessBalls Activeball must be added the flipper_collide subs.
+'
+' A common mistake is incorrect flipper length.  A 3-inch flipper with rubbers will be about 3.125 inches long.
+' This translates to about 147 vp units.  Therefore, the flipper start radius + the flipper length + the flipper end
+' radius should  equal approximately 147 vp units. Another common mistake is is that sometimes the right flipper
+' angle was set with a large postive value (like 238 or something). It should be using negative value (like -122).
+'
+' The following settings are a solid starting point for various eras of pinballs.
+' |                    | EM's           | late 70's to mid 80's | mid 80's to early 90's | mid 90's and later |
+' | ------------------ | -------------- | --------------------- | ---------------------- | ------------------ |
+' | Mass               | 1              | 1                     | 1                      | 1                  |
+' | Strength           | 500-1000 (750) | 1400-1600 (1500)      | 2000-2600              | 3200-3300 (3250)   |
+' | Elasticity         | 0.88           | 0.88                  | 0.88                   | 0.88               |
+' | Elasticity Falloff | 0.15           | 0.15                  | 0.15                   | 0.15               |
+' | Fricition          | 0.8-0.9        | 0.9                   | 0.9                    | 0.9                |
+' | Return Strength    | 0.11           | 0.09                  | 0.07                   | 0.055              |
+' | Coil Ramp Up       | 2.5            | 2.5                   | 2.5                    | 2.5                |
+' | Scatter Angle      | 0              | 0                     | 0                      | 0                  |
+' | EOS Torque         | 0.4            | 0.4                   | 0.375                  | 0.375              |
+' | EOS Torque Angle   | 4              | 4                     | 6                      | 6                  |
+'
+
+'******************************************************
+' Flippers Polarity (Select appropriate sub based on era)
 '******************************************************
 
-' modified 2023 by nFozzy
-' Removed need for 'endpoint' objects
-' Added 'createvents' type thing for TriggerLF / TriggerRF triggers.
-' Removed AddPt function which complicated setup imo
-' made DebugOn do something (prints some stuff in debugger)
-'   Otherwise it should function exactly the same as before\
-' modified 2024 by rothbauerw
-' Added Reprocessballs for flipper collisions (LF.Reprocessballs Activeball and RF.Reprocessballs Activeball must be added to the flipper collide subs
-' Improved handling to remove correction for backhand shots when the flipper is raised
+Dim LF : Set LF = New FlipperPolarity
+Dim RF : Set RF = New FlipperPolarity
 
+InitPolarity
 
-dim LF : Set LF = New FlipperPolarity
-dim RF : Set RF = New FlipperPolarity
+'
+''*******************************************
+'' Late 70's to early 80's
+'
+'Sub InitPolarity()
+'   dim x, a : a = Array(LF, RF)
+'	for each x in a
+'		x.AddPt "Ycoef", 0, RightFlipper.Y-65, 1 'disabled
+'		x.AddPt "Ycoef", 1, RightFlipper.Y-11, 1
+'		x.enabled = True
+'		x.TimeDelay = 80
+'		x.DebugOn=False ' prints some info in debugger
+'
+'
+'        x.AddPt "Polarity", 0, 0, 0
+'        x.AddPt "Polarity", 1, 0.05, - 2.7
+'        x.AddPt "Polarity", 2, 0.16, - 2.7
+'        x.AddPt "Polarity", 3, 0.22, - 0
+'        x.AddPt "Polarity", 4, 0.25, - 0
+'        x.AddPt "Polarity", 5, 0.3, - 1
+'        x.AddPt "Polarity", 6, 0.4, - 2
+'        x.AddPt "Polarity", 7, 0.5, - 2.7
+'        x.AddPt "Polarity", 8, 0.65, - 1.8
+'        x.AddPt "Polarity", 9, 0.75, - 0.5
+'        x.AddPt "Polarity", 10, 0.81, - 0.5
+'        x.AddPt "Polarity", 11, 0.88, 0
+'        x.AddPt "Polarity", 12, 1.3, 0
+'
+'		x.AddPt "Velocity", 0, 0, 0.85
+'		x.AddPt "Velocity", 1, 0.15, 0.85
+'		x.AddPt "Velocity", 2, 0.2, 0.9
+'		x.AddPt "Velocity", 3, 0.23, 0.95
+'		x.AddPt "Velocity", 4, 0.41, 0.95
+'		x.AddPt "Velocity", 5, 0.53, 0.95 '0.982
+'		x.AddPt "Velocity", 6, 0.62, 1.0
+'		x.AddPt "Velocity", 7, 0.702, 0.968
+'		x.AddPt "Velocity", 8, 0.95,  0.968
+'		x.AddPt "Velocity", 9, 1.03,  0.945
+'		x.AddPt "Velocity", 10, 1.5,  0.945
+'
+'	Next
+'
+'	' SetObjects arguments: 1: name of object 2: flipper object: 3: Trigger object around flipper
+'    LF.SetObjects "LF", LeftFlipper, TriggerLF
+'    RF.SetObjects "RF", RightFlipper, TriggerRF
+'End Sub
+'
+'
+'
+''*******************************************
+'' Mid 80's
+'
+'Sub InitPolarity()
+'   dim x, a : a = Array(LF, RF)
+'	for each x in a
+'		x.AddPt "Ycoef", 0, RightFlipper.Y-65, 1 'disabled
+'		x.AddPt "Ycoef", 1, RightFlipper.Y-11, 1
+'		x.enabled = True
+'		x.TimeDelay = 80
+'		x.DebugOn=False ' prints some info in debugger
+'
+'		x.AddPt "Polarity", 0, 0, 0
+'		x.AddPt "Polarity", 1, 0.05, - 3.7
+'		x.AddPt "Polarity", 2, 0.16, - 3.7
+'		x.AddPt "Polarity", 3, 0.22, - 0
+'		x.AddPt "Polarity", 4, 0.25, - 0
+'		x.AddPt "Polarity", 5, 0.3, - 2
+'		x.AddPt "Polarity", 6, 0.4, - 3
+'		x.AddPt "Polarity", 7, 0.5, - 3.7
+'		x.AddPt "Polarity", 8, 0.65, - 2.3
+'		x.AddPt "Polarity", 9, 0.75, - 1.5
+'		x.AddPt "Polarity", 10, 0.81, - 1
+'		x.AddPt "Polarity", 11, 0.88, 0
+'		x.AddPt "Polarity", 12, 1.3, 0
+'
+'		x.AddPt "Velocity", 0, 0, 0.85
+'		x.AddPt "Velocity", 1, 0.15, 0.85
+'		x.AddPt "Velocity", 2, 0.2, 0.9
+'		x.AddPt "Velocity", 3, 0.23, 0.95
+'		x.AddPt "Velocity", 4, 0.41, 0.95
+'		x.AddPt "Velocity", 5, 0.53, 0.95 '0.982
+'		x.AddPt "Velocity", 6, 0.62, 1.0
+'		x.AddPt "Velocity", 7, 0.702, 0.968
+'		x.AddPt "Velocity", 8, 0.95,  0.968
+'		x.AddPt "Velocity", 9, 1.03,  0.945
+'		x.AddPt "Velocity", 10, 1.5,  0.945
+'
+'	Next
+'
+'	' SetObjects arguments: 1: name of object 2: flipper object: 3: Trigger object around flipper
+'    LF.SetObjects "LF", LeftFlipper, TriggerLF
+'    RF.SetObjects "RF", RightFlipper, TriggerRF
+'End Sub
+'
+''*******************************************
+''  Late 80's early 90's
+'
+'Sub InitPolarity()
+'	dim x, a : a = Array(LF, RF)
+'	for each x in a
+'		x.AddPt "Ycoef", 0, RightFlipper.Y-65, 1 'disabled
+'		x.AddPt "Ycoef", 1, RightFlipper.Y-11, 1
+'		x.enabled = True
+'		x.TimeDelay = 60
+'		x.DebugOn=False ' prints some info in debugger
+'
+'		x.AddPt "Polarity", 0, 0, 0
+'		x.AddPt "Polarity", 1, 0.05, - 5
+'		x.AddPt "Polarity", 2, 0.16, - 5
+'		x.AddPt "Polarity", 3, 0.22, - 0
+'		x.AddPt "Polarity", 4, 0.25, - 0
+'		x.AddPt "Polarity", 5, 0.3, - 2
+'		x.AddPt "Polarity", 6, 0.4, - 3
+'		x.AddPt "Polarity", 7, 0.5, - 4.0
+'		x.AddPt "Polarity", 8, 0.7, - 3.5
+'		x.AddPt "Polarity", 9, 0.75, - 3.0
+'		x.AddPt "Polarity", 10, 0.8, - 2.5
+'		x.AddPt "Polarity", 11, 0.85, - 2.0
+'		x.AddPt "Polarity", 12, 0.9, - 1.5
+'		x.AddPt "Polarity", 13, 0.95, - 1.0
+'		x.AddPt "Polarity", 14, 1, - 0.5
+'		x.AddPt "Polarity", 15, 1.1, 0
+'		x.AddPt "Polarity", 16, 1.3, 0
+'
+'		x.AddPt "Velocity", 0, 0, 0.85
+'		x.AddPt "Velocity", 1, 0.15, 0.85
+'		x.AddPt "Velocity", 2, 0.2, 0.9
+'		x.AddPt "Velocity", 3, 0.23, 0.95
+'		x.AddPt "Velocity", 4, 0.41, 0.95
+'		x.AddPt "Velocity", 5, 0.53, 0.95 '0.982
+'		x.AddPt "Velocity", 6, 0.62, 1.0
+'		x.AddPt "Velocity", 7, 0.702, 0.968
+'		x.AddPt "Velocity", 8, 0.95,  0.968
+'		x.AddPt "Velocity", 9, 1.03,  0.945
+'		x.AddPt "Velocity", 10, 1.5,  0.945
 
+'	Next
+'
+'	' SetObjects arguments: 1: name of object 2: flipper object: 3: Trigger object around flipper
+'	LF.SetObjects "LF", LeftFlipper, TriggerLF
+'	RF.SetObjects "RF", RightFlipper, TriggerRF
+'End Sub
 
 '*******************************************
-'  Late 80's early 90's
-'  NOTE: if you are building a table that is supposed to simulate an earlier pinball era, 
-'        please look at the VPW Example Table for specific settings and curves.
+' Early 90's and after
 
 Sub InitPolarity()
 	Dim x, a
@@ -165,10 +295,23 @@ Sub InitPolarity()
 	Next
 	
 	' SetObjects arguments: 1: name of object 2: flipper object: 3: Trigger object around flipper
-	LF.SetObjects "LF", LeftFlipper, TriggerLF
-	RF.SetObjects "RF", RightFlipper, TriggerRF
+	LF.SetObjects "LF", LeftFlipper, s_TriggerLF
+	RF.SetObjects "RF", RightFlipper, s_TriggerRF
 End Sub
 
+'******************************************************
+'  FLIPPER CORRECTION FUNCTIONS
+'******************************************************
+
+' modified 2023 by nFozzy
+' Removed need for 'endpoint' objects
+' Added 'createvents' type thing for TriggerLF / TriggerRF triggers.
+' Removed AddPt function which complicated setup imo
+' made DebugOn do something (prints some stuff in debugger)
+'   Otherwise it should function exactly the same as before\
+' modified 2024 by rothbauerw
+' Added Reprocessballs for flipper collisions (LF.Reprocessballs Activeball and RF.Reprocessballs Activeball must be added to the flipper collide subs
+' Improved handling to remove correction for backhand shots when the flipper is raised
 
 Class FlipperPolarity
 	Public DebugOn, Enabled
@@ -496,6 +639,8 @@ Dim LFEOSNudge, RFEOSNudge
 
 Sub FlipperNudge(Flipper1, Endangle1, EOSNudge1, Flipper2, EndAngle2)
 	Dim b
+	'   Dim BOT
+	'   BOT = GetBalls
 	
 	If Flipper1.currentangle = Endangle1 And EOSNudge1 <> 1 Then
 		EOSNudge1 = 1
@@ -540,6 +685,10 @@ Sub FlipperCradleCollision(ball1, ball2, velocity)
         ball2.velx = ball2.velx * coef: ball2.vely = ball2.vely * coef: ball2.velz = ball2.velz * coef
     End If
 End Sub
+	
+
+
+
 
 '*************************************************
 '  Check ball distance from Flipper for Rem
@@ -616,10 +765,10 @@ End Select
 Const LiveCatch = 16
 Const LiveElasticity = 0.45
 Const SOSEM = 0.815
-'   Const EOSReturn = 0.055  'EM's
-'   Const EOSReturn = 0.045  'late 70's to mid 80's
-Const EOSReturn = 0.035  'mid 80's to early 90's
-'   Const EOSReturn = 0.025  'mid 90's and later
+'Const EOSReturn = 0.055  'EM's
+'Const EOSReturn = 0.045  'late 70's to mid 80's
+'Const EOSReturn = 0.035  'mid 80's to early 90's
+Const EOSReturn = 0.025  'mid 90's and later
 
 LFEndAngle = Leftflipper.endangle
 RFEndAngle = RightFlipper.endangle
@@ -638,7 +787,8 @@ Sub FlipperDeactivate(Flipper, FlipperPress)
 	Flipper.eostorque = EOST * EOSReturn / FReturn
 	
 	If Abs(Flipper.currentangle) <= Abs(Flipper.endangle) + 0.1 Then
-		Dim b
+		Dim b', BOT
+		'		BOT = GetBalls
 		
 		For b = 0 To UBound(gBOT)
 			If Distance(gBOT(b).x, gBOT(b).y, Flipper.x, Flipper.y) < 55 Then 'check for cradle
@@ -719,7 +869,5 @@ Sub CheckLiveCatch(ball, Flipper, FCount, parm) 'Experimental new live catch
     End If
 End Sub
 
-
-' END FLIPPER CORRECTIONS
-
-
+'******************************************************
+'****  END FLIPPER CORRECTIONS

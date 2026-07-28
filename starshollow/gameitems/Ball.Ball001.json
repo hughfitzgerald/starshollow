@@ -1,0 +1,24 @@
+{
+  "Ball": {
+    "pos": {
+      "x": 672.7544,
+      "y": 883.3582,
+      "z": 25.0
+    },
+    "radius": 25.0,
+    "mass": 1.0,
+    "force_reflection": false,
+    "decal_mode": false,
+    "image": "",
+    "image_decal": "",
+    "bulb_intensity_scale": 1.0,
+    "playfield_reflection_strength": 1.0,
+    "color": "#ffffff",
+    "spherical_mapping": true,
+    "is_reflection_enabled": true,
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "name": "Ball001",
+    "part_group_name": "Captive Balls"
+  }
+}

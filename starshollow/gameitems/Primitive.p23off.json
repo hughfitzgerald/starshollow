@@ -1,19 +1,19 @@
 {
   "Primitive": {
     "position": {
-      "x": 171.25235,
-      "y": 686.06647,
+      "x": -250.83229,
+      "y": 1564.2015,
       "z": 0.0
     },
     "size": {
-      "x": 143.0,
-      "y": 70.0,
-      "z": 143.0
+      "x": 1.75,
+      "y": 1.9,
+      "z": 1.0
     },
     "rot_and_tra": [
-      90.0,
-      -110.0,
       0.0,
+      0.0,
+      55.0,
       0.0,
       0.0,
       0.0,
@@ -21,12 +21,12 @@
       0.0,
       0.0
     ],
-    "image": "Insert_Arrow1off4_180",
+    "image": "Insert_lightningsmalloff3",
     "normal_map": "",
     "sides": 4,
     "name": "p23off",
-    "material": "InsertWhiteOffTri",
-    "side_color": "#96009696",
+    "material": "InsertYellowOffTri",
+    "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
     "hit_event": true,
@@ -37,7 +37,7 @@
     "scatter": 0.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
-    "is_collidable": false,
+    "is_collidable": true,
     "is_toy": true,
     "use_3d_mesh": true,
     "static_rendering": false,
@@ -54,14 +54,15 @@
     "max_aa_bound": null,
     "mesh_file_name": "",
     "depth_bias": 1000.0,
-    "add_blend": true,
+    "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Insert_Primitives"
   }
 }

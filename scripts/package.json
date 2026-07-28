@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "extract-vpx": "powershell -Command \"$gameName = Get-Content ../gamename.txt | Select-Object -First 1; vpxtool extract ../$gameName.vpx\"",
-    "assemble-vpx": "powershell -Command \"$gameName = Get-Content ../gamename.txt | Select-Object -First 1; vpxtool assemble ../$gameName\"",
+    "extract-vpx": "pwsh -Command '$gameName = Get-Content ../gamename.txt | Select-Object -First 1; vpxtool extract ../$gameName.vpx'",
+    "assemble-vpx": "pwsh -Command '$gameName = Get-Content ../gamename.txt | Select-Object -First 1; vpxtool assemble ../$gameName'",
     "script-watcher": "grunt watch:vpx",
     "concat-vpx": "grunt concat:prod",
     "convert-shows": "node mpf-show-convert.js src/glf/yamlshows",

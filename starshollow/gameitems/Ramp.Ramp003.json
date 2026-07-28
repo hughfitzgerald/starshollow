@@ -1,19 +1,19 @@
 {
   "Ramp": {
-    "height_bottom": 70.0,
-    "height_top": 70.0,
-    "width_bottom": 52.0,
-    "width_top": 52.0,
+    "height_bottom": 50.0,
+    "height_top": 150.0,
+    "width_bottom": 75.0,
+    "width_top": 60.0,
     "material": "Metal",
     "is_timer_enabled": false,
     "timer_interval": 100,
-    "ramp_type": "flat",
+    "ramp_type": "four_wire",
     "name": "Ramp003",
     "image": "",
     "image_alignment": "world",
-    "image_walls": false,
-    "left_wall_height": 50.0,
-    "right_wall_height": 50.0,
+    "image_walls": true,
+    "left_wall_height": 62.0,
+    "right_wall_height": 62.0,
     "left_wall_height_visible": 30.0,
     "right_wall_height_visible": 30.0,
     "hit_event": false,
@@ -22,18 +22,18 @@
     "friction": 0.3,
     "scatter": 0.0,
     "is_collidable": true,
-    "is_visible": false,
+    "is_visible": true,
     "depth_bias": 0.0,
-    "wire_diameter": 6.0,
-    "wire_distance_x": 35.0,
+    "wire_diameter": 8.0,
+    "wire_distance_x": 38.0,
     "wire_distance_y": 88.0,
-    "is_reflection_enabled": false,
-    "physics_material": "zCol_MetalRamp",
-    "overwrite_physics": false,
+    "is_reflection_enabled": true,
+    "physics_material": "",
+    "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 646.22894,
-        "y": 1425.1941,
+        "x": 133.88208,
+        "y": 1538.31,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -45,34 +45,74 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 706.88354,
-        "y": 1292.8168,
+        "x": 139.27013,
+        "y": 1299.0397,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
         "tex_coord": 0.0,
         "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "editor_layer": 0
       },
       {
-        "x": 818.3724,
-        "y": 1074.382,
+        "x": 706.1137,
+        "y": 990.89795,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
         "tex_coord": 0.0,
         "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "editor_layer": 0
       },
       {
-        "x": 826.56696,
-        "y": 886.80664,
+        "x": 754.1971,
+        "y": 884.6602,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 873.8684,
+        "y": 324.79688,
+        "z": 0.0,
+        "smooth": true,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 880.98346,
+        "y": 249.88892,
+        "z": 0.0,
+        "smooth": true,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 849.1711,
+        "y": 211.19632,
+        "z": 0.0,
+        "smooth": true,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 782.7407,
+        "y": 212.5743,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -83,6 +123,7 @@
         "editor_layer_name": "",
         "editor_layer_visibility": true
       }
-    ]
+    ],
+    "part_group_name": "Collidable_Ramps"
   }
 }

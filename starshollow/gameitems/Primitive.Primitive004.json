@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 627.3325,
-      "y": 1655.0259,
+      "x": 627.33057,
+      "y": 1654.9298,
       "z": 53.5
     },
     "size": {
@@ -26,7 +26,7 @@
     "sides": 4,
     "name": "Primitive004",
     "material": "Metal0.8",
-    "side_color": "#96009696",
+    "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": true,
     "hit_event": false,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Nuts_and_Bolts"
   }
 }

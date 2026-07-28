@@ -1,13 +1,13 @@
 {
   "Primitive": {
     "position": {
-      "x": 814.75507,
-      "y": 912.2782,
+      "x": 87.51612,
+      "y": 1250.0981,
       "z": 25.0
     },
     "size": {
-      "x": 35.0,
-      "y": 35.0,
+      "x": 31.0,
+      "y": 31.0,
       "z": 50.0
     },
     "rot_and_tra": [
@@ -26,7 +26,7 @@
     "sides": 30,
     "name": "zCol_Rubber_Post007",
     "material": "zCol_RubberPosts",
-    "side_color": "#96009696",
+    "side_color": "#969696",
     "is_visible": false,
     "draw_textures_inside": false,
     "hit_event": true,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Collidable_Rubbers"
   }
 }

@@ -1,8 +1,8 @@
 {
   "Kicker": {
     "center": {
-      "x": 693.0237,
-      "y": 1903.1273
+      "x": 702.1481,
+      "y": 1924.2961
     },
     "radius": 25.0,
     "is_timer_enabled": false,
@@ -17,6 +17,7 @@
     "hit_height": 40.0,
     "orientation": 0.0,
     "fall_through": false,
-    "legacy_mode": true
+    "legacy_mode": true,
+    "part_group_name": "Collidable_Misc"
   }
 }

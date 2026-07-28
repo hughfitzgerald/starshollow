@@ -1,0 +1,31 @@
+{
+  "Gate": {
+    "center": {
+      "x": 534.68475,
+      "y": 67.2206
+    },
+    "length": 75.0,
+    "height": 50.0,
+    "rotation": -90.0,
+    "material": "Metal",
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "show_bracket": true,
+    "is_collidable": true,
+    "imgf": null,
+    "imgb": null,
+    "surface": "",
+    "elasticity": 0.625,
+    "angle_max": 1.5707964,
+    "angle_min": 0.0,
+    "friction": 0.3,
+    "damping": 0.985,
+    "gravity_factor": 0.25,
+    "is_visible": true,
+    "name": "Gate002",
+    "two_way": false,
+    "is_reflection_enabled": true,
+    "gate_type": "wire_w",
+    "part_group_name": "Collidable_Misc"
+  }
+}

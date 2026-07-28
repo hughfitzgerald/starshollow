@@ -1,5 +1,3 @@
-
-
 '**********************************
 ' 	ZMAT: General Math Functions
 '**********************************
@@ -100,3 +98,7 @@ Function RotPoint(x,y,angle)
 	ry = x * dSin(angle) + y * dCos(angle)
 	RotPoint = Array(rx,ry)
 End Function
+
+
+
+

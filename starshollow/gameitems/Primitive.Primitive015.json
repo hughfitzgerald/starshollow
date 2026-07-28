@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 200.92114,
-      "y": 1074.7109,
+      "x": 627.70544,
+      "y": 926.2911,
       "z": 0.0
     },
     "size": {
-      "x": 23.0,
+      "x": 28.0,
       "y": 23.0,
-      "z": 23.0
+      "z": 28.0
     },
     "rot_and_tra": [
       90.0,
@@ -21,24 +21,24 @@
       0.0,
       0.0
     ],
-    "image": "rubber-post-t1-black",
+    "image": "metal3",
     "normal_map": "",
     "sides": 4,
     "name": "Primitive015",
-    "material": "Plastic with an image",
-    "side_color": "#96009696",
+    "material": "Metal0.8",
+    "side_color": "#ffffff",
     "is_visible": true,
     "draw_textures_inside": true,
-    "hit_event": true,
+    "hit_event": false,
     "threshold": 2.0,
-    "elasticity": 0.7,
-    "elasticity_falloff": 0.3,
-    "friction": 0.7,
-    "scatter": 5.0,
+    "elasticity": 0.3,
+    "elasticity_falloff": 0.0,
+    "friction": 0.0,
+    "scatter": 0.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
     "is_collidable": false,
-    "is_toy": false,
+    "is_toy": true,
     "use_3d_mesh": true,
     "static_rendering": true,
     "disable_lighting_top_old": null,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Visual_Rubbers"
   }
 }

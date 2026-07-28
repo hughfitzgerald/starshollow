@@ -1,15 +1,15 @@
 {
   "Plunger": {
     "center": {
-      "x": 899.6859,
-      "y": 2053.4834
+      "x": 898.027,
+      "y": 2105.312
     },
     "width": 25.0,
     "height": 20.0,
     "z_adjust": 0.0,
     "stroke": 155.0,
     "speed_pull": 0.25,
-    "speed_fire": 110.0,
+    "speed_fire": 100.0,
     "plunger_type": "custom",
     "anim_frames": 1,
     "material": "Plastic with an image",
@@ -34,6 +34,7 @@
     "spring_diam": 0.77,
     "spring_gauge": 1.38,
     "spring_loops": 16.0,
-    "spring_end_loops": 2.5
+    "spring_end_loops": 2.5,
+    "part_group_name": "Collidable_Misc"
   }
 }

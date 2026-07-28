@@ -1,29 +1,29 @@
 {
   "Light": {
     "center": {
-      "x": 691.6618,
-      "y": 1490.4554
+      "x": 703.2223,
+      "y": 1518.4448
     },
     "height": 28.0,
     "falloff_radius": 230.0,
-    "falloff_power": 2.0,
+    "falloff_power": 3.0,
     "state_u32": 0,
     "state": 0.0,
-    "color": "#fa0074dc",
-    "color2": "#00000000",
+    "color": "#ffb464",
+    "color2": "#ffb464",
     "is_timer_enabled": false,
     "timer_interval": 100,
-    "blink_pattern": "GI",
-    "off_image": "pf",
+    "blink_pattern": "10",
+    "image": "pf",
     "blink_interval": 250,
-    "intensity": 3.0,
-    "transmission_scale": 1.0,
+    "intensity": 2.0,
+    "transmission_scale": 0.0,
     "surface": "",
     "name": "gi015",
     "is_backglass": false,
     "depth_bias": 0.0,
-    "fade_speed_up": 0.3,
-    "fade_speed_down": 0.6,
+    "fade_speed_up": 0.2,
+    "fade_speed_down": 0.4,
     "is_bulb_light": true,
     "is_image_mode": false,
     "show_bulb_mesh": true,
@@ -33,12 +33,13 @@
     "bulb_modulate_vs_add": 1.0,
     "bulb_halo_height": 1.0,
     "shadows": "raytraced_ball_shadows",
-    "fader": "none",
+    "fader": "linear",
     "visible": true,
+    "part_group_name": "GI_Layer",
     "drag_points": [
       {
-        "x": 580.24036,
-        "y": 1289.409,
+        "x": 591.80084,
+        "y": 1317.3984,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -50,8 +51,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 495.18646,
-        "y": 1373.7733,
+        "x": 506.74707,
+        "y": 1401.7627,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -63,8 +64,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 460.66766,
-        "y": 1500.3794,
+        "x": 472.22827,
+        "y": 1528.3688,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -76,8 +77,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 493.85522,
-        "y": 1610.5396,
+        "x": 505.41583,
+        "y": 1638.5289,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -89,8 +90,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 580.3978,
-        "y": 1693.4707,
+        "x": 591.9583,
+        "y": 1721.4601,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -102,8 +103,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 697.55804,
-        "y": 1719.9133,
+        "x": 709.1185,
+        "y": 1747.9027,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -115,8 +116,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 825.8425,
-        "y": 1675.676,
+        "x": 837.403,
+        "y": 1703.6654,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -128,8 +129,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 895.6003,
-        "y": 1590.0483,
+        "x": 907.16077,
+        "y": 1618.0377,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -141,8 +142,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 921.35144,
-        "y": 1498.2903,
+        "x": 932.9119,
+        "y": 1526.2797,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -154,8 +155,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 885.9925,
-        "y": 1366.3965,
+        "x": 897.553,
+        "y": 1394.3859,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -167,8 +168,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 807.2432,
-        "y": 1294.0293,
+        "x": 818.8037,
+        "y": 1322.0187,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -180,8 +181,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 697.1181,
-        "y": 1259.6938,
+        "x": 708.6786,
+        "y": 1287.6832,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,

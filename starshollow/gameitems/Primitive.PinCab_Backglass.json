@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 11.0,
-      "y": -200.0,
-      "z": 25.0
+      "x": 12.3,
+      "y": 20.0,
+      "z": 0.0
     },
     "size": {
-      "x": 957.0,
+      "x": 959.3,
       "y": 1000.0,
-      "z": 1050.0
+      "z": 978.0
     },
     "rot_and_tra": [
       90.0,
@@ -16,18 +16,18 @@
       0.0,
       0.0,
       0.0,
-      50.0,
+      0.0,
       0.0,
       0.0,
       0.0
     ],
-    "image": "",
+    "image": "Backglassimage",
     "normal_map": "",
     "sides": 4,
     "name": "PinCab_Backglass",
-    "material": "Colour_Black",
-    "side_color": "#96009696",
-    "is_visible": false,
+    "material": "colormaxnoreflectionhalf",
+    "side_color": "#969696",
+    "is_visible": true,
     "draw_textures_inside": false,
     "hit_event": true,
     "threshold": 2.0,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "VR"
   }
 }

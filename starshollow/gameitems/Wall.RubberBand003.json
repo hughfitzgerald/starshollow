@@ -34,8 +34,8 @@
     "overwrite_physics": false,
     "drag_points": [
       {
-        "x": 787.1723,
-        "y": 845.53503,
+        "x": 627.2565,
+        "y": 1640.914,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -47,8 +47,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 817.587,
-        "y": 862.872,
+        "x": 635.01245,
+        "y": 1667.0781,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -60,8 +60,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 848.124,
-        "y": 802.04175,
+        "x": 702.05554,
+        "y": 1624.4218,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -73,8 +73,34 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 816.90155,
-        "y": 786.5027,
+        "x": 708.87885,
+        "y": 1609.0167,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0,
+        "editor_layer_name": "",
+        "editor_layer_visibility": true
+      },
+      {
+        "x": 709.54266,
+        "y": 1472.8656,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0,
+        "editor_layer_name": "",
+        "editor_layer_visibility": true
+      },
+      {
+        "x": 686.6845,
+        "y": 1483.4762,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -85,6 +111,7 @@
         "editor_layer_name": "",
         "editor_layer_visibility": true
       }
-    ]
+    ],
+    "part_group_name": "Collidable_Rubbers"
   }
 }

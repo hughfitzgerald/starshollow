@@ -1,78 +1,45 @@
-'    _____ _      ______   ______                           _        _______    _     _      
-'   / ____| |    |  ____| |  ____|                         | |      |__   __|  | |   | |     
-'  | |  __| |    | |__    | |__  __  ____ _ _ __ ___  _ __ | | ___     | | __ _| |__ | | ___ 
-'  | | |_ | |    |  __|   |  __| \ \/ / _` | '_ ` _ \| '_ \| |/ _ \    | |/ _` | '_ \| |/ _ \
-'  | |__| | |____| |      | |____ >  < (_| | | | | | | |_) | |  __/    | | (_| | |_) | |  __/
-'   \_____|______|_|      |______/_/\_\__,_|_| |_| |_| .__/|_|\___|    |_|\__,_|_.__/|_|\___|
-'                                                    | |                                     
-'                                                    |_|                         
-'   https://github.com/mpcarr/vpx-example-glf
-'            
-'*********************************************************************************************************************************
+'*********************************************************************
+' Stars Hollow Showdown
+'*********************************************************************
 '
-' - The purpose of this table is to provide examples of how to use GLF within VPX. For more info on GFL go to:
-'   https://mpcarr.github.io/vpx-glf/
-' - This table is based on VPW's Example Table which contains a lot more comments and content:
-'   https://vpuniverse.com/files/file/7787-vpin-workshop-example-resource-table/
+' Built on GLF (https://github.com/mpcarr/vpx-glf), which is itself an
+' adaptation of the VPW example table scripting approach.
 '
+' This file is concatenated FIRST - the leading underscore matters, the
+' grunt/concat glob is alphabetical. Everything below runs before any
+' other source file.
 '
-'*********************************************************************************************************************************
-'
-'
-' === TABLE OF CONTENTS  ===
-'
-' You can quickly jump to a section by searching the four letter tag (ZXXX)
-'
+' === TABLE OF CONTENTS ===
 '   ZCON: Constants and Global Variables
-'	ZOPT: User Options
-'	ZTIM: Timers
-'	ZINI: Table Initialization and Exiting
-'	ZKEY: Key Press Handling
-' 	ZMAT: General Math Functions
-'	ZANI: Misc Animations
-'	ZFLP: Flippers
-'	ZSLG: Slingshots
-' 	ZDMP: Rubber Dampeners
-'	ZSOL: Other Solenoids
-' 	ZRDT: Roth Drop Targets
-'	ZRST: Roth Stand-Up Targets
-'	ZSHA: Ambient Ball Shadows
-' 	ZBRL: Ball Rolling and Drop Sounds
-' 	ZRRL: Ramp Rolling Sounds
-' 	ZFLE: Fleep Mechanical Sounds
-' 	ZFLD: Flupper Domes
-' 	ZVRS: VR Stuff
-'   ZGCF: GLF Configurations
+'   ZOPT: User Options
+'   ZTIM: Timers
+'   ZINI: Table Initialization and Exiting
+'   ZKEY: Key Press Handling
+'   ZMAT: General Math Functions
+'   ZANI: Misc Animations
+'   ZFLP: Flippers (incl. nFozzy/Roth physics)
+'   ZSLG: Slingshots (incl. sling correction)
+'   ZBMP: Bumpers
+'   ZGII: GI
+'   ZDMP: Rubber Dampeners (incl. TargetBouncer)
+'   ZSOL: Other Solenoids
+'   ZKIC: Kickers, Saucers
+'   ZTRI: Triggers
+'   ZTAR: Targets
+'   ZRST: Roth Stand-Up Targets
+'   ZSHA: Ambient Ball Shadows
+'   ZBRL: Ball Rolling and Drop Sounds
+'   ZRRL: Ramp Rolling Sounds
+'   ZFLE: Fleep Mechanical Sounds
+'   ZFLD: Flupper Domes
+'   ZFLB: Flupper Bumpers
+'   ZVRR: VR Room
+'   ZGCF: GLF Configurations  (src/game/_configuration.vbs)
 '
-'
-' B2S Backglass IDs
-' ------------
-'   E001 0/1 logo image 
-'   E002 0/1 GAME
-'   E003 0/1 LOGIC
-'   E004 0/1 FRAMEWORK
-'   E005 0/1 upper left
-'   E006 0/1 lower right
-'   E007 0/1 lower left
-'   E008 0/1 upper right
-'
-'
-' DOF IDs
-' ------------
-'   E101 0/1 LeftFlipper
-'   E102 0/1 RightFlipper
-'   E103 2   Leftslingshot
-'   E104 2   Rightslingshot
-'   E105 2   Bumper1
-'   E106 2   Bumper2
-'   E107 2   Bumper3
-'   E108 2   Kicker1
-'   E109 2   Kicker2
-'   E110 2   Trough/plunger eject
-'   E111 2   Diverter
-'   E112 2   Knocker
-
-
+' DELETED in the GLF migration - do not re-add:
+'   ZTUT (tutorial links)  ZDMD (FlexDMD)      ZDRN (GLF owns the trough)
+'   ZSCR (GLF player vars) ZLIS (ROM listener) ZRDT (no drop targets)
+'   ZTST (shot tester)     ZQUE (GLF SetDelay) ZLOG   ZCRD   ZPHY
 
 
 Option Explicit
@@ -83,4 +50,3 @@ On Error Resume Next
 ExecuteGlobal GetTextFile("controller.vbs")
 If Err Then MsgBox "You need the controller.vbs In order To run this table, available In the vp10 package"
 On Error GoTo 0
-

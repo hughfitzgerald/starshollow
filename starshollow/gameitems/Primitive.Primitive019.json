@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 109.36916,
-      "y": 746.4863,
-      "z": 30.0
+      "x": 220.8068,
+      "y": 97.992874,
+      "z": 18.0
     },
     "size": {
-      "x": 1.8,
-      "y": 2.0,
-      "z": 1.8
+      "x": 100.0,
+      "y": 100.0,
+      "z": 100.0
     },
     "rot_and_tra": [
       90.0,
@@ -19,14 +19,14 @@
       0.0,
       0.0,
       0.0,
-      0.0
+      50.0
     ],
-    "image": "Purple peg",
+    "image": "rubber-emwheel",
     "normal_map": "",
     "sides": 4,
     "name": "Primitive019",
-    "material": "Peg",
-    "side_color": "#96009696",
+    "material": "Plastic",
+    "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": true,
     "hit_event": false,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Collidable_Misc"
   }
 }

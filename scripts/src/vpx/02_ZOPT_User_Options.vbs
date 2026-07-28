@@ -1,18 +1,21 @@
 
-
 '*******************************************
 '  ZOPT: User Options
 '*******************************************
+
+
+' FlexDMD removed in the GLF migration - ZDMD is gone entirely.
+
+'----- VR Room -----
+Const VRRoomChoice = 0			  ' 1 - Minimal Room, 2 - Ultra Minimal Room
 
 Dim LightLevel : LightLevel = 0.25				' Level of room lighting (0 to 1), where 0 is dark and 100 is brightest
 Dim ColorLUT : ColorLUT = 1						' Color desaturation LUTs: 1 to 11, where 1 is normal and 11 is black'n'white
 Dim VolumeDial : VolumeDial = 0.8           	' Overall Mechanical sound effect volume. Recommended values should be no greater than 1.
 Dim BallRollVolume : BallRollVolume = 0.5   	' Level of ball rolling volume. Value between 0 and 1
 Dim RampRollVolume : RampRollVolume = 0.5 		' Level of ramp rolling volume. Value between 0 and 1
-Dim StagedFlipper : StagedFlipper = 0         	' Staged Flipper. 0 = Disabled, 1 = Enabled
-Dim VRRoomChoice : VRRoomChoice = 0	            ' 1 - Minimal Room, 2 - Ultra Minimal Room
-Dim ShowSideRails : ShowSideRails = 1			' 0 - Hide, 1 - Show
-Dim VRRoom
+Dim StagedFlippers : StagedFlippers = 0         ' Staged Flippers. 0 = Disabled, 1 = Enabled
+
 
 ' Called when options are tweaked by the player. 
 ' - 0: game has started, good time to load options and adjust accordingly
@@ -23,13 +26,13 @@ Dim VRRoom
 ' - option name, minimum value, maximum value, step between valid values, default value, unit (0=None, 1=Percent), an optional arry of literal strings
 Dim dspTriggered : dspTriggered = False
 Sub Table1_OptionEvent(ByVal eventId)
-	If eventId = 1 And Not dspTriggered Then dspTriggered = True : DisableStaticPreRendering = True : End If    'This line must come at start of options
+	If eventId = 1 And Not dspTriggered Then dspTriggered = True : DisableStaticPreRendering = True : End If
 
 	' Color Saturation
     ColorLUT = Table1.Option("Color Saturation", 1, 11, 1, 1, 0, _
 		Array("Normal", "Desaturated 10%", "Desaturated 20%", "Desaturated 30%", "Desaturated 40%", "Desaturated 50%", _
         "Desaturated 60%", "Desaturated 70%", "Desaturated 80%", "Desaturated 90%", "Black 'n White"))
-	if ColorLUT = 1 Then Table1.ColorGradeImage = "ColorGradeLUT256x16_1to1"
+	if ColorLUT = 1 Then Table1.ColorGradeImage = ""
 	if ColorLUT = 2 Then Table1.ColorGradeImage = "colorgradelut256x16-10"
 	if ColorLUT = 3 Then Table1.ColorGradeImage = "colorgradelut256x16-20"
 	if ColorLUT = 4 Then Table1.ColorGradeImage = "colorgradelut256x16-30"
@@ -52,17 +55,18 @@ Sub Table1_OptionEvent(ByVal eventId)
 '	SetRoomBrightness LightLevel   'Uncomment this line for lightmapped tables.
 
     ' Staged Flippers
-    StagedFlipper = Table1.Option("Staged Flippers", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
+    StagedFlippers = Table1.Option("Staged Flippers", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
 
-	' Show Side Rails
-	ShowSideRails = Table1.Option("Side Rails", 0, 1, 1, 1, 0, Array("Hide", "Show"))
 
-    ' VR
-	VRRoomChoice = Table1.Option("VR Room", 1, 2, 1, 1, 0, Array("Minimal", "Ultra Minimal"))
-	If RenderingMode = 2 or TestVR = True Then: VRRoom = VRRoomChoice: Else VRRoom = 0: End If
-	SetupRoom
+	' GLF's own options: Debug Log, Debug Log Level, Backbox Control
+	' Protocol, Virtual Segment DMD, production mode. You will use the
+	' first two constantly.
+	Glf_Options(eventId)
 
-    Glf_Options(eventId)
+	' Rebuild the VR room when options change
+	InitVR()
 
-	If eventId = 3 And dspTriggered Then dspTriggered = False : DisableStaticPreRendering = False : End If    'This line must come at end of options
+	If eventId = 3 And dspTriggered Then dspTriggered = False : DisableStaticPreRendering = False : End If
 End Sub
+
+

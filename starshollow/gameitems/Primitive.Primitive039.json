@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 702.59283,
-      "y": 455.9175,
-      "z": 30.0
+      "x": 765.92194,
+      "y": 1040.0161,
+      "z": 0.0
     },
     "size": {
-      "x": 1.8,
-      "y": 2.0,
-      "z": 1.8
+      "x": 23.0,
+      "y": 23.0,
+      "z": 23.0
     },
     "rot_and_tra": [
       90.0,
@@ -21,24 +21,24 @@
       0.0,
       0.0
     ],
-    "image": "Purple peg",
+    "image": "rubber-post-t1-black",
     "normal_map": "",
     "sides": 4,
     "name": "Primitive039",
-    "material": "Peg",
-    "side_color": "#96009696",
+    "material": "Plastic with an image",
+    "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": true,
-    "hit_event": false,
+    "hit_event": true,
     "threshold": 2.0,
-    "elasticity": 0.3,
-    "elasticity_falloff": 0.0,
-    "friction": 0.0,
-    "scatter": 0.0,
+    "elasticity": 0.7,
+    "elasticity_falloff": 0.3,
+    "friction": 0.7,
+    "scatter": 5.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
     "is_collidable": false,
-    "is_toy": true,
+    "is_toy": false,
     "use_3d_mesh": true,
     "static_rendering": true,
     "disable_lighting_top_old": null,
@@ -57,11 +57,12 @@
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
-    "color": "#ff00ffff",
+    "color": "#ffffff",
     "light_map": "",
     "reflection_probe": "",
     "reflection_strength": 1.0,
     "refraction_probe": "",
-    "refraction_thickness": 10.0
+    "refraction_thickness": 10.0,
+    "part_group_name": "Visual_Rubbers"
   }
 }
