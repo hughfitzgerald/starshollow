@@ -34,14 +34,14 @@ Sub CreateBaseMode()
 
             ' The ball leaving the plunger lane for the first time is what
             ' actually starts play - this is what arms the ball save.
-            .Add "s_PlungerLane_inactive{current_player.ball_just_started == 1}", Array("new_ball_active")
+            .Add "s_Trigger1_inactive{current_player.ball_just_started == 1}", Array("new_ball_active")
 
             ' Once play is live, clear the just-started flag
             .Add "new_ball_active", Array("clear_ball_just_started")
 
-            ' Eject the VUK shortly after it captures a ball. Without this
-            ' the ball sits there until EjectTimeout fires.
-            .Add "s_VUK1_active", Array("eject_vuk1")
+            ' VUK eject is handled by the Vuk1Hold listener in
+            ' _configuration.vbs, which delays 1.5s before dispatching
+            ' eject_vuk1. Do not also fire it from here.
 
         End With
 
@@ -89,14 +89,14 @@ Sub CreateBaseMode()
             Next
 
             ' The two bonus-lane rollovers latch their inserts.
-            ' s_BonusLaneL (was sw8) -> l8, s_BonusLaneR (was sw9) -> l9
-            With .EventName("s_BonusLaneL_active")
+            ' s_sw8 (was sw8) -> l8, s_sw9 (was sw9) -> l9
+            With .EventName("s_sw8_active")
                 With .Lights("l8")
                     .Color = BonusLaneColor
                     .Fade  = 60
                 End With
             End With
-            With .EventName("s_BonusLaneR_active")
+            With .EventName("s_sw9_active")
                 With .Lights("l9")
                     .Color = BonusLaneColor
                     .Fade  = 60

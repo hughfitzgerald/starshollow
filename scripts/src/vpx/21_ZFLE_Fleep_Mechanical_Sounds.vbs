@@ -877,29 +877,67 @@ End Sub
 
 
 
-Sub l1_animate: p1.BlendDisableLighting = 200 * (l1.GetInPlayIntensity / l1.Intensity): End Sub
-Sub l2_animate: p2.BlendDisableLighting = 200 * (l2.GetInPlayIntensity / l2.Intensity): End Sub
-Sub l3_animate: p3.BlendDisableLighting = 200 * (l3.GetInPlayIntensity / l3.Intensity): End Sub
-' Sub l4_animate: p4.BlendDisableLighting = 200 * (l4.GetInPlayIntensity / l4.Intensity): End Sub
-' Sub l5_animate: p5.BlendDisableLighting = 200 * (l5.GetInPlayIntensity / l5.Intensity): End Sub
-Sub l8_animate: p8.BlendDisableLighting = 200 * (l8.GetInPlayIntensity / l8.Intensity): End Sub
-Sub l9_animate: p9.BlendDisableLighting = 200 * (l9.GetInPlayIntensity / l9.Intensity): End Sub
 
-' Sub l10_animate: p10.BlendDisableLighting = 200 * (l10.GetInPlayIntensity / l10.Intensity): End Sub
-Sub l11_animate: p11.BlendDisableLighting = 200 * (l11.GetInPlayIntensity / l11.Intensity): End Sub
-Sub l12_animate: p12.BlendDisableLighting = 200 * (l12.GetInPlayIntensity / l12.Intensity): End Sub
-Sub l13_animate: p13.BlendDisableLighting = 200 * (l13.GetInPlayIntensity / l13.Intensity): End Sub
-Sub l14_animate: p14.BlendDisableLighting = 200 * (l14.GetInPlayIntensity / l14.Intensity): End Sub
-Sub l15_animate: p15.BlendDisableLighting = 200 * (l15.GetInPlayIntensity / l15.Intensity): End Sub
-Sub l16_animate: p16.BlendDisableLighting = 200 * (l16.GetInPlayIntensity / l16.Intensity): End Sub
-Sub l17_animate: p17.BlendDisableLighting = 200 * (l17.GetInPlayIntensity / l17.Intensity): End Sub
-Sub l18_animate: p18.BlendDisableLighting = 200 * (l18.GetInPlayIntensity / l18.Intensity): End Sub
-Sub l19_animate: p19.BlendDisableLighting = 200 * (l19.GetInPlayIntensity / l19.Intensity): End Sub
+' --- Insert primitives under GLF ------------------------------------
+' These were intensity-driven:
+'     p11.BlendDisableLighting = 200 * (l11.GetInPlayIntensity / l11.Intensity)
+' That does not work under GLF. Glf_RegisterLights sets light.State = 1 on
+' every glf_lights member permanently and modulates COLOR only
+' (Glf_SetLight writes light.Color and nothing else). So GetInPlayIntensity
+' is pinned at full and every insert primitive renders fully lit forever.
+'
+' GlfInsertGlow reads the light's colour instead, so the primitive tracks
+' what GLF is actually doing. Black (000000, GLF's "off") -> 0.
+' The per-light lNN_animate subs are GONE on purpose. VPX raises _Animate
+' when a light's STATE changes or it fades. GLF never changes state - it
+' pins State = 1 and writes Color - so those subs were effectively never
+' called and each insert primitive kept whatever BlendDisableLighting it
+' had at design time. That is the "always lit" symptom.
+'
+' Driving them from FrameTimer instead makes the update unconditional and
+' independent of VPX's light events.
+' Only pairs that actually exist on this table. l4/l5/l10 and their
+' primitives were commented out in the original VPW script and are NOT
+' present - referencing them here would be a runtime error.
+Dim GlfInsertLights, GlfInsertPrims
+GlfInsertLights = Array(l1, l2, l3, l8, l9, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23)
+GlfInsertPrims  = Array(p1, p2, p3, p8, p9, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23)
 
-Sub l20_animate: p20.BlendDisableLighting = 200 * (l20.GetInPlayIntensity / l20.Intensity): End Sub
-Sub l21_animate: p21.BlendDisableLighting = 200 * (l21.GetInPlayIntensity / l21.Intensity): End Sub
-Sub l22_animate: p22.BlendDisableLighting = 200 * (l22.GetInPlayIntensity / l22.Intensity): End Sub
-Sub l23_animate: p23.BlendDisableLighting = 200 * (l23.GetInPlayIntensity / l23.Intensity): End Sub
+Sub UpdateGlfInserts()
+    Dim i, g
+    For i = 0 To UBound(GlfInsertLights)
+        g = GlfInsertGlow(GlfInsertLights(i))
+        GlfInsertPrims(i).BlendDisableLighting = g
+
+        ' Also drive the light's own State. Glf_RegisterLights pins
+        ' State = 1 forever and only writes Color, so an insert that is
+        ' rendered by the LIGHT (bulb mesh / halo) rather than by its
+        ' primitive stays visible even at colour 000000. Killing State
+        ' when the colour is fully black makes both styles go dark.
+        ' Any non-black colour restores State = 1 so fades still show.
+        If g = 0 Then
+            If GlfInsertLights(i).State <> 0 Then GlfInsertLights(i).State = 0
+        Else
+            If GlfInsertLights(i).State <> 1 Then GlfInsertLights(i).State = 1
+        End If
+    Next
+End Sub
+
+Function GlfInsertGlow(lgt)
+    Dim c : c = lgt.Color
+    ' VPX colours are BGR-packed longs; take the brightest channel.
+    Dim r, g, b
+    r = c And 255
+    g = (c \ 256) And 255
+    b = (c \ 65536) And 255
+    Dim m : m = r
+    If g > m Then m = g
+    If b > m Then m = b
+    GlfInsertGlow = 200 * (m / 255)
+End Function
+
+' ' 
+' 
 
 
 

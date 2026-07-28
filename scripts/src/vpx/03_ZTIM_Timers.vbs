@@ -35,6 +35,7 @@ Sub FrameTimer_Timer()
 	RollingUpdate
 	DoSTAnim
 	BSUpdate
+	UpdateGlfInserts   ' insert primitives follow GLF light colour
 
 	If Not glf_pump_checked And GameTime > 2000 Then
 		glf_pump_checked = True

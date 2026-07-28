@@ -158,7 +158,7 @@ Function STAnimate(primary, prim, switch,  animate)
 	If animate = 1 Then
 		primary.collidable = 0
 		prim.transy =  - STMaxOffset
-		STAction switch      ' was wrapped in If UsingROM - no ROM on this table
+		STAction switch, 1   ' target struck
 		STAnimate = 2
 		Exit Function
 	ElseIf animate = 2 Then
@@ -166,6 +166,7 @@ Function STAnimate(primary, prim, switch,  animate)
 		If prim.transy >= 0 Then
 			prim.transy = 0
 			primary.collidable = 1
+			STAction switch, 0   ' target returned
 			STAnimate = 0
 			Exit Function
 		Else
@@ -174,10 +175,19 @@ Function STAnimate(primary, prim, switch,  animate)
 	End If
 End Function
 
-' STAction is deliberately empty. DoSTAnim calls it at the right moment in
-' the animation; GLF separately dispatches s_STnn_active. All scoring,
-' flashers and insert lights move to an EventPlayer / Shot config in a mode.
-Sub STAction(Switch)
+' THIS is what turns a physical target hit into a GLF event. Without it
+' nothing downstream ever fires - GLF does NOT dispatch these itself when
+' UseRothStanduptarget is True; the Roth animation code owns the timing,
+' so the dispatch has to happen from inside it.
+'
+' Primary.Name is the VPX switch object, so this dispatches
+' "s_ST11_active" / "s_ST11_inactive" etc. - matching the base mode.
+Sub STAction(switchid, hit)
+	If hit = 1 Then
+		DispatchPinEvent STArray(STArrayID(switchid)).Primary.Name & "_active", Null
+	Else
+		DispatchPinEvent STArray(STArrayID(switchid)).Primary.Name & "_inactive", Null
+	End If
 End Sub
 
 

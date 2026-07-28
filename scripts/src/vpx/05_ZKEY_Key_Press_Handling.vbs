@@ -61,7 +61,7 @@ Sub Table1_KeyUp(ByVal keycode)
 	If keycode = PlungerKey Then
 		Plunger.Fire
 		' PlungerHasBall is maintained by listeners in _configuration.vbs.
-		' Do NOT use s_PlungerLane.BallCntOver here - that is a Kicker
+		' Do NOT use s_Trigger1.BallCntOver here - that is a Kicker
 		' property and this table's plunger switch is a Trigger.
 		If PlungerHasBall Then
 			SoundPlungerReleaseBall()

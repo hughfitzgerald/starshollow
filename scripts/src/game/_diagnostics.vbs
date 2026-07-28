@@ -15,6 +15,7 @@
 
 Dim diag_events  : diag_events = ""
 Dim diag_started : diag_started = False
+Dim diag_switchNames, diag_switchHits
 
 Sub GlfDiag_Init()
     diag_started = True
@@ -29,8 +30,41 @@ Sub GlfDiag_Init()
     AddPinEventListener "ball_started",     "diag_bstart", "GlfDiag_Note", 1, Array("ball_started")
     AddPinEventListener "mode_base_started","diag_base",   "GlfDiag_Note", 1, Array("BASE MODE STARTED")
 
+    ' Count every switch event the game actually depends on. A switch that
+    ' never fires is almost always missing from the glf_switches collection:
+    ' GLF only generates <name>_Hit / <name>_UnHit for members, and without
+    ' the generated sub nothing ever dispatches <name>_active.
+    ' Names must match the ACTUAL VPX objects.
+    diag_switchNames = Array( _
+        "s_sw8", "s_sw9", "s_VUK1", "s_Trigger1", _
+        "s_LeftInlane", "s_RightInlane", _
+        "s_Bumper1", "s_Bumper3", "s_Bumper5", _
+        "s_LeftSlingshot", "s_RightSlingshot")
+    ReDim diag_switchHits(UBound(diag_switchNames))
+    Dim i
+    For i = 0 To UBound(diag_switchNames)
+        diag_switchHits(i) = 0
+        AddPinEventListener diag_switchNames(i) & "_active", _
+            "diag_sw_" & i, "GlfDiag_SwitchHit", 1, Array(i)
+    Next
+
     Debug.Print "GLFDIAG: initialised"
 End Sub
+
+Function GlfDiag_SwitchHit(args)
+    Dim idx : idx = args(0)(0)
+    diag_switchHits(idx) = diag_switchHits(idx) + 1
+    Debug.Print "GLFDIAG switch: " & diag_switchNames(idx) & "_active  (hit #" & diag_switchHits(idx) & ")"
+    If Not IsNull(args) Then
+        If IsObject(args(1)) Then
+            Set GlfDiag_SwitchHit = args(1)
+        Else
+            GlfDiag_SwitchHit = args(1)
+        End If
+    Else
+        GlfDiag_SwitchHit = Null
+    End If
+End Function
 
 Function GlfDiag_Note(args)
     Dim label : label = args(0)(0)
@@ -80,6 +114,133 @@ Function GlfDiag_TimerProbe()
 End Function
 
 
+' GLF hardcodes a small set of VPX object and collection names. Missing
+' ones fail in different ways: some crash, some (like Glf_GameTimer) go
+' silently dead. Check them all in one place.
+Function GlfDiag_RequiredObjects()
+    Dim r, missing
+    missing = ""
+    missing = missing & GlfDiag_NeedObj("Glf_GameTimer",     "Timer, Enabled, Interval -1 - the event pump")
+    missing = missing & GlfDiag_NeedObj("UpdateTroughTimer", "Timer, Interval 100, starts DISABLED")
+    missing = missing & GlfDiag_NeedObj("FrameTimer",        "Timer, Interval -1 - VPW animations")
+    missing = missing & GlfDiag_NeedObj("CorTimer",          "Timer, Interval 10 - Cor physics")
+    missing = missing & GlfDiag_NeedObj("Drain",             "Kicker - GLF trough")
+    missing = missing & GlfDiag_NeedObj("swTrough1",         "Kicker - GLF trough")
+    missing = missing & GlfDiag_NeedObj("swTrough5",         "Kicker - GLF trough (tnob = 5)")
+    missing = missing & GlfDiag_NeedColl("glf_lights",     "lights GLF drives")
+    missing = missing & GlfDiag_NeedColl("glf_switches",   "switches GLF generates _Hit for")
+    missing = missing & GlfDiag_NeedColl("glf_slingshots", "slingshots")
+    missing = missing & GlfDiag_NeedColl("glf_spinners",   "must exist even if EMPTY")
+
+    If missing = "" Then
+        r = "[ ok ] All hardcoded GLF objects and collections present" & vbNewLine
+    Else
+        r = "[FAIL] Missing GLF requirements:" & vbNewLine & missing
+    End If
+    GlfDiag_RequiredObjects = r
+End Function
+
+Function GlfDiag_NeedObj(nm, why)
+    Dim ok : ok = True
+    On Error Resume Next
+        Err.Clear
+        Dim junk : junk = Eval(nm & ".Name")
+        If Err.Number <> 0 Then ok = False
+        Err.Clear
+    On Error GoTo 0
+    If ok Then
+        GlfDiag_NeedObj = ""
+    Else
+        GlfDiag_NeedObj = "         " & nm & "  (" & why & ")" & vbNewLine
+    End If
+End Function
+
+Function GlfDiag_NeedColl(nm, why)
+    Dim ok : ok = True
+    Dim n : n = 0
+    On Error Resume Next
+        Err.Clear
+        Dim o
+        For Each o In Eval(nm)
+            n = n + 1
+        Next
+        If Err.Number <> 0 Then ok = False
+        Err.Clear
+    On Error GoTo 0
+    If ok Then
+        GlfDiag_NeedColl = ""
+    Else
+        GlfDiag_NeedColl = "         " & nm & "  (collection - " & why & ")" & vbNewLine
+    End If
+End Function
+
+
+' For each light a mode drives: is it registered with GLF, and what
+' colour does GLF currently have it at? A light that is NOT registered
+' is never blanked, which is the usual cause of "stuck on".
+Function GlfDiag_LightReport()
+    Dim names, n, r, reg
+    names = Array("l8","l9","l11","l12","l13","l14","l15","l16","l17","l18")
+    r = "--- driven lights ---" & vbNewLine
+    For Each n In names
+        If glf_lightNames.Exists(n) Then
+            reg = "registered, color=" & Hex(glf_lightNames(n).Color) & _
+                  ", state=" & glf_lightNames(n).State
+        Else
+            reg = "NOT IN glf_lights  <-- will never be blanked by GLF"
+        End If
+        r = r & "  " & n & ": " & reg & vbNewLine
+    Next
+    GlfDiag_LightReport = r
+End Function
+
+
+' Cross-reference: is each switch IN glf_switches, and has its _active
+' event ever actually fired? Those two answers together localise almost
+' every "hitting X does nothing" problem.
+Function GlfDiag_SwitchReport()
+    Dim r, i, o, inColl, members, slings, nm, want
+    members = "|" : slings = "|"
+    On Error Resume Next
+        For Each o In glf_switches
+            members = members & o.Name & "|"
+        Next
+        Err.Clear
+        For Each o In glf_slingshots
+            slings = slings & o.Name & "|"
+        Next
+        Err.Clear
+    On Error GoTo 0
+
+    r = "--- switches / times fired ---" & vbNewLine
+    For i = 0 To UBound(diag_switchNames)
+        nm = diag_switchNames(i)
+        ' Slingshots live in glf_slingshots, everything else in glf_switches.
+        If InStr(1, nm, "Slingshot", 1) > 0 Then
+            want = "glf_slingshots"
+            If InStr(1, slings, "|" & nm & "|", 1) > 0 Then
+                inColl = "in glf_slingshots"
+            Else
+                inColl = "NOT IN glf_slingshots  <-- no _Slingshot generated"
+            End If
+        Else
+            want = "glf_switches"
+            If InStr(1, members, "|" & nm & "|", 1) > 0 Then
+                inColl = "in glf_switches"
+            Else
+                inColl = "NOT IN glf_switches  <-- no _Hit generated, never fires"
+            End If
+        End If
+        r = r & "  " & nm & ": " & diag_switchHits(i) & " hits, " & inColl & vbNewLine
+    Next
+    r = r & "  raw glf_switches:   " & Replace(Mid(members,2), "|", " ") & vbNewLine
+    r = r & "  raw glf_slingshots: " & Replace(Mid(slings,2), "|", " ") & vbNewLine
+    r = r & "  NOTE: hit counts only move during a game - press D mid-ball," & vbNewLine
+    r = r & "        not during attract, or everything reads 0." & vbNewLine
+    GlfDiag_SwitchReport = r
+End Function
+
+
 Function GlfDiag_Report()
     Dim s, i, n, ok
 
@@ -125,8 +286,17 @@ Function GlfDiag_Report()
         s = s & "       Check the balls actually land ON the kickers." & vbNewLine
     End If
 
+    '--- 2b. every other object/collection GLF hardcodes ---
+    s = s & GlfDiag_RequiredObjects()
+
     '--- 3. lights ---
     s = s & "[info] glf_lights registered: " & glf_lightNames.Count & vbNewLine
+
+    '--- 3b. the lights the modes actually drive ---
+    s = s & GlfDiag_LightReport()
+
+    '--- 3c. switches ---
+    s = s & GlfDiag_SwitchReport()
 
     '--- 4. game state ---
     s = s & "[info] glf_gameStarted = " & glf_gameStarted & vbNewLine

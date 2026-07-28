@@ -18,7 +18,7 @@
 Dim ScoreArray : ScoreArray = Array(10, 250, 1000, 5000, 10000)
 
 ' Set by the plunger-lane listeners below; read by ZKEY for the plunger
-' release sound. s_PlungerLane is a Trigger, so it has no BallCntOver.
+' release sound. s_Trigger1 is a Trigger, so it has no BallCntOver.
 Dim PlungerHasBall : PlungerHasBall = False
 
 ' GI lights.
@@ -78,8 +78,12 @@ Sub ConfigureGlfDevices()
     AddPinEventListener GLF_BALL_DRAIN, "ball_drain_sound", "BallDrainSound", 100, Null
 
     ' Track ball-in-plunger-lane for the ZKEY release sound.
-    AddPinEventListener "s_PlungerLane_active",   "plunger_ball_in",  "PlungerBallIn",  100, Null
-    AddPinEventListener "s_PlungerLane_inactive", "plunger_ball_out", "PlungerBallOut", 100, Null
+    ' VUK hold: wait 1.5s after the ball is captured, then eject. This
+    ' replaces the original VUK1.TimerInterval = 1500.
+    AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
+
+    AddPinEventListener "s_Trigger1_active",   "plunger_ball_in",  "PlungerBallIn",  100, Null
+    AddPinEventListener "s_Trigger1_inactive", "plunger_ball_out", "PlungerBallOut", 100, Null
 
 
     '*********** HIGH SCORES ***********
@@ -117,10 +121,10 @@ Sub ConfigureGlfDevices()
 
     '*********** DEVICES ***********
 
-    ' --- Plunger lane (s_PlungerLane -> s_PlungerLane) ---
+    ' --- Plunger lane (s_Trigger1 -> s_Trigger1) ---
     ' MUST be a member of glf_switches.
     With CreateGlfBallDevice("plunger")
-        .BallSwitches = Array("s_PlungerLane")
+        .BallSwitches = Array("s_Trigger1")
         .EjectTimeout = 2000
         .MechanicalEject = True
         .DefaultDevice = True
@@ -200,9 +204,10 @@ Sub ConfigureGlfDevices()
         .BallSwitches = Array("s_VUK1")
         .EjectTimeout = 2000
         .MechanicalEject = False
-        ' EjectEnableTime restores the 1500ms hold the original VUK1_Timer
-        ' had - the ball sits visibly in the VUK before it fires.
-        .EjectEnableTime = 1500
+        ' NOTE: do NOT use .EjectEnableTime for a hold delay. It does not
+        ' delay the eject - it fires the EjectCallback a SECOND time with
+        ' Null after the eject, to re-enable a hold coil. The 1.5s VUK hold
+        ' is done with a delayed eject_vuk1 event instead (see below).
         .EjectAllEvents = Array("eject_vuk1")
         .EjectCallback = "Vuk1EjectCallback"
     End With
@@ -242,6 +247,14 @@ End Function
 Function BallDrainSound(args)
     RandomSoundDrain Drain
     BallDrainSound = args(1)      ' relay event - must return the value
+End Function
+
+Function Vuk1Hold(args)
+    SetDelay "vuk1_eject_delay", "Vuk1DoEject", Null, 1500
+End Function
+
+Function Vuk1DoEject(args)
+    DispatchPinEvent "eject_vuk1", Null
 End Function
 
 Function PlungerBallIn(args)

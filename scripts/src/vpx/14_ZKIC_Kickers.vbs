@@ -10,18 +10,29 @@
 Const KickerAngleTol = 2
 Const KickerStrengthTol = 1
 
+' GLF calls EjectCallback with a REAL ball on eject, but ALSO with Null
+' from two other paths:
+'   GlfBallDevice.EjectEnableComplete -> GetRef(m_eject_callback)(Null)
+'   GlfBallDevice.BallSearch          -> can pass a Null m_balls(0)
+' So every eject callback must tolerate Null or it throws "Object required"
+' on a loop. This is what was spamming the log after the VUK timed out.
 Sub Vuk1EjectCallback(ball)
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1
 	KickBall ball, -19 + RndNum(-KickerAngleTol, KickerAngleTol), _
 	               50 + RndNum(-KickerStrengthTol, KickerStrengthTol), 0, 0
 End Sub
 
 Sub PlungerEjectCallback(ball)
-	' Mechanical plunger only - nothing to do.
+	If IsNull(ball) Then Exit Sub
+	' Mechanical plunger only - nothing else to do.
 End Sub
 
 ' Generic helper used by the eject callbacks above.
 Sub KickBall(kball, kangle, kvel, kvelz, kzlift)
+	If IsNull(kball) Then Exit Sub
+	If Not IsObject(kball) Then Exit Sub
 	Dim rangle
 	rangle = PI * (kangle - 90) / 180
 	kball.z    = kball.z + kzlift
