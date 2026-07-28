@@ -17,6 +17,9 @@
 Sub Table1_KeyDown(ByVal keycode)
 	Glf_KeyDown(keycode)
 
+	' TEMPORARY - D dumps the GLF diagnostic. Remove with _diagnostics.vbs.
+	If keycode = 32 Then MsgBox GlfDiag_Report()
+
 	'Plunger
 	If keycode = PlungerKey Then
 		Plunger.Pullback

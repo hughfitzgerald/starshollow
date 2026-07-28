@@ -38,6 +38,10 @@ Sub Table1_Init
 	InitSlingCorrection()
 
 	InitVR()
+
+	' TEMPORARY diagnostics - delete this line and src/game/_diagnostics.vbs
+	' once the table is starting games reliably.
+	GlfDiag_Init()
 End Sub
 
 
