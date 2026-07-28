@@ -1,4 +1,3 @@
-
 '*******************************************
 '  ZGCF: GLF Configurations
 '*******************************************
@@ -203,6 +202,14 @@ Sub ConfigureGlfDevices()
     With CreateGlfBallDevice("vuk1")
         .BallSwitches = Array("s_VUK1")
         .EjectTimeout = 2000
+        .Debug = True
+        .EntranceCountDelay = 50
+        ' GLF auto-ejects any "unclaimed" ball ~500ms after it enters, by
+        ' default. That was firing BEFORE the deliberate 1.5s hold below
+        ' had a chance to run, so the device saw two overlapping eject
+        ' attempts every time a ball landed. Turn it off - the delayed
+        ' eject_vuk1 dispatch is the only thing that should fire this.
+        .AutoFireOnUnexpectedBall = False
         .MechanicalEject = False
         ' NOTE: do NOT use .EjectEnableTime for a hold delay. It does not
         ' delay the eject - it fires the EjectCallback a SECOND time with
@@ -250,10 +257,12 @@ Function BallDrainSound(args)
 End Function
 
 Function Vuk1Hold(args)
+    Debug.Print "GLFDIAG: Vuk1Hold fired - scheduling eject in 1500ms"
     SetDelay "vuk1_eject_delay", "Vuk1DoEject", Null, 1500
 End Function
 
 Function Vuk1DoEject(args)
+    Debug.Print "GLFDIAG: Vuk1DoEject - dispatching eject_vuk1"
     DispatchPinEvent "eject_vuk1", Null
 End Function
 

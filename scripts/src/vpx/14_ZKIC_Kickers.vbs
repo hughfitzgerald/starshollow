@@ -1,4 +1,3 @@
-
 '*******************************************
 '   ZKIC: Kickers, Saucers
 '*******************************************
@@ -15,13 +14,22 @@ Const KickerStrengthTol = 1
 '   GlfBallDevice.EjectEnableComplete -> GetRef(m_eject_callback)(Null)
 '   GlfBallDevice.BallSearch          -> can pass a Null m_balls(0)
 ' So every eject callback must tolerate Null or it throws "Object required"
-' on a loop. This is what was spamming the log after the VUK timed out.
+' on a loop.
+'
+' Use the KICKER'S OWN .Kick(angle, force) method, exactly like the
+' original working table did (VUK1.Kick -19, 50). This table's earlier
+' migration used the generic KickBall() helper (manual ball.velx/vely
+' assignment) instead, copied from the GLF example's ZSOL pattern for a
+' plain Wall/Trigger-style device. For a real VPX Kicker object that is
+' wrong: a Kicker can still consider the ball "captured" and override a
+' manually-set velocity on the next physics tick, so the ball just sits
+' there - no error, no kick, which matched exactly what was seen.
 Sub Vuk1EjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1
-	KickBall ball, -19 + RndNum(-KickerAngleTol, KickerAngleTol), _
-	               50 + RndNum(-KickerStrengthTol, KickerStrengthTol), 0, 0
+	s_VUK1.Kick -19 + RndNum(-KickerAngleTol, KickerAngleTol), _
+	            50 + RndNum(-KickerStrengthTol, KickerStrengthTol)
 End Sub
 
 Sub PlungerEjectCallback(ball)

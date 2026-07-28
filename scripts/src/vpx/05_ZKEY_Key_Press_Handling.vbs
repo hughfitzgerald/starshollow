@@ -7,7 +7,6 @@
 ' commented out - GLF applies the nudge itself; only the sound stays.
 '
 ' Deleted vs. the original:
-'   DebugShotTableKeyDownCheck / ...KeyUpCheck  (ZTST removed)
 '   ScoreCard / CardTimer                        (ZCRD removed)
 '   SolLFlipper/SolRFlipper calls                (GLF flipper devices)
 '   Diverter.RotateToEnd/Start                   (GLF diverter device)
@@ -16,6 +15,9 @@
 
 Sub Table1_KeyDown(ByVal keycode)
 	Glf_KeyDown(keycode)
+
+	' Debug shot tester (ZTST): 2 = blocker posts, W/E/R/Y/U/I/P/A/S/F/G = shots
+	DebugShotTableKeyDownCheck keycode
 
 	' TEMPORARY - D dumps the GLF diagnostic. Remove with _diagnostics.vbs.
 	If keycode = 32 Then MsgBox GlfDiag_Report()
@@ -57,6 +59,8 @@ End Sub
 
 Sub Table1_KeyUp(ByVal keycode)
 	Glf_KeyUp(keycode)
+
+	DebugShotTableKeyUpCheck keycode
 
 	If keycode = PlungerKey Then
 		Plunger.Fire

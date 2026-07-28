@@ -1,4 +1,3 @@
-
 '*******************************************
 '  GLF Diagnostics  (TEMPORARY - delete when working)
 '*******************************************
@@ -20,6 +19,16 @@ Dim diag_switchNames, diag_switchHits
 Sub GlfDiag_Init()
     diag_started = True
 
+    ' Force the GLF file log on directly, bypassing Table1.Option entirely.
+    ' That option is meant to be set via VPX's native "Table Options"
+    ' overlay, and the correct keybind for it varies by VPX build/platform
+    ' (F6 is not universal, particularly on the standalone BGFX build) -
+    ' this is a guaranteed way to get the log while debugging, independent
+    ' of whatever key that overlay happens to be bound to.
+    glf_debugEnabled = True
+    glf_debugLog.EnableLogs
+    Debug.Print "GLFDIAG: GLF file log forced on (see glf_logs\ next to the table)"
+
     ' Watch the events that make up the start-of-game chain.
     AddPinEventListener "reset_complete", "diag_reset",   "GlfDiag_Note", 1, Array("reset_complete")
     AddPinEventListener "mode_attract_started", "diag_attract", "GlfDiag_Note", 1, Array("ATTRACT STARTED")
@@ -29,6 +38,18 @@ Sub GlfDiag_Init()
     AddPinEventListener "game_started",     "diag_gstarted","GlfDiag_Note", 1, Array("GAME STARTED")
     AddPinEventListener "ball_started",     "diag_bstart", "GlfDiag_Note", 1, Array("ball_started")
     AddPinEventListener "mode_base_started","diag_base",   "GlfDiag_Note", 1, Array("BASE MODE STARTED")
+
+    ' --- VUK chain, in the order it should happen ---
+    ' s_VUK1_active -> (500ms EntranceCountDelay) -> ball_entered
+    '   -> Vuk1Hold's 1500ms delay -> eject_vuk1 -> ejecting_ball
+    ' If s_VUK1_inactive appears BEFORE ball_entered, GlfBallDevice.BallExiting
+    ' has cancelled the pending enter (it calls RemoveDelay on it), m_balls(0)
+    ' is never set, and no eject can ever happen.
+    AddPinEventListener "s_VUK1_inactive", "diag_vuk_inact", "GlfDiag_Note", 1, Array("!! s_VUK1_INACTIVE (cancels pending enter)")
+    AddPinEventListener "balldevice_vuk1_ball_entered", "diag_vuk_entered", "GlfDiag_Note", 1, Array("vuk1 ball_entered")
+    AddPinEventListener "eject_vuk1", "diag_vuk_ejevt", "GlfDiag_Note", 1, Array("eject_vuk1 dispatched")
+    AddPinEventListener "balldevice_vuk1_ejecting_ball", "diag_vuk_ejecting", "GlfDiag_Note", 1, Array("vuk1 ejecting_ball")
+    AddPinEventListener "balldevice_vuk1_ball_exiting", "diag_vuk_exiting", "GlfDiag_Note", 1, Array("vuk1 ball_exiting")
 
     ' Count every switch event the game actually depends on. A switch that
     ' never fires is almost always missing from the glf_switches collection:
