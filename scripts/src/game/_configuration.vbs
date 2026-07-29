@@ -80,7 +80,7 @@ Sub ConfigureGlfDevices()
     ' VUK hold: wait 1.5s after the ball is captured, then eject. This
     ' replaces the original VUK1.TimerInterval = 1500.
     AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
-    
+
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
 
@@ -227,8 +227,8 @@ Sub ConfigureGlfDevices()
     ' flipper keys now, so bind to the virtual flipper switch events.
     With CreateGlfDiverter("diverter1")
         .EnableEvents = Array("ball_started", "reset_complete")
-        .ActivateEvents = Array("s_left_flipper_active")
-        .DeactivateEvents = Array("s_left_flipper_inactive", "ball_ended")
+        .ActivateEvents = Array("lock_lit")
+        .DeactivateEvents = Array("lock_unlit", "ball_ended")
         .ActionCallback = "DiverterAction"
     End With
 

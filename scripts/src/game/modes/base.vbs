@@ -39,9 +39,7 @@ Sub CreateBaseMode()
             ' Once play is live, clear the just-started flag
             .Add "new_ball_active", Array("clear_ball_just_started")
 
-            ' VUK eject is handled by the Vuk1Hold listener in
-            ' _configuration.vbs, which delays 1.5s before dispatching
-            ' eject_vuk1. Do not also fire it from here.
+            .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
 
         End With
 
