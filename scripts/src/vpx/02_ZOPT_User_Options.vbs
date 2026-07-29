@@ -3,8 +3,9 @@
 '  ZOPT: User Options
 '*******************************************
 
-
-' FlexDMD removed in the GLF migration - ZDMD is gone entirely.
+'----- DMD Options -----
+Const UseFlexDMD = 1				'0 = no FlexDMD, 1 = enable FlexDMD
+Const FlexONPlayfield = False	   'False = off, True=DMD on playfield ( vrroom overrides this )
 
 '----- VR Room -----
 Const VRRoomChoice = 0			  ' 1 - Minimal Room, 2 - Ultra Minimal Room

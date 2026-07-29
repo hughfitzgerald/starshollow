@@ -38,6 +38,8 @@ Sub Table1_Init
 	InitSlingCorrection()
 
 	InitVR()
+	Flex_Init()
+	ShowScene flexScenes(1), FlexDMD_RenderMode_DMD_GRAY, 2
 
 	' TEMPORARY diagnostics - delete this line and src/game/_diagnostics.vbs
 	' once the table is starting games reliably.
@@ -47,6 +49,13 @@ End Sub
 
 Sub Table1_Exit
 	Glf_Exit()
+	'Close flexDMD
+	If UseFlexDMD = 0 Then Exit Sub
+	If Not FlexDMD Is Nothing Or VRRoom = 0 Then
+		FlexDMD.Show = False
+		FlexDMD.Run = False
+		FlexDMD = Null
+	End If
 End Sub
 
 Sub Table1_Paused
