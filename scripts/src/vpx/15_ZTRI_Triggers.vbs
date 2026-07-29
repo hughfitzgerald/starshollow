@@ -72,11 +72,6 @@ End Sub
 '   args(1) = the ball GLF captured at the moment of the real VPX hit -
 '             the correct ball, preserved through the queue
 '   args(2) = the event name
-'
-' If either inlane switch gets renamed later, these two lines are the
-' only place that needs to change.
-AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
-AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
 
 Function LeftInlaneSpeedLimitListener(args)
 	If IsObject(args(1)) Then leftInlaneSpeedLimit args(1)

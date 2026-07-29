@@ -131,65 +131,77 @@ Sub CreateBaseMode()
 
 
         '--- Scoring -----------------------------------------------------
-        With VariablePlayer("base")
+        With .VariablePlayer()
+			With .EventName("s_sw8_active")
+				With .Variable("score")
+					.Action = "add"
+					.Int = 10
+				End With
+			End With
 
-            ' Define events that will add points to the score
-            With .EventName("add_score_1000")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = 1000
-                End With
-            End With
+			With .EventName("s_sw9_active")
+				With .Variable("score")
+					.Action = "add"
+					.Int = 10
+				End With
+			End With
 
-            ' Add more scoring events for different actions
-            With .EventName("add_score_500")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = 500
-                End With
-            End With
+            ' ' Define events that will add points to the score
+            ' With .EventName("add_score_1000")
+            '     With .Variable("score")
+            '         .Action = "add"
+            '         .Int = 1000
+            '     End With
+            ' End With
 
-            With .EventName("add_score_250")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = 250
-                End With
-            End With
+            ' With .EventName("add_score_500")
+            '     With .Variable("score")
+            '         .Action = "add"
+            '         .Int = 500
+            '     End With
+            ' End With
 
-            With .EventName("add_score_100")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = 100
-                End With
-            End With
+            ' With .EventName("add_score_250")
+            '     With .Variable("score")
+            '         .Action = "add"
+            '         .Int = 250
+            '     End With
+            ' End With
 
-            With .EventName("add_score_10")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = 10
-                End With
-            End With
+            ' With .EventName("add_score_100")
+            '     With .Variable("score")
+            '         .Action = "add"
+            '         .Int = 100
+            '     End With
+            ' End With
 
-            ' Define a bonus multiplier variable
-            With .Variable("bonus_multiplier")
-                .InitialValue = 1
-            End With
+            ' With .EventName("add_score_10")
+            '     With .Variable("score")
+            '         .Action = "add"
+            '         .Int = 10
+            '     End With
+            ' End With
 
-            ' Event to increase the bonus multiplier
-            With .EventName("increase_bonus")
-                With .Variable("bonus_multiplier")
-                    .Action = "add"
-                    .Int = 1
-                End With
-            End With
+        '     ' Define a bonus multiplier variable
+        '     With .Variable("bonus_multiplier")
+        '         .InitialValue = 1
+        '     End With
 
-            ' Event to add bonus points (multiplied by the current multiplier)
-            With .EventName("add_bonus_points")
-                With .Variable("score")
-                    .Action = "add"
-                    .Expression = "1000 * current_player.bonus_multiplier"
-                End With
-            End With
+        '     ' Event to increase the bonus multiplier
+        '     With .EventName("increase_bonus")
+        '         With .Variable("bonus_multiplier")
+        '             .Action = "add"
+        '             .Int = 1
+        '         End With
+        '     End With
+
+        '     ' Event to add bonus points (multiplied by the current multiplier)
+        '     With .EventName("add_bonus_points")
+        '         With .Variable("score")
+        '             .Action = "add"
+        '             .Expression = "1000 * current_player.bonus_multiplier"
+        '         End With
+        '     End With
         End With
 
     End With
