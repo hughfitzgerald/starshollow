@@ -51,6 +51,10 @@ Sub GlfDiag_Init()
     AddPinEventListener "balldevice_vuk1_ejecting_ball", "diag_vuk_ejecting", "GlfDiag_Note", 1, Array("vuk1 ejecting_ball")
     AddPinEventListener "balldevice_vuk1_ball_exiting", "diag_vuk_exiting", "GlfDiag_Note", 1, Array("vuk1 ball_exiting")
 
+    AddPinEventListener "balldevice_multiball_lock_device_ball_entered", "diag_multiball_lock_device_entered", "GlfDiag_Note", 1, Array("multiball_lock_device ball_entered")
+    AddPinEventListener "balldevice_multiball_lock_device_ejecting_ball", "diag_multiball_lock_device_ejecting", "GlfDiag_Note", 1, Array("multiball_lock_device ejecting_ball")
+    AddPinEventListener "balldevice_multiball_lock_device_ball_exiting", "diag_multiball_lock_device_exiting", "GlfDiag_Note", 1, Array("multiball_lock_device ball_exiting")
+
     ' Count every switch event the game actually depends on. A switch that
     ' never fires is almost always missing from the glf_switches collection:
     ' GLF only generates <name>_Hit / <name>_UnHit for members, and without
@@ -60,7 +64,7 @@ Sub GlfDiag_Init()
         "s_sw8", "s_sw9", "s_VUK1", "s_Trigger1", _
         "s_LeftInlane", "s_RightInlane", _
         "s_Bumper1", "s_Bumper3", "s_Bumper5", _
-        "s_LeftSlingshot", "s_RightSlingshot")
+        "s_LeftSlingshot", "s_RightSlingshot", "s_Lock1", "s_Lock2", "s_Lock3")
     ReDim diag_switchHits(UBound(diag_switchNames))
     Dim i
     For i = 0 To UBound(diag_switchNames)

@@ -48,3 +48,13 @@ Sub KickBall(kball, kangle, kvel, kvelz, kzlift)
 	kball.velx = Cos(rangle) * kvel
 	kball.vely = Sin(rangle) * kvel
 End Sub
+
+Sub EnableMultiballLockListener(ball)
+	If Not s_Lock1.Enabled Then
+		s_Lock1.Enabled = True
+	ElseIf Not s_Lock2.Enabled Then
+		s_Lock2.Enabled = True
+	ElseIf Not s_Lock3.Enabled Then
+		s_Lock3.Enabled = True
+	End If
+End Sub

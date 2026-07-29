@@ -81,6 +81,9 @@ Sub ConfigureGlfDevices()
     ' replaces the original VUK1.TimerInterval = 1500.
     AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
 
+    AddPinEventListener "lock_lit", "enable_initial_multiball_lock", "EnableMultiballLockListener", 100, Null
+    AddPinEventListener "balldevice_multiball_lock_device_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
+
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
 
@@ -220,6 +223,11 @@ Sub ConfigureGlfDevices()
         ' is done with a delayed eject_vuk1 event instead (see below).
         .EjectAllEvents = Array("eject_vuk1")
         .EjectCallback = "Vuk1EjectCallback"
+    End With
+
+    With CreateGlfBallDevice("multiball_lock_device")
+        .BallSwitches = Array("s_Lock1", "s_Lock2", "s_Lock3")
+        .Debug = True
     End With
 
     ' --- Diverter ---

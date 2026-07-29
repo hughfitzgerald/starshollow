@@ -202,6 +202,14 @@ Sub CreateBaseMode()
         '     End With
         End With
 
+        With .MultiballLocks("multiball_lock")
+            .LockDevices = Array("multiball_lock_device")   ' Ball device that acts as the lock
+            .BallsToLock = 3              ' Number of balls that can be locked
+            .EnableEvents = Array("lock_lit")
+            .DisableEvents = Array("lock_unlit")
+            .Debug = True
+        End With
+
     End With
 
 End Sub
