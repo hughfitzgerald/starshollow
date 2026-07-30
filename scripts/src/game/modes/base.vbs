@@ -43,6 +43,19 @@ Sub CreateBaseMode()
 
             .Add "s_ST15_active", Array("start_multiball") ' TEMP: when you hit the D in "DEAN" we start multiball
 
+            'Bumpers
+            .Add "s_Bumper1_active", Array("score_5000")
+            .Add "s_Bumper3_active", Array("score_5000")
+            .Add "s_Bumper5_active", Array("score_5000")
+
+            'Slingshots
+            .Add "s_LeftSlingshot_active", Array("score_5000")
+            .Add "s_RightSlingshot_active", Array("score_5000")
+
+            'Spinners
+            .Add "s_left_spinner_active", Array("score_3333")
+            .Add "s_right_spinner_active", Array("score_3333")
+
         End With
 
 
@@ -131,20 +144,20 @@ Sub CreateBaseMode()
 
 
         '--- Scoring -----------------------------------------------------
-        With .VariablePlayer()
-			With .EventName("s_sw8_active")
-				With .Variable("score")
-					.Action = "add"
-					.Int = 10
-				End With
-			End With
+        ' With .VariablePlayer()
+		' 	With .EventName("s_sw8_active")
+		' 		With .Variable("score")
+		' 			.Action = "add"
+		' 			.Int = 10
+		' 		End With
+		' 	End With
 
-			With .EventName("s_sw9_active")
-				With .Variable("score")
-					.Action = "add"
-					.Int = 10
-				End With
-			End With
+		' 	With .EventName("s_sw9_active")
+		' 		With .Variable("score")
+		' 			.Action = "add"
+		' 			.Int = 10
+		' 		End With
+		' 	End With
 
             ' ' Define events that will add points to the score
             ' With .EventName("add_score_1000")
@@ -202,7 +215,7 @@ Sub CreateBaseMode()
         '             .Expression = "1000 * current_player.bonus_multiplier"
         '         End With
         '     End With
-        End With
+        ' End With
 
         With .MultiballLocks("multiball_lock")
             .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock

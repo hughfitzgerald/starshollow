@@ -14,7 +14,7 @@
 
 '*********** GLOBALS ***********
 
-Dim ScoreArray : ScoreArray = Array(10, 250, 1000, 5000, 10000)
+Dim ScoreArray: ScoreArray = Array(1,10,100,333,500,1000,2000,3000,3333,5000,10000,20000,30000,33333,50000,100000,200000,500000,1000000)
 
 ' Set by the plunger-lane listeners below; read by ZKEY for the plunger
 ' release sound. s_Trigger1 is a Trigger, so it has no BallCntOver.
@@ -112,8 +112,12 @@ Sub ConfigureGlfDevices()
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1
+    Glf_SetInitialPlayerVar "ss_running", 0             '0 when skillshots are not active, 1 when active
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
     Glf_SetInitialPlayerVar "bonus_multiplier", 1
+    Glf_SetInitialPlayerVar "locks_qualfiied", 0        'flag keeps track of when a player has qualified the locks
+    Glf_SetInitialPlayerVar "bonus_total", 0            'total bonus score, calculated in bonus mode
+    Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
 
 
     '*********** MODES ***********
@@ -122,9 +126,9 @@ Sub ConfigureGlfDevices()
     CreateAttractMode()      ' priority 100
     CreateBaseMode()         ' priority 110
     CreateTiltMode()         ' priority 10000
+    CreateScoreMode()        ' priority 2000
 
     ' Your nine feature modes go here later, at priority 700+.
-    ' A score mode (priority 2000) comes when you start scoring.
 
 
     '*********** DEVICES ***********
