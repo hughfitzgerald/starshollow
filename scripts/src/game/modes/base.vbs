@@ -135,6 +135,23 @@ Sub CreateBaseMode()
             .EnableEvents = Array("new_ball_active")
         End With
 
+        'Shot created for the ball save light. 
+        With .Shots("base_shoot_again")
+            .Profile = "shoot_again"  'This is a shared shot profile created in CreateSharedShotProfiles()
+            With .Tokens()
+                .Add "color", ShootAgainColor
+            End With
+            With .ControlEvents()
+                .Events = Array("ball_save_new_ball_enabled")
+                .State = 1
+            End With
+            With .ControlEvents()
+                .Events = Array("ball_save_new_ball_hurry_up")
+                .State = 2
+            End With
+            .RestartEvents = Array("ball_save_new_ball_grace_period","ball_save_new_ball_saving_ball")
+        End With
+
 
         '--- Hold start for 2s to abandon the game -------------------------
         With .TimedSwitches("cancel_game")

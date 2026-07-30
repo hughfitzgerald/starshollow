@@ -47,11 +47,21 @@ Const GIColorAttract    = "ff8c3a"   ' attract, bright phase
 Const GIColorAttractDim = "5a3010"   ' attract, dim phase
 Const StandupColor      = "0023cc"   ' the 8 standup inserts l11..l18
 Const BonusLaneColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
+Const ShootAgainColor = "00ff00"
+Const ExtraBallColor = "00ff00"
 
 
 Sub ConfigureGlfDevices()
 
     Dim x
+
+    '*********** INITALIZE SHOWS ***********
+
+    ' Load up the shows
+    CreateGeneralShows()
+
+    ' Load shared shot profiles
+    CreateSharedShotProfiles()
 
     '*********** SOUND BUSES ***********
 
@@ -344,4 +354,102 @@ Sub AddCallout(Name, Duration)
         .Duration = Duration * 1000
         .EventsWhenStopped = Array(Name & "_stopped")
     End With
+End Sub
+
+
+
+' Shared shot profile examples. These profiles can be used by shots in any mode.
+Public Sub CreateSharedShotProfiles()
+
+
+    'This shot profile is used turn on a light. 
+    'The "lights" and "color" tokens must be defined in Shot.
+    ' States:
+    '  0 - unlit
+    '  1 - on
+    With GlfShotProfiles("off_on_color")
+        With .States("unlit")
+            .Show = "off"                   'defined in glf
+            .Key = "key_off_on_color_unlit"
+        End With
+        With .States("on")
+            .Show = "led_color"             'defined in glf
+            .Key = "key_off_on_color_on"
+        End With
+    End With
+
+
+    'This shot profile is used turn on a light with a flickering effect. 
+    'The "lights" and "color" tokens must be defined in Shot.
+    ' States:
+    '  0 - unlit
+    '  1 - on
+    With GlfShotProfiles("flicker_on")
+        With .States("unlit")
+            .Show = "off"                   'defined in glf
+            .Key = "key_flicker_on_unlit"
+        End With
+        With .States("on")
+            .Show = "flicker_color_on"      'defined in CreateGeneralShows()
+            .Key = "key_flicker_on_on"
+            .Speed = 4
+        End With
+    End With
+
+
+    'This shot profile turns a light on initially with a flickering effect then turns off with a flickering effect. 
+    'The "lights" and "color" tokens must be defined in Shot.
+    ' States:
+    '  0 - lit
+    '  1 - unlit
+    With GlfShotProfiles("flicker_on_flicker_off")
+        With .States("lit")
+            .Show = "flicker_color_on"      'defined in CreateGeneralShows()
+            .Key = "key_flicker_on_flicker_off_lit"
+            .Speed = 3
+        End With
+        With .States("unlit")
+            .Show = "flicker_color_off"     'defined in CreateGeneralShows()
+            .Speed = 3
+            .Key = "key_flicker_on_flicker_off_unlit"
+        End With
+    End With
+
+
+    'This shot profile is used to indicate when a ball save is active. Light L03 is always used.
+    'The "color" token must be defined in shot.
+    ' States:
+    '  0 - unlit
+    '  1 - flashing
+    '  2 - hurry
+    With GlfShotProfiles("shoot_again")
+      With .States("unlit")
+          .Show = "off"                     'defined in glf
+          .Key = "key_shoot_again_unlit"
+          With .Tokens()
+              .Add "lights", "l1"
+          End With
+      End With
+      With .States("flashing")
+          .Show = "flash_color_with_fade"   'defined in CreateGeneralShows()
+          .Key = "key_shoot_again_flashing"
+          .Speed = 2
+          .Priority = 5000
+          With .Tokens()
+              .Add "lights", "l1"
+              .Add "fade", 500
+          End With
+      End With
+      With .States("hurry")
+          .Show = "flash_color"             'defined in glf
+          .Key = "key_shoot_again_hurry"
+          .Speed = 7
+          .Priority = 5000
+          With .Tokens()
+              .Add "lights", "l1"
+          End With
+      End With
+    End With
+
+
 End Sub
