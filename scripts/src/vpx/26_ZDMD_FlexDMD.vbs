@@ -84,7 +84,7 @@ Sub Flex_Init
 		.RenderMode = FlexDMD_RenderMode_DMD_RGB
 		.Width = 128
 		.Height = 32
-		.ProjectFolder = "./VPWExampleTableDMD/"
+		.ProjectFolder = "./StarsHollowDMD/"
 		.Clear = True
 		.Run = True
 	End With
@@ -100,10 +100,10 @@ Sub Flex_Init
 	Set FontBig3 = FlexDMD.NewFont("sys80.fnt", RGB ( 10,10,10) ,vbBlack, 0)
 	Set FlexScenes(0) = FlexDMD.NewGroup("Score")
 	With FlexScenes(0)
-		.AddActor FlexDMD.NewImage("bg","bgdarker.png")
-		.Getimage("bg").visible = True ' False
-		.AddActor FlexDMD.NewImage("bg2","bg.png")
-		.Getimage("bg2").visible = False
+		' .AddActor FlexDMD.NewImage("bg","bgdarker.png")
+		' .Getimage("bg").visible = True ' False
+		' .AddActor FlexDMD.NewImage("bg2","bg.png")
+		' .Getimage("bg2").visible = False
 		For i = 1 To 4
 			.AddActor FlexDMD.NewLabel("Score_" & i, FontScoreInactive, "0")
 		Next
@@ -115,7 +115,7 @@ Sub Flex_Init
 		.GetGroup("Content").SetBounds 47, 0, 81, 32
 	End With
 	Dim title
-	Set title = FlexDMD.NewLabel("TitleScroller", FontScoreActive, ">>> Flex DMD <<<")
+	Set title = FlexDMD.NewLabel("TitleScroller", FontScoreActive, ">>> Stars Hollow Showdown <<<")
 	Dim af
 	Set af = title.ActionFactory
 	Dim list
@@ -138,8 +138,8 @@ Sub Flex_Init
 	' Welcome animation
 	Set FlexScenes(1) = FlexDMD.NewGroup("Welcome")
 	With FlexScenes(1)
-		.AddActor FlexDMD.Newvideo ("test","spinner.gif")
-		.Getvideo("test").visible = True
+		' .AddActor FlexDMD.Newvideo ("test","spinner.gif")
+		' .Getvideo("test").visible = True
 		.AddActor FlexDMD.NewImage("logo","VPWLogo32.png")
 		.Getimage("logo").visible = False
 	End With
@@ -230,7 +230,7 @@ Function Score2Num(v)
 End Function
 
 Dim DMDFire
-Dim DMDBGFlash
+' Dim DMDBGFlash
 Sub DMDTimer_Timer 'Main FlexDMD Timer
 	If UseFlexDMD = 0 Then Exit Sub
 	If VRroom > 0 Or FlexONPlayfield Then FlexFlasher
@@ -257,12 +257,12 @@ Sub DMDTimer_Timer 'Main FlexDMD Timer
 				Next
 			End If
 			
-			If DMDBGFlash > 0 Then
-				DMDBGFlash = DMDBGFlash - 1
-				FlexDMD.Stage.GetImage("bg2").visible = True
-			Else
-				FlexDMD.Stage.GetImage("bg2").visible = False
-			End If
+			' If DMDBGFlash > 0 Then
+			' 	DMDBGFlash = DMDBGFlash - 1
+			' 	FlexDMD.Stage.GetImage("bg2").visible = True
+			' Else
+			' 	FlexDMD.Stage.GetImage("bg2").visible = False
+			' End If
 			
 			If DMDfire > FLEXframe And (FlexFrame Mod 8) > 3 Then
 				FlexDMD.Stage.GetLabel("Title").font = FontBig2
