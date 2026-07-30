@@ -174,6 +174,9 @@ Sub Flex_Init
 	' were higher up. If you ever reorder Table1_Init, keep this after
 	' Glf_Init.
 	AddPinEventListener "mode_base_started", "dmd_base_scene", "ShowBaseScene", 100, Null
+	AddPinEventListener "start_multiball", "dmd_multiball", "ShowMultiballScene", 100, Null
+	AddPinEventListener "ball_save_new_ball_saving_ball", "dmd_ballsave", "ShowBallSavedScene", 100, Null
+	AddPinEventListener "balldevice_plunger_ball_exiting", "dmd_launch", "ShowLaunchScene", 100, Null
 End Sub
 
 '--------------------------------------------
@@ -324,4 +327,16 @@ End Sub
 
 Function ShowBaseScene(args)
 	ShowScene FlexScenes(0), FlexDMD_RenderMode_DMD_GRAY, 1
+End Function
+
+Function ShowLaunchScene(args)
+	DMDBigText "LAUNCH",77,1
+End Function
+
+Function ShowBallSavedScene(args)
+	DMDBigText "BALL SAVED",77,1
+End Function
+
+Function ShowMultiballScene(args)
+	ShowScene FlexScenes(3), FlexDMD_RenderMode_DMD_GRAY, 4
 End Function

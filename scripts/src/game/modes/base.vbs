@@ -127,12 +127,13 @@ Sub CreateBaseMode()
         ' would call glf_plunger.Eject on a MechanicalEject device, which
         ' has nothing to fire.
         With .BallSaves("new_ball")
-            .ActiveTime   = 8000
-            .HurryUpTime  = 3000
-            .GracePeriod  = 2000
+            .ActiveTime   = 15000
+            .HurryUpTime  = 5000
+            .GracePeriod  = 3000
             .BallsToSave  = 1
-            .AutoLaunch   = False
+            .AutoLaunch   = True
             .EnableEvents = Array("new_ball_active")
+            .TimerStartEvents = Array("balldevice_plunger_ball_eject_success")
         End With
 
         'Shot created for the ball save light. 
