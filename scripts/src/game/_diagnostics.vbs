@@ -51,9 +51,17 @@ Sub GlfDiag_Init()
     AddPinEventListener "balldevice_vuk1_ejecting_ball", "diag_vuk_ejecting", "GlfDiag_Note", 1, Array("vuk1 ejecting_ball")
     AddPinEventListener "balldevice_vuk1_ball_exiting", "diag_vuk_exiting", "GlfDiag_Note", 1, Array("vuk1 ball_exiting")
 
-    AddPinEventListener "balldevice_multiball_lock_device_ball_entered", "diag_multiball_lock_device_entered", "GlfDiag_Note", 1, Array("multiball_lock_device ball_entered")
-    AddPinEventListener "balldevice_multiball_lock_device_ejecting_ball", "diag_multiball_lock_device_ejecting", "GlfDiag_Note", 1, Array("multiball_lock_device ejecting_ball")
-    AddPinEventListener "balldevice_multiball_lock_device_ball_exiting", "diag_multiball_lock_device_exiting", "GlfDiag_Note", 1, Array("multiball_lock_device ball_exiting")
+    AddPinEventListener "balldevice_lock1_ball_entered", "diag_lock1_entered", "GlfDiag_Note", 1, Array("lock1 ball_entered")
+    AddPinEventListener "balldevice_lock1_ejecting_ball", "diag_lock1_ejecting", "GlfDiag_Note", 1, Array("lock1 ejecting_ball")
+    AddPinEventListener "balldevice_lock1_ball_exiting", "diag_lock1_exiting", "GlfDiag_Note", 1, Array("lock1 ball_exiting")
+
+    AddPinEventListener "balldevice_lock2_ball_entered", "diag_lock2_entered", "GlfDiag_Note", 1, Array("lock2 ball_entered")
+    AddPinEventListener "balldevice_lock2_ejecting_ball", "diag_lock2_ejecting", "GlfDiag_Note", 1, Array("lock2 ejecting_ball")
+    AddPinEventListener "balldevice_lock2_ball_exiting", "diag_lock2_exiting", "GlfDiag_Note", 1, Array("lock2 ball_exiting")
+
+    AddPinEventListener "balldevice_lock3_ball_entered", "diag_lock3_entered", "GlfDiag_Note", 1, Array("lock3 ball_entered")
+    AddPinEventListener "balldevice_lock3_ejecting_ball", "diag_lock3_ejecting", "GlfDiag_Note", 1, Array("lock3 ejecting_ball")
+    AddPinEventListener "balldevice_lock3_ball_exiting", "diag_lock3_exiting", "GlfDiag_Note", 1, Array("lock3 ball_exiting")
 
     ' Count every switch event the game actually depends on. A switch that
     ' never fires is almost always missing from the glf_switches collection:

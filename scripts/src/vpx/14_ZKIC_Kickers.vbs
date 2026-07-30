@@ -5,10 +5,6 @@
 ' s_VUK1's 1500ms VPX TimerInterval hold is replaced by the GLF ball device's
 ' EjectTimeout / eject_vuk1 event. Do not re-add a s_VUK1_Timer.
 
-'To include some randomness in the kick
-Const KickerAngleTol = 2
-Const KickerStrengthTol = 1
-
 ' GLF calls EjectCallback with a REAL ball on eject, but ALSO with Null
 ' from two other paths:
 '   GlfBallDevice.EjectEnableComplete -> GetRef(m_eject_callback)(Null)
@@ -28,8 +24,8 @@ Sub Vuk1EjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1
-	s_VUK1.Kick -19 + RndNum(-KickerAngleTol, KickerAngleTol), _
-	            50 + RndNum(-KickerStrengthTol, KickerStrengthTol)
+	s_VUK1.Kick -19, 50
+	' KickBall ball, -19, 50, 5, 25
 End Sub
 
 Sub PlungerEjectCallback(ball)
@@ -57,4 +53,28 @@ Sub EnableMultiballLockListener(ball)
 	ElseIf Not s_Lock3.Enabled Then
 		s_Lock3.Enabled = True
 	End If
+End Sub
+
+Sub Lock1EjectCallback(ball)
+	Dim ang, vel
+	ang = 251.5
+	vel = 50
+	' KickBall ball, ang, vel, 0, 0
+	s_Lock1.Kick ang, vel
+End Sub
+
+Sub Lock2EjectCallback(ball)
+	Dim ang, vel
+	ang = 251.5
+	vel = 50
+	' KickBall ball, ang, vel, 0, 0
+	s_Lock2.Kick ang, vel
+End Sub
+
+Sub Lock3EjectCallback(ball)
+	Dim ang, vel
+	ang = 251.5
+	vel = 50
+	' KickBall ball, ang, vel, 0, 0
+	s_Lock3.Kick ang, vel
 End Sub

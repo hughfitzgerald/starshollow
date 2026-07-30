@@ -82,7 +82,10 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
 
     AddPinEventListener "lock_lit", "enable_initial_multiball_lock", "EnableMultiballLockListener", 100, Null
-    AddPinEventListener "balldevice_multiball_lock_device_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
+    
+    AddPinEventListener "balldevice_lock1_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
+    AddPinEventListener "balldevice_lock2_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
+    AddPinEventListener "balldevice_lock3_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
 
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
@@ -225,9 +228,22 @@ Sub ConfigureGlfDevices()
         .EjectCallback = "Vuk1EjectCallback"
     End With
 
-    With CreateGlfBallDevice("multiball_lock_device")
-        .BallSwitches = Array("s_Lock1", "s_Lock2", "s_Lock3")
-        .Debug = True
+    With CreateGlfBallDevice("lock1")
+        .BallSwitches = Array("s_Lock1")
+        .EjectTargets = Array("s_VUK1")
+        .EjectCallback = "Lock1EjectCallback"
+    End With
+
+    With CreateGlfBallDevice("lock2")
+        .BallSwitches = Array("s_Lock2")
+        .EjectTargets = Array("s_Lock1")
+        .EjectCallback = "Lock2EjectCallback"
+    End With
+
+    With CreateGlfBallDevice("lock3")
+        .BallSwitches = Array("s_Lock3")
+        .EjectTargets = Array("s_Lock2")
+        .EjectCallback = "Lock3EjectCallback"
     End With
 
     ' --- Diverter ---

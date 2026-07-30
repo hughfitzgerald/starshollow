@@ -41,6 +41,8 @@ Sub CreateBaseMode()
 
             .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
 
+            .Add "s_ST15_active", Array("start_multiball") ' TEMP: when you hit the D in "DEAN" we start multiball
+
         End With
 
 
@@ -203,10 +205,21 @@ Sub CreateBaseMode()
         End With
 
         With .MultiballLocks("multiball_lock")
-            .LockDevices = Array("multiball_lock_device")   ' Ball device that acts as the lock
+            .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
             .BallsToLock = 3              ' Number of balls that can be locked
             .EnableEvents = Array("lock_lit")
             .DisableEvents = Array("lock_unlit")
+            .Debug = True
+        End With
+
+        With .Multiballs("mb")
+            .StartEvents = Array("start_multiball")
+            .BallCount = 3
+            .BallCountType = "total"
+            .ShootAgain = 15000
+            .HurryUp = 3000
+            .GracePeriod = 2000
+            .BallLocks = Array("lock1", "lock2", "lock3")
             .Debug = True
         End With
 
