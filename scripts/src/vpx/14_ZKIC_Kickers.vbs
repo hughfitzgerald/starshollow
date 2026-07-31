@@ -30,7 +30,9 @@ End Sub
 
 Sub PlungerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
-	' Mechanical plunger only - nothing else to do.
+	Plunger.AutoFire
+	SoundPlungerPull
+	SoundPlungerReleaseBall()
 End Sub
 
 ' Generic helper used by the eject callbacks above.

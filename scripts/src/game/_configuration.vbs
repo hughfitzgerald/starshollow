@@ -151,6 +151,8 @@ Sub ConfigureGlfDevices()
         .MechanicalEject = True
         .DefaultDevice = True
         .EjectCallback = "PlungerEjectCallback"
+        .AutoFireOnUnexpectedBall = False
+        .EjectAllEvents = Array("auto_launch_plunger")
     End With
 
     ' --- Flippers ---
