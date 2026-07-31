@@ -118,15 +118,43 @@ Sub ConfigureGlfDevices()
         End With
     End With
 
+    '*********** INITALIZE MACHINE VARIABLES ***********
+    ' These variables are tracked for this machine. 
+    ' Initial values are set first time the machine turns on. After that, values are read from the machines ini file.
+
+    With CreateMachineVar("high_score_initials")        'captures high score initials during high score mode
+        .InitialValue = ""
+        .ValueType = "string"
+        .Persist = False
+    End With
+    With CreateMachineVar("high_score_initials_index")  'used to index through high score initials
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+    With CreateMachineVar("high_score_initials_chars")  'used to count current number of high score initials
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+
+    With CreateMachineVar("num_balls_locked")         'number of balls locked
+        .InitialValue = 0                               'used to maintain state of locks across players
+        .ValueType = "int"
+        .Persist = False
+    End With
 
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1
     Glf_SetInitialPlayerVar "ss_running", 0             '0 when skillshots are not active, 1 when active
+    Glf_SetInitialPlayerVar "target_hit_count", 0       'used in targetbank mode
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
     Glf_SetInitialPlayerVar "bonus_multiplier", 1
     Glf_SetInitialPlayerVar "locks_qualfiied", 0        'flag keeps track of when a player has qualified the locks
     Glf_SetInitialPlayerVar "bonus_total", 0            'total bonus score, calculated in bonus mode
+    Glf_SetInitialPlayerVar "bonus_count", 0            'number of bonus lights achieved, calculated in bonus mode
+    Glf_SetInitialPlayerVar "bonus_skip", 0             'flag to capture if player wants to skip the bonus tally shows in bonus mode
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
 
 
