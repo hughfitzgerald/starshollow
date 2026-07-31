@@ -30,7 +30,7 @@ End Sub
 
 Sub PlungerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
-	Plunger.AutoFire
+	KickBall ball, 0, 45, 0, 0
 	SoundPlungerPull
 	SoundPlungerReleaseBall()
 End Sub
