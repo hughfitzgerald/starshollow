@@ -137,6 +137,7 @@ Sub ConfigureGlfDevices()
     CreateBaseMode()         ' priority 110
     CreateTiltMode()         ' priority 10000
     CreateScoreMode()        ' priority 2000
+    CreateSkillshotsMode()   ' priority 400
 
     ' Your nine feature modes go here later, at priority 700+.
 

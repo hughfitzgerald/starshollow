@@ -63,6 +63,8 @@ Sub GlfDiag_Init()
     AddPinEventListener "balldevice_lock3_ejecting_ball", "diag_lock3_ejecting", "GlfDiag_Note", 1, Array("lock3 ejecting_ball")
     AddPinEventListener "balldevice_lock3_ball_exiting", "diag_lock3_exiting", "GlfDiag_Note", 1, Array("lock3 ball_exiting")
 
+    AddPinEventListener "s_skillshot_active", "diag_skillshot_active", "GlfDiag_Note", 1, Array("s_skillshot switch active")
+
     ' Count every switch event the game actually depends on. A switch that
     ' never fires is almost always missing from the glf_switches collection:
     ' GLF only generates <name>_Hit / <name>_UnHit for members, and without

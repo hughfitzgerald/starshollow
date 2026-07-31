@@ -179,6 +179,7 @@ Sub Flex_Init
 	AddPinEventListener "balldevice_plunger_ball_exiting", "dmd_launch", "ShowLaunchScene", 100, Null
 	AddPinEventListener "balldevice_lock1_ball_entered", "dmd_ball1locked", "ShowBall1Locked", 100, Null
 	AddPinEventListener "balldevice_lock2_ball_entered", "dmd_ball2locked", "ShowBall2Locked", 100, Null
+	AddPinEventListener "ss_achieved", "dmd_ss_hit", "ShowSkillshotHit", 100, Null
 End Sub
 
 '--------------------------------------------
@@ -349,4 +350,8 @@ End Function
 
 Function ShowMultiballScene(args)
 	ShowScene FlexScenes(3), FlexDMD_RenderMode_DMD_GRAY, 4
+End Function
+
+Function ShowSkillshotHit(args)
+	DMDBigText "SKILLSHOT HIT",77,1
 End Function
