@@ -26,7 +26,7 @@ Sub CreateSkillshotsMode()
             .Add "mode_skillshots_started{current_player.ball_just_started == 1}", Array("init_ss")
 
             'Handle successful skillshots
-            .Add "s_skillshot_active{current_player.shot_ss1 == 1}", Array("ss_achieved")
+            ' .Add "s_skillshot_active{current_player.shot_ss1 == 1}", Array("ss_achieved")
             .Add "s_skillshot_active", Array("ss_achieved")
             ' .Add "s_TopLane2_active{current_player.shot_ss2 == 1}", Array("ss_achieved")
             ' .Add "s_TopLane3_active{current_player.shot_ss3 == 1}", Array("ss_achieved")
