@@ -177,6 +177,8 @@ Sub Flex_Init
 	AddPinEventListener "start_multiball", "dmd_multiball", "ShowMultiballScene", 100, Null
 	AddPinEventListener "ball_save_new_ball_saving_ball", "dmd_ballsave", "ShowBallSavedScene", 100, Null
 	AddPinEventListener "balldevice_plunger_ball_exiting", "dmd_launch", "ShowLaunchScene", 100, Null
+	AddPinEventListener "balldevice_lock1_ball_entered", "dmd_ball1locked", "ShowBall1Locked", 100, Null
+	AddPinEventListener "balldevice_lock2_ball_entered", "dmd_ball2locked", "ShowBall2Locked", 100, Null
 End Sub
 
 '--------------------------------------------
@@ -335,6 +337,14 @@ End Function
 
 Function ShowBallSavedScene(args)
 	DMDBigText "BALL SAVED",77,1
+End Function
+
+Function ShowBall1Locked(args)
+	DMDBigText "BALL 1 LOCKED",77,1
+End Function
+
+Function ShowBall2Locked(args)
+	DMDBigText "BALL 2 LOCKED",77,1
 End Function
 
 Function ShowMultiballScene(args)
