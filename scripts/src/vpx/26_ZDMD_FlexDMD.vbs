@@ -295,8 +295,7 @@ Sub DMDTimer_Timer 'Main FlexDMD Timer
 			FlexDMD.Stage.GetLabel("Title2").SetAlignedPosition 43, 17, FlexDMD_Align_Center
 			FlexDMD.Stage.GetLabel("Ball").SetAlignedPosition 0, 33, FlexDMD_Align_BottomLeft
 			FlexDMD.Stage.GetLabel("Credit").SetAlignedPosition 81, 33, FlexDMD_Align_BottomRight
-			'Update with your own code for BallsRemaining
-			'   FlexDMD.Stage.GetLabel("Ball").Text = "Ball " & 4 - BallsRemaining(CurrentPlayer)
+			FlexDMD.Stage.GetLabel("Ball").Text = "Ball " & GetPlayerState("ball")
 			'Update with your own code for Credits
 			'   FlexDMD.Stage.GetLabel("Credit").Text = "Credit " & (Credits(CurrentPlayer)) - 1
 			
