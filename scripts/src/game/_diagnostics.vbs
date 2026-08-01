@@ -65,6 +65,9 @@ Sub GlfDiag_Init()
 
     AddPinEventListener "s_skillshot_active", "diag_skillshot_active", "GlfDiag_Note", 1, Array("s_skillshot switch active")
 
+    AddPinEventListener "s_complete_right_ramp_active", "diag_complete_right_ramp", "GlfDiag_Note", 1, Array("s_complete_right_ramp switch active")
+    AddPinEventListener "s_enter_right_ramp_active", "diag_enter_right_ramp", "GlfDiag_Note", 1, Array("s_enter_right_ramp switch active")
+
     ' Count every switch event the game actually depends on. A switch that
     ' never fires is almost always missing from the glf_switches collection:
     ' GLF only generates <name>_Hit / <name>_UnHit for members, and without

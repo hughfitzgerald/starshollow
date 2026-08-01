@@ -49,6 +49,8 @@ Const StandupColor      = "0023cc"   ' the 8 standup inserts l11..l18
 Const BonusLaneColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
 Const ShootAgainColor = "00ff00"
 Const ExtraBallColor = "00ff00"
+Const RampshotColor = "8800ff"
+Const MultiballColor = "ffffff"
 
 
 Sub ConfigureGlfDevices()
@@ -166,6 +168,9 @@ Sub ConfigureGlfDevices()
     CreateTiltMode()         ' priority 10000
     CreateScoreMode()        ' priority 2000
     CreateSkillshotsMode()   ' priority 400
+    CreateExtraBallMode()    ' priority 510
+    CreateRampshotsMode()    ' priority 660
+    CreateMultiballMode()    ' priority 1000
 
     ' Your nine feature modes go here later, at priority 700+.
 
@@ -447,7 +452,7 @@ Public Sub CreateSharedShotProfiles()
     End With
 
 
-    'This shot profile is used to indicate when a ball save is active. Light L03 is always used.
+    'This shot profile is used to indicate when a ball save is active. Light l1 is always used.
     'The "color" token must be defined in shot.
     ' States:
     '  0 - unlit

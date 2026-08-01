@@ -39,11 +39,6 @@ Sub CreateBaseMode()
             ' Once play is live, clear the just-started flag
             .Add "new_ball_active", Array("clear_ball_just_started")
 
-            .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
-
-            ' .Add "s_ST15_active", Array("start_multiball") ' TEMP: when you hit the D in "DEAN" we start multiball
-            .Add "balldevice_lock3_ball_entered", Array("start_multiball")
-
             'Bumpers
             .Add "s_Bumper1_active", Array("score_5000")
             .Add "s_Bumper3_active", Array("score_5000")
@@ -159,100 +154,6 @@ Sub CreateBaseMode()
             .Switches         = Array("s_start")
             .Time             = 2000
             .EventsWhenActive = Array("glf_game_cancel")
-        End With
-
-
-        '--- Scoring -----------------------------------------------------
-        ' With .VariablePlayer()
-		' 	With .EventName("s_sw8_active")
-		' 		With .Variable("score")
-		' 			.Action = "add"
-		' 			.Int = 10
-		' 		End With
-		' 	End With
-
-		' 	With .EventName("s_sw9_active")
-		' 		With .Variable("score")
-		' 			.Action = "add"
-		' 			.Int = 10
-		' 		End With
-		' 	End With
-
-            ' ' Define events that will add points to the score
-            ' With .EventName("add_score_1000")
-            '     With .Variable("score")
-            '         .Action = "add"
-            '         .Int = 1000
-            '     End With
-            ' End With
-
-            ' With .EventName("add_score_500")
-            '     With .Variable("score")
-            '         .Action = "add"
-            '         .Int = 500
-            '     End With
-            ' End With
-
-            ' With .EventName("add_score_250")
-            '     With .Variable("score")
-            '         .Action = "add"
-            '         .Int = 250
-            '     End With
-            ' End With
-
-            ' With .EventName("add_score_100")
-            '     With .Variable("score")
-            '         .Action = "add"
-            '         .Int = 100
-            '     End With
-            ' End With
-
-            ' With .EventName("add_score_10")
-            '     With .Variable("score")
-            '         .Action = "add"
-            '         .Int = 10
-            '     End With
-            ' End With
-
-        '     ' Define a bonus multiplier variable
-        '     With .Variable("bonus_multiplier")
-        '         .InitialValue = 1
-        '     End With
-
-        '     ' Event to increase the bonus multiplier
-        '     With .EventName("increase_bonus")
-        '         With .Variable("bonus_multiplier")
-        '             .Action = "add"
-        '             .Int = 1
-        '         End With
-        '     End With
-
-        '     ' Event to add bonus points (multiplied by the current multiplier)
-        '     With .EventName("add_bonus_points")
-        '         With .Variable("score")
-        '             .Action = "add"
-        '             .Expression = "1000 * current_player.bonus_multiplier"
-        '         End With
-        '     End With
-        ' End With
-
-        With .MultiballLocks("multiball_lock")
-            .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
-            .BallsToLock = 2              ' Number of balls that can be locked
-            .EnableEvents = Array("lock_lit")
-            .DisableEvents = Array("lock_unlit")
-            .Debug = True
-        End With
-
-        With .Multiballs("mb")
-            .StartEvents = Array("start_multiball")
-            .BallCount = 3
-            .BallCountType = "total"
-            .ShootAgain = 15000
-            .HurryUp = 3000
-            .GracePeriod = 2000
-            .BallLocks = Array("lock1", "lock2", "lock3")
-            .Debug = True
         End With
 
     End With
