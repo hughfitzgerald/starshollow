@@ -57,11 +57,22 @@ Sub EnableMultiballLockListener(ball)
 	End If
 End Sub
 
+Sub ClearMultiballLocksListener(ball)
+	s_Lock1.Kick 0, 0
+	s_Lock2.Kick 0, 0
+	s_Lock3.Kick 0, 0
+	s_Lock1.Enabled = False
+	s_Lock2.Enabled = False
+	s_Lock3.Enabled = False
+End Sub
+
 Sub Lock1EjectCallback(ball)
 	Dim ang, vel
 	ang = 251.5
 	vel = 50
 	' KickBall ball, ang, vel, 0, 0
+	' ang = 0
+	' vel = 0
 	s_Lock1.Kick ang, vel
 End Sub
 
@@ -70,6 +81,8 @@ Sub Lock2EjectCallback(ball)
 	ang = 251.5
 	vel = 50
 	' KickBall ball, ang, vel, 0, 0
+	' ang = 0
+	' vel = 0
 	s_Lock2.Kick ang, vel
 End Sub
 
@@ -78,5 +91,15 @@ Sub Lock3EjectCallback(ball)
 	ang = 251.5
 	vel = 50
 	' KickBall ball, ang, vel, 0, 0
+	' ang = 0
+	' vel = 0
 	s_Lock3.Kick ang, vel
+End Sub
+
+Sub SubwayTroughEjectCallback(ball)
+	Dim ang, vel
+	ang = 128
+	vel = 30
+	' KickBall ball, ang, vel, 0, 0
+	s_subway_trough_kicker.Kick ang, vel
 End Sub

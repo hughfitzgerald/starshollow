@@ -10,13 +10,18 @@ Sub SolKnocker(Enabled)
 	End If
 End Sub
 
-' Diverter - was Diverter.RotateToEnd inline in Table1_KeyDown.
-' GLF owns the flipper keys now, so this is driven by CreateGlfDiverter
-' bound to s_left_flipper_active / s_left_flipper_inactive.
-Sub DiverterAction(Enabled)
+Sub RampDiverterAction(Enabled)
 	If Enabled Then
-		Diverter.RotateToEnd
+		RampDiverter.RotateToEnd
 	Else
-		Diverter.RotateToStart
+		RampDiverter.RotateToStart
+	End If
+End Sub
+
+Sub SubwayDiverterAction(Enabled)
+	If Enabled Then
+		SubwayDiverter.RotateToEnd
+	Else
+		SubwayDiverter.RotateToStart
 	End If
 End Sub

@@ -37,6 +37,7 @@ Sub GlfDiag_Init()
     AddPinEventListener "game_start",       "diag_gstart", "GlfDiag_Note", 1, Array("game_start")
     AddPinEventListener "game_started",     "diag_gstarted","GlfDiag_Note", 1, Array("GAME STARTED")
     AddPinEventListener "ball_started",     "diag_bstart", "GlfDiag_Note", 1, Array("ball_started")
+    AddPinEventListener "ball_ended",     "diag_bend", "GlfDiag_Note", 1, Array("ball_ended")
     AddPinEventListener "mode_base_started","diag_base",   "GlfDiag_Note", 1, Array("BASE MODE STARTED")
 
     ' --- VUK chain, in the order it should happen ---

@@ -91,13 +91,17 @@ Sub ConfigureGlfDevices()
     ' Track ball-in-plunger-lane for the ZKEY release sound.
     ' VUK hold: wait 1.5s after the ball is captured, then eject. This
     ' replaces the original VUK1.TimerInterval = 1500.
-    AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
+    ' AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
 
     AddPinEventListener "lock_lit", "enable_initial_multiball_lock", "EnableMultiballLockListener", 100, Null
-    
     AddPinEventListener "balldevice_lock1_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
     AddPinEventListener "balldevice_lock2_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
-    AddPinEventListener "balldevice_lock3_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
+
+    ' For some reason, this is getting called when multiball starts... but no ball_ended event is getting fired??? super weird
+    ' TODO: is there a different event we can use to determine when to clear the multiball locks without firing them out of the scoop?
+    ' AddPinEventListener "ball_ended", "clear_multiball_locks", "ClearMultiballLocksListener", 100, Null
+
+    AddPinEventListener "ball_ended", "enable_subway_return", "EnableSubwayReturn", 100, Null
 
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
@@ -260,21 +264,9 @@ Sub ConfigureGlfDevices()
     ' MUST be a member of glf_switches.
     With CreateGlfBallDevice("vuk1")
         .BallSwitches = Array("s_VUK1")
-        .EjectTimeout = 2000
         .Debug = True
-        .EntranceCountDelay = 50
-        ' GLF auto-ejects any "unclaimed" ball ~500ms after it enters, by
-        ' default. That was firing BEFORE the deliberate 1.5s hold below
-        ' had a chance to run, so the device saw two overlapping eject
-        ' attempts every time a ball landed. Turn it off - the delayed
-        ' eject_vuk1 dispatch is the only thing that should fire this.
         .AutoFireOnUnexpectedBall = False
-        .MechanicalEject = False
-        ' NOTE: do NOT use .EjectEnableTime for a hold delay. It does not
-        ' delay the eject - it fires the EjectCallback a SECOND time with
-        ' Null after the eject, to re-enable a hold coil. The 1.5s VUK hold
-        ' is done with a delayed eject_vuk1 event instead (see below).
-        .EjectAllEvents = Array("eject_vuk1")
+        .EjectAllEvents = Array("s_VUK1_active") ' TODO: Change this to the event that means we're done with mystery or whatever...
         .EjectCallback = "Vuk1EjectCallback"
     End With
 
@@ -296,14 +288,28 @@ Sub ConfigureGlfDevices()
         .EjectCallback = "Lock3EjectCallback"
     End With
 
+    With CreateGlfBallDevice("subway_trough")
+        .BallSwitches = Array("s_subway_trough_kicker")
+        .EjectCallback = "SubwayTroughEjectCallback"
+        .AutoFireOnUnexpectedBall = False
+        .EjectAllEvents = Array("s_subway_trough_kicker_active")
+    End With
+
     ' --- Diverter ---
     ' Was Diverter.RotateToEnd inline in Table1_KeyDown. GLF owns the
     ' flipper keys now, so bind to the virtual flipper switch events.
-    With CreateGlfDiverter("diverter1")
+    With CreateGlfDiverter("ramp_diverter")
         .EnableEvents = Array("ball_started", "reset_complete")
         .ActivateEvents = Array("lock_lit")
         .DeactivateEvents = Array("lock_unlit", "ball_ended")
-        .ActionCallback = "DiverterAction"
+        .ActionCallback = "RampDiverterAction"
+    End With
+
+    With CreateGlfDiverter("subway_diverter")
+        .EnableEvents = Array("ball_started")
+        .ActivateEvents = Array("ball_ended")
+        .DeactivateEvents = Array("ball_started", "reset_complete")
+        .ActionCallback = "SubwayDiverterAction"
     End With
 
     ' --- Standup targets s_ST11..s_ST18 ---
@@ -333,15 +339,15 @@ Function BallDrainSound(args)
     BallDrainSound = args(1)      ' relay event - must return the value
 End Function
 
-Function Vuk1Hold(args)
-    Debug.Print "GLFDIAG: Vuk1Hold fired - scheduling eject in 1500ms"
-    SetDelay "vuk1_eject_delay", "Vuk1DoEject", Null, 1500
-End Function
+' Function Vuk1Hold(args)
+'     Debug.Print "GLFDIAG: Vuk1Hold fired - scheduling eject in 1500ms"
+'     SetDelay "vuk1_eject_delay", "Vuk1DoEject", Null, 1500
+' End Function
 
-Function Vuk1DoEject(args)
-    Debug.Print "GLFDIAG: Vuk1DoEject - dispatching eject_vuk1"
-    DispatchPinEvent "eject_vuk1", Null
-End Function
+' Function Vuk1DoEject(args)
+'     Debug.Print "GLFDIAG: Vuk1DoEject - dispatching eject_vuk1"
+'     DispatchPinEvent "eject_vuk1", Null
+' End Function
 
 Function PlungerBallIn(args)
     PlungerHasBall = True
@@ -351,6 +357,26 @@ Function PlungerBallOut(args)
     PlungerHasBall = False
 End Function
 
+Dim glf_subwayBallsReturning : glf_subwayBallsReturning = 0
+
+Function SubwayReturnHandler(args)
+    Dim ballsToSave : ballsToSave = args(1)
+    If glf_subwayBallsReturning > 0 And ballsToSave > 0 Then
+        glf_subwayBallsReturning = glf_subwayBallsReturning - 1
+        ballsToSave = ballsToSave - 1
+    End If
+    SubwayReturnHandler = ballsToSave
+    If glf_subwayBallsReturning = 0 Then
+        RemovePinEventListener GLF_BALL_DRAIN, "subway_return_claim"
+    End If
+End Function
+
+Function EnableSubwayReturn(args)
+    glf_subwayBallsReturning = GetPlayerState("multiball_lock_locked_balls")
+    If glf_subwayBallsReturning > 0 Then
+        AddPinEventListener GLF_BALL_DRAIN, "subway_return_claim", "SubwayReturnHandler", 500, Null
+    End If
+End Function
 
 '======================================================
 '  Sounds - empty until you have real assets.
