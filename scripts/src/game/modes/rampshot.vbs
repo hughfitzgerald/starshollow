@@ -11,7 +11,7 @@
 Const RampShotTime = 4   'seconds
 
 Sub CreateRampshotsMode()
-
+    Dim x
     With CreateGlfMode("rampshot", 660)
 
         'Define the events that start and stop this mode
@@ -74,7 +74,7 @@ Sub CreateRampshotsMode()
         End With
 
 
-        'Inlane orbit shot timers
+        'Shot timers
         With .Timers("ramp")
             .TickInterval = 1000
             .StartValue = 0
@@ -85,46 +85,45 @@ Sub CreateRampshotsMode()
             End With
         End With
 
-        ' TODO: Write this to count three consecutive ramp shots, light EB, then award EB (see targetbank.vbs in example table)
-        '
-        ' With .StateMachines("bank")
-        '     .PersistState = true   'state persists across balls
-        '     .StartingState = "shot1"
+        ' Count three consecutive ramp shots, light EB, then award EB (see targetbank.vbs in example table)
+        With .StateMachines("ramp")
+            .PersistState = true   'state persists across balls
+            .StartingState = "shot1"
             
-        '     'States
-        '     For x = 1 to 6
-        '         With .States("shot"&x)
-        '             .Label = "Bank Target Shot "&x
-        '             .EventsWhenStarted = Array("bank_target"&x&"_flashing") 
-        '         End With
-        '     Next
-        '     With .States("completed")
-        '         .Label = "Bank Targets Completed"
-        '         .EventsWhenStarted = Array("eb_now_lit","add_bonus") 
-        '     End With
+            'States
+            For x = 1 to 3
+                With .States("shot"&x)
+                    .Label = "Ramp Shot "&x
+                    .EventsWhenStarted = Array("light_ramp") 
+                End With
+            Next
+            With .States("completed")
+                .Label = "Ramp Shots Completed"
+                .EventsWhenStarted = Array("eb_now_lit")
+            End With
 
-        '     'Transitions
-        '     For x = 1 to 5
-        '         With .Transitions() 
-        '             .Source = Array("shot"&x)
-        '             .Target = "shot"&(x+1)
-        '             .Events = Array("s_DT"&x&"_active{current_player.shot_bank_target"&x&" == 1}")   'target hit and is flashing
-        '             .EventsWhenTransitioning = Array("bank_target"&x&"_completed","play_sfx_drop_target","score_30000")
-        '         End With
-        '     Next
-        '     With .Transitions()
-        '         .Source = Array("shot6")
-        '         .Target = "completed"
-        '         .Events = Array("s_DT6_active{current_player.shot_bank_target6 == 1}")   'target hit and is flashing
-        '         .EventsWhenTransitioning = Array("bank_target6_completed","play_sfx_drop_target","score_30000")
-        '     End With
-        '     With .Transitions()
-        '         .Source = Array("completed")
-        '         .Target = "shot1"
-        '         .Events = Array("eb_achieved")   'eb achieved, so reset the bank and shots
-        '         .EventsWhenTransitioning = Array("delay_bank_reset","reset_target_shots")  'resets shot lights
-        '     End With
-        ' End With
+            'Transitions
+            For x = 1 to 2
+                With .Transitions() 
+                    .Source = Array("shot"&x)
+                    .Target = "shot"&(x+1)
+                    .Events = Array("s_complete_right_ramp_active{current_player.shot_ramp == 1}")   'ramp shot made and is lit
+                    .EventsWhenTransitioning = Array("score_200000","add_bonus","play_sfx_alert1")
+                End With
+            Next
+            With .Transitions()
+                .Source = Array("shot3")
+                .Target = "completed"
+                .Events = Array("s_complete_right_ramp_active{current_player.shot_ramp == 1}")   'ramp shot made and is lit
+                .EventsWhenTransitioning = Array("eb_now_lit","score_200000","add_bonus","play_sfx_alert1")
+            End With
+            With .Transitions()
+                .Source = Array("completed")
+                .Target = "shot1"
+                .Events = Array("eb_achieved")   'eb achieved, so reset the ramp shots
+                .EventsWhenTransitioning = Array("reset_ramp_shots")  'resets shot lights
+            End With
+        End With
 
 
     End With

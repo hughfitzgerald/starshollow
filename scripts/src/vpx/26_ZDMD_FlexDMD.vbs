@@ -180,6 +180,8 @@ Sub Flex_Init
 	AddPinEventListener "balldevice_lock1_ball_entered", "dmd_ball1locked", "ShowBall1Locked", 100, Null
 	AddPinEventListener "balldevice_lock2_ball_entered", "dmd_ball2locked", "ShowBall2Locked", 100, Null
 	AddPinEventListener "ss_achieved", "dmd_ss_hit", "ShowSkillshotHit", 100, Null
+	AddPinEventListener "eb_now_lit", "dmd_eb_lit", "ShowEBLit", 100, Null
+	AddPinEventListener "eb_achieved", "dmd_eb_achieved", "ShowEBAchieved", 100, Null
 End Sub
 
 '--------------------------------------------
@@ -353,4 +355,12 @@ End Function
 
 Function ShowSkillshotHit(args)
 	DMDBigText "SKILLSHOT HIT",77,1
+End Function
+
+Function ShowEBLit(args)
+	DMDBigText "EXTRA BALL LIT",77,1
+End Function
+
+Function ShowEBAchieved(args)
+	DMDBigText "EXTRA BALL",77,1
 End Function
