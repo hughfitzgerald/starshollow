@@ -23,9 +23,6 @@ Sub CreateMultiballMode()
             .Debug = True
 
             .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
-
-            ' .Add "s_ST15_active", Array("start_multiball") ' TEMP: when you hit the D in "DEAN" we start multiball
-            .Add "balldevice_lock3_ball_entered", Array("start_multiball")
         End With
 
         With .MultiballLocks("multiball_lock")
