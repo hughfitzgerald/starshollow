@@ -1,0 +1,31 @@
+{
+  "Gate": {
+    "center": {
+      "x": 370.73224,
+      "y": 2045.4233
+    },
+    "length": 100.0,
+    "height": 50.0,
+    "rotation": 53.0,
+    "material": "",
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "show_bracket": true,
+    "is_collidable": true,
+    "imgf": null,
+    "imgb": null,
+    "surface": "",
+    "elasticity": 0.3,
+    "angle_max": 0.0,
+    "angle_min": 90.0,
+    "friction": 0.02,
+    "damping": 0.985,
+    "gravity_factor": 0.25,
+    "is_visible": false,
+    "name": "SubwayTroughGate",
+    "two_way": false,
+    "is_reflection_enabled": true,
+    "gate_type": "wire_w",
+    "part_group_name": "Subway"
+  }
+}

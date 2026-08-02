@@ -1,0 +1,43 @@
+{
+  "Flipper": {
+    "center": {
+      "x": 263.48444,
+      "y": 150.35498
+    },
+    "base_radius": 5.0,
+    "end_radius": 5.0,
+    "flipper_radius_max": 100.0,
+    "return": 0.058,
+    "start_angle": 84.0,
+    "end_angle": 52.0,
+    "override_physics": 0,
+    "mass": 1.0,
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "surface": "Wall016",
+    "material": "zCol_Ramp",
+    "name": "RampDiverter",
+    "rubber_material": "zCol_Ramp",
+    "rubber_thickness_int": 7,
+    "rubber_thickness": 0.0,
+    "rubber_height_int": 19,
+    "rubber_height": 0.0,
+    "rubber_width_int": 24,
+    "rubber_width": 0.0,
+    "strength": 2200.0,
+    "elasticity": 0.3,
+    "elasticity_falloff": 0.0,
+    "friction": 0.3,
+    "ramp_up": 3.0,
+    "scatter": 0.0,
+    "torque_damping": 0.75,
+    "torque_damping_angle": 6.0,
+    "flipper_radius_min": 0.0,
+    "is_visible": true,
+    "is_enabled": true,
+    "height": 30.0,
+    "image": "",
+    "is_reflection_enabled": true,
+    "part_group_name": "Collidable_Ramps"
+  }
+}

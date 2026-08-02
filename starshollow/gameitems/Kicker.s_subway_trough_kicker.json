@@ -1,0 +1,23 @@
+{
+  "Kicker": {
+    "center": {
+      "x": 72.13578,
+      "y": 1834.457
+    },
+    "radius": 25.0,
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "material": "",
+    "surface": "SubwayTroughPlatform",
+    "is_enabled": true,
+    "name": "s_subway_trough_kicker",
+    "kicker_type": "hole",
+    "scatter": 0.0,
+    "hit_accuracy": 0.5,
+    "hit_height": 35.0,
+    "orientation": 0.0,
+    "fall_through": false,
+    "legacy_mode": true,
+    "part_group_name": "Subway"
+  }
+}

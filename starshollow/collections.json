@@ -315,15 +315,24 @@
       "s_Bumper1",
       "s_Bumper3",
       "s_Bumper5",
-      "s_TriggerLF",
-      "s_TriggerRF",
       "s_debugKicker",
       "s_VUK1",
       "s_LeftInlane",
       "s_RightInlane",
       "s_sw8",
       "s_sw9",
-      "s_Trigger1"
+      "s_Trigger1",
+      "s_Lock1",
+      "s_Lock2",
+      "s_Lock3",
+      "s_enter_right_ramp",
+      "s_enter_left_ramp",
+      "s_complete_left_ramp",
+      "s_complete_right_ramp",
+      "s_left_orbit",
+      "s_right_orbit",
+      "s_skillshot",
+      "s_subway_trough_kicker"
     ],
     "fire_events": false,
     "stop_single_events": false,
@@ -386,7 +395,23 @@
       "l23",
       "l3",
       "l8",
-      "l9"
+      "l9",
+      "l51",
+      "l52",
+      "l53",
+      "l54",
+      "l55",
+      "l56"
+    ],
+    "fire_events": false,
+    "stop_single_events": false,
+    "group_elements": true
+  },
+  {
+    "name": "glf_spinners",
+    "items": [
+      "s_left_spinner",
+      "s_right_spinner"
     ],
     "fire_events": false,
     "stop_single_events": false,

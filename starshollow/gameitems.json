@@ -134,6 +134,16 @@
     "editor_layer_name": "Group001"
   },
   {
+    "file_name": "PartGroup.Timers.json",
+    "is_locked": false,
+    "editor_layer_name": "Group001"
+  },
+  {
+    "file_name": "PartGroup.Spinners.json",
+    "is_locked": false,
+    "editor_layer_name": "Group001"
+  },
+  {
     "file_name": "Trigger.s_TriggerRF.json",
     "is_locked": false,
     "editor_layer": 0,
@@ -163,7 +173,7 @@
   },
   {
     "file_name": "Wall.Wall78.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 0,
     "editor_layer_name": "Collidable Misc",
     "editor_layer_visibility": true
@@ -3088,7 +3098,7 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Flipper.Diverter.json",
+    "file_name": "Flipper.RampDiverter.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3113,12 +3123,12 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.Ramp002.json",
+    "file_name": "Ramp.SubwayRamp.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
-    "file_name": "Wall.Wall008.json",
+    "file_name": "Wall.ScoopWall.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3129,6 +3139,246 @@
   },
   {
     "file_name": "Wall.Wall010.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Timer.Glf_GameTimer.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_Lock1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_Lock2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_Lock3.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.SubwayFloor.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.SubwayWall1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.SubwayWall2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Spinner.s_right_spinner.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Spinner.s_left_spinner.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_enter_right_ramp.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_enter_left_ramp.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_complete_left_ramp.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_complete_right_ramp.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber008.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive020.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.Ramp002.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive041.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive042.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall008.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_left_orbit.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_right_orbit.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_skillshot.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.skillshot_trigger_surface.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l52.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p52.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p52off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l51.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p51.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p51off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l53.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p53.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p53off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p54off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l54.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p54.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l55.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p55.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p55off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l56.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p56.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p56off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flipper.SubwayDiverter.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Gate.SubwayTroughGate.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.SubwayTroughJunction.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.SubwayTroughRamp.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.SubwayTroughPlatform.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_subway_trough_kicker.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.SubwayTroughWall.json",
     "is_locked": false,
     "editor_layer": 0
   }
