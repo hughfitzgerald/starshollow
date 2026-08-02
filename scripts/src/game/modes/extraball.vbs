@@ -67,12 +67,11 @@ Sub CreateExtraBallMode()
                 End With
             End With
             With .States("ready")
-                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Show = "led_color"
                 .Key = "key_eb_ready"
                 .Speed = 10
                 With .Tokens()
                     .Add "lights", "l56"
-                    .Add "fade", 200
                     .Add "color", ExtraBallColor
                 End With
             End With

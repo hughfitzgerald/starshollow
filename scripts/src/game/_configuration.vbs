@@ -48,7 +48,7 @@ Const GIColorAttractDim = "5a3010"   ' attract, dim phase
 Const StandupColor      = "0023cc"   ' the 8 standup inserts l11..l18
 Const BonusLaneColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
 Const ShootAgainColor = "00ff00"
-Const ExtraBallColor = "00ff00"
+Const ExtraBallColor = "0000ff"
 Const RampshotColor = "8800ff"
 Const MultiballColor = "ffffff"
 
