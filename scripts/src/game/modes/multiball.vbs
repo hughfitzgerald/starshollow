@@ -68,9 +68,6 @@ Sub CreateMultiballMode()
             .Debug = True
 
             .Profile = "lock"   'defined below
-            With .Tokens()
-                .Add "lights", "l54"
-            End With
             With .ControlEvents()
                 .Events = Array("lock_lit")
                 .State = 1
@@ -83,6 +80,9 @@ Sub CreateMultiballMode()
             With .States("unlit")
                 .Key = "key_lock_unlit"
                 .Show = "off"
+                With .Tokens()
+                    .Add "lights", "l54"
+                End With
             End With
             With .States("ready")
                 .Key = "key_lock_ready"
@@ -91,6 +91,7 @@ Sub CreateMultiballMode()
                 With .Tokens()
                     .Add "fade", 200
                     .Add "color", MultiballColor
+                    .Add "lights", "l54"
                 End With
             End With
         End With

@@ -924,7 +924,7 @@ Sub UpdateGlfInserts()
 End Sub
 
 Function GlfInsertGlow(lgt)
-    Dim c : c = lgt.Color
+    Dim c : c = CLng(lgt.Color)
     ' VPX colours are BGR-packed longs; take the brightest channel.
     Dim r, g, b
     r = c And 255
