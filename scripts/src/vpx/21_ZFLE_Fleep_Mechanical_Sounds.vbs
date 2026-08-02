@@ -896,12 +896,11 @@ End Sub
 '
 ' Driving them from FrameTimer instead makes the update unconditional and
 ' independent of VPX's light events.
-' Only pairs that actually exist on this table. l4/l5/l10 and their
-' primitives were commented out in the original VPW script and are NOT
-' present - referencing them here would be a runtime error.
+' Update these Arrays by populating the gameitems.json with latest light sets 
+' and running generate-arrays.py. Go to scripts directory and run "uv run generate-arrays.py"
 Dim GlfInsertLights, GlfInsertPrims
-GlfInsertLights = Array(l1, l2, l3, l8, l9, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23)
-GlfInsertPrims  = Array(p1, p2, p3, p8, p9, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23)
+GlfInsertLights = Array(l9, l8, l1, l12, l11, l13, l14, l15, l16, l17, l18, l52, l51, l53, l54, l55, l56)
+GlfInsertPrims  = Array(p9, p8, p1, p12, p11, p13, p14, p15, p16, p17, p18, p52, p51, p53, p54, p55, p56)
 
 Sub UpdateGlfInserts()
     Dim i, g
