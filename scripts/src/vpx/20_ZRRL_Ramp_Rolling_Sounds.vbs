@@ -58,11 +58,19 @@ End Sub
 ' Left ramp (s_enter_left_ramp / s_complete_left_ramp) runs entirely over
 ' Ramp009 and Ramp004, both ramp_type "flat" - plastic ramp for the whole shot.
 ' Right ramp (s_enter_right_ramp / s_complete_right_ramp) starts on Ramp001
-' ("flat") but the completion switch sits on Ramp003 ("four_wire"), so the
-' shot is classified by its entry surface, same as the left ramp.
+' ("flat") but its geometry runs into Ramp003 ("four_wire") further up. If a
+' trigger ever gets added at that flat/wire seam, wire its GLF-generated
+' _active event to a listener that does the same WRemoveBall-then-Waddball
+' pair as EnterRightRampListener below, just passing False.
+'
+' WRemoveBall-then-Waddball (rather than a single Waddball call) matches
+' Apophis's own reference table (darkchaos): Waddball's "don't add twice"
+' guard means a lone Waddball call is a no-op for a ball already tracked, so
+' removing first guarantees the type actually gets set/updated either way.
 
 Function EnterLeftRampListener(args)
 	If IsObject(args(1)) Then
+		WRemoveBall args(1).id
 		Waddball args(1), True	 'Ramp009 entry - flat/plastic
 		RampRollUpdate
 	End If
@@ -74,6 +82,7 @@ End Function
 
 Function EnterRightRampListener(args)
 	If IsObject(args(1)) Then
+		WRemoveBall args(1).id
 		Waddball args(1), True	 'Ramp001 entry - flat/plastic
 		RampRollUpdate
 	End If
