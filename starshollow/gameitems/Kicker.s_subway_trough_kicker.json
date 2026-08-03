@@ -11,7 +11,7 @@
     "surface": "SubwayTroughPlatform",
     "is_enabled": true,
     "name": "s_subway_trough_kicker",
-    "kicker_type": "hole",
+    "kicker_type": "invisible",
     "scatter": 0.0,
     "hit_accuracy": 0.5,
     "hit_height": 35.0,
