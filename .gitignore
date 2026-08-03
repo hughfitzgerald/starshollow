@@ -56,7 +56,8 @@ log.txt
 scripts/dest/
 glf_mpf/
 glf_logs/
-StarsHollowDMD/
+*DMD/
+*_work/
 user
 cache
 cached-functions.vbs
