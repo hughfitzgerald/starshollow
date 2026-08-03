@@ -57,11 +57,14 @@ End Sub
 '
 ' Left ramp (s_enter_left_ramp / s_complete_left_ramp) runs entirely over
 ' Ramp009 and Ramp004, both ramp_type "flat" - plastic ramp for the whole shot.
-' Right ramp (s_enter_right_ramp / s_complete_right_ramp) starts on Ramp001
-' ("flat") but its geometry runs into Ramp003 ("four_wire") further up. If a
-' trigger ever gets added at that flat/wire seam, wire its GLF-generated
-' _active event to a listener that does the same WRemoveBall-then-Waddball
-' pair as EnterRightRampListener below, just passing False.
+'
+' Right ramp (s_enter_right_ramp) starts on Ramp001 ("flat"), which shares its
+' end drag point with Ramp003 ("four_wire", height_top 150 on both) - the ball
+' rides the flat surface up to that shared point, then continues on the wire
+' section for the rest of the climb. Ramp003_Hit (below) marks that seam
+' directly off the real collision, rather than guessing at a new trigger's
+' position/elevation - Ramp003 isn't in any collection, so its own hit_event
+' flag (flipped on in gameitems/Ramp.Ramp003.json) fires a plain Ramp003_Hit.
 '
 ' WRemoveBall-then-Waddball (rather than a single Waddball call) matches
 ' Apophis's own reference table (darkchaos): Waddball's "don't add twice"
@@ -91,6 +94,15 @@ End Function
 Function CompleteRightRampListener(args)
 	If IsObject(args(1)) Then WRemoveBall args(1).id
 End Function
+
+' Plain VPX Hit event, not a GLF pin event, so ActiveBall is reliable here -
+' this fires synchronously at the moment of collision, same as any other
+' _Hit sub in the Fleep/ZDMP files.
+Sub Ramp003_Hit()
+	WRemoveBall ActiveBall.id
+	Waddball ActiveBall, False	'flat-to-wire seam with Ramp001
+	RampRollUpdate
+End Sub
 
 ' WaddBall (Active Ball, Boolean)
 Sub Waddball(input, RampInput) 'This subroutine is called from WireRampOn to Add Balls to the RampBalls Array
