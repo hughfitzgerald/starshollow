@@ -45,8 +45,8 @@ Sub CreateBaseMode()
             .Add "s_Bumper5_active", Array("score_5000")
 
             'Slingshots
-            .Add "s_LeftSlingshot_active", Array("score_5000")
-            .Add "s_RightSlingshot_active", Array("score_5000")
+            .Add "s_LeftSlingShot_active", Array("score_5000")
+            .Add "s_RightSlingShot_active", Array("score_5000")
 
             'Spinners
             .Add "s_left_spinner_active", Array("score_3333")

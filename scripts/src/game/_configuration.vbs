@@ -106,6 +106,11 @@ Sub ConfigureGlfDevices()
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
 
+    AddPinEventListener "s_enter_left_ramp_active",     "enter_left_ramp_roll",     "EnterLeftRampListener",     100, Null
+    AddPinEventListener "s_complete_left_ramp_active",  "complete_left_ramp_roll",  "CompleteLeftRampListener",  100, Null
+    AddPinEventListener "s_enter_right_ramp_active",    "enter_right_ramp_roll",    "EnterRightRampListener",    100, Null
+    AddPinEventListener "s_complete_right_ramp_active", "complete_right_ramp_roll", "CompleteRightRampListener", 100, Null
+
     AddPinEventListener "s_Trigger1_active",   "plunger_ball_in",  "PlungerBallIn",  100, Null
     AddPinEventListener "s_Trigger1_inactive", "plunger_ball_out", "PlungerBallOut", 100, Null
 
@@ -214,7 +219,7 @@ Sub ConfigureGlfDevices()
     ' --- Slingshots ---
     ' MUST be members of glf_slingshots.
     With CreateGlfAutoFireDevice("left_sling")
-        .Switch = "s_LeftSlingshot"
+        .Switch = "s_LeftSlingShot"
         .ActionCallback = "LeftSlingshotAction"
         .DisabledCallback = "LeftSlingshotDisabled"
         .EnabledCallback = "LeftSlingshotEnabled"
@@ -223,7 +228,7 @@ Sub ConfigureGlfDevices()
     End With
 
     With CreateGlfAutoFireDevice("right_sling")
-        .Switch = "s_RightSlingshot"
+        .Switch = "s_RightSlingShot"
         .ActionCallback = "RightSlingshotAction"
         .DisabledCallback = "RightSlingshotDisabled"
         .EnabledCallback = "RightSlingshotEnabled"

@@ -45,6 +45,44 @@ Sub WireRampOff()
 	WRemoveBall ActiveBall.ID
 End Sub
 
+'*******************************************
+'  GLF wiring
+'*******************************************
+' This was never connected to the ramp enter/complete switches, so no ramp
+' roll sound ever played. ActiveBall is NOT reliable inside GLF dispatch
+' (the event is queued and processed on the next timer tick), so these
+' listeners use args(1) - the ball GLF captured at the moment of the real
+' VPX hit - instead of calling WireRampOn/WireRampOff, which both read the
+' global ActiveBall.
+'
+' Left ramp (s_enter_left_ramp / s_complete_left_ramp) runs entirely over
+' Ramp009 and Ramp004, both ramp_type "flat" - plastic ramp for the whole shot.
+' Right ramp (s_enter_right_ramp / s_complete_right_ramp) starts on Ramp001
+' ("flat") but the completion switch sits on Ramp003 ("four_wire"), so the
+' shot is classified by its entry surface, same as the left ramp.
+
+Function EnterLeftRampListener(args)
+	If IsObject(args(1)) Then
+		Waddball args(1), True	 'Ramp009 entry - flat/plastic
+		RampRollUpdate
+	End If
+End Function
+
+Function CompleteLeftRampListener(args)
+	If IsObject(args(1)) Then WRemoveBall args(1).id
+End Function
+
+Function EnterRightRampListener(args)
+	If IsObject(args(1)) Then
+		Waddball args(1), True	 'Ramp001 entry - flat/plastic
+		RampRollUpdate
+	End If
+End Function
+
+Function CompleteRightRampListener(args)
+	If IsObject(args(1)) Then WRemoveBall args(1).id
+End Function
+
 ' WaddBall (Active Ball, Boolean)
 Sub Waddball(input, RampInput) 'This subroutine is called from WireRampOn to Add Balls to the RampBalls Array
 	' This will loop through the RampBalls array checking each element of the array x, position 1

@@ -78,7 +78,7 @@ Sub GlfDiag_Init()
         "s_sw8", "s_sw9", "s_VUK1", "s_Trigger1", _
         "s_LeftInlane", "s_RightInlane", _
         "s_Bumper1", "s_Bumper3", "s_Bumper5", _
-        "s_LeftSlingshot", "s_RightSlingshot", "s_Lock1", "s_Lock2", "s_Lock3")
+        "s_LeftSlingShot", "s_RightSlingShot", "s_Lock1", "s_Lock2", "s_Lock3")
     ReDim diag_switchHits(UBound(diag_switchNames))
     Dim i
     For i = 0 To UBound(diag_switchNames)
