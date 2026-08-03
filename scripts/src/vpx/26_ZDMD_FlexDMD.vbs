@@ -140,7 +140,7 @@ Sub Flex_Init
 	With FlexScenes(1)
 		' .AddActor FlexDMD.Newvideo ("test","spinner.gif")
 		' .Getvideo("test").visible = True
-		.AddActor FlexDMD.NewImage("logo","VPWLogo32.png")
+		.AddActor FlexDMD.NewImage("logo","gilmore_girls_logo_128x32.png")
 		.Getimage("logo").visible = False
 	End With
 	
