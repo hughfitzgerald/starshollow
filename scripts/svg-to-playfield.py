@@ -46,7 +46,7 @@ subprocess.run(
         filename,
         f"--actions={actions}",
         "--export-type=png",
-        "--export-filename=output.png",
+        f"--export-filename={output_path}",
         "--export-area-page",
         "--export-overwrite",
     ],
