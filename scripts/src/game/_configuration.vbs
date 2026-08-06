@@ -50,7 +50,7 @@ Const BonusLaneColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
 Const ShootAgainColor = "00ff00"
 Const ExtraBallColor = "0000ff"
 Const RampshotColor = "8800ff"
-Const MultiballColor = "ffffff"
+Const MultiballColor = "1eff6b"
 
 
 Sub ConfigureGlfDevices()

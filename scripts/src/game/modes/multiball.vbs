@@ -87,7 +87,7 @@ Sub CreateMultiballMode()
             With .States("ready")
                 .Key = "key_lock_ready"
                 .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
-                .Speed = 10
+                .Speed = 5
                 With .Tokens()
                     .Add "fade", 200
                     .Add "color", MultiballColor
