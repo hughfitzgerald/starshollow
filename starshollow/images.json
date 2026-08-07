@@ -1254,12 +1254,10 @@
     "is_signed": false
   },
   {
-    "name": "PFInsertOverlay",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\_Table Dev\\Example Table\\InsertOverlay.png",
+    "name": "playfield-insert-overlay",
+    "path": "/Users/stephenjones/code/starshollow/starshollow/images/playfield-insert-overlay.png",
     "alpha_test_value": 1.0,
-    "is_opaque": false,
-    "is_signed": false,
-    "jpeg_name": "InsertOverlay"
+    "is_opaque": false
   },
   {
     "name": "PF",
@@ -1362,7 +1360,7 @@
   {
     "name": "playfield",
     "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/playfield_image/playfield.png",
-    "alpha_test_value": 128.0,
+    "alpha_test_value": 1.0,
     "is_opaque": false
   }
 ]
