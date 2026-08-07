@@ -14,7 +14,7 @@
     "is_timer_enabled": false,
     "timer_interval": 100,
     "blink_pattern": "10",
-    "image": "pf",
+    "image": "playfield",
     "blink_interval": 1250,
     "intensity": 10.0,
     "transmission_scale": 1.0,
