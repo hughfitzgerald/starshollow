@@ -11,13 +11,13 @@ Sub ToggleGI(Enabled)
 		For Each xx In GI
 			xx.state = 1
 		Next
-		PFShadowsGION.visible = 1
+		' PFShadowsGION.visible = 1
 		gilvl = 1
 	Else
 		For Each xx In GI
 			xx.state = 0
 		Next
-		PFShadowsGION.visible = 0
+		' PFShadowsGION.visible = 0
 		GITimer.enabled = True
 		gilvl = 0
 	End If
