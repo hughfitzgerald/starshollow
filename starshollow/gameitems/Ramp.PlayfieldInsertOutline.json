@@ -9,7 +9,7 @@
     "timer_interval": 100,
     "ramp_type": "flat",
     "name": "PlayfieldInsertOutline",
-    "image": "PFInsertOverlay",
+    "image": "playfield-insert-overlay",
     "image_alignment": "world",
     "image_walls": true,
     "left_wall_height": 62.0,
