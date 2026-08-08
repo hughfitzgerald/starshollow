@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 220.8068,
-      "y": 97.992874,
-      "z": 18.0
+      "x": 759.70435,
+      "y": 1120.385,
+      "z": 0.0
     },
     "size": {
-      "x": 100.0,
-      "y": 100.0,
-      "z": 100.0
+      "x": 28.0,
+      "y": 23.0,
+      "z": 28.0
     },
     "rot_and_tra": [
       90.0,
@@ -19,14 +19,14 @@
       0.0,
       0.0,
       0.0,
-      50.0
+      0.0
     ],
-    "image": "rubber-emwheel",
+    "image": "metal3",
     "normal_map": "",
     "sides": 4,
     "name": "Primitive019",
-    "material": "Plastic",
-    "side_color": "#969696",
+    "material": "Metal0.8",
+    "side_color": "#ffffff",
     "is_visible": true,
     "draw_textures_inside": true,
     "hit_event": false,
@@ -63,6 +63,6 @@
     "reflection_strength": 1.0,
     "refraction_probe": "",
     "refraction_thickness": 10.0,
-    "part_group_name": "Collidable_Misc"
+    "part_group_name": "Visual_Rubbers"
   }
 }

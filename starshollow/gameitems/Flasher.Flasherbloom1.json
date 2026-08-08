@@ -36,8 +36,8 @@
     "part_group_name": "PF_Sized_Flashers",
     "drag_points": [
       {
-        "x": -23.741922,
-        "y": -10.683559,
+        "x": -59.329727,
+        "y": -103.49735,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": -23.165312,
-        "y": 2103.942,
+        "x": -58.753117,
+        "y": 2011.1282,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 971.93134,
-        "y": 2103.1426,
+        "x": 936.3435,
+        "y": 2010.3289,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -75,8 +75,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 974.2114,
-        "y": -8.32753,
+        "x": 938.6236,
+        "y": -101.14132,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

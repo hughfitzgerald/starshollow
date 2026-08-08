@@ -2,7 +2,6 @@
   {
     "name": "Rubbers",
     "items": [
-      "Rubber6",
       "Rubber4",
       "Rubber20",
       "Rubber21",
@@ -14,7 +13,6 @@
       "RSling",
       "RubberBand006",
       "zCol_Rubber_Sleeve005",
-      "zCol_Rubber_Sleeve004",
       "zCol_Rubber_Peg002",
       "zCol_Rubber_Post030",
       "zCol_Rubber_Post029",
@@ -24,8 +22,6 @@
       "zCol_Rubber_Post025",
       "zCol_Rubber_Post010",
       "zCol_Rubber_Post009",
-      "zCol_Rubber_Post008",
-      "zCol_Rubber_Post007",
       "zCol_Rubber_Post006",
       "zCol_Rubber_Post005",
       "zCol_Rubber_Post004",
@@ -34,7 +30,6 @@
       "zCol_Rubber_Peg001",
       "zCol_Rubber_Post001",
       "zCol_Rubber_Sleeve001",
-      "RubberBand005",
       "RubberBand004",
       "RubberBand003"
     ],
@@ -45,7 +40,6 @@
   {
     "name": "Posts",
     "items": [
-      "Primitive28",
       "Primitive22"
     ],
     "fire_events": true,
@@ -69,11 +63,9 @@
   {
     "name": "Metals",
     "items": [
-      "Wall1",
       "Wall2",
       "Wall20",
       "Wall37",
-      "Ramp18",
       "Ramp9",
       "Wall6"
     ],
@@ -168,8 +160,6 @@
       "zCol_Rubber_Post010",
       "zCol_Rubber_Peg002",
       "zCol_Rubber_Post009",
-      "zCol_Rubber_Post008",
-      "zCol_Rubber_Post007",
       "zCol_Rubber_Post006",
       "zCol_Rubber_Post005",
       "zCol_Rubber_Post004",
@@ -192,8 +182,7 @@
     "name": "dSleeves",
     "items": [
       "zCol_Rubber_Sleeve005",
-      "zCol_Rubber_Sleeve001",
-      "zCol_Rubber_Sleeve004"
+      "zCol_Rubber_Sleeve001"
     ],
     "fire_events": true,
     "stop_single_events": false,

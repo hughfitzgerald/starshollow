@@ -36,8 +36,8 @@
     "part_group_name": "Flashers",
     "drag_points": [
       {
-        "x": -43.457886,
-        "y": 852.44006,
+        "x": -79.04569,
+        "y": 759.6263,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": -43.457886,
-        "y": 1157.6744,
+        "x": -79.04569,
+        "y": 1064.8606,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 261.77682,
-        "y": 1157.6744,
+        "x": 226.18901,
+        "y": 1064.8606,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -75,8 +75,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 261.77682,
-        "y": 852.44006,
+        "x": 226.18901,
+        "y": 759.6263,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

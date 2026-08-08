@@ -1362,5 +1362,11 @@
     "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/playfield_image/playfield.png",
     "alpha_test_value": 1.0,
     "is_opaque": false
+  },
+  {
+    "name": "The Who's Tommy Pinball Wizard (Data East 1994) VPWMod 1.2.1",
+    "path": "/Users/stephenjones/Documents/pinball_tables/tommy/The Who's Tommy Pinball Wizard (Data East 1994) VPWMod 1.2.1.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": true
   }
 ]
