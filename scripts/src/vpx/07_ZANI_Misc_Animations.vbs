@@ -7,6 +7,8 @@ Sub LeftFlipper_Animate
 	FlipperLSh.RotZ = a
 	LFLogo.RotZ = a
 	'Add any left flipper related animations here
+	dim b: b = LeftFlipper2.CurrentAngle
+	LFLogo2.RotZ = b
 End Sub
 
 Sub RightFlipper_Animate

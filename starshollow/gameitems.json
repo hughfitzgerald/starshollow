@@ -761,7 +761,7 @@
   },
   {
     "file_name": "Rubber.Pin4.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 3,
     "editor_layer_name": "Visual Rubbers",
     "editor_layer_visibility": true
@@ -1048,7 +1048,7 @@
   },
   {
     "file_name": "Primitive.zCol_Rubber_Peg002.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 1,
     "editor_layer_name": "Collidable Rubbers",
     "editor_layer_visibility": true
@@ -3106,6 +3106,21 @@
   },
   {
     "file_name": "Wall.Wall004.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flipper.LeftFlipper2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.LFLogo2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_TriggerLF2.json",
     "is_locked": false,
     "editor_layer": 0
   }

@@ -9,6 +9,8 @@ Sub SolLFlipper(Enabled) 'Left flipper solenoid callback
 	If Enabled Then
 		FlipperActivate LeftFlipper, LFPress
 		LF.Fire  'leftflipper.rotatetoend
+
+		LeftFlipper2.rotatetoend
 		
 		If leftflipper.currentangle < leftflipper.endangle + ReflipAngle Then
 			RandomSoundReflipUpLeft LeftFlipper
@@ -19,6 +21,7 @@ Sub SolLFlipper(Enabled) 'Left flipper solenoid callback
 	Else
 		FlipperDeActivate LeftFlipper, LFPress
 		LeftFlipper.RotateToStart
+		LeftFlipper2.RotateToStart
 		If LeftFlipper.currentangle < LeftFlipper.startAngle - 5 Then
 			RandomSoundFlipperDownLeft LeftFlipper
 		End If

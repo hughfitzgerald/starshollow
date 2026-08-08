@@ -11,7 +11,7 @@
     "image": "rail_metal_hd",
     "side_image": "rail_metal_hd",
     "side_material": "Metal0.2",
-    "top_material": "Metal1",
+    "top_material": "Metal0.2",
     "slingshot_material": "",
     "height_bottom": 0.0,
     "height_top": 29.0,
@@ -112,6 +112,6 @@
         "editor_layer_visibility": true
       }
     ],
-    "part_group_name": "Physical"
+    "part_group_name": "Collidable_Misc"
   }
 }
