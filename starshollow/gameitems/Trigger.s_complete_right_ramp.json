@@ -1,8 +1,8 @@
 {
   "Trigger": {
     "center": {
-      "x": 445.01385,
-      "y": 1118.597
+      "x": 487.10617,
+      "y": 1177.8907
     },
     "radius": 25.0,
     "rotation": -115.0,
@@ -23,8 +23,8 @@
     "part_group_name": "Triggers",
     "drag_points": [
       {
-        "x": 415.01385,
-        "y": 1088.597,
+        "x": 457.10617,
+        "y": 1147.8907,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -36,8 +36,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 415.01385,
-        "y": 1148.597,
+        "x": 457.10617,
+        "y": 1207.8907,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 475.01385,
-        "y": 1148.597,
+        "x": 517.10614,
+        "y": 1207.8907,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 475.01385,
-        "y": 1088.597,
+        "x": 517.10614,
+        "y": 1147.8907,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

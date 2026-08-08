@@ -32,8 +32,8 @@
     "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 133.88208,
-        "y": 1538.31,
+        "x": 136.38208,
+        "y": 1537.7927,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -45,8 +45,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 139.27013,
-        "y": 1299.0397,
+        "x": 141.77013,
+        "y": 1298.5225,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -56,8 +56,8 @@
         "editor_layer": 0
       },
       {
-        "x": 706.1137,
-        "y": 990.89795,
+        "x": 877.85297,
+        "y": 1047.8395,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -67,8 +67,8 @@
         "editor_layer": 0
       },
       {
-        "x": 754.1971,
-        "y": 884.6602,
+        "x": 911.60297,
+        "y": 837.8394,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -78,9 +78,20 @@
         "editor_layer": 0
       },
       {
-        "x": 873.8684,
-        "y": 324.79688,
-        "z": 0.0,
+        "x": 910.91693,
+        "y": 689.2121,
+        "z": 4.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 907.5412,
+        "y": 375.78693,
+        "z": 5.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
@@ -89,9 +100,9 @@
         "editor_layer": 0
       },
       {
-        "x": 880.98346,
-        "y": 249.88892,
-        "z": 0.0,
+        "x": 898.08093,
+        "y": 260.01544,
+        "z": 2.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
@@ -100,19 +111,8 @@
         "editor_layer": 0
       },
       {
-        "x": 849.1711,
-        "y": 211.19632,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 782.7407,
-        "y": 212.5743,
+        "x": 832.9101,
+        "y": 241.39522,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
