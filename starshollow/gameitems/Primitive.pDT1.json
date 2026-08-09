@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 240.3935,
-      "y": 479.82416,
+      "x": 370.8875,
+      "y": 1098.8473,
       "z": 0.0
     },
     "size": {
@@ -24,7 +24,7 @@
     "image": "DropTargetBeveled",
     "normal_map": "",
     "sides": 4,
-    "name": "sw1p",
+    "name": "pDT1",
     "material": "Plastic",
     "side_color": "#969696",
     "is_visible": true,
