@@ -1,41 +1,41 @@
 {
   "Wall": {
-    "hit_event": true,
+    "hit_event": false,
     "is_droppable": false,
     "is_flipbook": false,
     "is_bottom_solid": false,
     "is_collidable": true,
     "is_timer_enabled": false,
-    "timer_interval": 20,
+    "timer_interval": 100,
     "threshold": 2.0,
     "image": "",
     "side_image": "",
-    "side_material": "Plastic",
-    "top_material": "Plastic",
+    "side_material": "Metal0.8",
+    "top_material": "",
     "slingshot_material": "",
     "height_bottom": 0.0,
     "height_top": 50.0,
-    "name": "Wall015",
+    "name": "Wall022",
     "display_texture": false,
-    "slingshot_force": 20.0,
-    "slingshot_threshold": 2.0,
-    "elasticity": 0.7,
+    "slingshot_force": 80.0,
+    "slingshot_threshold": 0.0,
+    "elasticity": 0.3,
     "elasticity_falloff": 0.0,
-    "friction": 0.2,
-    "scatter": 5.0,
+    "friction": 0.3,
+    "scatter": 0.0,
     "is_top_bottom_visible": false,
-    "slingshot_animation": false,
-    "is_side_visible": false,
-    "disable_lighting_top_old": null,
-    "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
+    "slingshot_animation": true,
+    "is_side_visible": true,
+    "disable_lighting_top_old": 0.0,
+    "disable_lighting_top": null,
+    "disable_lighting_below": 1.0,
     "is_reflection_enabled": true,
-    "physics_material": "zCol_RubberBands",
-    "overwrite_physics": false,
+    "physics_material": "",
+    "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 251.21379,
-        "y": 394.30975,
+        "x": 130.9872,
+        "y": 396.4528,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -47,8 +47,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 281.9963,
-        "y": 394.3097,
+        "x": 129.1844,
+        "y": 399.84433,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -60,8 +60,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 281.99625,
-        "y": 321.38354,
+        "x": 251.09059,
+        "y": 349.016,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -73,8 +73,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 251.21384,
-        "y": 321.38354,
+        "x": 250.92828,
+        "y": 347.4643,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -86,6 +86,6 @@
         "editor_layer_visibility": true
       }
     ],
-    "part_group_name": "Collidable_Rubbers"
+    "part_group_name": "Collidable_Misc"
   }
 }
