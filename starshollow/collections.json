@@ -293,7 +293,8 @@
       "s_left_orbit",
       "s_right_orbit",
       "s_skillshot",
-      "s_subway_trough_kicker"
+      "s_subway_trough_kicker",
+      "s_sw7"
     ],
     "fire_events": false,
     "stop_single_events": false,
@@ -359,7 +360,8 @@
       "l32",
       "l33",
       "l34",
-      "l26"
+      "l26",
+      "l7"
     ],
     "fire_events": false,
     "stop_single_events": false,

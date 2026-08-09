@@ -2,9 +2,9 @@
   "Ramp": {
     "height_bottom": 0.0,
     "height_top": 90.0,
-    "width_bottom": 75.0,
+    "width_bottom": 80.0,
     "width_top": 60.0,
-    "material": "zCol_Ramp",
+    "material": "ombra",
     "is_timer_enabled": false,
     "timer_interval": 100,
     "ramp_type": "flat",

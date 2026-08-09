@@ -1,17 +1,17 @@
 {
   "Primitive": {
     "position": {
-      "x": 624.465,
-      "y": 922.8018,
-      "z": 0.0
+      "x": 602.2251,
+      "y": 321.55258,
+      "z": 56.0
     },
     "size": {
-      "x": 28.0,
-      "y": 23.0,
-      "z": 28.0
+      "x": 100.0,
+      "y": 100.0,
+      "z": 100.0
     },
     "rot_and_tra": [
-      90.0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -24,18 +24,18 @@
     "image": "metal3",
     "normal_map": "",
     "sides": 4,
-    "name": "Primitive015",
+    "name": "Primitive049",
     "material": "Metal0.8",
-    "side_color": "#ffffff",
+    "side_color": "#969696",
     "is_visible": true,
-    "draw_textures_inside": true,
+    "draw_textures_inside": false,
     "hit_event": false,
     "threshold": 2.0,
     "elasticity": 0.3,
     "elasticity_falloff": 0.0,
     "friction": 0.0,
     "scatter": 0.0,
-    "edge_factor_ui": 0.25,
+    "edge_factor_ui": 1.0,
     "collision_reduction_factor": 0.0,
     "is_collidable": false,
     "is_toy": true,
@@ -63,6 +63,6 @@
     "reflection_strength": 1.0,
     "refraction_probe": "",
     "refraction_thickness": 10.0,
-    "part_group_name": "Visual_Rubbers"
+    "part_group_name": "Nuts_and_Bolts"
   }
 }

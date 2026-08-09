@@ -67,8 +67,8 @@
         "editor_layer": 0
       },
       {
-        "x": 576.0812,
-        "y": 199.6367,
+        "x": 658.68036,
+        "y": 204.97026,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -78,19 +78,8 @@
         "editor_layer": 0
       },
       {
-        "x": 694.4414,
-        "y": 197.56021,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 803.18066,
-        "y": 212.3996,
+        "x": 834.1432,
+        "y": 240.44695,
         "z": -9.0,
         "smooth": true,
         "is_slingshot": false,

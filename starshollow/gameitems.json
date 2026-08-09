@@ -411,21 +411,21 @@
   },
   {
     "file_name": "Primitive.Primitive17.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 4,
     "editor_layer_name": "Plastics",
     "editor_layer_visibility": true
   },
   {
     "file_name": "Primitive.screw7.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 4,
     "editor_layer_name": "Nuts and Bolts",
     "editor_layer_visibility": true
   },
   {
     "file_name": "Primitive.screw8.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 4,
     "editor_layer_name": "Nuts and Bolts",
     "editor_layer_visibility": true
@@ -3116,6 +3116,101 @@
   },
   {
     "file_name": "Trigger.s_TriggerLF2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber010.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber011.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall003.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive039.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive040.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber012.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber013.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall020.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive044.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive045.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive046.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive047.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive048.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive049.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive050.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_sw7.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p7off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p7.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l7.json",
     "is_locked": false,
     "editor_layer": 0
   }

@@ -4,7 +4,7 @@
     "height_top": 150.0,
     "width_bottom": 90.0,
     "width_top": 60.0,
-    "material": "zCol_Ramp",
+    "material": "Opacity80",
     "is_timer_enabled": false,
     "timer_interval": 100,
     "ramp_type": "flat",
@@ -32,7 +32,7 @@
     "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 566.39087,
+        "x": 566.511,
         "y": 912.76215,
         "z": 0.0,
         "smooth": false,
@@ -45,7 +45,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 694.99615,
+        "x": 695.1163,
         "y": 602.2341,
         "z": 10.0,
         "smooth": true,
@@ -56,7 +56,7 @@
         "editor_layer": 0
       },
       {
-        "x": 747.0697,
+        "x": 747.1898,
         "y": 359.05005,
         "z": 31.0,
         "smooth": true,
@@ -67,7 +67,7 @@
         "editor_layer": 0
       },
       {
-        "x": 756.3602,
+        "x": 756.48035,
         "y": 267.7739,
         "z": 0.0,
         "smooth": true,
@@ -78,7 +78,7 @@
         "editor_layer": 0
       },
       {
-        "x": 784.8078,
+        "x": 784.9279,
         "y": 237.25739,
         "z": 0.0,
         "smooth": true,
@@ -89,7 +89,7 @@
         "editor_layer": 0
       },
       {
-        "x": 832.9101,
+        "x": 833.0303,
         "y": 241.3952,
         "z": 0.0,
         "smooth": true,

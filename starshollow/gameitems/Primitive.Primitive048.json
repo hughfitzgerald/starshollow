@@ -1,17 +1,17 @@
 {
   "Primitive": {
     "position": {
-      "x": 624.465,
-      "y": 922.8018,
+      "x": 603.6959,
+      "y": 314.06152,
       "z": 0.0
     },
     "size": {
-      "x": 28.0,
-      "y": 23.0,
-      "z": 28.0
+      "x": 100.0,
+      "y": 100.0,
+      "z": 100.0
     },
     "rot_and_tra": [
-      90.0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -21,14 +21,14 @@
       0.0,
       0.0
     ],
-    "image": "metal3",
+    "image": "purple peg",
     "normal_map": "",
     "sides": 4,
-    "name": "Primitive015",
-    "material": "Metal0.8",
-    "side_color": "#ffffff",
+    "name": "Primitive048",
+    "material": "Peg",
+    "side_color": "#969696",
     "is_visible": true,
-    "draw_textures_inside": true,
+    "draw_textures_inside": false,
     "hit_event": false,
     "threshold": 2.0,
     "elasticity": 0.3,
