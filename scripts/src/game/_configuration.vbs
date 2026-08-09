@@ -320,7 +320,7 @@ Sub ConfigureGlfDevices()
     ' --- Standup targets s_ST11..s_ST18 ---
     ' MUST NOT be in any collection. RothSTSwitchID must match the 3rd
     ' argument of the Set STnn = (new StandupTarget)(...) lines in ZRST.
-    For x = 11 To 18
+    For x = 11 To 19
         With CreateGlfStanduptarget("target" & x)
             .Switch = "s_ST" & x
             .UseRothStanduptarget = True

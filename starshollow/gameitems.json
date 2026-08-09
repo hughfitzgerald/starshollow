@@ -3296,5 +3296,20 @@
     "file_name": "Wall.Wall023.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.psw19.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_ST19.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.sw19o.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]

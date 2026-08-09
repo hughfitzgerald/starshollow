@@ -66,8 +66,7 @@
       "Wall2",
       "Wall20",
       "Wall37",
-      "Ramp9",
-      "Wall6"
+      "Ramp9"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -222,7 +221,13 @@
     "items": [
       "sw11o",
       "sw12o",
-      "sw13o"
+      "sw13o",
+      "sw14o",
+      "sw15o",
+      "sw16o",
+      "sw17o",
+      "sw18o",
+      "sw19o"
     ],
     "fire_events": true,
     "stop_single_events": false,
