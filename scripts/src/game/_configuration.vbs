@@ -275,6 +275,14 @@ Sub ConfigureGlfDevices()
         .EjectCallback = "Vuk1EjectCallback"
     End With
 
+    With CreateGlfBallDevice("drop_target_kicker")
+        .BallSwitches = Array("s_DropTargetKicker")
+        .Debug = True
+        .AutoFireOnUnexpectedBall = False
+        .EjectAllEvents = Array("s_DropTargetKicker_active")
+        .EjectCallback = "DropTargetKickerEjectCallback"
+    End With
+
     With CreateGlfBallDevice("lock1")
         .BallSwitches = Array("s_Lock1")
         .EjectTargets = Array("s_VUK1")

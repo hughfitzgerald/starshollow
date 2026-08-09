@@ -300,7 +300,8 @@
       "s_right_orbit",
       "s_skillshot",
       "s_subway_trough_kicker",
-      "s_sw7"
+      "s_sw7",
+      "s_DropTargetKicker"
     ],
     "fire_events": false,
     "stop_single_events": false,
