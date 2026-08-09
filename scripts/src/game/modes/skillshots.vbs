@@ -36,6 +36,7 @@ Sub CreateSkillshotsMode()
             'Stop skillshots if orbit lanes or rollovers are hit, or if timer runs out for some reason
             .Add "s_left_orbit_active", Array("stop_skillshots")
             .Add "s_right_orbit_active", Array("stop_skillshots")
+            .Add "s_sw7_active", Array("stop_skillshots")
             .Add "s_sw8_active", Array("stop_skillshots")
             .Add "s_sw9_active", Array("stop_skillshots")
             .Add "timer_skillshots_complete", Array("stop_skillshots") 

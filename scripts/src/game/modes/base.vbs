@@ -99,6 +99,12 @@ Sub CreateBaseMode()
 
             ' The two bonus-lane rollovers latch their inserts.
             ' s_sw8 (was sw8) -> l8, s_sw9 (was sw9) -> l9
+            With .EventName("s_sw7_active")
+                With .Lights("l7")
+                    .Color = BonusLaneColor
+                    .Fade  = 60
+                End With
+            End With
             With .EventName("s_sw8_active")
                 With .Lights("l8")
                     .Color = BonusLaneColor
