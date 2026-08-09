@@ -3,7 +3,6 @@
 '  ZTIM: Timers
 '*******************************************
 ' queue.Tick removed (ZQUE deleted - use GLF SetDelay / GlfTimer).
-' DoDTAnim stays out: this table has no drop targets.
 ' DMDTimer is gone with ZDMD.
 '
 ' Glf_GameTimer is NOT declared here - it is a VPX Timer object you add in
@@ -34,6 +33,7 @@ Sub FrameTimer_Timer()
 	InitFrameTime = GameTime
 	RollingUpdate
 	DoSTAnim
+	DoDTAnim
 	BSUpdate
 	UpdateGlfInserts   ' insert primitives follow GLF light colour
 
