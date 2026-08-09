@@ -33,7 +33,7 @@ Class StandupTarget
 End Class
 
 'Define a variable for each stand-up target
-Dim ST11, ST12, ST13, ST14, ST15, ST16, ST17, ST18
+Dim ST11, ST12, ST13, ST14, ST15, ST16, ST17, ST18, ST19
 
 'Set array with stand-up target objects
 '
@@ -73,22 +73,6 @@ Const STMass = 0.1	  'Mass of the Stand-up Target (between 0 and 1), higher valu
 '******************************************************
 '				STAND-UP TARGETS FUNCTIONS
 '******************************************************
-
-' Generic ball-physics helper. Originally lived in ZRDT (drop targets),
-' which is deleted on this table - but STHit uses it, so it moves here.
-Sub DTBallPhysics(aBall, angle, mass)
-	Dim rangle,bangle,calc1, calc2, calc3
-	rangle = (angle - 90) * 3.1416 / 180
-	bangle = atn2(cor.ballvely(aball.id),cor.ballvelx(aball.id))
-	
-	calc1 = cor.BallVel(aball.id) * Cos(bangle - rangle) * (aball.mass - mass) / (aball.mass + mass)
-	calc2 = cor.BallVel(aball.id) * Sin(bangle - rangle) * Cos(rangle + 4 * Atn(1) / 2)
-	calc3 = cor.BallVel(aball.id) * Sin(bangle - rangle) * Sin(rangle + 4 * Atn(1) / 2)
-	
-	aBall.velx = calc1 * Cos(rangle) + calc2
-	aBall.vely = calc1 * Sin(rangle) + calc3
-End Sub
-
 
 Sub STHit(switch)
 	Dim i

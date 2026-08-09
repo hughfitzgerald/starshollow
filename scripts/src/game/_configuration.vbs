@@ -328,6 +328,17 @@ Sub ConfigureGlfDevices()
         End With
     Next
 
+    'Drop Targets
+    'NOTE: Drop targets SHOULD NOT be added to the glf_switches collection nor any other collection. 
+    With CreateGlfDroptarget("drop1")
+        .Switch = "s_DT1"
+        .KnockdownEvents = Array("DT1_knockdown")
+        .ResetEvents = Array("ball_started","reset_complete")
+        .ActionCallback = "DT1Callback"
+        .UseRothDroptarget = True
+        .RothDTSwitchID = 1
+    End With
+
 End Sub
 
 
