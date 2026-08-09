@@ -348,7 +348,7 @@
   },
   {
     "file_name": "Primitive.screw13.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 4,
     "editor_layer_name": "Nuts and Bolts",
     "editor_layer_visibility": true
@@ -383,14 +383,14 @@
   },
   {
     "file_name": "Primitive.screw5.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 4,
     "editor_layer_name": "Nuts and Bolts",
     "editor_layer_visibility": true
   },
   {
     "file_name": "Primitive.screw6.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 4,
     "editor_layer_name": "Nuts and Bolts",
     "editor_layer_visibility": true
@@ -3211,6 +3211,21 @@
   },
   {
     "file_name": "Light.l7.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l57.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p57.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p57off.json",
     "is_locked": false,
     "editor_layer": 0
   }

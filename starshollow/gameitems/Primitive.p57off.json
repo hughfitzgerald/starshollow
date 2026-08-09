@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 511.83725,
-      "y": 1041.2517,
+      "x": 640.9963,
+      "y": 973.5943,
       "z": 0.0
     },
     "size": {
@@ -24,7 +24,7 @@
     "image": "Insert_round2off_",
     "normal_map": "",
     "sides": 4,
-    "name": "p56off",
+    "name": "p57off",
     "material": "InsertWhiteOffTri",
     "side_color": "#969696",
     "is_visible": true,

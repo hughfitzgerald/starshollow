@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 511.83725,
-      "y": 1041.2517,
+      "x": 641.2085,
+      "y": 973.1076,
       "z": 0.0
     },
     "size": {
@@ -21,11 +21,11 @@
       0.0,
       0.0
     ],
-    "image": "Insert_round2off_",
+    "image": "Insert_round2on_",
     "normal_map": "",
     "sides": 4,
-    "name": "p56off",
-    "material": "InsertWhiteOffTri",
+    "name": "p57",
+    "material": "InsertWhiteOnTri",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
@@ -43,7 +43,7 @@
     "static_rendering": false,
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
+    "disable_lighting_below": 1.0,
     "is_reflection_enabled": false,
     "backfaces_enabled": false,
     "physics_material": "",
@@ -53,7 +53,7 @@
     "min_aa_bound": null,
     "max_aa_bound": null,
     "mesh_file_name": "",
-    "depth_bias": 1000.0,
+    "depth_bias": 1100.0,
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,

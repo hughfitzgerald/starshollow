@@ -147,7 +147,6 @@
     "items": [
       "s_LeftInlane",
       "s_RightInlane",
-      "s_sw7",
       "s_sw8",
       "s_sw9"
     ],
@@ -362,7 +361,8 @@
       "l33",
       "l34",
       "l26",
-      "l7"
+      "l7",
+      "l57"
     ],
     "fire_events": false,
     "stop_single_events": false,
