@@ -2176,36 +2176,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Rubber.Rubber004.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.Primitive033.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.Primitive034.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.Primitive035.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.Primitive036.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Wall.Wall015.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Flasher.bumpershadow1.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3309,6 +3279,61 @@
   },
   {
     "file_name": "Primitive.sw19o.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber004.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive033.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber015.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive034.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall015.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber016.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive035.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Rubber.Rubber017.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive036.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_HiddenUpperRightKicker.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall024.json",
     "is_locked": false,
     "editor_layer": 0
   }

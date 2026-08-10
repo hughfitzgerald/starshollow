@@ -1,7 +1,7 @@
 {
   "Light": {
     "center": {
-      "x": 439.7102,
+      "x": 460.08252,
       "y": 622.8255
     },
     "height": 56.0,
@@ -38,7 +38,7 @@
     "part_group_name": "Bumpers",
     "drag_points": [
       {
-        "x": 439.73773,
+        "x": 460.11005,
         "y": 553.0462,
         "z": 0.0,
         "smooth": true,
@@ -51,7 +51,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 390.44922,
+        "x": 410.82153,
         "y": 573.46185,
         "z": 0.0,
         "smooth": true,
@@ -64,7 +64,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 370.03333,
+        "x": 390.40564,
         "y": 622.75024,
         "z": 0.0,
         "smooth": true,
@@ -77,7 +77,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 390.44922,
+        "x": 410.82153,
         "y": 672.03845,
         "z": 0.0,
         "smooth": true,
@@ -90,7 +90,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 439.73767,
+        "x": 460.11,
         "y": 692.45435,
         "z": 0.0,
         "smooth": true,
@@ -103,7 +103,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 489.02597,
+        "x": 509.3983,
         "y": 672.03845,
         "z": 0.0,
         "smooth": true,
@@ -116,7 +116,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 509.44177,
+        "x": 529.8141,
         "y": 622.75024,
         "z": 0.0,
         "smooth": true,
@@ -129,7 +129,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 489.02597,
+        "x": 509.3983,
         "y": 573.46185,
         "z": 0.0,
         "smooth": true,

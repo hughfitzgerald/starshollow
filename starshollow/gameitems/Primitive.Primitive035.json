@@ -1,19 +1,19 @@
 {
   "Primitive": {
     "position": {
-      "x": 267.77374,
-      "y": 323.5784,
+      "x": 615.0132,
+      "y": 181.8308,
       "z": 25.0
     },
     "size": {
-      "x": 31.0,
-      "y": 31.0,
+      "x": 22.0,
+      "y": 22.0,
       "z": 50.0
     },
     "rot_and_tra": [
       0.0,
       0.0,
-      6.0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -23,9 +23,9 @@
     ],
     "image": "",
     "normal_map": "",
-    "sides": 30,
+    "sides": 16,
     "name": "Primitive035",
-    "material": "zCol_RubberPosts",
+    "material": "zCol_RubberPegs",
     "side_color": "#969696",
     "is_visible": false,
     "draw_textures_inside": false,
@@ -33,7 +33,7 @@
     "threshold": 0.5,
     "elasticity": 0.8,
     "elasticity_falloff": 0.0,
-    "friction": 0.35,
+    "friction": 0.3,
     "scatter": 2.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
@@ -46,7 +46,7 @@
     "disable_lighting_below": 0.0,
     "is_reflection_enabled": false,
     "backfaces_enabled": false,
-    "physics_material": "zCol_RubberPosts",
+    "physics_material": "zCol_RubberPegs",
     "overwrite_physics": false,
     "display_texture": false,
     "object_space_normal_map": false,

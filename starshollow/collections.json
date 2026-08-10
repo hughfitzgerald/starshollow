@@ -301,7 +301,8 @@
       "s_skillshot",
       "s_subway_trough_kicker",
       "s_sw7",
-      "s_DropTargetKicker"
+      "s_DropTargetKicker",
+      "s_HiddenUpperRightKicker"
     ],
     "fire_events": false,
     "stop_single_events": false,

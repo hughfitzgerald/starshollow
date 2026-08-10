@@ -36,7 +36,7 @@
     "part_group_name": "Bumpers",
     "drag_points": [
       {
-        "x": 370.69708,
+        "x": 391.0694,
         "y": 553.9346,
         "z": 0.0,
         "smooth": false,
@@ -49,7 +49,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 370.69708,
+        "x": 391.0694,
         "y": 691.79443,
         "z": 0.0,
         "smooth": false,
@@ -62,7 +62,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 508.55676,
+        "x": 528.9291,
         "y": 691.79443,
         "z": 0.0,
         "smooth": false,
@@ -75,7 +75,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 508.55676,
+        "x": 528.9291,
         "y": 553.9346,
         "z": 0.0,
         "smooth": false,
