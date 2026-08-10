@@ -40,7 +40,7 @@ Dim PlungerHasBall : PlungerHasBall = False
 Dim GILightNames : GILightNames = Array( _
     "gi006","gi007","gi008","gi009","gi010","gi011","gi012","gi013","gi014", _
     "gi015","gi016","gi017","gi018","gi019","gi020","gi021","gi022","gi023", _
-    "gi024","gi050")
+    "gi024", "gi026","gi050")
 
 Const GIColor2700k      = "ffA957"   ' warm white, GI during play
 Const GIColorAttract    = "ff8c3a"   ' attract, bright phase
