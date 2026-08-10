@@ -3238,11 +3238,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Wall.Wall021.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Wall.Wall022.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3359,6 +3354,11 @@
   },
   {
     "file_name": "Primitive.Primitive056.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall025.json",
     "is_locked": false,
     "editor_layer": 0
   }
