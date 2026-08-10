@@ -69,7 +69,7 @@
       {
         "x": 756.48035,
         "y": 267.80566,
-        "z": 0.0,
+        "z": 14.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
@@ -80,7 +80,7 @@
       {
         "x": 784.9279,
         "y": 237.28914,
-        "z": 0.0,
+        "z": 7.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,

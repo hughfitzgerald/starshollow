@@ -1,0 +1,42 @@
+{
+  "Flipper": {
+    "center": {
+      "x": 1019.9533,
+      "y": 969.20337
+    },
+    "base_radius": 25.0,
+    "end_radius": 25.0,
+    "flipper_radius_max": 1300.0,
+    "return": 0.058,
+    "start_angle": 54.0,
+    "end_angle": 70.0,
+    "override_physics": 0,
+    "mass": 1.0,
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "surface": "",
+    "material": "",
+    "name": "Flipper001",
+    "rubber_material": "",
+    "rubber_thickness_int": 7,
+    "rubber_thickness": 7.0,
+    "rubber_height_int": 19,
+    "rubber_height": 19.0,
+    "rubber_width_int": 24,
+    "rubber_width": 24.0,
+    "strength": 2200.0,
+    "elasticity": 0.8,
+    "elasticity_falloff": 0.43,
+    "friction": 0.6,
+    "ramp_up": 3.0,
+    "scatter": 0.0,
+    "torque_damping": 0.75,
+    "torque_damping_angle": 6.0,
+    "flipper_radius_min": 0.0,
+    "is_visible": false,
+    "is_enabled": false,
+    "height": 50.0,
+    "image": "",
+    "is_reflection_enabled": false
+  }
+}

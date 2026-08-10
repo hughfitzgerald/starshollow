@@ -3336,5 +3336,30 @@
     "file_name": "Wall.Wall024.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Flipper.Flipper001.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive059.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive060.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive062.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.Primitive056.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]

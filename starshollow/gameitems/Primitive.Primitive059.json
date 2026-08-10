@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 617.06,
-      "y": 717.35425,
+      "x": 728.97424,
+      "y": 495.67435,
       "z": 25.0
     },
     "size": {
@@ -24,7 +24,7 @@
     "image": "",
     "normal_map": "",
     "sides": 16,
-    "name": "Primitive054",
+    "name": "Primitive059",
     "material": "zCol_Sleeves",
     "side_color": "#969696",
     "is_visible": false,
