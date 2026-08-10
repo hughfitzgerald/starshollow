@@ -1,19 +1,19 @@
 {
   "Kicker": {
     "center": {
-      "x": 679.51514,
-      "y": 226.71126
+      "x": 685.57336,
+      "y": 221.12515
     },
-    "radius": 25.0,
+    "radius": 35.0,
     "is_timer_enabled": false,
     "timer_interval": 100,
     "material": "",
     "surface": "",
     "is_enabled": true,
     "name": "s_HiddenUpperRightKicker",
-    "kicker_type": "williams",
+    "kicker_type": "invisible",
     "scatter": 0.0,
-    "hit_accuracy": 0.5,
+    "hit_accuracy": 1.0,
     "hit_height": 35.0,
     "orientation": 0.0,
     "fall_through": false,

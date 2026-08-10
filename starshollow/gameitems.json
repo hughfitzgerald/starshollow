@@ -3333,11 +3333,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Flipper.Flipper001.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Primitive.Primitive059.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3359,6 +3354,11 @@
   },
   {
     "file_name": "Wall.Wall025.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.right_ramp_entrance_trigger_platform.json",
     "is_locked": false,
     "editor_layer": 0
   }
