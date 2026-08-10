@@ -36,6 +36,14 @@ Sub DropTargetKickerEjectCallback(ball)
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
+Sub HiddenUpperRightKickerEjectCallback(ball)
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
+	SoundSaucerKick 1, s_HiddenUpperRightKicker
+	s_HiddenUpperRightKicker.Kick 134, 10
+	' KickBall ball, -19, 50, 5, 25
+End Sub
+
 Sub PlungerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	KickBall ball, 0, 45, 0, 0
