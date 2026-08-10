@@ -101,7 +101,8 @@
       "gi008",
       "gi007",
       "gi006",
-      "gi050"
+      "gi050",
+      "gi026"
     ],
     "fire_events": false,
     "stop_single_events": false,
@@ -246,7 +247,8 @@
       "gi016",
       "gi015",
       "gi014",
-      "gi013"
+      "gi013",
+      "gi026"
     ],
     "fire_events": false,
     "stop_single_events": false,
@@ -370,7 +372,8 @@
       "l34",
       "l26",
       "l7",
-      "l57"
+      "l57",
+      "gi026"
     ],
     "fire_events": false,
     "stop_single_events": false,

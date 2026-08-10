@@ -550,13 +550,6 @@
     "editor_layer_visibility": true
   },
   {
-    "file_name": "Ramp.Ramp9.json",
-    "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": true
-  },
-  {
     "file_name": "Primitive.Primitive27.json",
     "is_locked": true,
     "editor_layer": 0,
@@ -1916,21 +1909,21 @@
   },
   {
     "file_name": "Light.gi010.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 8,
     "editor_layer_name": "GI",
     "editor_layer_visibility": true
   },
   {
     "file_name": "Light.gi011.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 8,
     "editor_layer_name": "GI",
     "editor_layer_visibility": true
   },
   {
     "file_name": "Light.gi012.json",
-    "is_locked": true,
+    "is_locked": false,
     "editor_layer": 8,
     "editor_layer_name": "GI",
     "editor_layer_visibility": true
@@ -2091,11 +2084,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.Ramp005.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Primitive.Primitive023.json",
     "is_locked": false,
     "editor_layer": 0
@@ -2152,11 +2140,6 @@
   },
   {
     "file_name": "Primitive.Primitive030.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Ramp.Ramp006.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2694,11 +2677,6 @@
   },
   {
     "file_name": "Primitive.Primitive020.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Ramp.Ramp002.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3359,6 +3337,11 @@
   },
   {
     "file_name": "Wall.right_ramp_entrance_trigger_platform.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.gi026.json",
     "is_locked": false,
     "editor_layer": 0
   }
