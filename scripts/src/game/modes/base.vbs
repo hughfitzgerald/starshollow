@@ -99,25 +99,66 @@ Sub CreateBaseMode()
 
             ' The two bonus-lane rollovers latch their inserts.
             ' s_sw8 (was sw8) -> l8, s_sw9 (was sw9) -> l9
-            With .EventName("s_sw7_active")
-                With .Lights("l7")
-                    .Color = BonusLaneColor
-                    .Fade  = 60
-                End With
-            End With
-            With .EventName("s_sw8_active")
-                With .Lights("l8")
-                    .Color = BonusLaneColor
-                    .Fade  = 60
-                End With
-            End With
-            With .EventName("s_sw9_active")
-                With .Lights("l9")
-                    .Color = BonusLaneColor
-                    .Fade  = 60
-                End With
-            End With
+        '     With .EventName("s_sw7_active")
+        '         With .Lights("l7")
+        '             .Color = BonusLaneColor
+        '             .Fade  = 60
+        '         End With
+        '     End With
+        '     With .EventName("s_sw8_active")
+        '         With .Lights("l8")
+        '             .Color = BonusLaneColor
+        '             .Fade  = 60
+        '         End With
+        '     End With
+        '     With .EventName("s_sw9_active")
+        '         With .Lights("l9")
+        '             .Color = BonusLaneColor
+        '             .Fade  = 60
+        '         End With
+        '     End With
+        End With
 
+        'Define our shots
+        For x = 7 to 9
+            With .Shots("bonus_lane_"&x)
+                .Switch = "s_sw"&x
+                .Profile = "qualify_multiplier"
+                With .Tokens()
+                    .Add "lights", "l"&x
+                End With
+                With .ControlEvents()
+                    .Events = Array("complete_qualify_multiplier")
+                    .State = 1
+                End With
+            End With
+        Next
+
+        'Define a shot profile with two states (off/on)
+        ' NOTE: must be defined before the shot group below - ShotGroups.Shots
+        ' resolves the group's RotationPattern immediately from the first
+        ' shot's profile, so the profile has to already exist in
+        ' Glf_ShotProfiles by then.
+        With .ShotProfiles("qualify_multiplier")
+            With .States("unlit")
+                .Show = "off"
+            End With
+            With .States("on")
+                .Show = "flicker_color_on"
+                .Speed = 4
+                With .Tokens()
+                    .Add "color", BonusLaneColor
+                End With
+            End With
+        End With
+
+
+        ' Bonus multiplier shot group
+        With .ShotGroups("qualify_multiplier_group")
+            .Shots = Array("bonus_lane_7", "bonus_lane_8", "bonus_lane_9")
+            .RotateLeftEvents = Array("s_right_flipper_active")
+            .RotateRightEvents = Array("s_left_flipper_active")
+            .RestartEvents = Array("restart_qualify_multiplier")
         End With
 
 
