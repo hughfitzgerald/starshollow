@@ -1,8 +1,8 @@
 {
   "Light": {
     "center": {
-      "x": 79.898155,
-      "y": 1224.958
+      "x": 106.1329,
+      "y": 1307.4622
     },
     "height": 1.0,
     "falloff_radius": 30.0,
@@ -38,8 +38,8 @@
     "part_group_name": "Insert_Lights",
     "drag_points": [
       {
-        "x": 67.35386,
-        "y": 1203.5442,
+        "x": 93.5886,
+        "y": 1286.0483,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -51,8 +51,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 60.31238,
-        "y": 1205.3452,
+        "x": 86.54712,
+        "y": 1287.8494,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -64,8 +64,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 58.403503,
-        "y": 1212.0623,
+        "x": 84.638245,
+        "y": 1294.5664,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -77,8 +77,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 58.58211,
-        "y": 1238.3529,
+        "x": 84.81686,
+        "y": 1320.857,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -90,8 +90,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 59.89223,
-        "y": 1243.9386,
+        "x": 86.126976,
+        "y": 1326.4427,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -103,8 +103,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 65.521835,
-        "y": 1245.7898,
+        "x": 91.75658,
+        "y": 1328.294,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -116,8 +116,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 93.536224,
-        "y": 1245.9227,
+        "x": 119.770966,
+        "y": 1328.4269,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -129,8 +129,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 99.341705,
-        "y": 1244.1455,
+        "x": 125.57645,
+        "y": 1326.6497,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -142,8 +142,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 100.852104,
-        "y": 1238.1245,
+        "x": 127.086845,
+        "y": 1320.6287,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -155,8 +155,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 100.622284,
-        "y": 1211.8679,
+        "x": 126.857025,
+        "y": 1294.3721,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -168,8 +168,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 99.483894,
-        "y": 1205.3455,
+        "x": 125.718636,
+        "y": 1287.8496,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -181,8 +181,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 92.07211,
-        "y": 1203.6768,
+        "x": 118.306854,
+        "y": 1286.1809,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

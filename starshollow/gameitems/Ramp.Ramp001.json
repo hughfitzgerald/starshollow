@@ -47,7 +47,7 @@
       {
         "x": 695.1163,
         "y": 602.26587,
-        "z": 10.0,
+        "z": 25.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
@@ -56,8 +56,8 @@
         "editor_layer": 0
       },
       {
-        "x": 747.1898,
-        "y": 359.0818,
+        "x": 748.22327,
+        "y": 361.56482,
         "z": 31.0,
         "smooth": true,
         "is_slingshot": false,
