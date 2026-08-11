@@ -173,6 +173,7 @@ Sub ConfigureGlfDevices()
     ' Order here does not matter - each mode registers its own start/stop
     ' events and GLF sorts them by priority at dispatch time.
     CreateAttractMode()      ' priority 100
+    CreateBasementMode()      ' priority 100
     CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
     CreateTiltMode()         ' priority 10000
@@ -181,8 +182,6 @@ Sub ConfigureGlfDevices()
     CreateExtraBallMode()    ' priority 510
     CreateRampshotsMode()    ' priority 660
     CreateMultiballMode()    ' priority 1000
-
-    ' Your nine feature modes go here later, at priority 700+.
 
 
     '*********** DEVICES ***********
