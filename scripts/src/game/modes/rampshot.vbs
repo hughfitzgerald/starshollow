@@ -38,7 +38,6 @@ Sub CreateRampshotsMode()
         ' End With
 
 
-        'Define the inlane shots
         With .Shots("ramp")
             .Profile = "ramp"   'defined below
             With .ControlEvents()
@@ -52,7 +51,6 @@ Sub CreateRampshotsMode()
         End With
 
 
-        'Define inlane shot profile with three states (0 = unlit, 1 = ready, 2 = hit)
         With .ShotProfiles("ramp")
             With .States("unlit")
                 .Key = "key_ramp_unlit"
