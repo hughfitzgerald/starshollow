@@ -65,8 +65,7 @@
     "items": [
       "Wall2",
       "Wall20",
-      "Wall37",
-      "Ramp9"
+      "Wall37"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -373,7 +372,9 @@
       "l26",
       "l7",
       "l57",
-      "gi026"
+      "gi026",
+      "l58",
+      "l60"
     ],
     "fire_events": false,
     "stop_single_events": false,
