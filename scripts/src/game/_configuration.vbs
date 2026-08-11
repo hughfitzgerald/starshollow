@@ -181,6 +181,7 @@ Sub ConfigureGlfDevices()
     CreateSkillshotsMode()   ' priority 400
     CreateExtraBallMode()    ' priority 510
     CreateRampshotsMode()    ' priority 660
+    CreateDanceMarathonMode() ' priority 670
     CreateMultiballMode()    ' priority 1000
 
 

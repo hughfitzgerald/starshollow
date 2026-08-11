@@ -15,8 +15,8 @@ Sub CreateRampshotsMode()
     With CreateGlfMode("rampshot", 660)
 
         'Define the events that start and stop this mode
-        .StartEvents = Array("ball_started","multiball_mb_ended")
-        .StopEvents = Array("mode_base_stopping","start_multiball_delay")
+        .StartEvents = Array("ball_started","multiball_mb_ended", "mode_dance_marathon_stopping")
+        .StopEvents = Array("mode_base_stopping","start_multiball_delay", "mode_dance_marathon_started")
 
 
         'The event player will respond to events during this mode
@@ -24,7 +24,7 @@ Sub CreateRampshotsMode()
 
             'Handle successful ramp hits
             .Add "s_complete_right_ramp_active", Array("light_ramp")
-            .Add "s_complete_right_ramp_active{current_player.shot_ramp == 1}", Array("score_200000","add_bonus","play_sfx_alert1")
+            ' .Add "s_complete_right_ramp_active{current_player.shot_ramp == 1}", Array("score_200000","add_bonus","play_sfx_alert1")
 
         End With
 
@@ -39,7 +39,7 @@ Sub CreateRampshotsMode()
 
 
         With .Shots("ramp")
-            .Profile = "ramp"   'defined below
+            .Profile = "ramp_profile"   'defined below
             With .ControlEvents()
                 .Events = Array("timer_ramp_complete","mode_rampshot_started")
                 .State = 0
@@ -51,7 +51,7 @@ Sub CreateRampshotsMode()
         End With
 
 
-        With .ShotProfiles("ramp")
+        With .ShotProfiles("ramp_profile")
             With .States("unlit")
                 .Key = "key_ramp_unlit"
                 .Show = "off"
