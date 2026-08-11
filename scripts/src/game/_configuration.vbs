@@ -173,6 +173,7 @@ Sub ConfigureGlfDevices()
     ' Order here does not matter - each mode registers its own start/stop
     ' events and GLF sorts them by priority at dispatch time.
     CreateAttractMode()      ' priority 100
+    CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
     CreateTiltMode()         ' priority 10000
     CreateScoreMode()        ' priority 2000
@@ -419,7 +420,9 @@ Sub CreateSounds()
     AddMusic       "mus_happy",  51, -1
     AddMusic       "mus_married",  217, -1
     AddMusic       "mus_go",  245, -1
-    AddMusic       "mus_sad",  93, -1
+    AddMusic       "mus_sad",  93, 0
+
+    AddCallout     "voc_poodles",  3
     
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>

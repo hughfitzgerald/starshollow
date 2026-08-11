@@ -2554,5 +2554,14 @@
     "volume": 0,
     "balance": 0,
     "output_target": "backglass"
+  },
+  {
+    "name": "voc_poodles",
+    "path": "/Users/stephenjones/code/starshollow/callouts/oy-with-the-poodles-already-gilmore-girls.mp3",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
   }
 ]

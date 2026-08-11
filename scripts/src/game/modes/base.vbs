@@ -82,6 +82,10 @@ Sub CreateBaseMode()
                 .Sound = "mus_go"
                 .Action = "stop"
             End With
+            With .EventName("ball_ended")
+                .Key = "key_voc_poodles"
+                .Sound = "voc_poodles"
+            End With
         End With
 
 

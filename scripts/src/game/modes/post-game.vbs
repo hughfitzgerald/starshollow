@@ -2,7 +2,7 @@
 Sub CreatePostGameMode()
     Dim x
 
-    With CreateGlfMode("post_game", 180)
+    With CreateGlfMode("post_game", 105)
         .StartEvents = Array("game_ended","test_post_game")
         .StopEvents = Array("stop_post_game_mode",GLF_BALL_STARTED)
 
@@ -16,7 +16,6 @@ Sub CreatePostGameMode()
             With .EventName("mode_post_game_started")
                 .Key = "key_mus_sad"
                 .Sound = "mus_sad"
-                .EventsWhenStopped = Array("mus_sad_stopped")
             End With
             With .EventName("mode_post_game_stopped")
                 .Key = "key_mus_sad"
