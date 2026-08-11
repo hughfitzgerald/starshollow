@@ -30,7 +30,7 @@ Sub CreateDanceMarathonMode()
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "dm_reset_shots"
+                .EventName = "dm_shots_off"
                 .Action = "reset"
             End With
             With .ControlEvents
@@ -42,8 +42,8 @@ Sub CreateDanceMarathonMode()
         With .EventPlayer()
             .Add "mode_dance_marathon_started", Array("dm_start_shots")
 
-            .Add "timer_dm_shot_complete", Array("dm_shots_off","dm_reset_shots")
-            .Add "dm_reset_shots", Array("dm_start_shots")
+            .Add "timer_dm_shot_complete", Array("dm_reset_shots")
+            .Add "dm_reset_shots", Array("dm_shots_off.100","dm_start_shots.50")
 
             .Add "dm_left_orbit_lit_hit", Array("dm_shot_hit")
             .Add "dm_right_orbit_lit_hit", Array("dm_shot_hit")
@@ -167,6 +167,11 @@ Sub CreateDanceMarathonMode()
                 .Target = "dm_two_shots_lit"
                 .Events = Array("dm_shot_hit")
                 .EventsWhenTransitioning = Array("dm_second_shot_hit","dm_reset_shots")
+            End With
+            With .Transitions()
+                .Source = Array("dm_two_shots_lit","dm_one_shot_lit")
+                .Target = "dm_unlit"
+                .Events = Array("mode_dance_marathon_stopping")
             End With
         End With
 
