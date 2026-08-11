@@ -322,8 +322,8 @@ Sub ConfigureGlfDevices()
     ' flipper keys now, so bind to the virtual flipper switch events.
     With CreateGlfDiverter("ramp_diverter")
         .EnableEvents = Array("ball_started", "reset_complete")
-        .ActivateEvents = Array("lock_lit")
-        .DeactivateEvents = Array("lock_unlit", "ball_ended")
+        .ActivateEvents = Array("open_ramp_diverter")
+        .DeactivateEvents = Array("close_ramp_diverter")
         .ActionCallback = "RampDiverterAction"
     End With
 

@@ -23,6 +23,8 @@ Sub CreateMultiballMode()
             .Debug = True
 
             .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
+            .Add "lock_lit", Array("open_ramp_diverter")
+            .Add "lock_unlit", Array("close_ramp_diverter")
         End With
 
         With .MultiballLocks("multiball_lock")
