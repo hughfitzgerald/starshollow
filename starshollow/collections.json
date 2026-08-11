@@ -147,7 +147,9 @@
       "s_LeftInlane",
       "s_RightInlane",
       "s_sw8",
-      "s_sw9"
+      "s_sw9",
+      "s_RightOutlane",
+      "s_LeftOutlane"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -303,7 +305,9 @@
       "s_subway_trough_kicker",
       "s_sw7",
       "s_DropTargetKicker",
-      "s_HiddenUpperRightKicker"
+      "s_HiddenUpperRightKicker",
+      "s_RightOutlane",
+      "s_LeftOutlane"
     ],
     "fire_events": false,
     "stop_single_events": false,

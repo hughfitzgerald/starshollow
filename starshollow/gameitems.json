@@ -3404,5 +3404,15 @@
     "file_name": "Light.l61.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_LeftOutlane.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_RightOutlane.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]
