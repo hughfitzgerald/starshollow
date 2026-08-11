@@ -2518,5 +2518,41 @@
     "volume": 0,
     "balance": 0,
     "output_target": "table"
+  },
+  {
+    "name": "mus_happy",
+    "path": "/Users/stephenjones/code/starshollow/music/starshollow/01 - Sam Phillips - Happy.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "mus_married",
+    "path": "/Users/stephenjones/code/starshollow/music/starshollow/02 - Sam Phillips - Getting Married (Suite).ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "mus_sad",
+    "path": "/Users/stephenjones/code/starshollow/music/starshollow/12 - Sam Phillips - Sad Dog.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "mus_go",
+    "path": "/Users/stephenjones/code/starshollow/music/starshollow/05 - Sam Phillips - Go (Suite).ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
   }
 ]

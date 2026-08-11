@@ -416,7 +416,11 @@ End Function
 '======================================================
 
 Sub CreateSounds()
-    ' AddMusic       "mus_name", <seconds>, -1
+    AddMusic       "mus_happy",  51, -1
+    AddMusic       "mus_married",  217, -1
+    AddMusic       "mus_go",  245, -1
+    AddMusic       "mus_sad",  93, -1
+    
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>
     ' Durations must be exact - GLF sequences on them.

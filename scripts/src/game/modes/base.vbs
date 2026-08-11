@@ -30,7 +30,8 @@ Sub CreateBaseMode()
         With .EventPlayer()
 
             ' Kill the attract mode as soon as a ball starts
-            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started")
+            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "play_mus_go")
+            .Add "mode_base_stopped", Array("stop_mus_go")
 
             ' The ball leaving the plunger lane for the first time is what
             ' actually starts play - this is what arms the ball save.
@@ -68,6 +69,18 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 0
                 End With
+            End With
+        End With
+
+        With .SoundPlayer()
+            With .EventName("mode_base_started")
+                .Key = "key_mus_go"
+                .Sound = "mus_go"
+            End With
+            With .EventName("mode_base_stopped")
+                .Key = "key_mus_go"
+                .Sound = "mus_go"
+                .Action = "stop"
             End With
         End With
 

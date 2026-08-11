@@ -27,7 +27,7 @@ Sub CreateAttractMode()
 
     With CreateGlfMode("attract", 100)
 
-        .StartEvents = Array("reset_complete", "game_ended")
+        .StartEvents = Array("start_attract_mode","reset_complete")
         .StopEvents  = Array("game_started", "stop_attract_mode")
 
         ' Slow GI pulse so the table reads as "on" but idle.
@@ -61,6 +61,8 @@ Sub CreateAttractMode()
         End With
 
         With .EventPlayer()
+            .Add "mode_attract_started", Array("play_mus_married")
+            .Add "mode_attract_stopped", Array("stop_mus_married")
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", Array("attract_gi_dim")
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", Array("attract_gi_bright")
         End With
@@ -76,6 +78,22 @@ Sub CreateAttractMode()
             With .ControlEvents()
                 .EventName = "timer_attract_pulse_complete"
                 .Action = "restart"
+            End With
+        End With
+
+        ' Plays sounds during this mode
+        With .SoundPlayer()
+
+            'Music
+
+            With .EventName("play_mus_married")
+                .Key = "key_mus_married"
+                .Sound = "mus_married"
+            End With
+            With .EventName("stop_mus_married")
+                .Key = "key_mus_married"
+                .Sound = "mus_married"
+                .Action = "stop"
             End With
         End With
 
