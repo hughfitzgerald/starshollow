@@ -3,9 +3,8 @@
 '
 '  - TODO: describe the mode
 
-
-Const DanceMarathonModeTime = 60   'seconds
-Const DanceMarathonShotTime = 15   'seconds
+Const DanceMarathonShotTime = 5   'seconds
+Const DanceMarathonModeNumShots = 3   'how long does the mode last in terms of numbers of shots
 
 Sub CreateDanceMarathonMode()
     Dim x
@@ -18,7 +17,7 @@ Sub CreateDanceMarathonMode()
         With .Timers("dm_mode")
             .StartRunning = True
             .Direction = "down"      ' Count down
-            .StartValue = DanceMarathonModeTime
+            .StartValue = DanceMarathonShotTime * DanceMarathonModeNumShots
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
         End With
@@ -43,7 +42,7 @@ Sub CreateDanceMarathonMode()
             .Add "mode_dance_marathon_started", Array("dm_start_shots")
 
             .Add "timer_dm_shot_complete", Array("dm_reset_shots")
-            .Add "dm_reset_shots", Array("dm_shots_off.100","dm_start_shots.50")
+            .Add "dm_reset_shots", Array("dm_shots_off","dm_start_shots")
 
             .Add "dm_left_orbit_lit_hit", Array("dm_shot_hit")
             .Add "dm_right_orbit_lit_hit", Array("dm_shot_hit")

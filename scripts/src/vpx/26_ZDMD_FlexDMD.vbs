@@ -182,6 +182,10 @@ Sub Flex_Init
 	AddPinEventListener "ss_achieved", "dmd_ss_hit", "ShowSkillshotHit", 100, Null
 	AddPinEventListener "eb_now_lit", "dmd_eb_lit", "ShowEBLit", 100, Null
 	AddPinEventListener "eb_achieved", "dmd_eb_achieved", "ShowEBAchieved", 100, Null
+	AddPinEventListener "mode_dance_marathon_started", "dmd_dm_start", "ShowDMStart", 100, Null
+	AddPinEventListener "mode_dance_marathon_stopped", "dmd_dm_end", "ShowDMEnd", 100, Null
+	AddPinEventListener "timer_dm_mode_tick", "dmd_dm_tick", "ShowDMTick", 100, Null
+
 End Sub
 
 '--------------------------------------------
@@ -363,4 +367,18 @@ End Function
 
 Function ShowEBAchieved(args)
 	DMDBigText "EXTRA BALL",77,1
+End Function
+
+Function ShowDMStart(args)
+	DMDBigText "DANCE MARATHON",77,1
+End Function
+
+Function ShowDMEnd(args)
+	DMDBigText "DANCE MARATHON COMPLETE",77,1
+End Function
+
+Dim TimerDM: TimerDM = 0
+Function ShowDMTick(args)
+	TimerDM = TimerDM + 1
+	DMDBigText "TICK " & TimerDM,77,1
 End Function
