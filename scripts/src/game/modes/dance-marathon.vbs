@@ -66,7 +66,7 @@ Sub CreateDanceMarathonMode()
                 .Add "lights", "l51"
             End With
             With .ControlEvents()
-                .Events = Array("s_left_orbit_active","dm_shots_off")
+                .Events = Array("dm_left_orbit_lit_hit","dm_shots_off")
                 .State = 0
             End With
             With .ControlEvents()
@@ -82,7 +82,7 @@ Sub CreateDanceMarathonMode()
                 .Add "lights", "l52"
             End With
             With .ControlEvents()
-                .Events = Array("s_right_orbit_active","dm_shots_off")
+                .Events = Array("dm_right_orbit_lit_hit","dm_shots_off")
                 .State = 0
             End With
             With .ControlEvents()
@@ -98,7 +98,7 @@ Sub CreateDanceMarathonMode()
                 .Add "lights", "l55"
             End With
             With .ControlEvents()
-                .Events = Array("s_complete_right_ramp_active","dm_shots_off")
+                .Events = Array("dm_right_ramp_lit_hit","dm_shots_off")
                 .State = 0
             End With
             With .ControlEvents()
@@ -114,7 +114,7 @@ Sub CreateDanceMarathonMode()
                 .Add "lights", "l53"
             End With
             With .ControlEvents()
-                .Events = Array("s_complete_left_ramp_active","dm_shots_off")
+                .Events = Array("dm_left_ramp_lit_hit","dm_shots_off")
                 .State = 0
             End With
             With .ControlEvents()
@@ -124,6 +124,7 @@ Sub CreateDanceMarathonMode()
         End With
 
         With .ShotProfiles("dm_profile")
+            .AdvanceOnHit = False
             With .States("unlit")
                 .Key = "key_dm_unlit"
                 .Show = "off"
