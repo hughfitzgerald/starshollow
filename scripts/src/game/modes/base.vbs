@@ -199,7 +199,48 @@ Sub CreateBaseMode()
             .Shots = Array("bonus_lane_7", "bonus_lane_8", "bonus_lane_9")
             .RotateLeftEvents = Array("s_right_flipper_active")
             .RotateRightEvents = Array("s_left_flipper_active")
-            .RestartEvents = Array("restart_qualify_multiplier")
+            .RestartEvents = Array("qualify_multiplier_group_on_complete")
+            .DisableRotationEvents = Array("bonus_multiplier_maxed")
+        End With
+
+        ' Bonus multiplier state machine
+        With .StateMachines("bonus_multiplier_states")
+            .StartingState = "1x"
+            .PersistState = True
+            With .States("1x")
+                .Label = "1x"
+            End With
+            With .States("2x")
+                .Label = "2x"
+            End With
+            With .States("3x")
+                .Label = "3x"
+            End With
+            With .States("4x")
+                .Label = "4x"
+            End With
+            With .States("5x")
+                .Label = "5x"
+            End With
+            With .Transitions()
+                .Source = Array("1x")
+                .Target = "2x"
+                .Events = Array("complete_qualify_multiplier")
+            End With
+            
+            For x = 1 to 3
+                With .Transitions() 
+                    .Source = Array(x & "x")
+                    .Target = (x+1) & "x"
+                    .Events = Array("complete_qualify_multiplier")
+                End With
+            Next
+            With .Transitions() 
+                .Source = Array(x & "x")
+                .Target = (x+1) & "x"
+                .Events = Array("complete_qualify_multiplier")
+                .EventsWhenTransitioning = Array("bonus_multiplier_maxed")
+            End With
         End With
 
 
