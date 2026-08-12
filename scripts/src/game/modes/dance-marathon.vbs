@@ -3,8 +3,8 @@
 '
 '  - TODO: describe the mode
 
-Const DanceMarathonShotTime = 20   'seconds
-Const DanceMarathonModeNumShots = 6   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
+Const DanceMarathonShotTime = 5   'seconds
+Const DanceMarathonModeNumShots = 1   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
 
 ' A single dance-marathon shot: which switch/light it uses, and which
 ' random-event group (e.g. "dm_orbits") lights it.
@@ -49,6 +49,33 @@ Sub CreateDanceMarathonMode()
         .StartEvents = Array("s_VUK1_active")
         .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping")
 
+        With .EventPlayer()
+            .Add "mode_dance_marathon_started", Array("dm_start_shots", "base_music_stop")
+            .Add "mode_dance_marathon_stopping", Array("base_music_start", "dm_shots_off")
+
+            .Add "timer_dm_shot_complete", Array("dm_reset_shots")
+            .Add "dm_reset_shots", Array("dm_shots_off","dm_start_shots")
+
+            For Each shot In dm_shots
+                .Add shot.Name & "_lit_hit", Array("dm_shot_hit")
+            Next
+
+            .Add "dm_first_shot_hit", Array("score_20000")
+            .Add "dm_second_shot_hit", Array("score_40000")
+        End With
+
+        With .SoundPlayer()
+            With .EventName("mode_dance_marathon_started")
+                .Key = "key_mus_sing"
+                .Sound = "mus_sing"
+            End With
+            With .EventName("mode_dance_marathon_stopping")
+                .Key = "key_mus_sing"
+                .Sound = "mus_sing"
+                .Action = "stop"
+            End With
+        End With
+
         With .Timers("dm_mode")
             .StartRunning = True
             .Direction = "down"      ' Count down
@@ -71,17 +98,6 @@ Sub CreateDanceMarathonMode()
                 .EventName = "dm_start_shots"
                 .Action = "start"
             End With
-        End With
-
-        With .EventPlayer()
-            .Add "mode_dance_marathon_started", Array("dm_start_shots")
-
-            .Add "timer_dm_shot_complete", Array("dm_reset_shots")
-            .Add "dm_reset_shots", Array("dm_shots_off","dm_start_shots")
-
-            For Each shot In dm_shots
-                .Add shot.Name & "_lit_hit", Array("dm_shot_hit")
-            Next
         End With
 
         With .RandomEventPlayer()
@@ -160,7 +176,7 @@ Sub CreateDanceMarathonMode()
             With .Transitions()
                 .Source = Array("dm_two_shots_lit","dm_one_shot_lit")
                 .Target = "dm_unlit"
-                .Events = Array("mode_dance_marathon_stopping")
+                .Events = Array("dm_shots_off")
             End With
         End With
 

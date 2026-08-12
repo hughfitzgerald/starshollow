@@ -421,6 +421,7 @@ Sub CreateSounds()
     AddMusic       "mus_married",  217, -1
     AddMusic       "mus_go",  245, -1
     AddMusic       "mus_sad",  93, 0
+    AddMusic       "mus_sing",  305, -1
 
     AddCallout     "voc_poodles",  3
     

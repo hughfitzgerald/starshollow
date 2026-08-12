@@ -30,7 +30,8 @@ Sub CreateBaseMode()
         With .EventPlayer()
 
             ' Kill the attract mode as soon as a ball starts
-            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started")
+            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start")
+            .Add "mode_base_stopped", Array("base_music_stop")
 
             .Add "s_RightOutlane_active", Array("outlane_drain")
             .Add "s_LeftOutlane_active", Array("outlane_drain")
@@ -52,8 +53,10 @@ Sub CreateBaseMode()
             .Add "s_RightSlingShot_active", Array("score_5000")
 
             'Spinners
-            .Add "s_left_spinner_active", Array("score_3333")
-            .Add "s_right_spinner_active", Array("score_3333")
+            .Add "s_left_spinner_active", Array("score_3000")
+            .Add "s_right_spinner_active", Array("score_3000")
+
+            .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
 
         End With
 
@@ -74,14 +77,33 @@ Sub CreateBaseMode()
             End With
         End With
 
+        '--- Sound ---------------------------------------------------------
+        With .RandomEventPlayer()
+            With .EventName("base_music_start")
+                .Add "base_music_1_start", 1
+                .Add "base_music_2_start", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+        End With
+
         With .SoundPlayer()
-            With .EventName("mode_base_started")
+            With .EventName("base_music_1_start")
                 .Key = "key_mus_go"
                 .Sound = "mus_go"
             End With
-            With .EventName("mode_base_stopped")
+            With .EventName("base_music_1_stop")
                 .Key = "key_mus_go"
                 .Sound = "mus_go"
+                .Action = "stop"
+            End With
+            With .EventName("base_music_2_start")
+                .Key = "key_mus_happy"
+                .Sound = "mus_happy"
+            End With
+            With .EventName("base_music_2_stop")
+                .Key = "key_mus_happy"
+                .Sound = "mus_happy"
                 .Action = "stop"
             End With
             With .EventName("outlane_drain")
