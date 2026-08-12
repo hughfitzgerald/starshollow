@@ -307,7 +307,8 @@
       "s_DropTargetKicker",
       "s_HiddenUpperRightKicker",
       "s_RightOutlane",
-      "s_LeftOutlane"
+      "s_LeftOutlane",
+      "s_captive_ball"
     ],
     "fire_events": false,
     "stop_single_events": false,
