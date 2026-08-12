@@ -3,8 +3,8 @@
 '
 '  - TODO: describe the mode
 
-Const DanceMarathonShotTime = 5   'seconds
-Const DanceMarathonModeNumShots = 3   'how long does the mode last in terms of numbers of shots
+Const DanceMarathonShotTime = 20   'seconds
+Const DanceMarathonModeNumShots = 6   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
 
 Sub CreateDanceMarathonMode()
     Dim x
