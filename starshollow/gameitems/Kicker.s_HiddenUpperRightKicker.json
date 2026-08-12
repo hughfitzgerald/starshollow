@@ -18,6 +18,6 @@
     "orientation": 0.0,
     "fall_through": false,
     "legacy_mode": true,
-    "part_group_name": "Collidable_Misc"
+    "part_group_name": "Targets_Layer"
   }
 }
