@@ -28,7 +28,7 @@ Sub CreateDanceMarathonMode()
     Dim dm_shots, groupSeen, shot, g
 
     dm_shots = Array( _
-        NewDmShot("dm_captive",  "s_ST19",                        "l57", "dm_captive_spin"), _
+        NewDmShot("dm_captive",  "s_captive_ball",                "l57", "dm_captive_spin"), _
         NewDmShot("dm_right_spinner", "s_right_spinner",          "l52", "dm_captive_spin"), _
         NewDmShot("dm_hidden_kicker", "s_HiddenUpperRightKicker", "l61", "dm_kickers"), _
         NewDmShot("dm_drop_target_kicker", "s_DropTargetKicker",  "l60", "dm_kickers"), _
