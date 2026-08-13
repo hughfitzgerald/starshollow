@@ -66,12 +66,12 @@ Sub CreateDanceMarathonMode()
 
         With .SoundPlayer()
             With .EventName("mode_dance_marathon_started")
-                .Key = "key_mus_sing"
-                .Sound = "mus_sing"
+                .Key = "key_mus_dm"
+                .Sound = "mus_dm"
             End With
             With .EventName("mode_dance_marathon_stopping")
-                .Key = "key_mus_sing"
-                .Sound = "mus_sing"
+                .Key = "key_mus_dm"
+                .Sound = "mus_dm"
                 .Action = "stop"
             End With
         End With
