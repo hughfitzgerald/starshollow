@@ -50,8 +50,10 @@ Sub CreateDanceMarathonMode()
         .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping")
 
         With .EventPlayer()
-            .Add "mode_dance_marathon_started", Array("dm_start_shots", "base_music_stop")
+            .Add "mode_dance_marathon_started", Array("base_music_stop")
             .Add "mode_dance_marathon_stopping", Array("base_music_start", "dm_shots_off")
+
+            .Add "timer_dm_mode_delay_complete", Array("eject_vuk", "dm_start_shots")
 
             .Add "timer_dm_shot_complete", Array("dm_reset_shots")
             .Add "dm_reset_shots", Array("dm_shots_off","dm_start_shots")
@@ -76,12 +78,24 @@ Sub CreateDanceMarathonMode()
             End With
         End With
 
-        With .Timers("dm_mode")
+        With .Timers("dm_mode_delay")
             .StartRunning = True
+            .Direction = "down"
+            .StartValue = 14        ' 14 seconds until the clip of Taylor is done and we can start the mode
+            .EndValue = 0
+            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+        End With
+
+        With .Timers("dm_mode")
+            .StartRunning = False
             .Direction = "down"      ' Count down
             .StartValue = DanceMarathonShotTime * DanceMarathonModeNumShots
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "dm_start_shots"
+                .Action = "start"
+            End With
         End With
 
         With .Timers("dm_shot")

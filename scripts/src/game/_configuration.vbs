@@ -272,7 +272,7 @@ Sub ConfigureGlfDevices()
         .BallSwitches = Array("s_VUK1")
         .Debug = True
         .AutoFireOnUnexpectedBall = False
-        .EjectAllEvents = Array("s_VUK1_active") ' TODO: Change this to the event that means we're done with mystery or whatever...
+        .EjectAllEvents = Array("eject_vuk")
         .EjectCallback = "Vuk1EjectCallback"
     End With
 
