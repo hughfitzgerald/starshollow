@@ -11,6 +11,12 @@ Sub CreateMiniGameMode
             .Add "mode_minigame_started", Array("select_minigame")
 
             .Add "dm_minigame_lit", Array("minigame_is_ready")
+            
+            ' TODO: Add code to handle when the minigame is done
+            '           * set the current game to unlit or complete depending on outcome
+            '           * dispatch select_minigame to pick a new minigame
+            '           * are there things that can change the currently selected minigame? 
+            '                  how does it know which one is lit to turn that one off?
 
             .Add "minigame_is_ready", Array("enable_scoop_hold")
 
