@@ -20,7 +20,7 @@
 ' wrong: a Kicker can still consider the ball "captured" and override a
 ' manually-set velocity on the next physics tick, so the ball just sits
 ' there - no error, no kick, which matched exactly what was seen.
-Sub Vuk1EjectCallback(ball)
+Sub ScoopEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1

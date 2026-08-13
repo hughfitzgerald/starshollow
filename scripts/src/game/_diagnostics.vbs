@@ -42,15 +42,15 @@ Sub GlfDiag_Init()
 
     ' --- VUK chain, in the order it should happen ---
     ' s_VUK1_active -> (500ms EntranceCountDelay) -> ball_entered
-    '   -> Vuk1Hold's 1500ms delay -> eject_vuk1 -> ejecting_ball
+    '   -> Vuk1Hold's 1500ms delay -> eject_scoop -> ejecting_ball
     ' If s_VUK1_inactive appears BEFORE ball_entered, GlfBallDevice.BallExiting
     ' has cancelled the pending enter (it calls RemoveDelay on it), m_balls(0)
     ' is never set, and no eject can ever happen.
     AddPinEventListener "s_VUK1_inactive", "diag_vuk_inact", "GlfDiag_Note", 1, Array("!! s_VUK1_INACTIVE (cancels pending enter)")
-    AddPinEventListener "balldevice_vuk1_ball_entered", "diag_vuk_entered", "GlfDiag_Note", 1, Array("vuk1 ball_entered")
-    AddPinEventListener "eject_vuk1", "diag_vuk_ejevt", "GlfDiag_Note", 1, Array("eject_vuk1 dispatched")
-    AddPinEventListener "balldevice_vuk1_ejecting_ball", "diag_vuk_ejecting", "GlfDiag_Note", 1, Array("vuk1 ejecting_ball")
-    AddPinEventListener "balldevice_vuk1_ball_exiting", "diag_vuk_exiting", "GlfDiag_Note", 1, Array("vuk1 ball_exiting")
+    AddPinEventListener "balldevice_scoop_ball_entered", "diag_vuk_entered", "GlfDiag_Note", 1, Array("scoop ball_entered")
+    AddPinEventListener "eject_scoop", "diag_vuk_ejevt", "GlfDiag_Note", 1, Array("eject_scoop dispatched")
+    AddPinEventListener "balldevice_scoop_ejecting_ball", "diag_vuk_ejecting", "GlfDiag_Note", 1, Array("scoop ejecting_ball")
+    AddPinEventListener "balldevice_scoop_ball_exiting", "diag_vuk_exiting", "GlfDiag_Note", 1, Array("scoop ball_exiting")
 
     AddPinEventListener "balldevice_lock1_ball_entered", "diag_lock1_entered", "GlfDiag_Note", 1, Array("lock1 ball_entered")
     AddPinEventListener "balldevice_lock1_ejecting_ball", "diag_lock1_ejecting", "GlfDiag_Note", 1, Array("lock1 ejecting_ball")
@@ -63,6 +63,10 @@ Sub GlfDiag_Init()
     AddPinEventListener "balldevice_lock3_ball_entered", "diag_lock3_entered", "GlfDiag_Note", 1, Array("lock3 ball_entered")
     AddPinEventListener "balldevice_lock3_ejecting_ball", "diag_lock3_ejecting", "GlfDiag_Note", 1, Array("lock3 ejecting_ball")
     AddPinEventListener "balldevice_lock3_ball_exiting", "diag_lock3_exiting", "GlfDiag_Note", 1, Array("lock3 ball_exiting")
+
+    AddPinEventListener "enable_scoop_hold", "diag_scoop_hold", "GlfDiag_Note", 1, Array("enable_scoop_hold")
+    AddPinEventListener "disable_scoop_hold", "diag_scoop_unhold", "GlfDiag_Note", 1, Array("disable_scoop_hold")
+    AddPinEventListener "release_scoop_hold", "diag_scoop_release", "GlfDiag_Note", 1, Array("release_scoop_hold")
 
     AddPinEventListener "s_skillshot_active", "diag_skillshot_active", "GlfDiag_Note", 1, Array("s_skillshot switch active")
 

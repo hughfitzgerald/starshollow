@@ -57,7 +57,6 @@ Sub CreateBaseMode()
             .Add "s_right_spinner_active", Array("score_3000")
 
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
-
         End With
 
 
@@ -137,27 +136,6 @@ Sub CreateBaseMode()
                     End With
                 End With
             Next
-
-            ' The two bonus-lane rollovers latch their inserts.
-            ' s_sw8 (was sw8) -> l8, s_sw9 (was sw9) -> l9
-        '     With .EventName("s_sw7_active")
-        '         With .Lights("l7")
-        '             .Color = BonusLaneColor
-        '             .Fade  = 60
-        '         End With
-        '     End With
-        '     With .EventName("s_sw8_active")
-        '         With .Lights("l8")
-        '             .Color = BonusLaneColor
-        '             .Fade  = 60
-        '         End With
-        '     End With
-        '     With .EventName("s_sw9_active")
-        '         With .Lights("l9")
-        '             .Color = BonusLaneColor
-        '             .Fade  = 60
-        '         End With
-        '     End With
         End With
 
         'Define our shots
@@ -200,7 +178,6 @@ Sub CreateBaseMode()
             .RotateLeftEvents = Array("s_right_flipper_active")
             .RotateRightEvents = Array("s_left_flipper_active")
             .RestartEvents = Array("qualify_multiplier_group_on_complete")
-            .DisableRotationEvents = Array("bonus_multiplier_maxed")
         End With
 
         ' Bonus multiplier state machine
@@ -222,11 +199,6 @@ Sub CreateBaseMode()
             With .States("5x")
                 .Label = "5x"
             End With
-            With .Transitions()
-                .Source = Array("1x")
-                .Target = "2x"
-                .Events = Array("complete_qualify_multiplier")
-            End With
             
             For x = 1 to 3
                 With .Transitions() 
@@ -236,11 +208,19 @@ Sub CreateBaseMode()
                 End With
             Next
             With .Transitions() 
-                .Source = Array(x & "x")
-                .Target = (x+1) & "x"
+                .Source = Array("4x")
+                .Target = "5x"
                 .Events = Array("complete_qualify_multiplier")
                 .EventsWhenTransitioning = Array("bonus_multiplier_maxed")
             End With
+        End With
+
+        With .BallHolds("scoop_hold")
+            .BallsToHold = 1
+            .HoldDevices = Array("scoop")
+            .EnableEvents = Array("enable_scoop_hold") 
+            .DisableEvents = Array("disable_scoop_hold") 
+            .ReleaseAllEvents = Array("release_scoop_hold")
         End With
 
 

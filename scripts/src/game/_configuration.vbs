@@ -176,13 +176,15 @@ Sub ConfigureGlfDevices()
     CreateBasementMode()      ' priority 100
     CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
-    CreateTiltMode()         ' priority 10000
-    CreateScoreMode()        ' priority 2000
     CreateSkillshotsMode()   ' priority 400
+    CreateMinigameMode()      ' priority 500
     CreateExtraBallMode()    ' priority 510
+    CreateMysteryMode()       ' priority 580
     CreateRampshotsMode()    ' priority 660
     CreateDanceMarathonMode() ' priority 670
     CreateMultiballMode()    ' priority 1000
+    CreateScoreMode()        ' priority 2000
+    CreateTiltMode()         ' priority 10000
 
 
     '*********** DEVICES ***********
@@ -268,12 +270,14 @@ Sub ConfigureGlfDevices()
 
     ' --- VUK ---
     ' MUST be a member of glf_switches.
-    With CreateGlfBallDevice("vuk1")
+    With CreateGlfBallDevice("scoop")
         .BallSwitches = Array("s_VUK1")
-        .Debug = True
-        .AutoFireOnUnexpectedBall = False
-        .EjectAllEvents = Array("eject_vuk")
-        .EjectCallback = "Vuk1EjectCallback"
+        .EjectTimeout = 2000
+        .MechanicalEject = True
+        ' .Debug = True
+        ' .AutoFireOnUnexpectedBall = False
+        ' .EjectAllEvents = Array("eject_vuk")
+        .EjectCallback = "ScoopEjectCallback"
     End With
 
     With CreateGlfBallDevice("drop_target_kicker")
@@ -371,16 +375,6 @@ Function BallDrainSound(args)
     RandomSoundDrain Drain
     BallDrainSound = args(1)      ' relay event - must return the value
 End Function
-
-' Function Vuk1Hold(args)
-'     Debug.Print "GLFDIAG: Vuk1Hold fired - scheduling eject in 1500ms"
-'     SetDelay "vuk1_eject_delay", "Vuk1DoEject", Null, 1500
-' End Function
-
-' Function Vuk1DoEject(args)
-'     Debug.Print "GLFDIAG: Vuk1DoEject - dispatching eject_vuk1"
-'     DispatchPinEvent "eject_vuk1", Null
-' End Function
 
 Function PlungerBallIn(args)
     PlungerHasBall = True
@@ -551,6 +545,21 @@ Public Sub CreateSharedShotProfiles()
               .Add "lights", "l1"
           End With
       End With
+    End With
+
+    With GlfShotProfiles("qualified_shot")
+        With .States("unlit")
+            .Show = "off"
+            .Key = "key_off_d"
+        End With
+        With .States("ready")
+            .Show = "flash_color_with_fade"
+            .Key = "key_on_d"
+            .Speed = 2
+            With .Tokens()
+                .Add "fade", 100
+            End With
+        End With
     End With
 
 
