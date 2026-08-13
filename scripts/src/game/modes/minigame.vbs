@@ -22,14 +22,15 @@ Sub CreateMiniGameMode
             .Add "minigame_is_ready", Array("enable_scoop_hold")
 
             .Add "check_minigame{current_player.shot_dm_minigame == 1}", Array("start_dance_marathon")
+            .Add "mode_dance_marathon_stopped", Array("dm_minigame_complete")
         End With
 
         With .RandomEventPlayer()
             With .EventName("select_minigame")
                 .Add "dm_minigame_lit", 1
                 .Add "th_minigame_lit", 0
-                .ForceAll = True
-                .ForceDifferent = True
+                ' .ForceAll = True
+                ' .ForceDifferent = True
             End With
         End With
 
