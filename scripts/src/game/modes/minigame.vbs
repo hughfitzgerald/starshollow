@@ -12,12 +12,9 @@ Sub CreateMiniGameMode
 
             .Add "dm_minigame_lit", Array("minigame_is_ready")
             
-            ' TODO: Add code to handle when the minigame is done
-            '           * set the current game to unlit or complete depending on outcome
-            '           * dispatch select_minigame to pick a new minigame
-            '           * are there things that can change the currently selected minigame? 
-            '                  how does it know which one is lit to turn that one off 
-            '                   without turning off ones that are complete?
+            ' TODO: Maybe add minigame state machine?
+            '           That way we won't start one if one is already running
+            '           Maybe it can handle the post-minigame cleanup too, like lighting the completed minigame shot, etc.
 
             .Add "minigame_is_ready", Array("enable_scoop_hold")
 
@@ -48,7 +45,7 @@ Sub CreateMiniGameMode
                 .State = 1
             End With
             With .ControlEvents()
-                .Events = Array("dm_minigame_complete")
+                .Events = Array("start_dance_marathon","dm_minigame_complete")
                 .State = 2
             End With
         End With
@@ -67,7 +64,7 @@ Sub CreateMiniGameMode
                 .State = 1
             End With
             With .ControlEvents()
-                .Events = Array("th_minigame_complete")
+                .Events = Array("start_townhall","th_minigame_complete")
                 .State = 2
             End With
         End With

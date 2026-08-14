@@ -77,6 +77,34 @@ Sub CreateDanceMarathonMode()
                 .Sound = "mus_dm"
                 .Action = "stop"
             End With
+            With .EventName("dm_voc_1")
+                .Key = "key_voc_dancingfun"
+                .Sound = "voc_dancingfun"
+            End With
+            With .EventName("dm_voc_2")
+                .Key = "key_voc_flipallyouwant"
+                .Sound = "voc_flipallyouwant"
+            End With
+            With .EventName("dm_voc_3")
+                .Key = "key_voc_justkeepdancing"
+                .Sound = "voc_justkeepdancing"
+            End With
+            With .EventName("dm_voc_4")
+                .Key = "key_voc_letmeflipyou"
+                .Sound = "voc_letmeflipyou"
+            End With
+            With .EventName("dm_voc_5")
+                .Key = "key_voc_lookgreat"
+                .Sound = "voc_lookgreat"
+            End With
+            With .EventName("dm_voc_6")
+                .Key = "key_voc_neeson"
+                .Sound = "voc_neeson"
+            End With
+            With .EventName("dm_voc_7")
+                .Key = "key_voc_prostrate"
+                .Sound = "voc_prostrate"
+            End With
         End With
 
         With .Timers("dm_mode_delay")
@@ -120,6 +148,17 @@ Sub CreateDanceMarathonMode()
                 For Each g In groupSeen.Keys()
                     .Add g, 1
                 Next
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("dm_shot_hit")
+                .Add "dm_voc_1", 1
+                .Add "dm_voc_2", 1
+                .Add "dm_voc_3", 1
+                .Add "dm_voc_4", 1
+                .Add "dm_voc_5", 1
+                .Add "dm_voc_6", 1
+                .Add "dm_voc_7", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With

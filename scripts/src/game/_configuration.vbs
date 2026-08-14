@@ -415,10 +415,19 @@ Sub CreateSounds()
     AddMusic       "mus_married",  217, -1
     AddMusic       "mus_go",  245, -1
     AddMusic       "mus_sad",  93, 0
-    AddMusic       "mus_dm",  305, -1
 
     AddCallout     "voc_poodles",  3
     AddCallout     "voc_mystery", 3
+
+    ' Dance Marathon
+    AddMusic       "mus_dm",  305, -1
+    AddCallout     "voc_dancingfun", 2
+    AddCallout     "voc_flipallyouwant", 2
+    AddCallout     "voc_justkeepdancing", 1
+    AddCallout     "voc_letmeflipyou", 3
+    AddCallout     "voc_lookgreat", 2
+    AddCallout     "voc_neeson", 2
+    AddCallout     "voc_prostrate", 6
     
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>

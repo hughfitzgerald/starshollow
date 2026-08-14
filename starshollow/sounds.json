@@ -2581,5 +2581,68 @@
     "volume": 0,
     "balance": 0,
     "output_target": "backglass"
+  },
+  {
+    "name": "voc_dancingfun",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_dancingfun.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_flipallyouwant",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_flipallyouwant.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_justkeepdancing",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_justkeepdancing.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_letmeflipyou",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_letmeflipyou.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_lookgreat",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_lookgreat.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_neeson",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_neeson.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_prostrate",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_prostrate.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
   }
 ]
