@@ -418,6 +418,7 @@ Sub CreateSounds()
     AddMusic       "mus_dm",  305, -1
 
     AddCallout     "voc_poodles",  3
+    AddCallout     "voc_mystery", 3
     
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>

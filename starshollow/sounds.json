@@ -2572,5 +2572,14 @@
     "volume": 0,
     "balance": 0,
     "output_target": "backglass"
+  },
+  {
+    "name": "voc_mystery",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_mystery.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
   }
 ]
