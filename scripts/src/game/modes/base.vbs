@@ -180,6 +180,19 @@ Sub CreateBaseMode()
             .RestartEvents = Array("qualify_multiplier_group_on_complete")
         End With
 
+        For x = 1 to 4
+            With .Shots((x+1) & "x")
+                .Profile = "qualify_multiplier"
+                With .Tokens()
+                    .Add "lights", "l3" & x
+                End With
+                With .ControlEvents()
+                    .Events = Array((x+1) & "x_qualified")
+                    .State = 1
+                End With
+            End With
+        Next
+
         ' Bonus multiplier state machine
         With .StateMachines("bonus_multiplier_states")
             .StartingState = "1x"
@@ -204,14 +217,15 @@ Sub CreateBaseMode()
                 With .Transitions() 
                     .Source = Array(x & "x")
                     .Target = (x+1) & "x"
-                    .Events = Array("complete_qualify_multiplier")
+                    .Events = Array("qualify_multiplier_group_on_complete")
+                    .EventsWhenTransitioning = Array((x+1) & "x_qualified")
                 End With
             Next
             With .Transitions() 
                 .Source = Array("4x")
                 .Target = "5x"
-                .Events = Array("complete_qualify_multiplier")
-                .EventsWhenTransitioning = Array("bonus_multiplier_maxed")
+                .Events = Array("qualify_multiplier_group_on_complete")
+                .EventsWhenTransitioning = Array("bonus_multiplier_maxed", "5x_qualified")
             End With
         End With
 

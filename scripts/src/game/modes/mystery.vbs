@@ -8,7 +8,7 @@ Sub CreateMysteryMode
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
-            .Add "mode_mystery_started", Array("light_inlanes")
+            ' .Add "mode_mystery_started", Array("light_inlanes")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
