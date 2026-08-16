@@ -8,9 +8,35 @@ if (!inputDir) {
   process.exit(1);
 }
 
+// Expand tabs to spaces using real tab-stop math instead of a flat
+// replace. A flat `\t` -> '  ' swap breaks YAML nesting whenever the
+// parent line's indent isn't itself a multiple of 2 (e.g. a 2-space
+// "lights:" line followed by a tab-indented child lands at the SAME
+// indent as "lights:", turning the child into a sibling key instead of
+// a nested one, so step.lights parses as null and no lights ever make
+// it into the show). Expanding to the next multiple of `tabSize`
+// always advances past the parent's indent, preserving proper nesting.
+function expandTabs(str, tabSize = 8) {
+  return str.split('\n').map(line => {
+    let result = '';
+    let col = 0;
+    for (const ch of line) {
+      if (ch === '\t') {
+        const spaces = tabSize - (col % tabSize);
+        result += ' '.repeat(spaces);
+        col += spaces;
+      } else {
+        result += ch;
+        col += 1;
+      }
+    }
+    return result;
+  }).join('\n');
+}
+
 function convertFile(filePath, showName) {
   try {
-    const raw = fs.readFileSync(filePath, 'utf8');
+    const raw = expandTabs(fs.readFileSync(filePath, 'utf8'));
     const data = yaml.load(raw);
 
     let output = `With CreateGlfShow("${showName}")\n`;

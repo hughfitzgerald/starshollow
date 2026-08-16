@@ -30,6 +30,16 @@ Sub CreateAttractMode()
         .StartEvents = Array("start_attract_mode","reset_complete")
         .StopEvents  = Array("game_started", "stop_attract_mode")
 
+
+
+        With .ShowPlayer()
+            With .EventName("mode_attract_started")
+                .Key = "key_mode_attract_started"
+                .Show = "new_animation"
+                .Speed = 1
+            End With
+        End With
+
         ' Slow GI pulse so the table reads as "on" but idle.
         ' GI lights are addressed by name, not by tag - see the long note in
         ' _configuration.vbs for why .Lights("GI") would crash Glf_Init.

@@ -16,7 +16,7 @@ function grayscaleHexToIntensity(hex) {
 
 function convertFile(filePath, showName) {
   try {
-    const raw = fs.readFileSync(filePath, 'utf8');
+    const raw = fs.readFileSync(filePath, 'utf8').replace(/\t/g, '  ');
     const data = yaml.load(raw);
 
     let output = `With CreateGlfShow("${showName}")\n`;

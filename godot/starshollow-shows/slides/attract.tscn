@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c0pgmda0lixl0"]
+
+[ext_resource type="Script" uid="uid://dru3usokwlhd3" path="res://addons/mpf-gmc/classes/mpf_slide.gd" id="1_r1mnt"]
+
+[node name="Attract" type="Control" unique_id=454874538]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r1mnt")
+metadata/_custom_type_script = "uid://dru3usokwlhd3"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=256729434]
+layout_mode = 0
+offset_right = 1728.0
+offset_bottom = 1117.0
+color = Color(1, 0.40784314, 1, 1)
