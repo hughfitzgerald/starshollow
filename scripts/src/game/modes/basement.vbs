@@ -147,29 +147,29 @@ Sub CreateBasementMode()
 
 
             ' 'Flicker off GI lights when tilted
-            ' With .EventName("tilt") 
-            '     .Key = "key_tilted_gi"
-            '     .Show = "flicker_color_off" 
-            '     .Speed = 3
-            '     .Loops = 0
-            '     .Priority = 10000
-            '     With .Tokens()
-            '         .Add "lights", "GI"
-            '         .Add "color", GIColor3000k
-            '     End With
-            ' End With
-            ' With .EventName("ball_started") 
-            '     .Key = "key_tilted_gi"
-            '     .Show = "flicker_color_off" 
-            '     .Speed = 3
-            '     .Loops = 0
-            '     .Priority = 10000
-            '     .Action = "stop"
-            '     With .Tokens()
-            '         .Add "lights", "GI"
-            '         .Add "color", GIColor3000k
-            '     End With
-            ' End With
+            With .EventName("tilt") 
+                .Key = "key_tilted_gi"
+                .Show = "flicker_color_off" 
+                .Speed = 3
+                .Loops = 0
+                .Priority = 10000
+                With .Tokens()
+                    .Add "lights", "GI"
+                    .Add "color", GIColor3000k
+                End With
+            End With
+            With .EventName("ball_started") 
+                .Key = "key_tilted_gi"
+                .Show = "flicker_color_off" 
+                .Speed = 3
+                .Loops = 0
+                .Priority = 10000
+                .Action = "stop"
+                With .Tokens()
+                    .Add "lights", "GI"
+                    .Add "color", GIColor3000k
+                End With
+            End With
 
             ' 'Flash some warning lights
             ' With .EventName("tilt_warning") 

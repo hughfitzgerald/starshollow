@@ -42,6 +42,7 @@ Dim GILightNames : GILightNames = Array( _
     "gi015","gi016","gi017","gi018","gi019","gi020","gi021","gi022","gi023", _
     "gi024", "gi026","gi050")
 
+Const GIColor3000k      = "ffdca3"
 Const GIColor2700k      = "ffA957"   ' warm white, GI during play
 Const GIColorAttract    = "ff8c3a"   ' attract, bright phase
 Const GIColorAttractDim = "5a3010"   ' attract, dim phase
