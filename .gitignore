@@ -22,6 +22,7 @@ build/
 *.aab
 *.pck
 *.zip
+*.pyc
 
 # Temporary and swap files
 *.tmp
