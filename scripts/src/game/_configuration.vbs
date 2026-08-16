@@ -286,6 +286,7 @@ Sub ConfigureGlfDevices()
         .AutoFireOnUnexpectedBall = False
         .EjectAllEvents = Array("s_DropTargetKicker_active")
         .EjectCallback = "DropTargetKickerEjectCallback"
+		.MechanicalEject = True
     End With
 
     With CreateGlfBallDevice("hidden_upper_right_kicker")
@@ -294,24 +295,28 @@ Sub ConfigureGlfDevices()
         .AutoFireOnUnexpectedBall = False
         .EjectAllEvents = Array("s_HiddenUpperRightKicker_active")
         .EjectCallback = "HiddenUpperRightKickerEjectCallback"
+		.MechanicalEject = True
     End With
 
     With CreateGlfBallDevice("lock1")
         .BallSwitches = Array("s_Lock1")
         .EjectTargets = Array("s_VUK1")
         .EjectCallback = "Lock1EjectCallback"
+		.MechanicalEject = True
     End With
 
     With CreateGlfBallDevice("lock2")
         .BallSwitches = Array("s_Lock2")
         .EjectTargets = Array("s_Lock1")
         .EjectCallback = "Lock2EjectCallback"
+		.MechanicalEject = True
     End With
 
     With CreateGlfBallDevice("lock3")
         .BallSwitches = Array("s_Lock3")
         .EjectTargets = Array("s_Lock2")
         .EjectCallback = "Lock3EjectCallback"
+		.MechanicalEject = True
     End With
 
     With CreateGlfBallDevice("subway_trough")
@@ -319,6 +324,7 @@ Sub ConfigureGlfDevices()
         .EjectCallback = "SubwayTroughEjectCallback"
         .AutoFireOnUnexpectedBall = False
         .EjectAllEvents = Array("s_subway_trough_kicker_active")
+		.MechanicalEject = True
     End With
 
     ' --- Diverter ---
