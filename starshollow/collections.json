@@ -312,7 +312,7 @@
     ],
     "fire_events": false,
     "stop_single_events": false,
-    "group_elements": true
+    "group_elements": false
   },
   {
     "name": "glf_slingshots",
@@ -322,7 +322,7 @@
     ],
     "fire_events": false,
     "stop_single_events": false,
-    "group_elements": true
+    "group_elements": false
   },
   {
     "name": "glf_lights",
@@ -389,7 +389,7 @@
     ],
     "fire_events": false,
     "stop_single_events": false,
-    "group_elements": true
+    "group_elements": false
   },
   {
     "name": "glf_spinners",
@@ -399,6 +399,6 @@
     ],
     "fire_events": false,
     "stop_single_events": false,
-    "group_elements": true
+    "group_elements": false
   }
 ]
