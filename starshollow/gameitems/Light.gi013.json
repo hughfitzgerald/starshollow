@@ -13,7 +13,7 @@
     "color2": "#ffb464",
     "is_timer_enabled": false,
     "timer_interval": 100,
-    "blink_pattern": "10",
+    "blink_pattern": "GI",
     "image": "playfield",
     "blink_interval": 250,
     "intensity": 2.0,
