@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 641.0348,
-      "y": 973.6427,
+      "x": 698.87195,
+      "y": 647.5374,
       "z": 0.0
     },
     "size": {
-      "x": 150.0,
-      "y": 100.0,
-      "z": 150.0
+      "x": 1500.0,
+      "y": 1000.0,
+      "z": 1500.0
     },
     "rot_and_tra": [
       90.0,
@@ -24,8 +24,8 @@
     "image": "Insert_round2off_",
     "normal_map": "",
     "sides": 4,
-    "name": "p57off",
-    "material": "InsertWhiteOffTri",
+    "name": "p70off",
+    "material": "Insert_-_Wood",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,

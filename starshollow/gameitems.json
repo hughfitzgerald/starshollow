@@ -3479,5 +3479,130 @@
     "file_name": "Trigger.s_captive_ball.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Flasher.PinCab_Backglass001.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_slim_target_ramp1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_slim_target_hidden2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_slim_target_hidden1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_slim_target_ramp2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_slim_target_ramp3.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "HitTarget.s_slim_target_ramp4.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p66off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p66.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p67.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p67off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p68.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p68off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p69.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p69off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p70.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p70off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p71.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p71off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l66.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l67.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l68.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l69.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l70.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l71.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]

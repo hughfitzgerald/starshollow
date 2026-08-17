@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 641.0348,
-      "y": 973.6427,
+      "x": 682.3742,
+      "y": 517.85016,
       "z": 0.0
     },
     "size": {
-      "x": 150.0,
-      "y": 100.0,
-      "z": 150.0
+      "x": 1500.0,
+      "y": 1000.0,
+      "z": 1500.0
     },
     "rot_and_tra": [
       90.0,
@@ -21,11 +21,11 @@
       0.0,
       0.0
     ],
-    "image": "Insert_round2off_",
+    "image": "Insert_round2on_",
     "normal_map": "",
     "sides": 4,
-    "name": "p57off",
-    "material": "InsertWhiteOffTri",
+    "name": "p71",
+    "material": "Insert_-_Wood",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
@@ -43,7 +43,7 @@
     "static_rendering": false,
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
+    "disable_lighting_below": 1.0,
     "is_reflection_enabled": false,
     "backfaces_enabled": false,
     "physics_material": "",
@@ -53,7 +53,7 @@
     "min_aa_bound": null,
     "max_aa_bound": null,
     "mesh_file_name": "",
-    "depth_bias": 1000.0,
+    "depth_bias": 1100.0,
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
