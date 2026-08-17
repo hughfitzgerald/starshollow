@@ -25,7 +25,7 @@
     "normal_map": "",
     "sides": 4,
     "name": "p66",
-    "material": "Insert_-_Wood",
+    "material": "InsertWhiteOnTri",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
