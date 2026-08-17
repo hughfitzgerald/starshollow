@@ -124,6 +124,9 @@ Sub CreateBaseMode()
                         .Fade  = 300
                     End With
                 Next
+                ' With .Lights("slim_inserts")
+                '     .Color = GIColor2700k
+                ' End With
             End With
 
             ' The eight standup targets each latch their own insert.
@@ -136,6 +139,18 @@ Sub CreateBaseMode()
                     End With
                 End With
             Next
+        End With
+
+        With .ShowPlayer()
+            With .EventName("mode_base_started")
+                .Key = "key_show_base"
+                .Show = "flash_color"
+                .Speed = 15
+                With .Tokens()
+                    .Add "color", "ff0000"
+                    .Add "lights", "slim_inserts"
+                End With
+            End With
         End With
 
         'Define our shots
