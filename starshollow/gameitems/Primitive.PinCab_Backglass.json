@@ -27,7 +27,7 @@
     "name": "PinCab_Backglass",
     "material": "colormaxnoreflectionhalf",
     "side_color": "#969696",
-    "is_visible": true,
+    "is_visible": false,
     "draw_textures_inside": false,
     "hit_event": true,
     "threshold": 2.0,
