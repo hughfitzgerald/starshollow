@@ -144,7 +144,7 @@ Sub CreateBaseMode()
         With .ShowPlayer()
             With .EventName("mode_base_started")
                 .Key = "key_show_base"
-                .Show = "flash_color"
+                .Show = "flicker_color_on"
                 .Speed = 15
                 With .Tokens()
                     .Add "color", "ff0000"
