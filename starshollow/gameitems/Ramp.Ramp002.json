@@ -1,0 +1,62 @@
+{
+  "Ramp": {
+    "height_bottom": 1.0,
+    "height_top": 1.0,
+    "width_bottom": 68.0,
+    "width_top": 68.0,
+    "material": "Metal_Black_Powdercoat",
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "ramp_type": "flat",
+    "name": "Ramp002",
+    "image": "",
+    "image_alignment": "wrap",
+    "image_walls": true,
+    "left_wall_height": 62.0,
+    "right_wall_height": 62.0,
+    "left_wall_height_visible": 30.0,
+    "right_wall_height_visible": 30.0,
+    "hit_event": false,
+    "threshold": 2.0,
+    "elasticity": 0.3,
+    "friction": 0.3,
+    "scatter": 0.0,
+    "is_collidable": false,
+    "is_visible": true,
+    "depth_bias": 0.0,
+    "wire_diameter": 8.0,
+    "wire_distance_x": 38.0,
+    "wire_distance_y": 88.0,
+    "is_reflection_enabled": true,
+    "physics_material": "",
+    "overwrite_physics": true,
+    "drag_points": [
+      {
+        "x": 903.82605,
+        "y": 2163.4534,
+        "z": 0.0,
+        "smooth": true,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0,
+        "editor_layer_name": "",
+        "editor_layer_visibility": true
+      },
+      {
+        "x": 899.0566,
+        "y": 1226.4095,
+        "z": 0.0,
+        "smooth": true,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0,
+        "editor_layer_name": "",
+        "editor_layer_visibility": true
+      }
+    ]
+  }
+}
