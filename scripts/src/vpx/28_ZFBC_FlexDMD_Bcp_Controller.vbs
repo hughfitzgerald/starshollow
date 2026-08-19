@@ -22,12 +22,22 @@
 '
 ' WHAT YOU EDIT
 '
-' Two Subs near the bottom of this file are the whole mapping:
+' Nothing in this file, normally. Every slide and widget the table has is
+' listed in
 '
-'     FlexDmd_ShowSlide  slide name  -> a FlexDMD scene   (ShowScene)
-'     FlexDmd_ShowWidget widget name -> a FlexDMD overlay (DMDBigText)
+'     src/game/dmd/display_config.vbs
 '
-' Add a Case to those and the name is immediately usable from mode config:
+' where a GIF slide and a text widget are one line each:
+'
+'     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
+'     With CreateDmdWidget("ball_save")  : .Text = "BALL SAVED"     : End With
+'
+' and the two scenes that are real code (the scoreboard and the attract
+' intro) name Builder/Ticker Subs that live in
+'
+'     src/game/dmd/display_scenes.vbs
+'
+' The name is then immediately usable from mode config:
 '
 '     With .SlidePlayer()
 '         With .EventName("mode_base_started")
@@ -43,7 +53,10 @@
 '     End With
 '
 ' ...and from a show step (.Slides("jackpot") / .Widgets("ball_save")).
-' Everything past the Select Case is ordinary FlexDMD code.
+'
+' What lives down at the bottom of THIS file is the machinery behind
+' those two Create calls: the entry class, the two registries, and the
+' render path that turns an entry into ShowScene/DMDBigText.
 '
 ' SLIDE STACKING
 '
@@ -62,9 +75,10 @@
 '
 ' WIDGETS
 '
-' A widget here is a DMDBigText overlay. DMDTimer_Timer only draws that
-' text in FlexMode 1 (the scoreboard scene), which is the same rule a
-' widget follows anyway: it overlays the current slide.
+' A widget here is a DMDBigText overlay. The only thing that draws that
+' text is DmdTick_Score, the scoreboard's ticker - so a widget appears
+' when the scoreboard is the slide on screen and not otherwise, which is
+' the rule a widget follows anyway: it overlays the current slide.
 '
 ' THE COST OF useBcp = True
 '
@@ -97,6 +111,18 @@ Const FlexDmdDefaultWidgetExpire = 1.3
 ' the delay callback below uses, so it never has to care what GLF has
 ' since done with bcpController.
 Dim glfFlexBcp : glfFlexBcp = Null
+
+' The two registries, name -> GlfDmdEntry, filled by CreateFlexDmdDisplay
+' in src/game/dmd/display_config.vbs. Kept apart so a slide and a widget
+' may share a name, and so an unmapped name says which of the two it was
+' looking for.
+Dim FlexDmdSlides : Set FlexDmdSlides = CreateObject("Scripting.Dictionary")
+Dim FlexDmdWidgets : Set FlexDmdWidgets = CreateObject("Scripting.Dictionary")
+
+' The entry whose scene is currently on the DMD, or Nothing. This is what
+' decides which Ticker DMDTimer_Timer runs each frame, and whether a text
+' slide has to put its .Over slide up first.
+Dim FlexDmdCurrent : Set FlexDmdCurrent = Nothing
 
 
 '*******************************************
@@ -453,136 +479,250 @@ End Class
 
 
 '*******************************************
-'  Slide and widget mapping - edit these
+'  The registry
+'*******************************************
+' The entries are written in src/game/dmd/display_config.vbs. This is the
+' machinery behind them: the entry class, the two Create functions, the
+' one-time scene build, and the render path that turns an entry into
+' ShowScene / DMDBigText.
+
+' One slide or one widget.
+Class GlfDmdEntry
+
+    Public Gif           ' animated file in the FlexDMD project folder
+    Public Image         ' still image, same
+    Public Text          ' literal text, with (name) kwargs tokens
+    Public Builder       ' Sub name: builds the scene once, at Flex_Init
+    Public Ticker        ' Sub name: runs every frame while this is on screen
+    Public Callback      ' Sub name: replaces the render entirely
+    Public RenderMode    ' one of the FlexDMD_RenderMode_* constants
+    Public Effect        ' "solid" or "blink"
+    Public Hold          ' seconds a text slide stays up
+    Public Over          ' slide a text entry draws on top of
+    Public ResetFrame    ' zero FlexFrame before showing
+    Public Aliases       ' extra names resolving to this same entry
+
+    ' The name as written in config - used for logs and for naming the
+    ' FlexDMD actors of an auto-built scene. Read-only, the way every GLF
+    ' class exposes its own name.
+    Private m_name
+    Public Property Get Name() : Name = m_name : End Property
+
+    ' The FlexDMD Group, once built. Property Let cannot take an object,
+    ' hence the pair of methods - the same shape as GlfFlexDmdSlide's
+    ' SetKwargs above.
+    Private m_scene
+
+    Public default Function Init(entryName, isWidget)
+        m_name = entryName
+        Gif = ""
+        Image = ""
+        Text = ""
+        Builder = ""
+        Ticker = ""
+        Callback = ""
+        RenderMode = FlexDMD_RenderMode_DMD_GRAY
+        ResetFrame = False
+        Aliases = Array()
+        Hold = 1.2
+
+        If isWidget Then
+            ' A widget is a notification: it blinks, and it never
+            ' disturbs the slide underneath - it simply does not appear
+            ' unless the scoreboard's ticker is the one drawing.
+            Effect = "blink"
+            Over = ""
+        Else
+            ' A text slide is continuous, and it does claim a scene
+            ' underneath itself. See FlexDmd_Render.
+            Effect = "solid"
+            Over = "score"
+        End If
+
+        Set Init = Me
+    End Function
+
+    Public Sub SetScene(input) : Set m_scene = input : End Sub
+    Public Property Get HasScene() : HasScene = IsObject(m_scene) : End Property
+
+    Public Function Scene()
+        If IsObject(m_scene) Then
+            Set Scene = m_scene
+        Else
+            Set Scene = Nothing
+        End If
+    End Function
+
+End Class
+
+
+' Called from display_config.vbs. Both return the new entry so the caller
+' can fill it in with a With block.
+Function CreateDmdSlide(name)
+    Set CreateDmdSlide = FlexDmd_Register(FlexDmdSlides, name, False)
+End Function
+
+Function CreateDmdWidget(name)
+    Set CreateDmdWidget = FlexDmd_Register(FlexDmdWidgets, name, True)
+End Function
+
+Function FlexDmd_Register(registry, name, isWidget)
+    Dim entry : Set entry = (new GlfDmdEntry)(name, isWidget)
+    Dim key : key = LCase(name)
+    If registry.Exists(key) Then registry.Remove key
+    registry.Add key, entry
+    Set FlexDmd_Register = entry
+End Function
+
+
+' Build every scene the config asked for. Called from Flex_Init, once,
+' after CreateFlexDmdDisplay has filled the registries.
+Sub FlexDmd_BuildScenes()
+    ' Scenes first, aliases second: an alias puts the SAME entry object
+    ' under a second key, so building first means each entry is visited
+    ' exactly once.
+    FlexDmd_BuildRegistry FlexDmdSlides
+    FlexDmd_BuildRegistry FlexDmdWidgets
+    FlexDmd_RegisterAliases FlexDmdSlides
+    FlexDmd_RegisterAliases FlexDmdWidgets
+End Sub
+
+Sub FlexDmd_BuildRegistry(registry)
+    Dim key, entry, group
+    Dim names : names = registry.Keys()
+
+    For Each key In names
+        Set entry = registry(key)
+        If Not entry.HasScene Then
+            If entry.Builder <> "" Then
+                GetRef(entry.Builder)(entry)
+            ElseIf entry.Gif <> "" Then
+                Set group = FlexDMD.NewGroup(entry.Name)
+                group.AddActor FlexDMD.NewVideo(entry.Name, entry.Gif)
+                entry.SetScene group
+            ElseIf entry.Image <> "" Then
+                Set group = FlexDMD.NewGroup(entry.Name)
+                group.AddActor FlexDMD.NewImage(entry.Name, entry.Image)
+                entry.SetScene group
+            End If
+        End If
+    Next
+End Sub
+
+Sub FlexDmd_RegisterAliases(registry)
+    Dim key, entry, aliasName
+    Dim names : names = registry.Keys()
+
+    For Each key In names
+        Set entry = registry(key)
+        For Each aliasName In entry.Aliases
+            If Not registry.Exists(LCase(aliasName)) Then
+                registry.Add LCase(aliasName), entry
+            End If
+        Next
+    Next
+End Sub
+
+
+'*******************************************
+'  Showing them
 '*******************************************
 
-' slide name -> FlexDMD scene. The names are what you put in
+' slide name -> whatever the config said. The names are what you put in
 ' .Slide = "..." in mode config, or .Slides("...") in a show step.
 '
 ' kwargs is the kwargs of the event that played the slide (a
-' Scripting.Dictionary), or Null. Read it with FlexDmd_Kwarg.
+' Scripting.Dictionary), or Null.
 Sub FlexDmd_ShowSlide(slide, kwargs)
-    Select Case LCase(slide)
+    If UseFlexDMD = 0 Then Exit Sub
 
-        Case "score", "base"
-            ' The scoreboard. FlexMode 1 is the one DMDTimer_Timer keeps
-            ' updating with live scores, ball number and DMDBigText, so
-            ' any slide that wants widgets over it wants mode 1.
-            ShowScene FlexScenes(0), FlexDMD_RenderMode_DMD_GRAY, 1
+    Dim entry : Set entry = FlexDmd_Lookup(FlexDmdSlides, slide)
+    If entry Is Nothing Then
+        Glf_WriteDebugLog "flexdmd_bcp", "No FlexDMD scene mapped for slide '" & slide & "'"
+        Exit Sub
+    End If
 
-        Case "welcome", "attract"
-            ' FlexMode 2's animation is keyed to absolute frame numbers
-            ' (88, 110), so it only plays from a reset counter.
-            FlexFrame = 0
-            ShowScene FlexScenes(1), FlexDMD_RenderMode_DMD_GRAY, 2
-
-        Case "bonus_x"
-            ShowScene FlexScenes(2), FlexDMD_RenderMode_DMD_GRAY, 0
-
-        Case "multiball"
-            ShowScene FlexScenes(3), FlexDMD_RenderMode_DMD_GRAY, 4
-
-        Case "jackpot"
-            ShowScene FlexScenes(4), FlexDMD_RenderMode_DMD_GRAY, 0
-
-        Case "dance_marathon_timer"
-            ' Text over the scoreboard rather than a scene of its own. It
-            ' is a slide and not a widget because only the slide player
-            ' passes the triggering event's kwargs through, and the count
-            ' lives in there - GLF's timer puts "ticks_remaining" in the
-            ' kwargs of every timer_X_tick.
-            '
-            ' The ShowScene guard is what makes a text-only slide safe. A
-            ' slide that renders no scene leaves whatever scene is already
-            ' up, so if this one took the top of the stack back from, say,
-            ' an expiring multiball animation, the DMD would still be
-            ' showing multiball. Claiming the scoreboard when it is not
-            ' already up fixes that, and skipping it when it is avoids
-            ' rebuilding the stage - and restarting the scrolling title -
-            ' once a second. Any other text-only slide wants the same two
-            ' lines.
-            '
-            ' Held slightly longer than the 1s tick interval so the text
-            ' does not blink out between ticks, and solid rather than
-            ' flashing because it is continuous, not a notification.
-            If FlexMode <> 1 Then
-                ShowScene FlexScenes(0), FlexDMD_RenderMode_DMD_GRAY, 1
-            End If
-            DMDBigText FlexDmd_Kwarg(kwargs, "ticks_remaining", 0) & " SEC", _
-                       FlexDmd_Frames(1.2), 0
-
-        Case "no_bonus"
-            ShowScene FlexScenes(5), FlexDMD_RenderMode_DMD_GRAY, 0
-
-        Case "bonus_1"
-            ShowScene FlexScenes(6), FlexDMD_RenderMode_DMD_GRAY, 0
-
-        Case "bonus_2"
-            ShowScene FlexScenes(7), FlexDMD_RenderMode_DMD_GRAY, 0
-
-        Case "bonus_3"
-            ShowScene FlexScenes(8), FlexDMD_RenderMode_DMD_GRAY, 0
-        
-        Case "kirk-dances"
-            ShowScene FlexScenes(9), FlexDMD_RenderMode_DMD_GRAY, 0
-
-        Case Else
-            Glf_WriteDebugLog "flexdmd_bcp", "No FlexDMD scene mapped for slide '" & slide & "'"
-
-    End Select
+    FlexDmd_Render entry, kwargs, entry.Hold
 End Sub
 
 
 ' widget name -> a transient overlay on the current slide.
 '
 ' expireSeconds is the .Expire from config (or FlexDmdDefaultWidgetExpire
-' when none was set). DMDBigText's second argument counts DMD frames, so
-' it goes through FlexDmd_Frames.
+' when none was set), and is what the overlay is held for.
 '
 ' The widget player does not pass event kwargs today, so kwargs is Null
-' from that path; a show step's .Widgets(...) is the same. The parameter
-' is here so the "text" case works if that ever changes.
+' from that path; a show step's .Widgets(...) is the same. It is passed
+' through anyway so a widget's (token) text works if that ever changes.
 Sub FlexDmd_ShowWidget(widget, expireSeconds, kwargs)
-    Dim frames : frames = FlexDmd_Frames(expireSeconds)
+    If UseFlexDMD = 0 Then Exit Sub
 
-    Select Case LCase(widget)
+    Dim entry : Set entry = FlexDmd_Lookup(FlexDmdWidgets, widget)
+    If entry Is Nothing Then
+        Glf_WriteDebugLog "flexdmd_bcp", "No FlexDMD overlay mapped for widget '" & widget & "'"
+        Exit Sub
+    End If
 
-        Case "ball_save"
-            DMDBigText "BALL SAVED", frames, 1
+    FlexDmd_Render entry, kwargs, expireSeconds
+End Sub
 
-        Case "launch"
-            DMDBigText "LAUNCH", frames, 1
 
-        Case "ball_1_locked"
-            DMDBigText "BALL 1 LOCKED", frames, 1
+' Shared by both. holdSeconds is how long a text entry stays up; it is
+' ignored by a scene entry, which stays until something replaces it.
+Sub FlexDmd_Render(entry, kwargs, holdSeconds)
+    Dim under, message
 
-        Case "ball_2_locked"
-            DMDBigText "BALL 2 LOCKED", frames, 1
+    If entry.Callback <> "" Then
+        GetRef(entry.Callback)(Array(entry.Name, kwargs, holdSeconds))
+        Exit Sub
+    End If
 
-        Case "skillshot"
-            DMDBigText "SKILLSHOT HIT", frames, 1
+    If entry.HasScene Then
+        FlexDmd_Present entry
+        Exit Sub
+    End If
 
-        Case "extra_ball_lit"
-            DMDBigText "EXTRA BALL LIT", frames, 1
+    If entry.Text = "" Then Exit Sub
 
-        Case "extra_ball"
-            DMDBigText "EXTRA BALL", frames, 1
+    ' A text entry draws no scene of its own, so whatever is on the DMD
+    ' stays there. For a slide that is a problem: taking the top of the
+    ' stack back from, say, an expiring multiball animation would leave
+    ' the text sitting over multiball. .Over names the slide it belongs
+    ' on, and puts it up when it is not already showing - skipping it
+    ' when it is avoids rebuilding the stage, and restarting the
+    ' scrolling title, on every tick.
+    If entry.Over <> "" Then
+        Set under = FlexDmd_Lookup(FlexDmdSlides, entry.Over)
+        If Not under Is Nothing Then
+            If Not (FlexDmdCurrent Is under) Then FlexDmd_Present under
+        End If
+    End If
 
-        Case "dance_marathon"
-            DMDBigText "DANCE MARATHON", frames, 1
+    message = FlexDmd_Interpolate(entry.Text, kwargs)
+    If message <> "" Then
+        DMDBigText message, FlexDmd_Frames(holdSeconds), FlexDmd_EffectCode(entry.Effect)
+    End If
+End Sub
 
-        Case "dance_marathon_done"
-            DMDBigText "DANCE MARATHON COMPLETE", frames, 1
 
-        Case "text"
-            ' Generic: whatever the event carried under "text".
-            Dim message : message = FlexDmd_Kwarg(kwargs, "text", "")
-            If message <> "" Then DMDBigText message, frames, 1
+' Put an entry's scene on the DMD and make it the current one. This is
+' the only place FlexDmdCurrent moves, which is what keeps "which ticker
+' runs" and "what is on screen" the same question.
+Sub FlexDmd_Present(entry)
+    If Not entry.HasScene Then Exit Sub
+    If entry.ResetFrame Then FlexFrame = 0
+    ShowScene entry.Scene(), entry.RenderMode
+    Set FlexDmdCurrent = entry
+End Sub
 
-        Case Else
-            Glf_WriteDebugLog "flexdmd_bcp", "No FlexDMD overlay mapped for widget '" & widget & "'"
 
-    End Select
+' Run the current scene's per-frame updater, if it has one. Called from
+' DMDTimer_Timer, from inside the render lock - so a Ticker must not lock
+' the render thread itself.
+Sub FlexDmd_Tick()
+    If FlexDmdCurrent Is Nothing Then Exit Sub
+    If FlexDmdCurrent.Ticker = "" Then Exit Sub
+    GetRef(FlexDmdCurrent.Ticker)(Null)
 End Sub
 
 
@@ -592,9 +732,65 @@ End Sub
 '
 ' To blank the DMD instead:
 '     FlexDMD.LockRenderThread : FlexDMD.Stage.RemoveAll : FlexDMD.UnlockRenderThread
-'     FlexMode = 0
+'     Set FlexDmdCurrent = Nothing
 Sub FlexDmd_StackEmpty()
 End Sub
+
+
+'*******************************************
+'  Registry helpers
+'*******************************************
+
+' The entry registered under a name, or Nothing.
+Function FlexDmd_Lookup(registry, name)
+    Set FlexDmd_Lookup = Nothing
+
+    Dim key : key = LCase(FlexBcp_Str(name))
+    If key = "" Then Exit Function
+    If registry.Exists(key) Then Set FlexDmd_Lookup = registry(key)
+End Function
+
+
+' "blink" -> DMDBigText's blinking effect, anything else -> solid.
+Function FlexDmd_EffectCode(effect)
+    If LCase(FlexBcp_Str(effect)) = "blink" Then
+        FlexDmd_EffectCode = 1
+    Else
+        FlexDmd_EffectCode = 0
+    End If
+End Function
+
+
+' Replace every (name) in a config string with the matching kwarg off the
+' event that played it, the way GLF shows resolve (lights) and (color).
+' A token with nothing behind it - a missing kwarg, or no kwargs at all -
+' resolves to an empty string, so a text entry that is nothing but one
+' token draws nothing rather than drawing a placeholder.
+'
+' Substitution never rescans what it just inserted: pos moves past the
+' replacement, so a kwarg whose value happens to contain brackets cannot
+' send this round again.
+Function FlexDmd_Interpolate(text, kwargs)
+    Dim result : result = text
+    Dim pos : pos = 1
+    Dim openAt, closeAt, token, value
+
+    Do
+        openAt = InStr(pos, result, "(")
+        If openAt = 0 Then Exit Do
+
+        closeAt = InStr(openAt + 1, result, ")")
+        If closeAt = 0 Then Exit Do
+
+        token = Mid(result, openAt + 1, closeAt - openAt - 1)
+        value = FlexBcp_Str(FlexDmd_Kwarg(kwargs, token, ""))
+
+        result = Left(result, openAt - 1) & value & Mid(result, closeAt + 1)
+        pos = openAt + Len(value)
+    Loop
+
+    FlexDmd_Interpolate = result
+End Function
 
 
 '*******************************************

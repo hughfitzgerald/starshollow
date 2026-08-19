@@ -19,23 +19,24 @@
 '
 ' --- CHANGES FOR GLF -------------------------------------------------
 ' 1. PlayerScore(i) / CurrentPlayer no longer exist - GLF owns player
-'    state now. The scoreboard (FlexMode = 1, in DMDTimer_Timer) reads
-'    GetPlayerStateForPlayer(n, "score") / Getglf_currentPlayerNumber()
+'    state now. The scoreboard (DmdTick_Score, in display_scenes.vbs)
+'    reads GetPlayerStateForPlayer(n, "score") / Getglf_currentPlayerNumber()
 '    instead. See Score2Num() below for the False-until-first-set case.
 ' 2. Nothing in here listens for GLF events. ZFBC hands GLF a stand-in
-'    bcpController, so the slide player and widget player drive the scenes
-'    below straight from mode config - .Slide = "score", .Widget =
-'    "ball_save" - and the names are mapped to scenes in FlexDmd_ShowSlide
-'    / FlexDmd_ShowWidget. This file is scene construction and the render
-'    timer, nothing else. See the note at the bottom.
-' 3. Everything else (scene construction, ShowScene, DMDBigText,
-'    FlexFlasher) is untouched from the VPW original.
+'    bcpController, so the slide player and widget player drive the DMD
+'    straight from mode config - .Slide = "score", .Widget = "ball_save".
+'    See the note at the bottom.
+' 3. No scenes are built here any more, and there is no FlexMode. What
+'    the DMD can show is listed in src/game/dmd/display_config.vbs, and
+'    the two scenes that are real code live in display_scenes.vbs. This
+'    file is now the FlexDMD device setup and the render timer, nothing
+'    else.
+' 4. Everything else (ShowScene, DMDBigText, FlexFlasher) is untouched
+'    from the VPW original, bar ShowScene losing its mode argument.
 
 
 Dim FlexDMD	 'This is the FlexDMD object
-Dim FlexMode	'This is use for specifying the state of the DMD
 Dim FlexFrame   'This is the current Frame count. It increments every time DMDTimer_Timer is run
-Dim FlexScenes(100)				 'Array of FlexDMD scenes
 
 Const FlexDMD_RenderMode_DMD_GRAY = 0, _
 FlexDMD_RenderMode_DMD_GRAY_4 = 1, _
@@ -92,90 +93,17 @@ Sub Flex_Init
 		.Run = True
 	End With
 	
-	'----- Build flex scenes -----
+	' Build everything the config asked for. CreateFlexDmdDisplay is the
+	' list itself (src/game/dmd/display_config.vbs); FlexDmd_BuildScenes
+	' (ZFBC) walks it and constructs a scene for every GIF, image and
+	' Builder in it.
+	CreateFlexDmdDisplay()
+	FlexDmd_BuildScenes()
 	
-	' Stern Score Scene
-	Dim i
-	Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
-	Set FontScoreInactive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", RGB(100, 100, 100), vbWhite, 0)
-	Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-	Set FontBig2 = FlexDMD.NewFont("sys80_1.fnt", vbWhite, vbBlack, 0)
-	Set FontBig3 = FlexDMD.NewFont("sys80.fnt", RGB ( 10,10,10) ,vbBlack, 0)
-	Set FlexScenes(0) = FlexDMD.NewGroup("Score")
-	With FlexScenes(0)
-		' .AddActor FlexDMD.NewImage("bg","bgdarker.png")
-		' .Getimage("bg").visible = True ' False
-		' .AddActor FlexDMD.NewImage("bg2","bg.png")
-		' .Getimage("bg2").visible = False
-		For i = 1 To 4
-			.AddActor FlexDMD.NewLabel("Score_" & i, FontScoreInactive, "0")
-		Next
-		.AddActor FlexDMD.NewFrame("VSeparator")
-		.GetFrame("VSeparator").Thickness = 1
-		.GetFrame("VSeparator").SetBounds 45, 0, 1, 32
-		.AddActor FlexDMD.NewGroup("Content")
-		.GetGroup("Content").Clip = True
-		.GetGroup("Content").SetBounds 47, 0, 81, 32
-	End With
-	Dim title
-	Set title = FlexDMD.NewLabel("TitleScroller", FontScoreActive, ">>> Stars Hollow Showdown <<<")
-	Dim af
-	Set af = title.ActionFactory
-	Dim list
-	Set list = af.Sequence()
-	list.Add af.MoveTo(128, 2, 0)
-	list.Add af.Wait(0.5)
-	list.Add af.MoveTo( - 128, 2, 5.0)
-	list.Add af.Wait(3.0)
-	title.AddAction af.Repeat(list, - 1)
-	FlexScenes(0).GetGroup("Content").AddActor title
-	Set title = FlexDMD.NewLabel("Title2", FontBig3, " ")
-	title.SetAlignedPosition 42, 16, FlexDMD_Align_Center
-	FlexScenes(0).GetGroup("Content").AddActor title
-	Set title = FlexDMD.NewLabel("Title", FontBig1, " ")
-	title.SetAlignedPosition 42, 16, FlexDMD_Align_Center
-	FlexScenes(0).GetGroup("Content").AddActor title
-	FlexScenes(0).GetGroup("Content").AddActor FlexDMD.NewLabel("Ball", FontScoreActive, "Ball 1")
-	FlexScenes(0).GetGroup("Content").AddActor FlexDMD.NewLabel("Credit", FontScoreActive, "Credit 5")
+	' Nothing is hooked to a GLF event from here - the slide and widget
+	' players do that from mode config now. See the note at the bottom of
+	' this file.
 	
-	' Welcome animation
-	Set FlexScenes(1) = FlexDMD.NewGroup("Welcome")
-	With FlexScenes(1)
-		' .AddActor FlexDMD.Newvideo ("test","spinner.gif")
-		' .Getvideo("test").visible = True
-		.AddActor FlexDMD.NewImage("logo","gilmore_girls_logo_128x32.png")
-		.Getimage("logo").visible = False
-	End With
-	
-	' Bonus X animation
-	Set FlexScenes(2) = FlexDMD.NewGroup("BonusX")
-	FlexScenes(2).AddActor FlexDMD.Newvideo ("bonusX","bonusx.gif")
-	
-	' Multiball
-	Set FlexScenes(3) = FlexDMD.NewGroup("multiball")
-	FlexScenes(3).AddActor FlexDMD.Newvideo ("multiball","multiball.gif")
-	
-	' Jackpot
-	Set FlexScenes(4) = FlexDMD.NewGroup("jackpot")
-	FlexScenes(4).AddActor FlexDMD.Newvideo ("jackpot","jackpot.gif")
-	
-	' Drop target bonus
-	Set FlexScenes(5) = FlexDMD.NewGroup("nobonus")
-	FlexScenes(5).AddActor FlexDMD.Newvideo ("nobonus","nobonus.gif")
-	Set FlexScenes(6) = FlexDMD.NewGroup("bonus1")
-	FlexScenes(6).AddActor FlexDMD.Newvideo ("bonus1","bonus1.gif")
-	Set FlexScenes(7) = FlexDMD.NewGroup("bonus2")
-	FlexScenes(7).AddActor FlexDMD.Newvideo ("bonus2","bonus2.gif")
-	Set FlexScenes(8) = FlexDMD.NewGroup("bonus3")
-	FlexScenes(8).AddActor FlexDMD.Newvideo ("bonus3","bonus3.gif")
-
-	Set FlexScenes(9) = FlexDMD.NewGroup("kirk-dances")
-	FlexScenes(9).AddActor FlexDMD.Newvideo ("kirk-dances","kirk-dances.gif")
-
-	' Nothing is hooked to a GLF event from here any more - the slide and
-	' widget players do that from mode config now. See the note at the
-	' bottom of this file.
-
 End Sub
 
 '--------------------------------------------
@@ -183,19 +111,23 @@ End Sub
 '
 ' flexScene: FlexDMD.Group to play
 ' render: The render mode to use
-' mode: The mode number used in the DMDTimer
+'
+' VPW's version took a third "mode" argument and assigned it to a global
+' FlexMode, which DMDTimer_Timer switched on to pick a per-frame updater.
+' A scene's updater is now a property of the scene itself - the .Ticker
+' on its config entry - so there is no mode number to pass. Go through
+' FlexDmd_Present (ZFBC) rather than calling this directly: it is what
+' keeps "what is on screen" and "whose ticker runs" the same answer.
 '--------------------------------------------
-Sub ShowScene(flexScene, render, mode) 'Easy wrapper to play a FlexDMD scene
+Sub ShowScene(flexScene, render) 'Easy wrapper to play a FlexDMD scene
 	If UseFlexDMD = 0 Then Exit Sub
-	
+
 	FlexDMD.LockRenderThread
 	FlexDMD.RenderMode = render
 	FlexDMD.Stage.RemoveAll
 	FlexDMD.Stage.AddActor flexScene
 	If VRroom > 0 Or FlexONPlayfield Then FlexDMD.Show = False Else FlexDMD.Show = True
 	FlexDMD.UnlockRenderThread
-	
-	FlexMode = mode
 End Sub
 
 Dim DMDTextOnScore
@@ -237,83 +169,26 @@ Sub DMDTimer_Timer 'Main FlexDMD Timer
 	If UseFlexDMD = 0 Then Exit Sub
 	If VRroom > 0 Or FlexONPlayfield Then FlexFlasher
 	
-	Dim i, n, x, y, label
 	FlexFrame = FlexFrame + 1
 	FlexDMD.LockRenderThread
 	
-	Select Case FlexMode
-		Case 1 'scoreboard
-			' GLF: was "If (FlexFrame Mod 64) = 0 Then CurrentPlayer = 1 + (CurrentPlayer Mod 4)"
-			' Turn advance is GLF's job now (Getglf_currentPlayerNumber tracks it);
-			' nothing to do here.
-			If (FlexFrame Mod 16) = 0 Then
-				For i = 1 To 4
-					Set label = FlexDMD.Stage.GetLabel("Score_" & i)
-					If i = (Getglf_currentPlayerNumber() + 1) Then    'GLF: was "If i = CurrentPlayer Then"
-						label.Font = FontScoreActive
-					Else
-						label.Font = FontScoreInactive
-					End If
-					label.Text = FormatNumber(Score2Num(GetPlayerStateForPlayer(i - 1, "score")), 0)   'GLF: was "PlayerScore(i)"
-					label.SetAlignedPosition 45, 1 + (i - 1) * 6, FlexDMD_Align_TopRight
-				Next
-			End If
-			
-			' If DMDBGFlash > 0 Then
-			' 	DMDBGFlash = DMDBGFlash - 1
-			' 	FlexDMD.Stage.GetImage("bg2").visible = True
-			' Else
-			' 	FlexDMD.Stage.GetImage("bg2").visible = False
-			' End If
-			
-			If DMDfire > FLEXframe And (FlexFrame Mod 8) > 3 Then
-				FlexDMD.Stage.GetLabel("Title").font = FontBig2
-			Else
-				FlexDMD.Stage.GetLabel("Title").font = FontBig1
-			End If
-			
-			If DMDTextDisplayTime > FLEXframe Then
-				If DMDTextEffect = 1 And (FLEXframe Mod 20) > 10 Then
-					FlexDMD.Stage.GetLabel("Title").Text = " "
-					FlexDMD.Stage.GetLabel("Title2").Text = " "
-				Else
-					FlexDMD.Stage.GetLabel("Title").Text = DMDTextOnScore
-					FlexDMD.Stage.GetLabel("Title2").Text = DMDTextOnScore
-				End If
-			Else
-				'GLF: was "PlayerScore(CurrentPlayer)" - GetPlayerState with no
-				'index always reads the CURRENT player, so no index is needed.
-				FlexDMD.Stage.GetLabel("Title").Text = FormatNumber(Score2Num(GetPlayerState("score")), 0)
-				FlexDMD.Stage.GetLabel("Title2").Text = FormatNumber(Score2Num(GetPlayerState("score")), 0)
-			End If
-			
-			FlexDMD.Stage.GetLabel("Title").SetAlignedPosition 42, 16, FlexDMD_Align_Center
-			FlexDMD.Stage.GetLabel("Title2").SetAlignedPosition 43, 17, FlexDMD_Align_Center
-			FlexDMD.Stage.GetLabel("Ball").SetAlignedPosition 0, 33, FlexDMD_Align_BottomLeft
-			FlexDMD.Stage.GetLabel("Credit").SetAlignedPosition 81, 33, FlexDMD_Align_BottomRight
-			FlexDMD.Stage.GetLabel("Ball").Text = "Ball " & GetPlayerState("ball")
-			'Update with your own code for Credits
-			'   FlexDMD.Stage.GetLabel("Credit").Text = "Credit " & (Credits(CurrentPlayer)) - 1
-			
-		Case 2 'dmdintro
-			If FlexFrame = 88 Then FlexDMD.Stage.Getimage("logo").visible = True
-			
-			If FlexFrame > 110 Then
-				If (FlexFrame Mod 32) = 10 Then FlexDMD.Stage.Getimage("logo").visible = True
-				If (FlexFrame Mod 32) = 1 Then FlexDMD.Stage.Getimage("logo").visible = False
-			End If
-	End Select
+	' Whatever scene is on the DMD gets its per-frame update here, if it
+	' asked for one - the scoreboard refreshing scores and drawing widget
+	' text, the intro revealing its logo. VPW switched on a FlexMode
+	' number; the scene's config entry names its own .Ticker instead, so
+	' adding a scene never means adding a Case here.
+	FlexDmd_Tick()
+	
 	FlexDMD.UnlockRenderThread
 End Sub
 
 
 '*******************************************
-'  Triggering these scenes from GLF
+'  Triggering the DMD from GLF
 '*******************************************
-' Nothing here listens for GLF events any more. Every scene above is
-' reached through the slide player and widget player instead, with the
-' names mapped to scenes in FlexDmd_ShowSlide / FlexDmd_ShowWidget (ZFBC)
-' and the events chosen in mode config:
+' Nothing here listens for GLF events. Every slide and widget is listed
+' in src/game/dmd/display_config.vbs and reached through the slide player
+' and widget player, with the events chosen in mode config:
 '
 '   base            score slide, launch + ball saved widgets
 '   multiball       multiball slide, ball 1/2 locked widgets
@@ -335,7 +210,7 @@ End Sub
 '     countdown is a slide for exactly that reason.
 '
 ' If you ever do need a scene on an event no running mode can see, the
-' old hand-wired route still works:
+' hand-wired route still works:
 '
 '     AddPinEventListener "some_event", "dmd_key", "SomeCallback", 100, Null
 '
