@@ -37,6 +37,8 @@
 '   ZDMD: FlexDMD
 '   ZFBC: FlexDMD BCP Controller (GLF slide/widget player -> FlexDMD)
 '   ZGCF: GLF Configurations  (src/game/_configuration.vbs)
+'   ZDSP: DMD slide/widget list      (src/game/dmd/display_config.vbs)
+'   ZDSC: DMD scenes that are code   (src/game/dmd/display_scenes.vbs)
 '
 ' DELETED in the GLF migration - do not re-add:
 '   ZTUT (tutorial links)                      ZDRN (GLF owns the trough)
