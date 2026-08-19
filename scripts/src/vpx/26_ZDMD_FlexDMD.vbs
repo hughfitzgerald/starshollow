@@ -22,18 +22,14 @@
 '    state now. The scoreboard (FlexMode = 1, in DMDTimer_Timer) reads
 '    GetPlayerStateForPlayer(n, "score") / Getglf_currentPlayerNumber()
 '    instead. See Score2Num() below for the False-until-first-set case.
-' 2. Added a declarative hook so a mode can trigger a scene just by
-'    dispatching a plain event name, instead of calling ShowScene
-'    directly from mode code. See "GLF scene triggers" at the bottom.
+' 2. Nothing in here listens for GLF events. ZFBC hands GLF a stand-in
+'    bcpController, so the slide player and widget player drive the scenes
+'    below straight from mode config - .Slide = "score", .Widget =
+'    "ball_save" - and the names are mapped to scenes in FlexDmd_ShowSlide
+'    / FlexDmd_ShowWidget. This file is scene construction and the render
+'    timer, nothing else. See the note at the bottom.
 ' 3. Everything else (scene construction, ShowScene, DMDBigText,
 '    FlexFlasher) is untouched from the VPW original.
-' 4. There is now a second, config-driven way in: ZFBC hands GLF a
-'    stand-in bcpController, so the slide player and widget player drive
-'    the scenes below straight from mode config - .Slide = "score",
-'    .Widget = "ball_save" - with no listener here. Prefer that for new
-'    display work; the listeners below are the older hand-wired route and
-'    each one can move across whenever you get to it. Anything moved MUST
-'    lose its listener here, or the scene fires twice.
 
 
 Dim FlexDMD	 'This is the FlexDMD object
@@ -173,22 +169,9 @@ Sub Flex_Init
 	Set FlexScenes(8) = FlexDMD.NewGroup("bonus3")
 	FlexScenes(8).AddActor FlexDMD.Newvideo ("bonus3","bonus3.gif")
 
-	' GLF: fires whenever this listener's target event is dispatched -
-	' see "GLF scene triggers" at the bottom of this file. Registered
-	' here (rather than earlier in the file) so it runs after Glf_Init
-	' has set up AddPinEventListener - Table1_Init calls Flex_Init before
-	' ConfigureGlfDevices()/Glf_Init, so this line alone would fail if it
-	' were higher up. If you ever reorder Table1_Init, keep this after
-	' Glf_Init.
-	AddPinEventListener "start_multiball", "dmd_multiball", "ShowMultiballScene", 100, Null
-	AddPinEventListener "balldevice_lock1_ball_entered", "dmd_ball1locked", "ShowBall1Locked", 100, Null
-	AddPinEventListener "balldevice_lock2_ball_entered", "dmd_ball2locked", "ShowBall2Locked", 100, Null
-	AddPinEventListener "ss_achieved", "dmd_ss_hit", "ShowSkillshotHit", 100, Null
-	AddPinEventListener "eb_now_lit", "dmd_eb_lit", "ShowEBLit", 100, Null
-	AddPinEventListener "eb_achieved", "dmd_eb_achieved", "ShowEBAchieved", 100, Null
-	AddPinEventListener "mode_dance_marathon_started", "dmd_dm_start", "ShowDMStart", 100, Null
-	AddPinEventListener "mode_dance_marathon_stopped", "dmd_dm_end", "ShowDMEnd", 100, Null
-	AddPinEventListener "timer_dm_mode_tick", "dmd_dm_tick", "ShowDMTick", 100, Null
+	' Nothing is hooked to a GLF event from here any more - the slide and
+	' widget players do that from mode config now. See the note at the
+	' bottom of this file.
 
 End Sub
 
@@ -322,61 +305,36 @@ End Sub
 
 
 '*******************************************
-'  GLF scene triggers
+'  Triggering these scenes from GLF
 '*******************************************
-' EventPlayer never calls a Sub directly - it only dispatches further
-' named events. So the pattern for hooking any GLF event to a FlexDMD
-' scene is: register a listener here that translates the event into an
-' actual ShowScene call.
+' Nothing here listens for GLF events any more. Every scene above is
+' reached through the slide player and widget player instead, with the
+' names mapped to scenes in FlexDmd_ShowSlide / FlexDmd_ShowWidget (ZFBC)
+' and the events chosen in mode config:
 '
-' AddPinEventListener params: event to watch, a unique listener key
-' (lets several listeners watch the same event), callback name, priority,
-' and an args value passed straight through.
+'   base            score slide, launch + ball saved widgets
+'   multiball       multiball slide, ball 1/2 locked widgets
+'   skillshots      skillshot widget
+'   extra_ball      extra ball lit + extra ball widgets
+'   dance_marathon  dance marathon + complete widgets, countdown slide
 '
-' Add one block like this per scene you want triggered by a GLF event.
-' The base mode itself needs no changes for this - CreateGlfMode already
-' dispatches "mode_base_started" on its own.
+' A slide or widget player only listens while its mode is running, which
+' is the one thing to watch when adding more: put the entry in a mode
+' that is actually up when the event fires. Two cases worth knowing:
 '
-' Three of these have already moved to the slide/widget player: the
-' scoreboard, the launch text and the ball-saved text are all configured
-' in the base mode now (see the DMD section of modes/base.vbs), routed
-' through the local controller in ZFBC. Their listeners and callbacks are
-' gone from this file.
-
-Function ShowBall1Locked(args)
-	DMDBigText "BALL 1 LOCKED",77,1
-End Function
-
-Function ShowBall2Locked(args)
-	DMDBigText "BALL 2 LOCKED",77,1
-End Function
-
-Function ShowMultiballScene(args)
-	ShowScene FlexScenes(3), FlexDMD_RenderMode_DMD_GRAY, 4
-End Function
-
-Function ShowSkillshotHit(args)
-	DMDBigText "SKILLSHOT HIT",77,1
-End Function
-
-Function ShowEBLit(args)
-	DMDBigText "EXTRA BALL LIT",77,1
-End Function
-
-Function ShowEBAchieved(args)
-	DMDBigText "EXTRA BALL",77,1
-End Function
-
-Function ShowDMStart(args)
-	DMDBigText "DANCE MARATHON",77,1
-End Function
-
-Function ShowDMEnd(args)
-	DMDBigText "DANCE MARATHON COMPLETE",77,1
-End Function
-
-Dim TimerDM: TimerDM = 0
-Function ShowDMTick(args)
-	TimerDM = TimerDM + 1
-	DMDBigText "TICK " & TimerDM,77,1
-End Function
+'   - Devices deactivate on mode_X_stopping at the mode's priority minus
+'     one, and mode_X_stopped is not dispatched until after that. So a
+'     mode cannot react to its own _stopped event; use _stopping, which
+'     the player still hears (it registers at the mode's own priority),
+'     or put the entry in a mode that outlives it.
+'   - Only the slide player forwards the triggering event's kwargs. A
+'     widget carrying live data is not possible; the dance marathon
+'     countdown is a slide for exactly that reason.
+'
+' If you ever do need a scene on an event no running mode can see, the
+' old hand-wired route still works:
+'
+'     AddPinEventListener "some_event", "dmd_key", "SomeCallback", 100, Null
+'
+' registered at the end of Flex_Init (it needs Glf_Init to have run), with
+' a matching Function SomeCallback(args). Prefer mode config.

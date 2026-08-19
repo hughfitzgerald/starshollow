@@ -47,6 +47,35 @@ Sub CreateMultiballMode()
         End With
 
 
+        '--- DMD ---------------------------------------------------------
+        ' Names map to FlexDMD scenes in FlexDmd_ShowSlide /
+        ' FlexDmd_ShowWidget (ZFBC).
+        With .SlidePlayer()
+            ' Expire matters here. Without it the multiball animation
+            ' would hold the top of the slide stack until this mode stops
+            ' at the end of the ball, hiding the scoreboard for the whole
+            ' multiball. Three seconds, then the score comes back.
+            With .EventName("start_multiball")
+                .Slide  = "multiball"
+                .Action = "play"
+                .Expire = 3
+            End With
+        End With
+
+        With .WidgetPlayer()
+            With .EventName("balldevice_lock1_ball_entered")
+                .Widget = "ball_1_locked"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+            With .EventName("balldevice_lock2_ball_entered")
+                .Widget = "ball_2_locked"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+        End With
+
+
         'SHOTS
 
         'Define the muiltball shoot again light

@@ -477,6 +477,32 @@ Sub FlexDmd_ShowSlide(slide, kwargs)
         Case "jackpot"
             ShowScene FlexScenes(4), FlexDMD_RenderMode_DMD_GRAY, 0
 
+        Case "dance_marathon_timer"
+            ' Text over the scoreboard rather than a scene of its own. It
+            ' is a slide and not a widget because only the slide player
+            ' passes the triggering event's kwargs through, and the count
+            ' lives in there - GLF's timer puts "ticks_remaining" in the
+            ' kwargs of every timer_X_tick.
+            '
+            ' The ShowScene guard is what makes a text-only slide safe. A
+            ' slide that renders no scene leaves whatever scene is already
+            ' up, so if this one took the top of the stack back from, say,
+            ' an expiring multiball animation, the DMD would still be
+            ' showing multiball. Claiming the scoreboard when it is not
+            ' already up fixes that, and skipping it when it is avoids
+            ' rebuilding the stage - and restarting the scrolling title -
+            ' once a second. Any other text-only slide wants the same two
+            ' lines.
+            '
+            ' Held slightly longer than the 1s tick interval so the text
+            ' does not blink out between ticks, and solid rather than
+            ' flashing because it is continuous, not a notification.
+            If FlexMode <> 1 Then
+                ShowScene FlexScenes(0), FlexDMD_RenderMode_DMD_GRAY, 1
+            End If
+            DMDBigText FlexDmd_Kwarg(kwargs, "ticks_remaining", 0) & " SEC", _
+                       FlexDmd_Frames(1.2), 0
+
         Case "no_bonus"
             ShowScene FlexScenes(5), FlexDMD_RenderMode_DMD_GRAY, 0
 

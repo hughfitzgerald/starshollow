@@ -50,6 +50,17 @@ Sub CreateSkillshotsMode()
         End With
 
 
+        '--- DMD ---------------------------------------------------------
+        ' Name maps to a FlexDMD overlay in FlexDmd_ShowWidget (ZFBC).
+        With .WidgetPlayer()
+            With .EventName("ss_achieved")
+                .Widget = "skillshot"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+        End With
+
+
         'The random event player will dispatch an event at random (wieghted) from a list of possible events
         ' With .RandomEventPlayer()
         '     'Upon initialization, randomly choose one of the four top lane lights to flash for the skill shot
