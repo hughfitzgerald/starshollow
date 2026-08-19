@@ -34,10 +34,12 @@
 '   ZFLD: Flupper Domes
 '   ZFLB: Flupper Bumpers
 '   ZVRR: VR Room
+'   ZDMD: FlexDMD
+'   ZFBC: FlexDMD BCP Controller (GLF slide/widget player -> FlexDMD)
 '   ZGCF: GLF Configurations  (src/game/_configuration.vbs)
 '
 ' DELETED in the GLF migration - do not re-add:
-'   ZTUT (tutorial links)  ZDMD (FlexDMD)      ZDRN (GLF owns the trough)
+'   ZTUT (tutorial links)                      ZDRN (GLF owns the trough)
 '   ZSCR (GLF player vars) ZLIS (ROM listener) ZRDT (no drop targets)
 '   ZTST (shot tester)     ZQUE (GLF SetDelay) ZLOG   ZCRD   ZPHY
 

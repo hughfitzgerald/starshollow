@@ -153,6 +153,35 @@ Sub CreateBaseMode()
             End With
         End With
 
+        '--- DMD -----------------------------------------------------------
+        ' These go through the slide/widget player exactly as they would
+        ' with a Godot media controller. What is behind them here is
+        ' GlfFlexDmdBcpController (ZFBC), which turns the names below into
+        ' FlexDMD calls locally. Slide and widget names are mapped in
+        ' FlexDmd_ShowSlide / FlexDmd_ShowWidget.
+        With .SlidePlayer()
+            ' The scoreboard, for the whole ball. Cleared from the slide
+            ' stack when base mode stops - the scene itself stays up.
+            With .EventName("mode_base_started")
+                .Slide  = "score"
+                .Action = "play"
+            End With
+        End With
+
+        With .WidgetPlayer()
+            With .EventName("balldevice_plunger_ball_exiting")
+                .Widget = "launch"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+            With .EventName("ball_save_new_ball_saving_ball")
+                .Widget = "ball_save"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+        End With
+
+
         'Define our shots
         For x = 7 to 9
             With .Shots("bonus_lane_"&x)

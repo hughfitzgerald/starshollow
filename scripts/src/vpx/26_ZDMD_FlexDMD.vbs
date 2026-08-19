@@ -27,6 +27,13 @@
 '    directly from mode code. See "GLF scene triggers" at the bottom.
 ' 3. Everything else (scene construction, ShowScene, DMDBigText,
 '    FlexFlasher) is untouched from the VPW original.
+' 4. There is now a second, config-driven way in: ZFBC hands GLF a
+'    stand-in bcpController, so the slide player and widget player drive
+'    the scenes below straight from mode config - .Slide = "score",
+'    .Widget = "ball_save" - with no listener here. Prefer that for new
+'    display work; the listeners below are the older hand-wired route and
+'    each one can move across whenever you get to it. Anything moved MUST
+'    lose its listener here, or the scene fires twice.
 
 
 Dim FlexDMD	 'This is the FlexDMD object
@@ -173,10 +180,7 @@ Sub Flex_Init
 	' ConfigureGlfDevices()/Glf_Init, so this line alone would fail if it
 	' were higher up. If you ever reorder Table1_Init, keep this after
 	' Glf_Init.
-	AddPinEventListener "mode_base_started", "dmd_base_scene", "ShowBaseScene", 100, Null
 	AddPinEventListener "start_multiball", "dmd_multiball", "ShowMultiballScene", 100, Null
-	AddPinEventListener "ball_save_new_ball_saving_ball", "dmd_ballsave", "ShowBallSavedScene", 100, Null
-	AddPinEventListener "balldevice_plunger_ball_exiting", "dmd_launch", "ShowLaunchScene", 100, Null
 	AddPinEventListener "balldevice_lock1_ball_entered", "dmd_ball1locked", "ShowBall1Locked", 100, Null
 	AddPinEventListener "balldevice_lock2_ball_entered", "dmd_ball2locked", "ShowBall2Locked", 100, Null
 	AddPinEventListener "ss_achieved", "dmd_ss_hit", "ShowSkillshotHit", 100, Null
@@ -332,18 +336,12 @@ End Sub
 ' Add one block like this per scene you want triggered by a GLF event.
 ' The base mode itself needs no changes for this - CreateGlfMode already
 ' dispatches "mode_base_started" on its own.
-
-Function ShowBaseScene(args)
-	ShowScene FlexScenes(0), FlexDMD_RenderMode_DMD_GRAY, 1
-End Function
-
-Function ShowLaunchScene(args)
-	DMDBigText "LAUNCH",77,1
-End Function
-
-Function ShowBallSavedScene(args)
-	DMDBigText "BALL SAVED",77,1
-End Function
+'
+' Three of these have already moved to the slide/widget player: the
+' scoreboard, the launch text and the ball-saved text are all configured
+' in the base mode now (see the DMD section of modes/base.vbs), routed
+' through the local controller in ZFBC. Their listeners and callbacks are
+' gone from this file.
 
 Function ShowBall1Locked(args)
 	DMDBigText "BALL 1 LOCKED",77,1
