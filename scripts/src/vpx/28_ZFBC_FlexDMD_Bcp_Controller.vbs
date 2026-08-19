@@ -119,7 +119,15 @@ Sub FlexBcp_Attach()
     End If
 
     If IsObject(bcpController) Then
-        If TypeName(bcpController) <> "GlfFlexDmdBcpController" Then
+        ' Identity comparison rather than TypeName - see the note on
+        ' FlexDmd_Kwarg below. TypeName() segfaults VPX's macOS VBScript
+        ' engine, so this file never calls it.
+        Dim isOurs : isOurs = False
+        If IsObject(glfFlexBcp) Then
+            If bcpController Is glfFlexBcp Then isOurs = True
+        End If
+
+        If Not isOurs Then
             ' Somebody else's controller - leave it alone.
             Exit Sub
         End If
@@ -595,13 +603,24 @@ Function FlexDmd_Frames(seconds)
 End Function
 
 ' Read one key out of an event's kwargs, with a fallback.
+'
+' NEVER call TypeName() on kwargs to check that it is a Dictionary. VPX's
+' macOS VBScript engine (libwinevbs) segfaults on TypeName(<Scripting.
+' Dictionary>) - Global_TypeName -> get_typeinfo dereferences a bad
+' pointer and takes the whole process down with SIGSEGV, no script error.
+' It is a real crash in the engine, not something this table did wrong,
+' and it does not reproduce on Windows' vbscript.dll.
+'
+' IsObject plus On Error is the safe equivalent. Everything GLF puts in
+' kwargs comes from GlfKwargs(), which is always a Scripting.Dictionary,
+' so the only job left is to survive a caller passing something else.
 Function FlexDmd_Kwarg(kwargs, key, fallback)
     FlexDmd_Kwarg = fallback
-    If IsObject(kwargs) Then
-        If TypeName(kwargs) = "Dictionary" Then
-            If kwargs.Exists(key) Then FlexDmd_Kwarg = kwargs(key)
-        End If
-    End If
+    If Not IsObject(kwargs) Then Exit Function
+
+    On Error Resume Next
+    If kwargs.Exists(key) Then FlexDmd_Kwarg = kwargs(key)
+    On Error GoTo 0
 End Function
 
 Function FlexBcp_Num(value)
