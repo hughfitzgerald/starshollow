@@ -64,6 +64,11 @@ Sub Table1_OptionEvent(ByVal eventId)
 	' first two constantly.
 	Glf_Options(eventId)
 
+	' Glf_Options tears bcpController down every time it runs, so the
+	' local FlexDMD controller has to be put back afterwards. No-op when
+	' the BCP option is On - then GLF connects to Godot instead. See ZFBC.
+	FlexBcp_Attach()
+
 	' Rebuild the VR room when options change
 	InitVR()
 

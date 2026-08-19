@@ -41,6 +41,12 @@ Sub Table1_Init
 	Flex_Init()
 	ShowScene flexScenes(1), FlexDMD_RenderMode_DMD_GRAY, 2
 
+	' GLF slide/widget player -> FlexDMD, in place of a Godot media
+	' controller over BCP. Must come after Flex_Init (the scenes have to
+	' exist before a slide can render) and after Glf_Init (Glf_Options
+	' clears bcpController on its way through). See ZFBC.
+	FlexBcp_Attach()
+
 	' TEMPORARY diagnostics - delete this line and src/game/_diagnostics.vbs
 	' once the table is starting games reliably.
 	GlfDiag_Init()
