@@ -2,8 +2,8 @@
   "Ramp": {
     "height_bottom": 90.0,
     "height_top": 70.0,
-    "width_bottom": 60.0,
-    "width_top": 60.0,
+    "width_bottom": 65.0,
+    "width_top": 65.0,
     "material": "Metal",
     "is_timer_enabled": false,
     "timer_interval": 100,
