@@ -107,6 +107,42 @@ Sub CreateDanceMarathonMode()
             End With
         End With
 
+        '--- DMD -----------------------------------------------------------
+        ' Names map to FlexDMD scenes/overlays in FlexDmd_ShowSlide /
+        ' FlexDmd_ShowWidget (ZFBC).
+        With .WidgetPlayer()
+            With .EventName("mode_dance_marathon_started")
+                .Widget = "dance_marathon"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+            ' _stopping, not _stopped: this mode's own devices are
+            ' deactivated on _stopping at priority-1, and _stopped is only
+            ' dispatched after that, so a widget player here would already
+            ' be gone. The player's own listener sits at the mode's full
+            ' priority, so it still fires on _stopping - the same event
+            ' the SoundPlayer above uses to stop the music.
+            With .EventName("mode_dance_marathon_stopping")
+                .Widget = "dance_marathon_done"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+        End With
+
+        With .SlidePlayer()
+            ' The countdown, replayed on every tick of the dm_mode timer
+            ' below. A slide rather than a widget because the seconds left
+            ' arrive in the tick event's kwargs, and only the slide player
+            ' forwards those. It sits on the slide stack at this mode's
+            ' priority, so it outranks the base scoreboard while the mode
+            ' runs and is cleared automatically when the mode stops.
+            With .EventName("timer_dm_mode_tick")
+                .Slide  = "dance_marathon_timer"
+                .Action = "play"
+            End With
+        End With
+
+
         With .Timers("dm_mode_delay")
             .StartRunning = True
             .Direction = "down"

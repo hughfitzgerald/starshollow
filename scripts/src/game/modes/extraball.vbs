@@ -39,6 +39,27 @@ Sub CreateExtraBallMode()
         End With
 
 
+        '--- DMD ---------------------------------------------------------
+        ' Names map to FlexDMD overlays in FlexDmd_ShowWidget (ZFBC).
+        ' Both fire unconditionally, as the listeners they replace did -
+        ' note that eb_now_lit is dispatched even once MaxEBs have been
+        ' collected, when the shot below no longer lights. Add the same
+        ' {current_player.extra_ball_eb_awarded < MaxEBs} condition to the
+        ' event name if you want the text to follow the light.
+        With .WidgetPlayer()
+            With .EventName("eb_now_lit")
+                .Widget = "extra_ball_lit"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+            With .EventName("eb_achieved")
+                .Widget = "extra_ball"
+                .Action = "play"
+                .Expire = 1.3
+            End With
+        End With
+
+
         'Configure the extra ball award
         With .ExtraBalls("eb")
             .AwardEvents = Array("eb_achieved")
