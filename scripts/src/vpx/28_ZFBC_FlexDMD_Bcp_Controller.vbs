@@ -522,6 +522,9 @@ Sub FlexDmd_ShowSlide(slide, kwargs)
 
         Case "bonus_3"
             ShowScene FlexScenes(8), FlexDMD_RenderMode_DMD_GRAY, 0
+        
+        Case "kirk-dances"
+            ShowScene FlexScenes(9), FlexDMD_RenderMode_DMD_GRAY, 0
 
         Case Else
             Glf_WriteDebugLog "flexdmd_bcp", "No FlexDMD scene mapped for slide '" & slide & "'"

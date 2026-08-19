@@ -169,6 +169,9 @@ Sub Flex_Init
 	Set FlexScenes(8) = FlexDMD.NewGroup("bonus3")
 	FlexScenes(8).AddActor FlexDMD.Newvideo ("bonus3","bonus3.gif")
 
+	Set FlexScenes(9) = FlexDMD.NewGroup("kirk-dances")
+	FlexScenes(9).AddActor FlexDMD.Newvideo ("kirk-dances","kirk-dances.gif")
+
 	' Nothing is hooked to a GLF event from here any more - the slide and
 	' widget players do that from mode config now. See the note at the
 	' bottom of this file.

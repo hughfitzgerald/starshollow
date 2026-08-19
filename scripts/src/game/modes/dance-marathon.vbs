@@ -111,11 +111,11 @@ Sub CreateDanceMarathonMode()
         ' Names map to FlexDMD scenes/overlays in FlexDmd_ShowSlide /
         ' FlexDmd_ShowWidget (ZFBC).
         With .WidgetPlayer()
-            With .EventName("mode_dance_marathon_started")
-                .Widget = "dance_marathon"
-                .Action = "play"
-                .Expire = 1.3
-            End With
+            ' With .EventName("mode_dance_marathon_started")
+            '     .Widget = "dance_marathon"
+            '     .Action = "play"
+            '     .Expire = 1.3
+            ' End With
             ' _stopping, not _stopped: this mode's own devices are
             ' deactivated on _stopping at priority-1, and _stopped is only
             ' dispatched after that, so a widget player here would already
@@ -138,6 +138,11 @@ Sub CreateDanceMarathonMode()
             ' runs and is cleared automatically when the mode stops.
             With .EventName("timer_dm_mode_tick")
                 .Slide  = "dance_marathon_timer"
+                .Action = "play"
+            End With
+
+            With .EventName("mode_dance_marathon_started")
+                .Slide = "kirk-dances"
                 .Action = "play"
             End With
         End With
