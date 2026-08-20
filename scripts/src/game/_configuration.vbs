@@ -167,7 +167,7 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "target_hit_count", 0       'used in targetbank mode
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
     Glf_SetInitialPlayerVar "bonus_multiplier", 1
-    Glf_SetInitialPlayerVar "locks_qualfiied", 0        'flag keeps track of when a player has qualified the locks
+    Glf_SetInitialPlayerVar "is_lock_qualified", 0        'flag keeps track of when a player has qualified the locks
     Glf_SetInitialPlayerVar "bonus_total", 0            'total bonus score, calculated in bonus mode
     Glf_SetInitialPlayerVar "bonus_count", 0            'number of bonus lights achieved, calculated in bonus mode
     Glf_SetInitialPlayerVar "bonus_skip", 0             'flag to capture if player wants to skip the bonus tally shows in bonus mode

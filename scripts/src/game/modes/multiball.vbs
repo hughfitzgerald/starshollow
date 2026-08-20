@@ -22,7 +22,15 @@ Sub CreateMultiballMode()
         With .EventPlayer()
             .Debug = True
 
-            .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
+            .Add "s_ST11_active", Array("lock_qualified") ' TEMP: when you hit the J in "JESS" we get lock lit
+
+            .Add "mode_multiball_started{current_player.is_lock_qualified == 1}", Array("lock_lit")
+            .Add "lock_qualified", Array("lock_lit")
+            
+            .Add "multiball_mb_started", Array("lock_unqualified")
+            .Add "lock_unqualified", Array("lock_unlit")
+            .Add "mode_multiball_stopping", Array("lock_unlit")
+
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")
 
@@ -35,8 +43,6 @@ Sub CreateMultiballMode()
             .Add "balldevice_lock3_ball_exiting", Array("ball_unlocked")
 
             .Add "multiball_lock_multiball_lock_full", Array("start_multiball")
-
-            .Add "multiball_mb_started", Array("lock_unlit")
         End With
 
         With .VariablePlayer()
@@ -64,13 +70,23 @@ Sub CreateMultiballMode()
                     .Int = 0
                 End With
             End With
+            With .EventName("lock_qualified")
+                With .Variable("is_lock_qualified")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("lock_unqualified")
+                With .Variable("is_lock_qualified")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
         End With
 
         With .MultiballLocks("multiball_lock")
             .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
             .LockedBallCountingStrategy = "virtual_only"
-            ' .BallsToLock = 2              ' Number of balls that can be locked
-            ' .LockEvents = Array("balldevice_lock1_ball_entered", "balldevice_lock2_ball_entered", "balldevice_lock3_ball_entered")
             .BallsToLock = 3
             .BallsToReplace = 2
             .EnableEvents = Array("lock_lit")
