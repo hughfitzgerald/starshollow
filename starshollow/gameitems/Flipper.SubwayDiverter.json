@@ -6,7 +6,7 @@
     },
     "base_radius": 0.5,
     "end_radius": 0.5,
-    "flipper_radius_max": 79.0,
+    "flipper_radius_max": 210.0,
     "return": 0.058,
     "start_angle": 71.5,
     "end_angle": 182.0,

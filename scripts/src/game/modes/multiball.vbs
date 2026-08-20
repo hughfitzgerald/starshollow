@@ -34,30 +34,10 @@ Sub CreateMultiballMode()
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")
 
-            .Add "balldevice_lock1_ball_entered", Array("ball_locked")
-            .Add "balldevice_lock2_ball_entered", Array("ball_locked")
-            .Add "balldevice_lock3_ball_entered", Array("ball_locked")
-
-            .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
-            .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
-            .Add "balldevice_lock3_ball_exiting", Array("ball_unlocked")
-
             .Add "multiball_lock_multiball_lock_full", Array("start_multiball")
         End With
 
         With .VariablePlayer()
-            With .EventName("ball_locked")
-                With .Variable("num_balls_locked")
-                    .Action = "add_machine"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("ball_unlocked")
-                With .Variable("num_balls_locked")
-                    .Action = "add_machine"
-                    .Int = -1
-                End With
-            End With
             With .EventName("multiball_mb_started")
                 With .Variable("mb_active")
                     .Action = "set"

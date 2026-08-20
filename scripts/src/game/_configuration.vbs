@@ -89,14 +89,12 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "trough_eject", "on_trough_eject", "OnTroughEject", 2000, Null
     AddPinEventListener GLF_BALL_DRAIN, "ball_drain_sound", "BallDrainSound", 100, Null
 
-    ' Track ball-in-plunger-lane for the ZKEY release sound.
-    ' VUK hold: wait 1.5s after the ball is captured, then eject. This
-    ' replaces the original VUK1.TimerInterval = 1500.
-    ' AddPinEventListener "s_VUK1_active", "vuk1_hold", "Vuk1Hold", 100, Null
-
-    AddPinEventListener "lock_lit", "enable_initial_multiball_lock", "EnableMultiballLockListener", 100, Null
-    AddPinEventListener "balldevice_lock1_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
-    AddPinEventListener "balldevice_lock2_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
+    ' TODO: You probably don't want to use balldevice ball entered events to do this! because do they fire during the multiball relay?
+    ' TODO: ALSO, do we want another callback for lock_unlit?
+    AddPinEventListener "lock_unlit", "disable_multiball_lock", "DisableMultiballLock", 100, Null
+    AddPinEventListener "lock_lit", "enable_initial_multiball_lock", "EnableInitialMultiballLock", 100, Null
+    AddPinEventListener "balldevice_lock1_ball_entered", "enable_second_multiball_lock", "EnableSecondMultiballLock", 100, Null
+    AddPinEventListener "balldevice_lock2_ball_entered", "enable_third_multiball_lock", "EnableThirdMultiballLock", 100, Null
 
     AddPinEventListener "ball_ended", "clear_multiball_locks", "ClearMultiballLocksListener", 100, Null
 

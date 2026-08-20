@@ -63,32 +63,60 @@ Sub KickBall(kball, kangle, kvel, kvelz, kzlift)
 	kball.vely = Sin(rangle) * kvel
 End Sub
 
-Sub EnableMultiballLockListener(ball)
-	If Not s_Lock1.Enabled Then
-		s_Lock1.Enabled = True
-	ElseIf Not s_Lock2.Enabled Then
-		s_Lock2.Enabled = True
-	ElseIf Not s_Lock3.Enabled Then
-		s_Lock3.Enabled = True
-	End If
-End Sub
-
-Sub ClearMultiballLocksListener(ball)
-	s_Lock1.Kick 0, 0
-	s_Lock2.Kick 0, 0
-	s_Lock3.Kick 0, 0
+Sub DisableMultiballLock(ball)
 	s_Lock1.Enabled = False
 	s_Lock2.Enabled = False
 	s_Lock3.Enabled = False
+End Sub
+
+Sub EnableInitialMultiballLock(ball)
+	s_Lock1.Enabled = True
+	s_Lock2.Enabled = False
+	s_Lock3.Enabled = False
+End Sub
+
+Sub EnableSecondMultiballLock(ball)
+	s_Lock1.Enabled = True
+	s_Lock2.Enabled = True
+	s_Lock3.Enabled = False
+End Sub
+
+Sub EnableThirdMultiballLock(ball)
+	s_Lock1.Enabled = True
+	s_Lock2.Enabled = True
+	s_Lock3.Enabled = True
+End Sub
+
+Sub ClearMultiballLocksListener(ball)
+    glf_ball_devices("lock1").EjectCallback = "Lock1SubwayEjectCallback"
+    glf_ball_devices("lock2").EjectCallback = "Lock2SubwayEjectCallback"
+    glf_ball_devices("lock3").EjectCallback = "Lock3SubwayEjectCallback"
+
+    glf_ball_devices("lock1").EjectAll()
+    glf_ball_devices("lock2").EjectAll()
+    glf_ball_devices("lock3").EjectAll()
+
+    glf_ball_devices("lock1").EjectCallback = "Lock1EjectCallback"
+    glf_ball_devices("lock2").EjectCallback = "Lock2EjectCallback"
+    glf_ball_devices("lock3").EjectCallback = "Lock3EjectCallback"
+End Sub
+
+Sub Lock1SubwayEjectCallback(ball)
+    s_Lock1.Kick 162, 10
+End Sub
+
+Sub Lock2SubwayEjectCallback(ball)
+    s_Lock2.Kick 162, 10
+End Sub
+
+Sub Lock3SubwayEjectCallback(ball)
+    s_Lock3.Kick 162, 10
 End Sub
 
 Sub Lock1EjectCallback(ball)
 	Dim ang, vel
 	ang = 251.5
 	vel = 50
-	' KickBall ball, ang, vel, 0, 0
-	' ang = 0
-	' vel = 0
 	s_Lock1.Kick ang, vel
 End Sub
 
@@ -96,9 +124,6 @@ Sub Lock2EjectCallback(ball)
 	Dim ang, vel
 	ang = 251.5
 	vel = 50
-	' KickBall ball, ang, vel, 0, 0
-	' ang = 0
-	' vel = 0
 	s_Lock2.Kick ang, vel
 End Sub
 
@@ -106,9 +131,6 @@ Sub Lock3EjectCallback(ball)
 	Dim ang, vel
 	ang = 251.5
 	vel = 50
-	' KickBall ball, ang, vel, 0, 0
-	' ang = 0
-	' vel = 0
 	s_Lock3.Kick ang, vel
 End Sub
 

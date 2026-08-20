@@ -10,6 +10,7 @@ Sub CreateBasementMode()
     Dim x
 
     With CreateGlfMode("basement", 100)
+        .Debug = True
         .StartEvents = Array("reset_complete")
 
         With .EventPlayer()
@@ -27,6 +28,14 @@ Sub CreateBasementMode()
             .Add "s_add_credit_key_active", Array("add_credit")
             .Add "s_add_credit_key2_active", Array("add_credit")
 
+            .Add "balldevice_lock1_ball_entered", Array("ball_locked")
+            .Add "balldevice_lock2_ball_entered", Array("ball_locked")
+            .Add "balldevice_lock3_ball_entered", Array("ball_locked")
+
+            .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
+            .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
+            .Add "balldevice_lock3_ball_exiting", Array("ball_unlocked")
+
         End With
 
         With .VariablePlayer()
@@ -34,6 +43,18 @@ Sub CreateBasementMode()
                 With .Variable("credits")
                     .Action = "add_machine"
                     .Int = 1
+                End With
+            End With
+            With .EventName("ball_locked")
+                With .Variable("num_balls_locked")
+                    .Action = "add_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("ball_unlocked")
+                With .Variable("num_balls_locked")
+                    .Action = "add_machine"
+                    .Int = -1
                 End With
             End With
         End With
