@@ -98,9 +98,7 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "balldevice_lock1_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
     AddPinEventListener "balldevice_lock2_ball_entered", "enable_additional_multiball_lock", "EnableMultiballLockListener", 100, Null
 
-    ' For some reason, this is getting called when multiball starts... but no ball_ended event is getting fired??? super weird
-    ' TODO: is there a different event we can use to determine when to clear the multiball locks without firing them out of the scoop?
-    ' AddPinEventListener "ball_ended", "clear_multiball_locks", "ClearMultiballLocksListener", 100, Null
+    AddPinEventListener "ball_ended", "clear_multiball_locks", "ClearMultiballLocksListener", 100, Null
 
     AddPinEventListener "ball_ended", "enable_subway_return", "EnableSubwayReturn", 100, Null
 
