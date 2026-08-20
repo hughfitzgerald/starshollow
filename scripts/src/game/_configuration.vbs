@@ -174,6 +174,7 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "bonus_count", 0            'number of bonus lights achieved, calculated in bonus mode
     Glf_SetInitialPlayerVar "bonus_skip", 0             'flag to capture if player wants to skip the bonus tally shows in bonus mode
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
+    Glf_SetInitialPlayerVar "mb_active", 0
 
 
     '*********** MODES ***********
@@ -278,6 +279,7 @@ Sub ConfigureGlfDevices()
     ' --- VUK ---
     ' MUST be a member of glf_switches.
     With CreateGlfBallDevice("scoop")
+        .Debug = True
         .BallSwitches = Array("s_VUK1")
         .EjectTimeout = 2000
         .MechanicalEject = True
@@ -306,6 +308,7 @@ Sub ConfigureGlfDevices()
     End With
 
     With CreateGlfBallDevice("lock1")
+        .Debug = True
         .BallSwitches = Array("s_Lock1")
         .EjectTargets = Array("s_VUK1")
         .EjectCallback = "Lock1EjectCallback"
@@ -313,6 +316,7 @@ Sub ConfigureGlfDevices()
     End With
 
     With CreateGlfBallDevice("lock2")
+        .Debug = True
         .BallSwitches = Array("s_Lock2")
         .EjectTargets = Array("s_Lock1")
         .EjectCallback = "Lock2EjectCallback"
@@ -320,6 +324,7 @@ Sub ConfigureGlfDevices()
     End With
 
     With CreateGlfBallDevice("lock3")
+        .Debug = True
         .BallSwitches = Array("s_Lock3")
         .EjectTargets = Array("s_Lock2")
         .EjectCallback = "Lock3EjectCallback"
@@ -412,7 +417,7 @@ Function SubwayReturnHandler(args)
 End Function
 
 Function EnableSubwayReturn(args)
-    glf_subwayBallsReturning = GetPlayerState("multiball_lock_locked_balls")
+    glf_subwayBallsReturning = glf_machine_vars("num_balls_locked").GetValue()
     If glf_subwayBallsReturning > 0 Then
         AddPinEventListener GLF_BALL_DRAIN, "subway_return_claim", "SubwayReturnHandler", 500, Null
     End If

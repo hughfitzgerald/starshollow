@@ -12,7 +12,8 @@ Sub CreateMysteryMode
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1}", Array("select_random_mystery")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and current_player.mb_active==0}", Array("select_random_mystery")
+            .Add "balldevice_scoop_ball_entered{current_player.mb_active==1}", Array("disable_scoop_hold")
 
             .Add "select_random_mystery", Array("play_mystery_show")
             .Add "timer_mystery_show_complete", Array("restart_qualify_mystery")

@@ -25,13 +25,54 @@ Sub CreateMultiballMode()
             .Add "s_ST11_active", Array("lock_lit") ' TEMP: when you hit the J in "JESS" we get lock lit
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")
+
+            .Add "balldevice_lock1_ball_entered", Array("ball_locked")
+            .Add "balldevice_lock2_ball_entered", Array("ball_locked")
+            .Add "balldevice_lock3_ball_entered", Array("ball_locked")
+
+            .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
+            .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
+            .Add "balldevice_lock3_ball_exiting", Array("ball_unlocked")
+
+            .Add "multiball_lock_multiball_lock_full", Array("start_multiball")
+
+            .Add "multiball_mb_started", Array("lock_unlit")
+        End With
+
+        With .VariablePlayer()
+            With .EventName("ball_locked")
+                With .Variable("num_balls_locked")
+                    .Action = "add_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("ball_unlocked")
+                With .Variable("num_balls_locked")
+                    .Action = "add_machine"
+                    .Int = -1
+                End With
+            End With
+            With .EventName("multiball_mb_started")
+                With .Variable("mb_active")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("multiball_mb_ended")
+                With .Variable("mb_active")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
         End With
 
         With .MultiballLocks("multiball_lock")
-            ' .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
+            .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
+            .LockedBallCountingStrategy = "virtual_only"
             ' .BallsToLock = 2              ' Number of balls that can be locked
-            .LockEvents = Array("balldevice_lock1_ball_entered", "balldevice_lock2_ball_entered", "balldevice_lock3_ball_entered")
+            ' .LockEvents = Array("balldevice_lock1_ball_entered", "balldevice_lock2_ball_entered", "balldevice_lock3_ball_entered")
             .BallsToLock = 3
+            .BallsToReplace = 2
             .EnableEvents = Array("lock_lit")
             .DisableEvents = Array("lock_unlit")
             .Debug = True
@@ -57,7 +98,7 @@ Sub CreateMultiballMode()
             ' would hold the top of the slide stack until this mode stops
             ' at the end of the ball, hiding the scoreboard for the whole
             ' multiball. Three seconds, then the score comes back.
-            With .EventName("start_multiball")
+            With .EventName("multiball_mb_started")
                 .Slide  = "multiball"
                 .Action = "play"
                 .Expire = 3
@@ -65,12 +106,12 @@ Sub CreateMultiballMode()
         End With
 
         With .WidgetPlayer()
-            With .EventName("balldevice_lock1_ball_entered")
+            With .EventName("multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 1}")
                 .Widget = "ball_1_locked"
                 .Action = "play"
                 .Expire = 1.3
             End With
-            With .EventName("balldevice_lock2_ball_entered")
+            With .EventName("multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 2}")
                 .Widget = "ball_2_locked"
                 .Action = "play"
                 .Expire = 1.3
@@ -87,7 +128,7 @@ Sub CreateMultiballMode()
                 .Add "color", MultiballColor
             End With
             With .ControlEvents()
-                .Events = Array("start_multiball")
+                .Events = Array("multiball_mb_started")
                 .State = 1
             End With
             With .ControlEvents()
@@ -105,7 +146,7 @@ Sub CreateMultiballMode()
                 .Events = Array("lock_lit")
                 .State = 1
             End With
-            .RestartEvents = Array("start_multiball","lock_unlit")
+            .RestartEvents = Array("lock_unlit")
         End With
 
         'Define shot profile with two states (0 = unlit, 1 = ready)

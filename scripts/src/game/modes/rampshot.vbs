@@ -16,7 +16,7 @@ Sub CreateRampshotsMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("ball_started","multiball_mb_ended", "mode_dance_marathon_stopping")
-        .StopEvents = Array("mode_base_stopping","start_multiball_delay", "mode_dance_marathon_started")
+        .StopEvents = Array("mode_base_stopping", "mode_dance_marathon_started")
 
 
         'The event player will respond to events during this mode
