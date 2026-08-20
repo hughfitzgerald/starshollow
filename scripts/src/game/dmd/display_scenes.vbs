@@ -141,7 +141,7 @@ Sub DmdTick_Score(args)
     FlexDMD.Stage.GetLabel("Credit").SetAlignedPosition 81, 33, FlexDMD_Align_BottomRight
     FlexDMD.Stage.GetLabel("Ball").Text = "Ball " & GetPlayerState("ball")
     'Update with your own code for Credits
-    '   FlexDMD.Stage.GetLabel("Credit").Text = "Credit " & (Credits(CurrentPlayer)) - 1
+    FlexDMD.Stage.GetLabel("Credit").Text = "Credit " & glf_machine_vars("credits").GetValue()
 End Sub
 
 

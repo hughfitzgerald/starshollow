@@ -156,6 +156,12 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
+    With CreateMachineVar("credits")
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = True
+    End With
+
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1

@@ -28,8 +28,10 @@ Sub CreateMultiballMode()
         End With
 
         With .MultiballLocks("multiball_lock")
-            .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
-            .BallsToLock = 2              ' Number of balls that can be locked
+            ' .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
+            ' .BallsToLock = 2              ' Number of balls that can be locked
+            .LockEvents = Array("balldevice_lock1_ball_entered", "balldevice_lock2_ball_entered", "balldevice_lock3_ball_entered")
+            .BallsToLock = 3
             .EnableEvents = Array("lock_lit")
             .DisableEvents = Array("lock_unlit")
             .Debug = True

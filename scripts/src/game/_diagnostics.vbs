@@ -39,6 +39,9 @@ Sub GlfDiag_Init()
     AddPinEventListener "ball_started",     "diag_bstart", "GlfDiag_Note", 1, Array("ball_started")
     AddPinEventListener "ball_ended",     "diag_bend", "GlfDiag_Note", 1, Array("ball_ended")
     AddPinEventListener "mode_base_started","diag_base",   "GlfDiag_Note", 1, Array("BASE MODE STARTED")
+    AddPinEventListener "s_add_credit_key_active", "diag_add_credit", "GlfDiag_Note", 1, Array("add_credit_key")
+    AddPinEventListener "s_add_credit_key2_active", "diag_add_credit2", "GlfDiag_Note", 1, Array("add_credit_key2")
+    AddPinEventListener "add_credit", "diag_add_credit", "GlfDiag_Note", 1, Array("add_credit")
 
     ' --- VUK chain, in the order it should happen ---
     ' s_VUK1_active -> (500ms EntranceCountDelay) -> ball_entered
