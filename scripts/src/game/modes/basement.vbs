@@ -24,9 +24,19 @@ Sub CreateBasementMode()
             'Handle tilt
             .Add "tilt", Array("kill_flippers","backglass_off")
 
+            .Add "s_add_credit_key_active", Array("add_credit")
+            .Add "s_add_credit_key2_active", Array("add_credit")
+
         End With
 
-
+        With .VariablePlayer()
+            With .EventName("add_credit")
+                With .Variable("credits")
+                    .Action = "add_machine"
+                    .Int = 1
+                End With
+            End With
+        End With
 
         ' ' Pome sound effects (outside of normal ball play time)
         With .SoundPlayer() 
