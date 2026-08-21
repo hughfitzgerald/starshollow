@@ -7,10 +7,10 @@
 ' TODO: Add state machine to handle locks, activating kickers, etc.
 
 
-Sub CreateMultiballMode()
+Sub CreateJDMultiballQualifyMode()
     Dim x
 
-    With CreateGlfMode("multiball", 1000)
+    With CreateGlfMode("jd_multiball_qualify", 200)
         .Debug = True
         
         'Define the events that start and stop this mode
@@ -24,12 +24,12 @@ Sub CreateMultiballMode()
 
             .Add "s_ST11_active", Array("lock_qualified") ' TEMP: when you hit the J in "JESS" we get lock lit
 
-            .Add "mode_multiball_started{current_player.is_lock_qualified == 1}", Array("lock_lit")
+            .Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 1}", Array("lock_lit")
             .Add "lock_qualified", Array("lock_lit")
             
-            .Add "multiball_mb_started", Array("lock_unqualified")
+            .Add "start_jd_multiball", Array("lock_unqualified")
             .Add "lock_unqualified", Array("lock_unlit")
-            .Add "mode_multiball_stopping", Array("lock_unlit")
+            .Add "mode_jd_multiball_qualify_stopping", Array("lock_unlit")
 
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")

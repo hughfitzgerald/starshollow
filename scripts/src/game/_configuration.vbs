@@ -179,13 +179,13 @@ Sub ConfigureGlfDevices()
     CreateBasementMode()      ' priority 100
     CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
+    CreateJDMultiballQualifyMode()    ' priority 200
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
     CreateExtraBallMode()    ' priority 510
     CreateMysteryMode()       ' priority 580
     CreateRampshotsMode()    ' priority 660
     CreateDanceMarathonMode() ' priority 670
-    CreateMultiballMode()    ' priority 1000
     CreateJDMultiballMode()    ' priority 1000
     CreateScoreMode()        ' priority 2000
     CreateTiltMode()         ' priority 10000
