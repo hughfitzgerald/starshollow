@@ -66,7 +66,7 @@ Dim domeLevel(20), domebase(20), domelit(20), domeflasher(20),  domelight(20)
 InitFlasher 1, "green"
 InitFlasher 2, "red"
 InitFlasher 3, "blue"
-InitFlasher 4, "white"
+InitFlasher 4, "orange"
 
 ' rotate the flasher with the command below (first argument = flasher nr, second argument = angle in degrees)
 '   RotateFlasher 1,17

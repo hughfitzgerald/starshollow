@@ -44,9 +44,9 @@ Sub CreateBaseMode()
             .Add "new_ball_active", Array("clear_ball_just_started")
 
             'Bumpers
-            .Add "s_Bumper1_active", Array("score_5000")
-            .Add "s_Bumper3_active", Array("score_5000")
-            .Add "s_Bumper5_active", Array("score_5000")
+            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show")
+            .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show")
+            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show")
 
             'Slingshots
             .Add "s_LeftSlingShot_active", Array("score_5000")
@@ -171,6 +171,39 @@ Sub CreateBaseMode()
                     .Add "lights", "FL2"
                     .Add "fade", 500
                     .Add "color", "00ff00"
+                End With
+            End With
+            With .EventName("play_bumper1_show") 
+                .Key = "key_bumper1_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL2"
+                    .Add "fade", 500
+                    .Add "color", "ff0000"
+                End With
+            End With
+            With .EventName("play_bumper3_show") 
+                .Key = "key_bumper3_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL3"
+                    .Add "fade", 500
+                    .Add "color", "0000ff"
+                End With
+            End With
+            With .EventName("play_bumper5_show") 
+                .Key = "key_bumper5_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL4"
+                    .Add "fade", 500
+                    .Add "color", "FFA500"
                 End With
             End With
         End With
