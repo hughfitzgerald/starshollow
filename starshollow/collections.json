@@ -309,7 +309,9 @@
       "s_LeftOutlane",
       "s_captive_ball",
       "s_lock3_trigger",
-      "Gate002"
+      "Gate002",
+      "s_left_ramp_gate",
+      "s_right_ramp_gate"
     ],
     "fire_events": false,
     "stop_single_events": false,

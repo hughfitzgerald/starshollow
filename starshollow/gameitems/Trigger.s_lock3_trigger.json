@@ -20,6 +20,7 @@
     "shape": "none",
     "anim_speed": 1.0,
     "is_reflection_enabled": true,
+    "part_group_name": "Subway",
     "drag_points": [
       {
         "x": 431.8936,

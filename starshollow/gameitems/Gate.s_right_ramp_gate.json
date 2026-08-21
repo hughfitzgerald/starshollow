@@ -22,9 +22,10 @@
     "damping": 0.985,
     "gravity_factor": 0.25,
     "is_visible": true,
-    "name": "Gate004",
+    "name": "s_right_ramp_gate",
     "two_way": true,
     "is_reflection_enabled": true,
-    "gate_type": "wire_w"
+    "gate_type": "wire_w",
+    "part_group_name": "Triggers"
   }
 }

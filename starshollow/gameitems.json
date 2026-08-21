@@ -3596,27 +3596,27 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.Ramp002.json",
+    "file_name": "Ramp.ShooterFloor.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.Ramp005.json",
+    "file_name": "Ramp.RightRampHelper.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.Ramp006.json",
+    "file_name": "Ramp.LeftRampHelper.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
-    "file_name": "Gate.Gate003.json",
+    "file_name": "Gate.s_left_ramp_gate.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
-    "file_name": "Gate.Gate004.json",
+    "file_name": "Gate.s_right_ramp_gate.json",
     "is_locked": false,
     "editor_layer": 0
   },
