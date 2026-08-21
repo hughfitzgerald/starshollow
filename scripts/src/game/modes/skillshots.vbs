@@ -34,12 +34,13 @@ Sub CreateSkillshotsMode()
             .Add "ss_achieved", Array("score_500000")
 
             'Stop skillshots if orbit lanes or rollovers are hit, or if timer runs out for some reason
-            .Add "s_left_orbit_active", Array("stop_skillshots")
-            .Add "s_right_orbit_active", Array("stop_skillshots")
-            .Add "s_sw7_active", Array("stop_skillshots")
-            .Add "s_sw8_active", Array("stop_skillshots")
-            .Add "s_sw9_active", Array("stop_skillshots")
-            .Add "timer_skillshots_complete", Array("stop_skillshots") 
+            ' .Add "s_left_orbit_active", Array("stop_skillshots")
+            ' .Add "s_right_orbit_active", Array("stop_skillshots")
+            ' .Add "s_sw7_active", Array("stop_skillshots")
+            ' .Add "s_sw8_active", Array("stop_skillshots")
+            ' .Add "s_sw9_active", Array("stop_skillshots")
+            .Add "timer_skillshots_complete", Array("stop_skillshots")
+            .Add "balldevice_scoop_ball_exiting", Array("stop_skillshots")
 
             'Clear skill shot light if hit
             ' .Add "s_TopLane1_inactive", Array("clear_skillshots")
@@ -47,6 +48,18 @@ Sub CreateSkillshotsMode()
             ' .Add "s_TopLane3_inactive", Array("clear_skillshots")
             ' .Add "s_TopLane4_inactive", Array("clear_skillshots")
 
+        End With
+
+        ' if the player goes past the initial skillshot, give them 5 seconds to hit one of the others
+        With .Timers("skillshots")
+            .StartRunning = False
+            .TickInterval = 1000
+            .StartValue = 0
+            .EndValue = 3
+            With .ControlEvents()
+                .EventName = "Gate002_active"
+                .Action = "start"
+            End With
         End With
 
 
@@ -128,23 +141,6 @@ Sub CreateSkillshotsMode()
         '         .Action = "restart"
         '     End With
         ' End With
-
-
-        With .VariablePlayer()
-            'maintain a flag that tracks if skill shot is currently running
-            With .EventName("mode_skillshots_started")
-				With .Variable("ss_running")
-                    .Action = "set"
-					.Int = 1
-				End With
-			End With
-            With .EventName("mode_skillshots_stopping")
-				With .Variable("ss_running")
-                    .Action = "set"
-					.Int = 0
-				End With
-			End With
-        End With
 
     End With
 

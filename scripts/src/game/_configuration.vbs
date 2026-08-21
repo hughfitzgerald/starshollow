@@ -161,7 +161,6 @@ Sub ConfigureGlfDevices()
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1
-    Glf_SetInitialPlayerVar "ss_running", 0             '0 when skillshots are not active, 1 when active
     Glf_SetInitialPlayerVar "target_hit_count", 0       'used in targetbank mode
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
     Glf_SetInitialPlayerVar "bonus_multiplier", 1

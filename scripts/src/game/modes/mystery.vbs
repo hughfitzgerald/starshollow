@@ -4,8 +4,8 @@ Sub CreateMysteryMode
     Dim x
 
     With CreateGlfMode("mystery", 580)
-        .StartEvents = Array("new_ball_started")
-        .StopEvents = Array("mode_base_stopping")
+        .StartEvents = Array("mode_skillshots_stopped")
+        .StopEvents = Array("mode_skillshots_stopping")
 
         With .EventPlayer()
             ' .Add "mode_mystery_started", Array("light_inlanes")
