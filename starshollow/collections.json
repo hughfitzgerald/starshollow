@@ -294,7 +294,6 @@
       "s_Trigger1",
       "s_Lock1",
       "s_Lock2",
-      "s_Lock3",
       "s_enter_right_ramp",
       "s_enter_left_ramp",
       "s_complete_left_ramp",
@@ -308,7 +307,8 @@
       "s_HiddenUpperRightKicker",
       "s_RightOutlane",
       "s_LeftOutlane",
-      "s_captive_ball"
+      "s_captive_ball",
+      "s_lock3_trigger"
     ],
     "fire_events": false,
     "stop_single_events": false,

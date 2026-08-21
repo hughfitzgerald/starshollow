@@ -63,10 +63,6 @@ Sub GlfDiag_Init()
     AddPinEventListener "balldevice_lock2_ejecting_ball", "diag_lock2_ejecting", "GlfDiag_Note", 1, Array("lock2 ejecting_ball")
     AddPinEventListener "balldevice_lock2_ball_exiting", "diag_lock2_exiting", "GlfDiag_Note", 1, Array("lock2 ball_exiting")
 
-    AddPinEventListener "balldevice_lock3_ball_entered", "diag_lock3_entered", "GlfDiag_Note", 1, Array("lock3 ball_entered")
-    AddPinEventListener "balldevice_lock3_ejecting_ball", "diag_lock3_ejecting", "GlfDiag_Note", 1, Array("lock3 ejecting_ball")
-    AddPinEventListener "balldevice_lock3_ball_exiting", "diag_lock3_exiting", "GlfDiag_Note", 1, Array("lock3 ball_exiting")
-
     AddPinEventListener "enable_scoop_hold", "diag_scoop_hold", "GlfDiag_Note", 1, Array("enable_scoop_hold")
     AddPinEventListener "disable_scoop_hold", "diag_scoop_unhold", "GlfDiag_Note", 1, Array("disable_scoop_hold")
     AddPinEventListener "release_scoop_hold", "diag_scoop_release", "GlfDiag_Note", 1, Array("release_scoop_hold")
@@ -85,7 +81,7 @@ Sub GlfDiag_Init()
         "s_sw8", "s_sw9", "s_VUK1", "s_Trigger1", _
         "s_LeftInlane", "s_RightInlane", _
         "s_Bumper1", "s_Bumper3", "s_Bumper5", _
-        "s_LeftSlingShot", "s_RightSlingShot", "s_Lock1", "s_Lock2", "s_Lock3")
+        "s_LeftSlingShot", "s_RightSlingShot", "s_Lock1", "s_Lock2")
     ReDim diag_switchHits(UBound(diag_switchNames))
     Dim i
     For i = 0 To UBound(diag_switchNames)

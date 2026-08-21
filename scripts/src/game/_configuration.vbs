@@ -319,14 +319,6 @@ Sub ConfigureGlfDevices()
 		.MechanicalEject = True
     End With
 
-    With CreateGlfBallDevice("lock3")
-        .Debug = True
-        .BallSwitches = Array("s_Lock3")
-        .EjectTargets = Array("s_Lock2")
-        .EjectCallback = "Lock3EjectCallback"
-		.MechanicalEject = True
-    End With
-
     With CreateGlfBallDevice("subway_trough")
         .BallSwitches = Array("s_subway_trough_kicker")
         .EjectCallback = "SubwayTroughEjectCallback"

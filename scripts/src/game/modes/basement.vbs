@@ -30,11 +30,9 @@ Sub CreateBasementMode()
 
             .Add "balldevice_lock1_ball_entered", Array("ball_locked")
             .Add "balldevice_lock2_ball_entered", Array("ball_locked")
-            .Add "balldevice_lock3_ball_entered", Array("ball_locked")
 
             .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
             .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
-            .Add "balldevice_lock3_ball_exiting", Array("ball_unlocked")
 
         End With
 

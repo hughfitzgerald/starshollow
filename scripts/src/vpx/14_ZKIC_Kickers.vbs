@@ -66,39 +66,32 @@ End Sub
 Sub DisableMultiballLock(ball)
 	s_Lock1.Enabled = False
 	s_Lock2.Enabled = False
-	s_Lock3.Enabled = False
 End Sub
 
 Sub EnableInitialMultiballLock(ball)
 	s_Lock1.Enabled = True
 	s_Lock2.Enabled = False
-	s_Lock3.Enabled = False
 End Sub
 
 Sub EnableSecondMultiballLock(ball)
 	s_Lock1.Enabled = True
 	s_Lock2.Enabled = True
-	s_Lock3.Enabled = False
 End Sub
 
 Sub EnableThirdMultiballLock(ball)
 	s_Lock1.Enabled = True
 	s_Lock2.Enabled = True
-	s_Lock3.Enabled = True
 End Sub
 
 Sub ClearMultiballLocksListener(ball)
     glf_ball_devices("lock1").EjectCallback = "Lock1SubwayEjectCallback"
     glf_ball_devices("lock2").EjectCallback = "Lock2SubwayEjectCallback"
-    glf_ball_devices("lock3").EjectCallback = "Lock3SubwayEjectCallback"
 
     glf_ball_devices("lock1").EjectAll()
     glf_ball_devices("lock2").EjectAll()
-    glf_ball_devices("lock3").EjectAll()
 
     glf_ball_devices("lock1").EjectCallback = "Lock1EjectCallback"
     glf_ball_devices("lock2").EjectCallback = "Lock2EjectCallback"
-    glf_ball_devices("lock3").EjectCallback = "Lock3EjectCallback"
 End Sub
 
 Sub Lock1SubwayEjectCallback(ball)
@@ -107,10 +100,6 @@ End Sub
 
 Sub Lock2SubwayEjectCallback(ball)
     s_Lock2.Kick 162, 10
-End Sub
-
-Sub Lock3SubwayEjectCallback(ball)
-    s_Lock3.Kick 162, 10
 End Sub
 
 Sub Lock1EjectCallback(ball)
@@ -125,13 +114,6 @@ Sub Lock2EjectCallback(ball)
 	ang = 251.5
 	vel = 50
 	s_Lock2.Kick ang, vel
-End Sub
-
-Sub Lock3EjectCallback(ball)
-	Dim ang, vel
-	ang = 251.5
-	vel = 50
-	s_Lock3.Kick ang, vel
 End Sub
 
 Sub SubwayTroughEjectCallback(ball)

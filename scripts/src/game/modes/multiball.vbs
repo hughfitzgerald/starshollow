@@ -34,7 +34,7 @@ Sub CreateMultiballMode()
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")
 
-            .Add "multiball_lock_multiball_lock_full", Array("start_multiball")
+            .Add "s_lock3_trigger_active{current_player.multiball_lock_locked_balls == 2}", Array("start_multiball")
         End With
 
         With .VariablePlayer()
@@ -65,9 +65,9 @@ Sub CreateMultiballMode()
         End With
 
         With .MultiballLocks("multiball_lock")
-            .LockDevices = Array("lock1", "lock2", "lock3")   ' Ball device that acts as the lock
+            .LockDevices = Array("lock1", "lock2")   ' Ball device that acts as the lock
             .LockedBallCountingStrategy = "virtual_only"
-            .BallsToLock = 3
+            .BallsToLock = 2
             .BallsToReplace = 2
             .EnableEvents = Array("lock_lit")
             .DisableEvents = Array("lock_unlit")
@@ -81,7 +81,7 @@ Sub CreateMultiballMode()
             .ShootAgain = 15000
             .HurryUp = 3000
             .GracePeriod = 2000
-            .BallLocks = Array("lock1", "lock2", "lock3")
+            .BallLocks = Array("lock1", "lock2")
             .Debug = True
         End With
 

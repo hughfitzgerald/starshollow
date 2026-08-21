@@ -2621,11 +2621,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Kicker.s_Lock3.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Wall.SubwayFloor.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3622,6 +3617,11 @@
   },
   {
     "file_name": "Gate.Gate004.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Trigger.s_lock3_trigger.json",
     "is_locked": false,
     "editor_layer": 0
   }
