@@ -69,6 +69,21 @@ Sub CreateMiniGameMode
             End With
         End With
 
+        With .Shots("jdmb_minigame")
+            .Profile = "minigame"
+            With .Tokens()
+                .Add "lights", "l23"
+            End With
+            With .ControlEvents()
+                .Events = Array("mode_jd_multiball_started")
+                .State = 1
+            End With
+            With .ControlEvents()
+                .Events = Array("mode_jd_multiball_stopped")
+                .State = 2
+            End With
+        End With
+
         With .ShotProfiles("minigame")
             With .States("unlit")
                 .Show = "off"
