@@ -22,7 +22,7 @@ Sub Table1_KeyDown(ByVal keycode)
 	' TEMPORARY - D dumps the GLF diagnostic. Remove with _diagnostics.vbs.
 	If keycode = 32 Then MsgBox GlfDiag_Report()
 
-	If keycode = 18 Then KickBall ActiveBall, 0, 32, 0, 0
+	If keycode = 18 Then KickBall ActiveBall, 0, 35, 0, 0
 
 	'Plunger
 	If keycode = PlungerKey Then
