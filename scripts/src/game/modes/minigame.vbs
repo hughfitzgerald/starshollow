@@ -25,7 +25,7 @@ Sub CreateMiniGameMode
         With .RandomEventPlayer()
             With .EventName("select_minigame")
                 .Add "dm_minigame_lit", 1
-                .Add "th_minigame_lit", 0
+                ' .Add "th_minigame_lit", 0
                 ' .ForceAll = True
                 ' .ForceDifferent = True
             End With
