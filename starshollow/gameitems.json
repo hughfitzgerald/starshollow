@@ -1313,132 +1313,6 @@
     "editor_layer_visibility": true
   },
   {
-    "file_name": "Light.Flasherlight1.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherflash1.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherbase1.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherlit1.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherflash2.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherbase2.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherlit2.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Light.Flasherlight2.json",
-    "is_locked": false,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Light.Flasherlight3.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherflash3.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherlit3.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherbase3.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Light.Flasherlight4.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherflash4.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherbase4.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Flasherlit4.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Primitive013.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.Primitive014.json",
-    "is_locked": true,
-    "editor_layer": 6,
-    "editor_layer_name": "Flashers",
-    "editor_layer_visibility": true
-  },
-  {
     "file_name": "Primitive.p1off.json",
     "is_locked": false,
     "editor_layer": 5,
@@ -1492,27 +1366,6 @@
     "is_locked": true,
     "editor_layer": 5,
     "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherbloom1.json",
-    "is_locked": false,
-    "editor_layer": 9,
-    "editor_layer_name": "PF Sized Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherbloom2.json",
-    "is_locked": false,
-    "editor_layer": 9,
-    "editor_layer_name": "PF Sized Flashers",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Flasher.Flasherbloom3.json",
-    "is_locked": false,
-    "editor_layer": 9,
-    "editor_layer_name": "PF Sized Flashers",
     "editor_layer_visibility": true
   },
   {
@@ -3632,6 +3485,86 @@
   },
   {
     "file_name": "Wall.RampDiverterWall2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flasher.f_FL1_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.FL1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_base_FL1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_FL1_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flasher.f_FL2_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flasher.f_FL3_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flasher.f_FL4_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.FL2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.FL3.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.FL4.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_base_FL2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_base_FL3.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_base_FL4.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_FL2_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_FL3_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p_FL4_.json",
     "is_locked": false,
     "editor_layer": 0
   }

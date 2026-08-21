@@ -1,9 +1,9 @@
 {
   "Primitive": {
     "position": {
-      "x": 67.559235,
-      "y": -45.50948,
-      "z": 50.0
+      "x": 60.249153,
+      "y": 4.1314263,
+      "z": 80.0
     },
     "size": {
       "x": 20.0,
@@ -11,9 +11,9 @@
       "z": 20.0
     },
     "rot_and_tra": [
-      90.0,
+      0.0,
       180.0,
-      180.0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -21,11 +21,11 @@
       0.0,
       0.0
     ],
-    "image": "domeearlitwhite",
+    "image": "domeearbasewhite",
     "normal_map": "",
     "sides": 4,
-    "name": "Flasherlit4",
-    "material": "Flashermaterial11",
+    "name": "p_base_FL4",
+    "material": "domebasemat",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
@@ -35,7 +35,7 @@
     "elasticity_falloff": 0.5,
     "friction": 0.3,
     "scatter": 0.0,
-    "edge_factor_ui": 0.2,
+    "edge_factor_ui": 1.0,
     "collision_reduction_factor": 0.0,
     "is_collidable": false,
     "is_toy": true,
@@ -43,7 +43,7 @@
     "static_rendering": false,
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
-    "disable_lighting_below": 1.0,
+    "disable_lighting_below": 0.5,
     "is_reflection_enabled": true,
     "backfaces_enabled": true,
     "physics_material": "",
@@ -53,7 +53,7 @@
     "min_aa_bound": null,
     "max_aa_bound": null,
     "mesh_file_name": "flupperdome2_edit.obj",
-    "depth_bias": -1000.0,
+    "depth_bias": 0.0,
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,

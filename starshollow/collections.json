@@ -394,7 +394,11 @@
       "l68",
       "l69",
       "l70",
-      "l71"
+      "l71",
+      "FL1",
+      "FL2",
+      "FL3",
+      "FL4"
     ],
     "fire_events": false,
     "stop_single_events": false,

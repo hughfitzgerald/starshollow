@@ -53,8 +53,8 @@ Sub CreateBaseMode()
             .Add "s_RightSlingShot_active", Array("score_5000")
 
             'Spinners
-            .Add "s_left_spinner_active", Array("score_3000")
-            .Add "s_right_spinner_active", Array("score_3000")
+            .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show")
+            .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show")
 
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
         End With
@@ -149,6 +149,28 @@ Sub CreateBaseMode()
                 With .Tokens()
                     .Add "color", "ff0000"
                     .Add "lights", "slim_inserts"
+                End With
+            End With
+            With .EventName("play_spin1_show") 
+                .Key = "key_spin1_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL1"
+                    .Add "fade", 500
+                    .Add "color", "ff0000"
+                End With
+            End With
+            With .EventName("play_spin2_show") 
+                .Key = "key_spin2_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL2"
+                    .Add "fade", 500
+                    .Add "color", "00ff00"
                 End With
             End With
         End With

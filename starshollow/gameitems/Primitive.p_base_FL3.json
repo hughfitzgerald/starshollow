@@ -1,8 +1,8 @@
 {
   "Primitive": {
     "position": {
-      "x": 832.61273,
-      "y": 28.112862,
+      "x": 810.7388,
+      "y": 3.0241387,
       "z": 80.0
     },
     "size": {
@@ -24,7 +24,7 @@
     "image": "dome2basewhite",
     "normal_map": "",
     "sides": 4,
-    "name": "Flasherbase3",
+    "name": "p_base_FL3",
     "material": "domebasemat",
     "side_color": "#969696",
     "is_visible": true,

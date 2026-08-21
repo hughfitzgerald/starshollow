@@ -1,19 +1,19 @@
 {
   "Flasher": {
-    "height": 50.0,
-    "pos_x": -194.84032,
-    "pos_y": 1273.9458,
+    "height": 80.0,
+    "pos_x": 1965.2664,
+    "pos_y": 292.53433,
     "rot_x": -45.0,
     "rot_y": 0.0,
-    "rot_z": 0.0,
+    "rot_z": 180.0,
     "color": "#ffffff",
     "is_timer_enabled": false,
     "timer_interval": 30,
-    "name": "Flasherflash2",
+    "name": "f_FL3_",
     "image_a": "targetflasher",
     "image_b": "",
-    "alpha": 1000,
-    "modulate_vs_add": 0.2,
+    "alpha": 100,
+    "modulate_vs_add": 0.5,
     "is_visible": true,
     "add_blend": true,
     "is_dmd": false,
@@ -36,8 +36,8 @@
     "part_group_name": "Flashers",
     "drag_points": [
       {
-        "x": 708.5478,
-        "y": 957.2418,
+        "x": 665.59796,
+        "y": -76.9946,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 708.5478,
-        "y": 1262.4764,
+        "x": 665.59796,
+        "y": 229.6033,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 1013.78265,
-        "y": 1262.4764,
+        "x": 972.1952,
+        "y": 229.6033,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -75,8 +75,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 1013.78265,
-        "y": 957.2418,
+        "x": 972.1952,
+        "y": -76.9946,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
