@@ -18,7 +18,7 @@ Sub CreateMiniGameMode
 
             .Add "minigame_is_ready", Array("enable_scoop_hold")
 
-            .Add "check_minigame{current_player.shot_dm_minigame == 1 and current_player.mb_active==0}", Array("start_dance_marathon")
+            .Add "check_minigame{current_player.shot_dm_minigame == 1 and modes.jd_multiball.active == False}", Array("start_dance_marathon")
             .Add "mode_dance_marathon_stopped", Array("dm_minigame_complete")
         End With
 

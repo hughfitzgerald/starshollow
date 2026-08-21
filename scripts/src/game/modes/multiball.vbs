@@ -34,22 +34,10 @@ Sub CreateMultiballMode()
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")
 
-            .Add "s_lock3_trigger_active{current_player.multiball_lock_locked_balls == 2}", Array("start_multiball")
+            .Add "s_lock3_trigger_active{current_player.multiball_lock_locked_balls == 2}", Array("start_jd_multiball")
         End With
 
         With .VariablePlayer()
-            With .EventName("multiball_mb_started")
-                With .Variable("mb_active")
-                    .Action = "set"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("multiball_mb_ended")
-                With .Variable("mb_active")
-                    .Action = "set"
-                    .Int = 0
-                End With
-            End With
             With .EventName("lock_qualified")
                 With .Variable("is_lock_qualified")
                     .Action = "set"
@@ -74,33 +62,6 @@ Sub CreateMultiballMode()
             .Debug = True
         End With
 
-        With .Multiballs("mb")
-            .StartEvents = Array("start_multiball")
-            .BallCount = 3
-            .BallCountType = "total"
-            .ShootAgain = 15000
-            .HurryUp = 3000
-            .GracePeriod = 2000
-            .BallLocks = Array("lock1", "lock2")
-            .Debug = True
-        End With
-
-
-        '--- DMD ---------------------------------------------------------
-        ' Names map to FlexDMD scenes in FlexDmd_ShowSlide /
-        ' FlexDmd_ShowWidget (ZFBC).
-        With .SlidePlayer()
-            ' Expire matters here. Without it the multiball animation
-            ' would hold the top of the slide stack until this mode stops
-            ' at the end of the ball, hiding the scoreboard for the whole
-            ' multiball. Three seconds, then the score comes back.
-            With .EventName("multiball_mb_started")
-                .Slide  = "multiball"
-                .Action = "play"
-                .Expire = 3
-            End With
-        End With
-
         With .WidgetPlayer()
             With .EventName("multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 1}")
                 .Widget = "ball_1_locked"
@@ -116,23 +77,6 @@ Sub CreateMultiballMode()
 
 
         'SHOTS
-
-        'Define the muiltball shoot again light
-        With .Shots("mb_shoot_again")
-            .Profile = "shoot_again"
-            With .Tokens()
-                .Add "color", MultiballColor
-            End With
-            With .ControlEvents()
-                .Events = Array("multiball_mb_started")
-                .State = 1
-            End With
-            With .ControlEvents()
-                .Events = Array("multiball_mb_hurry_up")
-                .State = 2
-            End With
-            .RestartEvents = Array("multiball_mb_shoot_again_ended")
-        End With
 
         With .Shots("ramp_lock_light")
             .Debug = True
