@@ -15,7 +15,7 @@
     "slingshot_material": "",
     "height_bottom": 85.0,
     "height_top": 90.0,
-    "name": "Wall016",
+    "name": "RampDiverterFloor",
     "display_texture": false,
     "slingshot_force": 80.0,
     "slingshot_threshold": 0.0,
@@ -60,52 +60,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 308.86725,
-        "y": 199.9205,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 323.3027,
-        "y": 200.39635,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 338.62686,
-        "y": 200.10544,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 357.32806,
-        "y": 200.78683,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 388.2786,
-        "y": 203.29059,
+        "x": 388.4126,
+        "y": 204.38747,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

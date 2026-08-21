@@ -1,22 +1,22 @@
 {
   "Flipper": {
     "center": {
-      "x": 266.7626,
-      "y": 154.52621
+      "x": 300.53506,
+      "y": 205.89374
     },
     "base_radius": 0.5,
     "end_radius": 0.5,
-    "flipper_radius_max": 100.0,
+    "flipper_radius_max": 90.3,
     "return": 0.058,
-    "start_angle": 84.0,
-    "end_angle": 52.0,
+    "start_angle": 89.3,
+    "end_angle": 46.8,
     "override_physics": 0,
     "mass": 1.0,
     "is_timer_enabled": false,
     "timer_interval": 100,
     "surface": "RampDiverterFloor",
     "material": "ombra",
-    "name": "RampDiverter",
+    "name": "RampDiverter2",
     "rubber_material": "ombra",
     "rubber_thickness_int": 7,
     "rubber_thickness": 0.0,

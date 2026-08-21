@@ -13,8 +13,10 @@ End Sub
 Sub RampDiverterAction(Enabled)
 	If Enabled Then
 		RampDiverter.RotateToEnd
+		RampDiverter2.RotateToEnd
 	Else
 		RampDiverter.RotateToStart
+		RampDiverter2.RotateToStart
 	End If
 End Sub
 

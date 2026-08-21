@@ -12,7 +12,7 @@
     "is_timer_enabled": false,
     "timer_interval": 100,
     "material": "",
-    "surface": "Wall016",
+    "surface": "RampDiverterFloor",
     "is_visible": true,
     "is_enabled": true,
     "hit_height": 50.0,
