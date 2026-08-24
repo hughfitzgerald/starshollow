@@ -31,6 +31,7 @@ Sub CreateBonusLanesMode()
             With .States("on")
                 .Show = "flicker_color_on"
                 .Speed = 4
+                .Priority = 100
                 With .Tokens()
                     .Add "color", BonusLaneColor
                 End With

@@ -177,6 +177,7 @@ Sub CreateSkillshotsMode()
             With .States("unlit")
                 .Key = "key_ss_not_ready"
                 .Show = "off"
+                .Priority = 1
             End With
             With .States("ready")
                 .Key = "key_ss_ready"
