@@ -3567,5 +3567,10 @@
     "file_name": "Primitive.p_FL4_.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Light.SkillshotLight.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]

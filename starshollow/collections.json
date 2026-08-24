@@ -398,7 +398,8 @@
       "FL1",
       "FL2",
       "FL3",
-      "FL4"
+      "FL4",
+      "SkillshotLight"
     ],
     "fire_events": false,
     "stop_single_events": false,

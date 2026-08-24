@@ -48,6 +48,7 @@ Const GIColorAttract    = "ff8c3a"   ' attract, bright phase
 Const GIColorAttractDim = "5a3010"   ' attract, dim phase
 Const StandupColor      = "0023cc"   ' the 8 standup inserts l11..l18
 Const BonusLaneColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
+Const SkillshotColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
 Const ShootAgainColor = "00ff00"
 Const ExtraBallColor = "0000ff"
 Const RampshotColor = "8800ff"
@@ -179,6 +180,7 @@ Sub ConfigureGlfDevices()
     CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
     CreateJDMultiballQualifyMode()    ' priority 200
+    CreateBonusLanesMode()  ' priority 210
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
     CreateExtraBallMode()    ' priority 510

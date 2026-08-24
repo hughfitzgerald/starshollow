@@ -23,7 +23,8 @@ Sub CreateSkillshotsMode()
         With .EventPlayer()
 
             'Only start skillshots if starting a new ball
-            .Add "mode_skillshots_started{current_player.ball_just_started == 1}", Array("init_ss")
+            .Add "mode_skillshots_started{current_player.ball_just_started == 1}", Array("light_skillshots")
+            .Add "mode_skillshots_started{current_player.ball_just_started == 0}", Array("stop_skillshots")
 
             'Handle successful skillshots
             ' .Add "s_skillshot_active{current_player.shot_ss1 == 1}", Array("ss_achieved")
@@ -106,28 +107,75 @@ Sub CreateSkillshotsMode()
         '     End With
         ' Next
 
+        With .Shots("ss1")
+            .Profile = "ss_ready"
+            With .Tokens()
+                .Add "lights", "SkillshotLight"
+            End With
+            With .ControlEvents()
+                .Events = Array("stop_skillshots","clear_skillshots")
+                .State = 0
+            End With
+            With .ControlEvents()
+                .Events = Array("light_skillshots")
+                .State = 1
+            End With
+        End With
 
+        With .Shots("ss2")
+            .Profile = "ss_ready"
+            With .Tokens()
+                .Add "lights", "l61"
+            End With
+            With .ControlEvents()
+                .Events = Array("stop_skillshots","clear_skillshots")
+                .State = 0
+            End With
+            With .ControlEvents()
+                .Events = Array("light_skillshots")
+                .State = 1
+            End With
+        End With
+
+        ' TODO: Randomly select a bonus lane for skillshot, make sure it's one that's not lit
+        ' AND allow rotation on flipper!!!
+
+        With .Shots("ss3")
+            .Profile = "ss_ready"
+            With .Tokens()
+                .Add "lights", "l7"
+            End With
+            With .ControlEvents()
+                .Events = Array("stop_skillshots","clear_skillshots")
+                .State = 0
+            End With
+            With .ControlEvents()
+                .Events = Array("light_skillshots")
+                .State = 1
+            End With
+        End With
+        
         'Define Skillshot ready shot profile with two states (0 = unlit, 1 = ready)
         'Skill shot is ready, two states
-        ' With .ShotProfiles("ss_ready")
-        '     With .States("unlit")
-        '         .Key = "key_ss_not_ready"
-        '         .Show = "off"
-        '     End With
-        '     With .States("ready")
-        '         .Key = "key_ss_ready"
-        '         .Show = "flash_color_with_fade"
-        '         'Note the priority set below adds to this modes priority (which is set to 400). 
-        '         ' This allows the other toplane lights from kickback mode (priority 500) show up under the unlit skillshot shots, 
-        '         ' while putting the lit skillshot light on top of the toplane lights.
-        '         .Priority = 1000   
-        '         .Speed = 3
-        '         With .Tokens()
-        '             .Add "fade", 200
-        '             .Add "color", SkillshotColor
-        '         End With
-        '     End With
-        ' End With
+        With .ShotProfiles("ss_ready")
+            With .States("unlit")
+                .Key = "key_ss_not_ready"
+                .Show = "off"
+            End With
+            With .States("ready")
+                .Key = "key_ss_ready"
+                .Show = "flash_color_with_fade"
+                'Note the priority set below adds to this modes priority (which is set to 400). 
+                ' This allows the other toplane lights from kickback mode (priority 500) show up under the unlit skillshot shots, 
+                ' while putting the lit skillshot light on top of the toplane lights.
+                .Priority = 1000   
+                .Speed = 3
+                With .Tokens()
+                    .Add "fade", 200
+                    .Add "color", SkillshotColor
+                End With
+            End With
+        End With
 
 
 
