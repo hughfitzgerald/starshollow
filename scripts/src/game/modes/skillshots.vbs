@@ -27,21 +27,19 @@ Sub CreateSkillshotsMode()
             .Add "mode_skillshots_started{current_player.ball_just_started == 0}", Array("stop_skillshots")
 
             'Handle successful skillshots
-            ' .Add "s_skillshot_active{current_player.shot_ss1 == 1}", Array("ss_achieved")
-            .Add "s_skillshot_active", Array("ss_achieved")
-            ' .Add "s_TopLane2_active{current_player.shot_ss2 == 1}", Array("ss_achieved")
-            ' .Add "s_TopLane3_active{current_player.shot_ss3 == 1}", Array("ss_achieved")
-            ' .Add "s_TopLane4_active{current_player.shot_ss4 == 1}", Array("ss_achieved")
-            .Add "ss_achieved", Array("score_500000")
+            .Add "s_skillshot_active", Array("ss1_achieved", "ss_achieved")
+            .Add "s_HiddenUpperRightKicker_active", Array("ss2_achieved", "ss_achieved")
+            .Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", Array("ss3_achieved", "ss_achieved")
+            .Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", Array("ss3_achieved", "ss_achieved")
+            .Add "s_sw9_active{current_player.shot_ss_bonus_lane_9 == 1}", Array("ss3_achieved", "ss_achieved")
 
-            'Stop skillshots if orbit lanes or rollovers are hit, or if timer runs out for some reason
-            ' .Add "s_left_orbit_active", Array("stop_skillshots")
-            ' .Add "s_right_orbit_active", Array("stop_skillshots")
-            ' .Add "s_sw7_active", Array("stop_skillshots")
-            ' .Add "s_sw8_active", Array("stop_skillshots")
-            ' .Add "s_sw9_active", Array("stop_skillshots")
+            .Add "ss1_achieved", Array("score_500000")
+            .Add "ss2_achieved", Array("score_200000")
+            .Add "ss3_achieved", Array("score_300000")
+            
             .Add "timer_skillshots_complete", Array("stop_skillshots")
             .Add "balldevice_scoop_ball_exiting", Array("stop_skillshots")
+            .Add "ss_achieved", Array("stop_skillshots")
 
             'Clear skill shot light if hit
             ' .Add "s_TopLane1_inactive", Array("clear_skillshots")
@@ -76,17 +74,16 @@ Sub CreateSkillshotsMode()
 
 
         'The random event player will dispatch an event at random (wieghted) from a list of possible events
-        ' With .RandomEventPlayer()
-        '     'Upon initialization, randomly choose one of the four top lane lights to flash for the skill shot
-        '     With .EventName("init_ss")
-        '         .Add "light_ss1", 1
-        '         .Add "light_ss2", 1
-        '         .Add "light_ss3", 1
-        '         .Add "light_ss4", 1
-        '         .ForceAll = False
-        '         .ForceDifferent = False
-        '     End With
-        ' End With
+        With .RandomEventPlayer()
+            'Upon initialization, randomly choose one of the four top lane lights to flash for the skill shot
+            With .EventName("light_skillshots")
+                .Add "light_ss_bonus_lane_7{current_player.shot_bonus_lane_7 == 0}", 1
+                .Add "light_ss_bonus_lane_8{current_player.shot_bonus_lane_8 == 0}", 1
+                .Add "light_ss_bonus_lane_9{current_player.shot_bonus_lane_9 == 0}", 1
+                .ForceAll = False
+                .ForceDifferent = False
+            End With
+        End With
 
 
         'Define the four possible skill shots
@@ -140,20 +137,39 @@ Sub CreateSkillshotsMode()
         ' TODO: Randomly select a bonus lane for skillshot, make sure it's one that's not lit
         ' AND allow rotation on flipper!!!
 
-        With .Shots("ss3")
-            .Profile = "ss_ready"
-            With .Tokens()
-                .Add "lights", "l7"
+        ' With .Shots("ss3")
+        '     .Profile = "ss_ready"
+        '     With .Tokens()
+        '         .Add "lights", "l7"
+        '     End With
+        '     With .ControlEvents()
+        '         .Events = Array("stop_skillshots","clear_skillshots")
+        '         .State = 0
+        '     End With
+        '     With .ControlEvents()
+        '         .Events = Array("light_skillshots")
+        '         .State = 1
+        '     End With
+        ' End With
+
+        'Define our shots
+        For x = 7 to 9
+            With .Shots("ss_bonus_lane_"&x)
+                ' .Switch = "s_sw"&x
+                .Profile = "ss_ready"
+                With .Tokens()
+                    .Add "lights", "l"&x
+                End With
+                With .ControlEvents()
+                    .Events = Array("stop_skillshots","clear_skillshots")
+                    .State = 0
+                End With
+                With .ControlEvents()
+                    .Events = Array("light_ss_bonus_lane_"&x)
+                    .State = 1
+                End With
             End With
-            With .ControlEvents()
-                .Events = Array("stop_skillshots","clear_skillshots")
-                .State = 0
-            End With
-            With .ControlEvents()
-                .Events = Array("light_skillshots")
-                .State = 1
-            End With
-        End With
+        Next
         
         'Define Skillshot ready shot profile with two states (0 = unlit, 1 = ready)
         'Skill shot is ready, two states
@@ -176,19 +192,13 @@ Sub CreateSkillshotsMode()
                 End With
             End With
         End With
-
-
-
-        'Skillshot will time out after 5 seconds
-        ' With .Timers("skillshots")
-        '     .TickInterval = 1000
-        '     .StartValue = 0
-        '     .EndValue = 5
-        '     With .ControlEvents()
-        '         .EventName = "new_ball_active"
-        '         .Action = "restart"
-        '     End With
-        ' End With
+        
+        With .ShotGroups("ss_bonus_lane_group")
+            .Shots = Array("ss_bonus_lane_7", "ss_bonus_lane_8", "ss_bonus_lane_9")
+            .RotateLeftEvents = Array("s_right_flipper_active")
+            .RotateRightEvents = Array("s_left_flipper_active")
+            ' .RestartEvents = Array("qualify_multiplier_group_on_complete")
+        End With
 
     End With
 
