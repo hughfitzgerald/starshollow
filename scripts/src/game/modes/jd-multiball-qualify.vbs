@@ -14,8 +14,8 @@ Sub CreateJDMultiballQualifyMode()
         .Debug = True
         
         'Define the events that start and stop this mode
-        .StartEvents = Array("mode_skillshots_stopped")
-        .StopEvents = Array("mode_base_stopping")
+        .StartEvents = Array("mode_skillshots_stopped", "mode_jd_multiball_stopped")
+        .StopEvents = Array("mode_base_stopping", "mode_jd_multiball_started")
 
 
         'The event player will respond to events during this mode

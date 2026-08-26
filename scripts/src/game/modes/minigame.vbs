@@ -18,7 +18,8 @@ Sub CreateMiniGameMode
 
             .Add "minigame_is_ready", Array("enable_scoop_hold")
 
-            .Add "check_minigame{current_player.shot_dm_minigame == 1 and modes.jd_multiball.active == False}", Array("start_dance_marathon")
+            .Add "check_minigame{current_player.shot_logan_light == 1}", Array("start_ll_multiball")
+            .Add "check_minigame{current_player.shot_dm_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_dance_marathon")
             .Add "mode_dance_marathon_stopped", Array("dm_minigame_complete")
         End With
 
@@ -80,6 +81,21 @@ Sub CreateMiniGameMode
             End With
             With .ControlEvents()
                 .Events = Array("mode_jd_multiball_stopped")
+                .State = 2
+            End With
+        End With
+
+        With .Shots("llmb_minigame")
+            .Profile = "minigame"
+            With .Tokens()
+                .Add "lights", "l22"
+            End With
+            With .ControlEvents()
+                .Events = Array("logan_qualify_complete")
+                .State = 1
+            End With
+            With .ControlEvents()
+                .Events = Array("start_ll_multiball","llmb_minigame_complete")
                 .State = 2
             End With
         End With

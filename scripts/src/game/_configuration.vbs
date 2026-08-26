@@ -52,6 +52,7 @@ Const SkillshotColor    = "fc7703"   ' the 2 bonus lane inserts l8, l9
 Const ShootAgainColor = "00ff00"
 Const ExtraBallColor = "0000ff"
 Const RampshotColor = "8800ff"
+Const LoganColor = "8800ff"
 Const MultiballColor = "1eff6b"
 
 
@@ -181,6 +182,7 @@ Sub ConfigureGlfDevices()
     CreateBaseMode()         ' priority 110
     CreateJDMultiballQualifyMode()    ' priority 200
     CreateBonusLanesMode()  ' priority 210
+    CreateLLMultiballQualifyMode() ' priority 220
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
     CreateExtraBallMode()    ' priority 510
@@ -188,6 +190,7 @@ Sub ConfigureGlfDevices()
     CreateRampshotsMode()    ' priority 660
     CreateDanceMarathonMode() ' priority 670
     CreateJDMultiballMode()    ' priority 1000
+    CreateLLMultiballMode()    ' priority 1005
     CreateScoreMode()        ' priority 2000
     CreateTiltMode()         ' priority 10000
 
