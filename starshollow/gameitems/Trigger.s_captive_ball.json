@@ -1,8 +1,8 @@
 {
   "Trigger": {
     "center": {
-      "x": 671.50494,
-      "y": 863.9762
+      "x": 685.3066,
+      "y": 824.8033
     },
     "radius": 25.0,
     "rotation": 0.0,
@@ -15,7 +15,7 @@
     "surface": "",
     "is_visible": false,
     "is_enabled": true,
-    "hit_height": 50.0,
+    "hit_height": 100.0,
     "name": "s_captive_ball",
     "shape": "none",
     "anim_speed": 1.0,
@@ -23,8 +23,8 @@
     "part_group_name": "Triggers",
     "drag_points": [
       {
-        "x": 655.2545,
-        "y": 827.3034,
+        "x": 669.05615,
+        "y": 788.1305,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -36,8 +36,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 648.1846,
-        "y": 842.82404,
+        "x": 661.98627,
+        "y": 803.6511,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 711.6181,
-        "y": 861.32764,
+        "x": 725.41974,
+        "y": 822.1547,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 716.5105,
-        "y": 846.6785,
+        "x": 730.31213,
+        "y": 807.5056,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
