@@ -3572,5 +3572,20 @@
     "file_name": "Light.SkillshotLight.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Light.l72.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p72.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.p72off.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]
