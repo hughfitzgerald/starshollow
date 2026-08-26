@@ -3,6 +3,11 @@ Sub CreateLLMultiballMode()
         .StartEvents = Array("start_ll_multiball")
         .StopEvents = Array("mode_base_stopping", "multiball_llmb_ended")
 
+        With .EventPlayer()
+            .Add "mode_ll_multiball_started", Array("release_scoop_hold")
+            .Add "release_scoop_hold", Array("disable_scoop_hold")
+        End With
+
         With .Multiballs("llmb")
             .StartEvents = Array("mode_ll_multiball_started")
             .BallCount = 3

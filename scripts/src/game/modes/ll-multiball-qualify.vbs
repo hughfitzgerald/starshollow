@@ -14,8 +14,9 @@ Sub CreateLLMultiballQualifyMode()
         End With
 
         With .Shots("logan_light")
-            .Persist = False
+            .Persist = True
             .Profile = "logan_ball"
+            .ResetEvents = Array("mode_ll_multiball_started", "mode_ball_started")
             With .Tokens()
                 .Add "lights", "l72"
                 .Add "color", LoganColor
