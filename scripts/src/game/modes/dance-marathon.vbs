@@ -3,8 +3,8 @@
 '
 '  - TODO: describe the mode
 
-Const DanceMarathonShotTime = 20   'seconds
-Const DanceMarathonModeNumShots = 6   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
+Const DanceMarathonShotTime = 15   'seconds
+Const DanceMarathonModeNumShots = 4   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
 
 ' A single dance-marathon shot: which switch/light it uses, and which
 ' random-event group (e.g. "dm_orbits") lights it.
