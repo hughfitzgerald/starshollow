@@ -3647,5 +3647,10 @@
     "file_name": "Ramp.CaptiveRampLow.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.CaptiveScoopNew.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]
