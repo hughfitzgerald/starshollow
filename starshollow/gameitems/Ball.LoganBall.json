@@ -18,7 +18,7 @@
     "is_reflection_enabled": true,
     "is_timer_enabled": false,
     "timer_interval": 100,
-    "name": "Ball001",
+    "name": "LoganBall",
     "part_group_name": "Captive Balls"
   }
 }

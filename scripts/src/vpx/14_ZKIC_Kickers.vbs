@@ -32,7 +32,7 @@ Sub DropTargetKickerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_DropTargetKicker
-	s_DropTargetKicker.Kick -122, 10
+	s_DropTargetKicker.Kick -122, 20
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
@@ -41,6 +41,15 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_HiddenUpperRightKicker
 	s_HiddenUpperRightKicker.Kick 134, 10
+	' KickBall ball, -19, 50, 5, 25
+End Sub
+
+Sub CaptiveRampKickerEjectCallback(ball)
+	CaptiveDiverter.RotateToEnd
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
+	SoundSaucerKick 1, s_CaptiveRampKicker
+	s_CaptiveRampKicker.Kick -90, 70
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 

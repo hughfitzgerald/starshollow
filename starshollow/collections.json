@@ -312,7 +312,8 @@
       "Gate002",
       "s_left_ramp_gate",
       "s_right_ramp_gate",
-      "s_captive_ball_vuk"
+      "s_captive_ball_vuk",
+      "s_CaptiveRampKicker"
     ],
     "fire_events": false,
     "stop_single_events": false,

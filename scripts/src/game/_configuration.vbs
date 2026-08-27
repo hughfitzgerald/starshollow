@@ -331,6 +331,15 @@ Sub ConfigureGlfDevices()
 		.MechanicalEject = True
     End With
 
+    With CreateGlfBallDevice("captive_ramp_kicker")
+        .BallSwitches = Array("s_CaptiveRampKicker")
+        .Debug = True
+        .AutoFireOnUnexpectedBall = False
+        .EjectAllEvents = Array("s_CaptiveRampKicker_active")
+        .EjectCallback = "CaptiveRampKickerEjectCallback"
+		.MechanicalEject = True
+    End With
+
     ' --- Diverter ---
     ' Was Diverter.RotateToEnd inline in Table1_KeyDown. GLF owns the
     ' flipper keys now, so bind to the virtual flipper switch events.

@@ -1892,7 +1892,7 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Ball.Ball001.json",
+    "file_name": "Ball.LoganBall.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3619,7 +3619,32 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.CaptiveRamp.json",
+    "file_name": "Ramp.CaptiveRampHigh.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveRampFloor.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_CaptiveRampKicker.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveFloorRightWall.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveFloorTopWall.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.CaptiveRampLow.json",
     "is_locked": false,
     "editor_layer": 0
   }
