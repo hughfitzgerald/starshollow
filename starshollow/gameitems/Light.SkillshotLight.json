@@ -35,6 +35,7 @@
     "shadows": null,
     "fader": "incandescent",
     "visible": true,
+    "part_group_name": "GI_Layer",
     "drag_points": [
       {
         "x": 616.6393,
