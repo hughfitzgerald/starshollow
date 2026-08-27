@@ -2439,11 +2439,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Ramp.SubwayRamp.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Wall.ScoopWall.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3574,7 +3569,7 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Kicker.Kicker001.json",
+    "file_name": "Kicker.s_captive_ball_vuk.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3595,6 +3590,36 @@
   },
   {
     "file_name": "Wall.InvisibleCaptiveBallCeiling.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveSubwayFloor.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.Ramp002.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.Ramp005.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveSubwayWall.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Flipper.CaptiveDiverter.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.CaptiveRamp.json",
     "is_locked": false,
     "editor_layer": 0
   }
