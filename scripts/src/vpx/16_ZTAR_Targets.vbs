@@ -39,7 +39,3 @@ End Sub
 Sub sw18o_Hit
 	TargetBouncer ActiveBall, 1
 End Sub
-
-Sub sw19o_Hit
-	TargetBouncer ActiveBall, 1
-End Sub

@@ -229,8 +229,8 @@
       "sw16o",
       "sw17o",
       "sw18o",
-      "sw19o",
-      "aDT1"
+      "aDT1",
+      "aDT2"
     ],
     "fire_events": true,
     "stop_single_events": false,

@@ -9,7 +9,9 @@ Sub CreateLLMultiballQualifyMode()
         .StopEvents = Array("mode_base_stopping","mode_ll_multiball_started")
 
         With .EventPlayer()
-            .Add "logan_qualify_hit1_hit", Array("logan_drop_target")
+            .Add "mode_ll_multiball_qualify_started", Array("dt2_enable_keepup")
+            .Add "logan_qualify_hit1_hit", Array("dt2_knockdown")
+            ' .Add "logan_qualify_hit1_hit", Array("logan_drop_target")
             .Add "logan_qualify_hit2_hit", Array("logan_qualify_complete")
         End With
 

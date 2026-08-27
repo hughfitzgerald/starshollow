@@ -351,7 +351,7 @@ Sub ConfigureGlfDevices()
     ' --- Standup targets s_ST11..s_ST18 ---
     ' MUST NOT be in any collection. RothSTSwitchID must match the 3rd
     ' argument of the Set STnn = (new StandupTarget)(...) lines in ZRST.
-    For x = 11 To 19
+    For x = 11 To 18
         With CreateGlfStanduptarget("target" & x)
             .Switch = "s_ST" & x
             .UseRothStanduptarget = True
@@ -363,11 +363,21 @@ Sub ConfigureGlfDevices()
     'NOTE: Drop targets SHOULD NOT be added to the glf_switches collection nor any other collection. 
     With CreateGlfDroptarget("drop1")
         .Switch = "s_DT1"
-        .KnockdownEvents = Array("DT1_knockdown")
+        .KnockdownEvents = Array("dt1_knockdown")
         .ResetEvents = Array("ball_started","reset_complete")
         .ActionCallback = "DT1Callback"
         .UseRothDroptarget = True
         .RothDTSwitchID = 1
+    End With
+    With CreateGlfDroptarget("drop2")
+        .Switch = "s_DT2"
+        .KnockdownEvents = Array("dt2_knockdown")
+        .ResetEvents = Array("ball_started","reset_complete")
+        .EnableKeepUpEvents = Array("dt2_enable_keepup")
+        .DisableKeepUpEvents = Array("dt2_disable_keepup")
+        .ActionCallback = "DT2Callback"
+        .UseRothDroptarget = True
+        .RothDTSwitchID = 2
     End With
 
 End Sub

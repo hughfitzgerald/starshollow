@@ -1,19 +1,19 @@
 {
   "Primitive": {
     "position": {
-      "x": 703.9914,
-      "y": 777.54584,
-      "z": -5.0
+      "x": 693.811,
+      "y": 815.36316,
+      "z": 0.0
     },
     "size": {
-      "x": 1.0,
-      "y": 1.0,
-      "z": 1.0
+      "x": 185.0,
+      "y": 185.0,
+      "z": 185.0
     },
     "rot_and_tra": [
       0.0,
       0.0,
-      20.0,
+      23.0,
       0.0,
       0.0,
       0.0,
@@ -21,15 +21,15 @@
       0.0,
       0.0
     ],
-    "image": "HitTarget",
+    "image": "DropTargetBeveled",
     "normal_map": "",
     "sides": 4,
-    "name": "psw19",
-    "material": "Plastic with an image",
+    "name": "pDT2",
+    "material": "Plastic",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
-    "hit_event": true,
+    "hit_event": false,
     "threshold": 2.0,
     "elasticity": 0.3,
     "elasticity_falloff": 0.5,
@@ -44,7 +44,7 @@
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
     "disable_lighting_below": 1.0,
-    "is_reflection_enabled": false,
+    "is_reflection_enabled": true,
     "backfaces_enabled": false,
     "physics_material": "",
     "overwrite_physics": true,
@@ -63,6 +63,6 @@
     "reflection_strength": 1.0,
     "refraction_probe": "",
     "refraction_thickness": 10.0,
-    "part_group_name": "Collidable_Rubbers"
+    "part_group_name": "Targets_Layer"
   }
 }

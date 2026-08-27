@@ -33,7 +33,7 @@ Class StandupTarget
 End Class
 
 'Define a variable for each stand-up target
-Dim ST11, ST12, ST13, ST14, ST15, ST16, ST17, ST18, ST19
+Dim ST11, ST12, ST13, ST14, ST15, ST16, ST17, ST18
 
 'Set array with stand-up target objects
 '
@@ -57,12 +57,11 @@ Set ST15 = (new StandupTarget)(s_ST15, psw15,15, 0)
 Set ST16 = (new StandupTarget)(s_ST16, psw16,16, 0)
 Set ST17 = (new StandupTarget)(s_ST17, psw17,17, 0)
 Set ST18 = (new StandupTarget)(s_ST18, psw18,18, 0)
-Set ST19 = (new StandupTarget)(s_ST19, psw19,19, 0)
 
 'Add all the Stand-up Target Arrays to Stand-up Target Animation Array
 '   STAnimationArray = Array(ST1, ST2, ....)
 Dim STArray
-STArray = Array(ST11, ST12, ST13, ST14, ST15, ST16, ST17, ST18, ST19)
+STArray = Array(ST11, ST12, ST13, ST14, ST15, ST16, ST17, ST18)
 
 'Configure the behavior of Stand-up Targets
 Const STAnimStep = 1.5  'vpunits per animation step (control return to Start)

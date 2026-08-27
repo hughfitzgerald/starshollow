@@ -3084,21 +3084,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.psw19.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "HitTarget.s_ST19.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.sw19o.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Rubber.Rubber004.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3585,6 +3570,31 @@
   },
   {
     "file_name": "Primitive.p72off.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.Kicker001.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.aDT2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.s_DT2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.pDT2.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.InvisibleCaptiveBallCeiling.json",
     "is_locked": false,
     "editor_layer": 0
   }

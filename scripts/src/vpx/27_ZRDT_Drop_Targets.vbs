@@ -47,7 +47,7 @@ Class DropTarget
 End Class
 
 'Define a variable for each drop target
-Dim DT1
+Dim DT1, DT2
 
 'Set array with drop target objects
 '
@@ -66,10 +66,11 @@ Dim DT1
 '	Values for annimate: 1 - bend target (hit to primary), 2 - drop target (hit to secondary), 3 - brick target (high velocity hit to secondary), -1 - raise target 
 
 Set DT1 = (new DropTarget)(s_DT1, aDT1, pDT1, 1, 0, False)
+Set DT2 = (new DropTarget)(s_DT2, aDT2, pDT2, 2, 0, False)
 
 
 Dim DTArray
-DTArray = Array(DT1)
+DTArray = Array(DT1, DT2)
 
 'Configure the behavior of Drop Targets.
 Const DTDropSpeed = 80 'in milliseconds
@@ -355,5 +356,19 @@ Sub DT1Callback(state)
             DTEnableKeepup 1
         Case 4
             DTDisableKeepup 1
+    End Select
+End Sub
+
+Sub DT2Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 2
+            SoundDropTargetDrop pDT2
+        Case 1
+            DTDrop 2
+        Case 3
+            DTEnableKeepup 2
+        Case 4
+            DTDisableKeepup 2
     End Select
 End Sub
