@@ -182,6 +182,8 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "bonus_count", 0            'number of bonus lights achieved, calculated in bonus mode
     Glf_SetInitialPlayerVar "bonus_skip", 0             'flag to capture if player wants to skip the bonus tally shows in bonus mode
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
+    Glf_SetInitialPlayerVar "llmb_shoot_again_active", 0
+    Glf_SetInitialPlayerVar "logan_cooldown_active", 0
 
 
     '*********** MODES ***********

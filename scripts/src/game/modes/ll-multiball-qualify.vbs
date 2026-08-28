@@ -32,8 +32,6 @@ Sub CreateLLMultiballQualifyMode()
             End With
         End With
 
-        Glf_SetInitialPlayerVar "logan_cooldown_active", 0
-
         With .VariablePlayer()
             With .EventName("timer_logan_cooldown_started")
                 With .Variable("logan_cooldown_active")

@@ -52,7 +52,8 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 End Sub
 
 Sub ReturnCaptiveFromDrain(ball)
-	If Drain.BallCntOver = 1 Then Drain.kick 93, 10
+	If glf_BIP = 1 Then Drain.kick 93, 10
+	' If Drain.BallCntOver = 1 Then Drain.kick 93, 10
 End Sub
 
 Sub DrainSubwayKickerEject(ball)

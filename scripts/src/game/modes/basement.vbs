@@ -42,14 +42,15 @@ Sub CreateBasementMode()
 
             .Add "s_captive_ball_active{machine.captive_ball_captive == 0}", Array("captive_ball_is_home")
             .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker")
+            .Add "ball_drain{machine.captive_ball_captive == 0 and current_player.llmb_shoot_again_active == 0}", Array("return_captive_from_drain")
         End With
 
-        With .QueueRelayPlayer()
-            With .EventName("ball_ending{machine.captive_ball_captive == 0}")
-                .Post = "return_captive_from_drain"
-                .WaitFor = "captive_ball_is_home"
-            End With
-        End With
+        ' With .QueueRelayPlayer()
+        '     With .EventName("ball_drain{machine.captive_ball_captive == 0}")
+        '         .Post = "return_captive_from_drain"
+        '         .WaitFor = "captive_ball_is_home"
+        '     End With
+        ' End With
 
         With .VariablePlayer()
             With .EventName("free_captive_ball")
