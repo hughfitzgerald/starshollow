@@ -4,8 +4,8 @@ Sub CreateLLMultiballMode()
         .StopEvents = Array("mode_base_stopping", "multiball_llmb_ended")
 
         With .EventPlayer()
-            .Add "mode_ll_multiball_started", Array("release_scoop_hold")
-            .Add "mode_jd_multiball_qualify_stopped", Array("free_captive_ball")
+            .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks")
+            .Add "multiball_locks_cleared", Array("free_captive_ball")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
         End With
 

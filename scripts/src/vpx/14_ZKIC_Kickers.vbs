@@ -45,6 +45,7 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 End Sub
 
 Sub SetCaptiveBallFreeListener(ball)
+	glf_BIP = glf_BIP + 1
     glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToLeftScoop"
 	glf_ball_devices("captive_ramp_kicker").EjectAll()
 	glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToCaptivity"

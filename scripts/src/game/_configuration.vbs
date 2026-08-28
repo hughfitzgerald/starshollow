@@ -98,9 +98,9 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "balldevice_lock1_ball_entered", "enable_second_multiball_lock", "EnableSecondMultiballLock", 100, Null
     AddPinEventListener "balldevice_lock2_ball_entered", "enable_third_multiball_lock", "EnableThirdMultiballLock", 100, Null
 
-    AddPinEventListener "ball_ended", "clear_multiball_locks", "ClearMultiballLocksListener", 100, Null
-
-    AddPinEventListener "ball_ended", "enable_subway_return", "EnableSubwayReturn", 100, Null
+    
+    AddPinEventListener "clear_multiball_locks", "clear_multiball_locks_called", "ClearMultiballLocksListener", 100, Null
+    AddPinEventListener "clear_multiball_locks", "enable_subway_return", "EnableSubwayReturn", 100, Null
 
     AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
 
@@ -363,8 +363,8 @@ Sub ConfigureGlfDevices()
 
     With CreateGlfDiverter("subway_diverter")
         .EnableEvents = Array("ball_started")
-        .ActivateEvents = Array("ball_ended")
-        .DeactivateEvents = Array("ball_started", "reset_complete")
+        .ActivateEvents = Array("clear_multiball_locks")
+        .DeactivateEvents = Array("multiball_locks_cleared")
         .ActionCallback = "SubwayDiverterAction"
     End With
 

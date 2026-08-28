@@ -34,6 +34,20 @@ Sub CreateBasementMode()
             .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
             .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
 
+            .Add "ball_ended", Array("clear_multiball_locks")
+            .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
+        End With
+
+        With .Timers("clear_multiball_locks")
+            .StartRunning = False
+            .Direction = "down"      ' Count down
+            .StartValue = 1
+            .EndValue = 0            ' End at 0
+            .TickInterval = 1000     ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "clear_multiball_locks"
+                .Action = "start"
+            End With
         End With
 
         With .VariablePlayer()
