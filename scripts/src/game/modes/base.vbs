@@ -244,6 +244,14 @@ Sub CreateBaseMode()
             .ReleaseAllEvents = Array("release_scoop_hold")
         End With
 
+        With .BallHolds("captive_ramp_kicker_hold")
+            .BallsToHold = 1
+            .HoldDevices = Array("captive_ramp_kicker")
+            .EnableEvents = Array("enable_captive_ramp_kicker_hold") 
+            .DisableEvents = Array("disable_captive_ramp_kicker_hold") 
+            .ReleaseAllEvents = Array("release_captive_ramp_kicker_hold")
+        End With
+
 
         '--- Ball save -----------------------------------------------------
         ' AutoLaunch is False on purpose: this table has a mechanical

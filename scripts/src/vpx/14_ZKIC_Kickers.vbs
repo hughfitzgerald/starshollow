@@ -50,10 +50,10 @@ Sub CaptiveRampKickerEjectToLeftScoop(ball)
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_CaptiveRampKicker
 	s_CaptiveRampKicker.Kick -90, 70 ' Kick towards left scoop
+    glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToCaptivity"
 End Sub
 
 Sub CaptiveRampKickerEjectToCaptivity(ball)
-	CaptiveDiverter.RotateToEnd
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_CaptiveRampKicker
