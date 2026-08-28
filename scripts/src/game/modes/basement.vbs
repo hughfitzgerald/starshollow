@@ -36,19 +36,15 @@ Sub CreateBasementMode()
 
             .Add "ball_ended", Array("clear_multiball_locks")
             .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
-
-            .Add "check_captive_in_drain{machine.captive_ball_captive == 0}", Array("return_captive_from_drain")
-            .Add "check_captive_in_drain{machine.captive_ball_captive == 1}", Array("captive_cleared_from_drain")
-            .Add "s_captive_ball_active", Array("captive_cleared_from_drain")
             
             .Add "return_captive_from_drain", Array("disable_captive_ramp_kicker_hold")
             .Add "logan_ball_captured", Array("capture_captive_ball","disable_captive_ramp_kicker_hold")
         End With
 
         With .QueueRelayPlayer()
-            With .EventName("ball_ending")
-                .Post = "check_captive_in_drain"
-                .WaitFor = "captive_cleared_from_drain"
+            With .EventName("ball_ending{machine.captive_ball_captive == 0}")
+                .Post = "return_captive_from_drain"
+                .WaitFor = "s_captive_ball_active"
             End With
         End With
 
