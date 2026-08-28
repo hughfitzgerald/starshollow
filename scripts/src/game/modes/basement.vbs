@@ -16,7 +16,7 @@ Sub CreateBasementMode()
         With .EventPlayer()
 
             'Some table init stuff
-            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on")
+            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup")
 
             'Backglass stuff
             .Add "backglass_on", Array("backglass_logo_on","backglass_game_on","backglass_logic_on","backglass_framework_on")
@@ -39,12 +39,15 @@ Sub CreateBasementMode()
             
             .Add "return_captive_from_drain", Array("disable_captive_ramp_kicker_hold")
             .Add "logan_ball_captured", Array("capture_captive_ball","disable_captive_ramp_kicker_hold")
+
+            .Add "s_captive_ball_active{machine.captive_ball_captive == 0}", Array("captive_ball_is_home")
+            .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker")
         End With
 
         With .QueueRelayPlayer()
             With .EventName("ball_ending{machine.captive_ball_captive == 0}")
                 .Post = "return_captive_from_drain"
-                .WaitFor = "s_captive_ball_active"
+                .WaitFor = "captive_ball_is_home"
             End With
         End With
 
@@ -55,7 +58,7 @@ Sub CreateBasementMode()
                     .Int = 0
                 End With
             End With
-            With .EventName("capture_captive_ball")
+            With .EventName("captive_ball_is_home")
                 With .Variable("captive_ball_captive")
                     .Action = "set_machine"
                     .Int = 1
@@ -76,6 +79,7 @@ Sub CreateBasementMode()
         End With
 
         With .BallHolds("captive_ramp_kicker_hold")
+            .Debug = True
             .BallsToHold = 1
             .HoldDevices = Array("captive_ramp_kicker")
             .EnableEvents = Array("enable_captive_ramp_kicker_hold") 

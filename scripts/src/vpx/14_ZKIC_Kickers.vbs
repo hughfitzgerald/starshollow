@@ -72,7 +72,7 @@ End Sub
 Sub SetCaptiveBallFreeListener(ball)
 	glf_BIP = glf_BIP + 1
     glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToLeftScoop"
-	glf_ball_devices("captive_ramp_kicker").EjectAll()
+	glf_ball_holds("captive_ramp_kicker_hold").ReleaseAll()
 	glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToCaptivity"
 End Sub
 
@@ -96,7 +96,11 @@ Sub CaptiveRampUpperKickerEjectCallback(ball)
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_CaptiveRampUpperKicker
 	s_CaptiveRampUpperKicker.Kick -160, 100
-	s_CaptiveRampUpperKicker.Enabled = False ' Probably we want to put a trigger to know when the ball is back in captivity to disable it
+	' s_CaptiveRampUpperKicker.Enabled = False ' Probably we want to put a trigger to know when the ball is back in captivity to disable it
+End Sub
+
+Sub DisableCaptiveRampUpperKicker(ball)
+	s_CaptiveRampUpperKicker.Enabled = False
 End Sub
 
 Sub PlungerEjectCallback(ball)

@@ -105,6 +105,7 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
     AddPinEventListener "capture_captive_ball", "capture_captive_ball_called", "CaptureCaptiveBall", 100, Null
     AddPinEventListener "return_captive_from_drain", "return_captive_from_drain_called", "ReturnCaptiveFromDrain", 100, Null
+    AddPinEventListener "disable_captive_ramp_upper_kicker", "disable_captive_ramp_upper_kicker_called", "DisableCaptiveRampUpperKicker", 100, Null
 
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
@@ -344,7 +345,7 @@ Sub ConfigureGlfDevices()
     With CreateGlfBallDevice("captive_ramp_kicker")
         .BallSwitches = Array("s_CaptiveRampKicker")
         .Debug = True
-        .AutoFireOnUnexpectedBall = False
+        .AutoFireOnUnexpectedBall = True
         ' .EjectAllEvents = Array("s_CaptiveRampKicker_active")
         .EjectCallback = "CaptiveRampKickerEjectToCaptivity"
 		.MechanicalEject = True
@@ -417,7 +418,7 @@ Sub ConfigureGlfDevices()
         .Switch = "s_DT2"
         .KnockdownEvents = Array("dt2_knockdown")
         .ResetEvents = Array("ball_started")
-        .EnableKeepUpEvents = Array("dt2_enable_keepup")
+        .EnableKeepUpEvents = Array("dt2_enable_keepup", "reset_complete")
         .DisableKeepUpEvents = Array("dt2_disable_keepup")
         .ActionCallback = "DT2Callback"
         .UseRothDroptarget = True
