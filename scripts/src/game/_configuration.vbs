@@ -102,6 +102,8 @@ Sub ConfigureGlfDevices()
 
     AddPinEventListener "ball_ended", "enable_subway_return", "EnableSubwayReturn", 100, Null
 
+    AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
+
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
 
@@ -364,6 +366,13 @@ Sub ConfigureGlfDevices()
         .ActivateEvents = Array("ball_ended")
         .DeactivateEvents = Array("ball_started", "reset_complete")
         .ActionCallback = "SubwayDiverterAction"
+    End With
+
+    With CreateGlfDiverter("captive_diverter")
+        .EnableEvents = Array("ball_started", "reset_complete")
+        .ActivateEvents = Array("ball_started")
+        .DeactivateEvents = Array("close_captive_diverter")
+        .ActionCallback = "CaptiveDiverterAction"
     End With
 
     ' --- Standup targets s_ST11..s_ST18 ---

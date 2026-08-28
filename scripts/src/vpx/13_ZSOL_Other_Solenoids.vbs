@@ -27,3 +27,11 @@ Sub SubwayDiverterAction(Enabled)
 		SubwayDiverter.RotateToStart
 	End If
 End Sub
+
+Sub CaptiveDiverterAction(Enabled)
+	If Enabled Then
+		CaptiveDiverter.RotateToEnd
+	Else
+		CaptiveDiverter.RotateToStart
+	End If
+End Sub

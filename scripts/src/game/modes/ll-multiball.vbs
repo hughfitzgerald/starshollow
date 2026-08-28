@@ -5,13 +5,14 @@ Sub CreateLLMultiballMode()
 
         With .EventPlayer()
             .Add "mode_ll_multiball_started", Array("release_scoop_hold")
+            .Add "mode_jd_multiball_qualify_stopped", Array("free_captive_ball")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
         End With
 
         With .Multiballs("llmb")
             .StartEvents = Array("mode_ll_multiball_started")
-            .BallCount = 3
-            .BallCountType = "total"
+            .BallCount = 1
+            .BallCountType = "add"
             .ShootAgain = 15000
             .HurryUp = 3000
             .GracePeriod = 2000

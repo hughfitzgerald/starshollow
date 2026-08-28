@@ -44,13 +44,17 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
+Sub SetCaptiveBallFreeListener(ball)
+    glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToLeftScoop"
+	glf_ball_devices("captive_ramp_kicker").EjectAll()
+	glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToCaptivity"
+End Sub
+
 Sub CaptiveRampKickerEjectToLeftScoop(ball)
-	CaptiveDiverter.RotateToEnd
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_CaptiveRampKicker
 	s_CaptiveRampKicker.Kick -90, 70 ' Kick towards left scoop
-    glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToCaptivity"
 End Sub
 
 Sub CaptiveRampKickerEjectToCaptivity(ball)
