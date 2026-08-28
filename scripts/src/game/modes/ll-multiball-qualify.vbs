@@ -9,7 +9,7 @@ Sub CreateLLMultiballQualifyMode()
         .StopEvents = Array("mode_base_stopping","mode_ll_multiball_started")
 
         With .EventPlayer()
-            .Add "mode_ll_multiball_qualify_started", Array("dt2_enable_keepup", "enable_captive_ramp_kicker_hold")
+            .Add "mode_ll_multiball_qualify_started", Array("enable_captive_ramp_kicker_hold")
             .Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", Array("release_captive_ramp_kicker_hold")
             .Add "logan_qualify_hit1_hit", Array("dt2_knockdown")
             .Add "logan_qualify_hit2_hit", Array("logan_qualify_complete")

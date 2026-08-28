@@ -37,7 +37,34 @@ Sub CreateBasementMode()
             .Add "ball_ended", Array("clear_multiball_locks")
             .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
 
+            .Add "check_captive_in_drain{machine.captive_ball_captive == 0}", Array("return_captive_from_drain")
+            .Add "check_captive_in_drain{machine.captive_ball_captive == 1}", Array("captive_cleared_from_drain")
+            .Add "s_captive_ball_active", Array("captive_cleared_from_drain")
+            
+            .Add "return_captive_from_drain", Array("disable_captive_ramp_kicker_hold")
             .Add "logan_ball_captured", Array("capture_captive_ball","disable_captive_ramp_kicker_hold")
+        End With
+
+        With .QueueRelayPlayer()
+            With .EventName("ball_ending")
+                .Post = "check_captive_in_drain"
+                .WaitFor = "captive_cleared_from_drain"
+            End With
+        End With
+
+        With .VariablePlayer()
+            With .EventName("free_captive_ball")
+                With .Variable("captive_ball_captive")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
+            With .EventName("capture_captive_ball")
+                With .Variable("captive_ball_captive")
+                    .Action = "set_machine"
+                    .Int = 1
+                End With
+            End With
         End With
 
         With .Timers("clear_multiball_locks")
@@ -50,6 +77,14 @@ Sub CreateBasementMode()
                 .EventName = "clear_multiball_locks"
                 .Action = "start"
             End With
+        End With
+
+        With .BallHolds("captive_ramp_kicker_hold")
+            .BallsToHold = 1
+            .HoldDevices = Array("captive_ramp_kicker")
+            .EnableEvents = Array("enable_captive_ramp_kicker_hold") 
+            .DisableEvents = Array("disable_captive_ramp_kicker_hold") 
+            .ReleaseAllEvents = Array("release_captive_ramp_kicker_hold")
         End With
 
         With .VariablePlayer()

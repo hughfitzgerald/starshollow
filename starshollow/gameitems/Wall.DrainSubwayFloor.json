@@ -13,9 +13,9 @@
     "side_material": "",
     "top_material": "",
     "slingshot_material": "",
-    "height_bottom": -115.0,
-    "height_top": -90.0,
-    "name": "CaptiveFloorTopWall",
+    "height_bottom": -62.0,
+    "height_top": -60.0,
+    "name": "DrainSubwayFloor",
     "display_texture": false,
     "slingshot_force": 80.0,
     "slingshot_threshold": 0.0,
@@ -34,8 +34,8 @@
     "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 795.5048,
-        "y": 430.4771,
+        "x": 555.0464,
+        "y": 2050.846,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -47,8 +47,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 795.7099,
-        "y": 432.47382,
+        "x": 550.04645,
+        "y": 2119.11,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -60,8 +60,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 861.18634,
-        "y": 433.3041,
+        "x": 620.6461,
+        "y": 2122.0525,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -73,8 +73,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 861.7043,
-        "y": 430.4994,
+        "x": 620.6461,
+        "y": 2054.266,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -85,7 +85,6 @@
         "editor_layer_name": "",
         "editor_layer_visibility": true
       }
-    ],
-    "part_group_name": "Subway"
+    ]
   }
 }

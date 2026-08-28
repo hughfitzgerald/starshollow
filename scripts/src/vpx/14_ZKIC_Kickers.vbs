@@ -51,6 +51,17 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
+Sub ReturnCaptiveFromDrain(ball)
+	If Drain.BallCntOver = 1 Then Drain.kick 93, 10
+End Sub
+
+Sub DrainSubwayKickerEject(ball)
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
+	SoundSaucerKick 1, s_DrainSubwayKicker
+	s_DrainSubwayKicker.Kick 8, 100
+End Sub
+
 Sub CaptureCaptiveBall(ball)
 	glf_BIP = glf_BIP - 1
     glf_ball_devices("scoop").EjectCallback = "ScoopReturnToCaptivity"

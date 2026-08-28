@@ -104,6 +104,7 @@ Sub ConfigureGlfDevices()
 
     AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
     AddPinEventListener "capture_captive_ball", "capture_captive_ball_called", "CaptureCaptiveBall", 100, Null
+    AddPinEventListener "return_captive_from_drain", "return_captive_from_drain_called", "ReturnCaptiveFromDrain", 100, Null
 
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
@@ -161,6 +162,12 @@ Sub ConfigureGlfDevices()
         .InitialValue = 0
         .ValueType = "int"
         .Persist = True
+    End With
+
+    With CreateMachineVar("captive_ball_captive")   'tracks if the captive ball is currently captured
+        .InitialValue = 1
+        .ValueType = "int"
+        .Persist = False
     End With
 
     '*********** PLAYER VARIABLES ***********
@@ -352,6 +359,15 @@ Sub ConfigureGlfDevices()
 		.MechanicalEject = True
     End With
 
+    With CreateGlfBallDevice("drain_subway_kicker")
+        .BallSwitches = Array("s_DrainSubwayKicker")
+        .Debug = True
+        .AutoFireOnUnexpectedBall = False
+        .EjectAllEvents = Array("s_DrainSubwayKicker_active")
+        .EjectCallback = "DrainSubwayKickerEject"
+		.MechanicalEject = True
+    End With
+
     ' --- Diverter ---
     ' Was Diverter.RotateToEnd inline in Table1_KeyDown. GLF owns the
     ' flipper keys now, so bind to the virtual flipper switch events.
@@ -400,7 +416,7 @@ Sub ConfigureGlfDevices()
     With CreateGlfDroptarget("drop2")
         .Switch = "s_DT2"
         .KnockdownEvents = Array("dt2_knockdown")
-        .ResetEvents = Array("ball_started","reset_complete","dt2_reset")
+        .ResetEvents = Array("ball_started")
         .EnableKeepUpEvents = Array("dt2_enable_keepup")
         .DisableKeepUpEvents = Array("dt2_disable_keepup")
         .ActionCallback = "DT2Callback"

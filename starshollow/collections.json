@@ -313,7 +313,8 @@
       "s_left_ramp_gate",
       "s_right_ramp_gate",
       "s_CaptiveRampKicker",
-      "s_CaptiveRampUpperKicker"
+      "s_CaptiveRampUpperKicker",
+      "s_DrainSubwayKicker"
     ],
     "fire_events": false,
     "stop_single_events": false,

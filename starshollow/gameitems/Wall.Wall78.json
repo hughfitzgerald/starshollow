@@ -112,8 +112,41 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 471.31155,
-        "y": 2098.542,
+        "x": 554.9475,
+        "y": 2050.899,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 620.6461,
+        "y": 2054.266,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 620.6461,
+        "y": 2122.0525,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 472.43808,
+        "y": 2115.9197,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

@@ -30,7 +30,7 @@ Sub CreateBaseMode()
         With .EventPlayer()
 
             ' Kill the attract mode as soon as a ball starts
-            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start")
+            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start", "dt2_enable_keepup")
             .Add "mode_base_stopped", Array("base_music_stop")
 
             .Add "s_RightOutlane_active", Array("outlane_drain")
@@ -242,14 +242,6 @@ Sub CreateBaseMode()
             .EnableEvents = Array("enable_scoop_hold") 
             .DisableEvents = Array("disable_scoop_hold") 
             .ReleaseAllEvents = Array("release_scoop_hold")
-        End With
-
-        With .BallHolds("captive_ramp_kicker_hold")
-            .BallsToHold = 1
-            .HoldDevices = Array("captive_ramp_kicker")
-            .EnableEvents = Array("enable_captive_ramp_kicker_hold") 
-            .DisableEvents = Array("disable_captive_ramp_kicker_hold") 
-            .ReleaseAllEvents = Array("release_captive_ramp_kicker_hold")
         End With
 
 

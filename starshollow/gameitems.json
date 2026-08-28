@@ -3634,11 +3634,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Wall.CaptiveFloorTopWall.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Ramp.CaptiveRampLow.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3660,6 +3655,21 @@
   },
   {
     "file_name": "Wall.CaptiveRampKickerSurface.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_DrainSubwayKicker.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.DrainSubway.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.DrainSubwayFloor.json",
     "is_locked": false,
     "editor_layer": 0
   }
