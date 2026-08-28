@@ -12,7 +12,7 @@ Const cGameName = "StarsHollowShowdown"
 Const BallSize  = 50                'Ball diameter in VPX units; must be 50
 Const BallMass  = 1                 'Ball mass must be 1
 Const tnob      = 5                 'Total playable balls (must equal swTrough count)
-Const lob       = 0                 'Locked / captive balls
+Const lob       = 1                 'Locked / captive balls
 
 Dim gBOT                            'GLF fills this; use instead of GetBalls
 Dim tablewidth  : tablewidth  = Table1.width
