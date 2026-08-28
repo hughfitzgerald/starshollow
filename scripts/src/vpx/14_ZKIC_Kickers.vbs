@@ -65,7 +65,7 @@ End Sub
 Sub CaptureCaptiveBall(ball)
 	glf_BIP = glf_BIP - 1
     glf_ball_devices("scoop").EjectCallback = "ScoopReturnToCaptivity"
-	glf_ball_devices("scoop").EjectAll()
+	glf_ball_holds("scoop_hold").ReleaseAll()
 	glf_ball_devices("scoop").EjectCallback = "ScoopEjectCallback"
 End Sub
 
