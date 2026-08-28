@@ -44,13 +44,29 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
-Sub CaptiveRampKickerEjectCallback(ball)
+Sub CaptiveRampKickerEjectToLeftScoop(ball)
 	CaptiveDiverter.RotateToEnd
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_CaptiveRampKicker
-	s_CaptiveRampKicker.Kick -90, 70
-	' KickBall ball, -19, 50, 5, 25
+	s_CaptiveRampKicker.Kick -90, 70 ' Kick towards left scoop
+End Sub
+
+Sub CaptiveRampKickerEjectToCaptivity(ball)
+	CaptiveDiverter.RotateToEnd
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
+	SoundSaucerKick 1, s_CaptiveRampKicker
+	s_CaptiveRampKicker.Kick -167, 30 'Kick back up to captive ball area
+	s_CaptiveRampUpperKicker.Enabled = True
+End Sub
+
+Sub CaptiveRampUpperKickerEjectCallback(ball)
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
+	SoundSaucerKick 1, s_CaptiveRampUpperKicker
+	s_CaptiveRampUpperKicker.Kick -160, 100
+	s_CaptiveRampUpperKicker.Enabled = False
 End Sub
 
 Sub PlungerEjectCallback(ball)

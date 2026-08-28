@@ -336,7 +336,16 @@ Sub ConfigureGlfDevices()
         .Debug = True
         .AutoFireOnUnexpectedBall = False
         .EjectAllEvents = Array("s_CaptiveRampKicker_active")
-        .EjectCallback = "CaptiveRampKickerEjectCallback"
+        .EjectCallback = "CaptiveRampKickerEjectToLeftScoop"
+		.MechanicalEject = True
+    End With
+
+    With CreateGlfBallDevice("captive_ramp_upper_kicker")
+        .BallSwitches = Array("s_CaptiveRampUpperKicker")
+        .Debug = True
+        .AutoFireOnUnexpectedBall = False
+        .EjectAllEvents = Array("s_CaptiveRampUpperKicker_active")
+        .EjectCallback = "CaptiveRampUpperKickerEjectCallback"
 		.MechanicalEject = True
     End With
 

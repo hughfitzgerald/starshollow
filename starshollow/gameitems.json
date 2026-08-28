@@ -3569,11 +3569,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Kicker.s_captive_ball_vuk.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Wall.aDT2.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3650,6 +3645,21 @@
   },
   {
     "file_name": "Primitive.CaptiveScoop.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveRampWall.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Kicker.s_CaptiveRampUpperKicker.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.CaptiveRampKickerSurface.json",
     "is_locked": false,
     "editor_layer": 0
   }

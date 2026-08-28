@@ -23,7 +23,7 @@
     "elasticity_falloff": 0.0,
     "friction": 0.02,
     "scatter": 0.0,
-    "is_top_bottom_visible": false,
+    "is_top_bottom_visible": true,
     "slingshot_animation": false,
     "is_side_visible": false,
     "disable_lighting_top_old": null,
@@ -169,8 +169,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 653.262,
-        "y": 886.07745,
+        "x": 652.6715,
+        "y": 891.01324,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -182,8 +182,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 685.66705,
-        "y": 898.9738,
+        "x": 684.01404,
+        "y": 901.6357,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
