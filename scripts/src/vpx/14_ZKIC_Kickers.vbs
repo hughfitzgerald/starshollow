@@ -66,7 +66,7 @@ Sub CaptiveRampUpperKickerEjectCallback(ball)
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_CaptiveRampUpperKicker
 	s_CaptiveRampUpperKicker.Kick -160, 100
-	s_CaptiveRampUpperKicker.Enabled = False
+	s_CaptiveRampUpperKicker.Enabled = False ' Probably we want to put a trigger to know when the ball is back in captivity to disable it
 End Sub
 
 Sub PlungerEjectCallback(ball)
