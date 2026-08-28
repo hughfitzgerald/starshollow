@@ -442,6 +442,7 @@ Function SubwayReturnHandler(args)
     SubwayReturnHandler = ballsToSave
     If glf_subwayBallsReturning = 0 Then
         RemovePinEventListener GLF_BALL_DRAIN, "subway_return_claim"
+        DispatchPinEvent "all_balls_returned", 100
     End If
 End Function
 
@@ -449,6 +450,8 @@ Function EnableSubwayReturn(args)
     glf_subwayBallsReturning = glf_machine_vars("num_balls_locked").GetValue()
     If glf_subwayBallsReturning > 0 Then
         AddPinEventListener GLF_BALL_DRAIN, "subway_return_claim", "SubwayReturnHandler", 500, Null
+    Else
+        DispatchPinEvent "all_balls_returned", 100
     End If
 End Function
 

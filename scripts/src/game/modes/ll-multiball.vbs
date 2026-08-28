@@ -10,7 +10,7 @@ Sub CreateLLMultiballMode()
         End With
 
         With .Multiballs("llmb")
-            .StartEvents = Array("mode_ll_multiball_started")
+            .StartEvents = Array("all_balls_returned")
             .BallCount = 1
             .BallCountType = "add"
             .ShootAgain = 15000
