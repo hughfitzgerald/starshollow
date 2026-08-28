@@ -36,6 +36,8 @@ Sub CreateBasementMode()
 
             .Add "ball_ended", Array("clear_multiball_locks")
             .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
+
+            .Add "logan_ball_captured", Array("capture_captive_ball","disable_captive_ramp_kicker_hold")
         End With
 
         With .Timers("clear_multiball_locks")

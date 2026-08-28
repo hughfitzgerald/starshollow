@@ -28,6 +28,13 @@ Sub ScoopEjectCallback(ball)
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
+Sub ScoopReturnToCaptivity(ball)
+	If IsNull(ball) Then Exit Sub
+	If Not IsObject(ball) Then Exit Sub
+	SoundSaucerKick 1, s_VUK1
+	s_VUK1.Kick 74, 100
+End Sub
+
 Sub DropTargetKickerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
@@ -42,6 +49,13 @@ Sub HiddenUpperRightKickerEjectCallback(ball)
 	SoundSaucerKick 1, s_HiddenUpperRightKicker
 	s_HiddenUpperRightKicker.Kick 134, 10
 	' KickBall ball, -19, 50, 5, 25
+End Sub
+
+Sub CaptureCaptiveBall(ball)
+	glf_BIP = glf_BIP - 1
+    glf_ball_devices("scoop").EjectCallback = "ScoopReturnToCaptivity"
+	glf_ball_devices("scoop").EjectAll()
+	glf_ball_devices("scoop").EjectCallback = "ScoopEjectCallback"
 End Sub
 
 Sub SetCaptiveBallFreeListener(ball)

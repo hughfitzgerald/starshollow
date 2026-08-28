@@ -13,7 +13,7 @@ Sub CreateMysteryMode()
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("select_random_mystery")
-            .Add "balldevice_scoop_ball_entered{modes.jd_multiball.active==True or modes.ll_multiball.active==True}", Array("disable_scoop_hold")
+            .Add "balldevice_scoop_ball_entered{modes.jd_multiball.active==True}", Array("disable_scoop_hold")
 
             .Add "select_random_mystery", Array("play_mystery_show")
             .Add "timer_mystery_show_complete", Array("restart_qualify_mystery")

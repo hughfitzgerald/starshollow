@@ -103,6 +103,7 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "clear_multiball_locks", "enable_subway_return", "EnableSubwayReturn", 100, Null
 
     AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
+    AddPinEventListener "capture_captive_ball", "capture_captive_ball_called", "CaptureCaptiveBall", 100, Null
 
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
@@ -399,7 +400,7 @@ Sub ConfigureGlfDevices()
     With CreateGlfDroptarget("drop2")
         .Switch = "s_DT2"
         .KnockdownEvents = Array("dt2_knockdown")
-        .ResetEvents = Array("ball_started","reset_complete")
+        .ResetEvents = Array("ball_started","reset_complete","dt2_reset")
         .EnableKeepUpEvents = Array("dt2_enable_keepup")
         .DisableKeepUpEvents = Array("dt2_disable_keepup")
         .ActionCallback = "DT2Callback"
