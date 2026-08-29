@@ -54,6 +54,7 @@ Const ExtraBallColor = "0000ff"
 Const RampshotColor = "8800ff"
 Const LoganColor = "8800ff"
 Const MultiballColor = "1eff6b"
+Const StarLightColor = "ffff00"   ' yellow for star lights
 
 
 Sub ConfigureGlfDevices()
@@ -405,6 +406,22 @@ Sub ConfigureGlfDevices()
             .RothSTSwitchID = x
         End With
     Next
+
+    ' For x = 66 To 69
+    '     With CreateGlfStanduptarget("star_light_" & x)
+    '         .Switch = "s_slim_target_ramp" & (x - 65)
+    '         .UseRothStanduptarget = True
+    '         .RothSTSwitchID = x
+    '     End With
+    ' Next
+
+    ' For x = 70 To 71
+    '     With CreateGlfStanduptarget("star_light_" & x)
+    '         .Switch = "s_slim_target_hidden" & (x - 69)
+    '         .UseRothStanduptarget = True
+    '         .RothSTSwitchID = x
+    '     End With
+    ' Next
 
     'Drop Targets
     'NOTE: Drop targets SHOULD NOT be added to the glf_switches collection nor any other collection. 
