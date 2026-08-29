@@ -12,7 +12,7 @@ Sub CreateJDMultiballMode()
 
         With .Multiballs("jdmb")
             .StartEvents = Array("mode_jd_multiball_started")
-            .EndEvents = Array("jess_wins", "dean_wins")
+            .StopEvents = Array("jess_wins", "dean_wins")
             .BallCount = 3
             .BallCountType = "total"
             .ShootAgain = 15000
