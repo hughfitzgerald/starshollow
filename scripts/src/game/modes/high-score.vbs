@@ -19,8 +19,6 @@ Sub CreateHighScoreMode()
         Dim i
 
         With .EventPlayer()
-            .Add "mode_high_score_started", Array("high_score_enter_initials")
-
             'Handle button presses for inputting an initial
             .Add "s_right_magna_key_active{current_player.hs_input_ready == 1}", Array("text_inputted")
             .Add "s_plunger_key_active{current_player.hs_input_ready == 1}", Array("text_inputted")
@@ -121,6 +119,10 @@ Sub CreateHighScoreMode()
                 With .Variable("high_score_initials_index")
                     .Action = "set_machine"
                     .Int = 0
+                End With
+                With .Variable("high_score_player_num")
+                    .Action = "set_machine"
+                    .Int = "{kwargs.player_num}"
                 End With
                 With .Variable("hs_input_ready")
                     .Action = "set"

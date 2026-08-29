@@ -153,6 +153,11 @@ Sub ConfigureGlfDevices()
         .ValueType = "int"
         .Persist = False
     End With
+    With CreateMachineVar("high_score_player_num")  'tracks which player is entering initials
+        .InitialValue = 1
+        .ValueType = "int"
+        .Persist = False
+    End With
 
     With CreateMachineVar("num_balls_locked")         'number of balls locked
         .InitialValue = 0                               'used to maintain state of locks across players

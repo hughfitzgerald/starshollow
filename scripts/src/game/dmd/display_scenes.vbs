@@ -202,7 +202,7 @@ End Sub
 Sub DmdTick_HighScore(args)
     Dim text, initials, time
     Set text = FlexDMD.Stage.GetLabel("high_score_text")
-    text.Text = "P1 INITIALS"
+    text.Text = "P" & glf_machine_vars("high_score_player_num").GetValue() & " INITIALS"
     Set initials = FlexDMD.Stage.GetLabel("high_score_initials")
     initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(glf_machine_vars("high_score_initials_index").GetValue())
     ' Set time = FlexDMD.Stage.GetLabel("high_score_time")
