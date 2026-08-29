@@ -511,6 +511,12 @@ Sub CreateSounds()
 
     AddCallout     "voc_poodles",  3
     AddCallout     "voc_mystery", 3
+    AddCallout     "voc_coffeecoffeecoffee", 1
+    AddCallout     "voc_truman", 2
+    AddCallout     "voc_stars", 1
+    AddCallout     "voc_hollow", 1
+    AddCallout     "voc_tall", 2
+    AddCallout     "voc_exboyfriend", 3
 
     ' Dance Marathon
     AddMusic       "mus_dm",  305, -1

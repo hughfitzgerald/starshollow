@@ -2637,6 +2637,60 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_coffeecoffeecoffee",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_coffeecoffeecoffee.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_truman",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_truman.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_stars",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_stars.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_hollow",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_hollow.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tall",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_tall.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_exboyfriend",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_exboyfriend.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_prostrate",
     "path": "/Users/stephenjones/code/starshollow/callouts/voc_prostrate.ogg",
     "internal_name": "",

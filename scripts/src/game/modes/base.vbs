@@ -56,6 +56,13 @@ Sub CreateBaseMode()
             .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show")
             .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show")
 
+            .Add "s_slim_target_ramp1_active", Array("star_target_hit")
+            .Add "s_slim_target_ramp2_active", Array("star_target_hit")
+            .Add "s_slim_target_ramp3_active", Array("star_target_hit")
+            .Add "s_slim_target_ramp4_active", Array("star_target_hit")
+            .Add "s_slim_target_hidden1_active", Array("star_target_hit")
+            .Add "s_slim_target_hidden2_active", Array("star_target_hit")
+
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
         End With
 
@@ -108,6 +115,25 @@ Sub CreateBaseMode()
             With .EventName("outlane_drain")
                 .Key = "key_voc_poodles"
                 .Sound = "voc_poodles"
+            End With
+            With .EventName("balldevice_plunger_ball_exiting")
+                .Key = "key_voc_coffeecoffeecoffee"
+                .Sound = "voc_coffeecoffeecoffee"
+            End With
+            With .EventName("stars_callout")
+                .Key = "key_voc_stars"
+                .Sound = "voc_stars"
+            End With
+            With .EventName("hollow_callout")
+                .Key = "key_voc_hollow"
+                .Sound = "voc_hollow"
+            End With
+        End With
+
+        With .RandomEventPlayer()
+            With .EventName("star_target_hit")
+                .Add "stars_callout", 1.1
+                .Add "hollow_callout", 1
             End With
         End With
 

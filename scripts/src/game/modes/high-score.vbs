@@ -33,6 +33,13 @@ Sub CreateHighScoreMode()
 
         End With
 
+        With .SoundPlayer()
+            With .EventName("balldevice_plunger_ball_exiting")
+                .Key = "key_voc_truman"
+                .Sound = "voc_truman"
+            End With
+        End With
+
         With .SlidePlayer()
             With .EventName("high_score_enter_initials")
                 .Slide = "high_score"

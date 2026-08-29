@@ -21,6 +21,24 @@ Sub CreateJDMultiballMode()
             .Debug = True
         End With
 
+        With .RandomEventPlayer()
+            With .EventName("dean_ramp")
+                .Add "tall_callout", 1
+                .Add "exboyfriend_callout", 1
+            End With
+        End With
+
+        With .SoundPlayer()
+            With .EventName("tall_callout")
+                .Key = "key_voc_tall"
+                .Sound = "voc_tall"
+            End With
+            With .EventName("exboyfriend_callout")
+                .Key = "key_voc_exboyfriend"
+                .Sound = "voc_exboyfriend"
+            End With
+        End With
+
         With .SlidePlayer()
             With .EventName("multiball_jdmb_started")
                 .Slide  = "multiball"
