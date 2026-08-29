@@ -2,7 +2,6 @@
   {
     "name": "Rubbers",
     "items": [
-      "Rubber4",
       "Rubber20",
       "Rubber21",
       "Rubber22",
@@ -11,7 +10,6 @@
       "Rubber25",
       "LSling",
       "RSling",
-      "RubberBand006",
       "zCol_Rubber_Sleeve005",
       "zCol_Rubber_Peg002",
       "zCol_Rubber_Post030",
@@ -20,8 +18,6 @@
       "zCol_Rubber_Post027",
       "zCol_Rubber_Post026",
       "zCol_Rubber_Post025",
-      "zCol_Rubber_Post010",
-      "zCol_Rubber_Post009",
       "zCol_Rubber_Post006",
       "zCol_Rubber_Post005",
       "zCol_Rubber_Post004",
@@ -158,9 +154,7 @@
   {
     "name": "dPosts",
     "items": [
-      "zCol_Rubber_Post010",
       "zCol_Rubber_Peg002",
-      "zCol_Rubber_Post009",
       "zCol_Rubber_Post006",
       "zCol_Rubber_Post005",
       "zCol_Rubber_Post004",
