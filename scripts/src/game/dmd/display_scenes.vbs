@@ -172,3 +172,39 @@ Sub DmdTick_Welcome(args)
         If (FlexFrame Mod 32) = 1 Then FlexDMD.Stage.Getimage("logo").visible = False
     End If
 End Sub
+
+
+Sub DmdBuild_HighScore(entry)
+    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
+
+    Dim text, initials, time
+    Dim g : Set g = FlexDMD.NewGroup("HighScore")
+    With g
+        ' one spot with the text "P1 INITIALS" or "P2 INITIALS" etc
+        Set text = FlexDMD.NewLabel("high_score_text", FontBig1, "P1 INITIALS")
+        text.SetAlignedPosition 64, 8, FlexDMD_Align_Center
+        .AddActor text
+
+        ' one spot with the letters for the initials
+        Set initials = FlexDMD.NewLabel("high_score_initials", FontBig1, "")
+        initials.SetAlignedPosition 32, 16, FlexDMD_Align_Center
+        .AddActor initials
+        
+        ' ' one spot for the time left before timeout
+        ' Set time = FlexDMD.NewLabel("high_score_time", FontBig1, "")
+        ' time.SetAlignedPosition 64, 24, FlexDMD_Align_Center
+        ' .AddActor time
+    End With
+    entry.SetScene g
+End Sub
+
+' Dim AZLookup : AZLookup = Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_")
+Sub DmdTick_HighScore(args)
+    Dim text, initials, time
+    Set text = FlexDMD.Stage.GetLabel("high_score_text")
+    text.Text = "P1 INITIALS"
+    Set initials = FlexDMD.Stage.GetLabel("high_score_initials")
+    initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(glf_machine_vars("high_score_initials_index").GetValue())
+    ' Set time = FlexDMD.Stage.GetLabel("high_score_time")
+    ' time.Text = "00:00"
+End Sub

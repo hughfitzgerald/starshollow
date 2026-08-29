@@ -85,6 +85,12 @@ Sub CreateFlexDmdDisplay()
         .Aliases    = Array("attract")
     End With
 
+    With CreateDmdSlide("high_score")
+        .Builder = "DmdBuild_HighScore"
+        .Ticker  = "DmdTick_HighScore"
+        .Aliases = Array("highscore")
+    End With
+
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With
     With CreateDmdSlide("jackpot")     : .Gif = "jackpot.gif"     : End With
     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With

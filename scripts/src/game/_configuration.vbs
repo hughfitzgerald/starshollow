@@ -194,6 +194,7 @@ Sub ConfigureGlfDevices()
     CreateBasementMode()      ' priority 100
     CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
+    CreateHighScoreMode()    ' priority 120
     CreateJDMultiballQualifyMode()    ' priority 200
     CreateBonusLanesMode()  ' priority 210
     CreateLLMultiballQualifyMode() ' priority 220
