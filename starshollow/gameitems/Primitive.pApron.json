@@ -27,7 +27,7 @@
     "name": "pApron",
     "material": "Metal0.2",
     "side_color": "#969696",
-    "is_visible": false,
+    "is_visible": true,
     "draw_textures_inside": true,
     "hit_event": true,
     "threshold": 2.0,
