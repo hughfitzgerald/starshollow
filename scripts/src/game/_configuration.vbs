@@ -390,7 +390,7 @@ Sub ConfigureGlfDevices()
 
     With CreateGlfDiverter("captive_diverter")
         .EnableEvents = Array("ball_started", "reset_complete")
-        .ActivateEvents = Array("ball_started")
+        .ActivateEvents = Array("open_captive_diverter")
         .DeactivateEvents = Array("close_captive_diverter")
         .ActionCallback = "CaptiveDiverterAction"
     End With
