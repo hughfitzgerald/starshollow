@@ -123,6 +123,10 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdWidget("extra_ball")           : .Text = "EXTRA BALL"              : End With
     With CreateDmdWidget("dance_marathon")       : .Text = "DANCE MARATHON"          : End With
     With CreateDmdWidget("dance_marathon_done")  : .Text = "DANCE MARATHON COMPLETE" : End With
+    With CreateDmdWidget("team_jess")            : .Text = "TEAM JESS"               : End With
+    With CreateDmdWidget("team_dean")            : .Text = "TEAM DEAN"               : End With
+    With CreateDmdWidget("jess_wins")            : .Text = "TEAM JESS WINS"          : End With
+    With CreateDmdWidget("dean_wins")            : .Text = "TEAM DEAN WINS"          : End With
 
     ' Generic: whatever the event carried under "text". Nothing is drawn
     ' if the event carried none.
