@@ -55,6 +55,7 @@ Sub CreateBaseMode()
             'Spinners
             .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show")
             .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show")
+            .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
 
             .Add "s_slim_target_ramp1_active", Array("star_target_hit")
             .Add "s_slim_target_ramp2_active", Array("star_target_hit")
@@ -64,6 +65,18 @@ Sub CreateBaseMode()
             .Add "s_slim_target_hidden2_active", Array("star_target_hit")
 
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
+        End With
+
+        With .Timers("left_spinner")
+            .StartRunning = True
+            .TickInterval = 1000
+            .StartValue = 2
+            .EndValue = 0
+            .Direction = "down"
+            With .ControlEvents()
+                .EventName = "coffee_callout"
+                .Action = "restart"
+            End With
         End With
 
 
@@ -116,7 +129,7 @@ Sub CreateBaseMode()
                 .Key = "key_voc_poodles"
                 .Sound = "voc_poodles"
             End With
-            With .EventName("balldevice_plunger_ball_exiting")
+            With .EventName("coffee_callout")
                 .Key = "key_voc_coffeecoffeecoffee"
                 .Sound = "voc_coffeecoffeecoffee"
             End With
