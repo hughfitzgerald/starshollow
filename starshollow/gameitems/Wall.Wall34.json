@@ -8,7 +8,7 @@
     "is_timer_enabled": false,
     "timer_interval": 100,
     "threshold": 1.0,
-    "image": "",
+    "image": "plastics",
     "side_image": "metal3",
     "side_material": "Metal",
     "top_material": "Plastic Lavender White",

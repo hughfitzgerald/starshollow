@@ -1374,5 +1374,11 @@
     "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/playfield_image/RRamphelper.png",
     "alpha_test_value": 128.0,
     "is_opaque": false
+  },
+  {
+    "name": "plastics",
+    "path": "/Users/stephenjones/code/starshollow/scripts/plastics.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": false
   }
 ]
