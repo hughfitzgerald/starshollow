@@ -17,6 +17,7 @@ from lxml import etree
 filename = "playfield.svg"
 output_path = "../starshollow/images/playfield.png"
 insert_overlay_output_path = "../starshollow/images/playfield-insert-overlay.png"
+plastics_output_path = "../starshollow/images/plastics.png"
 NS = {
     "svg": "http://www.w3.org/2000/svg",
     "inkscape": "http://www.inkscape.org/namespaces/inkscape",
@@ -145,4 +146,9 @@ apply_grain_aging(output_path)
 export(
     show_only_actions("insert text", "masks"),
     insert_overlay_output_path,
+)
+
+export(
+    show_only_actions("plastics"),
+    plastics_output_path,
 )
