@@ -119,41 +119,41 @@ End Sub
 ' independent of VPX's light events.
 ' Update these Arrays by populating the gameitems.json with latest light sets 
 ' and running generate-arrays.py. Go to scripts directory and run "uv run generate-arrays.py"
-Dim GlfInsertLights, GlfInsertPrims
-GlfInsertLights = Array(l9, l8, l1, l12, l11, l13, l14, l15, l16, l17, l18, l52, l51, l53, l54, l55, l56, l21, l24, l23, l27, l22, l25, l26, l31, l34, l32, l33, l7, l57, l58, l59, l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72)
-GlfInsertPrims  = Array(p9, p8, p1, p12, p11, p13, p14, p15, p16, p17, p18, p52, p51, p53, p54, p55, p56, p21, p24, p23, p27, p22, p25, p26, p31, p34, p32, p33, p7, p57, p58, p59, p60, p61, p62, p63, p64, p65, p66, p67, p68, p69, p70, p71, p72)
+' Dim GlfInsertLights, GlfInsertPrims
+' GlfInsertLights = Array(l9, l8, l1, l12, l11, l13, l14, l15, l16, l17, l18, l52, l51, l53, l54, l55, l56, l21, l24, l23, l27, l22, l25, l26, l31, l34, l32, l33, l7, l57, l58, l59, l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72)
+' GlfInsertPrims  = Array(p9, p8, p1, p12, p11, p13, p14, p15, p16, p17, p18, p52, p51, p53, p54, p55, p56, p21, p24, p23, p27, p22, p25, p26, p31, p34, p32, p33, p7, p57, p58, p59, p60, p61, p62, p63, p64, p65, p66, p67, p68, p69, p70, p71, p72)
 
 Sub UpdateGlfInserts()
     Dim i, g
-    For i = 0 To UBound(GlfInsertLights)
-        g = GlfInsertGlow(GlfInsertLights(i))
-        GlfInsertPrims(i).BlendDisableLighting = g
+    ' For i = 0 To UBound(GlfInsertLights)
+    '     g = GlfInsertGlow(GlfInsertLights(i))
+    '     GlfInsertPrims(i).BlendDisableLighting = g
 
-        ' Also drive the light's own State. Glf_RegisterLights pins
-        ' State = 1 forever and only writes Color, so an insert that is
-        ' rendered by the LIGHT (bulb mesh / halo) rather than by its
-        ' primitive stays visible even at colour 000000. Killing State
-        ' when the colour is fully black makes both styles go dark.
-        ' Any non-black colour restores State = 1 so fades still show.
-        If g = 0 Then
-            If GlfInsertLights(i).State <> 0 Then GlfInsertLights(i).State = 0
-        Else
-            If GlfInsertLights(i).State <> 1 Then GlfInsertLights(i).State = 1
-        End If
-    Next
+    '     ' Also drive the light's own State. Glf_RegisterLights pins
+    '     ' State = 1 forever and only writes Color, so an insert that is
+    '     ' rendered by the LIGHT (bulb mesh / halo) rather than by its
+    '     ' primitive stays visible even at colour 000000. Killing State
+    '     ' when the colour is fully black makes both styles go dark.
+    '     ' Any non-black colour restores State = 1 so fades still show.
+    '     If g = 0 Then
+    '         If GlfInsertLights(i).State <> 0 Then GlfInsertLights(i).State = 0
+    '     Else
+    '         If GlfInsertLights(i).State <> 1 Then GlfInsertLights(i).State = 1
+    '     End If
+    ' Next
 End Sub
 
 Function GlfInsertGlow(lgt)
     Dim c : c = CLng(lgt.Color)
-    ' VPX colours are BGR-packed longs; take the brightest channel.
-    Dim r, g, b
-    r = c And 255
-    g = (c \ 256) And 255
-    b = (c \ 65536) And 255
-    Dim m : m = r
-    If g > m Then m = g
-    If b > m Then m = b
-    GlfInsertGlow = 200 * (m / 255)
+    ' ' VPX colours are BGR-packed longs; take the brightest channel.
+    ' Dim r, g, b
+    ' r = c And 255
+    ' g = (c \ 256) And 255
+    ' b = (c \ 65536) And 255
+    ' Dim m : m = r
+    ' If g > m Then m = g
+    ' If b > m Then m = b
+    ' GlfInsertGlow = 200 * (m / 255)
 End Function
 
 ' ' 

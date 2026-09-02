@@ -1278,62 +1278,6 @@
     "editor_layer_visibility": true
   },
   {
-    "file_name": "Primitive.p1off.json",
-    "is_locked": false,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p1.json",
-    "is_locked": false,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p12off.json",
-    "is_locked": false,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p12.json",
-    "is_locked": false,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p9.json",
-    "is_locked": true,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p9off.json",
-    "is_locked": true,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p8.json",
-    "is_locked": true,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
-    "file_name": "Primitive.p8off.json",
-    "is_locked": true,
-    "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives",
-    "editor_layer_visibility": true
-  },
-  {
     "file_name": "Flasher.Flasherbloom4.json",
     "is_locked": true,
     "editor_layer": 9,
@@ -2162,52 +2106,12 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.p11off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p11.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p13.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p13off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Light.l13.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
     "file_name": "Light.l14.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p14.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p14off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p15.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p15off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2228,36 +2132,6 @@
   },
   {
     "file_name": "Light.l18.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p16.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p17.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p18.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p16off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p17off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p18off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2409,27 +2283,7 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.p52.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p52off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Light.l51.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p51.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p51off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2439,27 +2293,7 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.p53.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p53off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p54off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Light.l54.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p54.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2469,27 +2303,7 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.p55.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p55off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Light.l56.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p56.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p56off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2580,116 +2394,6 @@
   },
   {
     "file_name": "Light.l33.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p22.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p22off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p26.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p21.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p23.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p24.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p25.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p27.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p21off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p23off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p24off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p25off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p26off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p27off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p31.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p31off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p32.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p32off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p33.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p33off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p34.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p34off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2804,32 +2508,12 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.p7off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p7.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Light.l7.json",
     "is_locked": false,
     "editor_layer": 0
   },
   {
     "file_name": "Light.l57.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p57.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p57off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -2994,46 +2678,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Primitive.p58off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p58.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p59off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p60off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p61off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p59.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p60.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p61.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Light.l59.json",
     "is_locked": false,
     "editor_layer": 0
@@ -3055,46 +2699,6 @@
   },
   {
     "file_name": "Trigger.s_RightOutlane.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p62.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p62off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p63.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p63off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p64.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p64off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p65.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p65off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3150,66 +2754,6 @@
   },
   {
     "file_name": "HitTarget.s_slim_target_ramp4.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p66off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p66.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p67.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p67off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p68.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p68off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p69.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p69off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p70.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p70off.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p71.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p71off.json",
     "is_locked": false,
     "editor_layer": 0
   },
@@ -3375,16 +2919,6 @@
   },
   {
     "file_name": "Light.l72.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p72.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
-    "file_name": "Primitive.p72off.json",
     "is_locked": false,
     "editor_layer": 0
   },
