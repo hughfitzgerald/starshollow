@@ -6,6 +6,7 @@
 # ]
 # ///
 
+import argparse
 import os
 import shutil
 import struct
@@ -126,6 +127,14 @@ def apply_grain_aging(png_path):
         )
 
 
+parser_cli = argparse.ArgumentParser()
+parser_cli.add_argument(
+    "--no-mask",
+    action="store_true",
+    help="export playfield.png without clipping targets to the masks layer",
+)
+args = parser_cli.parse_args()
+
 masks_id = layer_id(tree, "masks")
 targets_id = layer_id(tree, "targets")
 
@@ -137,10 +146,11 @@ masking_actions = (
     f"select-clear;select-by-id:masks_path,{targets_id};object-set-inverse-clip"
 )
 
-export(
-    f"{masking_actions};{show_only_actions('table decals', 'targets')}",
-    output_path,
-)
+playfield_actions = show_only_actions("table decals", "targets")
+if not args.no_mask:
+    playfield_actions = f"{masking_actions};{playfield_actions}"
+
+export(playfield_actions, output_path)
 apply_grain_aging(output_path)
 
 export(
