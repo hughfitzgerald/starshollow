@@ -56,6 +56,12 @@ Const LoganColor = "8800ff"
 Const MultiballColor = "1eff6b"
 Const StarLightColor = "ffff00"   ' yellow for star lights
 
+Const BonusMultiplierFactor = 1000
+Const BonusSpinnerFactor = 1000
+Const BonusBumperFactor = 2000
+Const BonusDinerFactor = 3000
+Const BonusGrandparentsFactor = 4000
+
 
 Sub ConfigureGlfDevices()
 
@@ -180,13 +186,19 @@ Sub ConfigureGlfDevices()
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1
-    Glf_SetInitialPlayerVar "target_hit_count", 0       'used in targetbank mode
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
+
     Glf_SetInitialPlayerVar "bonus_multiplier", 1
+    Glf_SetInitialPlayerVar "total_switches_hit", 0
+    Glf_SetInitialPlayerVar "bumper_count", 0
+    Glf_SetInitialPlayerVar "spinner_count", 0
+    Glf_SetInitialPlayerVar "diner_count", 0
+    Glf_SetInitialPlayerVar "grandparents_count", 0
+    Glf_SetInitialPlayerVar "bonus_total", 0
+    Glf_SetInitialPlayerVar "bonus_display_text", "BONUS 1x"
+    Glf_SetInitialPlayerVar "bonus_display_score", "0"
+
     Glf_SetInitialPlayerVar "is_lock_qualified", 0        'flag keeps track of when a player has qualified the locks
-    Glf_SetInitialPlayerVar "bonus_total", 0            'total bonus score, calculated in bonus mode
-    Glf_SetInitialPlayerVar "bonus_count", 0            'number of bonus lights achieved, calculated in bonus mode
-    Glf_SetInitialPlayerVar "bonus_skip", 0             'flag to capture if player wants to skip the bonus tally shows in bonus mode
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
     Glf_SetInitialPlayerVar "llmb_shoot_again_active", 0
     Glf_SetInitialPlayerVar "logan_cooldown_active", 0
@@ -200,6 +212,7 @@ Sub ConfigureGlfDevices()
     CreatePostGameMode()    ' priority 105
     CreateBaseMode()         ' priority 110
     CreateHighScoreMode()    ' priority 120
+    CreateBonusMode()        ' priority 150
     CreateJDMultiballQualifyMode()    ' priority 200
     CreateBonusLanesMode()  ' priority 210
     CreateLLMultiballQualifyMode() ' priority 220

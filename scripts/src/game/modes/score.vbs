@@ -31,32 +31,57 @@ Sub CreateScoreMode()
 
 
             'Manage playfield score multiplier and bonus multiplier
-            With .EventName("ball_started") 
-                With .Variable("scoring_multiplier")
-                    .Action = "set"
-                    .Int = 1
-                End With
+            ' With .EventName("ball_started") 
+            '     With .Variable("scoring_multiplier")
+            '         .Action = "set"
+            '         .Int = 1
+            '     End With
+            '     With .Variable("bonus_multiplier")
+            '         .Action = "set"
+            '         .Int = 1
+            '     End With
+            ' End With
+            ' With .EventName("reset_scoring_multiplier") 
+            '     With .Variable("scoring_multiplier")
+            '         .Action = "set"
+            '         .Int = 1
+            '     End With
+            ' End With
+            ' With .EventName("double_scoring_multiplier") 
+            '     With .Variable("scoring_multiplier")
+            '         .Action = "set"
+            '         .Int = 2
+            '     End With
+            ' End With
+            ' With .EventName("double_bonus_multiplier") 
+            '     With .Variable("bonus_multiplier")
+            '         .Action = "set"
+            '         .Int = 2
+            '     End With
+            ' End With
+
+            With .EventName("2x_qualified")
                 With .Variable("bonus_multiplier")
-                    .Action = "set"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("reset_scoring_multiplier") 
-                With .Variable("scoring_multiplier")
-                    .Action = "set"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("double_scoring_multiplier") 
-                With .Variable("scoring_multiplier")
                     .Action = "set"
                     .Int = 2
                 End With
             End With
-            With .EventName("double_bonus_multiplier") 
+            With .EventName("3x_qualified")
                 With .Variable("bonus_multiplier")
                     .Action = "set"
-                    .Int = 2
+                    .Int = 4
+                End With
+            End With
+            With .EventName("4x_qualified")
+                With .Variable("bonus_multiplier")
+                    .Action = "set"
+                    .Int = 6
+                End With
+            End With
+            With .EventName("5x_qualified")
+                With .Variable("bonus_multiplier")
+                    .Action = "set"
+                    .Int = 8
                 End With
             End With
 

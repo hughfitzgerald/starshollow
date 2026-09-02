@@ -33,8 +33,8 @@ Sub CreateBaseMode()
             .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start")
             .Add "mode_base_stopped", Array("base_music_stop")
 
-            .Add "s_RightOutlane_active", Array("outlane_drain")
-            .Add "s_LeftOutlane_active", Array("outlane_drain")
+            .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment")
+            .Add "s_LeftOutlane_active", Array("outlane_drain", "total_switches_hit_increment")
 
             ' The ball leaving the plunger lane for the first time is what
             ' actually starts play - this is what arms the ball save.
@@ -43,26 +43,33 @@ Sub CreateBaseMode()
             ' Once play is live, clear the just-started flag
             .Add "new_ball_active", Array("clear_ball_just_started", "coffee_callout")
 
+            'Kickers
+            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment")
+            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment")
+
             'Bumpers
-            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show")
-            .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show")
-            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show")
+            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment")
+            .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
+            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment")
 
             'Slingshots
-            .Add "s_LeftSlingShot_active", Array("score_5000")
-            .Add "s_RightSlingShot_active", Array("score_5000")
+            .Add "s_LeftSlingShot_active", Array("score_5000", "total_switches_hit_increment")
+            .Add "s_RightSlingShot_active", Array("score_5000", "total_switches_hit_increment")
 
             'Spinners
-            .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show")
-            .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show")
+            .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment")
+            .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment")
             ' .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
 
-            .Add "s_slim_target_ramp1_active", Array("star_target_hit")
-            .Add "s_slim_target_ramp2_active", Array("star_target_hit")
-            .Add "s_slim_target_ramp3_active", Array("star_target_hit")
-            .Add "s_slim_target_ramp4_active", Array("star_target_hit")
-            .Add "s_slim_target_hidden1_active", Array("star_target_hit")
-            .Add "s_slim_target_hidden2_active", Array("star_target_hit")
+            'Star Targets
+            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment")
+            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment")
+            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment")
+            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment")
+            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment")
+            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment")
+
+            'TODO: Add JESS and DEAN hit targets, ramp rollovers, inlanes, bonus lanes, captive ball, ANY OTHERS?
 
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
         End With
@@ -87,11 +94,65 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 1
                 End With
+                With .Variable("total_switches_hit")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("bumper_count")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("spinner_count")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("diner_count")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("grandparents_count")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("bonus_total")
+                    .Action = "set"
+                    .Int = 0
+                End With
             End With
             With .EventName("clear_ball_just_started")
                 With .Variable("ball_just_started")
                     .Action = "set"
                     .Int = 0
+                End With
+            End With
+            With .EventName("total_switches_hit_increment")
+                With .Variable("total_switches_hit")
+                    .Action = "add"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("bumper_count_increment")
+                With .Variable("bumper_count")
+                    .Action = "add"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("spinner_count_increment")
+                With .Variable("spinner_count")
+                    .Action = "add"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("diner_count_increment")
+                With .Variable("diner_count")
+                    .Action = "add"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("grandparents_count_increment")
+                With .Variable("grandparents_count")
+                    .Action = "add"
+                    .Int = 1
                 End With
             End With
         End With
@@ -178,7 +239,7 @@ Sub CreateBaseMode()
                 .Key = "key_voc_copperboom2"
                 .Sound = "voc_copperboom2"
             End With
-            With .EventName("s_DropTargetKicker_active")
+            With .EventName("diner_callout")
                 .Key = "key_sfx_dinerdoor"
                 .Sound = "sfx_dinerdoor"
             End With

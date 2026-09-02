@@ -198,7 +198,6 @@ Sub DmdBuild_HighScore(entry)
     entry.SetScene g
 End Sub
 
-' Dim AZLookup : AZLookup = Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_")
 Sub DmdTick_HighScore(args)
     Dim text, initials, time
     Set text = FlexDMD.Stage.GetLabel("high_score_text")
@@ -207,4 +206,32 @@ Sub DmdTick_HighScore(args)
     initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(glf_machine_vars("high_score_initials_index").GetValue())
     ' Set time = FlexDMD.Stage.GetLabel("high_score_time")
     ' time.Text = "00:00"
+End Sub
+
+Sub DmdBuild_Bonus(entry)
+    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
+    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
+
+    Dim text, score
+    Dim g : Set g = FlexDMD.NewGroup("Bonus")
+    With g
+        ' one spot with bonus text
+        Set text = FlexDMD.NewLabel("bonus_text", FontScoreActive, "BONUS")
+        text.SetAlignedPosition 64, 8, FlexDMD_Align_Center
+        .AddActor text
+
+        ' one spot with bonus score
+        Set score = FlexDMD.NewLabel("bonus_score", FontScoreActive, "")
+        score.SetAlignedPosition 32, 16, FlexDMD_Align_Center
+        .AddActor score
+    End With
+    entry.SetScene g
+End Sub
+
+Sub DmdTick_Bonus(args)
+    Dim text, score
+    Set text = FlexDMD.Stage.GetLabel("bonus_text")
+    text.Text = GetPlayerState("bonus_display_text")
+    Set score = FlexDMD.Stage.GetLabel("bonus_score")
+    score.Text = GetPlayerState("bonus_display_score")
 End Sub
