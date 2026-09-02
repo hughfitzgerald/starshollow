@@ -517,6 +517,12 @@ Sub CreateSounds()
     AddCallout     "voc_hollow", 1
     AddCallout     "voc_tall", 2
     AddCallout     "voc_exboyfriend", 3
+    AddCallout     "voc_wereclosed", 1
+
+    AddSoundEffect "sfx_dinerdoor", 5
+    AddSoundEffect "sfx_bumper1", 1
+    AddSoundEffect "sfx_bumper2", 1
+    AddSoundEffect "sfx_bumper3", 1
 
     ' Dance Marathon
     AddMusic       "mus_dm",  305, -1

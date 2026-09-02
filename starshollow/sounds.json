@@ -2682,8 +2682,44 @@
     "output_target": "backglass"
   },
   {
-    "name": "voc_exboyfriend",
-    "path": "/Users/stephenjones/code/starshollow/callouts/voc_exboyfriend.ogg",
+    "name": "voc_wereclosed",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_wereclosed.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_dinerdoor",
+    "path": "/Users/stephenjones/code/starshollow/sfx/sfx_dinerdoor.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_bumper1",
+    "path": "/Users/stephenjones/code/starshollow/sfx/sfx_bumper1.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_bumper2",
+    "path": "/Users/stephenjones/code/starshollow/sfx/sfx_bumper2.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_bumper3",
+    "path": "/Users/stephenjones/code/starshollow/sfx/sfx_bumper3.ogg",
     "internal_name": "",
     "fade": 0,
     "volume": 0,

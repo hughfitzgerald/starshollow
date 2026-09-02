@@ -141,6 +141,26 @@ Sub CreateBaseMode()
                 .Key = "key_voc_hollow"
                 .Sound = "voc_hollow"
             End With
+            With .EventName("drop_target_drop1_down")
+                .Key = "key_voc_hollow"
+                .Sound = "voc_wereclosed"
+            End With
+            With .EventName("auto_fire_coil_bumper1_activate")
+                .Key = "key_sfx_bumper1"
+                .Sound = "sfx_bumper1"
+            End With
+            With .EventName("auto_fire_coil_bumper3_activate")
+                .Key = "key_sfx_bumper2"
+                .Sound = "sfx_bumper2"
+            End With
+            With .EventName("auto_fire_coil_bumper5_activate")
+                .Key = "key_sfx_bumper3"
+                .Sound = "sfx_bumper3"
+            End With
+            With .EventName("s_DropTargetKicker_active")
+                .Key = "key_voc_dinerdoor"
+                .Sound = "sfx_dinerdoor"
+            End With
         End With
 
         With .RandomEventPlayer()
