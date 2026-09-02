@@ -509,7 +509,9 @@ Sub CreateSounds()
     AddMusic       "mus_go",  245, -1
     AddMusic       "mus_sad",  93, 0
 
-    AddCallout     "voc_poodles",  3
+    AddCallout     "voc_poodles1",  2
+    AddCallout     "voc_poodles2",  2
+    AddCallout     "voc_poodles3",  2
     AddCallout     "voc_mystery", 3
     AddCallout     "voc_coffeecoffeecoffee", 1
     AddCallout     "voc_truman", 2
@@ -518,6 +520,8 @@ Sub CreateSounds()
     AddCallout     "voc_tall", 2
     AddCallout     "voc_exboyfriend", 3
     AddCallout     "voc_wereclosed", 1
+    AddCallout     "voc_copperboom1", 1
+    AddCallout     "voc_copperboom2", 1
 
     AddSoundEffect "sfx_dinerdoor", 5
     AddSoundEffect "sfx_bumper1", 1

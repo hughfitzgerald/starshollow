@@ -41,7 +41,7 @@ Sub CreateBaseMode()
             .Add "s_Trigger1_inactive{current_player.ball_just_started == 1}", Array("new_ball_active")
 
             ' Once play is live, clear the just-started flag
-            .Add "new_ball_active", Array("clear_ball_just_started")
+            .Add "new_ball_active", Array("clear_ball_just_started", "coffee_callout")
 
             'Bumpers
             .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show")
@@ -55,7 +55,7 @@ Sub CreateBaseMode()
             'Spinners
             .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show")
             .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show")
-            .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
+            ' .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
 
             .Add "s_slim_target_ramp1_active", Array("star_target_hit")
             .Add "s_slim_target_ramp2_active", Array("star_target_hit")
@@ -67,17 +67,17 @@ Sub CreateBaseMode()
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
         End With
 
-        With .Timers("left_spinner")
-            .StartRunning = True
-            .TickInterval = 1000
-            .StartValue = 2
-            .EndValue = 0
-            .Direction = "down"
-            With .ControlEvents()
-                .EventName = "coffee_callout"
-                .Action = "restart"
-            End With
-        End With
+        ' With .Timers("left_spinner")
+        '     .StartRunning = True
+        '     .TickInterval = 1000
+        '     .StartValue = 2
+        '     .EndValue = 0
+        '     .Direction = "down"
+        '     With .ControlEvents()
+        '         .EventName = "coffee_callout"
+        '         .Action = "restart"
+        '     End With
+        ' End With
 
 
         '--- Player variables ----------------------------------------------
@@ -104,6 +104,11 @@ Sub CreateBaseMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
+            With .EventName("outlane_drain")
+                .Add "poodles1_callout", 1
+                .Add "poodles2_callout", 1
+                .Add "poodles3_callout", 1
+            End With
         End With
 
         With .SoundPlayer()
@@ -125,9 +130,17 @@ Sub CreateBaseMode()
                 .Sound = "mus_happy"
                 .Action = "stop"
             End With
-            With .EventName("outlane_drain")
-                .Key = "key_voc_poodles"
-                .Sound = "voc_poodles"
+            With .EventName("poodles1_callout")
+                .Key = "key_voc_poodles1"
+                .Sound = "voc_poodles1"
+            End With
+            With .EventName("poodles2_callout")
+                .Key = "key_voc_poodles2"
+                .Sound = "voc_poodles2"
+            End With
+            With .EventName("poodles3_callout")
+                .Key = "key_voc_poodles3"
+                .Sound = "voc_poodles3"
             End With
             With .EventName("coffee_callout")
                 .Key = "key_voc_coffeecoffeecoffee"
@@ -157,8 +170,16 @@ Sub CreateBaseMode()
                 .Key = "key_sfx_bumper3"
                 .Sound = "sfx_bumper3"
             End With
+            With .EventName("auto_fire_coil_left_sling_activate")
+                .Key = "key_voc_copperboom1"
+                .Sound = "voc_copperboom1"
+            End With
+            With .EventName("auto_fire_coil_right_sling_activate")
+                .Key = "key_voc_copperboom2"
+                .Sound = "voc_copperboom2"
+            End With
             With .EventName("s_DropTargetKicker_active")
-                .Key = "key_voc_dinerdoor"
+                .Key = "key_sfx_dinerdoor"
                 .Sound = "sfx_dinerdoor"
             End With
         End With
