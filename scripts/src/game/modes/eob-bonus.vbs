@@ -31,24 +31,28 @@ Sub CreateBonusMode
             .Add "play_bonus_show6{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show7")
 
             .Add "play_bonus_show7", Array("bonus_finished")
+            .Add "timer_bonus_skip_complete", Array("bonus_finished")
 
-            ' Bonus x8 (or whatever the current multiplier is) and the score below it... it should be multiplier * 1000 * number of switches hit, but for now just show the multiplier and a static score.
-            ' A card for each of the "special" shots (coffee, diners, grandparents)
-            ' A card for each mode and however many points you got from each mode (those have already been added but we just summarize them here)
-            ' A card showing the total bonus
+            .Add "do_sfx_bonus", Array("stop_sfx_bonus") 'first stop the sfx if it is already playing
+            .Add "stop_sfx_bonus", Array("play_sfx_bonus") 'then play the sfx
+        End With
 
-            ' SLIDES/WIDGETS THAT I NEED TO ADD:
-            ' 1. the first bonus card and the total bonus cards can be the exact same layout, different label text
-            ' 2. the mode bonus cards have the exact same layout as each other (name of mode, points earned, and some kind of fancy border)
-            ' 3. each special shot card has the exact same layout as each other (name of shot, points earned, and some kind of icon for the shot)
-            ' EACH ONE has text describing the bonus category and a score that should be read from the game state
-            ' SHOT BONUS also has the # of shots made
-            ' MULTIPLIER BONUS also has the multiplier value
-            '
-            ' COFFEE COFFEE COFFEE: 25 CUPS
-            ' FAST TALKING: 750 QUIPS
-            ' GRANDPARENTS: 10 VISITS
-            ' LUKE'S DINER: 5 MEALS
+        'Skip the bonus tally animations
+        With .ComboSwitches("bonus_skip")
+            .Switch1 = "s_left_flipper"
+            .Switch2 = "s_right_flipper"
+            .EventsWhenBoth = Array("skip_bonus_tally")
+            '.HoldTime = 200
+        End With
+        
+        With .Timers("bonus_skip")
+            .TickInterval = 1200
+            .StartValue = 0
+            .EndValue = 1
+            With .ControlEvents()
+                .EventName = "skip_bonus_tally"
+                .Action = "restart"
+            End With
         End With
 
         With .ShowPlayer()
@@ -145,6 +149,14 @@ Sub CreateBonusMode
                     .Action = "set"
                     .String = "current_player.bonus_total"
                 End With
+            End With
+
+            With .EventName("skip_bonus_tally")
+                'Skip the bonus tally
+				With .Variable("bonus_skip")
+                    .Action = "set"
+					.Int = 1
+				End With
             End With
         End With
 
