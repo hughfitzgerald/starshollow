@@ -20,28 +20,6 @@ Dim ScoreArray: ScoreArray = Array(1,10,100,333,500,1000,2000,3000,3333,5000,100
 ' release sound. s_Trigger1 is a Trigger, so it has no BallCntOver.
 Dim PlungerHasBall : PlungerHasBall = False
 
-' GI lights.
-'
-' The modes iterate this array and address each light BY NAME.
-'
-' Deliberately NOT using GLF's light-tag feature. GLF can group lights by
-' tag, but it builds those tags from each light's BlinkPattern field:
-'     For Each light In Glf_Lights
-'         tags = Split(light.BlinkPattern, ",")   ' -> tag "T_" & value
-' VPX defaults BlinkPattern to "10", so every untouched light lands under
-' the tag "T_10" and a lookup for "T_GI" returns Nothing. GlfLightPlayer
-' then does glf_lightTags("T_GI").Keys() and throws "Object required" at
-' Glf_Init - which is fatal and gives no hint about the real cause.
-'
-' Addressing lights by name avoids the whole mechanism. If you later want
-' tags, set BlinkPattern to GI on each of these in the VPX editor first.
-'
-' Every name here must be a member of the glf_lights collection.
-Dim GILightNames : GILightNames = Array( _
-    "gi006","gi007","gi008","gi009","gi010","gi011","gi012","gi013","gi014", _
-    "gi015","gi016","gi017","gi018","gi019","gi020","gi021","gi022","gi023", _
-    "gi024", "gi026","gi050")
-
 Const GIColor3000k      = "ffdca3"
 Const GIColor2700k      = "ffA957"   ' warm white, GI during play
 Const GIColorAttract    = "ff8c3a"   ' attract, bright phase

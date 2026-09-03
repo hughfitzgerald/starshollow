@@ -314,12 +314,10 @@ Sub CreateBaseMode()
             ' GI full brightness for the duration of the ball.
             ' Addressed by name - see the note in _configuration.vbs.
             With .EventName("mode_base_started")
-                For Each giName In GILightNames
-                    With .Lights(giName)
-                        .Color = GIColor2700k
-                        .Fade  = 300
-                    End With
-                Next
+                With .Lights("GI")
+                    .Color = GIColor2700k
+                    .Fade  = 300
+                End With
                 ' With .Lights("slim_inserts")
                 '     .Color = GIColor2700k
                 ' End With

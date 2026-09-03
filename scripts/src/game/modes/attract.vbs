@@ -45,28 +45,22 @@ Sub CreateAttractMode()
         ' _configuration.vbs for why .Lights("GI") would crash Glf_Init.
         With .LightPlayer()
             With .EventName("mode_attract_started")
-                For Each giName In GILightNames
-                    With .Lights(giName)
-                        .Color = GIColorAttract
-                        .Fade  = 1200
-                    End With
-                Next
+                With .Lights("GI")
+                    .Color = GIColorAttract
+                    .Fade  = 1200
+                End With
             End With
             With .EventName("attract_gi_dim")
-                For Each giName In GILightNames
-                    With .Lights(giName)
-                        .Color = GIColorAttractDim
-                        .Fade  = 1200
-                    End With
-                Next
+                With .Lights("GI")
+                    .Color = GIColorAttractDim
+                    .Fade  = 1200
+                End With
             End With
             With .EventName("attract_gi_bright")
-                For Each giName In GILightNames
-                    With .Lights(giName)
-                        .Color = GIColorAttract
-                        .Fade  = 1200
-                    End With
-                Next
+                With .Lights("GI")
+                    .Color = GIColorAttract
+                    .Fade  = 1200
+                End With
             End With
         End With
 
