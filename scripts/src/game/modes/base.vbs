@@ -219,6 +219,14 @@ Sub CreateBaseMode()
                 .Key = "key_voc_hollow"
                 .Sound = "voc_wereclosed"
             End With
+            With .EventName("diner_callout")
+                .Key = "key_sfx_dinerdoor"
+                .Sound = "sfx_dinerdoor"
+            End With
+            With .EventName("grandparents_callout")
+                .Key = "key_voc_richardtheyrehere"
+                .Sound = "voc_richardtheyrehere"
+            End With
             With .EventName("auto_fire_coil_bumper1_activate")
                 .Key = "key_sfx_bumper1"
                 .Sound = "sfx_bumper1"
@@ -238,10 +246,6 @@ Sub CreateBaseMode()
             With .EventName("auto_fire_coil_right_sling_activate")
                 .Key = "key_voc_copperboom2"
                 .Sound = "voc_copperboom2"
-            End With
-            With .EventName("diner_callout")
-                .Key = "key_sfx_dinerdoor"
-                .Sound = "sfx_dinerdoor"
             End With
         End With
 
