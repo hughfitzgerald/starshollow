@@ -216,13 +216,11 @@ Sub DmdBuild_Bonus(entry)
     Dim g : Set g = FlexDMD.NewGroup("Bonus")
     With g
         ' one spot with bonus text
-        Set text = FlexDMD.NewLabel("bonus_text", FontScoreActive, "BONUS")
-        text.SetAlignedPosition 64, 8, FlexDMD_Align_Center
+        Set text = FlexDMD.NewLabel("bonus_text", FontScoreActive, "")
         .AddActor text
 
         ' one spot with bonus score
-        Set score = FlexDMD.NewLabel("bonus_score", FontScoreActive, "")
-        score.SetAlignedPosition 32, 16, FlexDMD_Align_Center
+        Set score = FlexDMD.NewLabel("bonus_score", FontBig1, "")
         .AddActor score
     End With
     entry.SetScene g
@@ -232,6 +230,10 @@ Sub DmdTick_Bonus(args)
     Dim text, score
     Set text = FlexDMD.Stage.GetLabel("bonus_text")
     text.Text = GetPlayerState("bonus_display_text")
+    text.SetBounds 0, 1, 128, 8
+    text.Alignment = FlexDMD_Align_Center
     Set score = FlexDMD.Stage.GetLabel("bonus_score")
     score.Text = GetPlayerState("bonus_display_score")
+    score.SetBounds 0, 12, 128, 16
+    score.Alignment = FlexDMD_Align_Center
 End Sub
