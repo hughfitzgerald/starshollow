@@ -155,8 +155,6 @@ End Sub
 Sub DmdBuild_Welcome(entry)
     Dim g : Set g = FlexDMD.NewGroup("Welcome")
     With g
-        ' .AddActor FlexDMD.Newvideo ("test","spinner.gif")
-        ' .Getvideo("test").visible = True
         .AddActor FlexDMD.NewImage("logo","gilmore_girls_logo_128x32.png")
         .Getimage("logo").visible = False
     End With

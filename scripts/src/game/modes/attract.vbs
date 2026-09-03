@@ -40,6 +40,15 @@ Sub CreateAttractMode()
             End With
         End With
 
+        With .SlidePlayer()
+            ' The scoreboard, for the whole ball. Cleared from the slide
+            ' stack when base mode stops - the scene itself stays up.
+            With .EventName("mode_attract_started")
+                .Slide  = "welcome"
+                .Action = "play"
+            End With
+        End With
+
         ' Slow GI pulse so the table reads as "on" but idle.
         ' GI lights are addressed by name, not by tag - see the long note in
         ' _configuration.vbs for why .Lights("GI") would crash Glf_Init.

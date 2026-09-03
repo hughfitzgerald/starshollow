@@ -39,7 +39,7 @@ Sub Table1_Init
 
 	InitVR()
 	Flex_Init()
-	FlexDmd_ShowSlide "welcome", Null
+	' FlexDmd_ShowSlide "welcome", Null
 
 	' GLF slide/widget player -> FlexDMD, in place of a Godot media
 	' controller over BCP. Must come after Flex_Init (the scenes have to
