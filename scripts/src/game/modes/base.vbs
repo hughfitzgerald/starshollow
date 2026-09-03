@@ -44,8 +44,8 @@ Sub CreateBaseMode()
             .Add "new_ball_active", Array("clear_ball_just_started", "coffee_callout")
 
             'Kickers
-            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment")
-            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment")
+            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment", "score_10000")
+            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", "score_10000")
 
             'Bumpers
             .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment")
@@ -62,12 +62,12 @@ Sub CreateBaseMode()
             ' .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
 
             'Star Targets
-            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment")
-            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment")
-            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment")
-            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment")
-            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment")
-            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment")
+            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
+            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
+            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
+            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
+            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
+            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
 
             'TODO: Add JESS and DEAN hit targets, ramp rollovers, inlanes, bonus lanes, captive ball, ANY OTHERS?
 
