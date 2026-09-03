@@ -35,7 +35,7 @@
 ' what makes widgets an overlay on the scoreboard and nothing else.
 
 Sub DmdBuild_Score(entry)
-    Dim i
+    Dim i, label
 
     Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
     Set FontScoreInactive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", RGB(100, 100, 100), vbWhite, 0)
@@ -45,12 +45,10 @@ Sub DmdBuild_Score(entry)
 
     Dim g : Set g = FlexDMD.NewGroup("Score")
     With g
-        ' .AddActor FlexDMD.NewImage("bg","bgdarker.png")
-        ' .Getimage("bg").visible = True ' False
-        ' .AddActor FlexDMD.NewImage("bg2","bg.png")
-        ' .Getimage("bg2").visible = False
         For i = 1 To 4
-            .AddActor FlexDMD.NewLabel("Score_" & i, FontScoreInactive, "0")
+            Set label = FlexDMD.NewLabel("Score_" & i, FontScoreInactive, "0")
+            label.SetAlignedPosition 45, 1 + (i - 1) * 6, FlexDMD_Align_TopRight
+            .AddActor label
         Next
         .AddActor FlexDMD.NewFrame("VSeparator")
         .GetFrame("VSeparator").Thickness = 1
