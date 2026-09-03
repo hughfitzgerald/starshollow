@@ -72,7 +72,8 @@ Sub CreateAttractMode()
 
         With .EventPlayer()
             .Add "mode_attract_started", Array("play_mus_married")
-            .Add "mode_attract_stopping", Array("stop_mus_married")
+            .Add "stop_attract_mode", Array("stop_mus_married")
+
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", Array("attract_gi_dim")
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", Array("attract_gi_bright")
         End With
