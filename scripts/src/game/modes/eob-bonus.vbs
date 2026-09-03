@@ -1,9 +1,9 @@
 
 ' Bonus Mode.
 
-Const BonusSlideTime = 2
+Const BonusShows = 6
 Sub CreateBonusMode
-
+    Dim x
     With CreateGlfMode("eob_bonus", 150)
         .StartEvents = Array("ball_ending{game.tilted == False}")
         .StopEvents = Array("bonus_finished")
@@ -11,19 +11,26 @@ Sub CreateBonusMode
         .Debug = True
 
         With .EventPlayer()
+            .Debug = True
             .Add "mode_eob_bonus_started", Array("run_bonus_started")
 
-            .Add "run_bonus_started", Array("calculate_bonus_total")
+            .Add "run_bonus_started", Array("calculate_bonus_total", "play_bonus_show1")
             .Add "calculate_bonus_total", Array("add_bonus_total_to_score")
 
-            .Add "timer_eob_bonus_complete", Array("bonus_finished")
+            .Add "play_bonus_show1{current_player.total_switches_hit  > 0 && current_player.bonus_skip == 0}", Array("bonus_light1_show","do_sfx_bonus", "show_bonus_multiplier")
+            .Add "play_bonus_show1{current_player.total_switches_hit == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show2")
+            .Add "play_bonus_show2{current_player.bumper_count        > 0 && current_player.bonus_skip == 0}", Array("bonus_light2_show","do_sfx_bonus", "show_bonus_coffee")
+            .Add "play_bonus_show2{current_player.bumper_count       == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show3")
+            .Add "play_bonus_show3{current_player.diner_count         > 0 && current_player.bonus_skip == 0}", Array("bonus_light3_show","do_sfx_bonus", "show_bonus_diners")
+            .Add "play_bonus_show3{current_player.diner_count        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show4")
+            .Add "play_bonus_show4{current_player.grandparents_count  > 0 && current_player.bonus_skip == 0}", Array("bonus_light4_show","do_sfx_bonus", "show_bonus_grandparents")
+            .Add "play_bonus_show4{current_player.grandparents_count == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show5")
+            .Add "play_bonus_show5{current_player.spinner_count       > 0 && current_player.bonus_skip == 0}", Array("bonus_light5_show","do_sfx_bonus", "show_bonus_talking")
+            .Add "play_bonus_show5{current_player.spinner_count      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show6")
+            .Add "play_bonus_show6{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light6_show","do_sfx_bonus", "show_bonus_total")
+            .Add "play_bonus_show6{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show7")
 
-            .Add "timer_eob_bonus_tick{device.timers.eob_bonus.ticks == 0}", Array("show_bonus_multiplier")
-            .Add "timer_eob_bonus_tick{device.timers.eob_bonus.ticks == " & BonusSlideTime * 1 & "}", Array("show_bonus_coffee")
-            .Add "timer_eob_bonus_tick{device.timers.eob_bonus.ticks == " & BonusSlideTime * 2 & "}", Array("show_bonus_diners")
-            .Add "timer_eob_bonus_tick{device.timers.eob_bonus.ticks == " & BonusSlideTime * 3 & "}", Array("show_bonus_grandparents")
-            .Add "timer_eob_bonus_tick{device.timers.eob_bonus.ticks == " & BonusSlideTime * 4 & "}", Array("show_bonus_talking")
-            .Add "timer_eob_bonus_tick{device.timers.eob_bonus.ticks == " & BonusSlideTime * 5 & "}", Array("show_bonus_total")
+            .Add "play_bonus_show7", Array("bonus_finished")
 
             ' Bonus x8 (or whatever the current multiplier is) and the score below it... it should be multiplier * 1000 * number of switches hit, but for now just show the multiplier and a static score.
             ' A card for each of the "special" shots (coffee, diners, grandparents)
@@ -44,11 +51,33 @@ Sub CreateBonusMode
             ' LUKE'S DINER: 5 MEALS
         End With
 
+        With .ShowPlayer()
+            For x = 1 To BonusShows
+                With .EventName("bonus_light"&x&"_show")
+                    .Key = "key_bonus_light"&x&"_show"
+                    .Show = "flash_color"
+                    .Speed = 20
+                    .Loops = 20
+                    .Priority = 2000
+                    'When the show ends, move to the next one
+                    .EventsWhenCompleted = Array("play_bonus_show"&(x+1))
+                    With .Tokens()
+                        .Add "lights", "GI"
+                        .Add "color", GIColorAttract
+                    End With
+                End With
+            Next
+        End With
+
         With .VariablePlayer()
             With .EventName("calculate_bonus_total")
                 With .Variable("bonus_total")
                     .Action = "add"
-                    .Int = "current_player.bonus_multiplier * " & BonusMultiplierFactor & " * current_player.total_switches_hit + current_player.bumper_count * " & BonusBumperFactor & " + current_player.diner_count * " & BonusDinerFactor & " + current_player.grandparents_count * " & BonusGrandparentsFactor & " + current_player.spinner_count * " & BonusSpinnerFactor
+                    .Int = "current_player.bonus_multiplier * " & BonusMultiplierFactor & _
+                        " * current_player.total_switches_hit + current_player.bumper_count * " & BonusBumperFactor & _
+                        " + current_player.diner_count * " & BonusDinerFactor & _
+                        " + current_player.grandparents_count * " & BonusGrandparentsFactor & _
+                        " + current_player.spinner_count * " & BonusSpinnerFactor
                 End With
             End With
             With .EventName("add_bonus_total_to_score")
@@ -128,16 +157,6 @@ Sub CreateBonusMode
                 .Key = "key_mus_shoo"
                 .Sound = "mus_shoo"
                 .Action = "stop"
-            End With
-        End With
-
-        With .Timers("eob_bonus")
-            .TickInterval = 1000
-            .StartValue = 0
-            .EndValue = BonusSlideTime * 6
-            With .ControlEvents()
-                .EventName = "run_bonus_started"
-                .Action = "start"
             End With
         End With
 
