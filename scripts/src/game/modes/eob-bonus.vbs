@@ -119,6 +119,18 @@ Sub CreateBonusMode
             End With
         End With
 
+        With .SoundPlayer()
+            With .EventName("mode_eob_bonus_started")
+                .Key = "key_mus_shoo"
+                .Sound = "mus_shoo"
+            End With
+            With .EventName("mode_eob_bonus_stopped")
+                .Key = "key_mus_shoo"
+                .Sound = "mus_shoo"
+                .Action = "stop"
+            End With
+        End With
+
         With .Timers("eob_bonus")
             .TickInterval = 1000
             .StartValue = 0

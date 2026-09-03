@@ -71,7 +71,8 @@ Sub CreateBaseMode()
 
             'TODO: Add JESS and DEAN hit targets, ramp rollovers, inlanes, bonus lanes, captive ball, ANY OTHERS?
 
-            .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop")
+            .Add "mode_eob_bonus_started", Array("base_music_stop")
+            .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop", "base_music_3_stop", "base_music_4_stop", "base_music_5_stop", "base_music_6_stop", "base_music_7_stop")
         End With
 
         ' With .Timers("left_spinner")
@@ -162,6 +163,11 @@ Sub CreateBaseMode()
             With .EventName("base_music_start")
                 .Add "base_music_1_start", 1
                 .Add "base_music_2_start", 1
+                .Add "base_music_3_start", 1
+                .Add "base_music_4_start", 1
+                .Add "base_music_5_start", 1
+                .Add "base_music_6_start", 1
+                .Add "base_music_7_start", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -189,6 +195,51 @@ Sub CreateBaseMode()
             With .EventName("base_music_2_stop")
                 .Key = "key_mus_happy"
                 .Sound = "mus_happy"
+                .Action = "stop"
+            End With
+            With .EventName("base_music_3_start")
+                .Key = "key_mus_alternate"
+                .Sound = "mus_alternate"
+            End With
+            With .EventName("base_music_3_stop")
+                .Key = "key_mus_alternate"
+                .Sound = "mus_alternate"
+                .Action = "stop"
+            End With
+            With .EventName("base_music_4_start")
+                .Key = "key_mus_book"
+                .Sound = "mus_book"
+            End With
+            With .EventName("base_music_4_stop")
+                .Key = "key_mus_book"
+                .Sound = "mus_book"
+                .Action = "stop"
+            End With
+            With .EventName("base_music_5_start")
+                .Key = "key_mus_longer"
+                .Sound = "mus_longer"
+            End With
+            With .EventName("base_music_5_stop")
+                .Key = "key_mus_longer"
+                .Sound = "mus_longer"
+                .Action = "stop"
+            End With
+            With .EventName("base_music_6_start")
+                .Key = "key_mus_maybe"
+                .Sound = "mus_maybe"
+            End With
+            With .EventName("base_music_6_stop")
+                .Key = "key_mus_maybe"
+                .Sound = "mus_maybe"
+                .Action = "stop"
+            End With
+            With .EventName("base_music_7_start")
+                .Key = "key_mus_popcorn"
+                .Sound = "mus_popcorn"
+            End With
+            With .EventName("base_music_7_stop")
+                .Key = "key_mus_popcorn"
+                .Sound = "mus_popcorn"
                 .Action = "stop"
             End With
             With .EventName("poodles1_callout")
