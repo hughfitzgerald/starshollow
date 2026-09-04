@@ -526,6 +526,12 @@ Sub CreateSounds()
     AddSoundEffect "sfx_bumper2", 1
     AddSoundEffect "sfx_bumper3", 1
 
+    ' Logan Multiball
+    AddCallout     "voc_logan_hit1", 2
+    AddCallout     "voc_logan_hit2", 2
+    AddCallout     "voc_logan_hit3", 1
+    AddCallout     "voc_buttfacedmiscreant_full", 7
+
     ' Dance Marathon
     AddMusic       "mus_dm",  305, -1
     AddCallout     "voc_dancingfun", 2

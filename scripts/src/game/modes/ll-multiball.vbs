@@ -15,6 +15,21 @@ Sub CreateLLMultiballMode()
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1}", Array("logan_ball_captured")
         End With
 
+        With .SoundPlayer()
+            With .EventName("auto_fire_coil_bumper1_activate")
+                .Key = "key_voc_logan_hit1"
+                .Sound = "voc_logan_hit1"
+            End With
+            With .EventName("auto_fire_coil_bumper3_activate")
+                .Key = "key_voc_logan_hit2"
+                .Sound = "voc_logan_hit2"
+            End With
+            With .EventName("auto_fire_coil_bumper5_activate")
+                .Key = "key_voc_logan_hit3"
+                .Sound = "voc_logan_hit3"
+            End With
+        End With
+
         ' With .QueueRelayPlayer()
         '     With .EventName("mode_ll_multiball_ending{machine.captive_ball_captive == 0}")
         '         .Post = "disable_captive_ball_kicker_hold"

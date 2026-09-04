@@ -2781,6 +2781,42 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_buttfacedmiscreant_full",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_buttfacedmiscreant_full.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_logan_hit1",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_logan_hit1.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_logan_hit2",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_logan_hit2.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_logan_hit3",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_logan_hit3.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_wereclosed",
     "path": "/Users/stephenjones/code/starshollow/callouts/voc_wereclosed.ogg",
     "internal_name": "",
