@@ -2862,6 +2862,15 @@
     "output_target": "backglass"
   },
   {
+    "name": "sfx_eob_bonus",
+    "path": "/Users/stephenjones/code/starshollow/sfx/sfx_eob_bonus.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_prostrate",
     "path": "/Users/stephenjones/code/starshollow/callouts/voc_prostrate.ogg",
     "internal_name": "",

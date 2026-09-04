@@ -538,6 +538,7 @@ Sub CreateSounds()
     AddSoundEffect "sfx_bumper1", 1
     AddSoundEffect "sfx_bumper2", 1
     AddSoundEffect "sfx_bumper3", 1
+    AddSoundEffect "sfx_eob_bonus", 2
 
     ' Logan Multiball
     AddCallout     "voc_logan_hit1", 2

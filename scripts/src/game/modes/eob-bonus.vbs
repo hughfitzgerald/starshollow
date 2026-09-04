@@ -49,8 +49,20 @@ Sub CreateBonusMode
             .Add "play_bonus_show15", Array("bonus_finished")
             .Add "timer_bonus_skip_complete", Array("bonus_finished")
 
-            .Add "do_sfx_bonus", Array("stop_sfx_bonus") 'first stop the sfx if it is already playing
-            .Add "stop_sfx_bonus", Array("play_sfx_bonus") 'then play the sfx
+            .Add "do_sfx_bonus", Array("stop_sfx_eob_bonus") 'first stop the sfx if it is already playing
+            .Add "stop_sfx_eob_bonus", Array("play_sfx_eob_bonus") 'then play the sfx
+        End With
+
+        With .SoundPlayer()
+            With .EventName("play_sfx_eob_bonus")
+                .Key = "key_sfx_eob_bonus"
+                .Sound = "sfx_eob_bonus"
+            End With
+            With .EventName("stop_sfx_eob_bonus")
+                .Key = "key_sfx_eob_bonus"
+                .Sound = "sfx_eob_bonus"
+                .Action = "stop"
+            End With
         End With
 
         'Skip the bonus tally animations
