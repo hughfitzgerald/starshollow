@@ -178,6 +178,8 @@ Sub ConfigureGlfDevices()
 
     Glf_SetInitialPlayerVar "mode_display_text", "MODE: NONE"
     Glf_SetInitialPlayerVar "mode_display_score", 0
+    Glf_SetInitialPlayerVar "mode_display_instructions", "INSTRUCTIONS: NONE"
+
     Glf_SetInitialPlayerVar "mode_llmb_score", 0
     Glf_SetInitialPlayerVar "mode_jdmb_score", 0
     Glf_SetInitialPlayerVar "mode_dm_score", 0

@@ -46,6 +46,10 @@ Sub CreateLLMultiballMode()
                     .Action = "set"
                     .Int = "{current_player.mode_llmb_score}"
                 End With
+                With .Variable("mode_display_instructions")
+                    .Action = "set"
+                    .String = """HIT BUMPERS TO BASH LOGAN"""
+                End With
             End With
             With .EventName("logan_bumper_hit")
                 With .Variable("score")
