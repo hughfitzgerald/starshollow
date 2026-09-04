@@ -233,3 +233,33 @@ Sub DmdTick_Bonus(args)
     score.SetBounds 0, 12, 128, 16
     score.Alignment = FlexDMD_Align_Center
 End Sub
+
+Sub DmdBuild_Mode(entry)
+    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
+    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
+
+    Dim text, score
+    Dim g : Set g = FlexDMD.NewGroup("Mode")
+    With g
+        ' one spot with mode text
+        Set text = FlexDMD.NewLabel("mode_text", FontScoreActive, "")
+        .AddActor text
+
+        ' one spot with mode score
+        Set score = FlexDMD.NewLabel("mode_score", FontBig1, "")
+        .AddActor score
+    End With
+    entry.SetScene g
+End Sub
+
+Sub DmdTick_Mode(args)
+    Dim text, score
+    Set text = FlexDMD.Stage.GetLabel("mode_text")
+    text.Text = GetPlayerState("mode_display_text")
+    text.SetBounds 0, 1, 128, 8
+    text.Alignment = FlexDMD_Align_Center
+    Set score = FlexDMD.Stage.GetLabel("mode_score")
+    score.Text = FormatNumber(GetPlayerState("mode_display_score"), 0)
+    score.SetBounds 0, 12, 128, 16
+    score.Alignment = FlexDMD_Align_Center
+End Sub

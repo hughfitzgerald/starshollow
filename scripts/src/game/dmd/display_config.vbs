@@ -96,9 +96,15 @@ Sub CreateFlexDmdDisplay()
         .Ticker  = "DmdTick_Bonus"
     End With
 
+    With CreateDmdSlide("mode")
+        .Builder = "DmdBuild_Mode"
+        .Ticker  = "DmdTick_Mode"
+    End With
+
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With
     With CreateDmdSlide("jackpot")     : .Gif = "jackpot.gif"     : End With
     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
+    With CreateDmdSlide("logan-hit") : .Gif = "logan_hit_short_small.gif" : End With
 
     ' Bonus X and the drop target bonus tiers
     With CreateDmdSlide("bonus_x")  : .Gif = "bonusx.gif"  : End With

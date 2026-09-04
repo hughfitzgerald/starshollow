@@ -1,3 +1,5 @@
+Const LoganBumperScore = 10000
+
 Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)
         .StartEvents = Array("start_ll_multiball")
@@ -5,7 +7,7 @@ Sub CreateLLMultiballMode()
         .Debug = True
 
         With .EventPlayer()
-            .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter")
+            .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide")
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
@@ -13,6 +15,10 @@ Sub CreateLLMultiballMode()
             .Add "timer_llmb_complete", Array("enable_scoop_hold")
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("disable_scoop_hold")
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1}", Array("logan_ball_captured")
+
+            .Add "auto_fire_coil_bumper1_activate", Array("logan_bumper_hit")
+            .Add "auto_fire_coil_bumper3_activate", Array("logan_bumper_hit")
+            .Add "auto_fire_coil_bumper5_activate", Array("logan_bumper_hit")
         End With
 
         With .SoundPlayer()
@@ -30,14 +36,33 @@ Sub CreateLLMultiballMode()
             End With
         End With
 
-        ' With .QueueRelayPlayer()
-        '     With .EventName("mode_ll_multiball_ending{machine.captive_ball_captive == 0}")
-        '         .Post = "disable_captive_ball_kicker_hold"
-        '         .WaitFor = "captive_ball_is_home"
-        '     End With
-        ' End With
-
         With .VariablePlayer()
+            With .EventName("mode_ll_multiball_started")
+                With .Variable("mode_display_text")
+                    .Action = "set"
+                    .String = """LOCK-AWAY LOGAN"""
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "set"
+                    .Int = "{current_player.mode_llmb_score}"
+                End With
+            End With
+            With .EventName("logan_bumper_hit")
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = LoganBumperScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = LoganBumperScore
+                End With
+                With .Variable("mode_llmb_score")
+                    .Action = "add"
+                    .Int = LoganBumperScore
+                End With
+            End With
+
+
             With .EventName("multiball_llmb_shoot_again")
                 With .Variable("llmb_shoot_again_active")
                     .Action = "set"
@@ -86,10 +111,26 @@ Sub CreateLLMultiballMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("mode_ll_multiball_started")
+            With .EventName("logan_bumper_hit")
+                .Slide = "logan-hit"
+                .Action = "play"
+                .Expire = 1
+                .Priority = 1010
+            End With
+            With .EventName("play_multiball_slide")
                 .Slide  = "multiball"
                 .Action = "play"
                 .Expire = 3
+                .Priority = 1010
+            End With
+            With .EventName("mode_ll_multiball_started")
+                .Slide = "mode"
+                .Action = "play"
+                .Priority = 1000
+            End With
+            With .EventName("mode_ll_multiball_ending")
+                .Slide = "mode"
+                .Action = "stop"
             End With
         End With
 

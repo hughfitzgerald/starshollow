@@ -176,6 +176,12 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "bonus_display_text", "BONUS 1x"
     Glf_SetInitialPlayerVar "bonus_display_score", "0"
 
+    Glf_SetInitialPlayerVar "mode_display_text", "MODE: NONE"
+    Glf_SetInitialPlayerVar "mode_display_score", 0
+    Glf_SetInitialPlayerVar "mode_llmb_score", 0
+    Glf_SetInitialPlayerVar "mode_jdmb_score", 0
+    Glf_SetInitialPlayerVar "mode_dm_score", 0
+
     Glf_SetInitialPlayerVar "is_lock_qualified", 0        'flag keeps track of when a player has qualified the locks
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
     Glf_SetInitialPlayerVar "llmb_shoot_again_active", 0
