@@ -1,7 +1,7 @@
 
 ' Bonus Mode.
 
-Const BonusShows = 6
+Const BonusShows = 14
 Sub CreateBonusMode
     Dim x
     With CreateGlfMode("eob_bonus", 150)
@@ -27,10 +27,26 @@ Sub CreateBonusMode
             .Add "play_bonus_show4{current_player.grandparents_count == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show5")
             .Add "play_bonus_show5{current_player.spinner_count       > 0 && current_player.bonus_skip == 0}", Array("bonus_light5_show","do_sfx_bonus", "show_bonus_talking")
             .Add "play_bonus_show5{current_player.spinner_count      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show6")
-            .Add "play_bonus_show6{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light6_show","do_sfx_bonus", "show_bonus_total")
-            .Add "play_bonus_show6{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show7")
+            .Add "play_bonus_show6{current_player.mode_llmb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light6_show","do_sfx_bonus", "show_bonus_llmb")
+            .Add "play_bonus_show6{current_player.mode_llmb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show7")
+            .Add "play_bonus_show7{current_player.mode_jdmb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light7_show","do_sfx_bonus", "show_bonus_jdmb")
+            .Add "play_bonus_show7{current_player.mode_jdmb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show8")
+            .Add "play_bonus_show8{current_player.mode_dm_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light8_show","do_sfx_bonus", "show_bonus_dm")
+            .Add "play_bonus_show8{current_player.mode_dm_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show9")
+            .Add "play_bonus_show9{current_player.mode_tm_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light9_show","do_sfx_bonus", "show_bonus_tm")
+            .Add "play_bonus_show9{current_player.mode_tm_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show10")
+            .Add "play_bonus_show10{current_player.mode_lbtb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light10_show","do_sfx_bonus", "show_bonus_lbtb")
+            .Add "play_bonus_show10{current_player.mode_lbtb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show11")
+            .Add "play_bonus_show11{current_player.mode_ka_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light11_show","do_sfx_bonus", "show_bonus_ka")
+            .Add "play_bonus_show11{current_player.mode_ka_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show12")
+            .Add "play_bonus_show12{current_player.mode_dinner_score   > 0 && current_player.bonus_skip == 0}", Array("bonus_light12_show","do_sfx_bonus", "show_bonus_dinner")
+            .Add "play_bonus_show12{current_player.mode_dinner_score  == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show13")
+            .Add "play_bonus_show13{current_player.mode_punch_score    > 0 && current_player.bonus_skip == 0}", Array("bonus_light13_show","do_sfx_bonus", "show_bonus_punch")
+            .Add "play_bonus_show13{current_player.mode_punch_score   == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show14")
+            .Add "play_bonus_show14{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light14_show","do_sfx_bonus", "show_bonus_total")
+            .Add "play_bonus_show14{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show15")
 
-            .Add "play_bonus_show7", Array("bonus_finished")
+            .Add "play_bonus_show15", Array("bonus_finished")
             .Add "timer_bonus_skip_complete", Array("bonus_finished")
 
             .Add "do_sfx_bonus", Array("stop_sfx_bonus") 'first stop the sfx if it is already playing
@@ -138,6 +154,16 @@ Sub CreateBonusMode
                 With .Variable("bonus_display_score")
                     .Action = "set"
                     .String = "current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor"
+                End With
+            End With
+            With .EventName("show_bonus_llmb")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """LOCK-AWAY LOGAN"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_llmb_score"
                 End With
             End With
             With .EventName("show_bonus_total")
