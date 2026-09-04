@@ -180,9 +180,14 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "mode_display_score", 0
     Glf_SetInitialPlayerVar "mode_display_instructions", "INSTRUCTIONS: NONE"
 
-    Glf_SetInitialPlayerVar "mode_llmb_score", 0
-    Glf_SetInitialPlayerVar "mode_jdmb_score", 0
-    Glf_SetInitialPlayerVar "mode_dm_score", 0
+    Glf_SetInitialPlayerVar "mode_llmb_score", 0 ' Lock-Away Logan Multiball
+    Glf_SetInitialPlayerVar "mode_jdmb_score", 0 ' Jess & Dean Multiball
+    Glf_SetInitialPlayerVar "mode_dm_score", 0 ' Dance Marathon
+    Glf_SetInitialPlayerVar "mode_tm_score", 0 ' Town Meeting
+    Glf_SetInitialPlayerVar "mode_lbtb_score", 0 ' Luke Breaks the Bells
+    Glf_SetInitialPlayerVar "mode_ka_score", 0 ' Kim's Antiques
+    Glf_SetInitialPlayerVar "mode_dinner_score", 0 ' Friday Night Dinner
+    Glf_SetInitialPlayerVar "mode_punch_score", 0 ' Founder's Day Punch
 
     Glf_SetInitialPlayerVar "is_lock_qualified", 0        'flag keeps track of when a player has qualified the locks
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input

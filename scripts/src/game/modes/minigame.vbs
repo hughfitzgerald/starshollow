@@ -26,7 +26,7 @@ Sub CreateMiniGameMode
         With .RandomEventPlayer()
             With .EventName("select_minigame")
                 .Add "dm_minigame_lit", 1
-                ' .Add "th_minigame_lit", 0
+                ' .Add "tm_minigame_lit", 0
                 ' .ForceAll = True
                 ' .ForceDifferent = True
             End With
@@ -51,21 +51,21 @@ Sub CreateMiniGameMode
             End With
         End With
 
-        With .Shots("th_minigame")
+        With .Shots("tm_minigame")
             .Profile = "minigame"
             With .Tokens()
                 .Add "lights", "l25"
             End With
             With .ControlEvents()
-                .Events = Array("th_minigame_unlit")
+                .Events = Array("tm_minigame_unlit")
                 .State = 0
             End With
             With .ControlEvents()
-                .Events = Array("th_minigame_lit")
+                .Events = Array("tm_minigame_lit")
                 .State = 1
             End With
             With .ControlEvents()
-                .Events = Array("start_townhall","th_minigame_complete")
+                .Events = Array("start_townhall","tm_minigame_complete")
                 .State = 2
             End With
         End With

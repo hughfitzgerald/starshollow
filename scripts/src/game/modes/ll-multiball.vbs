@@ -1,5 +1,7 @@
-Const LoganBumperScore = 10000
-
+Const LoganBumperScore = 100000
+Const LoganTotallyBashedScore = 10000000
+Const LoganLockedAwayScore = 10000000
+Const LoganScoreToWin = 1500000
 Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)
         .StartEvents = Array("start_ll_multiball")
@@ -12,13 +14,15 @@ Sub CreateLLMultiballMode()
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
-            .Add "timer_llmb_complete", Array("enable_scoop_hold")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("disable_scoop_hold")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1}", Array("logan_ball_captured")
-
             .Add "auto_fire_coil_bumper1_activate", Array("logan_bumper_hit")
             .Add "auto_fire_coil_bumper3_activate", Array("logan_bumper_hit")
             .Add "auto_fire_coil_bumper5_activate", Array("logan_bumper_hit")
+
+            .Add "logan_bumper_hit{current_player.mode_llmb_score>=" & LoganScoreToWin & "}", Array("logan_totally_bashed")
+
+            .Add "logan_totally_bashed", Array("enable_scoop_hold")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("disable_scoop_hold")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1}", Array("logan_ball_captured")
         End With
 
         With .SoundPlayer()
@@ -49,6 +53,38 @@ Sub CreateLLMultiballMode()
                 With .Variable("mode_display_instructions")
                     .Action = "set"
                     .String = """HIT BUMPERS TO BASH LOGAN"""
+                End With
+            End With
+            With .EventName("logan_totally_bashed")
+                With .Variable("mode_display_instructions")
+                    .Action = "set"
+                    .String = """LOCK-AWAY LOGAN IN THE SCOOP"""
+                End With
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = LoganTotallyBashedScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = LoganTotallyBashedScore
+                End With
+                With .Variable("mode_llmb_score")
+                    .Action = "add"
+                    .Int = LoganTotallyBashedScore
+                End With
+            End With
+            With .EventName("logan_ball_captured")
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = LoganLockedAwayScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = LoganLockedAwayScore
+                End With
+                With .Variable("mode_llmb_score")
+                    .Action = "add"
+                    .Int = LoganLockedAwayScore
                 End With
             End With
             With .EventName("logan_bumper_hit")
@@ -102,18 +138,6 @@ Sub CreateLLMultiballMode()
             .GracePeriod = 2000
         End With
 
-        With .Timers("llmb")
-            .StartRunning = False
-            .Direction = "down"      ' Count down
-            .StartValue = 5
-            .EndValue = 0            ' End at 0
-            .TickInterval = 1000     ' Tick every 1 second (1000 ms)
-            With .ControlEvents
-                .EventName = "multiball_llmb_started"
-                .Action = "start"
-            End With
-        End With
-
         With .SlidePlayer()
             With .EventName("logan_bumper_hit")
                 .Slide = "logan-hit"
@@ -152,7 +176,7 @@ Sub CreateLLMultiballMode()
                 .State = 0
             End With
             With .ControlEvents()
-                .Events = Array("timer_llmb_complete")
+                .Events = Array("logan_totally_bashed")
                 .State = 1
             End With
         End With
