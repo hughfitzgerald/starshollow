@@ -168,22 +168,19 @@
     "file_name": "Gate.Gate001.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall78.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall5top.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall39.json",
@@ -196,22 +193,19 @@
     "file_name": "Wall.Wall350.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall3.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall4.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.pApron.json",
@@ -224,22 +218,19 @@
     "file_name": "Primitive.Primitive4.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.CorTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall37.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Rubber.Rubber20.json",
@@ -308,8 +299,7 @@
     "file_name": "Wall.Wall35.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Trigger.s_sw9.json",
@@ -434,8 +424,7 @@
     "file_name": "Wall.Wall2.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.Primitive22.json",
@@ -448,7 +437,8 @@
     "file_name": "Light.l9.json",
     "is_locked": true,
     "editor_layer": 8,
-    "editor_layer_name": "Insert Lights"
+    "editor_layer_name": "Insert Lights",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Wall.Wall33.json",
@@ -468,19 +458,22 @@
     "file_name": "Light.l8.json",
     "is_locked": true,
     "editor_layer": 8,
-    "editor_layer_name": "Insert Lights"
+    "editor_layer_name": "Insert Lights",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l1.json",
     "is_locked": false,
     "editor_layer": 8,
-    "editor_layer_name": "Insert Lights"
+    "editor_layer_name": "Insert Lights",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l12.json",
     "is_locked": false,
     "editor_layer": 8,
-    "editor_layer_name": "Insert Lights"
+    "editor_layer_name": "Insert Lights",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Trigger.s_Trigger1.json",
@@ -493,92 +486,79 @@
     "file_name": "Kicker.swTrough1.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall5bottom.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall15.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "HitTarget.s_ST11.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Targets",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Targets"
   },
   {
     "file_name": "HitTarget.s_ST12.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Targets",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Targets"
   },
   {
     "file_name": "HitTarget.s_ST13.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Targets",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Targets"
   },
   {
     "file_name": "Primitive.Primitive27.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall17.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall22.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.Primitive66.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.Primitive67.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.Primitive68.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.Primitive69.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.FlipperLSh.json",
@@ -598,15 +578,13 @@
     "file_name": "Timer.FrameTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall5.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Rubber.Pin3.json",
@@ -640,8 +618,7 @@
     "file_name": "Wall.Wall228.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall24.json",
@@ -724,8 +701,7 @@
     "file_name": "Wall.Wall7.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Rubber.Pin4.json",
@@ -759,8 +735,7 @@
     "file_name": "Wall.Wall12.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall18.json",
@@ -843,8 +818,7 @@
     "file_name": "Primitive.Primitive5.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Wall.Wall30.json",
@@ -892,15 +866,13 @@
     "file_name": "Kicker.Drain.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.KnockerPosition.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.zCol_Rubber_Sleeve001.json",
@@ -1039,8 +1011,7 @@
     "file_name": "Plunger.Plunger.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Flasher.VR_Logo.json",
@@ -1242,84 +1213,87 @@
     "file_name": "TextBox.tbWR.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.RampRoll.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.LampTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.LampTimer2.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.InsertFlicker.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.p1off.json",
     "is_locked": false,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p1.json",
     "is_locked": false,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p12off.json",
     "is_locked": false,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p12.json",
     "is_locked": false,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p9.json",
     "is_locked": true,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p9off.json",
     "is_locked": true,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p8.json",
     "is_locked": true,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p8off.json",
     "is_locked": true,
     "editor_layer": 5,
-    "editor_layer_name": "Insert Primitives"
+    "editor_layer_name": "Insert Primitives",
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Flasher.Flasherbloom4.json",
@@ -1339,8 +1313,7 @@
     "file_name": "Timer.BumperTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Rubber.debug_BLR3.json",
@@ -1423,8 +1396,7 @@
     "file_name": "Timer.DMDTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.InstructionCard.json",
@@ -1437,8 +1409,7 @@
     "file_name": "Timer.cardtimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Flasher.DMDbackbox.json",
@@ -1458,8 +1429,7 @@
     "file_name": "Timer.GITimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.sw13o.json",
@@ -1535,50 +1505,43 @@
     "file_name": "Wall.Wall001.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Kicker.swTrough2.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Kicker.swTrough3.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Kicker.swTrough4.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Kicker.swTrough5.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.UpdateTroughTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Timer.PulseTimer.json",
     "is_locked": true,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Primitive.BallShadow1.json",
@@ -1612,71 +1575,61 @@
     "file_name": "TextBox.Listener001.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener002.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener003.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener004.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener005.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener006.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener007.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener008.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener009.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "TextBox.Listener010.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Light.gi050.json",
@@ -1854,32 +1807,27 @@
   {
     "file_name": "Wall.Wall005.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall006.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp001.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp003.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp004.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flasher.bumpershadow1.json",
@@ -2064,8 +2012,7 @@
   {
     "file_name": "HitTarget.s_ST14.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.psw14.json",
@@ -2082,8 +2029,7 @@
   {
     "file_name": "HitTarget.s_ST15.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.psw15.json",
@@ -2112,8 +2058,7 @@
   {
     "file_name": "HitTarget.s_ST17.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.sw16o.json",
@@ -2130,8 +2075,7 @@
   {
     "file_name": "HitTarget.s_ST16.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.sw18o.json",
@@ -2148,8 +2092,7 @@
   {
     "file_name": "HitTarget.s_ST18.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Rubber.Rubber005.json",
@@ -2208,174 +2151,184 @@
   {
     "file_name": "Light.l11.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p11off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p11.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p13.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p13off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l13.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l14.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p14.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p14off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p15.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p15off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l15.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l16.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l17.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l18.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p16.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p17.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p18.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p16off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p17off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p18off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Wall.Wall20.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Collidable Misc",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Collidable Misc"
   },
   {
     "file_name": "Ramp.Ramp007.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp009.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.RampDiverterFloor.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall018.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flipper.RampDiverter.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.RampDiverterWall1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.ScoopFloor.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.Scoop.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_VUK1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.ScoopWall.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall009.json",
@@ -2398,26 +2351,22 @@
   {
     "file_name": "Kicker.s_Lock1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_Lock2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.SubwayFloor.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.SubwayWall2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Spinner.s_right_spinner.json",
@@ -2476,329 +2425,368 @@
   {
     "file_name": "Wall.skillshot_trigger_surface.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Light.l52.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p52.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p52off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l51.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p51.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p51off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l53.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p53.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p53off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p54off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l54.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p54.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l55.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p55.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p55off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l56.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p56.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p56off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Flipper.SubwayDiverter.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Gate.SubwayTroughGate.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.SubwayTroughJunction.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.SubwayTroughRamp.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.SubwayTroughPlatform.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_subway_trough_kicker.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.SubwayTroughWall.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Light.l21.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l24.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l23.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l27.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l22.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l25.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l26.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l31.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l34.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l32.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l33.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p22.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p22off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p26.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p21.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p23.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p24.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p25.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p27.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p21off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p23off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p24off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p25off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p26off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p27off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p31.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p31off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p32.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p32off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p33.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p33off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p34.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p34off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Wall.Wall011.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp008.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall012.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall007.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Rubber.Rubber009.json",
@@ -2821,8 +2809,7 @@
   {
     "file_name": "Wall.Wall004.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flipper.LeftFlipper2.json",
@@ -2911,38 +2898,43 @@
   {
     "file_name": "Primitive.p7off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p7.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l7.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l57.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p57.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p57off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Wall.Wall017.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.Primitive053.json",
@@ -2959,38 +2951,32 @@
   {
     "file_name": "Gate.Gate002.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_DropTargetKicker.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.pDT1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.s_DT1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.aDT1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall022.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Rubber.Rubber014.json",
@@ -3013,8 +2999,7 @@
   {
     "file_name": "Wall.Wall015.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Rubber.Rubber016.json",
@@ -3043,14 +3028,12 @@
   {
     "file_name": "Kicker.s_HiddenUpperRightKicker.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall024.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.Primitive059.json",
@@ -3079,8 +3062,7 @@
   {
     "file_name": "Wall.Wall025.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.right_ramp_entrance_trigger_platform.json",
@@ -3097,62 +3079,74 @@
   {
     "file_name": "Light.l58.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p58off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p58.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p59off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p60off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p61off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p59.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p60.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p61.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l59.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l60.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l61.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Trigger.s_LeftOutlane.json",
@@ -3169,62 +3163,74 @@
   {
     "file_name": "Primitive.p62.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p62off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p63.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p63off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p64.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p64off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p65.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p65off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l62.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l63.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l64.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l65.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Trigger.s_captive_ball.json",
@@ -3235,128 +3241,140 @@
   {
     "file_name": "HitTarget.s_slim_target_ramp1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "HitTarget.s_slim_target_hidden2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "HitTarget.s_slim_target_hidden1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "HitTarget.s_slim_target_ramp2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "HitTarget.s_slim_target_ramp3.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "HitTarget.s_slim_target_ramp4.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.p66off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p66.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p67.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p67off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p68.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p68off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p69.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p69off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p70.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p70off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p71.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p71off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l66.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l67.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l68.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l69.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l70.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.l71.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Flasher.PinCab_Backglass001.json",
@@ -3367,20 +3385,17 @@
   {
     "file_name": "Ramp.ShooterFloor.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.RightRampHelper.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.LeftRampHelper.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Gate.s_left_ramp_gate.json",
@@ -3397,20 +3412,17 @@
   {
     "file_name": "Trigger.s_lock3_trigger.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flipper.RampDiverter2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.RampDiverterWall2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flasher.f_FL1_.json",
@@ -3517,35 +3529,35 @@
   {
     "file_name": "Light.l72.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p72.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Primitive.p72off.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Wall.aDT2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.s_DT2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.pDT2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.InvisibleCaptiveBallCeiling.json",
@@ -3556,86 +3568,72 @@
   {
     "file_name": "Wall.CaptiveSubwayFloor.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp002.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.Ramp005.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.CaptiveSubwayWall.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flipper.CaptiveDiverter.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.CaptiveRampHigh.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.CaptiveRampFloor.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_CaptiveRampKicker.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.CaptiveFloorRightWall.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ramp.CaptiveRampLow.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.CaptiveScoop.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.CaptiveRampWall.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_CaptiveRampUpperKicker.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.CaptiveRampKickerSurface.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Kicker.s_DrainSubwayKicker.json",
