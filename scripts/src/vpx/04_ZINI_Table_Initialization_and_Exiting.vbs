@@ -40,6 +40,7 @@ Sub Table1_Init
 	InitVR()
 	Flex_Init()
 	' FlexDmd_ShowSlide "welcome", Null
+	LoadB2S()
 
 	' GLF slide/widget player -> FlexDMD, in place of a Godot media
 	' controller over BCP. Must come after Flex_Init (the scenes have to
@@ -62,6 +63,10 @@ Sub Table1_Exit
 		FlexDMD.Run = False
 		FlexDMD = Null
 	End If
+    If Not B2SController Is Nothing Then
+        B2SController.Stop
+        Set B2SController = Nothing
+    End If
 End Sub
 
 Sub Table1_Paused
