@@ -1,8 +1,8 @@
 {
   "Light": {
     "center": {
-      "x": 540.8114,
-      "y": 971.40857
+      "x": 549.3235,
+      "y": 974.93256
     },
     "height": 0.0,
     "falloff_radius": 25.0,
@@ -38,8 +38,8 @@
     "part_group_name": "Insert_Lights",
     "drag_points": [
       {
-        "x": 558.6551,
-        "y": 928.7632,
+        "x": 567.1672,
+        "y": 932.2872,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -51,8 +51,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 550.0868,
-        "y": 931.863,
+        "x": 558.5989,
+        "y": 935.387,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -64,8 +64,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 511.40768,
-        "y": 987.0296,
+        "x": 519.91974,
+        "y": 990.5536,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -77,8 +77,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 509.29306,
-        "y": 994.49054,
+        "x": 517.8051,
+        "y": 998.0145,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -90,8 +90,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 512.89246,
-        "y": 1000.20056,
+        "x": 521.40454,
+        "y": 1003.72455,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -103,8 +103,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 537.1875,
-        "y": 1011.0227,
+        "x": 545.6996,
+        "y": 1014.5467,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -116,8 +116,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 544.1867,
-        "y": 1008.86273,
+        "x": 552.6988,
+        "y": 1012.3867,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -129,8 +129,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 547.6712,
-        "y": 1001.2697,
+        "x": 556.1833,
+        "y": 1004.7937,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -142,8 +142,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 562.37714,
-        "y": 936.4252,
+        "x": 570.8892,
+        "y": 939.9492,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
