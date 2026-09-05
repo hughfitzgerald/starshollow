@@ -1,10 +1,10 @@
 {
   "Gate": {
     "center": {
-      "x": 186.53061,
-      "y": 778.761
+      "x": 171.52272,
+      "y": 779.2988
     },
-    "length": 100.0,
+    "length": 115.0,
     "height": 60.0,
     "rotation": -19.5,
     "material": "Metal",
