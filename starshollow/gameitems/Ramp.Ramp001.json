@@ -2,7 +2,7 @@
   "Ramp": {
     "height_bottom": 0.0,
     "height_top": 150.0,
-    "width_bottom": 90.0,
+    "width_bottom": 110.0,
     "width_top": 60.0,
     "material": "Opacity80",
     "is_timer_enabled": false,
@@ -32,8 +32,8 @@
     "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 566.511,
-        "y": 912.7939,
+        "x": 569.8369,
+        "y": 914.1911,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -43,6 +43,17 @@
         "editor_layer": 0,
         "editor_layer_name": "",
         "editor_layer_visibility": true
+      },
+      {
+        "x": 580.1549,
+        "y": 890.1789,
+        "z": 0.0,
+        "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
       },
       {
         "x": 695.1163,
