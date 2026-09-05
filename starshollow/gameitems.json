@@ -2266,14 +2266,12 @@
   {
     "file_name": "Spinner.s_right_spinner.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Spinner.s_left_spinner.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_enter_right_ramp.json",
