@@ -1,4 +1,4 @@
-Const LoganBumperScore = 100000
+Const LoganBumperScore = 10000
 Const LoganTotallyBashedScore = 10000000
 Const LoganLockedAwayScore = 10000000
 Const LoganScoreToWin = 1500000
