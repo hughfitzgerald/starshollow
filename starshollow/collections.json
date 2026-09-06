@@ -215,6 +215,12 @@
   {
     "name": "TargetBounce",
     "items": [
+      "swramp1o",
+      "swramp2o",
+      "swramp3o",
+      "swramp4o",
+      "swhidden1o",
+      "swhidden2o",
       "sw11o",
       "sw12o",
       "sw13o",
@@ -308,13 +314,7 @@
       "s_right_ramp_gate",
       "s_CaptiveRampKicker",
       "s_CaptiveRampUpperKicker",
-      "s_DrainSubwayKicker",
-      "s_slim_target_hidden1",
-      "s_slim_target_hidden2",
-      "s_slim_target_ramp1",
-      "s_slim_target_ramp2",
-      "s_slim_target_ramp3",
-      "s_slim_target_ramp4"
+      "s_DrainSubwayKicker"
     ],
     "fire_events": false,
     "stop_single_events": false,

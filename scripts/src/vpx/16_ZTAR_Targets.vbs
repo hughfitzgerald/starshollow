@@ -39,3 +39,27 @@ End Sub
 Sub sw18o_Hit
 	TargetBouncer ActiveBall, 1
 End Sub
+
+Sub swramp1o_Hit
+	TargetBouncer ActiveBall, 1
+End Sub
+
+Sub swramp2o_Hit
+	TargetBouncer ActiveBall, 1
+End Sub
+
+Sub swramp3o_Hit
+	TargetBouncer ActiveBall, 1
+End Sub
+
+Sub swramp4o_Hit
+	TargetBouncer ActiveBall, 1
+End Sub
+
+Sub swhidden1o_Hit
+	TargetBouncer ActiveBall, 1
+End Sub
+
+Sub swhidden2o_Hit
+	TargetBouncer ActiveBall, 1
+End Sub

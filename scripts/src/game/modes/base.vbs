@@ -333,6 +333,23 @@ Sub CreateBaseMode()
                     End With
                 End With
             Next
+
+            For x = 1 To 4
+                With .EventName("s_slim_target_ramp" & x & "_active")
+                    With .Lights("l" & (x + 65))
+                        .Color = StarLightColor
+                        .Fade  = 60
+                    End With
+                End With
+            Next
+            For x = 1 To 2
+                With .EventName("s_slim_target_hidden" & x & "_active")
+                    With .Lights("l" & (x + 69))
+                        .Color = StarLightColor
+                        .Fade  = 60
+                    End With
+                End With
+            Next
         End With
 
         With .ShowPlayer()
@@ -480,35 +497,35 @@ Sub CreateBaseMode()
             .EventsWhenActive = Array("glf_game_cancel")
         End With
 
-        For x = 66 To 69
-            With .Shots("star_light_" & x)
-                .Profile = "star_lights"
-                .Switch = "s_slim_target_ramp" & (x - 65)
-                With .Tokens()
-                    .Add "color", StarLightColor
-                    .Add "lights", "l" & x
-                End With
-                With .ControlEvents()
-                    .Events = Array("s_slim_target_ramp" & (x - 65) & "_active")
-                    .State = 1
-                End With
-            End With
-        Next
+        ' For x = 66 To 69
+        '     With .Shots("star_light_" & x)
+        '         .Profile = "star_lights"
+        '         .Switch = "s_slim_target_ramp" & (x - 65)
+        '         With .Tokens()
+        '             .Add "color", StarLightColor
+        '             .Add "lights", "l" & x
+        '         End With
+        '         With .ControlEvents()
+        '             .Events = Array("s_slim_target_ramp" & (x - 65) & "_active")
+        '             .State = 1
+        '         End With
+        '     End With
+        ' Next
 
-        For x = 70 To 71
-            With .Shots("star_light_" & x)
-                .Profile = "star_lights"
-                .Switch = "s_slim_target_hidden" & (x - 69)
-                With .Tokens()
-                    .Add "color", StarLightColor
-                    .Add "lights", "l" & x
-                End With
-                With .ControlEvents()
-                    .Events = Array("s_slim_target_hidden" & (x - 69) & "_active")
-                    .State = 1
-                End With
-            End With
-        Next
+        ' For x = 70 To 71
+        '     With .Shots("star_light_" & x)
+        '         .Profile = "star_lights"
+        '         .Switch = "s_slim_target_hidden" & (x - 69)
+        '         With .Tokens()
+        '             .Add "color", StarLightColor
+        '             .Add "lights", "l" & x
+        '         End With
+        '         With .ControlEvents()
+        '             .Events = Array("s_slim_target_hidden" & (x - 69) & "_active")
+        '             .State = 1
+        '         End With
+        '     End With
+        ' Next
         
         With .ShotProfiles("star_lights")
             With .States("unlit")

@@ -417,21 +417,21 @@ Sub ConfigureGlfDevices()
         End With
     Next
 
-    ' For x = 66 To 69
-    '     With CreateGlfStanduptarget("star_light_" & x)
-    '         .Switch = "s_slim_target_ramp" & (x - 65)
-    '         .UseRothStanduptarget = True
-    '         .RothSTSwitchID = x
-    '     End With
-    ' Next
+    For x = 1 To 4
+        With CreateGlfStanduptarget("star_ramp" & x)
+            .Switch = "s_slim_target_ramp" & x
+            .UseRothStanduptarget = True
+            .RothSTSwitchID = 65 + x
+        End With
+    Next
 
-    ' For x = 70 To 71
-    '     With CreateGlfStanduptarget("star_light_" & x)
-    '         .Switch = "s_slim_target_hidden" & (x - 69)
-    '         .UseRothStanduptarget = True
-    '         .RothSTSwitchID = x
-    '     End With
-    ' Next
+    For x = 1 To 2
+        With CreateGlfStanduptarget("star_hidden" & x)
+            .Switch = "s_slim_target_hidden" & x
+            .UseRothStanduptarget = True
+            .RothSTSwitchID = 69 + x
+        End With
+    Next
 
     'Drop Targets
     'NOTE: Drop targets SHOULD NOT be added to the glf_switches collection nor any other collection. 
