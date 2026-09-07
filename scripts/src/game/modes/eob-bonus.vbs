@@ -89,7 +89,7 @@ Sub CreateBonusMode
                     .Key = "key_bonus_light"&x&"_show"
                     .Show = "flash_color"
                     .Speed = 20
-                    .Loops = 20
+                    .Loops = 12
                     .Priority = 2000
                     'When the show ends, move to the next one
                     .EventsWhenCompleted = Array("play_bonus_show"&(x+1))
