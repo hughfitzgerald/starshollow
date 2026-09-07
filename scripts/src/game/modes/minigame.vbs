@@ -4,7 +4,7 @@ Sub CreateMiniGameMode
     Dim x
 
     With CreateGlfMode("minigame", 500)
-        .StartEvents = Array("mode_skillshots_stopped")
+        .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()

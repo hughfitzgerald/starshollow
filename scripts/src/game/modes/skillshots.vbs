@@ -15,7 +15,7 @@ Sub CreateSkillshotsMode()
     With CreateGlfMode("skillshots", 400)
 
         'Define the events that start and stop this mode
-        .StartEvents = Array("new_ball_started")
+        .StartEvents = Array("new_ball_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping","stop_skillshots")
 
 

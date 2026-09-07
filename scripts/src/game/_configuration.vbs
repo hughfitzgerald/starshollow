@@ -122,6 +122,12 @@ Sub ConfigureGlfDevices()
     ' These variables are tracked for this machine. 
     ' Initial values are set first time the machine turns on. After that, values are read from the machines ini file.
 
+    With CreateMachineVar("game_modes_enabled")         'tracks if game modes are enabled
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+    
     With CreateMachineVar("high_score_initials")        'captures high score initials during high score mode
         .InitialValue = ""
         .ValueType = "string"

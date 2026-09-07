@@ -17,7 +17,6 @@ Dim BallRollVolume : BallRollVolume = 0.5   	' Level of ball rolling volume. Val
 Dim RampRollVolume : RampRollVolume = 0.5 		' Level of ramp rolling volume. Value between 0 and 1
 Dim StagedFlippers : StagedFlippers = 0         ' Staged Flippers. 0 = Disabled, 1 = Enabled
 
-
 ' Called when options are tweaked by the player. 
 ' - 0: game has started, good time to load options and adjust accordingly
 ' - 1: an option has changed
@@ -57,6 +56,7 @@ Sub Table1_OptionEvent(ByVal eventId)
 
     ' Staged Flippers
     StagedFlippers = Table1.Option("Staged Flippers", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
+	glf_machine_vars("game_modes_enabled").Value = Table1.Option("Game Modes Enabled", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
 
 
 	' GLF's own options: Debug Log, Debug Log Level, Backbox Control
