@@ -13,7 +13,7 @@ End Function
 Sub CreateHighScoreMode()
 
     With CreateGlfMode("high_score", 120)
-        .StartEvents = Array("game_will_end", "test_high_score")
+        .StartEvents = Array("game_will_end{machine.game_modes_enabled == 1}", "test_high_score")
         .StopEvents = Array("high_score_complete")
 
         Dim i
