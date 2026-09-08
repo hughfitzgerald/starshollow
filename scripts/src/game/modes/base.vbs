@@ -282,11 +282,11 @@ Sub CreateBaseMode()
                 .Key = "key_sfx_bumper1"
                 .Sound = "sfx_bumper1"
             End With
-            With .EventName("auto_fire_coil_bumper3_activate{modes.ll_multiball.active==False}")
+            With .EventName("auto_fire_coil_bumper5_activate{modes.ll_multiball.active==False}")
                 .Key = "key_sfx_bumper2"
                 .Sound = "sfx_bumper2"
             End With
-            With .EventName("auto_fire_coil_bumper5_activate{modes.ll_multiball.active==False}")
+            With .EventName("auto_fire_coil_bumper3_activate{modes.ll_multiball.active==False}")
                 .Key = "key_sfx_bumper3"
                 .Sound = "sfx_bumper3"
             End With

@@ -61,7 +61,7 @@ Sub ConfigureGlfDevices()
     End With
     With CreateGlfSoundBus("sfx")
         .SimultaneousSounds = 8
-        .Volume = 0.5
+        .Volume = 0.3
     End With
     With CreateGlfSoundBus("voc")
         .SimultaneousSounds = 2
