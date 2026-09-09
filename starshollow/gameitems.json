@@ -294,15 +294,13 @@
     "file_name": "Trigger.s_sw9.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Triggers",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Triggers"
   },
   {
     "file_name": "Trigger.s_sw8.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Triggers",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Triggers"
   },
   {
     "file_name": "Primitive.PegPlasticT35.json",
@@ -456,8 +454,7 @@
     "file_name": "Trigger.s_Trigger1.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Triggers",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Triggers"
   },
   {
     "file_name": "Kicker.swTrough1.json",
@@ -610,8 +607,7 @@
     "file_name": "Trigger.s_LeftInlane.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Triggers",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Triggers"
   },
   {
     "file_name": "Primitive.Primitive200.json",
@@ -716,8 +712,7 @@
     "file_name": "Trigger.s_RightInlane.json",
     "is_locked": false,
     "editor_layer": 0,
-    "editor_layer_name": "Triggers",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Triggers"
   },
   {
     "file_name": "Primitive.Primitive1.json",
@@ -1716,8 +1711,7 @@
   {
     "file_name": "Ball.LoganBall.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall005.json",
@@ -2264,44 +2258,37 @@
   {
     "file_name": "Trigger.s_enter_right_ramp.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_enter_left_ramp.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_complete_left_ramp.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_complete_right_ramp.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_left_orbit.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_right_orbit.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_skillshot.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.skillshot_trigger_surface.json",
@@ -2770,8 +2757,7 @@
   {
     "file_name": "Trigger.s_sw7.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.p7off.json",
@@ -2870,11 +2856,6 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Wall.Wall015.json",
-    "is_locked": false,
-    "editor_layer": 0
-  },
-  {
     "file_name": "Rubber.Rubber016.json",
     "is_locked": false,
     "editor_layer": 0
@@ -2932,8 +2913,7 @@
   {
     "file_name": "Wall.right_ramp_entrance_trigger_platform.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Light.gi026.json",
@@ -3016,14 +2996,12 @@
   {
     "file_name": "Trigger.s_LeftOutlane.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_RightOutlane.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.p62.json",
@@ -3100,8 +3078,7 @@
   {
     "file_name": "Trigger.s_captive_ball.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "HitTarget.s_slim_target_ramp1.json",
@@ -3265,14 +3242,12 @@
   {
     "file_name": "Gate.s_left_ramp_gate.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Gate.s_right_ramp_gate.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_lock3_trigger.json",
@@ -3428,8 +3403,7 @@
   {
     "file_name": "Wall.InvisibleCaptiveBallCeiling.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.CaptiveSubwayFloor.json",
@@ -3610,6 +3584,11 @@
   },
   {
     "file_name": "Primitive.swhidden2o.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall003.json",
     "is_locked": false,
     "editor_layer": 0
   }

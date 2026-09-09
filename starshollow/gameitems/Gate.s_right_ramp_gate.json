@@ -1,12 +1,12 @@
 {
   "Gate": {
     "center": {
-      "x": 591.1667,
+      "x": 586.0,
       "y": 864.3621
     },
     "length": 115.0,
     "height": 70.0,
-    "rotation": 23.5,
+    "rotation": 14.0,
     "material": "Metal",
     "is_timer_enabled": false,
     "timer_interval": 100,
