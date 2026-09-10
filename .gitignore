@@ -58,6 +58,7 @@ scripts/dest/
 glf_mpf/
 glf_logs/
 *_work/
+*_export/
 user
 cache
 cached-functions.vbs
