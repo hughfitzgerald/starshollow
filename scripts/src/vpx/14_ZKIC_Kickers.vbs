@@ -24,7 +24,7 @@ Sub ScoopEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1
-	s_VUK1.Kick -8, 50
+	s_VUK1.Kick -19, 50
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
