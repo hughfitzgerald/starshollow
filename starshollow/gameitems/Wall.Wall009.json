@@ -30,7 +30,7 @@
     "disable_lighting_top": 0.0,
     "disable_lighting_below": 0.0,
     "is_reflection_enabled": true,
-    "physics_material": "",
+    "physics_material": "zCol_Plastics",
     "overwrite_physics": true,
     "drag_points": [
       {
@@ -165,8 +165,8 @@
         "editor_layer": 0
       },
       {
-        "x": 259.61197,
-        "y": 667.2941,
+        "x": 263.37457,
+        "y": 664.2916,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

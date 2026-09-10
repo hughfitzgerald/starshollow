@@ -30,7 +30,7 @@
     "disable_lighting_top": 0.0,
     "disable_lighting_below": 0.0,
     "is_reflection_enabled": true,
-    "physics_material": "",
+    "physics_material": "zCol_Wood",
     "overwrite_physics": true,
     "drag_points": [
       {

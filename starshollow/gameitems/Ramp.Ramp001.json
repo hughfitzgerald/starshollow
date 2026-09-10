@@ -28,7 +28,7 @@
     "wire_distance_x": 38.0,
     "wire_distance_y": 88.0,
     "is_reflection_enabled": true,
-    "physics_material": "",
+    "physics_material": "zCol_Ramp",
     "overwrite_physics": true,
     "drag_points": [
       {

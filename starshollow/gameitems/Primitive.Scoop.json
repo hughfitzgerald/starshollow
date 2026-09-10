@@ -46,7 +46,7 @@
     "disable_lighting_below": 1.0,
     "is_reflection_enabled": true,
     "backfaces_enabled": false,
-    "physics_material": "",
+    "physics_material": "zCol_Metal",
     "overwrite_physics": true,
     "display_texture": false,
     "object_space_normal_map": false,
