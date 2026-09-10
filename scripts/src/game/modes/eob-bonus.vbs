@@ -102,6 +102,12 @@ Sub CreateBonusMode
         End With
 
         With .VariablePlayer()
+            With .EventName("run_bonus_started")
+				With .Variable("bonus_skip")
+                    .Action = "set"
+					.Int = 0
+				End With
+            End With
             With .EventName("calculate_bonus_total")
                 With .Variable("bonus_total")
                     .Action = "add"
