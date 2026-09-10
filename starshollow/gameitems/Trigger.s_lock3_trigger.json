@@ -1,8 +1,8 @@
 {
   "Trigger": {
     "center": {
-      "x": 467.8492,
-      "y": 733.91895
+      "x": 477.47388,
+      "y": 819.36816
     },
     "radius": 25.0,
     "rotation": 0.0,
@@ -23,8 +23,8 @@
     "part_group_name": "Subway",
     "drag_points": [
       {
-        "x": 431.8936,
-        "y": 716.5933,
+        "x": 440.8021,
+        "y": 800.39935,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -36,8 +36,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 441.60962,
-        "y": 777.07404,
+        "x": 445.08466,
+        "y": 860.2031,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 498.21017,
-        "y": 758.96594,
+        "x": 493.9913,
+        "y": 848.17255,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 488.3572,
-        "y": 697.2763,
+        "x": 474.07333,
+        "y": 791.83307,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,

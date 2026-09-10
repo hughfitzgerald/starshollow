@@ -24,7 +24,7 @@ Sub ScoopEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1
-	s_VUK1.Kick -19, 50
+	s_VUK1.Kick -8, 50
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 
@@ -32,7 +32,7 @@ Sub ScoopReturnToCaptivity(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_VUK1
-	s_VUK1.Kick 74, 100
+	s_VUK1.Kick 85, 100
 End Sub
 
 Sub DropTargetKickerEjectCallback(ball)
@@ -155,23 +155,23 @@ Sub ClearMultiballLocksListener(ball)
 End Sub
 
 Sub Lock1SubwayEjectCallback(ball)
-    s_Lock1.Kick 162, 10
+    s_Lock1.Kick 173, 10
 End Sub
 
 Sub Lock2SubwayEjectCallback(ball)
-    s_Lock2.Kick 162, 10
+    s_Lock2.Kick 173, 10
 End Sub
 
 Sub Lock1EjectCallback(ball)
 	Dim ang, vel
-	ang = 251.5
+	ang = 262.5
 	vel = 50
 	s_Lock1.Kick ang, vel
 End Sub
 
 Sub Lock2EjectCallback(ball)
 	Dim ang, vel
-	ang = 251.5
+	ang = 262.5
 	vel = 50
 	s_Lock2.Kick ang, vel
 End Sub
