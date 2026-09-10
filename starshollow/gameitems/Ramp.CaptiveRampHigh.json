@@ -16,7 +16,7 @@
     "right_wall_height": 62.0,
     "left_wall_height_visible": 30.0,
     "right_wall_height_visible": 30.0,
-    "hit_event": false,
+    "hit_event": true,
     "threshold": 2.0,
     "elasticity": 0.3,
     "friction": 0.3,
@@ -28,7 +28,7 @@
     "wire_distance_x": 38.0,
     "wire_distance_y": 88.0,
     "is_reflection_enabled": true,
-    "physics_material": "",
+    "physics_material": "zCol_Ramp",
     "overwrite_physics": true,
     "drag_points": [
       {
@@ -69,7 +69,7 @@
       {
         "x": 739.5086,
         "y": 730.35333,
-        "z": -54.0,
+        "z": -60.0,
         "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
@@ -80,7 +80,7 @@
       {
         "x": 728.508,
         "y": 756.7055,
-        "z": -51.0,
+        "z": -54.0,
         "smooth": false,
         "is_slingshot": false,
         "has_auto_texture": true,
@@ -89,8 +89,8 @@
         "editor_layer": 0
       },
       {
-        "x": 711.4656,
-        "y": 805.65186,
+        "x": 709.1152,
+        "y": 809.261,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
