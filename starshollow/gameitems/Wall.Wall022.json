@@ -73,10 +73,21 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 311.91342,
-        "y": 326.5231,
+        "x": 294.28818,
+        "y": 332.95404,
         "z": 0.0,
         "smooth": false,
+        "is_slingshot": false,
+        "has_auto_texture": true,
+        "tex_coord": 0.0,
+        "is_locked": false,
+        "editor_layer": 0
+      },
+      {
+        "x": 311.63794,
+        "y": 345.70566,
+        "z": 0.0,
+        "smooth": true,
         "is_slingshot": false,
         "has_auto_texture": true,
         "tex_coord": 0.0,
