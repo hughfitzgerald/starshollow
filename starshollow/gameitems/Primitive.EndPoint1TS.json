@@ -1,14 +1,14 @@
 {
   "Primitive": {
     "position": {
-      "x": 465.05487,
-      "y": 419.15448,
+      "x": 459.11606,
+      "y": 544.21747,
       "z": 0.0
     },
     "size": {
-      "x": 1.0,
-      "y": 1.0,
-      "z": 1.0
+      "x": 10.0,
+      "y": 10.0,
+      "z": 10.0
     },
     "rot_and_tra": [
       0.0,
@@ -21,25 +21,25 @@
       0.0,
       0.0
     ],
-    "image": "Flbumperdiskred",
+    "image": "",
     "normal_map": "",
-    "sides": 4,
-    "name": "bumperdisk1",
-    "material": "bumperdisk",
+    "sides": 32,
+    "name": "EndPoint1TS",
+    "material": "",
     "side_color": "#969696",
-    "is_visible": true,
-    "draw_textures_inside": true,
-    "hit_event": false,
+    "is_visible": false,
+    "draw_textures_inside": false,
+    "hit_event": true,
     "threshold": 2.0,
-    "elasticity": 0.3,
+    "elasticity": 0.42,
     "elasticity_falloff": 0.0,
-    "friction": 0.0,
+    "friction": 0.3,
     "scatter": 0.0,
-    "edge_factor_ui": 0.5,
+    "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
     "is_collidable": false,
     "is_toy": true,
-    "use_3d_mesh": true,
+    "use_3d_mesh": false,
     "static_rendering": false,
     "disable_lighting_top_old": null,
     "disable_lighting_top": 0.0,
@@ -52,8 +52,8 @@
     "object_space_normal_map": false,
     "min_aa_bound": null,
     "max_aa_bound": null,
-    "mesh_file_name": "",
-    "depth_bias": 600.0,
+    "mesh_file_name": null,
+    "depth_bias": 0.0,
     "add_blend": false,
     "use_depth_mask": true,
     "alpha": 100.0,
@@ -63,6 +63,6 @@
     "reflection_strength": 1.0,
     "refraction_probe": "",
     "refraction_thickness": 10.0,
-    "part_group_name": "Bumpers"
+    "part_group_name": "Slingshots"
   }
 }

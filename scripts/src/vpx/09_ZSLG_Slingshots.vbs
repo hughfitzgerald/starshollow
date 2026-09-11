@@ -7,7 +7,7 @@
 ' The _Timer animation subs stay as normal VPX timers.
 
 ' RStep and LStep are the variables that increment the animation
-Dim RStep, LStep
+Dim RStep, LStep, TStep
 
 Sub RightSlingshotAction(args)
 	Dim enabled : enabled = args(0)
@@ -71,6 +71,37 @@ Sub s_LeftSlingshot_Timer
 	LStep = LStep + 1
 End Sub
 
+Sub TopSlingshotAction(args)
+	Dim enabled : enabled = args(0)
+	If enabled Then
+		If Not IsNull(args(1)) Then TS.VelocityCorrect(args(1))
+		TSling1.Visible = 1
+		Sling3.TransY = -20   'Sling Metal Bracket
+		TStep = 0
+		s_TopSlingshot.TimerEnabled = 1
+		s_TopSlingshot.TimerInterval = 10
+		RandomSoundSlingshotLeft Sling3
+		DOF 103, DOFPulse
+	End If
+End Sub
+
+Sub TopSlingshotDisabled(args) : End Sub
+Sub TopSlingshotEnabled(args)  : End Sub
+
+Sub s_TopSlingshot_Timer
+	Select Case TStep
+		Case 3
+			TSling1.Visible = 0
+			TSling2.Visible = 1
+			Sling3.TransY = -10
+		Case 4
+			TSling2.Visible = 0
+			Sling3.TransY = 0
+			s_TopSlingshot.TimerEnabled = 0
+	End Select
+	TStep = TStep + 1
+End Sub
+
 
 '******************************************************
 '	ZSSC: SLINGSHOT CORRECTION FUNCTIONS by apophis
@@ -84,6 +115,8 @@ Dim LS
 Set LS = New SlingshotCorrection
 Dim RS
 Set RS = New SlingshotCorrection
+Dim TS
+Set TS = New SlingshotCorrection
 
 InitSlingCorrection
 
@@ -95,6 +128,10 @@ Sub InitSlingCorrection
 	RS.Object = s_RightSlingshot
 	RS.EndPoint1 = EndPoint1RS
 	RS.EndPoint2 = EndPoint2RS
+
+	TS.Object = s_TopSlingshot
+	TS.EndPoint1 = EndPoint1TS
+	TS.EndPoint2 = EndPoint2TS
 	
 	'Slingshot angle corrections (pt, BallPos in %, Angle in deg)
 	' These values are best guesses. Retune them if needed based on specific table research.
@@ -108,7 +145,7 @@ End Sub
 
 Sub AddSlingsPt(idx, aX, aY)		'debugger wrapper for adjusting flipper script In-game
 	Dim a
-	a = Array(LS, RS)
+	a = Array(LS, RS, TS)
 	Dim x
 	For Each x In a
 		x.addpoint idx, aX, aY

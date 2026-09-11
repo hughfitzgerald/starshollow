@@ -323,7 +323,8 @@
     "name": "glf_slingshots",
     "items": [
       "s_LeftSlingShot",
-      "s_RightSlingShot"
+      "s_RightSlingShot",
+      "s_TopSlingShot"
     ],
     "fire_events": false,
     "stop_single_events": false,

@@ -285,6 +285,15 @@ Sub ConfigureGlfDevices()
         .EnableEvents = Array("ball_started", "enable_flippers")
     End With
 
+    With CreateGlfAutoFireDevice("top_sling")
+        .Switch = "s_TopSlingShot"
+        .ActionCallback = "TopSlingshotAction"
+        .DisabledCallback = "TopSlingshotDisabled"
+        .EnabledCallback = "TopSlingshotEnabled"
+        .DisableEvents = Array("kill_flippers")
+        .EnableEvents = Array("ball_started", "enable_flippers")
+    End With
+
     ' --- Bumpers (1, 3, 5 - there is no 2 or 4 on this table) ---
     ' MUST be members of glf_switches.
     With CreateGlfAutoFireDevice("bumper1")
