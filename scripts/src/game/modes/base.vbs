@@ -73,6 +73,9 @@ Sub CreateBaseMode()
 
             .Add "mode_eob_bonus_started", Array("base_music_stop")
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop", "base_music_3_stop", "base_music_4_stop", "base_music_5_stop", "base_music_6_stop", "base_music_7_stop")
+
+            .Add "timer_base_music_complete{modes.eob_bonus.active == False}", Array("base_music_stop","start_new_song")
+            .Add "start_new_song", Array("base_music_start")
         End With
 
         ' With .Timers("left_spinner")
@@ -86,6 +89,86 @@ Sub CreateBaseMode()
         '         .Action = "restart"
         '     End With
         ' End With
+
+
+
+        With .Timers("base_music")
+            .TickInterval = 1000
+            .StartValue = 200
+            .EndValue = 0
+            .Direction = "down"
+            With .ControlEvents()
+                .EventName = "mode_base_started"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "timer_base_music_complete"
+                .Action = "restart"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_1_start"
+                .Action = "jump"
+                .Value = BaseMusic1Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_1_start"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_2_start"
+                .Action = "jump"
+                .Value = BaseMusic2Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_2_start"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_3_start"
+                .Action = "jump"
+                .Value = BaseMusic3Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_3_start"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_4_start"
+                .Action = "jump"
+                .Value = BaseMusic4Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_4_start"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_5_start"
+                .Action = "jump"
+                .Value = BaseMusic5Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_5_start"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_6_start"
+                .Action = "jump"
+                .Value = BaseMusic6Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_6_start"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_7_start"
+                .Action = "jump"
+                .Value = BaseMusic7Duration
+            End With
+            With .ControlEvents()
+                .EventName = "base_music_7_start"
+                .Action = "start"
+            End With
+        End With
 
 
         '--- Player variables ----------------------------------------------

@@ -40,6 +40,14 @@ Const BonusBumperFactor = 2000
 Const BonusDinerFactor = 3000
 Const BonusGrandparentsFactor = 4000
 
+Const BaseMusic1Duration = 245  ' go
+Const BaseMusic2Duration = 51  ' happy
+Const BaseMusic3Duration = 37  ' alternate
+Const BaseMusic4Duration = 189  ' book
+Const BaseMusic5Duration = 53  ' longer
+Const BaseMusic6Duration = 235  ' maybe
+Const BaseMusic7Duration = 333  ' popcorn
+
 
 Sub ConfigureGlfDevices()
 
@@ -514,16 +522,16 @@ End Function
 '======================================================
 
 Sub CreateSounds()
-    AddMusic       "mus_happy",  51, -1
+    AddMusic       "mus_happy",  BaseMusic2Duration, -1
     AddMusic       "mus_married",  217, -1
-    AddMusic       "mus_go",  245, -1
+    AddMusic       "mus_go",  BaseMusic1Duration, -1
     AddMusic       "mus_sad",  93, 0
-    AddMusic       "mus_alternate",  93, 0
-    AddMusic       "mus_book",  93, 0
-    AddMusic       "mus_longer",  93, 0
-    AddMusic       "mus_maybe",  93, 0
-    AddMusic       "mus_popcorn",  93, 0
-    AddMusic       "mus_shoo",  93, 0
+    AddMusic       "mus_alternate",  BaseMusic3Duration, 0
+    AddMusic       "mus_book",  BaseMusic4Duration, 0
+    AddMusic       "mus_longer",  BaseMusic5Duration, 0
+    AddMusic       "mus_maybe",  BaseMusic6Duration, 0
+    AddMusic       "mus_popcorn",  BaseMusic7Duration, 0
+    AddMusic       "mus_shoo",  48, 0
 
     AddCallout     "voc_poodles1",  2
     AddCallout     "voc_poodles2",  2
