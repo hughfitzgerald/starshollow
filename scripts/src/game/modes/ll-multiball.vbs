@@ -15,7 +15,7 @@ Sub CreateLLMultiballMode()
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
             .Add "auto_fire_coil_bumper1_activate", Array("logan_bumper_hit")
-            .Add "auto_fire_coil_bumper3_activate", Array("logan_bumper_hit")
+            ' .Add "auto_fire_coil_bumper3_activate", Array("logan_bumper_hit")
             .Add "auto_fire_coil_bumper5_activate", Array("logan_bumper_hit")
 
             .Add "logan_bumper_hit{current_player.mode_llmb_score>=" & LoganScoreToWin & "}", Array("logan_totally_bashed")
@@ -30,10 +30,10 @@ Sub CreateLLMultiballMode()
                 .Key = "key_voc_logan_hit1"
                 .Sound = "voc_logan_hit1"
             End With
-            With .EventName("auto_fire_coil_bumper3_activate")
-                .Key = "key_voc_logan_hit2"
-                .Sound = "voc_logan_hit2"
-            End With
+            ' With .EventName("auto_fire_coil_bumper3_activate")
+            '     .Key = "key_voc_logan_hit2"
+            '     .Sound = "voc_logan_hit2"
+            ' End With
             With .EventName("auto_fire_coil_bumper5_activate")
                 .Key = "key_voc_logan_hit3"
                 .Sound = "voc_logan_hit3"

@@ -49,7 +49,7 @@ Sub CreateBaseMode()
 
             'Bumpers
             .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment")
-            .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
+            ' .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
             .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment")
 
             'Slingshots
@@ -286,10 +286,10 @@ Sub CreateBaseMode()
                 .Key = "key_sfx_bumper2"
                 .Sound = "sfx_bumper2"
             End With
-            With .EventName("auto_fire_coil_bumper3_activate{modes.ll_multiball.active==False}")
-                .Key = "key_sfx_bumper3"
-                .Sound = "sfx_bumper3"
-            End With
+            ' With .EventName("auto_fire_coil_bumper3_activate{modes.ll_multiball.active==False}")
+            '     .Key = "key_sfx_bumper3"
+            '     .Sound = "sfx_bumper3"
+            ' End With
             With .EventName("auto_fire_coil_left_sling_activate")
                 .Key = "key_voc_copperboom1"
                 .Sound = "voc_copperboom1"
@@ -395,17 +395,17 @@ Sub CreateBaseMode()
                     .Add "color", "ff0000"
                 End With
             End With
-            With .EventName("play_bumper3_show") 
-                .Key = "key_bumper3_show"
-                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
-                .Speed = 10
-                .Loops = 0
-                With .Tokens()
-                    .Add "lights", "FL3"
-                    .Add "fade", 500
-                    .Add "color", "0000ff"
-                End With
-            End With
+            ' With .EventName("play_bumper3_show") 
+            '     .Key = "key_bumper3_show"
+            '     .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+            '     .Speed = 10
+            '     .Loops = 0
+            '     With .Tokens()
+            '         .Add "lights", "FL3"
+            '         .Add "fade", 500
+            '         .Add "color", "0000ff"
+            '     End With
+            ' End With
             With .EventName("play_bumper5_show") 
                 .Key = "key_bumper5_show"
                 .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()

@@ -288,14 +288,14 @@ Sub ConfigureGlfDevices()
         .EnableEvents = Array("ball_started", "enable_flippers")
     End With
 
-    With CreateGlfAutoFireDevice("bumper3")
-        .Switch = "s_Bumper3"
-        .ActionCallback = "Bumper3Action"
-        .DisabledCallback = "Bumper3Disabled"
-        .EnabledCallback = "Bumper3Enabled"
-        .DisableEvents = Array("kill_flippers")
-        .EnableEvents = Array("ball_started", "enable_flippers")
-    End With
+    ' With CreateGlfAutoFireDevice("bumper3")
+    '     .Switch = "s_Bumper3"
+    '     .ActionCallback = "Bumper3Action"
+    '     .DisabledCallback = "Bumper3Disabled"
+    '     .EnabledCallback = "Bumper3Enabled"
+    '     .DisableEvents = Array("kill_flippers")
+    '     .EnableEvents = Array("ball_started", "enable_flippers")
+    ' End With
 
     With CreateGlfAutoFireDevice("bumper5")
         .Switch = "s_Bumper5"

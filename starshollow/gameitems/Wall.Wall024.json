@@ -34,21 +34,8 @@
     "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 631.518,
-        "y": 235.47485,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      },
-      {
-        "x": 628.7313,
-        "y": 238.26155,
+        "x": 660.96124,
+        "y": 253.36024,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -56,19 +43,6 @@
         "tex_coord": 0.0,
         "is_locked": false,
         "editor_layer": 0
-      },
-      {
-        "x": 645.7998,
-        "y": 245.92496,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
       },
       {
         "x": 678.1951,
@@ -183,17 +157,15 @@
         "editor_layer": 0
       },
       {
-        "x": 648.1968,
-        "y": 242.02248,
+        "x": 661.2539,
+        "y": 249.08015,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
         "has_auto_texture": true,
         "tex_coord": 0.0,
         "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "editor_layer": 0
       }
     ],
     "part_group_name": "Collidable_Misc"

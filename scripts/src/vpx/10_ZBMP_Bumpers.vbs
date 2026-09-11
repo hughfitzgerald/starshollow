@@ -22,20 +22,20 @@ Sub s_Bumper1_Timer
 	FlBumperFadeTarget(1) = 0
 End Sub
 
-Sub Bumper3Action(args)
-	Dim enabled : enabled = args(0)
-	If enabled Then
-		RandomSoundBumperBottom s_Bumper3
-		FlBumperFadeTarget(3) = 1
-		s_Bumper3.timerenabled = True
-		DOF 106, DOFPulse
-	End If
-End Sub
-Sub Bumper3Disabled(args) : s_Bumper3.Threshold = 100 : End Sub
-Sub Bumper3Enabled(args)  : s_Bumper3.Threshold = 1.5 : End Sub
-Sub s_Bumper3_Timer
-	FlBumperFadeTarget(3) = 0
-End Sub
+' Sub Bumper3Action(args)
+' 	Dim enabled : enabled = args(0)
+' 	If enabled Then
+' 		RandomSoundBumperBottom s_Bumper3
+' 		FlBumperFadeTarget(3) = 1
+' 		s_Bumper3.timerenabled = True
+' 		DOF 106, DOFPulse
+' 	End If
+' End Sub
+' Sub Bumper3Disabled(args) : s_Bumper3.Threshold = 100 : End Sub
+' Sub Bumper3Enabled(args)  : s_Bumper3.Threshold = 1.5 : End Sub
+' Sub s_Bumper3_Timer
+' 	FlBumperFadeTarget(3) = 0
+' End Sub
 
 Sub Bumper5Action(args)
 	Dim enabled : enabled = args(0)

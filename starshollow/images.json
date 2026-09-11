@@ -1380,5 +1380,11 @@
     "path": "/Users/stephenjones/code/starshollow/scripts/plastics.png",
     "alpha_test_value": 128.0,
     "is_opaque": false
+  },
+  {
+    "name": "playfield_edits_1",
+    "path": "/Users/stephenjones/code/starshollow/scripts/playfield_edits.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": true
   }
 ]

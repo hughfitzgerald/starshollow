@@ -39,7 +39,7 @@ Sub DropTargetKickerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_DropTargetKicker
-	s_DropTargetKicker.Kick -122, 20
+	s_DropTargetKicker.Kick -110, 10
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 

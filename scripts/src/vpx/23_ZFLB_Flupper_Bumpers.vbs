@@ -66,7 +66,7 @@ Next
 ' colors available are red, white, blue, orange, yellow, green, purple and blacklight
 FlInitBumper 1, "red"
 ' FlInitBumper 2, "white"
-FlInitBumper 3, "blue"
+' FlInitBumper 3, "blue"
 ' FlInitBumper 4, "orange"
 FlInitBumper 5, "orange"
 
