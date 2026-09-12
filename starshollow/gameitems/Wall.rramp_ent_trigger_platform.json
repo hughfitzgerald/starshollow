@@ -15,7 +15,7 @@
     "slingshot_material": "",
     "height_bottom": 0.0,
     "height_top": 22.5,
-    "name": "right_ramp_entrance_trigger_platform",
+    "name": "rramp_ent_trigger_platform",
     "display_texture": false,
     "slingshot_force": 80.0,
     "slingshot_threshold": 0.0,

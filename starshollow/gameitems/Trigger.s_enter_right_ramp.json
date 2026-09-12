@@ -12,7 +12,7 @@
     "is_timer_enabled": false,
     "timer_interval": 100,
     "material": "",
-    "surface": "right_ramp_entrance_trigger_platform",
+    "surface": "rramp_ent_trigger_platform",
     "is_visible": true,
     "is_enabled": true,
     "hit_height": 50.0,
