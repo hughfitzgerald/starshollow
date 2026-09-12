@@ -101,6 +101,11 @@ Sub CreateFlexDmdDisplay()
         .Ticker  = "DmdTick_Mode"
     End With
 
+    With CreateDmdSlide("score_central_layout")
+        .Builder = "DmdBuild_ScoreCentralLayout"
+        .Ticker  = "DmdTick_ScoreCentralLayout"
+    End With
+
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With
     With CreateDmdSlide("jackpot")     : .Gif = "jackpot.gif"     : End With
     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With

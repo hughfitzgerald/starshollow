@@ -135,6 +135,12 @@ Sub ConfigureGlfDevices()
         .ValueType = "int"
         .Persist = False
     End With
+
+    With CreateMachineVar("last_score")  'tracks the last score of the player
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
     
     With CreateMachineVar("high_score_initials")        'captures high score initials during high score mode
         .InitialValue = ""
@@ -154,6 +160,22 @@ Sub ConfigureGlfDevices()
     With CreateMachineVar("high_score_player_num")  'tracks which player is entering initials
         .InitialValue = 1
         .ValueType = "int"
+        .Persist = False
+    End With
+
+    With CreateMachineVar("display_top_small_text")   'text to display at the top of the screen
+        .InitialValue = ""
+        .ValueType = "string"
+        .Persist = False
+    End With
+    With CreateMachineVar("display_middle_large_text")   'text to display at the middle of the screen
+        .InitialValue = ""
+        .ValueType = "string"
+        .Persist = False
+    End With
+    With CreateMachineVar("display_bottom_small_text")   'text to display at the bottom of the screen
+        .InitialValue = ""
+        .ValueType = "string"
         .Persist = False
     End With
 
@@ -189,6 +211,7 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "diner_count", 0
     Glf_SetInitialPlayerVar "grandparents_count", 0
     Glf_SetInitialPlayerVar "bonus_total", 0
+
     Glf_SetInitialPlayerVar "bonus_display_text", "BONUS 1x"
     Glf_SetInitialPlayerVar "bonus_display_score", "0"
 

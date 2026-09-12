@@ -27,6 +27,30 @@ Sub CreatePostGameMode()
             End With
         End With
 
+        With .SlidePlayer()
+            With .EventName("mode_post_game_started")
+                .Slide = "score_central_layout"
+                .Action = "play"
+            End With
+        End With
+
+        With .VariablePlayer()
+            With .EventName("mode_post_game_started")
+                With .Variable("display_top_small_text")
+                    .Action = "set_machine"
+                    .String = """GAME OVER"""
+                End With
+                With .Variable("display_middle_large_text")
+                    .Action = "set_machine"
+                    .String = "machine.last_score"
+                End With
+                With .Variable("display_bottom_small_text")
+                    .Action = "set_machine"
+                    .String = """"""
+                End With
+            End With
+        End With
+
         With .Timers("post_game")
             .StartRunning = True
             .TickInterval = 1000

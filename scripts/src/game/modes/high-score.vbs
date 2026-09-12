@@ -91,7 +91,12 @@ Sub CreateHighScoreMode()
         ' End With
 
         With .VariablePlayer()
-
+            With .EventName("mode_high_score_started")
+                With .Variable("last_score")
+                    .Action = "set_machine"
+                    .Int = "players[0].score"
+                End With
+            End With
             With .EventName("s_left_flipper_active.2{current_player.hs_input_ready == 1}")
 				With .Variable("high_score_initials_index")
                     .Action = "add_machine"
