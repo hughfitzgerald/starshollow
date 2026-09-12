@@ -10,7 +10,6 @@
       "Rubber25",
       "LSling",
       "RSling",
-      "zCol_Rubber_Sleeve005",
       "zCol_Rubber_Peg002",
       "zCol_Rubber_Post030",
       "zCol_Rubber_Post029",
@@ -59,7 +58,6 @@
   {
     "name": "Metals",
     "items": [
-      "Wall2",
       "Wall20",
       "Wall37"
     ],
@@ -176,7 +174,6 @@
   {
     "name": "dSleeves",
     "items": [
-      "zCol_Rubber_Sleeve005",
       "zCol_Rubber_Sleeve001"
     ],
     "fire_events": true,
