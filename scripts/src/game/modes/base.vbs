@@ -530,14 +530,6 @@ Sub CreateBaseMode()
             End With
         End With
 
-        With .BallHolds("scoop_hold")
-            .BallsToHold = 1
-            .HoldDevices = Array("scoop")
-            .EnableEvents = Array("enable_scoop_hold") 
-            .DisableEvents = Array("disable_scoop_hold") 
-            .ReleaseAllEvents = Array("release_scoop_hold")
-        End With
-
 
         '--- Ball save -----------------------------------------------------
         ' AutoLaunch is False on purpose: this table has a mechanical

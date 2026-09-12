@@ -67,6 +67,14 @@ Sub CreateBasementMode()
             End With
         End With
 
+        With .BallHolds("scoop_hold")
+            .BallsToHold = 1
+            .HoldDevices = Array("scoop")
+            .EnableEvents = Array("enable_scoop_hold") 
+            .DisableEvents = Array("disable_scoop_hold") 
+            .ReleaseAllEvents = Array("release_scoop_hold")
+        End With
+
         With .Timers("clear_multiball_locks")
             .StartRunning = False
             .Direction = "down"      ' Count down
