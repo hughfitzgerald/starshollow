@@ -1,7 +1,7 @@
 Sub CreateJDMultiballMode()
     With CreateGlfMode("jd_multiball", 1000)
         .StartEvents = Array("start_jd_multiball")
-        .StopEvents = Array("mode_base_stopping", "multiball_jdmb_ended", "jess_wins", "dean_wins")
+        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "multiball_jdmb_ended", "jess_wins", "dean_wins")
 
         With .EventPlayer()
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
