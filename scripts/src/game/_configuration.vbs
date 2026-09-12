@@ -241,20 +241,28 @@ Sub ConfigureGlfDevices()
     CreateAttractMode()      ' priority 100
     CreateBasementMode()      ' priority 100
     CreatePostGameMode()    ' priority 105
+
     CreateBaseMode()         ' priority 110
+
     CreateHighScoreMode()    ' priority 120
     CreateBonusMode()        ' priority 150
+
     CreateJDMultiballQualifyMode()    ' priority 200
     CreateBonusLanesMode()  ' priority 210
     CreateLLMultiballQualifyMode() ' priority 220
+
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
     CreateExtraBallMode()    ' priority 510
     CreateMysteryMode()       ' priority 580
     CreateRampshotsMode()    ' priority 660
+
     CreateDanceMarathonMode() ' priority 670
+    CreateTownMeetingMode()    ' priority 680
+
     CreateJDMultiballMode()    ' priority 1000
     CreateLLMultiballMode()    ' priority 1005
+
     CreateScoreMode()        ' priority 2000
     CreateTiltMode()         ' priority 10000
 
@@ -557,9 +565,9 @@ End Function
 '======================================================
 
 Sub CreateSounds()
-    AddMusic       "mus_happy",  BaseMusic2Duration, -1
+    AddMusic       "mus_happy",  BaseMusic2Duration, 0
     AddMusic       "mus_married",  217, -1
-    AddMusic       "mus_go",  BaseMusic1Duration, -1
+    AddMusic       "mus_go",  BaseMusic1Duration, 0
     AddMusic       "mus_sad",  93, 0
     AddMusic       "mus_alternate",  BaseMusic3Duration, 0
     AddMusic       "mus_book",  BaseMusic4Duration, 0
@@ -567,6 +575,7 @@ Sub CreateSounds()
     AddMusic       "mus_maybe",  BaseMusic6Duration, 0
     AddMusic       "mus_popcorn",  BaseMusic7Duration, 0
     AddMusic       "mus_shoo",  48, 0
+    AddMusic       "mus_guitarmode", 33.882, -1
 
     AddCallout     "voc_poodles1",  2
     AddCallout     "voc_poodles2",  2

@@ -64,9 +64,6 @@ Sub CreateDanceMarathonMode()
             For Each shot In dm_shots
                 .Add shot.Name & "_lit_hit", Array("dm_shot_hit")
             Next
-
-            .Add "dm_first_shot_hit", Array("score_20000")
-            .Add "dm_second_shot_hit", Array("score_40000")
         End With
 
         With .SoundPlayer()
@@ -112,24 +109,24 @@ Sub CreateDanceMarathonMode()
         '--- DMD -----------------------------------------------------------
         ' Names map to FlexDMD scenes/overlays in FlexDmd_ShowSlide /
         ' FlexDmd_ShowWidget (ZFBC).
-        With .WidgetPlayer()
-            ' With .EventName("mode_dance_marathon_started")
-            '     .Widget = "dance_marathon"
-            '     .Action = "play"
-            '     .Expire = 1.3
-            ' End With
-            ' _stopping, not _stopped: this mode's own devices are
-            ' deactivated on _stopping at priority-1, and _stopped is only
-            ' dispatched after that, so a widget player here would already
-            ' be gone. The player's own listener sits at the mode's full
-            ' priority, so it still fires on _stopping - the same event
-            ' the SoundPlayer above uses to stop the music.
-            With .EventName("mode_dance_marathon_stopping")
-                .Widget = "dance_marathon_done"
-                .Action = "play"
-                .Expire = 1.3
-            End With
-        End With
+        ' With .WidgetPlayer()
+        '     With .EventName("mode_dance_marathon_started")
+        '         .Widget = "dance_marathon"
+        '         .Action = "play"
+        '         .Expire = 1.3
+        '     End With
+        '     ' _stopping, not _stopped: this mode's own devices are
+        '     ' deactivated on _stopping at priority-1, and _stopped is only
+        '     ' dispatched after that, so a widget player here would already
+        '     ' be gone. The player's own listener sits at the mode's full
+        '     ' priority, so it still fires on _stopping - the same event
+        '     ' the SoundPlayer above uses to stop the music.
+        '     With .EventName("mode_dance_marathon_stopping")
+        '         .Widget = "dance_marathon_done"
+        '         .Action = "play"
+        '         .Expire = 1.3
+        '     End With
+        ' End With
 
         With .SlidePlayer()
             ' The countdown, replayed on every tick of the dm_mode timer
