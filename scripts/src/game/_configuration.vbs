@@ -180,6 +180,8 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "ball_just_started", 1
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
 
+    Glf_SetInitialPlayerVar "ss1_started", 0
+
     Glf_SetInitialPlayerVar "bonus_multiplier", 1
     Glf_SetInitialPlayerVar "total_switches_hit", 0
     Glf_SetInitialPlayerVar "bumper_count", 0

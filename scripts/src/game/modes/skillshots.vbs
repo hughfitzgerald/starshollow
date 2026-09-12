@@ -27,7 +27,8 @@ Sub CreateSkillshotsMode()
             .Add "mode_skillshots_started{current_player.ball_just_started == 0}", Array("stop_skillshots")
 
             'Handle successful skillshots
-            .Add "s_skillshot_active", Array("ss1_achieved", "ss_achieved")
+            .Add "s_skillshot_active", Array("ss1_achieved")
+            .Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", Array("ss_achieved")
             .Add "s_HiddenUpperRightKicker_active", Array("ss2_achieved", "ss_achieved")
             .Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", Array("ss3_achieved", "ss_achieved")
             .Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", Array("ss3_achieved", "ss_achieved")
@@ -40,13 +41,6 @@ Sub CreateSkillshotsMode()
             .Add "timer_skillshots_complete", Array("stop_skillshots")
             .Add "balldevice_scoop_ball_exiting", Array("stop_skillshots")
             .Add "ss_achieved", Array("stop_skillshots")
-
-            'Clear skill shot light if hit
-            ' .Add "s_TopLane1_inactive", Array("clear_skillshots")
-            ' .Add "s_TopLane2_inactive", Array("clear_skillshots")
-            ' .Add "s_TopLane3_inactive", Array("clear_skillshots")
-            ' .Add "s_TopLane4_inactive", Array("clear_skillshots")
-
         End With
 
         ' if the player goes past the initial skillshot, give them 5 seconds to hit one of the others
@@ -58,6 +52,21 @@ Sub CreateSkillshotsMode()
             With .ControlEvents()
                 .EventName = "Gate002_active"
                 .Action = "start"
+            End With
+        End With
+
+        With .VariablePlayer()
+            With .EventName("mode_skillshots_started")
+                With .Variable("ss1_started")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
+            With .EventName("ss1_achieved")
+                With .Variable("ss1_started")
+                    .Action = "set"
+                    .Int = 1
+                End With
             End With
         End With
 
