@@ -53,6 +53,10 @@ Sub CreateSkillshotsMode()
                 .EventName = "Gate002_active"
                 .Action = "start"
             End With
+            With .ControlEvents()
+                .EventName = "s_right_orbit"
+                .Action = "start"
+            End With
         End With
 
         With .VariablePlayer()
