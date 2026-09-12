@@ -184,6 +184,76 @@ Sub CreateBonusMode
                     .String = "current_player.mode_llmb_score"
                 End With
             End With
+            With .EventName("show_bonus_jdmb")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """JESS & DEAN: TO THE DEATH"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_jdmb_score"
+                End With
+            End With
+            With .EventName("show_bonus_dm")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """DANCE MARATHON"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_dm_score"
+                End With
+            End With
+            With .EventName("show_bonus_tm")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """TOWN MEETING"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_tm_score"
+                End With
+            End With
+            With .EventName("show_bonus_lbtb")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """LUKE BREAKS THE BELLS"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_lbtb_score"
+                End With
+            End With
+            With .EventName("show_bonus_ka")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """KIM'S ANTIQUES"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_ka_score"
+                End With
+            End With
+            With .EventName("show_bonus_dinner")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """FRIDAY NIGHT DINNER"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_dinner_score"
+                End With
+            End With
+            With .EventName("show_bonus_punch")
+                With .Variable("bonus_display_text")
+                    .Action = "set"
+                    .String = """FOUNDER'S DAY PUNCH"""
+                End With
+                With .Variable("bonus_display_score")
+                    .Action = "set"
+                    .String = "current_player.mode_punch_score"
+                End With
+            End With
             With .EventName("show_bonus_total")
                 With .Variable("bonus_display_text")
                     .Action = "set"
