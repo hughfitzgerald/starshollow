@@ -54,6 +54,10 @@ Sub CreateLLMultiballMode()
                     .Action = "set"
                     .String = """HIT BUMPERS TO BASH LOGAN"""
                 End With
+                With .Variable("mode_display_timer")
+                    .Action = "set"
+                    .String = """"""
+                End With
             End With
             With .EventName("logan_totally_bashed")
                 With .Variable("mode_display_instructions")
@@ -156,7 +160,7 @@ Sub CreateLLMultiballMode()
                 .Action = "play"
                 .Priority = 1000
             End With
-            With .EventName("mode_ll_multiball_ending")
+            With .EventName("mode_ll_multiball_stopping")
                 .Slide = "mode"
                 .Action = "stop"
             End With

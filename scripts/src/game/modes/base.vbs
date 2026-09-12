@@ -74,7 +74,8 @@ Sub CreateBaseMode()
             .Add "mode_eob_bonus_started", Array("base_music_stop")
             .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop", "base_music_3_stop", "base_music_4_stop", "base_music_5_stop", "base_music_6_stop", "base_music_7_stop")
 
-            .Add "timer_base_music_complete{modes.eob_bonus.active == False}", Array("base_music_stop","start_new_song")
+            ' When a sub-mode has its own music, we don't want a new song start based on the timer!!!
+            .Add "timer_base_music_complete{modes.eob_bonus.active == False and modes.dance_marathon.active == False}", Array("base_music_stop","start_new_song")
             .Add "start_new_song", Array("base_music_start")
         End With
 

@@ -5,6 +5,8 @@
 
 Const DanceMarathonShotTime = 15   'seconds
 Const DanceMarathonModeNumShots = 4   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
+Const DanceMarathonFirstShotScore = 20000
+Const DanceMarathonSecondShotScore = 40000
 
 ' A single dance-marathon shot: which switch/light it uses, and which
 ' random-event group (e.g. "dm_orbits") lights it.
@@ -136,14 +138,70 @@ Sub CreateDanceMarathonMode()
             ' forwards those. It sits on the slide stack at this mode's
             ' priority, so it outranks the base scoreboard while the mode
             ' runs and is cleared automatically when the mode stops.
-            With .EventName("timer_dm_mode_tick")
-                .Slide  = "dance_marathon_timer"
-                .Action = "play"
-            End With
+            ' With .EventName("timer_dm_mode_tick")
+            '     .Slide  = "dance_marathon_timer"
+            '     .Action = "play"
+            ' End With
 
             With .EventName("mode_dance_marathon_started")
                 .Slide = "kirk-dances"
                 .Action = "play"
+            End With
+
+
+            With .EventName("dm_start_shots")
+                .Slide = "mode"
+                .Action = "play"
+                .Priority = 1000
+            End With
+            With .EventName("mode_dance_marathon_stopping")
+                .Slide = "mode"
+                .Action = "stop"
+            End With
+        End With
+
+        With .VariablePlayer()
+            With .EventName("mode_dance_marathon_started")
+                With .Variable("mode_display_text")
+                    .Action = "set"
+                    .String = """DANCE MARATHON"""
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "set"
+                    .Int = "{current_player.mode_dm_score}"
+                End With
+                With .Variable("mode_display_instructions")
+                    .Action = "set"
+                    .String = """HIT FLASHING SHOTS TO SCORE"""
+                End With
+            End With
+
+            With .EventName("timer_dm_mode_tick")
+                With .Variable("mode_display_timer")
+                    .Action = "set"
+                    .String = "kwargs.ticks_remaining"
+                End With
+            End With
+
+            With .EventName("dm_first_shot_hit")
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = DanceMarathonFirstShotScore
+                End With
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = DanceMarathonFirstShotScore
+                End With
+            End With
+            With .EventName("dm_second_shot_hit")
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = DanceMarathonSecondShotScore
+                End With
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = DanceMarathonSecondShotScore
+                End With
             End With
         End With
 

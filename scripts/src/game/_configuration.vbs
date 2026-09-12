@@ -218,6 +218,7 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "mode_display_text", "MODE: NONE"
     Glf_SetInitialPlayerVar "mode_display_score", 0
     Glf_SetInitialPlayerVar "mode_display_instructions", "INSTRUCTIONS: NONE"
+    Glf_SetInitialPlayerVar "mode_display_timer", ""
 
     Glf_SetInitialPlayerVar "mode_llmb_score", 0 ' Lock-Away Logan Multiball
     Glf_SetInitialPlayerVar "mode_jdmb_score", 0 ' Jess & Dean Multiball
