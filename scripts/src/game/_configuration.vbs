@@ -759,3 +759,21 @@ Public Sub CreateSharedShotProfiles()
 
 
 End Sub
+
+' A single mode shot: which switch/light it uses, and which
+' random-event group (e.g. "dm_orbits") lights it.
+Class ShotDef
+    Public Name
+    Public Switch
+    Public Light
+    Public Group
+End Class
+
+Function NewShot(name, switch, light, group)
+    Dim s : Set s = New ShotDef
+    s.Name   = name
+    s.Switch = switch
+    s.Light  = light
+    s.Group  = group
+    Set NewShot = s
+End Function

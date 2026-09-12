@@ -8,36 +8,18 @@ Const DanceMarathonModeNumShots = 4   'how long does the mode last in terms of n
 Const DanceMarathonFirstShotScore = 20000
 Const DanceMarathonSecondShotScore = 40000
 
-' A single dance-marathon shot: which switch/light it uses, and which
-' random-event group (e.g. "dm_orbits") lights it.
-Class DmShotDef
-    Public Name
-    Public Switch
-    Public Light
-    Public Group
-End Class
-
-Function NewDmShot(name, switch, light, group)
-    Dim s : Set s = New DmShotDef
-    s.Name   = name
-    s.Switch = switch
-    s.Light  = light
-    s.Group  = group
-    Set NewDmShot = s
-End Function
-
 Sub CreateDanceMarathonMode()
     Dim dm_shots, groupSeen, shot, g
 
     dm_shots = Array( _
-        NewDmShot("dm_captive",  "s_captive_ball",                "l57", "dm_captive_spin"), _
-        NewDmShot("dm_right_spinner", "s_right_spinner",          "l52", "dm_captive_spin"), _
-        NewDmShot("dm_hidden_kicker", "s_HiddenUpperRightKicker", "l61", "dm_kickers"), _
-        NewDmShot("dm_drop_target_kicker", "s_DropTargetKicker",  "l60", "dm_kickers"), _
-        NewDmShot("dm_left_orbit",  "s_left_orbit",               "l51", "dm_orbits"), _
-        NewDmShot("dm_right_orbit", "s_right_orbit",              "l52", "dm_orbits"), _
-        NewDmShot("dm_right_ramp",  "s_complete_right_ramp",      "l55", "dm_ramps"), _
-        NewDmShot("dm_left_ramp",   "s_complete_left_ramp",       "l53", "dm_ramps") _
+        NewShot("dm_captive",  "s_captive_ball",                "l57", "dm_captive_spin"), _
+        NewShot("dm_right_spinner", "s_right_spinner",          "l52", "dm_captive_spin"), _
+        NewShot("dm_hidden_kicker", "s_HiddenUpperRightKicker", "l61", "dm_kickers"), _
+        NewShot("dm_drop_target_kicker", "s_DropTargetKicker",  "l60", "dm_kickers"), _
+        NewShot("dm_left_orbit",  "s_left_orbit",               "l51", "dm_orbits"), _
+        NewShot("dm_right_orbit", "s_right_orbit",              "l52", "dm_orbits"), _
+        NewShot("dm_right_ramp",  "s_complete_right_ramp",      "l55", "dm_ramps"), _
+        NewShot("dm_left_ramp",   "s_complete_left_ramp",       "l53", "dm_ramps") _
     )
 
     Set groupSeen = CreateObject("Scripting.Dictionary")

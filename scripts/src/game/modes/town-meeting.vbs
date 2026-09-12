@@ -4,26 +4,12 @@
 Const TownMeetingTime = 60   'seconds
 Const TownMeetingShotScore = 20000
 
-Class TmShotDef
-    Public Name
-    Public Switch
-    Public Light
-End Class
-
-Function NewTmShot(name, switch, light)
-    Dim s : Set s = New TmShotDef
-    s.Name   = name
-    s.Switch = switch
-    s.Light  = light
-    Set NewTmShot = s
-End Function
-
 Sub CreateTownMeetingMode()
     Dim tm_shots, shot
 
     tm_shots = Array( _
-        NewTmShot("tm_left_orbit", "s_left_orbit", "l51"), _
-        NewTmShot("tm_right_orbit", "s_right_orbit", "l52") _
+        NewShot("tm_left_orbit", "s_left_orbit", "l51", "tm_orbits"), _
+        NewShot("tm_right_orbit", "s_right_orbit", "l52", "tm_orbits") _
     )
 
     With CreateGlfMode("town_meeting", 680)
