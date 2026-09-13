@@ -3,14 +3,19 @@
 
 Const TownMeetingTime = 60   'seconds
 Const TownMeetingShotScore = 20000
+Const TownMeetingLukesShotScore = 100000
 
 Sub CreateTownMeetingMode()
-    Dim tm_shots, shot
+    Dim tm_shots, shot, shotNames
 
     tm_shots = Array( _
+        NewShot("tm_left_ramp", "s_complete_left_ramp", "l53", "tm_ramps"), _
+        NewShot("tm_right_ramp", "s_complete_right_ramp", "l55", "tm_ramps"), _
+        NewShot("tm_captive", "s_captive_ball", "l57", "tm_captives"), _
         NewShot("tm_left_orbit", "s_left_orbit", "l51", "tm_orbits"), _
         NewShot("tm_right_orbit", "s_right_orbit", "l52", "tm_orbits") _
     )
+    shotNames = Array("tm_left_ramp", "tm_right_ramp", "tm_captive", "tm_left_orbit", "tm_right_orbit")
 
     With CreateGlfMode("town_meeting", 680)
 
@@ -25,11 +30,28 @@ Sub CreateTownMeetingMode()
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
+            .Add "tm_lukes_lit_hit", Array("tm_start_shots")
+
+            ' .Add "tm_shot_group_unlit_complete", Array("light_lukes")
+            .Add "timer_tm_lukes_complete", Array("tm_shots_off", "light_lukes")
+
             For Each shot In tm_shots
                 .Add shot.Name & "_lit_hit", Array("tm_shot_hit")
             Next
 
             .Add "tm_reset_shots", Array("tm_shots_off","tm_start_shots")
+        End With
+
+        With .Timers("tm_lukes")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 10
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents
+                .EventName = "tm_start_shots"
+                .Action = "restart"
+            End With
         End With
 
         With .SoundPlayer()
@@ -121,6 +143,21 @@ Sub CreateTownMeetingMode()
                     .Int = TownMeetingShotScore
                 End With
             End With
+
+            With .EventName("tm_lukes_lit_hit")
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = TownMeetingLukesShotScore
+                End With
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = TownMeetingLukesShotScore
+                End With
+                With .Variable("mode_tm_score")
+                    .Action = "add"
+                    .Int = TownMeetingLukesShotScore
+                End With
+            End With
         End With
 
         With .Timers("tm_mode")
@@ -147,6 +184,26 @@ Sub CreateTownMeetingMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
+        End With
+
+        With .Shots("tm_lukes")
+            .Profile = "tm_profile"   'defined below
+            .Switch = "s_DropTargetKicker"
+            With .Tokens()
+                .Add "lights", "l60"
+            End With
+            With .ControlEvents()
+                .Events = Array("tm_lukes_lit_hit", "tm_shots_off")
+                .State = 0
+            End With
+            With .ControlEvents()
+                .Events = Array("light_lukes")
+                .State = 1
+            End With
+        End With
+
+        With .ShotGroups("tm_shot_group")
+            .Shots = shotNames
         End With
 
         For Each shot In tm_shots
