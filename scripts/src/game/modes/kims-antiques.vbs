@@ -17,7 +17,8 @@ Sub CreateKimsAntiquesMode()
 
         With .EventPlayer()
             .Add "mode_kims_antiques_started", Array("base_music_stop", "release_scoop_hold")
-            .Add "mode_kims_antiques_stopping", Array("base_music_start", "kims_antiques_shots_off")
+            .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
+            .Add "timer_kims_antiques_mode_complete", Array("base_music_start")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 

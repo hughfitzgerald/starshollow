@@ -14,7 +14,8 @@ Sub CreateLbtbMode()
         With .EventPlayer()
             .Debug = True
             .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells")
-            .Add "mode_lbtb_stopping", Array("base_music_start", "lbtb_shots_off", "bells_down")
+            .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down")
+            .Add "timer_lbtb_mode_complete", Array("base_music_start")
 
             .Add "timer_shuffle_bells_complete", Array("reset_bells")
 

@@ -20,7 +20,8 @@ Sub CreateTownMeetingMode()
 
         With .EventPlayer()
             .Add "mode_town_meeting_started", Array("base_music_stop", "release_scoop_hold", "tm_start_shots")
-            .Add "mode_town_meeting_stopping", Array("base_music_start", "tm_shots_off")
+            .Add "mode_town_meeting_stopping", Array("tm_shots_off")
+            .Add "timer_tm_mode_complete", Array("base_music_start")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 

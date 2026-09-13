@@ -99,6 +99,10 @@ Sub CreateBaseMode()
             .EndValue = 0
             .Direction = "down"
             With .ControlEvents()
+                .EventName = "base_music_stop"
+                .Action = "stop"
+            End With
+            With .ControlEvents()
                 .EventName = "mode_base_started"
                 .Action = "start"
             End With

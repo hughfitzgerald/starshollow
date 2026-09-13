@@ -17,7 +17,8 @@ Sub CreateDinnerMode()
 
         With .EventPlayer()
             .Add "mode_dinner_started", Array("base_music_stop", "release_scoop_hold")
-            .Add "mode_dinner_stopping", Array("base_music_start", "dinner_shots_off")
+            .Add "mode_dinner_stopping", Array("dinner_shots_off")
+            .Add "timer_dinner_mode_complete", Array("base_music_start")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 

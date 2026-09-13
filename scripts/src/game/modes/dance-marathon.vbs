@@ -35,7 +35,8 @@ Sub CreateDanceMarathonMode()
 
         With .EventPlayer()
             .Add "mode_dance_marathon_started", Array("base_music_stop")
-            .Add "mode_dance_marathon_stopping", Array("base_music_start", "dm_shots_off")
+            .Add "mode_dance_marathon_stopping", Array("dm_shots_off")
+            .Add "timer_dm_mode_complete", Array("base_music_start")
 
             .Add "timer_intro_delay_complete", Array("release_scoop_hold", "dm_start_shots")
             .Add "release_scoop_hold", Array("disable_scoop_hold")

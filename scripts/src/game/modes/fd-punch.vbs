@@ -17,7 +17,8 @@ Sub CreateFdPunchMode()
 
         With .EventPlayer()
             .Add "mode_fd_punch_started", Array("base_music_stop", "release_scoop_hold")
-            .Add "mode_fd_punch_stopping", Array("base_music_start", "fd_punch_shots_off")
+            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off")
+            .Add "timer_fd_punch_mode_complete", Array("base_music_start")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
