@@ -74,7 +74,7 @@ Sub CreateDinnerMode()
             End With
             With .EventName("mode_dinner_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 

@@ -74,7 +74,7 @@ Sub CreateFdPunchMode()
             End With
             With .EventName("mode_fd_punch_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 

@@ -74,7 +74,7 @@ Sub CreateLbtbMode()
             End With
             With .EventName("mode_lbtb_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 

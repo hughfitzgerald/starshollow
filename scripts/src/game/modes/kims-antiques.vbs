@@ -74,7 +74,7 @@ Sub CreateKimsAntiquesMode()
             End With
             With .EventName("mode_kims_antiques_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 

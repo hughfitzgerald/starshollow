@@ -162,7 +162,7 @@ Sub CreateLLMultiballMode()
             End With
             With .EventName("mode_ll_multiball_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 

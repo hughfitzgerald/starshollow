@@ -79,7 +79,7 @@ Sub CreateTownMeetingMode()
             End With
             With .EventName("mode_town_meeting_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 

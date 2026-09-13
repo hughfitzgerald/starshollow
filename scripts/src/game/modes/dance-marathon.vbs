@@ -135,7 +135,7 @@ Sub CreateDanceMarathonMode()
             End With
             With .EventName("mode_dance_marathon_stopping")
                 .Slide = "mode"
-                .Action = "stop"
+                .Action = "remove"
             End With
         End With
 
