@@ -35,7 +35,7 @@ Sub CreateLbtbMode()
         With .Timers("lbtb_intro_delay")
             .StartRunning = True
             .Direction = "down"
-            .StartValue = 3
+            .StartValue = 1
             .EndValue = 0
             .TickInterval = 1000    ' Tick every 1 second (1000 ms)
         End With
