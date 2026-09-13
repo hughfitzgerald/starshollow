@@ -13,7 +13,7 @@ Sub CreateLbtbMode()
 
         With .EventPlayer()
             .Debug = True
-            .Add "mode_lbtb_started", Array("base_music_stop", "release_scoop_hold", "reset_bells")
+            .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells")
             .Add "mode_lbtb_stopping", Array("base_music_start", "lbtb_shots_off", "bells_down")
 
             .Add "timer_shuffle_bells_complete", Array("reset_bells")
@@ -22,12 +22,21 @@ Sub CreateLbtbMode()
             .Add "choose_bell_one", Array("choose_bell", "choose_bell_two")
             .Add "choose_bell_two", Array("choose_bell", "choose_bell_three")
             .Add "choose_bell_three", Array("choose_bell")
-
+            
+            .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
             For x = 3 To 8
                 .Add "drop_target_drop" & x & "_down{current_player.bells_not_hit == 0}", Array("lbtb_shot_hit")
             Next
+        End With
+
+        With .Timers("lbtb_intro_delay")
+            .StartRunning = True
+            .Direction = "down"
+            .StartValue = 3
+            .EndValue = 0
+            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
         End With
 
         With .RandomEventPlayer()
@@ -53,11 +62,15 @@ Sub CreateLbtbMode()
         End With
 
         With .Timers("shuffle_bells")
-            .StartRunning = True
+            .StartRunning = False
             .Direction = "down"
             .StartValue = 5
             .EndValue = 1
             .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "timer_lbtb_intro_delay_complete"
+                .Action = "start"
+            End With
             With .ControlEvents()
                 .EventName = "timer_shuffle_bells_complete"
                 .Action = "restart"
@@ -175,7 +188,7 @@ Sub CreateLbtbMode()
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "mode_lbtb_started"
+                .EventName = "timer_lbtb_intro_delay_complete"
                 .Action = "start"
             End With
         End With
