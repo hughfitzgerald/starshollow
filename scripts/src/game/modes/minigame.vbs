@@ -6,15 +6,10 @@ Sub CreateMiniGameMode
     With CreateGlfMode("minigame", 500)
         .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
+        .Debug = True
 
         With .EventPlayer()
             .Add "mode_minigame_started", Array("select_minigame")
-            
-            ' TODO: Maybe add minigame state machine?
-            '           That way we won't start one if one is already running
-            '           Maybe it can handle the post-minigame cleanup too, like lighting the completed minigame shot, etc.
-
-            .Add "dance_marathon_lit", Array("enable_scoop_hold")
 
             .Add "check_minigame{current_player.shot_logan_light == 1}", Array("start_ll_multiball")
 
