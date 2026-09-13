@@ -15,11 +15,40 @@ Sub CreateLbtbMode()
             .Add "mode_lbtb_started", Array("base_music_stop", "release_scoop_hold", "reset_bells")
             .Add "mode_lbtb_stopping", Array("base_music_start", "lbtb_shots_off", "bells_down")
 
+            .Add "timer_shuffle_bells_complete", Array("reset_bells")
+
+            .Add "reset_bells", Array("bells_down", "choose_bell_one")
+            .Add "choose_bell_one", Array("choose_bell", "choose_bell_two")
+            .Add "choose_bell_two", Array("choose_bell", "choose_bell_three")
+            .Add "choose_bell_three", Array("choose_bell")
+
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
             For x = 3 To 8
-                .Add "drop_target_drop" & x & "_down", Array("lbtb_shot_hit")
+                .Add "drop_target_drop" & x & "_down{current_player.bells_not_hit == 0}", Array("lbtb_shot_hit")
             Next
+        End With
+
+        With .RandomEventPlayer()
+            With .EventName("choose_bell")
+                For x = 3 To 8
+                    .Add "drop" & x & "_reset", 1
+                Next
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+        End With
+
+        With .Timers("shuffle_bells")
+            .StartRunning = True
+            .Direction = "down"
+            .StartValue = 5
+            .EndValue = 1
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "timer_shuffle_bells_complete"
+                .Action = "restart"
+            End With
         End With
 
         With .SoundPlayer()
@@ -75,6 +104,19 @@ Sub CreateLbtbMode()
         End With
 
         With .VariablePlayer()
+            With .EventName("reset_bells")
+                With .Variable("bells_not_hit")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("choose_bell_three")
+                With .Variable("bells_not_hit")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
+
             With .EventName("mode_lbtb_started")
                 With .Variable("mode_display_text")
                     .Action = "set"

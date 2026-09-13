@@ -234,6 +234,8 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "llmb_shoot_again_active", 0
     Glf_SetInitialPlayerVar "logan_cooldown_active", 0
 
+    Glf_SetInitialPlayerVar "bells_not_hit", 0
+
 
     '*********** MODES ***********
     ' Order here does not matter - each mode registers its own start/stop
@@ -518,7 +520,7 @@ Sub ConfigureGlfDevices()
         With CreateGlfDroptarget("drop" & x)
             .Switch = "s_DT" & x
             .KnockdownEvents = Array("dt" & x & "_knockdown", "bells_down")
-            .ResetEvents = Array("reset_bells")
+            .ResetEvents = Array("drop" & x & "_reset")
             .ActionCallback = "DT" & x & "Callback"
             .UseRothDroptarget = True
             .RothDTSwitchID = x
@@ -823,13 +825,13 @@ Function NewMinigame(modeName, displayName, light)
 End Function
 
 Dim minigames
-' minigames = Array( _
-'     NewMinigame("dance_marathon", "DANCE MARATHON", "l24"), _
-'     NewMinigame("town_meeting", "TOWN MEETING", "l25"), _
-'     NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"), _
-'     NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"), _
-'     NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"), _
-'     NewMinigame("fd_punch", "FOUNDER'S DAY PUNCH", "l27") _
-' )
+minigames = Array( _
+    NewMinigame("dance_marathon", "DANCE MARATHON", "l24"), _
+    NewMinigame("town_meeting", "TOWN MEETING", "l25"), _
+    NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"), _
+    NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"), _
+    NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"), _
+    NewMinigame("fd_punch", "FOUNDER'S DAY PUNCH", "l27") _
+)
 
-minigames = Array(NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"))
+' minigames = Array(NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"))
