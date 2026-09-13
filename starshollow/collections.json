@@ -400,7 +400,8 @@
       "FL3",
       "FL4",
       "SkillshotLight",
-      "l72"
+      "l72",
+      "l28"
     ],
     "fire_events": false,
     "stop_single_events": false,

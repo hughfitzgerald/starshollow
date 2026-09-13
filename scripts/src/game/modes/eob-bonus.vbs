@@ -37,12 +37,12 @@ Sub CreateBonusMode
             .Add "play_bonus_show9{current_player.mode_tm_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show10")
             .Add "play_bonus_show10{current_player.mode_lbtb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light10_show","do_sfx_bonus", "show_bonus_lbtb")
             .Add "play_bonus_show10{current_player.mode_lbtb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show11")
-            .Add "play_bonus_show11{current_player.mode_ka_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light11_show","do_sfx_bonus", "show_bonus_ka")
-            .Add "play_bonus_show11{current_player.mode_ka_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show12")
+            .Add "play_bonus_show11{current_player.mode_kims_antiques_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light11_show","do_sfx_bonus", "show_bonus_kims_antiques")
+            .Add "play_bonus_show11{current_player.mode_kims_antiques_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show12")
             .Add "play_bonus_show12{current_player.mode_dinner_score   > 0 && current_player.bonus_skip == 0}", Array("bonus_light12_show","do_sfx_bonus", "show_bonus_dinner")
             .Add "play_bonus_show12{current_player.mode_dinner_score  == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show13")
-            .Add "play_bonus_show13{current_player.mode_punch_score    > 0 && current_player.bonus_skip == 0}", Array("bonus_light13_show","do_sfx_bonus", "show_bonus_punch")
-            .Add "play_bonus_show13{current_player.mode_punch_score   == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show14")
+            .Add "play_bonus_show13{current_player.mode_fd_punch_score    > 0 && current_player.bonus_skip == 0}", Array("bonus_light13_show","do_sfx_bonus", "show_bonus_fd_punch")
+            .Add "play_bonus_show13{current_player.mode_fd_punch_score   == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show14")
             .Add "play_bonus_show14{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light14_show","do_sfx_bonus", "show_bonus_total")
             .Add "play_bonus_show14{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show15")
 
@@ -224,14 +224,14 @@ Sub CreateBonusMode
                     .String = "current_player.mode_lbtb_score"
                 End With
             End With
-            With .EventName("show_bonus_ka")
+            With .EventName("show_bonus_kims_antiques")
                 With .Variable("bonus_display_text")
                     .Action = "set"
                     .String = """KIM'S ANTIQUES"""
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_ka_score"
+                    .String = "current_player.mode_kims_antiques_score"
                 End With
             End With
             With .EventName("show_bonus_dinner")
@@ -244,14 +244,14 @@ Sub CreateBonusMode
                     .String = "current_player.mode_dinner_score"
                 End With
             End With
-            With .EventName("show_bonus_punch")
+            With .EventName("show_bonus_fd_punch")
                 With .Variable("bonus_display_text")
                     .Action = "set"
                     .String = """FOUNDER'S DAY PUNCH"""
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_punch_score"
+                    .String = "current_player.mode_fd_punch_score"
                 End With
             End With
             With .EventName("show_bonus_total")

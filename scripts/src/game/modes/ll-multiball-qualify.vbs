@@ -5,8 +5,8 @@ Sub CreateLLMultiballQualifyMode()
     With CreateGlfMode("ll_multiball_qualify", 220)
         .Debug = True
 
-        .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}", "mode_ll_multiball_stopped", "mode_jd_multiball_stopped", "mode_dance_marathon_stopped", "mode_town_meeting_stopped", "mode_dinner_stopped")
-        .StopEvents = Array("mode_base_stopping","mode_ll_multiball_started", "mode_jd_multiball_started", "mode_dance_marathon_started", "mode_town_meeting_started", "mode_dinner_started")
+        .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}", "mode_ll_multiball_stopped", "mode_jd_multiball_stopped", "mode_dance_marathon_stopped", "mode_town_meeting_stopped", "mode_dinner_stopped", "mode_fd_punch_stopped", "mode_kims_antiques_stopped", "mode_lbtb_stopped")
+        .StopEvents = Array("mode_base_stopping","mode_ll_multiball_started", "mode_jd_multiball_started", "mode_dance_marathon_started", "mode_town_meeting_started", "mode_dinner_started", "mode_fd_punch_started", "mode_kims_antiques_started", "mode_lbtb_started")
 
         With .EventPlayer()
             .Add "mode_ll_multiball_qualify_started", Array("enable_captive_ramp_kicker_hold")

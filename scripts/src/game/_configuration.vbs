@@ -225,9 +225,9 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "mode_dm_score", 0 ' Dance Marathon
     Glf_SetInitialPlayerVar "mode_tm_score", 0 ' Town Meeting
     Glf_SetInitialPlayerVar "mode_lbtb_score", 0 ' Luke Breaks the Bells
-    Glf_SetInitialPlayerVar "mode_ka_score", 0 ' Kim's Antiques
+    Glf_SetInitialPlayerVar "mode_kims_antiques_score", 0 ' Kim's Antiques
     Glf_SetInitialPlayerVar "mode_dinner_score", 0 ' Friday Night Dinner
-    Glf_SetInitialPlayerVar "mode_punch_score", 0 ' Founder's Day Punch
+    Glf_SetInitialPlayerVar "mode_fd_punch_score", 0 ' Founder's Day Punch
 
     Glf_SetInitialPlayerVar "is_lock_qualified", 0        'flag keeps track of when a player has qualified the locks
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
@@ -260,6 +260,9 @@ Sub ConfigureGlfDevices()
     CreateDanceMarathonMode() ' priority 670
     CreateTownMeetingMode()    ' priority 680
     CreateDinnerMode()          ' priority 690
+    CreateFdPunchMode()          ' priority 700
+    CreateKimsAntiquesMode()      ' priority 710
+    CreateLbtbMode()            ' priority 720
 
     CreateJDMultiballMode()    ' priority 1000
     CreateLLMultiballMode()    ' priority 1005
@@ -793,3 +796,26 @@ Function NewShot(name, switch, light, group)
     s.Group  = group
     Set NewShot = s
 End Function
+
+Class Minigame
+    Public ModeName
+    Public DisplayName
+    Public Light
+End Class
+
+Function NewMinigame(modeName, displayName, light)
+    Dim m : Set m = New Minigame
+    m.ModeName = modeName
+    m.DisplayName = displayName
+    m.Light = light
+    Set NewMinigame = m
+End Function
+
+Dim minigames
+minigames = Array(NewMinigame("dance_marathon", "DANCE MARATHON", "l24"), _
+    NewMinigame("town_meeting", "TOWN MEETING", "l25"), _
+    NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"), _
+    NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"), _
+    NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"), _
+    NewMinigame("fd_punch", "FOUNDER'S DAY PUNCH", "l27") _
+)

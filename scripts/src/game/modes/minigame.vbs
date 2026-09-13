@@ -1,7 +1,7 @@
 
 
 Sub CreateMiniGameMode
-    Dim x
+    Dim x, minigame
 
     With CreateGlfMode("minigame", 500)
         .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}")
@@ -9,69 +9,50 @@ Sub CreateMiniGameMode
 
         With .EventPlayer()
             .Add "mode_minigame_started", Array("select_minigame")
-
-            .Add "dm_minigame_lit", Array("minigame_is_ready")
             
             ' TODO: Maybe add minigame state machine?
             '           That way we won't start one if one is already running
             '           Maybe it can handle the post-minigame cleanup too, like lighting the completed minigame shot, etc.
 
-            .Add "minigame_is_ready", Array("enable_scoop_hold")
+            .Add "dance_marathon_lit", Array("enable_scoop_hold")
 
             .Add "check_minigame{current_player.shot_logan_light == 1}", Array("start_ll_multiball")
 
-            .Add "check_minigame{current_player.shot_dm_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_dance_marathon")
-            .Add "check_minigame{current_player.shot_tm_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_town_meeting")
-            .Add "check_minigame{current_player.shot_dinner_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_dinner")
+            For Each minigame In minigames
+                .Add "check_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_" & minigame.ModeName)
+            Next
         End With
 
         With .RandomEventPlayer()
             With .EventName("select_minigame")
-                .Add "dm_minigame_lit", 1
-                .Add "tm_minigame_lit", 1
-                .Add "dinner_minigame_lit", 1
+                For Each minigame In minigames
+                    .Add minigame.ModeName & "_minigame_lit", 1
+                Next
                 .ForceAll = True
                 .ForceDifferent = True
             End With
         End With
 
-        With .Shots("dm_minigame")
-            .Profile = "minigame"
-            With .Tokens()
-                .Add "lights", "l24"
+        For Each minigame In minigames
+            With .Shots(minigame.ModeName & "_minigame")
+                .Profile = "minigame"
+                With .Tokens()
+                    .Add "lights", minigame.Light
+                End With
+                With .ControlEvents()
+                    .Events = Array(minigame.ModeName & "_minigame_unlit")
+                    .State = 0
+                End With
+                With .ControlEvents()
+                    .Events = Array(minigame.ModeName & "_minigame_lit")
+                    .State = 1
+                End With
+                With .ControlEvents()
+                    .Events = Array("start_" & minigame.ModeName)
+                    .State = 2
+                End With
             End With
-            With .ControlEvents()
-                .Events = Array("dm_minigame_unlit")
-                .State = 0
-            End With
-            With .ControlEvents()
-                .Events = Array("dm_minigame_lit")
-                .State = 1
-            End With
-            With .ControlEvents()
-                .Events = Array("start_dance_marathon")
-                .State = 2
-            End With
-        End With
-
-        With .Shots("tm_minigame")
-            .Profile = "minigame"
-            With .Tokens()
-                .Add "lights", "l25"
-            End With
-            With .ControlEvents()
-                .Events = Array("tm_minigame_unlit")
-                .State = 0
-            End With
-            With .ControlEvents()
-                .Events = Array("tm_minigame_lit")
-                .State = 1
-            End With
-            With .ControlEvents()
-                .Events = Array("start_town_meeting")
-                .State = 2
-            End With
-        End With
+        Next
 
         With .Shots("jdmb_minigame")
             .Profile = "minigame"
@@ -99,25 +80,6 @@ Sub CreateMiniGameMode
             End With
             With .ControlEvents()
                 .Events = Array("start_ll_multiball","llmb_minigame_complete")
-                .State = 2
-            End With
-        End With
-
-        With .Shots("dinner_minigame")
-            .Profile = "minigame"
-            With .Tokens()
-                .Add "lights", "l26"
-            End With
-            With .ControlEvents()
-                .Events = Array("dinner_minigame_unlit")
-                .State = 0
-            End With
-            With .ControlEvents()
-                .Events = Array("dinner_minigame_lit")
-                .State = 1
-            End With
-            With .ControlEvents()
-                .Events = Array("start_dinner")
                 .State = 2
             End With
         End With
