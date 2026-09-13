@@ -22,14 +22,16 @@ Sub CreateMiniGameMode
 
             .Add "check_minigame{current_player.shot_dm_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_dance_marathon")
             .Add "check_minigame{current_player.shot_tm_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_town_meeting")
+            .Add "check_minigame{current_player.shot_dinner_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_dinner")
         End With
 
         With .RandomEventPlayer()
             With .EventName("select_minigame")
                 .Add "dm_minigame_lit", 1
                 .Add "tm_minigame_lit", 1
-                ' .ForceAll = True
-                ' .ForceDifferent = True
+                .Add "dinner_minigame_lit", 1
+                .ForceAll = True
+                .ForceDifferent = True
             End With
         End With
 
@@ -97,6 +99,25 @@ Sub CreateMiniGameMode
             End With
             With .ControlEvents()
                 .Events = Array("start_ll_multiball","llmb_minigame_complete")
+                .State = 2
+            End With
+        End With
+
+        With .Shots("dinner_minigame")
+            .Profile = "minigame"
+            With .Tokens()
+                .Add "lights", "l26"
+            End With
+            With .ControlEvents()
+                .Events = Array("dinner_minigame_unlit")
+                .State = 0
+            End With
+            With .ControlEvents()
+                .Events = Array("dinner_minigame_lit")
+                .State = 1
+            End With
+            With .ControlEvents()
+                .Events = Array("start_dinner")
                 .State = 2
             End With
         End With

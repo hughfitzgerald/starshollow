@@ -259,6 +259,7 @@ Sub ConfigureGlfDevices()
 
     CreateDanceMarathonMode() ' priority 670
     CreateTownMeetingMode()    ' priority 680
+    CreateDinnerMode()          ' priority 690
 
     CreateJDMultiballMode()    ' priority 1000
     CreateLLMultiballMode()    ' priority 1005
@@ -751,6 +752,21 @@ Public Sub CreateSharedShotProfiles()
             .Show = "flash_color_with_fade"
             .Key = "key_on_d"
             .Speed = 2
+            With .Tokens()
+                .Add "fade", 100
+            End With
+        End With
+    End With
+
+    With GlfShotProfiles("mode_shot_flash")
+        With .States("unlit")
+            .Show = "off"
+            .Key = "key_off_d"
+        End With
+        With .States("ready")
+            .Show = "flash_color_with_fade"
+            .Key = "key_on_d"
+            .Speed = 5
             With .Tokens()
                 .Add "fade", 100
             End With

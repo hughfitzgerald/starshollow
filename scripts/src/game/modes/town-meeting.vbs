@@ -115,6 +115,10 @@ Sub CreateTownMeetingMode()
                     .Action = "add"
                     .Int = TownMeetingShotScore
                 End With
+                With .Variable("mode_tm_score")
+                    .Action = "add"
+                    .Int = TownMeetingShotScore
+                End With
             End With
         End With
 
