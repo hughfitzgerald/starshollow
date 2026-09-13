@@ -4,12 +4,14 @@ Sub CreateMiniGameMode
     Dim x, minigame
 
     With CreateGlfMode("minigame", 500)
-        .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}")
+        .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
         .Debug = True
 
         With .EventPlayer()
-            .Add "mode_minigame_started", Array("select_minigame")
+            .Add "mode_eob_bonus_started", Array("clear_selected_minigame")
+            .Add "mode_skillshots_stopped", Array("select_minigame")
+            .Add "select_minigame", Array("clear_selected_minigame", "choose_new_minigame")
 
             .Add "check_minigame{current_player.shot_logan_light == 1}", Array("start_ll_multiball")
 
@@ -17,11 +19,12 @@ Sub CreateMiniGameMode
                 .Add "check_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_" & minigame.ModeName)
                 .Add minigame.ModeName & "_minigame_lit", Array("enable_scoop_hold")
                 .Add "mode_" & minigame.ModeName & "_stopped", Array("select_minigame")
+                .Add "clear_selected_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1}", Array(minigame.ModeName & "_minigame_unlit")
             Next
         End With
 
         With .RandomEventPlayer()
-            With .EventName("select_minigame")
+            With .EventName("choose_new_minigame{modes.eob_bonus.active == False}")
                 For Each minigame In minigames
                     .Add minigame.ModeName & "_minigame_lit{current_player.shot_" & minigame.ModeName & "_minigame == 0}", 1
                 Next
