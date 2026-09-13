@@ -12,6 +12,7 @@ Sub CreateLbtbMode()
         .StopEvents = Array("timer_lbtb_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
+            .Debug = True
             .Add "mode_lbtb_started", Array("base_music_stop", "release_scoop_hold", "reset_bells")
             .Add "mode_lbtb_stopping", Array("base_music_start", "lbtb_shots_off", "bells_down")
 
@@ -36,6 +37,18 @@ Sub CreateLbtbMode()
                 Next
                 .ForceAll = True
                 .ForceDifferent = True
+            End With
+        End With
+
+        With .Timers("points_delay")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 1
+            .EndValue = 0
+            .TickInterval = 250
+            With .ControlEvents()
+                .EventName = "reset_bells"
+                .Action = "restart"
             End With
         End With
 
@@ -110,7 +123,7 @@ Sub CreateLbtbMode()
                     .Int = 1
                 End With
             End With
-            With .EventName("choose_bell_three")
+            With .EventName("timer_points_delay_complete")
                 With .Variable("bells_not_hit")
                     .Action = "set"
                     .Int = 0
