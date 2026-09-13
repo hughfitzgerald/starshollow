@@ -26,7 +26,7 @@ Sub CreateMiniGameMode
         With .RandomEventPlayer()
             With .EventName("select_minigame")
                 For Each minigame In minigames
-                    .Add minigame.ModeName & "_minigame_lit", 1
+                    .Add minigame.ModeName & "_minigame_lit{current_player.shot_" & minigame.ModeName & "_minigame == 0}", 1
                 Next
                 .ForceAll = True
                 .ForceDifferent = True
