@@ -40,9 +40,10 @@ Sub CreateLbtbMode()
         End With
 
         With .RandomEventPlayer()
+            .Debug = True
             With .EventName("choose_bell")
                 For x = 3 To 8
-                    .Add "drop" & x & "_reset", 1
+                    .Add "drop" & x & "_reset{device.drop_targets.drop" & x & ".state == 1}", 1
                 Next
                 .ForceAll = True
                 .ForceDifferent = True
