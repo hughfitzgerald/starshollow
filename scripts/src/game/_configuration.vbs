@@ -514,6 +514,17 @@ Sub ConfigureGlfDevices()
         .UseRothDroptarget = True
         .RothDTSwitchID = 2
     End With
+    For x = 3 To 8
+        With CreateGlfDroptarget("drop" & x)
+            .Switch = "s_DT" & x
+            .KnockdownEvents = Array("dt" & x & "_knockdown", "bells_down")
+            .ResetEvents = Array("reset_bells")
+            .ActionCallback = "DT" & x & "Callback"
+            .UseRothDroptarget = True
+            .RothDTSwitchID = x
+        End With
+    Next
+
 
 End Sub
 
@@ -812,10 +823,13 @@ Function NewMinigame(modeName, displayName, light)
 End Function
 
 Dim minigames
-minigames = Array(NewMinigame("dance_marathon", "DANCE MARATHON", "l24"), _
-    NewMinigame("town_meeting", "TOWN MEETING", "l25"), _
-    NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"), _
-    NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"), _
-    NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"), _
-    NewMinigame("fd_punch", "FOUNDER'S DAY PUNCH", "l27") _
-)
+' minigames = Array( _
+'     NewMinigame("dance_marathon", "DANCE MARATHON", "l24"), _
+'     NewMinigame("town_meeting", "TOWN MEETING", "l25"), _
+'     NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"), _
+'     NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"), _
+'     NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"), _
+'     NewMinigame("fd_punch", "FOUNDER'S DAY PUNCH", "l27") _
+' )
+
+minigames = Array(NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"))

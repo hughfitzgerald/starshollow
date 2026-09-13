@@ -4,11 +4,7 @@ Const LbtbTime = 60   'seconds
 Const LbtbShotScore = 20000
 
 Sub CreateLbtbMode()
-    Dim lbtb_shots, shot
-    lbtb_shots = Array( _
-        NewShot("lbtb_orbit_left",  "s_left_orbit",  "l51", "lbtb_orbits"), _
-        NewShot("lbtb_orbit_right", "s_right_orbit", "l52", "lbtb_orbits") _
-    )
+    Dim x
     With CreateGlfMode("lbtb", 720)
 
         'Define the events that start and stop this mode
@@ -16,13 +12,13 @@ Sub CreateLbtbMode()
         .StopEvents = Array("timer_lbtb_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_lbtb_started", Array("base_music_stop", "release_scoop_hold")
-            .Add "mode_lbtb_stopping", Array("base_music_start", "lbtb_shots_off")
+            .Add "mode_lbtb_started", Array("base_music_stop", "release_scoop_hold", "reset_bells")
+            .Add "mode_lbtb_stopping", Array("base_music_start", "lbtb_shots_off", "bells_down")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
-            For Each shot In lbtb_shots
-                .Add shot.Name & "_hit", Array("lbtb_shot_hit")
+            For x = 3 To 8
+                .Add "drop_target_drop" & x & "_down", Array("lbtb_shot_hit")
             Next
         End With
 
@@ -142,24 +138,5 @@ Sub CreateLbtbMode()
                 .ForceDifferent = True
             End With
         End With
-
-        For Each shot In lbtb_shots
-            With .Shots(shot.Name)
-                .Switch = shot.Switch
-                .Profile = "mode_shot_flash"
-                With .Tokens()
-                    .Add "lights", shot.Light
-                    .Add "color", "ffff00"
-                End With
-                With .ControlEvents()
-                    .Events = Array("mode_lbtb_started")
-                    .State = 1
-                End With
-                With .ControlEvents()
-                    .Events = Array("mode_lbtb_stopping")
-                    .State = 0
-                End With
-            End With
-        Next
     End With
 End Sub

@@ -47,7 +47,7 @@ Class DropTarget
 End Class
 
 'Define a variable for each drop target
-Dim DT1, DT2
+Dim DT1, DT2, DT3, DT4, DT5, DT6, DT7, DT8
 
 'Set array with drop target objects
 '
@@ -67,10 +67,16 @@ Dim DT1, DT2
 
 Set DT1 = (new DropTarget)(s_DT1, aDT1, pDT1, 1, 0, False)
 Set DT2 = (new DropTarget)(s_DT2, aDT2, pDT2, 2, 0, False)
+Set DT3 = (new DropTarget)(s_DT3, aDT3, pDT3, 3, 0, False)
+Set DT4 = (new DropTarget)(s_DT4, aDT4, pDT4, 4, 0, False)
+Set DT5 = (new DropTarget)(s_DT5, aDT5, pDT5, 5, 0, False)
+Set DT6 = (new DropTarget)(s_DT6, aDT6, pDT6, 6, 0, False)
+Set DT7 = (new DropTarget)(s_DT7, aDT7, pDT7, 7, 0, False)
+Set DT8 = (new DropTarget)(s_DT8, aDT8, pDT8, 8, 0, False)
 
 
 Dim DTArray
-DTArray = Array(DT1, DT2)
+DTArray = Array(DT1, DT2, DT3, DT4, DT5, DT6, DT7, DT8)
 
 'Configure the behavior of Drop Targets.
 Const DTDropSpeed = 80 'in milliseconds
@@ -370,5 +376,89 @@ Sub DT2Callback(state)
             DTEnableKeepup 2
         Case 4
             DTDisableKeepup 2
+    End Select
+End Sub
+
+Sub DT3Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 3
+            SoundDropTargetDrop pDT3
+        Case 1
+            DTDrop 3
+        Case 3
+            DTEnableKeepup 3
+        Case 4
+            DTDisableKeepup 3
+    End Select
+End Sub
+
+Sub DT4Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 4
+            SoundDropTargetDrop pDT4
+        Case 1
+            DTDrop 4
+        Case 3
+            DTEnableKeepup 4
+        Case 4
+            DTDisableKeepup 4
+    End Select
+End Sub
+
+Sub DT5Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 5
+            SoundDropTargetDrop pDT5
+        Case 1
+            DTDrop 5
+        Case 3
+            DTEnableKeepup 5
+        Case 4
+            DTDisableKeepup 5
+    End Select
+End Sub
+
+Sub DT6Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 6
+            SoundDropTargetDrop pDT6
+        Case 1
+            DTDrop 6
+        Case 3
+            DTEnableKeepup 6
+        Case 4
+            DTDisableKeepup 6
+    End Select
+End Sub
+
+Sub DT7Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 7
+            SoundDropTargetDrop pDT7
+        Case 1
+            DTDrop 7
+        Case 3
+            DTEnableKeepup 7
+        Case 4
+            DTDisableKeepup 7
+    End Select
+End Sub
+
+Sub DT8Callback(state)
+    Select Case state
+        Case 0
+            DTRaise 8
+            SoundDropTargetDrop pDT8
+        Case 1
+            DTDrop 8
+        Case 3
+            DTEnableKeepup 8
+        Case 4
+            DTDisableKeepup 8
     End Select
 End Sub

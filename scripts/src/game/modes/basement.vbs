@@ -16,7 +16,7 @@ Sub CreateBasementMode()
         With .EventPlayer()
 
             'Some table init stuff
-            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup")
+            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down")
 
             'Backglass stuff
             .Add "backglass_on", Array("backglass_logo_on","backglass_game_on","backglass_logic_on","backglass_framework_on")
