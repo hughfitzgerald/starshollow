@@ -35,6 +35,7 @@ Sub CreateMiniGameMode
 
         For Each minigame In minigames
             With .Shots(minigame.ModeName & "_minigame")
+                .Persist = True
                 .Profile = "minigame"
                 With .Tokens()
                     .Add "lights", minigame.Light
@@ -55,6 +56,7 @@ Sub CreateMiniGameMode
         Next
 
         With .Shots("jdmb_minigame")
+            .Persist = True
             .Profile = "minigame"
             With .Tokens()
                 .Add "lights", "l23"
@@ -70,6 +72,7 @@ Sub CreateMiniGameMode
         End With
 
         With .Shots("llmb_minigame")
+            .Persist = True
             .Profile = "minigame"
             With .Tokens()
                 .Add "lights", "l22"
