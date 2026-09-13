@@ -14,7 +14,7 @@ Sub CreateLbtbMode()
         With .EventPlayer()
             .Debug = True
             .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells")
-            .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down")
+            .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music")
             .Add "timer_lbtb_mode_complete", Array("base_music_start")
 
             .Add "timer_shuffle_bells_complete", Array("reset_bells")
@@ -24,7 +24,7 @@ Sub CreateLbtbMode()
             .Add "choose_bell_two", Array("choose_bell", "choose_bell_three")
             .Add "choose_bell_three", Array("choose_bell")
             
-            .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold")
+            .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
             For x = 3 To 8
@@ -35,7 +35,7 @@ Sub CreateLbtbMode()
         With .Timers("lbtb_intro_delay")
             .StartRunning = True
             .Direction = "down"
-            .StartValue = 1
+            .StartValue = 12
             .EndValue = 0
             .TickInterval = 1000    ' Tick every 1 second (1000 ms)
         End With
@@ -81,10 +81,23 @@ Sub CreateLbtbMode()
 
         With .SoundPlayer()
             With .EventName("mode_lbtb_started")
+                .Key = "key_voc_bells_intro"
+                .Sound = "voc_bells_intro"
+            End With
+            With .EventName("start_bells_loop")
+                .Key = "key_mus_bells_loop"
+                .Sound = "mus_bells_loop"
+            End With
+            With .EventName("stop_bells_loop")
+                .Key = "key_mus_bells_loop"
+                .Sound = "mus_bells_loop"
+                .Action = "stop"
+            End With
+            With .EventName("start_guitar_music")
                 .Key = "key_mus_guitarmode"
                 .Sound = "mus_guitarmode"
             End With
-            With .EventName("mode_lbtb_stopping")
+            With .EventName("stop_guitar_music")
                 .Key = "key_mus_guitarmode"
                 .Sound = "mus_guitarmode"
                 .Action = "stop"

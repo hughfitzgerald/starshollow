@@ -631,6 +631,9 @@ Sub CreateSounds()
     AddCallout     "voc_neeson", 2
     AddCallout     "voc_prostrate", 6
     
+    AddMusic       "mus_bells_loop",  3.486, -1
+    AddCallout     "voc_bells_intro", 12.088
+    
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>
     ' Durations must be exact - GLF sequences on them.
