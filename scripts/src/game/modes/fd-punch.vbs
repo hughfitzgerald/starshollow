@@ -16,8 +16,8 @@ Sub CreateFdPunchMode()
         .StopEvents = Array("timer_fd_punch_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_fd_punch_started", Array("base_music_stop", "release_scoop_hold", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
-            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter")
+            .Add "mode_fd_punch_started", Array("base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
+            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
             .Add "timer_fd_punch_mode_complete", Array("base_music_start")
 
             .Add "fd_punch_right_redirect", Array("close_right_orbit_diverter")
@@ -25,9 +25,22 @@ Sub CreateFdPunchMode()
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
-            For Each shot In fd_punch_shots
-                .Add shot.Name & "_hit", Array("fd_punch_shot_hit")
-            Next
+            .Add "timer_fd_punch_intro_delay_complete", Array("release_scoop_hold","start_guitar_music")
+
+            ' For Each shot In fd_punch_shots
+            '     .Add shot.Name & "_hit", Array("fd_punch_shot_hit")
+            ' Next
+
+            .Add "s_HiddenUpperRightKicker_active", Array("fd_punch_shot_hit")
+            .Add "s_DropTargetKicker_active", Array("fd_punch_shot_hit")
+        End With
+
+        With .Timers("fd_punch_intro_delay")
+            .StartRunning = True
+            .Direction = "down"
+            .StartValue = 5
+            .EndValue = 0
+            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
         End With
 
         With .Timers("fd_punch_right_redirect")
@@ -48,42 +61,78 @@ Sub CreateFdPunchMode()
 
         With .SoundPlayer()
             With .EventName("mode_fd_punch_started")
+                .Key = "key_voc_fd_punch_intro"
+                .Sound = "voc_fd_punch_intro"
+            End With
+            With .EventName("fd_punch_outro")
+                .Key = "key_voc_fd_punch_idontfeelgood"
+                .Sound = "voc_fd_punch_idontfeelgood"
+            End With
+            With .EventName("start_guitar_music")
                 .Key = "key_mus_guitarmode"
                 .Sound = "mus_guitarmode"
             End With
-            With .EventName("mode_fd_punch_stopping")
+            With .EventName("stop_guitar_music")
                 .Key = "key_mus_guitarmode"
                 .Sound = "mus_guitarmode"
                 .Action = "stop"
             End With
-            ' With .EventName("fd_punch_voc_1")
-            '     .Key = "key_voc_dancingfun"
-            '     .Sound = "voc_dancingfun"
-            ' End With
-            ' With .EventName("fd_punch_voc_2")
-            '     .Key = "key_voc_flipallyouwant"
-            '     .Sound = "voc_flipallyouwant"
-            ' End With
-            ' With .EventName("fd_punch_voc_3")
-            '     .Key = "key_voc_justkeepdancing"
-            '     .Sound = "voc_justkeepdancing"
-            ' End With
-            ' With .EventName("fd_punch_voc_4")
-            '     .Key = "key_voc_lefd_puncheflipyou"
-            '     .Sound = "voc_lefd_puncheflipyou"
-            ' End With
-            ' With .EventName("fd_punch_voc_5")
-            '     .Key = "key_voc_lookgreat"
-            '     .Sound = "voc_lookgreat"
-            ' End With
-            ' With .EventName("fd_punch_voc_6")
-            '     .Key = "key_voc_neeson"
-            '     .Sound = "voc_neeson"
-            ' End With
-            ' With .EventName("fd_punch_voc_7")
-            '     .Key = "key_voc_prostrate"
-            '     .Sound = "voc_prostrate"
-            ' End With
+            With .EventName("fd_punch_voc_1")
+                .Key = "key_voc_fd_punch_bathroom"
+                .Sound = "voc_fd_punch_bathroom"
+            End With
+            With .EventName("fd_punch_voc_2")
+                .Key = "key_voc_fd_punch_fallinahole"
+                .Sound = "voc_fd_punch_fallinahole"
+            End With
+            With .EventName("fd_punch_voc_3")
+                .Key = "key_voc_fd_punch_ifwegetmarried"
+                .Sound = "voc_fd_punch_ifwegetmarried"
+            End With
+            With .EventName("fd_punch_voc_4")
+                .Key = "key_voc_fd_punch_keepwalking"
+                .Sound = "voc_fd_punch_keepwalking"
+            End With
+            With .EventName("fd_punch_voc_5")
+                .Key = "key_voc_fd_punch_myface"
+                .Sound = "voc_fd_punch_myface"
+            End With
+            With .EventName("fd_punch_voc_6")
+                .Key = "key_voc_fd_punch_pattys_punch"
+                .Sound = "voc_fd_punch_pattys_punch"
+            End With
+            With .EventName("fd_punch_voc_7")
+                .Key = "key_voc_fd_punch_spank"
+                .Sound = "voc_fd_punch_spank"
+            End With
+            With .EventName("fd_punch_voc_8")
+                .Key = "key_voc_fd_punch_spreaditaround"
+                .Sound = "voc_fd_punch_spreaditaround"
+            End With
+            With .EventName("fd_punch_voc_9")
+                .Key = "key_voc_fd_punch_takemyshoes"
+                .Sound = "voc_fd_punch_takemyshoes"
+            End With
+            With .EventName("fd_punch_voc_10")
+                .Key = "key_voc_fd_punch_tasty"
+                .Sound = "voc_fd_punch_tasty"
+            End With
+            With .EventName("fd_punch_voc_11")
+                .Key = "key_voc_fd_punch_thirsty"
+                .Sound = "voc_fd_punch_thirsty"
+            End With
+            With .EventName("fd_punch_voc_12")
+                .Key = "key_voc_fd_punch_touchingmystuff"
+                .Sound = "voc_fd_punch_touchingmystuff"
+            End With
+            With .EventName("fd_punch_voc_13")
+                .Key = "key_voc_fd_punch_twoplustwo"
+                .Sound = "voc_fd_punch_twoplustwo"
+            End With
+            With .EventName("fd_punch_voc_14")
+                .Key = "key_voc_fd_punch_wherehewasgoing"
+                .Sound = "voc_fd_punch_wherehewasgoing"
+            End With
         End With
 
         With .SlidePlayer()
@@ -157,7 +206,7 @@ Sub CreateFdPunchMode()
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "mode_fd_punch_started"
+                .EventName = "timer_fd_punch_intro_delay_complete"
                 .Action = "start"
             End With
         End With
@@ -179,6 +228,13 @@ Sub CreateFdPunchMode()
                 .Add "fd_punch_voc_5", 1
                 .Add "fd_punch_voc_6", 1
                 .Add "fd_punch_voc_7", 1
+                .Add "fd_punch_voc_8", 1
+                .Add "fd_punch_voc_9", 1
+                .Add "fd_punch_voc_10", 1
+                .Add "fd_punch_voc_11", 1
+                .Add "fd_punch_voc_12", 1
+                .Add "fd_punch_voc_13", 1
+                .Add "fd_punch_voc_14", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With

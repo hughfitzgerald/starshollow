@@ -289,15 +289,15 @@ Sub CreateBaseMode()
                 .Key = "key_voc_hollow"
                 .Sound = "voc_hollow"
             End With
-            With .EventName("drop_target_drop1_down")
+            With .EventName("drop_target_drop1_down{modes.fd_punch.active==False}")
                 .Key = "key_voc_hollow"
                 .Sound = "voc_wereclosed"
             End With
-            With .EventName("diner_callout")
+            With .EventName("diner_callout{modes.fd_punch.active==False}")
                 .Key = "key_sfx_dinerdoor"
                 .Sound = "sfx_dinerdoor"
             End With
-            With .EventName("grandparents_callout")
+            With .EventName("grandparents_callout{modes.fd_punch.active==False}")
                 .Key = "key_voc_richardtheyrehere"
                 .Sound = "voc_richardtheyrehere"
             End With

@@ -2556,6 +2556,150 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_fd_punch_bathroom",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_bathroom.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_fallinahole",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_fallinahole.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_idontfeelgood",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_idontfeelgood.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_ifwegetmarried",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_ifwegetmarried.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_intro",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_intro.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_keepwalking",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_keepwalking.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_myface",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_myface.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_pattys_punch",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_pattys_punch.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_spank",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_spank.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_spreaditaround",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_spreaditaround.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_takemyshoes",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_takemyshoes.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_tasty",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_tasty.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_thirsty",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_thirsty.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_touchingmystuff",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_touchingmystuff.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_twoplustwo",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_twoplustwo.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_fd_punch_wherehewasgoing",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_wherehewasgoing.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_bells_what_happened",
     "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_what_happened.ogg",
     "internal_name": "",

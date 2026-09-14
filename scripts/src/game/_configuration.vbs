@@ -673,6 +673,23 @@ Sub CreateSounds()
     AddCallout     "voc_bells_hunchback", 4
     AddCallout     "voc_bells_youre_welcome", 4
     
+    AddCallout     "voc_fd_punch_intro", 6
+    AddCallout     "voc_fd_punch_bathroom", 3
+    AddCallout     "voc_fd_punch_fallinahole", 3
+    AddCallout     "voc_fd_punch_idontfeelgood", 6
+    AddCallout     "voc_fd_punch_ifwegetmarried", 5
+    AddCallout     "voc_fd_punch_keepwalking", 2
+    AddCallout     "voc_fd_punch_myface", 9
+    AddCallout     "voc_fd_punch_pattys_punch", 3
+    AddCallout     "voc_fd_punch_spank", 4
+    AddCallout     "voc_fd_punch_spreaditaround", 3
+    AddCallout     "voc_fd_punch_takemyshoes", 6
+    AddCallout     "voc_fd_punch_tasty", 4
+    AddCallout     "voc_fd_punch_thirsty", 4
+    AddCallout     "voc_fd_punch_touchingmystuff", 3
+    AddCallout     "voc_fd_punch_twoplustwo", 8
+    AddCallout     "voc_fd_punch_wherehewasgoing", 5
+    
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>
     ' Durations must be exact - GLF sequences on them.
