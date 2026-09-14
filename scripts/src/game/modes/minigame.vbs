@@ -72,7 +72,6 @@ Sub CreateMiniGameMode
         End With
 
         With .Shots("llmb_minigame")
-            .Persist = True
             .Profile = "minigame"
             With .Tokens()
                 .Add "lights", "l22"

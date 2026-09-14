@@ -16,7 +16,6 @@ Sub CreateLLMultiballQualifyMode()
         End With
 
         With .Shots("logan_light")
-            .Persist = True
             .Profile = "logan_ball"
             With .Tokens()
                 .Add "lights", "l72"
