@@ -34,7 +34,7 @@ Sub CreateHighScoreMode()
         End With
 
         With .SoundPlayer()
-            With .EventName("balldevice_plunger_ball_exiting")
+            With .EventName("mode_high_score_started")
                 .Key = "key_voc_truman"
                 .Sound = "voc_truman"
             End With
