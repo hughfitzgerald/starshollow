@@ -35,3 +35,19 @@ Sub CaptiveDiverterAction(Enabled)
 		CaptiveDiverter.RotateToStart
 	End If
 End Sub
+
+Sub LeftOrbitDiverterAction(Enabled)
+	If Enabled Then
+		LeftOrbitDiverter.RotateToEnd
+	Else
+		LeftOrbitDiverter.RotateToStart
+	End If
+End Sub
+
+Sub RightOrbitDiverterAction(Enabled)
+	If Enabled Then
+		RightOrbitDiverter.RotateToEnd
+	Else
+		RightOrbitDiverter.RotateToStart
+	End If
+End Sub

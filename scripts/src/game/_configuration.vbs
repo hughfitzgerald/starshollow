@@ -236,6 +236,8 @@ Sub ConfigureGlfDevices()
 
     Glf_SetInitialPlayerVar "bells_not_hit", 0
 
+    Glf_SetInitialPlayerVar "fd_punch_left_redirect", 0
+
 
     '*********** MODES ***********
     ' Order here does not matter - each mode registers its own start/stop
@@ -467,6 +469,20 @@ Sub ConfigureGlfDevices()
         .ActivateEvents = Array("open_captive_diverter")
         .DeactivateEvents = Array("close_captive_diverter")
         .ActionCallback = "CaptiveDiverterAction"
+    End With
+
+    With CreateGlfDiverter("left_orbit_diverter")
+        .EnableEvents = Array("ball_started", "reset_complete")
+        .ActivateEvents = Array("open_left_orbit_diverter")
+        .DeactivateEvents = Array("close_left_orbit_diverter")
+        .ActionCallback = "LeftOrbitDiverterAction"
+    End With
+
+    With CreateGlfDiverter("right_orbit_diverter")
+        .EnableEvents = Array("ball_started", "reset_complete")
+        .ActivateEvents = Array("open_right_orbit_diverter")
+        .DeactivateEvents = Array("close_right_orbit_diverter")
+        .ActionCallback = "RightOrbitDiverterAction"
     End With
 
     ' --- Standup targets s_ST11..s_ST18 ---

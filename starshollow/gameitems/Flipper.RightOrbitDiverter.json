@@ -1,0 +1,43 @@
+{
+  "Flipper": {
+    "center": {
+      "x": 834.58685,
+      "y": 346.33786
+    },
+    "base_radius": 1.5,
+    "end_radius": 1.5,
+    "flipper_radius_max": 108.0,
+    "return": 0.058,
+    "start_angle": 183.0,
+    "end_angle": 122.0,
+    "override_physics": 0,
+    "mass": 1.0,
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "surface": "",
+    "material": "Metal0.8",
+    "name": "RightOrbitDiverter",
+    "rubber_material": "zCol_Metal",
+    "rubber_thickness_int": 7,
+    "rubber_thickness": 0.01,
+    "rubber_height_int": 19,
+    "rubber_height": 0.01,
+    "rubber_width_int": 24,
+    "rubber_width": 0.01,
+    "strength": 2200.0,
+    "elasticity": 0.8,
+    "elasticity_falloff": 0.43,
+    "friction": 0.6,
+    "ramp_up": 3.0,
+    "scatter": 0.0,
+    "torque_damping": 0.75,
+    "torque_damping_angle": 6.0,
+    "flipper_radius_min": 0.0,
+    "is_visible": true,
+    "is_enabled": true,
+    "height": 50.0,
+    "image": "metal3",
+    "is_reflection_enabled": true,
+    "part_group_name": "Collidable_Misc"
+  }
+}

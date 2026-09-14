@@ -38,8 +38,15 @@ End Sub
 Sub DropTargetKickerEjectCallback(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
+	dim angle
+	angle = -110
+	If glf_modes("fd_punch").GetValue("active") = True Then
+		If GetPlayerState("fd_punch_left_redirect") = 1 Then
+			angle = 180
+		End If
+	End If
 	SoundSaucerKick 1, s_DropTargetKicker
-	s_DropTargetKicker.Kick -110, 10
+	s_DropTargetKicker.Kick angle, 10
 	' KickBall ball, -19, 50, 5, 25
 End Sub
 

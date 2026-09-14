@@ -58,7 +58,6 @@
   {
     "name": "Metals",
     "items": [
-      "Wall20",
       "Wall37"
     ],
     "fire_events": true,

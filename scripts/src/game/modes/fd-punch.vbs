@@ -16,15 +16,34 @@ Sub CreateFdPunchMode()
         .StopEvents = Array("timer_fd_punch_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_fd_punch_started", Array("base_music_stop", "release_scoop_hold")
-            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off")
+            .Add "mode_fd_punch_started", Array("base_music_stop", "release_scoop_hold", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
+            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter")
             .Add "timer_fd_punch_mode_complete", Array("base_music_start")
+
+            .Add "fd_punch_right_redirect", Array("close_right_orbit_diverter")
+            .Add "timer_fd_punch_right_redirect_complete", Array("open_right_orbit_diverter")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
             For Each shot In fd_punch_shots
                 .Add shot.Name & "_hit", Array("fd_punch_shot_hit")
             Next
+        End With
+
+        With .Timers("fd_punch_right_redirect")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 2
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents
+                .EventName = "fd_punch_right_redirect"
+                .Action = "restart"
+            End With 
+            With .ControlEvents
+                .EventName = "mode_fd_punch_stopping"
+                .Action = "stop"
+            End With
         End With
 
         With .SoundPlayer()
@@ -80,6 +99,19 @@ Sub CreateFdPunchMode()
         End With
 
         With .VariablePlayer()
+            With .EventName("fd_punch_left_redirect")
+                With .Variable("fd_punch_left_redirect")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("fd_punch_no_left_redirect")
+                With .Variable("fd_punch_left_redirect")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
+
             With .EventName("mode_fd_punch_started")
                 With .Variable("mode_display_text")
                     .Action = "set"
@@ -131,6 +163,14 @@ Sub CreateFdPunchMode()
         End With
 
         With .RandomEventPlayer()
+            With .EventName("s_DropTargetKicker_active")
+                .Add "fd_punch_left_redirect", 1
+                .Add "fd_punch_no_left_redirect", 1
+            End With
+            With .EventName("s_HiddenUpperRightKicker_active")
+                .Add "fd_punch_right_redirect", 1
+                .Add "fd_punch_no_redirect", 1
+            End With
             With .EventName("fd_punch_shot_hit")
                 .Add "fd_punch_voc_1", 1
                 .Add "fd_punch_voc_2", 1
