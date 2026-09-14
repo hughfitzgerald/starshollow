@@ -40,14 +40,29 @@ Const BonusBumperFactor = 2000
 Const BonusDinerFactor = 3000
 Const BonusGrandparentsFactor = 4000
 
-Const BaseMusic1Duration = 245  ' go
-Const BaseMusic2Duration = 51  ' happy
-Const BaseMusic3Duration = 37  ' alternate
-Const BaseMusic4Duration = 189  ' book
-Const BaseMusic5Duration = 53  ' longer
-Const BaseMusic6Duration = 235  ' maybe
-Const BaseMusic7Duration = 333  ' popcorn
+Class BaseMusic
+    Public Name
+    Public Duration
+End Class
 
+Function CreateBaseMusic(name, duration)
+    Dim bm
+    Set bm = New BaseMusic
+    bm.Name = name
+    bm.Duration = duration
+    Set CreateBaseMusic = bm
+End Function
+
+Dim baseMusicArray
+baseMusicArray = Array( _
+    CreateBaseMusic("mus_go", 244), _
+    CreateBaseMusic("mus_happy", 50), _
+    CreateBaseMusic("mus_alternate", 36), _
+    CreateBaseMusic("mus_book", 188), _
+    CreateBaseMusic("mus_longer", 52), _
+    CreateBaseMusic("mus_maybe", 234), _
+    CreateBaseMusic("mus_popcorn", 332) _
+)
 
 Sub ConfigureGlfDevices()
 
@@ -598,15 +613,13 @@ End Function
 '======================================================
 
 Sub CreateSounds()
-    AddMusic       "mus_happy",  BaseMusic2Duration, 0
+    Dim bm
+    For Each bm In baseMusicArray
+        AddMusic bm.Name, bm.Duration, 0
+    Next
+
     AddMusic       "mus_married",  217, -1
-    AddMusic       "mus_go",  BaseMusic1Duration, 0
     AddMusic       "mus_sad",  93, 0
-    AddMusic       "mus_alternate",  BaseMusic3Duration, 0
-    AddMusic       "mus_book",  BaseMusic4Duration, 0
-    AddMusic       "mus_longer",  BaseMusic5Duration, 0
-    AddMusic       "mus_maybe",  BaseMusic6Duration, 0
-    AddMusic       "mus_popcorn",  BaseMusic7Duration, 0
     AddMusic       "mus_shoo",  48, 0
     AddMusic       "mus_guitarmode", 33.882, -1
 

@@ -18,7 +18,14 @@
 
 Sub CreateBaseMode()
 
-    Dim x, giName
+    Dim x, giName, baseMusicStopEvents, bm
+
+    ' programmatically build the Array of base music stop events
+    baseMusicStopEvents = Array()
+    For Each bm In baseMusicArray
+        ReDim Preserve baseMusicStopEvents(UBound(baseMusicStopEvents) + 1)
+        baseMusicStopEvents(UBound(baseMusicStopEvents)) = bm.Name & "_stop"
+    Next
 
     With CreateGlfMode("base", 110)
 
@@ -72,11 +79,15 @@ Sub CreateBaseMode()
             'TODO: Add JESS and DEAN hit targets, ramp rollovers, inlanes, bonus lanes, captive ball, ANY OTHERS?
 
             .Add "mode_eob_bonus_started", Array("base_music_stop")
-            .Add "base_music_stop", Array("base_music_1_stop", "base_music_2_stop", "base_music_3_stop", "base_music_4_stop", "base_music_5_stop", "base_music_6_stop", "base_music_7_stop")
+            .Add "base_music_stop", baseMusicStopEvents
 
             ' When a sub-mode has its own music, we don't want a new song start based on the timer!!!
             .Add "timer_base_music_complete{modes.eob_bonus.active == False and modes.dance_marathon.active == False and modes.town_meeting.active == False and modes.dinner.active == False and modes.fd_punch.active == False and modes.kims_antiques.active == False and modes.lbtb.active == False}", Array("base_music_stop","start_new_song")
             .Add "start_new_song", Array("base_music_start")
+
+            For Each bm in baseMusicArray
+                .Add bm.Name & "_start", Array("base_music_start_at_new_duration")
+            Next
         End With
 
         ' With .Timers("left_spinner")
@@ -111,68 +122,16 @@ Sub CreateBaseMode()
                 .Action = "restart"
             End With
             With .ControlEvents()
-                .EventName = "base_music_1_start"
-                .Action = "jump"
-                .Value = BaseMusic1Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_1_start"
+                .EventName = "base_music_start_at_new_duration"
                 .Action = "start"
             End With
-            With .ControlEvents()
-                .EventName = "base_music_2_start"
-                .Action = "jump"
-                .Value = BaseMusic2Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_2_start"
-                .Action = "start"
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_3_start"
-                .Action = "jump"
-                .Value = BaseMusic3Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_3_start"
-                .Action = "start"
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_4_start"
-                .Action = "jump"
-                .Value = BaseMusic4Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_4_start"
-                .Action = "start"
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_5_start"
-                .Action = "jump"
-                .Value = BaseMusic5Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_5_start"
-                .Action = "start"
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_6_start"
-                .Action = "jump"
-                .Value = BaseMusic6Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_6_start"
-                .Action = "start"
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_7_start"
-                .Action = "jump"
-                .Value = BaseMusic7Duration
-            End With
-            With .ControlEvents()
-                .EventName = "base_music_7_start"
-                .Action = "start"
-            End With
+            For Each bm in baseMusicArray
+                With .ControlEvents()
+                    .EventName = bm.Name & "_start"
+                    .Action = "jump"
+                    .Value = bm.Duration
+                End With
+            Next
         End With
 
 
@@ -249,13 +208,9 @@ Sub CreateBaseMode()
         '--- Sound ---------------------------------------------------------
         With .RandomEventPlayer()
             With .EventName("base_music_start")
-                .Add "base_music_1_start", 1
-                .Add "base_music_2_start", 1
-                .Add "base_music_3_start", 1
-                .Add "base_music_4_start", 1
-                .Add "base_music_5_start", 1
-                .Add "base_music_6_start", 1
-                .Add "base_music_7_start", 1
+                For Each bm in baseMusicArray
+                    .Add bm.Name & "_start", 1
+                Next
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -267,69 +222,17 @@ Sub CreateBaseMode()
         End With
 
         With .SoundPlayer()
-            With .EventName("base_music_1_start")
-                .Key = "key_mus_go"
-                .Sound = "mus_go"
-            End With
-            With .EventName("base_music_1_stop")
-                .Key = "key_mus_go"
-                .Sound = "mus_go"
-                .Action = "stop"
-            End With
-            With .EventName("base_music_2_start")
-                .Key = "key_mus_happy"
-                .Sound = "mus_happy"
-            End With
-            With .EventName("base_music_2_stop")
-                .Key = "key_mus_happy"
-                .Sound = "mus_happy"
-                .Action = "stop"
-            End With
-            With .EventName("base_music_3_start")
-                .Key = "key_mus_alternate"
-                .Sound = "mus_alternate"
-            End With
-            With .EventName("base_music_3_stop")
-                .Key = "key_mus_alternate"
-                .Sound = "mus_alternate"
-                .Action = "stop"
-            End With
-            With .EventName("base_music_4_start")
-                .Key = "key_mus_book"
-                .Sound = "mus_book"
-            End With
-            With .EventName("base_music_4_stop")
-                .Key = "key_mus_book"
-                .Sound = "mus_book"
-                .Action = "stop"
-            End With
-            With .EventName("base_music_5_start")
-                .Key = "key_mus_longer"
-                .Sound = "mus_longer"
-            End With
-            With .EventName("base_music_5_stop")
-                .Key = "key_mus_longer"
-                .Sound = "mus_longer"
-                .Action = "stop"
-            End With
-            With .EventName("base_music_6_start")
-                .Key = "key_mus_maybe"
-                .Sound = "mus_maybe"
-            End With
-            With .EventName("base_music_6_stop")
-                .Key = "key_mus_maybe"
-                .Sound = "mus_maybe"
-                .Action = "stop"
-            End With
-            With .EventName("base_music_7_start")
-                .Key = "key_mus_popcorn"
-                .Sound = "mus_popcorn"
-            End With
-            With .EventName("base_music_7_stop")
-                .Key = "key_mus_popcorn"
-                .Sound = "mus_popcorn"
-                .Action = "stop"
-            End With
+            For Each bm in baseMusicArray
+                With .EventName(bm.Name & "_start")
+                    .Key = "key_" & bm.Name
+                    .Sound = bm.Name
+                End With
+                With .EventName(bm.Name & "_stop")
+                    .Key = "key_" & bm.Name
+                    .Sound = bm.Name
+                    .Action = "stop"
+                End With
+            Next
             With .EventName("poodles1_callout")
                 .Key = "key_voc_poodles1"
                 .Sound = "voc_poodles1"
