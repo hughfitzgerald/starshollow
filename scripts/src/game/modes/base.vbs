@@ -166,6 +166,38 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 0
                 End With
+                With .Variable("mode_llmb_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_jdmb_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_fd_punch_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_dance_marathon_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_town_meeting_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_dinner_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_kims_antiques_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("mode_lbtb_score")
+                    .Action = "set"
+                    .Int = 0
+                End With
             End With
             With .EventName("clear_ball_just_started")
                 With .Variable("ball_just_started")
