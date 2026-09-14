@@ -4006,7 +4006,7 @@
   },
   {
     "file_name": "Flipper.RightOrbitDiverter.json",
-    "is_locked": false,
+    "is_locked": true,
     "editor_layer": 0
   },
   {
@@ -4016,6 +4016,16 @@
   },
   {
     "file_name": "Wall.Wall023.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.ROrbitDiverterWallClosed.json",
+    "is_locked": true,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.ROrbitDiverterWallOpen.json",
     "is_locked": false,
     "editor_layer": 0
   }

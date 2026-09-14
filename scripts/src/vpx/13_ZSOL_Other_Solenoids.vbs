@@ -47,7 +47,11 @@ End Sub
 Sub RightOrbitDiverterAction(Enabled)
 	If Enabled Then
 		RightOrbitDiverter.RotateToEnd
+		ROrbitDiverterWallOpen.Collidable = True
+		ROrbitDiverterWallClosed.Collidable = False
 	Else
 		RightOrbitDiverter.RotateToStart
+		ROrbitDiverterWallOpen.Collidable = False
+		ROrbitDiverterWallClosed.Collidable = True
 	End If
 End Sub
