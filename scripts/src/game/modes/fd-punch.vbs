@@ -13,12 +13,13 @@ Sub CreateFdPunchMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_fd_punch")
-        .StopEvents = Array("timer_fd_punch_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
+        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_fd_punch_post_mode_complete")
 
         With .EventPlayer()
             .Add "mode_fd_punch_started", Array("base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
-            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
-            .Add "timer_fd_punch_mode_complete", Array("base_music_start")
+            .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music", "play_fd_punch_post_mode")
+            .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
+            .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode")
 
             .Add "fd_punch_right_redirect", Array("close_right_orbit_diverter")
             .Add "timer_fd_punch_right_redirect_complete", Array("open_right_orbit_diverter")
@@ -33,6 +34,18 @@ Sub CreateFdPunchMode()
 
             .Add "s_HiddenUpperRightKicker_active", Array("fd_punch_shot_hit")
             .Add "s_DropTargetKicker_active", Array("fd_punch_shot_hit")
+        End With
+
+        With .Timers("fd_punch_post_mode")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 5
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "fd_punch_post_mode"
+                .Action = "start"
+            End With
         End With
 
         With .Timers("fd_punch_intro_delay")
@@ -64,7 +77,7 @@ Sub CreateFdPunchMode()
                 .Key = "key_voc_fd_punch_intro"
                 .Sound = "voc_fd_punch_intro"
             End With
-            With .EventName("fd_punch_outro")
+            With .EventName("play_fd_punch_post_mode")
                 .Key = "key_voc_fd_punch_idontfeelgood"
                 .Sound = "voc_fd_punch_idontfeelgood"
             End With
