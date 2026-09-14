@@ -1,6 +1,6 @@
 ' Lbtb Mode
 
-Const LbtbTime = 20   'seconds
+Const LbtbTime = 60   'seconds
 Const LbtbShotScore = 20000
 Const LbtbShuffleTime = 5
 
