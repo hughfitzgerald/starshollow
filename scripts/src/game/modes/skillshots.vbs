@@ -41,6 +41,7 @@ Sub CreateSkillshotsMode()
             .Add "timer_skillshots_complete", Array("stop_skillshots")
             .Add "balldevice_scoop_ball_exiting", Array("stop_skillshots")
             .Add "ss_achieved", Array("stop_skillshots")
+            .Add "s_right_orbit_active", Array("stop_skillshots")
         End With
 
         ' if the player goes past the initial skillshot, give them 5 seconds to hit one of the others
@@ -48,13 +49,9 @@ Sub CreateSkillshotsMode()
             .StartRunning = False
             .TickInterval = 1000
             .StartValue = 0
-            .EndValue = 3
+            .EndValue = 2
             With .ControlEvents()
                 .EventName = "Gate002_active"
-                .Action = "start"
-            End With
-            With .ControlEvents()
-                .EventName = "s_right_orbit"
                 .Action = "start"
             End With
         End With
