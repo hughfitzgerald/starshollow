@@ -131,6 +131,13 @@
     "is_signed": false
   },
   {
+    "name": "DropTargetBeveledBell",
+    "path": "E:\\Tables\\Models\\DropTargetBeveledBell.png",
+    "alpha_test_value": 1.0,
+    "is_opaque": true,
+    "is_signed": false
+  },
+  {
     "name": "HitTarget",
     "path": "E:\\Tables\\Models\\HitTarget.png",
     "alpha_test_value": 1.0,
