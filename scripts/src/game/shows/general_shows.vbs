@@ -271,6 +271,10 @@ Sub CreateGeneralShows()
             .Lights = Array("(lights)|100|70369d|1000")
         End With
     End With
-    
 
+    With CreateGlfShow("on_color")
+        With .AddStep(Null, Null, -1)
+            .Lights = Array("(lights)|100|(color)")
+        End With
+    End With
 End Sub
