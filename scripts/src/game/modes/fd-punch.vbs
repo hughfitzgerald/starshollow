@@ -17,6 +17,7 @@ Sub CreateFdPunchMode()
 
         With .EventPlayer()
             .Add "mode_fd_punch_started", Array("base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
+            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
             .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music", "play_fd_punch_post_mode")
             .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
             .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode")
