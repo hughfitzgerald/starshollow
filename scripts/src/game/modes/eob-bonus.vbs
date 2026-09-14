@@ -31,10 +31,10 @@ Sub CreateBonusMode
             .Add "play_bonus_show6{current_player.mode_llmb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show7")
             .Add "play_bonus_show7{current_player.mode_jdmb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light7_show","do_sfx_bonus", "show_bonus_jdmb")
             .Add "play_bonus_show7{current_player.mode_jdmb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show8")
-            .Add "play_bonus_show8{current_player.mode_dm_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light8_show","do_sfx_bonus", "show_bonus_dm")
-            .Add "play_bonus_show8{current_player.mode_dm_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show9")
-            .Add "play_bonus_show9{current_player.mode_tm_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light9_show","do_sfx_bonus", "show_bonus_tm")
-            .Add "play_bonus_show9{current_player.mode_tm_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show10")
+            .Add "play_bonus_show8{current_player.mode_dance_marathon_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light8_show","do_sfx_bonus", "show_bonus_dm")
+            .Add "play_bonus_show8{current_player.mode_dance_marathon_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show9")
+            .Add "play_bonus_show9{current_player.mode_town_meeting_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light9_show","do_sfx_bonus", "show_bonus_tm")
+            .Add "play_bonus_show9{current_player.mode_town_meeting_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show10")
             .Add "play_bonus_show10{current_player.mode_lbtb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light10_show","do_sfx_bonus", "show_bonus_lbtb")
             .Add "play_bonus_show10{current_player.mode_lbtb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show11")
             .Add "play_bonus_show11{current_player.mode_kims_antiques_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light11_show","do_sfx_bonus", "show_bonus_kims_antiques")
@@ -201,7 +201,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_dm_score"
+                    .String = "current_player.mode_dance_marathon_score"
                 End With
             End With
             With .EventName("show_bonus_tm")
@@ -211,7 +211,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_tm_score"
+                    .String = "current_player.mode_town_meeting_score"
                 End With
             End With
             With .EventName("show_bonus_lbtb")

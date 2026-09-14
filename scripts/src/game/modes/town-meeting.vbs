@@ -114,7 +114,7 @@ Sub CreateTownMeetingMode()
                 End With
                 With .Variable("mode_display_score")
                     .Action = "set"
-                    .Int = "{current_player.mode_tm_score}"
+                    .Int = "{current_player.mode_town_meeting_score}"
                 End With
                 With .Variable("mode_display_instructions")
                     .Action = "set"
@@ -138,7 +138,7 @@ Sub CreateTownMeetingMode()
                     .Action = "add"
                     .Int = TownMeetingShotScore
                 End With
-                With .Variable("mode_tm_score")
+                With .Variable("mode_town_meeting_score")
                     .Action = "add"
                     .Int = TownMeetingShotScore
                 End With
@@ -153,7 +153,7 @@ Sub CreateTownMeetingMode()
                     .Action = "add"
                     .Int = TownMeetingLukesShotScore
                 End With
-                With .Variable("mode_tm_score")
+                With .Variable("mode_town_meeting_score")
                     .Action = "add"
                     .Int = TownMeetingLukesShotScore
                 End With

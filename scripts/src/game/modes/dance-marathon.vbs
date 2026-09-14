@@ -148,7 +148,7 @@ Sub CreateDanceMarathonMode()
                 End With
                 With .Variable("mode_display_score")
                     .Action = "set"
-                    .Int = "{current_player.mode_dm_score}"
+                    .Int = "{current_player.mode_dance_marathon_score}"
                 End With
                 With .Variable("mode_display_instructions")
                     .Action = "set"

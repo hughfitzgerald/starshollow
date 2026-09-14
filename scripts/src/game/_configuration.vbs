@@ -237,8 +237,8 @@ Sub ConfigureGlfDevices()
 
     Glf_SetInitialPlayerVar "mode_llmb_score", 0 ' Lock-Away Logan Multiball
     Glf_SetInitialPlayerVar "mode_jdmb_score", 0 ' Jess & Dean Multiball
-    Glf_SetInitialPlayerVar "mode_dm_score", 0 ' Dance Marathon
-    Glf_SetInitialPlayerVar "mode_tm_score", 0 ' Town Meeting
+    Glf_SetInitialPlayerVar "mode_dance_marathon_score", 0 ' Dance Marathon
+    Glf_SetInitialPlayerVar "mode_town_meeting_score", 0 ' Town Meeting
     Glf_SetInitialPlayerVar "mode_lbtb_score", 0 ' Luke Breaks the Bells
     Glf_SetInitialPlayerVar "mode_kims_antiques_score", 0 ' Kim's Antiques
     Glf_SetInitialPlayerVar "mode_dinner_score", 0 ' Friday Night Dinner
