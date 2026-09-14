@@ -227,7 +227,13 @@
       "sw17o",
       "sw18o",
       "aDT1",
-      "aDT2"
+      "aDT2",
+      "aDT3",
+      "aDT4",
+      "aDT5",
+      "aDT6",
+      "aDT7",
+      "aDT8"
     ],
     "fire_events": true,
     "stop_single_events": false,
