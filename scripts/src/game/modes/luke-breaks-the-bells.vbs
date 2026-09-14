@@ -2,6 +2,7 @@
 
 Const LbtbTime = 20   'seconds
 Const LbtbShotScore = 20000
+Const LbtbShuffleTime = 5
 
 Sub CreateLbtbMode()
     Dim x
@@ -81,7 +82,7 @@ Sub CreateLbtbMode()
         With .Timers("shuffle_bells")
             .StartRunning = False
             .Direction = "down"
-            .StartValue = 5
+            .StartValue = LbtbShuffleTime
             .EndValue = 1
             .TickInterval = 1000
             With .ControlEvents()
