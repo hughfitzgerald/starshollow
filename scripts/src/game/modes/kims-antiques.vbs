@@ -2,10 +2,15 @@
 
 Const KimsAntiquesTime = 60   'seconds
 Const KimsAntiquesShotScore = 20000
+Const KimsAntiquesMoveTime = 5
 
 Sub CreateKimsAntiquesMode()
     Dim kims_antiques_shots, shot
     kims_antiques_shots = Array( _
+        NewShot("kims_antiques_left_ramp", "s_complete_left_ramp", "l53", "kims_antiques_ramps"), _
+        NewShot("kims_antiques_right_ramp", "s_complete_right_ramp", "l55", "kims_antiques_ramps"), _
+        NewShot("kims_antiques_captive", "s_captive_ball", "l57", "kims_antiques_captives"), _
+        NewShot("kims_antiques_scoop", "s_VUK1", "l59", "kims_antiques_scoops"), _
         NewShot("kims_antiques_orbit_left",  "s_left_orbit",  "l51", "kims_antiques_orbits"), _
         NewShot("kims_antiques_orbit_right", "s_right_orbit", "l52", "kims_antiques_orbits") _
     )
@@ -16,15 +21,34 @@ Sub CreateKimsAntiquesMode()
         .StopEvents = Array("timer_kims_antiques_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_kims_antiques_started", Array("base_music_stop", "release_scoop_hold")
+            .Add "mode_kims_antiques_started", Array("base_music_stop", "release_scoop_hold", "move_miss_kim")
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
+            .Add "timer_move_miss_kim_complete", Array("move_miss_kim")
+            .Add "move_miss_kim", Array("kims_antiques_relight")
+            .Add "kims_antiques_relight", Array("choose_new_miss_kim")
+
             For Each shot In kims_antiques_shots
-                .Add shot.Name & "_hit", Array("kims_antiques_shot_hit")
+                .Add shot.Name & "_ready_hit", Array("kims_antiques_shot_hit")
+                .Add shot.Name & "_miss_kim_hit", Array("miss_kim_shot_hit")
             Next
+
+            .Add "miss_kim_shot_hit", Array("timer_kims_antiques_mode_complete")
+        End With
+
+        With .Timers("move_miss_kim")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = KimsAntiquesMoveTime
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "move_miss_kim"
+                .Action = "restart"
+            End With
         End With
 
         With .SoundPlayer()
@@ -142,25 +166,56 @@ Sub CreateKimsAntiquesMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
+
+            With .EventName("choose_new_miss_kim")
+                For Each shot in kims_antiques_shots
+                    .Add "move_to_" & shot.Name, 1
+                Next
+            End With
         End With
 
         For Each shot In kims_antiques_shots
             With .Shots(shot.Name)
                 .Switch = shot.Switch
-                .Profile = "mode_shot_flash"
+                .Profile = "kims_antiques"
                 With .Tokens()
                     .Add "lights", shot.Light
-                    .Add "color", "ffff00"
+                    .Add "color", "ff0000"
                 End With
                 With .ControlEvents()
-                    .Events = Array("mode_kims_antiques_started")
+                    .Events = Array("move_to_" & shot.Name)
+                    .State = 2
+                End With
+                With .ControlEvents()
+                    .Events = Array("mode_kims_antiques_started","kims_antiques_relight")
                     .State = 1
                 End With
                 With .ControlEvents()
-                    .Events = Array("mode_kims_antiques_stopping")
+                    .Events = Array("mode_kims_antiques_stopping","move_miss_kim")
                     .State = 0
                 End With
             End With
         Next
+
+        With GlfShotProfiles("kims_antiques")
+            .AdvanceOnHit = False
+            With .States("unlit")
+                .Show = "off"
+                .Key = "key_unlit_ka"
+            End With
+            With .States("ready")
+                .Show = "flash_color_with_fade"
+                .Key = "key_ready_ka"
+                .Speed = 5
+                With .Tokens()
+                    .Add "fade", 100
+                End With
+            End With
+            With .States("miss_kim")
+                .Show = "on_color"
+                .Key = "key_miss_kim_ka"
+                .Speed = 10
+            End With
+        End With
     End With
 End Sub
