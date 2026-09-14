@@ -633,6 +633,16 @@ Sub CreateSounds()
     
     AddMusic       "mus_bells_loop",  3.486, -1
     AddCallout     "voc_bells_intro", 12.088
+    AddCallout     "voc_bells_thankgod", 3
+    AddCallout     "voc_bells_what_happened", 8
+    AddCallout     "voc_bells_hammer", 4
+    AddCallout     "voc_bells_jamorwedge", 4
+    AddCallout     "voc_bells_clappers", 3
+    AddCallout     "voc_bells_dont_have_to_break_every", 2
+    AddCallout     "voc_bells_ruintheset", 3
+    AddCallout     "voc_bells_needapush", 6
+    AddCallout     "voc_bells_hunchback", 4
+    AddCallout     "voc_bells_youre_welcome", 4
     
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>

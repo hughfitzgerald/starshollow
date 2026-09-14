@@ -1,6 +1,6 @@
 ' Lbtb Mode
 
-Const LbtbTime = 60   'seconds
+Const LbtbTime = 20   'seconds
 Const LbtbShotScore = 20000
 
 Sub CreateLbtbMode()
@@ -9,13 +9,13 @@ Sub CreateLbtbMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_lbtb")
-        .StopEvents = Array("timer_lbtb_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
+        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_lbtb_post_mode_complete")
 
         With .EventPlayer()
             .Debug = True
             .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells")
             .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music")
-            .Add "timer_lbtb_mode_complete", Array("base_music_start")
+            .Add "timer_lbtb_post_mode_complete", Array("base_music_start")
 
             .Add "timer_shuffle_bells_complete", Array("reset_bells")
 
@@ -23,6 +23,9 @@ Sub CreateLbtbMode()
             .Add "choose_bell_one", Array("choose_bell", "choose_bell_two")
             .Add "choose_bell_two", Array("choose_bell", "choose_bell_three")
             .Add "choose_bell_three", Array("choose_bell")
+
+            .Add "timer_lbtb_mode_complete", Array("lbtb_post_mode")
+            .Add "lbtb_post_mode", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "play_lbtb_post_mode")
             
             .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
             .Add "release_scoop_hold", Array("disable_scoop_hold")
@@ -32,10 +35,22 @@ Sub CreateLbtbMode()
             Next
         End With
 
+        With .Timers("lbtb_post_mode")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 7
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "lbtb_post_mode"
+                .Action = "start"
+            End With
+        End With
+
         With .Timers("lbtb_intro_delay")
             .StartRunning = True
             .Direction = "down"
-            .StartValue = 12
+            .StartValue = 11.5
             .EndValue = 0
             .TickInterval = 1000    ' Tick every 1 second (1000 ms)
         End With
@@ -58,7 +73,7 @@ Sub CreateLbtbMode()
             .EndValue = 0
             .TickInterval = 250
             With .ControlEvents()
-                .EventName = "reset_bells"
+                .EventName = "bells_down"
                 .Action = "restart"
             End With
         End With
@@ -76,6 +91,10 @@ Sub CreateLbtbMode()
             With .ControlEvents()
                 .EventName = "timer_shuffle_bells_complete"
                 .Action = "restart"
+            End With
+            With .ControlEvents()
+                .EventName = "lbtb_post_mode"
+                .Action = "stop"
             End With
         End With
 
@@ -102,34 +121,46 @@ Sub CreateLbtbMode()
                 .Sound = "mus_guitarmode"
                 .Action = "stop"
             End With
-            ' With .EventName("lbtb_voc_1")
-            '     .Key = "key_voc_dancingfun"
-            '     .Sound = "voc_dancingfun"
-            ' End With
-            ' With .EventName("lbtb_voc_2")
-            '     .Key = "key_voc_flipallyouwant"
-            '     .Sound = "voc_flipallyouwant"
-            ' End With
-            ' With .EventName("lbtb_voc_3")
-            '     .Key = "key_voc_justkeepdancing"
-            '     .Sound = "voc_justkeepdancing"
-            ' End With
-            ' With .EventName("lbtb_voc_4")
-            '     .Key = "key_voc_lelbtbeflipyou"
-            '     .Sound = "voc_lelbtbeflipyou"
-            ' End With
+            With .EventName("play_lbtb_post_mode")
+                .Key = "key_voc_bells_what_happened"
+                .Sound = "voc_bells_what_happened"
+            End With
+            With .EventName("lbtb_voc_1")
+                .Key = "key_voc_bells_thankgod"
+                .Sound = "voc_bells_thankgod"
+            End With
+            With .EventName("lbtb_voc_2")
+                .Key = "key_voc_bells_hammer"
+                .Sound = "voc_bells_hammer"
+            End With
+            With .EventName("lbtb_voc_3")
+                .Key = "key_voc_bells_jamorwedge"
+                .Sound = "voc_bells_jamorwedge"
+            End With
+            With .EventName("lbtb_voc_4")
+                .Key = "key_voc_bells_clappers"
+                .Sound = "voc_bells_clappers"
+            End With
             ' With .EventName("lbtb_voc_5")
-            '     .Key = "key_voc_lookgreat"
-            '     .Sound = "voc_lookgreat"
+            '     .Key = "key_voc_bells_dont_have_to_break_every"
+            '     .Sound = "voc_bells_dont_have_to_break_every"
             ' End With
-            ' With .EventName("lbtb_voc_6")
-            '     .Key = "key_voc_neeson"
-            '     .Sound = "voc_neeson"
-            ' End With
-            ' With .EventName("lbtb_voc_7")
-            '     .Key = "key_voc_prostrate"
-            '     .Sound = "voc_prostrate"
-            ' End With
+            With .EventName("lbtb_voc_6")
+                .Key = "key_voc_bells_ruintheset"
+                .Sound = "voc_bells_ruintheset"
+            End With
+            With .EventName("lbtb_voc_7")
+                .Key = "key_voc_bells_needapush"
+                .Sound = "voc_bells_needapush"
+            End With
+            With .EventName("lbtb_voc_8")
+                .Key = "key_voc_bells_hunchback"
+                .Sound = "voc_bells_hunchback"
+            End With
+            With .EventName("lbtb_voc_9")
+                .Key = "key_voc_bells_youre_welcome"
+                .Sound = "voc_bells_youre_welcome"
+            End With
         End With
 
         With .SlidePlayer()
@@ -145,7 +176,7 @@ Sub CreateLbtbMode()
         End With
 
         With .VariablePlayer()
-            With .EventName("reset_bells")
+            With .EventName("bells_down")
                 With .Variable("bells_not_hit")
                     .Action = "set"
                     .Int = 1
@@ -217,6 +248,8 @@ Sub CreateLbtbMode()
                 .Add "lbtb_voc_5", 1
                 .Add "lbtb_voc_6", 1
                 .Add "lbtb_voc_7", 1
+                .Add "lbtb_voc_8", 1
+                .Add "lbtb_voc_9", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With

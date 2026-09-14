@@ -2556,6 +2556,96 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_bells_what_happened",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_what_happened.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_thankgod",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_thankgod.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_hammer",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_hammer.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_jamorwedge",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_jamorwedge.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_clappers",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_clappers.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_dont_have_to_break_every",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_dont_have_to_break_every.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_ruintheset",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_ruintheset.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_needapush",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_needapush.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_hunchback",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_hunchback.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_bells_youre_welcome",
+    "path": "/Users/stephenjones/code/starshollow/callouts/voc_bells_youre_welcome.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_poodles1",
     "path": "/Users/stephenjones/code/starshollow/callouts/voc_poodles1.ogg",
     "internal_name": "",
