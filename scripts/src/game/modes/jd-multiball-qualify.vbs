@@ -27,9 +27,9 @@ Sub CreateJDMultiballQualifyMode()
             .Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 1}", Array("lock_lit")
             .Add "lock_qualified", Array("lock_lit")
             
-            .Add "start_jd_multiball", Array("lock_unqualified")
+            .Add "start_jd_multiball", Array("lock_unqualified", "close_ramp_diverter")
             .Add "lock_unqualified", Array("lock_unlit")
-            .Add "mode_jd_multiball_qualify_stopping", Array("lock_unlit")
+            .Add "mode_jd_multiball_qualify_stopping", Array("lock_unlit", "close_ramp_diverter")
 
             .Add "lock_lit", Array("open_ramp_diverter")
             .Add "lock_unlit", Array("close_ramp_diverter")
