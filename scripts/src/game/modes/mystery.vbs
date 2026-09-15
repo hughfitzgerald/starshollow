@@ -8,27 +8,31 @@ Sub CreateMysteryMode()
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
-            ' .Add "mode_mystery_started", Array("light_inlanes")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("select_random_mystery")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("play_mystery_show")
             .Add "balldevice_scoop_ball_entered{modes.jd_multiball.active==True}", Array("disable_scoop_hold")
 
-            .Add "select_random_mystery", Array("play_mystery_show")
-            .Add "timer_mystery_show_complete", Array("restart_qualify_mystery")
+            .Add "timer_mystery_show_complete", Array("select_random_mystery")
+            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery")
 
             .Add "restart_qualify_mystery", Array("check_minigame")
 
             .Add "inlane_1_lit_hit", Array("mystery_is_ready")
             .Add "inlane_2_lit_hit", Array("mystery_is_ready")
             .Add "mystery_is_ready", Array("enable_scoop_hold")
+
+            .Add "mystery_eb", Array("eb_lit")
+            .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
+            .Add "mystery_ab", Array("add-a-ball")
+            .Add "mystery_10m", Array("score_10000000")
         End With
 
         With .Timers("mystery_show")
             .StartRunning = False
             .Direction = "down"      ' Count down
-            .StartValue = 5
+            .StartValue = 3
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
@@ -37,10 +41,48 @@ Sub CreateMysteryMode()
             End With
         End With
 
+        With .Timers("mystery_selected")
+            .StartRunning = False
+            .Direction = "down"      ' Count down
+            .StartValue = 3
+            .EndValue = 0            ' End at 0
+            .TickInterval = 1000     ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "select_random_mystery"
+                .Action = "start"
+            End With
+        End With
+
+        With .SlidePlayer()
+            With .EventName("play_mystery_show")
+                .Slide = "mystery1"
+                .Action = "play"
+            End With
+            With .EventName("mystery_eb")
+                .Slide = "mystery1_eb"
+                .Action = "play"
+            End With
+            With .EventName("mystery_ib")
+                .Slide = "mystery1_ib"
+                .Action = "play"
+            End With
+            With .EventName("mystery_ab")
+                .Slide = "mystery1_ab"
+                .Action = "play"
+            End With
+            With .EventName("mystery_10m")
+                .Slide = "mystery1_10m"
+                .Action = "play"
+            End With
+        End With
 
         With .RandomEventPlayer()
             '.Debug = True
             With .EventName("select_random_mystery")
+                .Add "mystery_eb", 1
+                .Add "mystery_ib", 1
+                .Add "mystery_ab", 1
+                .Add "mystery_10m", 1
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
                 ' .Add "mystery_full_protons{current_player.shot_proton_round6 == 0}", 0.7
                 ' .Add "mystery_added_cluster{current_player.shot_cluster_bomb2 == 0}", 0.8
@@ -115,7 +157,7 @@ Sub CreateMysteryMode()
         End With
 
         With .SoundPlayer()
-            With .EventName("select_random_mystery")
+            With .EventName("play_mystery_show")
                 .Key = "key_voc_mystery"
                 .Sound = "voc_mystery"
             End With

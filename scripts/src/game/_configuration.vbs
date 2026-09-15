@@ -14,7 +14,7 @@
 
 '*********** GLOBALS ***********
 
-Dim ScoreArray: ScoreArray = Array(1,10,100,333,500,1000,2000,3000,3333,5000,10000,20000,30000,33333,50000,100000,200000,500000,1000000)
+Dim ScoreArray: ScoreArray = Array(1,10,100,333,500,1000,2000,3000,3333,5000,10000,20000,30000,33333,50000,100000,200000,500000,1000000,10000000)
 
 ' Set by the plunger-lane listeners below; read by ZKEY for the plunger
 ' release sound. s_Trigger1 is a Trigger, so it has no BallCntOver.

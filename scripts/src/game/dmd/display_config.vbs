@@ -106,10 +106,26 @@ Sub CreateFlexDmdDisplay()
         .Ticker  = "DmdTick_ScoreCentralLayout"
     End With
 
+    ' Grid random selector (adapted from scripts/src/game/script.vbs).
+    ' ResetFrame = True so the jump sequence replays from scratch every
+    ' time this slide is shown, not just once at Flex_Init.
+    With CreateDmdSlide("mystery")
+        .Builder    = "DmdBuild_Mystery"
+        .Ticker     = "DmdTick_Mystery"
+        .ResetFrame = True
+    End With
+
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With
     With CreateDmdSlide("jackpot")     : .Gif = "jackpot.gif"     : End With
     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
     With CreateDmdSlide("logan-hit") : .Gif = "logan_hit_short_small.gif" : End With
+
+    ' Mystery slides
+    With CreateDmdSlide("mystery1") : .Gif = "Mystery1.gif" : End With
+    With CreateDmdSlide("mystery1_eb") : .Gif = "Mystery1-EB.gif" : End With
+    With CreateDmdSlide("mystery1_ab") : .Gif = "Mystery1-AB.gif" : End With
+    With CreateDmdSlide("mystery1_ib") : .Gif = "Mystery1-IB.gif" : End With
+    With CreateDmdSlide("mystery1_10m") : .Gif = "Mystery1-10M.gif" : End With
 
     ' Bonus X and the drop target bonus tiers
     With CreateDmdSlide("bonus_x")  : .Gif = "bonusx.gif"  : End With
