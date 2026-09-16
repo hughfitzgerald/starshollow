@@ -22,6 +22,8 @@ Sub CreateFdPunchMode()
             .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
             .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode")
 
+            .Add "s_complete_left_ramp_active", Array("fd_punch_right_redirect")
+            
             .Add "fd_punch_right_redirect", Array("close_right_orbit_diverter")
             .Add "timer_fd_punch_right_redirect_complete", Array("open_right_orbit_diverter")
 
@@ -60,7 +62,7 @@ Sub CreateFdPunchMode()
         With .Timers("fd_punch_right_redirect")
             .StartRunning = False
             .Direction = "down"
-            .StartValue = 2
+            .StartValue = 1
             .EndValue = 0
             .TickInterval = 1000
             With .ControlEvents
