@@ -8,6 +8,7 @@ Sub CreateMysteryMode()
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
+            .Add "mode_mystery_started", Array("mystery_is_ready")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
@@ -15,7 +16,7 @@ Sub CreateMysteryMode()
             .Add "balldevice_scoop_ball_entered{modes.jd_multiball.active==True}", Array("disable_scoop_hold")
 
             .Add "timer_mystery_show_complete", Array("select_random_mystery")
-            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery")
+            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_10m")
 
             .Add "restart_qualify_mystery", Array("check_minigame")
 
@@ -25,8 +26,17 @@ Sub CreateMysteryMode()
 
             .Add "mystery_eb", Array("eb_lit")
             .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
-            .Add "mystery_ab", Array("add-a-ball")
+            .Add "mystery_ab", Array("add_a_ball")
             .Add "mystery_10m", Array("score_10000000")
+        End With
+
+
+
+        With .Multiballs("add_a_ball")
+            .StartEvents = Array("add_a_ball")
+            .BallCount = 1
+            .BallCountType = "add"
+            .ShootAgain = 0
         End With
 
         With .Timers("mystery_show")
@@ -58,31 +68,52 @@ Sub CreateMysteryMode()
                 .Slide = "mystery1"
                 .Action = "play"
             End With
+            With .EventName("timer_mystery_selected_complete")
+                .Slide = "mystery1"
+                .Action = "remove"
+            End With
             With .EventName("mystery_eb")
                 .Slide = "mystery1_eb"
                 .Action = "play"
+            End With
+            With .EventName("remove_mystery_eb")
+                .Slide = "mystery1_eb"
+                .Action = "remove"
             End With
             With .EventName("mystery_ib")
                 .Slide = "mystery1_ib"
                 .Action = "play"
             End With
+            With .EventName("remove_mystery_ib")
+                .Slide = "mystery1_ib"
+                .Action = "remove"
+            End With
             With .EventName("mystery_ab")
                 .Slide = "mystery1_ab"
                 .Action = "play"
             End With
+            With .EventName("remove_mystery_ab")
+                .Slide = "mystery1_ab"
+                .Action = "remove"
+            End With
             With .EventName("mystery_10m")
                 .Slide = "mystery1_10m"
                 .Action = "play"
+            End With
+            With .EventName("remove_mystery_10m")
+                .Slide = "mystery1_10m"
+                .Action = "remove"
             End With
         End With
 
         With .RandomEventPlayer()
             '.Debug = True
             With .EventName("select_random_mystery")
-                .Add "mystery_eb", 1
-                .Add "mystery_ib", 1
+                ' .Add "mystery_eb", 1
+                ' .Add "mystery_ib", 1
                 .Add "mystery_ab", 1
-                .Add "mystery_10m", 1
+                ' .Add "mystery_10m", 1
+
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
                 ' .Add "mystery_full_protons{current_player.shot_proton_round6 == 0}", 0.7
                 ' .Add "mystery_added_cluster{current_player.shot_cluster_bomb2 == 0}", 0.8
