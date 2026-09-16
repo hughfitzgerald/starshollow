@@ -106,15 +106,6 @@ Sub CreateFlexDmdDisplay()
         .Ticker  = "DmdTick_ScoreCentralLayout"
     End With
 
-    ' Grid random selector (adapted from scripts/src/game/script.vbs).
-    ' ResetFrame = True so the jump sequence replays from scratch every
-    ' time this slide is shown, not just once at Flex_Init.
-    With CreateDmdSlide("mystery")
-        .Builder    = "DmdBuild_Mystery"
-        .Ticker     = "DmdTick_Mystery"
-        .ResetFrame = True
-    End With
-
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With
     With CreateDmdSlide("jackpot")     : .Gif = "jackpot.gif"     : End With
     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
