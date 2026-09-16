@@ -24,7 +24,7 @@ Sub CreateMysteryMode()
             .Add "inlane_2_lit_hit", Array("mystery_is_ready")
             .Add "mystery_is_ready", Array("enable_scoop_hold")
 
-            .Add "mystery_eb", Array("eb_lit")
+            .Add "mystery_eb", Array("eb_now_lit")
             .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
             .Add "mystery_ab", Array("add_a_ball")
             .Add "mystery_10m", Array("score_10000000")
@@ -109,10 +109,10 @@ Sub CreateMysteryMode()
         With .RandomEventPlayer()
             '.Debug = True
             With .EventName("select_random_mystery")
-                ' .Add "mystery_eb", 1
-                ' .Add "mystery_ib", 1
+                .Add "mystery_eb", 1
+                .Add "mystery_ib", 1
                 .Add "mystery_ab", 1
-                ' .Add "mystery_10m", 1
+                .Add "mystery_10m", 1
 
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
                 ' .Add "mystery_full_protons{current_player.shot_proton_round6 == 0}", 0.7
