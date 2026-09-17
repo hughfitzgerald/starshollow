@@ -154,8 +154,12 @@ Sub ClearMultiballLocksListener(ball)
     glf_ball_devices("lock1").EjectCallback = "Lock1SubwayEjectCallback"
     glf_ball_devices("lock2").EjectCallback = "Lock2SubwayEjectCallback"
 
-    glf_ball_devices("lock1").EjectAll()
-    glf_ball_devices("lock2").EjectAll()
+    if glf_ball_devices("lock1").HasBall() Then
+		glf_ball_devices("lock1").EjectAll()
+    End If
+    if glf_ball_devices("lock2").HasBall() Then
+		glf_ball_devices("lock2").EjectAll()
+    End If
 
     glf_ball_devices("lock1").EjectCallback = "Lock1EjectCallback"
     glf_ball_devices("lock2").EjectCallback = "Lock2EjectCallback"
