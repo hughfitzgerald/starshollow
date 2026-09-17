@@ -3,6 +3,19 @@
 Sub CreateMiniGameMode
     Dim x, minigame
 
+    ' build a string of the form: "current_player.shot_" & minigame.ModeName & "_minigame != 1 and"
+    ' where you have a single string that includes all the conditions for checking if a minigame is not active.
+    ' obviously it should not end with "and"
+    Dim minigame_conditions
+    minigame_conditions = ""
+    For Each minigame In minigames
+        minigame_conditions = minigame_conditions & "current_player.shot_" & minigame.ModeName & "_minigame != 1 and "
+    Next
+    ' remove the trailing " and "
+    If Len(minigame_conditions) > 0 Then
+        minigame_conditions = Left(minigame_conditions, Len(minigame_conditions) - 5)
+    End If
+
     With CreateGlfMode("minigame", 500)
         .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
@@ -14,6 +27,8 @@ Sub CreateMiniGameMode
             .Add "select_minigame", Array("clear_selected_minigame", "choose_new_minigame")
 
             .Add "check_minigame{current_player.shot_logan_light == 1}", Array("start_ll_multiball")
+
+            .Add "check_minigame{" & minigame_conditions & "}", Array("release_scoop_hold","disable_scoop_hold")
 
             For Each minigame In minigames
                 .Add "check_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_" & minigame.ModeName)
