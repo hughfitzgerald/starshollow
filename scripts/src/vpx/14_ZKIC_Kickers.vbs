@@ -71,16 +71,20 @@ Sub DrainSubwayKickerEject(ball)
 End Sub
 
 Sub CaptureCaptiveBall(ball)
-	glf_BIP = glf_BIP - 1
     glf_ball_devices("scoop").EjectCallback = "ScoopReturnToCaptivity"
-	glf_ball_holds("scoop_hold").ReleaseAll()
+	If glf_ball_devices("scoop").HasBall() Then
+		glf_BIP = glf_BIP - 1
+		glf_ball_holds("scoop_hold").ReleaseAll()
+	End If
 	glf_ball_devices("scoop").EjectCallback = "ScoopEjectCallback"
 End Sub
 
 Sub SetCaptiveBallFreeListener(ball)
-	glf_BIP = glf_BIP + 1
     glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToLeftScoop"
-	glf_ball_holds("captive_ramp_kicker_hold").ReleaseAll()
+	If glf_ball_devices("captive_ramp_kicker").HasBall() Then
+		glf_BIP = glf_BIP + 1
+		glf_ball_holds("captive_ramp_kicker_hold").ReleaseAll()
+	End If
 	glf_ball_devices("captive_ramp_kicker").EjectCallback = "CaptiveRampKickerEjectToCaptivity"
 End Sub
 
