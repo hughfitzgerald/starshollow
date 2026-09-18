@@ -34,7 +34,7 @@ Sub CreateBasementMode()
             .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
             .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
 
-            .Add "ball_ended", Array("clear_multiball_locks")
+            .Add "mode_eob_bonus_started", Array("clear_multiball_locks")
             .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
             
             .Add "return_captive_from_drain", Array("disable_captive_ramp_kicker_hold")
