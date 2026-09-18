@@ -34,8 +34,8 @@
     "overwrite_physics": false,
     "drag_points": [
       {
-        "x": 621.9379,
-        "y": 708.6661,
+        "x": 641.63635,
+        "y": 707.3984,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -201,17 +201,15 @@
         "editor_layer": 0
       },
       {
-        "x": 621.48425,
-        "y": 706.3137,
+        "x": 640.4184,
+        "y": 705.1365,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
         "has_auto_texture": true,
         "tex_coord": 0.0,
         "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "editor_layer": 0
       }
     ],
     "part_group_name": "Collidable_Misc"
