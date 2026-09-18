@@ -33,14 +33,14 @@ Dim B2SController
 
 Sub LoadB2S()
     On Error Resume Next
-    Set B2SController = CreateObject("B2S.Server")
-    If Err.Number <> 0 Then
-        Err.Clear
-        Set B2SController = Nothing
-        Exit Sub          ' no B2S installed — table still runs
-    End If
+    ' Set B2SController = CreateObject("B2S.Server")
+    ' If Err.Number <> 0 Then
+    '     Err.Clear
+    '     Set B2SController = Nothing
+    '     Exit Sub          ' no B2S installed — table still runs
+    ' End If
     On Error Goto 0
 
-    B2SController.B2SName = "StarsHollowShowdown"
-    B2SController.Run
+    ' B2SController.B2SName = "StarsHollowShowdown"
+    ' B2SController.Run
 End Sub

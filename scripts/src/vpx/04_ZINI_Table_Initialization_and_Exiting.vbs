@@ -11,7 +11,6 @@
 '   queue.QueueEmpty      - ZQUE removed
 '   ShadowDT loop         - no drop targets on this table
 
-LoadCoreFiles
 Sub LoadCoreFiles
 	On Error Resume Next
 	ExecuteGlobal GetTextFile("core.vbs")   'still needed for vpmTimer, DOF consts, cvpmMagnet
@@ -21,6 +20,8 @@ End Sub
 
 
 Sub Table1_Init
+	LoadCoreFiles
+	LoadEM
 	' GLF - ConfigureGlfDevices must run first; Glf_Init consumes it
 	ConfigureGlfDevices()
 	Glf_Init(Table1)
@@ -56,6 +57,10 @@ End Sub
 
 Sub Table1_Exit
 	Glf_Exit()
+	If B2SOn Then
+		Controller.Pause = False
+		Controller.Stop
+	End If
 	'Close flexDMD
 	If UseFlexDMD = 0 Then Exit Sub
 	If Not FlexDMD Is Nothing Or VRRoom = 0 Then
@@ -63,10 +68,10 @@ Sub Table1_Exit
 		FlexDMD.Run = False
 		FlexDMD = Null
 	End If
-    If Not B2SController Is Nothing Then
-        B2SController.Stop
-        Set B2SController = Nothing
-    End If
+    ' If Not B2SController Is Nothing Then
+    '     B2SController.Stop
+    '     Set B2SController = Nothing
+    ' End If
 End Sub
 
 Sub Table1_Paused

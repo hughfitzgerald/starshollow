@@ -16,7 +16,8 @@ Sub CreateBasementMode()
         With .EventPlayer()
 
             'Some table init stuff
-            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down")
+            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "backglass_gi_on")
+            .Add "mode_basement_stopped", Array("backglass_gi_off")
 
             'Backglass stuff
             .Add "backglass_on", Array("backglass_logo_on","backglass_game_on","backglass_logic_on","backglass_framework_on")
@@ -51,6 +52,18 @@ Sub CreateBasementMode()
         '         .WaitFor = "captive_ball_is_home"
         '     End With
         ' End With
+
+        ' Backglass lights
+        With .DOFPlayer()
+            With .EventName("backglass_gi_on")
+                .Action = "DOF_ON"
+                .DOFEvent = 1
+            End With
+            With .EventName("backglass_gi_off")
+                .Action = "DOF_OFF"
+                .DOFEvent = 1
+            End With
+        End With
 
         With .VariablePlayer()
             With .EventName("free_captive_ball")
