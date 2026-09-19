@@ -696,8 +696,8 @@ Sub CreateSounds()
     AddCallout     "voc_tm_central_nervous_system", 4
     AddCallout     "voc_tm_coffee_in_an_iv", 2
     AddCallout     "voc_tm_gavel_twinkle", 8
-    AddCallout     "voc_tm_gavelx3", 9
-    AddCallout     "voc_tm_punctuality_dirty", 6
+    AddCallout     "voc_tm_gavelx3", 8
+    AddCallout     "voc_tm_punctuality_dirty", 5
     AddCallout     "voc_tm_meetingadjourned", 7
 
     AddCallout     "voc_tm_cartkiosk_cartkiosk1", 7

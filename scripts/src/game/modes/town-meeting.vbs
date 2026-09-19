@@ -50,9 +50,9 @@ Sub CreateTownMeetingMode()
         With .Timers("tm_start_shots")
             .StartRunning = False
             .Direction = "down"
-            .StartValue = 0.5
+            .StartValue = 1
             .EndValue = 0
-            .TickInterval = 500
+            .TickInterval = 1000
             With .ControlEvents()
                 .EventName = "tm_start_shots"
                 .Action = "start"
