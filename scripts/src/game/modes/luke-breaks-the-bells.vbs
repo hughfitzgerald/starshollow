@@ -103,6 +103,7 @@ Sub CreateLbtbMode()
             With .EventName("mode_lbtb_started")
                 .Key = "key_voc_bells_intro"
                 .Sound = "voc_bells_intro"
+                .Priority = 100
             End With
             With .EventName("start_bells_loop")
                 .Key = "key_mus_bells_loop"
@@ -125,6 +126,7 @@ Sub CreateLbtbMode()
             With .EventName("play_lbtb_post_mode")
                 .Key = "key_voc_bells_what_happened"
                 .Sound = "voc_bells_what_happened"
+                .Priority = 100
             End With
             With .EventName("lbtb_voc_1")
                 .Key = "key_voc_bells_thankgod"

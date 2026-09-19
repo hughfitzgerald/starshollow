@@ -79,10 +79,12 @@ Sub CreateFdPunchMode()
             With .EventName("mode_fd_punch_started")
                 .Key = "key_voc_fd_punch_intro"
                 .Sound = "voc_fd_punch_intro"
+                .Priority = 100
             End With
             With .EventName("play_fd_punch_post_mode")
                 .Key = "key_voc_fd_punch_idontfeelgood"
                 .Sound = "voc_fd_punch_idontfeelgood"
+                .Priority = 100
             End With
             With .EventName("start_guitar_music")
                 .Key = "key_mus_guitarmode"
