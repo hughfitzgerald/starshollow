@@ -284,10 +284,12 @@ Sub CreateBaseMode()
             With .EventName("stars_callout")
                 .Key = "key_voc_stars"
                 .Sound = "voc_stars"
+                .Priority = -1
             End With
             With .EventName("hollow_callout")
                 .Key = "key_voc_hollow"
                 .Sound = "voc_hollow"
+                .Priority = -1
             End With
             With .EventName("drop_target_drop1_down{modes.fd_punch.active==False}")
                 .Key = "key_voc_hollow"
