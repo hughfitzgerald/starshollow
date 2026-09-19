@@ -29,7 +29,7 @@ Sub CreateTownMeetingMode()
             .Add "mode_town_meeting_stopping", Array("tm_shots_off")
             .Add "timer_tm_mode_complete", Array("town_meeting_post_mode")
 
-            .Add "town_meeting_post_mode", Array("tm_shots_off", "stop_guitar_music", "play_town_meeting_post_mode")
+            .Add "town_meeting_post_mode", Array("stop_tm_sounds", "tm_shots_off", "stop_guitar_music", "play_town_meeting_post_mode")
             .Add "timer_town_meeting_post_mode_complete", Array("base_music_start")
             .Add "timer_town_meeting_intro_delay_complete", Array("release_scoop_hold","start_guitar_music", "tm_start_shots")
 
@@ -38,13 +38,37 @@ Sub CreateTownMeetingMode()
             .Add "tm_lukes_lit_hit", Array("tm_start_shots")
 
             ' .Add "tm_shot_group_unlit_complete", Array("light_lukes")
-            .Add "timer_tm_lukes_complete", Array("tm_shots_off", "light_lukes")
+            .Add "timer_tm_lukes_complete", Array("stop_tm_sounds", "tm_shots_off", "light_lukes", "play_tm_coffee")
 
             For Each shot In tm_shots
                 .Add shot.Name & "_lit_hit", Array("tm_shot_hit")
             Next
 
             .Add "tm_reset_shots", Array("tm_shots_off","tm_start_shots")
+        End With
+
+        With .Timers("play_tm_coffee")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 0.5
+            .EndValue = 0
+            .TickInterval = 500
+            With .ControlEvents()
+                .EventName = "play_tm_coffee"
+                .Action = "start"
+            End With
+        End With
+
+        With .Timers("play_town_meeting_post_mode")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 0.5
+            .EndValue = 0
+            .TickInterval = 500
+            With .ControlEvents()
+                .EventName = "play_town_meeting_post_mode"
+                .Action = "start"
+            End With
         End With
 
         With .Timers("town_meeting_post_mode")
@@ -118,11 +142,11 @@ Sub CreateTownMeetingMode()
                 .Key = "key_sfx_tm_gavel"
                 .Sound = "sfx_tm_gavel"
             End With
-            With .EventName("timer_tm_lukes_complete")
+            With .EventName("timer_play_tm_coffee_complete")
                 .Key = "key_voc_tm_coffee_in_an_iv"
                 .Sound = "voc_tm_coffee_in_an_iv"
             End With
-            With .EventName("play_town_meeting_post_mode")
+            With .EventName("timer_play_town_meeting_post_mode_complete")
                 .Key = "key_voc_tm_meetingadjourned"
                 .Sound = "voc_tm_meetingadjourned"
             End With
