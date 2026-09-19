@@ -16064,8 +16064,8 @@ Class GlfSoundBus
                 m_current_sounds.Add sound_settings.Sound.File, sound_settings
             End If
         Else
-            If (UBound(m_current_sounds.Keys)-1) > m_simultaneous_sounds Then
-                'TODO: Queue Sound
+            If m_current_sounds.Count >= m_simultaneous_sounds Then
+                'Bus is full: drop this sound (TODO: queue it instead)
             Else
                 If m_current_sounds.Exists(sound_settings.Sound.File) Then
                     m_current_sounds.Remove sound_settings.Sound.File
