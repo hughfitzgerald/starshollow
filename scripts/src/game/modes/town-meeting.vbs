@@ -4,6 +4,7 @@
 Const TownMeetingTime = 60   'seconds
 Const TownMeetingShotScore = 20000
 Const TownMeetingLukesShotScore = 100000
+Const TownMeetingLukesTime = 20   'seconds
 
 Sub CreateTownMeetingMode()
     Dim tm_shots, shot, shotNames
@@ -45,7 +46,7 @@ Sub CreateTownMeetingMode()
         With .Timers("tm_lukes")
             .StartRunning = False
             .Direction = "down"
-            .StartValue = 10
+            .StartValue = TownMeetingLukesTime
             .EndValue = 0
             .TickInterval = 1000
             With .ControlEvents
@@ -64,34 +65,14 @@ Sub CreateTownMeetingMode()
                 .Sound = "mus_guitarmode"
                 .Action = "stop"
             End With
-            ' With .EventName("tm_voc_1")
-            '     .Key = "key_voc_dancingfun"
-            '     .Sound = "voc_dancingfun"
-            ' End With
-            ' With .EventName("tm_voc_2")
-            '     .Key = "key_voc_flipallyouwant"
-            '     .Sound = "voc_flipallyouwant"
-            ' End With
-            ' With .EventName("tm_voc_3")
-            '     .Key = "key_voc_justkeepdancing"
-            '     .Sound = "voc_justkeepdancing"
-            ' End With
-            ' With .EventName("tm_voc_4")
-            '     .Key = "key_voc_letmeflipyou"
-            '     .Sound = "voc_letmeflipyou"
-            ' End With
-            ' With .EventName("tm_voc_5")
-            '     .Key = "key_voc_lookgreat"
-            '     .Sound = "voc_lookgreat"
-            ' End With
-            ' With .EventName("tm_voc_6")
-            '     .Key = "key_voc_neeson"
-            '     .Sound = "voc_neeson"
-            ' End With
-            ' With .EventName("tm_voc_7")
-            '     .Key = "key_voc_prostrate"
-            '     .Sound = "voc_prostrate"
-            ' End With
+            With .EventName("tm_start_shots")
+                .Key = "key_sfx_tm_gavel"
+                .Sound = "sfx_tm_gavel"
+            End With
+            With .EventName("timer_tm_lukes_complete")
+                .Key = "key_voc_tm_coffee_in_an_iv"
+                .Sound = "voc_tm_coffee_in_an_iv"
+            End With
         End With
 
         With .SlidePlayer()
@@ -173,16 +154,9 @@ Sub CreateTownMeetingMode()
         End With
 
         With .RandomEventPlayer()
-            With .EventName("tm_shot_hit")
-                .Add "tm_voc_1", 1
-                .Add "tm_voc_2", 1
-                .Add "tm_voc_3", 1
-                .Add "tm_voc_4", 1
-                .Add "tm_voc_5", 1
-                .Add "tm_voc_6", 1
-                .Add "tm_voc_7", 1
-                .ForceAll = True
-                .ForceDifferent = True
+            With .EventName("tm_start_shots")
+                .Add "town_meeting_deer_start", 1
+                .Add "town_meeting_cartkiosk_start", 1
             End With
         End With
 

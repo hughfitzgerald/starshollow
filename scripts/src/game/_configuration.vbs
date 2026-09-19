@@ -283,6 +283,9 @@ Sub ConfigureGlfDevices()
     CreateKimsAntiquesMode()      ' priority 710
     CreateLbtbMode()            ' priority 720
 
+    CreateTownMeetingDeerMode()    ' priority 900
+    CreateTownMeetingCartKioskMode()    ' priority 905
+
     CreateJDMultiballMode()    ' priority 1000
     CreateLLMultiballMode()    ' priority 1005
 
@@ -689,6 +692,29 @@ Sub CreateSounds()
     AddCallout     "voc_fd_punch_touchingmystuff", 3
     AddCallout     "voc_fd_punch_twoplustwo", 8
     AddCallout     "voc_fd_punch_wherehewasgoing", 5
+
+    AddCallout     "voc_tm_central_nervous_system", 3
+    AddCallout     "voc_tm_coffee_in_an_iv", 1
+    AddCallout     "voc_tm_gavel_twinkle", 7
+    AddCallout     "voc_tm_gavelx3", 8
+    AddCallout     "voc_tm_punctuality_dirty", 5
+    AddCallout     "voc_tm_meetingadjourned", 6
+
+    AddCallout     "voc_tm_cartkiosk_cartkiosk1", 6
+    AddCallout     "voc_tm_cartkiosk_cartkiosk2", 5
+    AddCallout     "voc_tm_cartkiosk_hirsutehippy", 7
+    AddCallout     "voc_tm_cartkiosk_sexyornot", 5
+    AddCallout     "voc_tm_cartkiosk_sexysquash", 2
+    AddCallout     "voc_tm_cartkiosk_transcript", 4
+
+    AddCallout     "voc_tm_deer_bambies", 3
+    AddCallout     "voc_tm_deer_flying", 3
+    AddCallout     "voc_tm_deer_leavethemalone", 1
+    AddCallout     "voc_tm_deer_partialelimination", 3
+    AddCallout     "voc_tm_deer_population", 7
+    AddCallout     "voc_tm_deer_wolf", 5
+
+    AddSoundEffect "sfx_tm_gavel", 1
     
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>
@@ -895,7 +921,7 @@ minigames = Array( _
 
 
 ' minigames = Array(NewMinigame("dance_marathon", "DANCE MARATHON", "l24"))
-' minigames = Array(NewMinigame("town_meeting", "TOWN MEETING", "l25"))
+minigames = Array(NewMinigame("town_meeting", "TOWN MEETING", "l25"))
 ' minigames = Array(NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"))
 ' minigames = Array(NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"))
 ' minigames = Array(NewMinigame("lbtb", "LUKE BREAKS THE BELLS!", "l28"))

@@ -2556,6 +2556,177 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_tm_cartkiosk_cartkiosk1",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_cartkiosk1.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_cartkiosk_cartkiosk2",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_cartkiosk2.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_cartkiosk_hirsutehippy",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_hirsutehippy.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_cartkiosk_sexyornot",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_sexyornot.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_cartkiosk_sexysquash",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_sexysquash.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_cartkiosk_transcript",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_transcript.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_central_nervous_system",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_central_nervous_system.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_coffee_in_an_iv",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_coffee_in_an_iv.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_deer_bambies",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_deer_bambies.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_deer_flying",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_deer_flying.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_deer_leavethemalone",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_deer_leavethemalone.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_deer_partialelimination",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_deer_partialelimination.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_deer_population",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_deer_population.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_deer_wolf",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_deer_wolf.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_gavel_twinkle",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_gavel_twinkle.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_gavelx3",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_gavelx3.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_meetingadjourned",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_meetingadjourned.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_tm_punctuality_dirty",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_punctuality_dirty.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_tm_gavel",
+    "path": "/Users/stephenjones/code/starshollow/sounds/sfx_tm_gavel.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_fd_punch_bathroom",
     "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_bathroom.ogg",
     "internal_name": "",
