@@ -47,6 +47,18 @@ Sub CreateTownMeetingMode()
             .Add "tm_reset_shots", Array("tm_shots_off","tm_start_shots")
         End With
 
+        With .Timers("tm_start_shots")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 0.5
+            .EndValue = 0
+            .TickInterval = 500
+            With .ControlEvents()
+                .EventName = "tm_start_shots"
+                .Action = "start"
+            End With
+        End With
+
         With .Timers("play_tm_coffee")
             .StartRunning = False
             .Direction = "down"
@@ -231,7 +243,7 @@ Sub CreateTownMeetingMode()
         End With
 
         With .RandomEventPlayer()
-            With .EventName("tm_start_shots")
+            With .EventName("timer_tm_start_shots_complete")
                 .Add "town_meeting_deer_start", 1
                 .Add "town_meeting_cartkiosk_start", 1
             End With
