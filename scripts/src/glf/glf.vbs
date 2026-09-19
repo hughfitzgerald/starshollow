@@ -11428,7 +11428,7 @@ End Function
 
 
 Class GlfSoundPlayerItem
-	Private m_sound, m_action, m_key, m_volume, m_loops, m_mode
+	Private m_sound, m_action, m_key, m_volume, m_loops, m_mode, m_priority
     
     Public Property Get Action(): Action = m_action: End Property
     Public Property Let Action(input): m_action = input: End Property
@@ -11444,6 +11444,9 @@ Class GlfSoundPlayerItem
 
     Public Property Get Mode(): Mode = m_mode: End Property
     Public Property Let Mode(input): m_mode = input: End Property
+
+    Public Property Get Priority(): Priority = m_priority: End Property
+    Public Property Let Priority(input): m_priority = input: End Property
 
     Public Property Get Sound()
         If IsNull(m_sound) Then
@@ -11465,6 +11468,7 @@ Class GlfSoundPlayerItem
         m_volume = Empty
         m_loops = Empty
         m_mode = mode
+        m_priority = Empty
         Set Init = Me
 	End Function
 
@@ -16064,8 +16068,8 @@ Class GlfSoundBus
                 m_current_sounds.Add sound_settings.Sound.File, sound_settings
             End If
         Else
-            If m_current_sounds.Count >= m_simultaneous_sounds Then
-                'Bus is full: drop this sound (TODO: queue it instead)
+            If Not CanPlay(sound_settings) Then
+                ''Bus is full and nothing lower priority to cut off: drop it (TODO: queue it instead)
             Else
                 If m_current_sounds.Exists(sound_settings.Sound.File) Then
                     m_current_sounds.Remove sound_settings.Sound.File
@@ -16099,6 +16103,7 @@ Class GlfSoundBus
 
     Public Sub StopSoundWithKey(sound_key)
         If m_current_sounds.Exists(sound_key) Then
+            RemoveDelay m_name & "_stop_sound_" & sound_key
             Dim sound_settings : Set sound_settings = m_current_sounds(sound_key)
             If Not IsEmpty(m_type) Then
                 If m_type = "bcp" Then
@@ -16119,6 +16124,36 @@ Class GlfSoundBus
             m_current_sounds.Remove sound_key
         End If
     End Sub
+
+    Private Function EffectivePriority(settings)
+        If Not IsEmpty(settings.Priority) Then
+            EffectivePriority = settings.Priority
+        Else
+            EffectivePriority = settings.Sound.Priority
+        End If
+    End Function
+
+    Private Function CanPlay(sound_settings)
+        CanPlay = True
+        If m_current_sounds.Count < m_simultaneous_sounds Then Exit Function
+
+        'Bus is full: find the lowest-priority sound playing (oldest wins ties)
+        Dim key, p, lowest_key, lowest_priority
+        lowest_key = Empty
+        For Each key In m_current_sounds.Keys
+            p = EffectivePriority(m_current_sounds(key))
+            If IsEmpty(lowest_key) Or p < lowest_priority Then
+                lowest_key = key
+                lowest_priority = p
+            End If
+        Next
+
+        If EffectivePriority(sound_settings) > lowest_priority Then
+            StopSoundWithKey lowest_key   'cut it off to make room
+        Else
+            CanPlay = False
+        End If
+    End Function
 
     Private Sub Log(message)
         If m_debug Then
