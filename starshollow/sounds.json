@@ -3177,8 +3177,8 @@
     "output_target": "backglass"
   },
   {
-    "name": "voc_copperboom1",
-    "path": "/Users/stephenjones/code/starshollow/callouts/voc_copperboom1.ogg",
+    "name": "sfx_copperboom1",
+    "path": "/Users/stephenjones/code/starshollow/callouts/sfx_copperboom1.ogg",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -3186,8 +3186,8 @@
     "output_target": "backglass"
   },
   {
-    "name": "voc_copperboom2",
-    "path": "/Users/stephenjones/code/starshollow/callouts/voc_copperboom2.ogg",
+    "name": "sfx_copperboom2",
+    "path": "/Users/stephenjones/code/starshollow/callouts/sfx_copperboom2.ogg",
     "internal_name": "",
     "fade": 0,
     "volume": 0,

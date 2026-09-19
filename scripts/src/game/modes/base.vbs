@@ -314,12 +314,12 @@ Sub CreateBaseMode()
             '     .Sound = "sfx_bumper3"
             ' End With
             With .EventName("auto_fire_coil_right_sling_activate{modes.lbtb.active==False}")
-                .Key = "key_voc_copperboom1"
-                .Sound = "voc_copperboom1"
+                .Key = "key_sfx_copperboom1"
+                .Sound = "sfx_copperboom1"
             End With
             With .EventName("auto_fire_coil_left_sling_activate{modes.lbtb.active==False}")
-                .Key = "key_voc_copperboom2"
-                .Sound = "voc_copperboom2"
+                .Key = "key_sfx_copperboom2"
+                .Sound = "sfx_copperboom2"
             End With
         End With
 

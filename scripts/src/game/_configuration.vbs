@@ -637,10 +637,10 @@ Sub CreateSounds()
     AddCallout     "voc_tall", 2
     AddCallout     "voc_exboyfriend", 3
     AddCallout     "voc_wereclosed", 1
-    AddCallout     "voc_copperboom1", 1
-    AddCallout     "voc_copperboom2", 1
     AddCallout     "voc_richardtheyrehere", 2
 
+    AddSoundEffect "sfx_copperboom1", 1
+    AddSoundEffect "sfx_copperboom2", 1
     AddSoundEffect "sfx_dinerdoor", 5
     AddSoundEffect "sfx_bumper1", 1
     AddSoundEffect "sfx_bumper2", 1
