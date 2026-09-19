@@ -692,6 +692,7 @@ Sub CreateSounds()
     AddCallout     "voc_fd_punch_touchingmystuff", 3
     AddCallout     "voc_fd_punch_twoplustwo", 8
     AddCallout     "voc_fd_punch_wherehewasgoing", 5
+    AddCallout     "voc_fd_punch_atmisspattys", 3
 
     AddCallout     "voc_tm_central_nervous_system", 4
     AddCallout     "voc_tm_coffee_in_an_iv", 2

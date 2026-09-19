@@ -151,6 +151,10 @@ Sub CreateFdPunchMode()
                 .Key = "key_voc_fd_punch_wherehewasgoing"
                 .Sound = "voc_fd_punch_wherehewasgoing"
             End With
+            With .EventName("fd_punch_voc_15")
+                .Key = "key_voc_fd_punch_atmisspattys"
+                .Sound = "voc_fd_punch_atmisspattys"
+            End With
         End With
 
         With .SlidePlayer()

@@ -2727,6 +2727,15 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_fd_punch_atmisspattys",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_atmisspattys.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_fd_punch_bathroom",
     "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_bathroom.ogg",
     "internal_name": "",
