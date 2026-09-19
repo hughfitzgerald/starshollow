@@ -25,7 +25,7 @@ Sub CreateKimsAntiquesMode()
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start")
 
-            .Add "release_scoop_hold", Array("disable_scoop_hold")
+            
 
             .Add "timer_move_miss_kim_complete", Array("move_miss_kim")
             .Add "move_miss_kim", Array("kims_antiques_relight")

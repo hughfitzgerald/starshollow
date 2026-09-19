@@ -20,7 +20,7 @@ Sub CreateDinnerMode()
             .Add "mode_dinner_stopping", Array("dinner_shots_off")
             .Add "timer_dinner_mode_complete", Array("base_music_start")
 
-            .Add "release_scoop_hold", Array("disable_scoop_hold")
+            
 
             For Each shot In dinner_shots
                 .Add shot.Name & "_hit", Array("dinner_shot_hit")

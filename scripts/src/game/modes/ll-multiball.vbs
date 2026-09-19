@@ -12,7 +12,7 @@ Sub CreateLLMultiballMode()
             .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide")
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
-            .Add "release_scoop_hold", Array("disable_scoop_hold")
+            
 
             .Add "auto_fire_coil_bumper1_activate", Array("logan_bumper_hit")
             ' .Add "auto_fire_coil_bumper3_activate", Array("logan_bumper_hit")

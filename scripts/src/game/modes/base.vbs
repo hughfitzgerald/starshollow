@@ -81,6 +81,8 @@ Sub CreateBaseMode()
             .Add "mode_eob_bonus_started", Array("base_music_stop")
             .Add "base_music_stop", baseMusicStopEvents
 
+            .Add "release_scoop_hold", Array("play_scoop_eject_show")
+
             ' When a sub-mode has its own music, we don't want a new song start based on the timer!!!
             .Add "timer_base_music_complete{modes.eob_bonus.active == False and modes.dance_marathon.active == False and modes.town_meeting.active == False and modes.dinner.active == False and modes.fd_punch.active == False and modes.kims_antiques.active == False and modes.lbtb.active == False}", Array("base_music_stop","start_new_song")
             .Add "start_new_song", Array("base_music_start")
@@ -442,7 +444,30 @@ Sub CreateBaseMode()
                     .Add "color", "FFA500"
                 End With
             End With
+            With .EventName("play_scoop_eject_show")
+                .Key = "key_scoop_eject_show"
+                .Show = "flash_color"
+                .Speed = 20
+                .Loops = 5
+                .EventsWhenCompleted = Array("scoop_eject_show_complete")
+                With .Tokens()
+                    .Add "lights", "FL5"
+                    .Add "color", "ffea00"
+                End With
+            End With
         End With
+
+        ' With .Timers("scoop_eject_show")
+        '     .StartRunning = False
+        '     .Direction = "down"      ' Count down
+        '     .StartValue = 3
+        '     .EndValue = 0            ' End at 0
+        '     .TickInterval = 1000     ' Tick every 1 second (1000 ms)
+        '     With .ControlEvents
+        '         .EventName = "play_scoop_eject_show"
+        '         .Action = "start"
+        '     End With
+        ' End With
 
 
         ' Backglass lights

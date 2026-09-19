@@ -73,8 +73,8 @@ Sub CreateBasementMode()
             .BallsToHold = 1
             .HoldDevices = Array("scoop")
             .EnableEvents = Array("enable_scoop_hold") 
-            .DisableEvents = Array("disable_scoop_hold") 
-            .ReleaseAllEvents = Array("release_scoop_hold")
+            .DisableEvents = Array("scoop_eject_show_complete") 
+            .ReleaseAllEvents = Array("scoop_eject_show_complete")
         End With
 
         With .Timers("clear_multiball_locks")

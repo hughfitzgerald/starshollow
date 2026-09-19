@@ -67,6 +67,7 @@ InitFlasher 1, "green"
 InitFlasher 2, "red"
 InitFlasher 3, "blue"
 InitFlasher 4, "orange"
+InitFlasher 5, "yellow"
 
 ' rotate the flasher with the command below (first argument = flasher nr, second argument = angle in degrees)
 '   RotateFlasher 1,17

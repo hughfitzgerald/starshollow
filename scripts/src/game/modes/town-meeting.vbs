@@ -33,8 +33,6 @@ Sub CreateTownMeetingMode()
             .Add "timer_town_meeting_post_mode_complete", Array("base_music_start")
             .Add "timer_town_meeting_intro_delay_complete", Array("release_scoop_hold","start_guitar_music", "tm_start_shots")
 
-            .Add "release_scoop_hold", Array("disable_scoop_hold")
-
             .Add "tm_lukes_lit_hit", Array("tm_start_shots")
 
             ' .Add "tm_shot_group_unlit_complete", Array("light_lukes")

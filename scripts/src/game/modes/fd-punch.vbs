@@ -27,7 +27,7 @@ Sub CreateFdPunchMode()
             .Add "fd_punch_right_redirect", Array("close_right_orbit_diverter")
             .Add "timer_fd_punch_right_redirect_complete", Array("open_right_orbit_diverter")
 
-            .Add "release_scoop_hold", Array("disable_scoop_hold")
+            
 
             .Add "timer_fd_punch_intro_delay_complete", Array("release_scoop_hold","start_guitar_music")
 

@@ -29,7 +29,7 @@ Sub CreateLbtbMode()
             .Add "lbtb_post_mode", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "play_lbtb_post_mode")
             
             .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
-            .Add "release_scoop_hold", Array("disable_scoop_hold")
+            
 
             For x = 3 To 8
                 .Add "drop_target_drop" & x & "_down{current_player.bells_not_hit == 0}", Array("lbtb_shot_hit")
