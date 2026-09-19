@@ -676,6 +676,9 @@ Sub CreateSounds()
     AddCallout     "voc_bells_needapush", 6
     AddCallout     "voc_bells_hunchback", 4
     AddCallout     "voc_bells_youre_welcome", 4
+    AddSoundEffect "sfx_bells_break1", 1
+    AddSoundEffect "sfx_bells_break2", 1
+    AddSoundEffect "sfx_bells_break3", 1
     
     AddCallout     "voc_fd_punch_intro", 6
     AddCallout     "voc_fd_punch_bathroom", 3

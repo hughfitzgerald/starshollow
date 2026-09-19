@@ -2727,6 +2727,33 @@
     "output_target": "backglass"
   },
   {
+    "name": "sfx_bells_break1",
+    "path": "/Users/stephenjones/code/starshollow/sounds/sfx_bells_break1.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_bells_break2",
+    "path": "/Users/stephenjones/code/starshollow/sounds/sfx_bells_break2.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "sfx_bells_break3",
+    "path": "/Users/stephenjones/code/starshollow/sounds/sfx_bells_break3.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_fd_punch_atmisspattys",
     "path": "/Users/stephenjones/code/starshollow/sounds/voc_fd_punch_atmisspattys.ogg",
     "internal_name": "",
