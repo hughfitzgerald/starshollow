@@ -22,12 +22,16 @@ Sub CreateTownMeetingMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_town_meeting")
-        .StopEvents = Array("timer_tm_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
+        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_town_meeting_post_mode_complete")
 
         With .EventPlayer()
-            .Add "mode_town_meeting_started", Array("base_music_stop", "release_scoop_hold", "tm_start_shots")
+            .Add "mode_town_meeting_started", Array("base_music_stop")
             .Add "mode_town_meeting_stopping", Array("tm_shots_off")
-            .Add "timer_tm_mode_complete", Array("base_music_start")
+            .Add "timer_tm_mode_complete", Array("town_meeting_post_mode")
+
+            .Add "town_meeting_post_mode", Array("tm_shots_off", "stop_guitar_music", "play_town_meeting_post_mode")
+            .Add "timer_town_meeting_post_mode_complete", Array("base_music_start")
+            .Add "timer_town_meeting_intro_delay_complete", Array("release_scoop_hold","start_guitar_music", "tm_start_shots")
 
             .Add "release_scoop_hold", Array("disable_scoop_hold")
 
@@ -43,6 +47,36 @@ Sub CreateTownMeetingMode()
             .Add "tm_reset_shots", Array("tm_shots_off","tm_start_shots")
         End With
 
+        With .Timers("town_meeting_post_mode")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 6
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "town_meeting_post_mode"
+                .Action = "start"
+            End With
+        End With
+
+        With .Timers("town_meeting_intro_delay")
+            .StartRunning = True
+            .Direction = "down"
+            .StartValue = 5
+            .EndValue = 0
+            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+            With .ControlEvents()
+                .EventName = "play_voc_tm_punctuality_dirty"
+                .Action = "jump"
+                .Value = 5
+            End With
+            With .ControlEvents()
+                .EventName = "play_voc_tm_gavelx3"
+                .Action = "jump"
+                .Value = 8
+            End With
+        End With
+
         With .Timers("tm_lukes")
             .StartRunning = False
             .Direction = "down"
@@ -55,15 +89,30 @@ Sub CreateTownMeetingMode()
             End With
         End With
 
-        With .SoundPlayer()
+        With .RandomEventPlayer()
             With .EventName("mode_town_meeting_started")
+                .Add "play_voc_tm_punctuality_dirty", 1
+                .Add "play_voc_tm_gavelx3", 1
+            End With
+        End With
+
+        With .SoundPlayer()
+            With .EventName("start_guitar_music")
                 .Key = "key_mus_guitarmode"
                 .Sound = "mus_guitarmode"
             End With
-            With .EventName("mode_town_meeting_stopping")
+            With .EventName("stop_guitar_music")
                 .Key = "key_mus_guitarmode"
                 .Sound = "mus_guitarmode"
                 .Action = "stop"
+            End With
+            With .EventName("play_voc_tm_punctuality_dirty")
+                .Key = "key_voc_tm_punctuality_dirty"
+                .Sound = "voc_tm_punctuality_dirty"
+            End With
+            With .EventName("play_voc_tm_gavelx3")
+                .Key = "key_voc_tm_gavelx3"
+                .Sound = "voc_tm_gavelx3"
             End With
             With .EventName("tm_start_shots")
                 .Key = "key_sfx_tm_gavel"
@@ -72,6 +121,10 @@ Sub CreateTownMeetingMode()
             With .EventName("timer_tm_lukes_complete")
                 .Key = "key_voc_tm_coffee_in_an_iv"
                 .Sound = "voc_tm_coffee_in_an_iv"
+            End With
+            With .EventName("play_town_meeting_post_mode")
+                .Key = "key_voc_tm_meetingadjourned"
+                .Sound = "voc_tm_meetingadjourned"
             End With
         End With
 
@@ -148,7 +201,7 @@ Sub CreateTownMeetingMode()
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "mode_town_meeting_started"
+                .EventName = "timer_town_meeting_intro_delay_complete"
                 .Action = "start"
             End With
         End With
