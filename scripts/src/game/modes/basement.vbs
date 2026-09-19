@@ -14,14 +14,15 @@ Sub CreateBasementMode()
         .StartEvents = Array("reset_complete")
 
         With .EventPlayer()
+            .Debug = True
 
             'Some table init stuff
-            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "backglass_gi_on")
-            .Add "mode_basement_stopped", Array("backglass_gi_off")
+            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down")
+            .Add "mode_basement_stopped", Array("backglass_off")
 
             'Backglass stuff
-            .Add "backglass_on", Array("backglass_logo_on","backglass_game_on","backglass_logic_on","backglass_framework_on")
-            .Add "backglass_off", Array("backglass_logo_off","backglass_game_off","backglass_logic_off","backglass_framework_off")
+            .Add "backglass_on", Array("backglass_logo_on")
+            .Add "backglass_off", Array("backglass_logo_off")
 
             'Handle tilt
             .Add "tilt", Array("kill_flippers","backglass_off")
@@ -52,18 +53,6 @@ Sub CreateBasementMode()
         '         .WaitFor = "captive_ball_is_home"
         '     End With
         ' End With
-
-        ' Backglass lights
-        With .DOFPlayer()
-            With .EventName("backglass_gi_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 1
-            End With
-            With .EventName("backglass_gi_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 1
-            End With
-        End With
 
         With .VariablePlayer()
             With .EventName("free_captive_ball")
@@ -286,183 +275,108 @@ Sub CreateBasementMode()
             '     End With
             ' End With
 
-            ' ' Backglass light shows (for VR backglass)
-            ' With .EventName("backglass_logo_on")
-            '     .Key = "key_backglass_logo_on_show"
-            '     .Show = "backglass_logo_on_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_logo_off")
-            '     .Key = "key_backglass_logo_off_show"
-            '     .Show = "backglass_logo_off_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
+            ' ' Backglass light shows
+            With .EventName("backglass_logo_on")
+                .Key = "key_backglass_logo_on_show"
+                .Show = "backglass_logo_on_show" 
+                .Speed = 1
+                .Loops = 0
+                .Priority = 1000
+            End With
+            With .EventName("backglass_logo_off")
+                .Key = "key_backglass_logo_off_show"
+                .Show = "backglass_logo_off_show" 
+                .Speed = 1
+                .Loops = 0
+                .Priority = 1000
+            End With
 
-            ' With .EventName("backglass_game_on")
-            '     .Key = "key_backglass_game_on_show"
-            '     .Show = "backglass_game_on_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_game_off")
-            '     .Key = "key_backglass_game_off_show"
-            '     .Show = "backglass_game_off_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-
-            ' With .EventName("backglass_logic_on")
-            '     .Key = "key_backglass_logic_on_show"
-            '     .Show = "backglass_logic_on_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_logic_off")
-            '     .Key = "key_backglass_logic_off_show"
-            '     .Show = "backglass_logic_off_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-
-            ' With .EventName("backglass_framework_on")
-            '     .Key = "key_backglass_framework_on_show"
-            '     .Show = "backglass_framework_on_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_framework_off")
-            '     .Key = "key_backglass_framework_off_show"
-            '     .Show = "backglass_framework_off_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-
-            ' With .EventName("backglass_flash1")
-            '     .Key = "key_backglass_flash1_show"
-            '     .Show = "backglass_flash1_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_flash2")
-            '     .Key = "key_backglass_flash2_show"
-            '     .Show = "backglass_flash2_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_flash3")
-            '     .Key = "key_backglass_flash3_show"
-            '     .Show = "backglass_flash3_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
-            ' With .EventName("backglass_flash4")
-            '     .Key = "key_backglass_flash4_show"
-            '     .Show = "backglass_flash4_show" 
-            '     .Speed = 1
-            '     .Loops = 0
-            '     .Priority = 1000
-            ' End With
+            With .EventName("backglass_flash1")
+                .Key = "key_backglass_flash1_show"
+                .Show = "backglass_flash1_show" 
+                .Speed = 1
+                .Loops = 0
+                .Priority = 1000
+            End With
+            With .EventName("backglass_flash2")
+                .Key = "key_backglass_flash2_show"
+                .Show = "backglass_flash2_show" 
+                .Speed = 1
+                .Loops = 0
+                .Priority = 1000
+            End With
+            With .EventName("backglass_flash3")
+                .Key = "key_backglass_flash3_show"
+                .Show = "backglass_flash3_show" 
+                .Speed = 1
+                .Loops = 0
+                .Priority = 1000
+            End With
+            With .EventName("backglass_flash4")
+                .Key = "key_backglass_flash4_show"
+                .Show = "backglass_flash4_show" 
+                .Speed = 1
+                .Loops = 0
+                .Priority = 1000
+            End With
 
         End With
 
 
         ' Backglass lights (for B2S backglass)
-        With .DOFPlayer()
+        ' With .DOFPlayer()
+        '     .Debug = True
+        '     'Logo backglass light
+        '     With .EventName("backglass_logo_on")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 1
+        '     End With
+        '     With .EventName("backglass_logo_off")
+        '         .Action = "DOF_OFF"
+        '         .DOFEvent = 1
+        '     End With
 
-            'Logo backglass light
-            With .EventName("backglass_logo_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 1
-            End With
-            With .EventName("backglass_logo_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 1
-            End With
+        '     'Flash1 backglass light
+        '     With .EventName("backglass_flash1_on")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 2
+        '     End With
+        '     With .EventName("backglass_flash1_off")
+        '         .Action = "DOF_OFF"
+        '         .DOFEvent = 2
+        '     End With
 
-            'GAME backglass light
-            With .EventName("backglass_game_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 2
-            End With
-            With .EventName("backglass_game_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 2
-            End With
+        '     'Flash2 backglass light
+        '     With .EventName("backglass_flash2_on")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 3
+        '     End With
+        '     With .EventName("backglass_flash2_off")
+        '         .Action = "DOF_OFF"
+        '         .DOFEvent = 3
+        '     End With
 
-            'LOGIC backglass light
-            With .EventName("backglass_logic_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 3
-            End With
-            With .EventName("backglass_logic_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 3
-            End With
+        '     'Flash3 backglass light
+        '     With .EventName("backglass_flash3_on")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 4
+        '     End With
+        '     With .EventName("backglass_flash3_off")
+        '         .Action = "DOF_OFF"
+        '         .DOFEvent = 4
+        '     End With
 
-            'FRAMEWORK backglass light
-            With .EventName("backglass_framework_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 4
-            End With
-            With .EventName("backglass_framework_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 4
-            End With
+        '     'Flash4 backglass light
+        '     With .EventName("backglass_flash4_on")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 5
+        '     End With
+        '     With .EventName("backglass_flash4_off")
+        '         .Action = "DOF_OFF"
+        '         .DOFEvent = 5
+        '     End With
 
-            'Flash1 backglass light
-            With .EventName("backglass_flash1_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 5
-            End With
-            With .EventName("backglass_flash1_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 5
-            End With
-
-            'Flash2 backglass light
-            With .EventName("backglass_flash2_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 6
-            End With
-            With .EventName("backglass_flash2_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 6
-            End With
-
-            'Flash3 backglass light
-            With .EventName("backglass_flash3_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 7
-            End With
-            With .EventName("backglass_flash3_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 7
-            End With
-
-            'Flash4 backglass light
-            With .EventName("backglass_flash4_on")
-                .Action = "DOF_ON"
-                .DOFEvent = 8
-            End With
-            With .EventName("backglass_flash4_off")
-                .Action = "DOF_OFF"
-                .DOFEvent = 8
-            End With
-
-        End With
+        ' End With
 
 
 

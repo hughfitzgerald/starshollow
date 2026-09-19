@@ -72,6 +72,7 @@ Sub ConfigureGlfDevices()
 
     ' Load up the shows
     CreateGeneralShows()
+    CreateBackglassShows()
 
     ' Load shared shot profiles
     CreateSharedShotProfiles()

@@ -37,8 +37,8 @@ Sub CreateBaseMode()
         With .EventPlayer()
 
             ' Kill the attract mode as soon as a ball starts
-            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start")
-            .Add "mode_base_stopped", Array("base_music_stop")
+            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start", "backglass_on")
+            .Add "mode_base_stopping", Array("base_music_stop", "backglass_off")
 
             .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment")
             .Add "s_LeftOutlane_active", Array("outlane_drain", "total_switches_hit_increment")
@@ -55,13 +55,13 @@ Sub CreateBaseMode()
             .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", "score_10000")
 
             'Bumpers
-            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment")
+            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1")
             ' .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
-            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment")
+            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3")
 
             'Slingshots
-            .Add "s_LeftSlingShot_active", Array("score_5000", "total_switches_hit_increment")
-            .Add "s_RightSlingShot_active", Array("score_5000", "total_switches_hit_increment")
+            .Add "s_LeftSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash2")
+            .Add "s_RightSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash4")
 
             'Spinners
             .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment")
@@ -443,6 +443,23 @@ Sub CreateBaseMode()
                 End With
             End With
         End With
+
+
+        ' Backglass lights
+        ' With .DOFPlayer()
+        '     With .EventName("mode_base_started")
+        '         .Action = "DOF_OFF"
+        '         .DOFEvent = 1
+        '     End With
+        '     With .EventName("play_bumper1_show")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 3
+        '     End With
+        '     With .EventName("play_bumper5_show")
+        '         .Action = "DOF_ON"
+        '         .DOFEvent = 5
+        '     End With
+        ' End With
 
         '--- DMD -----------------------------------------------------------
         ' These go through the slide/widget player exactly as they would
