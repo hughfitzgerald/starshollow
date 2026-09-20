@@ -151,22 +151,39 @@ End Sub
 ' frame counter - hence .ResetFrame = True on its config entry.
 
 Sub DmdBuild_Welcome(entry)
-    Dim g : Set g = FlexDMD.NewGroup("Welcome")
-    With g
-        .AddActor FlexDMD.NewImage("logo","gilmore_girls_logo_128x32.png")
-        .Getimage("logo").visible = False
-    End With
-    entry.SetScene g
+    ' Dim g : Set g = FlexDMD.NewGroup("Welcome")
+    ' With g
+    '     .AddActor FlexDMD.NewImage("logo","gilmore_girls_logo_128x32.png")
+    '     .Getimage("logo").visible = False
+    ' End With
+    ' entry.SetScene g
+    Dim scene, img, af, mv
+
+    Set scene = FlexDMD.NewGroup("TownScene")
+    scene.SetSize FlexDMD.Width, FlexDMD.Height
+    scene.ClearBackground = True
+
+    Set img = FlexDMD.NewImage("Town", "stars_hollow_town_dark_long_logo.png")   ' packs to 228x32
+    img.SetPosition -100, 0
+    scene.AddActor img
+
+    ' Start the tween once the scene is on stage (actions only run on stage)
+    Set af = img.ActionFactory
+    Set mv = af.MoveTo(-23, 0, 3)                    ' x, y, seconds
+    mv.Ease = 16                                     ' SineIn; use 0 for Linear
+    img.AddAction mv
+
+    entry.SetScene scene
 End Sub
 
 
 Sub DmdTick_Welcome(args)
-    If FlexFrame = 88 Then FlexDMD.Stage.Getimage("logo").visible = True
+    ' If FlexFrame = 88 Then FlexDMD.Stage.Getimage("logo").visible = True
 
-    If FlexFrame > 110 Then
-        If (FlexFrame Mod 32) = 10 Then FlexDMD.Stage.Getimage("logo").visible = True
-        If (FlexFrame Mod 32) = 1 Then FlexDMD.Stage.Getimage("logo").visible = False
-    End If
+    ' If FlexFrame > 110 Then
+    '     If (FlexFrame Mod 32) = 10 Then FlexDMD.Stage.Getimage("logo").visible = True
+    '     If (FlexFrame Mod 32) = 1 Then FlexDMD.Stage.Getimage("logo").visible = False
+    ' End If
 End Sub
 
 

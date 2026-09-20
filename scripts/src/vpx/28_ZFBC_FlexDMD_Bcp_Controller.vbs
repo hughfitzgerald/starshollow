@@ -521,7 +521,7 @@ Class GlfDmdEntry
         Builder = ""
         Ticker = ""
         Callback = ""
-        RenderMode = FlexDMD_RenderMode_DMD_GRAY
+        RenderMode = FlexDMD_RenderMode_DMD_GRAY_4
         ResetFrame = False
         Aliases = Array()
         Hold = 1.2

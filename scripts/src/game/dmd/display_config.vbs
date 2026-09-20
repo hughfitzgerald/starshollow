@@ -84,6 +84,7 @@ Sub CreateFlexDmdDisplay()
         .ResetFrame = True
         .Aliases    = Array("attract")
     End With
+    ' With CreateDmdSlide("welcome")   : .Image = "stars_hollow_town_dark_logo.png"   : End With
 
     With CreateDmdSlide("high_score")
         .Builder = "DmdBuild_HighScore"
