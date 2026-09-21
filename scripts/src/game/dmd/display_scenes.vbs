@@ -157,21 +157,50 @@ Sub DmdBuild_Welcome(entry)
     '     .Getimage("logo").visible = False
     ' End With
     ' entry.SetScene g
-    Dim scene, img, af, mv
+    Dim scene, img, base, af, bf, seq, bseq, blink, mv, moveTime
+
+    moveTime = 3                                     ' seconds for the slide
 
     Set scene = FlexDMD.NewGroup("TownScene")
     scene.SetSize FlexDMD.Width, FlexDMD.Height
     scene.ClearBackground = True
 
+    ' Words-free version sits underneath at the final position, hidden until the move finishes
+    Set base = FlexDMD.NewImage("TownBase", "stars_hollow_town_dark_long_logo_nowords.png")
+    base.SetPosition -23, 0
+    base.Visible = False
+    scene.AddActor base
+
+    ' Full logo (with words) on top: slides in, then blinks forever
     Set img = FlexDMD.NewImage("Town", "stars_hollow_town_dark_long_logo.png")   ' packs to 228x32
     img.SetPosition -100, 0
     scene.AddActor img
 
-    ' Start the tween once the scene is on stage (actions only run on stage)
+    ' Reveal the base image the moment the move completes
+    Set bf = base.ActionFactory
+    Set bseq = bf.Sequence()
+    bseq.Add bf.Wait(moveTime)
+    bseq.Add bf.Show(True)
+    base.AddAction bseq
+
     Set af = img.ActionFactory
-    Set mv = af.MoveTo(-23, 0, 3)                    ' x, y, seconds
+    Set seq = af.Sequence()
+
+    Set mv = af.MoveTo(-23, 0, moveTime)             ' x, y, seconds
     mv.Ease = 16                                     ' SineIn; use 0 for Linear
-    img.AddAction mv
+    seq.Add mv
+
+    ' After the move, toggle the top image on/off forever.
+    ' Toggle first, then wait, so the first blink starts as soon as the move ends.
+    Set blink = af.Sequence()
+    blink.Add af.Show(False)                         ' reveals the no-words image
+    blink.Add af.Wait(0.4)                           ' words hidden
+    blink.Add af.Show(True)
+    blink.Add af.Wait(0.5)                           ' words visible
+    seq.Add af.Repeat(blink, -1)
+
+
+    img.AddAction seq
 
     entry.SetScene scene
 End Sub
