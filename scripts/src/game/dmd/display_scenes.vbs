@@ -215,6 +215,23 @@ Sub DmdTick_Welcome(args)
     ' End If
 End Sub
 
+Sub DmdBuild_LukeAndLorelei(entry)
+    Dim lorelei, luke, scene
+
+    Set lorelei = FlexDMD.NewImage("Lorelei", "lorelei.png")         ' 32x32
+    lorelei.SetPosition 0, 0                                         ' left edge
+
+    Set luke = FlexDMD.NewImage("Luke", "luke.png")                  ' pre-flipped copy of luke.png
+    luke.SetPosition FlexDMD.Width - 32, 0                           ' right edge (96 on a 128 wide DMD)
+    Set scene = FlexDMD.Stage.GetGroup("Mode")
+    scene.AddActor lorelei
+    scene.AddActor luke
+    ' entry.SetScene scene
+End Sub
+
+Sub DmdTick_LukeAndLorelei(args)
+End Sub
+
 
 Sub DmdBuild_HighScore(entry)
     Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
