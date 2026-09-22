@@ -32,8 +32,8 @@
 '     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
 '     With CreateDmdWidget("ball_save")  : .Text = "BALL SAVED"     : End With
 '
-' and the two scenes that are real code (the scoreboard and the attract
-' intro) name Builder/Ticker Subs that live in
+' and the scenes that are real code (the scoreboard, the attract intro,
+' the mode panel) name Builder/Ticker Subs that live in
 '
 '     src/game/dmd/display_scenes.vbs
 '
@@ -56,29 +56,94 @@
 '
 ' What lives down at the bottom of THIS file is the machinery behind
 ' those two Create calls: the entry class, the two registries, and the
-' render path that turns an entry into ShowScene/DMDBigText.
+' render path that turns an entry into ShowScene/AddActor/DMDBigText.
 '
-' SLIDE STACKING
+' SLIDES AND WIDGETS
+'
+' The two are the same kind of thing here - an entry in a registry - and
+' the difference is how a mode reaches them, which is worth keeping:
+'
+'   A SLIDE is played and then stays until something takes it away. The
+'   slide player passes the triggering event's kwargs through, so a slide
+'   can show live data, and .Action = "remove" takes it back off.
+'
+'   A WIDGET is fired and forgotten. The widget player passes no kwargs
+'   and has no remove, so a widget only ever leaves by its .Expire
+'   running out or by its mode stopping.
+'
+' Neither says anything about what gets drawn. Either one can be a GIF,
+' a still, a line of text or a built scene, and either one can be a LAYER
+' (below).
+'
+' THE STACK
 '
 ' The light stack and the segment display stack live inside GLF, so their
 ' priority layering is automatic. Nothing equivalent exists for slides -
 ' on a real setup that stacking is Godot's job. This file implements it:
-' every played slide is kept in a priority-ordered stack (ties broken by
-' most recent), the top entry is what is on the DMD, and removing the top
-' re-renders whatever was underneath. Slides are tagged with the mode that
-' played them, so ModeStop clears that mode's slides automatically.
+' every played slide and widget is kept in one priority-ordered stack
+' (ties broken by most recent), and each render works out what the DMD
+' should look like from the whole stack rather than from one entry.
+' Entries are tagged with the mode that played them, so ModeStop clears
+' that mode's entries automatically.
 '
 ' When the stack empties the last scene is deliberately LEFT on the DMD
 ' rather than blanked - that keeps the scoreboard up between balls, when
 ' base mode has stopped and nothing has played a slide yet. See
 ' FlexDmd_StackEmpty if you want a different fallback.
 '
-' WIDGETS
+' LAYERS
 '
-' A widget here is a DMDBigText overlay. The only thing that draws that
-' text is DmdTick_Score, the scoreboard's ticker - so a widget appears
-' when the scoreboard is the slide on screen and not otherwise, which is
-' the rule a widget follows anyway: it overlays the current slide.
+' An entry with a scene of its own and an .Over is a LAYER: instead of
+' replacing what is on the DMD, its FlexDMD Group is added as a child of
+' the scene underneath, and taken off again when it leaves the stack.
+' That is the whole mechanism - two images that slide in over the mode
+' panel are a layer, an animated GIF over the scoreboard is a layer.
+'
+'     With CreateDmdSlide("luke_and_lorelei")
+'         .Builder = "DmdBuild_LukeAndLorelei"
+'         .Ticker  = "DmdTick_LukeAndLorelei"
+'         .Over    = "mode"
+'     End With
+'
+' .Over says what the layer belongs on top of:
+'
+'   a slide name   that slide is the layer's backdrop. Playing the layer
+'                  brings the backdrop up if it is not already there, and
+'                  the layer is held back (not drawn on the wrong scene)
+'                  if something else has since taken the DMD.
+'   "current"      whatever is on screen will do.
+'
+' Layers are attached lowest priority first, which is the order FlexDMD
+' draws them in, so the highest priority ends up on top. Each one's
+' .Ticker runs every frame while it is attached, after the backdrop's,
+' and is handed its own entry - so it reaches its actors through
+' entry.Scene() rather than hunting the whole stage, which would also
+' search the scene underneath.
+'
+' A layer builder has two rules: build a Group of its own and hand it
+' back with entry.SetScene (do not reach into FlexDMD.Stage), and leave
+' ClearBackground False, or the layer paints over its own backdrop.
+'
+' An entry with no scene is never a layer. It still uses .Over the same
+' way, to name the backdrop it needs - see TEXT below.
+'
+' TEXT
+'
+' A .Text entry draws through DMDBigText, and the only thing that puts
+' DMDBigText on screen is DmdTick_Score, the scoreboard's ticker. So a
+' text entry needs the scoreboard underneath it, and .Over is how it
+' says so. The defaults keep the two players behaving the way you would
+' expect:
+'
+'   a text SLIDE with no .Over falls back to FlexDmdTextBackdrop, and
+'   brings the scoreboard up - a slide is allowed to take the screen.
+'
+'   a text WIDGET with no .Over falls back to nothing, and appears only
+'   if the scoreboard happens to be up already - a notification must not
+'   yank the slide out from under itself.
+'
+' Either can say otherwise: .Over = "current" never disturbs anything,
+' and .Over = "score" always brings the scoreboard up.
 '
 ' THE COST OF useBcp = True
 '
@@ -106,6 +171,11 @@ Const FlexDmdFrameMs = 17
 ' Expire used for a widget that did not set one.
 Const FlexDmdDefaultWidgetExpire = 1.3
 
+' The backdrop a text SLIDE falls back to when it names no .Over.
+' DMDBigText is drawn by this scene's ticker and by no other, so this is
+' the only value that makes an unqualified text slide visible.
+Const FlexDmdTextBackdrop = "score"
+
 ' Our controller instance, when one is attached. Null otherwise.
 ' bcpController points at the same object; this second reference is what
 ' the delay callback below uses, so it never has to care what GLF has
@@ -119,10 +189,14 @@ Dim glfFlexBcp : glfFlexBcp = Null
 Dim FlexDmdSlides : Set FlexDmdSlides = CreateObject("Scripting.Dictionary")
 Dim FlexDmdWidgets : Set FlexDmdWidgets = CreateObject("Scripting.Dictionary")
 
-' The entry whose scene is currently on the DMD, or Nothing. This is what
-' decides which Ticker DMDTimer_Timer runs each frame, and whether a text
-' slide has to put its .Over slide up first.
+' The entry whose scene is on the DMD, or Nothing. This is the backdrop
+' every layer attaches to, and the first Ticker DMDTimer_Timer runs.
 Dim FlexDmdCurrent : Set FlexDmdCurrent = Nothing
+
+' The layers attached to it, entry.Key -> GlfDmdEntry, in attach order -
+' which is back-to-front, because a FlexDMD Group draws its actors in the
+' order they were added.
+Dim FlexDmdLayers : Set FlexDmdLayers = CreateObject("Scripting.Dictionary")
 
 
 '*******************************************
@@ -172,10 +246,11 @@ Sub FlexBcp_Attach()
 End Sub
 
 
-' Fired by SetDelay when a slide's Expire elapses.
+' Fired by SetDelay when a stack item's Expire elapses. args is the stack
+' key, which is also the delay's name - see FlexBcp_StackKey.
 Sub Glf_FlexDmdSlideExpired(args)
     If IsObject(glfFlexBcp) Then
-        glfFlexBcp.RemoveSlide args
+        glfFlexBcp.RemoveStackItem args
     End If
 End Sub
 
@@ -194,20 +269,22 @@ End Sub
 
 Class GlfFlexDmdBcpController
 
-    Private m_slides     ' slide name -> GlfFlexDmdSlide
-    Private m_current    ' slide name currently rendered ("" = none)
+    Private m_stack      ' stack key -> GlfFlexDmdStackItem
+    Private m_current    ' name of the scene on the DMD ("" = none)
+    Private m_drawn      ' stack key whose .Text/.Callback was last drawn
     Private m_seq        ' monotonic counter, breaks priority ties
     Private m_connected
 
     Public default Function Init()
-        Set m_slides = CreateObject("Scripting.Dictionary")
+        Set m_stack = CreateObject("Scripting.Dictionary")
         m_current = ""
+        m_drawn = ""
         m_seq = 0
         m_connected = True
         Set Init = Me
     End Function
 
-    ' The slide currently on the DMD, or "" - handy from the debugger.
+    ' The scene currently on the DMD, or "" - handy from the debugger.
     Public Property Get CurrentSlide() : CurrentSlide = m_current : End Property
 
     ' False once Disconnect has run. FlexBcp_Attach uses this to tell a
@@ -226,61 +303,44 @@ Class GlfFlexDmdBcpController
             Exit Sub
         End If
 
-        Dim entry
-        If m_slides.Exists(slide) Then
-            Set entry = m_slides(slide)
-        Else
-            Set entry = (new GlfFlexDmdSlide)()
-            m_slides.Add slide, entry
-        End If
-
-        m_seq = m_seq + 1
-        entry.Priority = FlexBcp_Num(priority)
-        entry.Context = FlexBcp_StripMode(context)
-        entry.Seq = m_seq
-        entry.SetKwargs kwargs
-
-        Log "PlaySlide " & slide & " (context=" & entry.Context & _
-            ", priority=" & entry.Priority & ", expire=" & FlexBcp_Num(expire) & ")"
-
-        RemoveDelay FlexBcp_ExpiryKey(slide)
-        If FlexBcp_Num(expire) > 0 Then
-            SetDelay FlexBcp_ExpiryKey(slide), "Glf_FlexDmdSlideExpired", slide, _
-                     FlexBcp_Num(expire) * 1000
-        End If
-
-        ' Force a re-render if this slide is the top one, even when it
-        ' already was - replaying a slide should restart its animation.
-        Render slide
+        Push slide, False, context, FlexBcp_Num(expire), priority, kwargs
     End Sub
 
     Public Sub RemoveSlide(slide)
         If m_connected = False Then Exit Sub
-        If m_slides.Exists(slide) Then
-            Log "RemoveSlide " & slide
-            m_slides.Remove slide
-            RemoveDelay FlexBcp_ExpiryKey(slide)
+        RemoveStackItem FlexBcp_StackKey(slide, False)
+    End Sub
+
+    ' Drop one item by stack key. This is what the expiry delay calls,
+    ' and it is the single way anything leaves the stack.
+    Public Sub RemoveStackItem(key)
+        If m_connected = False Then Exit Sub
+        If m_stack.Exists(key) Then
+            Log "Remove " & key
+            m_stack.Remove key
+            RemoveDelay key
         End If
         Render ""
     End Sub
 
-    ' Drop every slide a given mode played. GLF has no internal caller for
-    ' this, but ModeStop below does exactly what the real BCP controller
-    ' does and calls it, so a mode's slides clean themselves up.
+    ' Drop everything a given mode played - slides and widgets both. GLF
+    ' has no internal caller for this, but ModeStop below does exactly
+    ' what the real BCP controller does and calls it, so a mode's display
+    ' cleans itself up.
     Public Sub SlidesClear(context)
         If m_connected = False Then Exit Sub
 
-        If m_slides.Count = 0 Then Exit Sub
+        If m_stack.Count = 0 Then Exit Sub
 
         Dim ctx : ctx = FlexBcp_StripMode(context)
-        Dim doomed() : ReDim doomed(m_slides.Count)
+        Dim doomed() : ReDim doomed(m_stack.Count)
         Dim n : n = -1
-        Dim slideName, entry
-        For Each slideName In m_slides.Keys()
-            Set entry = m_slides(slideName)
-            If entry.Context = ctx Then
+        Dim key, item
+        For Each key In m_stack.Keys()
+            Set item = m_stack(key)
+            If item.Context = ctx Then
                 n = n + 1
-                doomed(n) = slideName
+                doomed(n) = key
             End If
         Next
 
@@ -289,27 +349,26 @@ Class GlfFlexDmdBcpController
         Dim i
         For i = 0 To n
             Log "SlidesClear " & ctx & " -> removing " & doomed(i)
-            m_slides.Remove doomed(i)
-            RemoveDelay FlexBcp_ExpiryKey(doomed(i))
+            m_stack.Remove doomed(i)
+            RemoveDelay doomed(i)
         Next
         Render ""
     End Sub
 
 
     '--- Widgets -------------------------------------------------------
+    ' Same stack, different registry. The widget player passes no kwargs
+    ' and no action, so a widget has no (token) text to fill in and no
+    ' way to be removed early - its .Expire, or its mode stopping.
 
     Public Sub PlayWidget(widget, context, calling_context, priority, expire)
         If m_connected = False Then Exit Sub
         If FlexBcp_Str(widget) = "" Then Exit Sub
-        If Not IsObject(FlexDMD) Then Exit Sub
 
         Dim secs : secs = FlexBcp_Num(expire)
         If secs <= 0 Then secs = FlexDmdDefaultWidgetExpire
 
-        Log "PlayWidget " & widget & " (context=" & FlexBcp_StripMode(context) & _
-            ", priority=" & FlexBcp_Num(priority) & ", expire=" & secs & ")"
-
-        FlexDmd_ShowWidget widget, secs, Null
+        Push widget, True, context, secs, priority, Null
     End Sub
 
 
@@ -367,60 +426,234 @@ Class GlfFlexDmdBcpController
             Log "Disconnect"
             m_connected = False
             useBcp = False
-            m_slides.RemoveAll
+            m_stack.RemoveAll
             m_current = ""
+            m_drawn = ""
+            FlexDmd_ClearLayers()
         End If
     End Sub
 
 
     '--- Internals -----------------------------------------------------
 
-    ' Render the top of the stack. forceSlide re-renders even when that
-    ' slide is already the one showing; pass "" for "only if it changed".
-    Private Sub Render(forceSlide)
-        Dim topSlideName : topSlideName = TopSlide()
+    ' Put an entry on the stack, or refresh the one already there, and
+    ' re-render. isWidget picks the registry the name is looked up in,
+    ' and is half of the stack key - a slide and a widget may share a
+    ' name and be on the stack at the same time.
+    Private Sub Push(name, isWidget, context, expire, priority, kwargs)
+        Dim key : key = FlexBcp_StackKey(name, isWidget)
 
-        If topSlideName = "" Then
+        Dim item
+        If m_stack.Exists(key) Then
+            Set item = m_stack(key)
+        Else
+            Set item = (new GlfFlexDmdStackItem)(name, isWidget)
+            m_stack.Add key, item
+        End If
+
+        m_seq = m_seq + 1
+        item.Priority = FlexBcp_Num(priority)
+        item.Context = FlexBcp_StripMode(context)
+        item.Expire = expire
+        item.Seq = m_seq
+        item.SetKwargs kwargs
+
+        Log "Play " & key & " (context=" & item.Context & _
+            ", priority=" & item.Priority & ", expire=" & expire & ")"
+
+        ' The stack key doubles as the delay name, so replaying an entry
+        ' restarts its expiry rather than stacking a second one.
+        RemoveDelay key
+        If expire > 0 Then
+            SetDelay key, "Glf_FlexDmdSlideExpired", key, expire * 1000
+        End If
+
+        ' Pass the key as the forced one, so replaying what is already
+        ' showing restarts its animation instead of being skipped.
+        Render key
+    End Sub
+
+    ' Work out what the DMD should look like from the whole stack, and
+    ' make it so. forceKey re-renders that one entry even when nothing
+    ' about the stack changed; pass "" for "only what changed".
+    Private Sub Render(forceKey)
+        Dim keys : keys = OrderedKeys()
+        Dim i, n, entry, topEntry, topItem, topKey, baseEntry
+        Dim wanted()
+
+        If UBound(keys) < 0 Then
             ' Nothing left in the stack. Leave the last scene up, but
             ' forget it, so replaying it later renders again.
             m_current = ""
+            m_drawn = ""
+            FlexDmd_ClearLayers()
             FlexDmd_StackEmpty()
             Exit Sub
         End If
 
-        If topSlideName <> m_current Or topSlideName = forceSlide Then
-            ' Flex_Init has not run yet - leave m_current alone so the
-            ' next Render still has this slide to draw.
-            If Not IsObject(FlexDMD) Then Exit Sub
+        ' Flex_Init has not run yet - change nothing, so the next Render
+        ' still has all of this to draw.
+        If Not IsObject(FlexDMD) Then Exit Sub
 
-            Dim entry : Set entry = m_slides(topSlideName)
-            Dim kw
-            If entry.HasKwargs Then
-                Set kw = entry.Kwargs()
-            Else
-                kw = Null
-            End If
-
-            FlexDmd_ShowSlide topSlideName, kw
-            m_current = topSlideName
-        End If
-    End Sub
-
-    ' Highest priority wins; most recently played breaks a tie.
-    Private Function TopSlide()
-        Dim bestName : bestName = ""
-        Dim bestPri, bestSeq
-        Dim slideName, entry
-        For Each slideName In m_slides.Keys()
-            Set entry = m_slides(slideName)
-            If bestName = "" Or entry.Priority > bestPri Or _
-               (entry.Priority = bestPri And entry.Seq > bestSeq) Then
-                bestName = slideName
-                bestPri = entry.Priority
-                bestSeq = entry.Seq
+        ' The top entry that is NOT a layer: the one whose .Callback or
+        ' .Text gets drawn, and the usual answer to "what is playing".
+        Set topEntry = Nothing
+        Set topItem = Nothing
+        topKey = ""
+        For i = UBound(keys) To 0 Step -1
+            Set entry = ItemEntry(m_stack(keys(i)))
+            If Not entry Is Nothing Then
+                If Not entry.IsLayer Then
+                    Set topEntry = entry
+                    Set topItem = m_stack(keys(i))
+                    topKey = keys(i)
+                    Exit For
+                End If
             End If
         Next
-        TopSlide = bestName
+
+        ' A Callback takes the whole render over - no backdrop, no
+        ' layers, nothing but the Sub it names.
+        If Not topEntry Is Nothing Then
+            If topEntry.Callback <> "" Then
+                If topKey <> m_drawn Or topKey = forceKey Then
+                    FlexDmd_DrawEntry topEntry, ItemKwargs(topItem), ItemHold(topItem, topEntry)
+                    m_drawn = topKey
+                End If
+                Exit Sub
+            End If
+        End If
+
+        ' The backdrop. Walking from the top down, the first item that
+        ' knows what belongs underneath it decides: a full-screen scene
+        ' is its own backdrop, a layer or a text entry names one with
+        ' .Over, and an entry happy with whatever is already up (.Over =
+        ' "current", or a bare text widget) passes the question on down.
+        Set baseEntry = Nothing
+        For i = UBound(keys) To 0 Step -1
+            Set entry = ItemEntry(m_stack(keys(i)))
+            If Not entry Is Nothing Then
+                If entry.HasScene And Not entry.IsLayer Then
+                    Set baseEntry = entry
+                Else
+                    Set baseEntry = FlexDmd_Backdrop(entry)
+                End If
+                If Not baseEntry Is Nothing Then Exit For
+            End If
+        Next
+
+        If Not baseEntry Is Nothing Then
+            If Not (FlexDmdCurrent Is baseEntry) Then
+                FlexDmd_Present baseEntry
+            ElseIf forceKey <> "" Then
+                ' Replaying the backdrop itself restarts it. Replaying
+                ' something that merely sits ON it must not - that would
+                ' rebuild the stage, and restart the scoreboard's
+                ' scrolling title, on every tick of a countdown.
+                If m_stack.Exists(forceKey) Then
+                    If ItemEntry(m_stack(forceKey)) Is baseEntry Then
+                        FlexDmd_Present baseEntry
+                    End If
+                End If
+            End If
+        End If
+
+        ' Then the layers, lowest priority first. A layer whose backdrop
+        ' is not what ended up on screen is held back rather than drawn
+        ' over the wrong scene - it will appear if its backdrop returns.
+        ReDim wanted(UBound(keys))
+        n = -1
+        For i = 0 To UBound(keys)
+            Set entry = ItemEntry(m_stack(keys(i)))
+            If Not entry Is Nothing Then
+                If entry.IsLayer Then
+                    If FlexDmd_LayerFits(entry) Then
+                        n = n + 1
+                        Set wanted(n) = entry
+                    End If
+                End If
+            End If
+        Next
+        FlexDmd_SetLayers wanted, n
+
+        ' And last, whatever the top entry draws for itself.
+        If Not topEntry Is Nothing Then
+            If topKey <> m_drawn Or topKey = forceKey Then
+                FlexDmd_DrawEntry topEntry, ItemKwargs(topItem), ItemHold(topItem, topEntry)
+            End If
+        End If
+        m_drawn = topKey
+
+        m_current = ""
+        If Not FlexDmdCurrent Is Nothing Then m_current = FlexDmdCurrent.Name
+    End Sub
+
+    ' The registry entry a stack item names, or Nothing when the config
+    ' has no such name.
+    Private Function ItemEntry(item)
+        If item.IsWidget Then
+            Set ItemEntry = FlexDmd_Lookup(FlexDmdWidgets, item.Name)
+        Else
+            Set ItemEntry = FlexDmd_Lookup(FlexDmdSlides, item.Name)
+        End If
+    End Function
+
+    ' kwargs is an object or Null, so it cannot be a property - see
+    ' GlfFlexDmdStackItem.SetKwargs.
+    Private Function ItemKwargs(item)
+        If item.HasKwargs Then
+            Set ItemKwargs = item.Kwargs()
+        Else
+            ItemKwargs = Null
+        End If
+    End Function
+
+    ' How long a text entry's DMDBigText is held. A widget uses the
+    ' .Expire its mode config gave it, so the text and the stack item go
+    ' away together; a slide uses its own .Hold.
+    Private Function ItemHold(item, entry)
+        If entry.IsWidget Then
+            ItemHold = item.Expire
+        Else
+            ItemHold = entry.Hold
+        End If
+    End Function
+
+    ' True when stack item aKey sorts below bKey: lower priority, or the
+    ' same priority and played earlier.
+    Private Function Below(aKey, bKey)
+        Dim a : Set a = m_stack(aKey)
+        Dim b : Set b = m_stack(bKey)
+        If a.Priority <> b.Priority Then
+            Below = (a.Priority < b.Priority)
+        Else
+            Below = (a.Seq < b.Seq)
+        End If
+    End Function
+
+    ' Every stack key, lowest first. Insertion sort - the stack is a
+    ' handful of entries, never more, and this runs only when one of
+    ' them is played or removed.
+    Private Function OrderedKeys()
+        Dim count : count = m_stack.Count
+        If count = 0 Then
+            OrderedKeys = Array()
+            Exit Function
+        End If
+
+        Dim keys : keys = m_stack.Keys()
+        Dim i, j, moving
+        For i = 1 To count - 1
+            moving = keys(i)
+            j = i - 1
+            Do While j >= 0
+                If Not Below(moving, keys(j)) Then Exit Do
+                keys(j + 1) = keys(j)
+                j = j - 1
+            Loop
+            keys(j + 1) = moving
+        Next
+        OrderedKeys = keys
     End Function
 
     Private Sub Log(message)
@@ -430,10 +663,19 @@ Class GlfFlexDmdBcpController
 End Class
 
 
-' One entry in the slide stack.
-Class GlfFlexDmdSlide
+' One entry on the stack - which entry was played, by whom, how loudly
+' and when. What it DRAWS is the GlfDmdEntry this names; this class is
+' only the playing of it.
+Class GlfFlexDmdStackItem
 
-    Private m_priority, m_context, m_seq, m_kwargs
+    Private m_name, m_isWidget
+    Private m_priority, m_context, m_seq, m_expire, m_kwargs
+
+    ' The name as GLF played it - which may be an alias.
+    Public Property Get Name() : Name = m_name : End Property
+
+    ' Which registry it was played out of.
+    Public Property Get IsWidget() : IsWidget = m_isWidget : End Property
 
     Public Property Get Priority() : Priority = m_priority : End Property
     Public Property Let Priority(input) : m_priority = input : End Property
@@ -444,17 +686,23 @@ Class GlfFlexDmdSlide
     Public Property Get Seq() : Seq = m_seq : End Property
     Public Property Let Seq(input) : m_seq = input : End Property
 
-    Public default Function Init()
+    Public Property Get Expire() : Expire = m_expire : End Property
+    Public Property Let Expire(input) : m_expire = input : End Property
+
+    Public default Function Init(itemName, isWidget)
+        m_name = itemName
+        m_isWidget = isWidget
         m_priority = 0
         m_context = ""
         m_seq = 0
+        m_expire = 0
         m_kwargs = Null
         Set Init = Me
     End Function
 
     ' kwargs is whatever the event carried - a Scripting.Dictionary, or
-    ' Null from a show step. Property Let cannot take an object, hence
-    ' the pair of methods.
+    ' Null from a show step or the widget player. Property Let cannot
+    ' take an object, hence the pair of methods.
     Public Sub SetKwargs(input)
         If IsObject(input) Then
             Set m_kwargs = input
@@ -484,7 +732,7 @@ End Class
 ' The entries are written in src/game/dmd/display_config.vbs. This is the
 ' machinery behind them: the entry class, the two Create functions, the
 ' one-time scene build, and the render path that turns an entry into
-' ShowScene / DMDBigText.
+' ShowScene / AddActor / DMDBigText.
 
 ' One slide or one widget.
 Class GlfDmdEntry
@@ -498,7 +746,7 @@ Class GlfDmdEntry
     Public RenderMode    ' one of the FlexDMD_RenderMode_* constants
     Public Effect        ' "solid" or "blink"
     Public Hold          ' seconds a text slide stays up
-    Public Over          ' slide a text entry draws on top of
+    Public Over          ' what this entry is drawn ON TOP of - see LAYERS
     Public ResetFrame    ' zero FlexFrame before showing
     Public Aliases       ' extra names resolving to this same entry
 
@@ -508,13 +756,55 @@ Class GlfDmdEntry
     Private m_name
     Public Property Get Name() : Name = m_name : End Property
 
+    ' Which registry this was created in. Only the two defaults in Init
+    ' and the text backdrop rule in FlexDmd_Backdrop turn on it.
+    Private m_isWidget
+    Public Property Get IsWidget() : IsWidget = m_isWidget : End Property
+
+    ' Unique across both registries, since a slide and a widget are
+    ' allowed to share a name. Doubles as the stack key and as the name
+    ' of that item's expiry delay - see FlexBcp_StackKey, which builds
+    ' the same string from a name that has not been looked up yet.
+    Public Property Get Key()
+        Key = FlexBcp_StackKey(m_name, m_isWidget)
+    End Property
+
     ' The FlexDMD Group, once built. Property Let cannot take an object,
-    ' hence the pair of methods - the same shape as GlfFlexDmdSlide's
+    ' hence the pair of methods - the same shape as the stack item's
     ' SetKwargs above.
     Private m_scene
 
+    ' True when this entry draws ON TOP of another scene instead of
+    ' replacing it: it has a scene of its own, and an .Over saying what
+    ' that scene belongs on. A text entry has no scene of its own, so it
+    ' is never a layer - it uses .Over to pick a backdrop, not to be one.
+    Public Property Get IsLayer()
+        IsLayer = HasScene
+        If IsLayer Then IsLayer = (FlexBcp_Str(Over) <> "")
+    End Property
+
+    ' While attached: the entry this layer is a child of. Nothing
+    ' otherwise. FlexDmd_ClearLayers needs it to detach from the right
+    ' group even after the DMD has moved on.
+    Private m_parent
+    Public Property Get Parent()
+        If IsObject(m_parent) Then Set Parent = m_parent Else Set Parent = Nothing
+    End Property
+    Public Sub SetParent(input)
+        If IsObject(input) Then Set m_parent = input Else Set m_parent = Nothing
+    End Sub
+
+    ' FlexFrame at the moment this layer went on, so a Ticker can animate
+    ' from zero however many times the layer is replayed.
+    Private m_attachFrame
+    Public Property Get AttachedAtFrame() : AttachedAtFrame = m_attachFrame : End Property
+    Public Sub SetAttachFrame(input) : m_attachFrame = input : End Sub
+
     Public default Function Init(entryName, isWidget)
         m_name = entryName
+        m_isWidget = isWidget
+        Set m_parent = Nothing
+        m_attachFrame = 0
         Gif = ""
         Image = ""
         Text = ""
@@ -526,17 +816,18 @@ Class GlfDmdEntry
         Aliases = Array()
         Hold = 1.2
 
+        ' .Over is left empty for both, so setting it always means the
+        ' same thing: "I am drawn on top of this." What differs is the
+        ' fallback when it is NOT set, and that is a property of text -
+        ' see FlexDmd_Backdrop.
+        Over = ""
+
         If isWidget Then
-            ' A widget is a notification: it blinks, and it never
-            ' disturbs the slide underneath - it simply does not appear
-            ' unless the scoreboard's ticker is the one drawing.
+            ' A widget is a notification, so text blinks.
             Effect = "blink"
-            Over = ""
         Else
-            ' A text slide is continuous, and it does claim a scene
-            ' underneath itself. See FlexDmd_Render.
+            ' A text slide is continuous, so it does not.
             Effect = "solid"
-            Over = "score"
         End If
 
         Set Init = Me
@@ -628,6 +919,48 @@ End Sub
 '  Showing them
 '*******************************************
 
+' The hand-wired route: put one entry on the DMD right now, ignoring the
+' stack. FlexDmd_ShowSlide and FlexDmd_ShowWidget are its two front
+' doors, and the AddPinEventListener note at the bottom of ZDMD is what
+' they are for.
+'
+' The controller does NOT come through here - it renders from the stack,
+' which is what lets an entry be taken away again. A layer shown this way
+' becomes the only layer, and stays up until something else replaces the
+' scene under it.
+'
+' holdSeconds is how long a text entry stays up; a scene entry ignores
+' it and stays until something replaces it.
+Sub FlexDmd_Render(entry, kwargs, holdSeconds)
+    If entry.Callback <> "" Then
+        GetRef(entry.Callback)(Array(entry.Name, kwargs, holdSeconds))
+        Exit Sub
+    End If
+
+    ' Whatever this entry says belongs underneath it. Skipping the
+    ' present when it is already up avoids rebuilding the stage, and
+    ' restarting the scrolling title, on every tick.
+    Dim backdrop : Set backdrop = FlexDmd_Backdrop(entry)
+    If Not backdrop Is Nothing Then
+        If Not (FlexDmdCurrent Is backdrop) Then FlexDmd_Present backdrop
+    End If
+
+    If entry.IsLayer Then
+        Dim one(0)
+        Set one(0) = entry
+        If FlexDmd_LayerFits(entry) Then FlexDmd_SetLayers one, 0
+        Exit Sub
+    End If
+
+    If entry.HasScene Then
+        FlexDmd_Present entry
+        Exit Sub
+    End If
+
+    FlexDmd_DrawEntry entry, kwargs, holdSeconds
+End Sub
+
+
 ' slide name -> whatever the config said. The names are what you put in
 ' .Slide = "..." in mode config, or .Slides("...") in a show step.
 '
@@ -646,10 +979,10 @@ Sub FlexDmd_ShowSlide(slide, kwargs)
 End Sub
 
 
-' widget name -> a transient overlay on the current slide.
+' widget name -> an overlay on the current slide.
 '
 ' expireSeconds is the .Expire from config (or FlexDmdDefaultWidgetExpire
-' when none was set), and is what the overlay is held for.
+' when none was set), and is what a text overlay is held for.
 '
 ' The widget player does not pass event kwargs today, so kwargs is Null
 ' from that path; a show step's .Widgets(...) is the same. It is passed
@@ -667,68 +1000,197 @@ Sub FlexDmd_ShowWidget(widget, expireSeconds, kwargs)
 End Sub
 
 
-' Shared by both. holdSeconds is how long a text entry stays up; it is
-' ignored by a scene entry, which stays until something replaces it.
-Sub FlexDmd_Render(entry, kwargs, holdSeconds)
-    Dim under, message
-
+' Draw whatever an entry draws for ITSELF: a Callback that takes the
+' render over, or a line of DMDBigText. A scene entry draws nothing here
+' - by this point it has already been presented, or attached as a layer.
+Sub FlexDmd_DrawEntry(entry, kwargs, holdSeconds)
     If entry.Callback <> "" Then
         GetRef(entry.Callback)(Array(entry.Name, kwargs, holdSeconds))
         Exit Sub
     End If
 
-    If entry.HasScene Then
-        FlexDmd_Present entry
-        Exit Sub
-    End If
-
+    If entry.HasScene Then Exit Sub
     If entry.Text = "" Then Exit Sub
 
-    ' A text entry draws no scene of its own, so whatever is on the DMD
-    ' stays there. For a slide that is a problem: taking the top of the
-    ' stack back from, say, an expiring multiball animation would leave
-    ' the text sitting over multiball. .Over names the slide it belongs
-    ' on, and puts it up when it is not already showing - skipping it
-    ' when it is avoids rebuilding the stage, and restarting the
-    ' scrolling title, on every tick.
-    If entry.Over <> "" Then
-        Set under = FlexDmd_Lookup(FlexDmdSlides, entry.Over)
-        If Not under Is Nothing Then
-            If Not (FlexDmdCurrent Is under) Then FlexDmd_Present under
-        End If
-    End If
-
-    message = FlexDmd_Interpolate(entry.Text, kwargs)
+    Dim message : message = FlexDmd_Interpolate(entry.Text, kwargs)
     If message <> "" Then
         DMDBigText message, FlexDmd_Frames(holdSeconds), FlexDmd_EffectCode(entry.Effect)
     End If
 End Sub
 
 
+' The scene an entry wants underneath itself, or Nothing for "whatever is
+' already there".
+'
+' .Over names it. When .Over is empty the answer depends on what the
+' entry is: a scene needs nothing under it, and a text entry needs the
+' scoreboard, because DMDBigText is drawn by the scoreboard's ticker and
+' by nothing else. A text SLIDE therefore falls back to it and brings it
+' up, while a text WIDGET falls back to nothing - a notification that
+' pulled the scoreboard up over a running mode animation would be worse
+' than a notification that quietly does not appear.
+Function FlexDmd_Backdrop(entry)
+    Set FlexDmd_Backdrop = Nothing
+
+    Dim want : want = LCase(FlexBcp_Str(entry.Over))
+    If want = "current" Then Exit Function
+    If want = "" Then
+        If entry.HasScene Then Exit Function
+        If entry.IsWidget Then Exit Function
+        want = FlexDmdTextBackdrop
+    End If
+
+    Set FlexDmd_Backdrop = FlexDmd_Lookup(FlexDmdSlides, want)
+End Function
+
+
+' True when a layer belongs on the scene that is now up.
+Function FlexDmd_LayerFits(entry)
+    FlexDmd_LayerFits = False
+    If Not entry.HasScene Then Exit Function
+    If FlexDmdCurrent Is Nothing Then Exit Function
+
+    ' "current" goes on anything, as long as there is something.
+    If LCase(FlexBcp_Str(entry.Over)) = "current" Then
+        FlexDmd_LayerFits = True
+        Exit Function
+    End If
+
+    ' Anything else names one scene and goes on that and nothing else, so
+    ' a layer whose backdrop lost the stack is held back rather than
+    ' drawn over the wrong thing. A name that does not resolve fits
+    ' nothing either - a typo should show up as a layer that never
+    ' appears, not as one drawn over everything.
+    Dim want : Set want = FlexDmd_Backdrop(entry)
+    If want Is Nothing Then Exit Function
+    FlexDmd_LayerFits = (want Is FlexDmdCurrent)
+End Function
+
+
 ' Put an entry's scene on the DMD and make it the current one. This is
-' the only place FlexDmdCurrent moves, which is what keeps "which ticker
-' runs" and "what is on screen" the same question.
+' the only place FlexDmdCurrent moves, which is what keeps "which tickers
+' run" and "what is on screen" the same question.
 Sub FlexDmd_Present(entry)
     If Not entry.HasScene Then Exit Sub
+
+    ' A layer is a child of the scene it was attached to, not of the DMD.
+    ' Leaving one on a scene that is going off screen would bring it back
+    ' the next time that scene is shown, so they come off first - the
+    ' render puts back whichever ones still fit.
+    FlexDmd_ClearLayers()
+
     If entry.ResetFrame Then FlexFrame = 0
     ShowScene entry.Scene(), entry.RenderMode
     Set FlexDmdCurrent = entry
 End Sub
 
 
-' Run the current scene's per-frame updater, if it has one. Called from
-' DMDTimer_Timer, from inside the render lock - so a Ticker must not lock
-' the render thread itself.
-Sub FlexDmd_Tick()
-    If FlexDmdCurrent Is Nothing Then Exit Sub
-    If FlexDmdCurrent.Ticker = "" Then Exit Sub
-    GetRef(FlexDmdCurrent.Ticker)(Null)
+' Make the attached layers match a list, and do nothing at all when they
+' already do - reattaching is cheap but it churns the scene graph on
+' every render, and FlexDMD counts an actor's action time only while it
+' is on the stage.
+'
+' wanted is an array of entries, lowest priority first, and last is its
+' last used index (-1 for none). They go on top of FlexDmdCurrent's
+' scene in that order, which is the order FlexDMD draws them in.
+Sub FlexDmd_SetLayers(wanted, last)
+    If Not IsObject(FlexDMD) Then Exit Sub
+
+    ' A layer cannot be drawn on its own.
+    If FlexDmdCurrent Is Nothing Then
+        FlexDmd_ClearLayers()
+        Exit Sub
+    End If
+
+    Dim i, same, attached, parentScene, note
+    same = (FlexDmdLayers.Count = last + 1)
+    If same Then
+        attached = FlexDmdLayers.Keys()
+        For i = 0 To last
+            If attached(i) <> wanted(i).Key Then same = False
+            If Not (FlexDmdLayers(attached(i)).Parent Is FlexDmdCurrent) Then same = False
+        Next
+    End If
+    If same Then Exit Sub
+
+    FlexDmd_ClearLayers()
+    If last < 0 Then Exit Sub
+
+    note = ""
+    Set parentScene = FlexDmdCurrent.Scene()
+
+    FlexDMD.LockRenderThread
+    For i = 0 To last
+        ' One entry, attached once, however many names reached it - two
+        ' stack items can be the same entry under an .Aliases name, and
+        ' adding the same actor to a group twice draws it twice.
+        If Not FlexDmdLayers.Exists(wanted(i).Key) Then
+            wanted(i).SetParent FlexDmdCurrent
+            wanted(i).SetAttachFrame FlexFrame
+            parentScene.AddActor wanted(i).Scene()
+            FlexDmdLayers.Add wanted(i).Key, wanted(i)
+            note = note & " " & wanted(i).Name
+        End If
+    Next
+    FlexDMD.UnlockRenderThread
+
+    ' Logged outside the lock - the render thread is waiting on it.
+    Glf_WriteDebugLog "flexdmd_bcp", "Layers on " & FlexDmdCurrent.Name & ":" & note
 End Sub
 
 
-' Called when the last slide leaves the stack. Deliberately does nothing:
+' Take every layer back off whatever it was attached to. Safe to call
+' when there are none, and safe to call before Flex_Init.
+Sub FlexDmd_ClearLayers()
+    If Not IsObject(FlexDMD) Then Exit Sub
+    If FlexDmdLayers.Count = 0 Then Exit Sub
+
+    Dim key, entry, parentScene
+    FlexDMD.LockRenderThread
+    For Each key In FlexDmdLayers.Keys()
+        Set entry = FlexDmdLayers(key)
+        If Not entry.Parent Is Nothing Then
+            Set parentScene = entry.Parent.Scene()
+            parentScene.RemoveActor entry.Scene()
+        End If
+        entry.SetParent Nothing
+    Next
+    FlexDmdLayers.RemoveAll
+    FlexDMD.UnlockRenderThread
+End Sub
+
+
+' Run the per-frame updaters: the scene on the DMD first, then every
+' layer on top of it, back to front. Called from DMDTimer_Timer, from
+' inside the render lock - so a Ticker must not lock the render thread
+' itself, and must not play or remove a slide, which would attach or
+' detach a layer and take the lock again.
+'
+' A Ticker is handed its own entry, so it can reach its actors through
+' entry.Scene() instead of FlexDMD.Stage. For a layer that matters:
+' Stage searches the scene underneath too, and two scenes are allowed to
+' hold labels of the same name.
+Sub FlexDmd_Tick()
+    Dim key, entry
+
+    If Not FlexDmdCurrent Is Nothing Then
+        If FlexDmdCurrent.Ticker <> "" Then
+            GetRef(FlexDmdCurrent.Ticker)(FlexDmdCurrent)
+        End If
+    End If
+
+    If FlexDmdLayers.Count = 0 Then Exit Sub
+    For Each key In FlexDmdLayers.Keys()
+        Set entry = FlexDmdLayers(key)
+        If entry.Ticker <> "" Then GetRef(entry.Ticker)(entry)
+    Next
+End Sub
+
+
+' Called when the last entry leaves the stack. Deliberately does nothing:
 ' the scene that was up stays up, which is what keeps the scoreboard on
-' screen after base mode stops at the end of a ball.
+' screen after base mode stops at the end of a ball. Its layers have
+' already been detached by the time this runs.
 '
 ' To blank the DMD instead:
 '     FlexDMD.LockRenderThread : FlexDMD.Stage.RemoveAll : FlexDMD.UnlockRenderThread
@@ -798,7 +1260,7 @@ End Function
 '*******************************************
 
 Function FlexDmd_Frames(seconds)
-    FlexDmd_Frames = Int(seconds * 1000 / FlexDmdFrameMs)
+    FlexDmd_Frames = Int(FlexBcp_Num(seconds) * 1000 / FlexDmdFrameMs)
 End Function
 
 ' Read one key out of an event's kwargs, with a fallback.
@@ -851,6 +1313,16 @@ Function FlexBcp_StripMode(value)
     FlexBcp_StripMode = Replace(FlexBcp_Str(value), "mode_", "")
 End Function
 
-Function FlexBcp_ExpiryKey(slide)
-    FlexBcp_ExpiryKey = "flexdmd_slide_expire_" & slide
+' The stack key for a name, which is also the name of that item's expiry
+' delay and the key a layer is tracked under. Prefixed by registry, so a
+' slide and a widget of the same name are two different things, and
+' namespaced so it cannot collide with another GLF delay.
+'
+' GlfDmdEntry.Key is this same string for an entry already looked up.
+Function FlexBcp_StackKey(name, isWidget)
+    If isWidget Then
+        FlexBcp_StackKey = "flexdmd_w_" & LCase(FlexBcp_Str(name))
+    Else
+        FlexBcp_StackKey = "flexdmd_s_" & LCase(FlexBcp_Str(name))
+    End If
 End Function

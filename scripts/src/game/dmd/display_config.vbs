@@ -20,14 +20,52 @@
 '
 ' ...and from a show step (.Slides("jackpot") / .Widgets("ball_save")).
 '
-' A SLIDE replaces what is on the DMD. A WIDGET is a transient overlay
-' drawn on top of the scoreboard - it only appears while the scoreboard
-' is the slide on screen, which is what "overlay" means here.
+' SLIDE vs WIDGET is about how a mode reaches the entry, not about what
+' gets drawn:
+'
+'   A SLIDE is played and stays until something takes it away. The slide
+'   player passes the triggering event's kwargs through, so a slide can
+'   show live data, and .Action = "remove" takes it back off.
+'
+'   A WIDGET is fired and forgotten. The widget player passes no kwargs
+'   and has no remove, so a widget leaves only when its .Expire runs out
+'   or its mode stops.
+'
+' Either one can be a GIF, a still, a line of text or a built scene, and
+' either one can be a LAYER.
+'
+' LAYERS
+'
+' An entry with a scene of its own and an .Over is drawn ON TOP of
+' another scene instead of replacing it - its FlexDMD group is added to
+' the backdrop's group, and taken off again when it leaves the stack.
+' The backdrop keeps ticking underneath, and the layer gets its own
+' ticker every frame:
+'
+'     With CreateDmdSlide("luke_and_lorelei")
+'         .Builder = "DmdBuild_LukeAndLorelei"
+'         .Ticker  = "DmdTick_LukeAndLorelei"
+'         .Over    = "mode"        ' put the mode panel up and sit on it
+'     End With
+'
+' .Over = "current" instead means "whatever is on screen will do".
+' Layers stack by priority, lowest first, so the highest ends up on top.
+'
+' A .Text entry has no scene, so it is never a layer - it draws through
+' DMDBigText, which only the scoreboard's ticker puts on screen, and its
+' .Over names the backdrop it needs. A text slide with no .Over brings
+' the scoreboard up; a text widget with no .Over disturbs nothing and so
+' appears only when the scoreboard is already there.
 '
 ' ADDING ONE
 '
 '   A GIF, dropped in StarsHollowDMD/, is one line:
 '       With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
+'
+'   The same GIF as an overlay on whatever is showing is two:
+'       With CreateDmdWidget("kirk-dances")
+'           .Gif = "kirk-dances.gif" : .Over = "current"
+'       End With
 '
 '   A line of text is one line:
 '       With CreateDmdWidget("ball_save") : .Text = "BALL SAVED" : End With
@@ -53,9 +91,11 @@
 '   .Effect     "solid" or "blink"  (slides default solid, widgets blink)
 '   .Hold       seconds a text SLIDE stays up (default 1.2). Widgets use
 '               the .Expire from mode config instead.
-'   .Over       for a text slide, the slide it draws on top of and will
-'               put up if it is not already showing (slides default
-'               "score", widgets default to nothing)
+'   .Over       what this entry is drawn on top of: a slide name, or
+'               "current" for whatever is showing. Empty (the default)
+'               means full screen - except for a text SLIDE, which falls
+'               back to the scoreboard because that is the only scene
+'               that draws text.
 '   .ResetFrame True to zero FlexFrame before showing, for a scene whose
 '               ticker keys on absolute frame numbers
 '   .Aliases    Array of extra names that resolve to this same entry
@@ -107,10 +147,14 @@ Sub CreateFlexDmdDisplay()
         .Ticker  = "DmdTick_ScoreCentralLayout"
     End With
 
+    ' A LAYER over the mode panel: two portraits that slide in from the
+    ' edges and sit on top of it, rather than replacing it. Played and
+    ' removed like any other slide - .Action = "remove", an .Expire, or
+    ' the mode that played it stopping.
     With CreateDmdSlide("luke_and_lorelei")
         .Builder = "DmdBuild_LukeAndLorelei"
         .Ticker  = "DmdTick_LukeAndLorelei"
-        .Over = "mode"
+        .Over    = "mode"
     End With
 
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With

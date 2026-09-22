@@ -174,9 +174,10 @@ Sub DMDTimer_Timer 'Main FlexDMD Timer
 	
 	' Whatever scene is on the DMD gets its per-frame update here, if it
 	' asked for one - the scoreboard refreshing scores and drawing widget
-	' text, the intro revealing its logo. VPW switched on a FlexMode
-	' number; the scene's config entry names its own .Ticker instead, so
-	' adding a scene never means adding a Case here.
+	' text, the intro revealing its logo - and then so does every layer
+	' attached on top of it. VPW switched on a FlexMode number; the
+	' scene's config entry names its own .Ticker instead, so adding a
+	' scene never means adding a Case here.
 	FlexDmd_Tick()
 	
 	FlexDMD.UnlockRenderThread

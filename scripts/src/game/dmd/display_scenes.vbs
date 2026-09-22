@@ -4,9 +4,9 @@
 '
 ' Everything the DMD can show is listed in display_config.vbs. Most
 ' entries are a GIF or a line of text and need nothing more than that
-' one line. The two below are not: they build a stage full of labels and
-' then push live data into it every frame, so they name a Builder and a
-' Ticker from the config and the actual code lives here.
+' one line. The ones below are not: they build a stage full of labels
+' and then push live data into it every frame, so they name a Builder
+' and a Ticker from the config and the actual code lives here.
 '
 ' A Builder runs once, from Flex_Init, and hands its scene back through
 ' the entry:
@@ -17,13 +17,25 @@
 '         entry.SetScene g
 '     End Sub
 '
-' A Ticker runs on every DMD frame (17ms) while its entry is the one on
-' screen, from inside FlexDMD's render lock - DMDTimer_Timer takes the
-' lock, calls FlexDmd_Tick, and releases it. So a ticker must not lock
-' the render thread itself, and must not do anything slow.
+' A Ticker runs on every DMD frame (17ms) while its scene is on the DMD,
+' from inside FlexDMD's render lock - DMDTimer_Timer takes the lock,
+' calls FlexDmd_Tick, and releases it. So a ticker must not lock the
+' render thread itself, must not play or remove a slide (that would take
+' the lock again), and must not do anything slow.
 '
-' Both take a single argument, matching the GetRef(name)(args) callback
-' convention GLF uses everywhere.
+' Both take a single argument - the GlfDmdEntry they belong to, matching
+' the GetRef(name)(args) callback convention GLF uses everywhere. The
+' full-screen scenes below ignore it and reach their actors through
+' FlexDMD.Stage, which is fine for something that owns the whole stage.
+' A LAYER must not: see DmdBuild_LukeAndLorelei.
+'
+' FULL-SCREEN SCENES AND LAYERS
+'
+' A scene with no .Over replaces what is on the DMD. A scene WITH an
+' .Over is a layer: its group is added on top of the scene named there
+' and removed again when it leaves the stack, so the backdrop keeps
+' ticking underneath. The mechanism is in ZFBC - see the LAYERS note at
+' the top of 28_ZFBC_FlexDMD_Bcp_Controller.vbs.
 
 
 '*******************************************
@@ -215,21 +227,79 @@ Sub DmdTick_Welcome(args)
     ' End If
 End Sub
 
+'*******************************************
+'  luke_and_lorelei - a LAYER over the mode panel
+'*******************************************
+' Its config entry sets .Over = "mode", so this group is added on top of
+' the mode scene rather than replacing it, and taken back off when the
+' slide that played it leaves the stack. Two rules for a layer builder:
+'
+'   - build a group of your own and hand it back with entry.SetScene,
+'     exactly like a full-screen scene. Do NOT reach into FlexDMD.Stage
+'     here - at build time the stage is empty, and at run time the stage
+'     belongs to whatever scene is underneath.
+'   - leave ClearBackground alone (False). A layer that clears its
+'     background paints over the scene it is supposed to sit on.
+'
+' The slide-in is an ActionFactory sequence rather than ticker code.
+' FlexDMD advances an actor's actions only while it is on the stage, so
+' the sequence starts when the layer is attached and pauses if it is
+' detached - which is what you want, but it also means it does not
+' restart on a replay. Animation that has to restart belongs in the
+' ticker, keyed on entry.AttachedAtFrame; the bob below is an example.
+
 Sub DmdBuild_LukeAndLorelei(entry)
-    Dim lorelei, luke, scene
+    Dim g, lorelei, luke, af, seq
 
-    Set lorelei = FlexDMD.NewImage("Lorelei", "lorelei.png")         ' 32x32
-    lorelei.SetPosition 0, 0                                         ' left edge
+    Set g = FlexDMD.NewGroup("LukeAndLorelei")
+    g.SetSize FlexDMD.Width, FlexDMD.Height
 
-    Set luke = FlexDMD.NewImage("Luke", "luke.png")                  ' pre-flipped copy of luke.png
-    luke.SetPosition FlexDMD.Width - 32, 0                           ' right edge (96 on a 128 wide DMD)
-    Set scene = FlexDMD.Stage.GetGroup("Mode")
-    scene.AddActor lorelei
-    scene.AddActor luke
-    ' entry.SetScene scene
+    ' Lorelei slides in from off the left edge...
+    Set lorelei = FlexDMD.NewImage("Lorelei", "lorelei.png")           ' 32x32
+    lorelei.SetPosition -32, 0
+    g.AddActor lorelei
+
+    Set af = lorelei.ActionFactory
+    Set seq = af.Sequence()
+    seq.Add af.MoveTo(0, 0, 0.35)
+    lorelei.AddAction seq
+
+    ' ...and Luke in from off the right. luke.png is a pre-flipped copy,
+    ' so the two of them face each other across the panel.
+    Set luke = FlexDMD.NewImage("Luke", "luke_flipped.png")                    ' 32x32
+    luke.SetPosition FlexDMD.Width, 0
+    g.AddActor luke
+
+    Set af = luke.ActionFactory
+    Set seq = af.Sequence()
+    seq.Add af.MoveTo(FlexDMD.Width - 32, 0, 0.35)
+    luke.AddAction seq
+
+    entry.SetScene g
 End Sub
 
-Sub DmdTick_LukeAndLorelei(args)
+
+' A layer's ticker is handed its own entry, not Null - so it reaches its
+' actors through entry.Scene() rather than FlexDMD.Stage, which would
+' search the scene underneath as well and can find an actor of the same
+' name there.
+'
+' entry.AttachedAtFrame is the FlexFrame this layer went on, so an
+' animation counts from zero however many times the layer is replayed.
+Sub DmdTick_LukeAndLorelei(entry)
+    Dim g, frames, bob
+    Set g = entry.Scene()
+    If g Is Nothing Then Exit Sub
+
+    frames = FlexFrame - entry.AttachedAtFrame
+
+    ' Once the slide-in has finished (0.35s ~ 21 frames), a slow
+    ' one-pixel bob, the two of them out of phase.
+    If frames > 21 Then
+        bob = (frames \ 15) Mod 2
+        g.GetImage("Lorelei").SetPosition 0, bob
+        g.GetImage("Luke").SetPosition FlexDMD.Width - 32, 1 - bob
+    End If
 End Sub
 
 
