@@ -14,8 +14,8 @@ Sub CreateLbtbMode()
 
         With .EventPlayer()
             .Debug = True
-            .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells")
-            .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music")
+            .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei")
+            .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "stop_lbtb_luke_and_lorelei")
             .Add "timer_lbtb_post_mode_complete", Array("base_music_start")
 
             .Add "timer_shuffle_bells_complete", Array("reset_bells")
@@ -188,6 +188,14 @@ Sub CreateLbtbMode()
             End With
             With .EventName("mode_lbtb_stopping")
                 .Slide = "mode"
+                .Action = "remove"
+            End With
+            With .EventName("play_lbtb_luke_and_lorelei")
+                .Slide = "luke_and_lorelei"
+                .Action = "play"
+            End With
+            With .EventName("stop_lbtb_luke_and_lorelei")
+                .Slide = "luke_and_lorelei"
                 .Action = "remove"
             End With
         End With
