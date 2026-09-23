@@ -1,7 +1,8 @@
 Const LoganBumperScore = 10000
 Const LoganTotallyBashedScore = 10000000
 Const LoganLockedAwayScore = 10000000
-Const LoganScoreToWin = 1500000
+Const LoganScoreToWin = 150000
+' Const LoganScoreToWin = 10000
 Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)
         .StartEvents = Array("start_ll_multiball")
@@ -15,7 +16,6 @@ Sub CreateLLMultiballMode()
             
 
             .Add "auto_fire_coil_bumper1_activate", Array("logan_bumper_hit")
-            ' .Add "auto_fire_coil_bumper3_activate", Array("logan_bumper_hit")
             .Add "auto_fire_coil_bumper5_activate", Array("logan_bumper_hit")
 
             .Add "logan_bumper_hit{current_player.mode_llmb_score>=" & LoganScoreToWin & "}", Array("logan_totally_bashed")
