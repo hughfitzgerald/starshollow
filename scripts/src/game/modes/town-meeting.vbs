@@ -73,6 +73,11 @@ Sub CreateTownMeetingMode()
                 .Action = "jump"
                 .Value = 8
             End With
+            With .ControlEvents
+                .EventName = "skip_minigame_intro"
+                .Action = "jump"
+                .Value = 0
+            End With
         End With
 
         With .Timers("tm_lukes")

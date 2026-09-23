@@ -192,6 +192,11 @@ Sub CreateDanceMarathonMode()
             .StartValue = 14        ' 14 seconds until the clip of Taylor is done and we can start the mode
             .EndValue = 0
             .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "skip_minigame_intro"
+                .Action = "jump"
+                .Value = 0
+            End With
         End With
 
         With .Timers("dm_mode")

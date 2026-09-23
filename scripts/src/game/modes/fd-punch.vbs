@@ -57,6 +57,11 @@ Sub CreateFdPunchMode()
             .StartValue = 5
             .EndValue = 0
             .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "skip_minigame_intro"
+                .Action = "jump"
+                .Value = 0
+            End With
         End With
 
         With .Timers("fd_punch_right_redirect")

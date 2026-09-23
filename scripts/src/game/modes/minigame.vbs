@@ -38,6 +38,14 @@ Sub CreateMiniGameMode
             Next
         End With
 
+        'Skip the bonus tally animations
+        With .ComboSwitches("intro_skip")
+            .Switch1 = "s_left_flipper"
+            .Switch2 = "s_right_flipper"
+            .EventsWhenBoth = Array("skip_minigame_intro")
+            '.HoldTime = 200
+        End With
+
         With .RandomEventPlayer()
             With .EventName("choose_new_minigame{modes.eob_bonus.active == False}")
                 For Each minigame In minigames
