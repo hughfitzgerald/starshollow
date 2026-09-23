@@ -56,7 +56,7 @@ Sub Table1_OptionEvent(ByVal eventId)
 
     ' Staged Flippers
     StagedFlippers = Table1.Option("Staged Flippers", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
-	glf_machine_vars("game_modes_enabled").Value = Table1.Option("Game Modes Enabled", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
+	glf_machine_vars("game_modes_enabled").Value = Table1.Option("Game Modes Enabled", 0, 1, 1, 1, 0, Array("Disabled", "Enabled"))
 
 
 	' GLF's own options: Debug Log, Debug Log Level, Backbox Control
