@@ -58,7 +58,7 @@ Sub CreateFdPunchMode()
             .EndValue = 0
             .TickInterval = 1000    ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "skip_minigame_intro"
+                .EventName = "skip_minigame_intro{device.timers.fd_punch_intro_delay.ticks > 0}"
                 .Action = "jump"
                 .Value = 0
             End With

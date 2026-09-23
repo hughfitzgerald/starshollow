@@ -74,7 +74,7 @@ Sub CreateTownMeetingMode()
                 .Value = 8
             End With
             With .ControlEvents
-                .EventName = "skip_minigame_intro"
+                .EventName = "skip_minigame_intro{device.timers.town_meeting_intro_delay.ticks > 0}"
                 .Action = "jump"
                 .Value = 0
             End With
