@@ -1,15 +1,15 @@
 {
   "Flipper": {
     "center": {
-      "x": 671.1365,
-      "y": 708.4225
+      "x": 662.9416,
+      "y": 654.9696
     },
     "base_radius": 0.5,
     "end_radius": 0.5,
-    "flipper_radius_max": 54.0,
+    "flipper_radius_max": 68.0,
     "return": 0.058,
-    "start_angle": -8.8,
-    "end_angle": -107.0,
+    "start_angle": 171.2,
+    "end_angle": -100.0,
     "override_physics": 0,
     "mass": 1.0,
     "is_timer_enabled": false,
