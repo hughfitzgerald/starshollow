@@ -47,7 +47,7 @@
     "is_reflection_enabled": true,
     "backfaces_enabled": false,
     "physics_material": "zCol_Metal",
-    "overwrite_physics": true,
+    "overwrite_physics": false,
     "display_texture": false,
     "object_space_normal_map": false,
     "min_aa_bound": null,

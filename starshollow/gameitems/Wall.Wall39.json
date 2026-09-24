@@ -30,7 +30,7 @@
     "disable_lighting_below": 0.0,
     "is_reflection_enabled": true,
     "physics_material": "zCol_Plastics",
-    "overwrite_physics": true,
+    "overwrite_physics": false,
     "drag_points": [
       {
         "x": 953.34875,

@@ -31,7 +31,7 @@
     "disable_lighting_below": 1.0,
     "is_reflection_enabled": true,
     "physics_material": "zCol_Ramp",
-    "overwrite_physics": true,
+    "overwrite_physics": false,
     "drag_points": [
       {
         "x": 267.5063,

@@ -1,6 +1,6 @@
 {
   "Wall": {
-    "hit_event": false,
+    "hit_event": true,
     "is_droppable": false,
     "is_flipbook": false,
     "is_bottom_solid": false,
@@ -31,7 +31,7 @@
     "disable_lighting_below": 1.0,
     "is_reflection_enabled": true,
     "physics_material": "zCol_Metal",
-    "overwrite_physics": true,
+    "overwrite_physics": false,
     "drag_points": [
       {
         "x": 103.30269,

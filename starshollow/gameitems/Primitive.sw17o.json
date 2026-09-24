@@ -29,7 +29,7 @@
     "side_color": "#969696",
     "is_visible": false,
     "draw_textures_inside": false,
-    "hit_event": false,
+    "hit_event": true,
     "threshold": 2.0,
     "elasticity": 0.3,
     "elasticity_falloff": 0.5,

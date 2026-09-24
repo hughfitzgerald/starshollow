@@ -2,14 +2,6 @@
   {
     "name": "Rubbers",
     "items": [
-      "Rubber20",
-      "Rubber21",
-      "Rubber22",
-      "Rubber23",
-      "Rubber24",
-      "Rubber25",
-      "LSling",
-      "RSling",
       "zCol_Rubber_Peg002",
       "zCol_Rubber_Post030",
       "zCol_Rubber_Post029",
@@ -26,24 +18,29 @@
       "zCol_Rubber_Post001",
       "zCol_Rubber_Sleeve001",
       "RubberBand004",
-      "RubberBand003"
+      "RubberBand003",
+      "Primitive022",
+      "Primitive023",
+      "Primitive026",
+      "Primitive027",
+      "Primitive029",
+      "Primitive031",
+      "Primitive044",
+      "Primitive045",
+      "Primitive035",
+      "Primitive036",
+      "Primitive038",
+      "Primitive043",
+      "Primitive055",
+      "Primitive014",
+      "Primitive021",
+      "Primitive032",
+      "Primitive059",
+      "Primitive060",
+      "Wall008",
+      "Wall013",
+      "Wall014"
     ],
-    "fire_events": true,
-    "stop_single_events": false,
-    "group_elements": false
-  },
-  {
-    "name": "Posts",
-    "items": [
-      "Primitive22"
-    ],
-    "fire_events": true,
-    "stop_single_events": false,
-    "group_elements": false
-  },
-  {
-    "name": "Pins",
-    "items": [],
     "fire_events": true,
     "stop_single_events": false,
     "group_elements": false
@@ -58,15 +55,26 @@
   {
     "name": "Metals",
     "items": [
-      "Wall37"
+      "Wall37",
+      "Wall002",
+      "Wall003",
+      "Wall004",
+      "Wall005",
+      "Wall006",
+      "Wall007",
+      "Wall011",
+      "Wall012",
+      "Wall015",
+      "Wall017",
+      "Wall021",
+      "Wall022",
+      "Wall023",
+      "Wall024",
+      "Wall025",
+      "ROrbitDiverterWallClosed",
+      "RampDiverterWall1",
+      "RampDiverterWall2"
     ],
-    "fire_events": true,
-    "stop_single_events": false,
-    "group_elements": false
-  },
-  {
-    "name": "Gates",
-    "items": [],
     "fire_events": true,
     "stop_single_events": false,
     "group_elements": false
@@ -101,13 +109,6 @@
     "group_elements": false
   },
   {
-    "name": "GatesWire",
-    "items": [],
-    "fire_events": true,
-    "stop_single_events": false,
-    "group_elements": false
-  },
-  {
     "name": "Apron",
     "items": [
       "Wall78",
@@ -128,7 +129,12 @@
       "Wall3",
       "Wall12",
       "Wall228",
-      "Wall4"
+      "Wall4",
+      "Wall5",
+      "Wall7",
+      "Wall5bottom",
+      "Wall020",
+      "Wall009"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -142,7 +148,10 @@
       "s_sw8",
       "s_sw9",
       "s_RightOutlane",
-      "s_LeftOutlane"
+      "s_LeftOutlane",
+      "s_left_orbit",
+      "s_right_orbit",
+      "s_sw7"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -164,7 +173,20 @@
       "zCol_Rubber_Post026",
       "zCol_Rubber_Post029",
       "zCol_Rubber_Post027",
-      "zCol_Rubber_Post025"
+      "zCol_Rubber_Post025",
+      "Primitive022",
+      "Primitive023",
+      "Primitive026",
+      "Primitive027",
+      "Primitive029",
+      "Primitive031",
+      "Primitive044",
+      "Primitive045",
+      "Primitive035",
+      "Primitive036",
+      "Primitive038",
+      "Primitive043",
+      "Primitive055"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -173,7 +195,12 @@
   {
     "name": "dSleeves",
     "items": [
-      "zCol_Rubber_Sleeve001"
+      "zCol_Rubber_Sleeve001",
+      "Primitive014",
+      "Primitive021",
+      "Primitive032",
+      "Primitive059",
+      "Primitive060"
     ],
     "fire_events": true,
     "stop_single_events": false,
@@ -202,29 +229,8 @@
     "group_elements": false
   },
   {
-    "name": "ShadowDT",
-    "items": [],
-    "fire_events": false,
-    "stop_single_events": false,
-    "group_elements": true
-  },
-  {
     "name": "TargetBounce",
     "items": [
-      "swramp1o",
-      "swramp2o",
-      "swramp3o",
-      "swramp4o",
-      "swhidden1o",
-      "swhidden2o",
-      "sw11o",
-      "sw12o",
-      "sw13o",
-      "sw14o",
-      "sw15o",
-      "sw16o",
-      "sw17o",
-      "sw18o",
       "aDT1",
       "aDT2",
       "aDT3",
