@@ -8,4 +8,4 @@ Flip your way through Stars Hollow — chase multiball at Luke's, rack up jackpo
 
 ## Credits
 
-Built by Stephen Jones (aka [hughfitzgerald/bass2496](mailto:immobilesteelrims@gmail.com)) using the [GLF](https://github.com/mpcarr/vpx-glf) framework and from the [VPW Example Table](https://vpuniverse.com/files/file/7787-vpin-workshop-example-resource-table/). Lots of work adapted from examples in [vpx-example-glf](https://github.com/mpcarr/vpx-example-glf) and [darkchaos](https://github.com/apophis79/darkchaos).
+Built by Stephen Jones (aka [hughfitzgerald/bass2496](mailto:immobilesteelrims@gmail.com)) using the [GLF](https://github.com/mpcarr/vpx-glf) framework and the [VPW Example Table](https://vpuniverse.com/files/file/7787-vpin-workshop-example-resource-table/). Lots of work adapted from examples in [vpx-example-glf](https://github.com/mpcarr/vpx-example-glf) and [darkchaos](https://github.com/apophis79/darkchaos).
