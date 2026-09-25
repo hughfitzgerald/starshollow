@@ -1759,8 +1759,7 @@
   {
     "file_name": "Bumper.s_Bumper1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Light.bumpersmalllight1.json",
@@ -1777,8 +1776,7 @@
   {
     "file_name": "Bumper.s_Bumper5.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Flasher.bumpershadow5.json",
@@ -3860,6 +3858,16 @@
   },
   {
     "file_name": "Primitive.p_FL5_.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.mug1.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.mug2.json",
     "is_locked": false,
     "editor_layer": 0
   }
