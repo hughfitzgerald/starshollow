@@ -21,7 +21,8 @@ Sub CreateLLMultiballMode()
             .Add "logan_bumper_hit{current_player.mode_llmb_score>=" & LoganScoreToWin & "}", Array("logan_totally_bashed")
 
             .Add "logan_totally_bashed", Array("enable_scoop_hold")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("disable_scoop_hold")
+            ' .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("disable_scoop_hold")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("release_scoop_hold")
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1}", Array("logan_ball_captured")
         End With
 

@@ -168,6 +168,10 @@ Sub CreateDanceMarathonMode()
                     .Action = "add"
                     .Int = DanceMarathonFirstShotScore
                 End With
+                With .Variable("mode_dance_marathon_score")
+                    .Action = "add"
+                    .Int = DanceMarathonFirstShotScore
+                End With
                 With .Variable("score")
                     .Action = "add"
                     .Int = DanceMarathonFirstShotScore
@@ -175,6 +179,10 @@ Sub CreateDanceMarathonMode()
             End With
             With .EventName("dm_second_shot_hit")
                 With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = DanceMarathonSecondShotScore
+                End With
+                With .Variable("mode_dance_marathon_score")
                     .Action = "add"
                     .Int = DanceMarathonSecondShotScore
                 End With
