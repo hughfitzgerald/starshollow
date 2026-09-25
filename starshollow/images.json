@@ -1393,5 +1393,11 @@
     "path": "/Users/stephenjones/code/starshollow/scripts/playfield_edits.png",
     "alpha_test_value": 128.0,
     "is_opaque": true
+  },
+  {
+    "name": "spinner_talk",
+    "path": "/Users/stephenjones/code/starshollow/starshollow/images/spinner_talk.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": true
   }
 ]
