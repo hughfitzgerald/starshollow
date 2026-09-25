@@ -1,17 +1,17 @@
 {
   "Primitive": {
     "position": {
-      "x": 438.57468,
-      "y": 447.66412,
-      "z": 76.0
+      "x": 438.4204,
+      "y": 447.51697,
+      "z": 116.0
     },
     "size": {
-      "x": 0.35,
-      "y": 0.35,
-      "z": 0.35
+      "x": 14.3,
+      "y": 14.3,
+      "z": 14.3
     },
     "rot_and_tra": [
-      0.0,
+      90.0,
       0.0,
       0.0,
       0.0,
@@ -37,8 +37,8 @@
     "scatter": 0.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
-    "is_collidable": false,
-    "is_toy": true,
+    "is_collidable": true,
+    "is_toy": false,
     "use_3d_mesh": true,
     "static_rendering": true,
     "disable_lighting_top_old": 0.0,
@@ -62,6 +62,7 @@
     "reflection_probe": null,
     "reflection_strength": null,
     "refraction_probe": null,
-    "refraction_thickness": null
+    "refraction_thickness": null,
+    "part_group_name": "Toys"
   }
 }

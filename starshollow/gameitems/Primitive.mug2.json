@@ -62,6 +62,7 @@
     "reflection_probe": null,
     "reflection_strength": null,
     "refraction_probe": null,
-    "refraction_thickness": null
+    "refraction_thickness": null,
+    "part_group_name": "Toys"
   }
 }
