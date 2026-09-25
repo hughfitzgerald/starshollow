@@ -1,3 +1,6 @@
+Const JDRampScore = 10000
+Const JDWinScore = 1000000
+
 Sub CreateJDMultiballMode()
     With CreateGlfMode("jd_multiball", 1000)
         .StartEvents = Array("start_jd_multiball")
@@ -6,8 +9,15 @@ Sub CreateJDMultiballMode()
         With .EventPlayer()
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
+            .Add "jess_ramp", Array("jd_ramp_score")
+            .Add "dean_ramp", Array("jd_ramp_score")
+
             .Add "jess_hit3_hit", Array("jess_wins")
             .Add "dean_hit3_hit", Array("dean_wins")
+            .Add "jess_wins", Array("jd_win_score")
+            .Add "dean_wins", Array("jd_win_score")
+
+            .Add "balldevice_scoop_ball_entered", Array("release_scoop_hold")
         End With
 
         With .Multiballs("jdmb")
@@ -39,11 +49,69 @@ Sub CreateJDMultiballMode()
             End With
         End With
 
+        With .VariablePlayer()
+            With .EventName("mode_jd_multiball_started")
+                With .Variable("mode_display_text")
+                    .Action = "set"
+                    .String = """JESS VS. DEAN: TO THE DEATH"""
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "set"
+                    .Int = "{current_player.mode_jdmb_score}"
+                End With
+                With .Variable("mode_display_instructions")
+                    .Action = "set"
+                    .String = """TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"""
+                End With
+                With .Variable("mode_display_timer")
+                    .Action = "set"
+                    .String = """"""
+                End With
+            End With
+            With .EventName("jd_ramp_score")
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = JDRampScore
+                End With
+                With .Variable("mode_jd_ramp_score")
+                    .Action = "add"
+                    .Int = JDRampScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = JDRampScore
+                End With
+            End With
+            With .EventName("jd_win_score")
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = JDWinScore
+                End With
+                With .Variable("mode_jd_win_score")
+                    .Action = "add"
+                    .Int = JDWinScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = JDWinScore
+                End With
+            End With
+        End With
+
         With .SlidePlayer()
             With .EventName("multiball_jdmb_started")
                 .Slide  = "multiball"
                 .Action = "play"
                 .Expire = 3
+            End With
+            With .EventName("mode_jd_multiball_started")
+                .Slide  = "mode"
+                .Action = "play"
+                .Priority = 1000
+            End With
+            With .EventName("mode_jd_multiball_ending")
+                .Slide  = "mode"
+                .Action = "remove"
             End With
         End With
 
