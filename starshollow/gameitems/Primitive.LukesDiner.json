@@ -1,17 +1,17 @@
 {
   "Primitive": {
     "position": {
-      "x": 438.4204,
-      "y": 447.51697,
-      "z": 116.0
+      "x": 0.179812,
+      "y": 1.2187731,
+      "z": 0.0
     },
     "size": {
-      "x": 20.0,
-      "y": 14.3,
-      "z": 20.0
+      "x": 1.0,
+      "y": 1.0,
+      "z": 1.0
     },
     "rot_and_tra": [
-      90.0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -21,11 +21,11 @@
       0.0,
       0.0
     ],
-    "image": "",
+    "image": "lukes_texture.001_2",
     "normal_map": "",
     "sides": 4,
-    "name": "mug1",
-    "material": "RedMug",
+    "name": "LukesDiner",
+    "material": "[Translucent_Glass_Sky_Reflection]1",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
@@ -37,8 +37,8 @@
     "scatter": 0.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
-    "is_collidable": true,
-    "is_toy": false,
+    "is_collidable": false,
+    "is_toy": true,
     "use_3d_mesh": true,
     "static_rendering": true,
     "disable_lighting_top_old": 0.0,

@@ -1399,5 +1399,11 @@
     "path": "/Users/stephenjones/code/starshollow/starshollow/images/spinner_talk.png",
     "alpha_test_value": 128.0,
     "is_opaque": true
+  },
+  {
+    "name": "lukes_texture.001_2",
+    "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/objects/lukes cc attr share alike/textures/lukes_texture.001.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": false
   }
 ]

@@ -186,8 +186,7 @@
     "file_name": "Wall.Wall39.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Wall.Wall350.json",
@@ -324,22 +323,19 @@
     "file_name": "Primitive.Primitive15.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Primitive.screw13.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.screw14.json",
     "is_locked": false,
     "editor_layer": 3,
-    "editor_layer_name": "Visual Rubbers",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Visual Rubbers"
   },
   {
     "file_name": "Primitive.PegPlasticT19.json",
@@ -359,22 +355,19 @@
     "file_name": "Primitive.Primitive16.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Primitive.screw5.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.screw6.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.PegPlasticT29.json",
@@ -394,22 +387,19 @@
     "file_name": "Primitive.Primitive17.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Primitive.screw7.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.screw8.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive22.json",
@@ -429,15 +419,13 @@
     "file_name": "Wall.Wall33.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Wall.Wall34.json",
     "is_locked": false,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Light.l8.json",
@@ -633,22 +621,19 @@
     "file_name": "Primitive.Primitive200.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive205.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive204.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive59.json",
@@ -682,8 +667,7 @@
     "file_name": "Wall.Wall31.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Wall.Wall7.json",
@@ -750,22 +734,19 @@
     "file_name": "Primitive.Primitive1.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive2.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive3.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive9.json",
@@ -812,8 +793,7 @@
     "file_name": "Wall.Wall30.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Plastics",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Plastics"
   },
   {
     "file_name": "Rubber.LSling.json",
@@ -1094,43 +1074,37 @@
     "file_name": "Primitive.Primitive001.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive002.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive003.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive004.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive005.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive006.json",
     "is_locked": true,
     "editor_layer": 4,
-    "editor_layer_name": "Nuts and Bolts",
-    "editor_layer_visibility": false
+    "editor_layer_name": "Nuts and Bolts"
   },
   {
     "file_name": "Primitive.Primitive007.json",
@@ -1753,8 +1727,7 @@
   {
     "file_name": "Primitive.Gazebo.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Ball.LoganBall.json",
@@ -2193,14 +2166,12 @@
   {
     "file_name": "Wall.Wall009.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Wall.Wall010.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Timer.Glf_GameTimer.json",
@@ -2734,8 +2705,7 @@
   {
     "file_name": "Primitive.Primitive047.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.Primitive048.json",
@@ -2746,14 +2716,12 @@
   {
     "file_name": "Primitive.Primitive049.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.Primitive050.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Trigger.s_sw7.json",
@@ -3981,13 +3949,16 @@
   {
     "file_name": "Primitive.mug2.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.mug1.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Primitive.LukesDiner.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]
