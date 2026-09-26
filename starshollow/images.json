@@ -1405,5 +1405,17 @@
     "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/objects/lukes cc attr share alike/textures/lukes_texture.001.png",
     "alpha_test_value": 128.0,
     "is_opaque": false
+  },
+  {
+    "name": "lukes_logo_texture",
+    "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/objects/textures/lukes_logo_texture.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": false
+  },
+  {
+    "name": "lukes_texture3",
+    "path": "/Users/stephenjones/Documents/pinball_tables/starshollow/objects/lukes cc attr share alike/textures/lukes_texture3.png",
+    "alpha_test_value": 128.0,
+    "is_opaque": false
   }
 ]

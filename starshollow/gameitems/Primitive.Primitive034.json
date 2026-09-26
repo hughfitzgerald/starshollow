@@ -1,19 +1,19 @@
 {
   "Primitive": {
     "position": {
-      "x": 0.179812,
-      "y": 1.2187731,
+      "x": 251.52443,
+      "y": 479.37027,
       "z": 0.0
     },
     "size": {
-      "x": 1.0,
-      "y": 1.0,
-      "z": 1.0
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
     },
     "rot_and_tra": [
       0.0,
       0.0,
-      0.0,
+      -45.0,
       0.0,
       0.0,
       0.0,
@@ -21,11 +21,11 @@
       0.0,
       0.0
     ],
-    "image": "lukes_texture3",
+    "image": "lukes_logo_texture",
     "normal_map": "",
     "sides": 4,
-    "name": "LukesDiner",
-    "material": "[Translucent_Glass_Sky_Reflection]1",
+    "name": "Primitive034",
+    "material": "Plastic",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
@@ -37,8 +37,8 @@
     "scatter": 0.0,
     "edge_factor_ui": 0.25,
     "collision_reduction_factor": 0.0,
-    "is_collidable": false,
-    "is_toy": true,
+    "is_collidable": true,
+    "is_toy": false,
     "use_3d_mesh": true,
     "static_rendering": true,
     "disable_lighting_top_old": 0.0,
@@ -62,7 +62,6 @@
     "reflection_probe": null,
     "reflection_strength": null,
     "refraction_probe": null,
-    "refraction_thickness": null,
-    "part_group_name": "Toys"
+    "refraction_thickness": null
   }
 }
