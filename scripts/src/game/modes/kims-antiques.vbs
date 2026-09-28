@@ -115,7 +115,7 @@ Sub CreateKimsAntiquesMode()
                 End With
                 With .Variable("mode_display_instructions")
                     .Action = "set"
-                    .String = """SHOOT ORBITS TO SCORE"""
+                    .String = """AVOID MISS KIM (SOLID LIGHT)"""
                 End With
             End With
 
@@ -186,10 +186,10 @@ Sub CreateKimsAntiquesMode()
                     .Events = Array("move_to_" & shot.Name)
                     .State = 2
                 End With
-                With .ControlEvents()
-                    .Events = Array("mode_kims_antiques_started","kims_antiques_relight")
-                    .State = 1
-                End With
+                ' With .ControlEvents()
+                '     .Events = Array("mode_kims_antiques_started","kims_antiques_relight")
+                '     .State = 1
+                ' End With
                 With .ControlEvents()
                     .Events = Array("mode_kims_antiques_stopping","move_miss_kim")
                     .State = 0
