@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     outputs:
       build_number: ${{ steps.version.outputs.build_number }}
 
@@ -22,96 +22,91 @@ jobs:
       - name: Read Game Name from File
         id: gamename
         run: |
-          $game_name = Get-Content gamename.txt | Select-Object -First 1
-          echo "game_name=$game_name" >> $env:GITHUB_OUTPUT
-        shell: pwsh
+          game_name=$(head -n 1 gamename.txt | tr -d '\r' | xargs)
+          echo "game_name=$game_name" >> "$GITHUB_OUTPUT"
 
       - name: Set Build Number from GitHub Run
         id: version
         run: |
-          echo "build_number=${{ github.run_number }}" >> $env:GITHUB_OUTPUT
-        shell: pwsh
+          echo "build_number=${{ github.run_number }}" >> "$GITHUB_OUTPUT"
 
-      - name: Install Node.js and Grunt
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 22
 
       - name: Install Grunt CLI
         run: npm install -g grunt-cli
-        shell: pwsh
 
       - name: Run Grunt to Concat VPX Files and Set Production Mode
+        env:
+          GAME: ${{ steps.gamename.outputs.game_name }}
         run: |
+          # Production mode relies on the functions glf cached during a local dev-mode run
+          if [ ! -f cached-functions.vbs ]; then
+            echo "::error::cached-functions.vbs is missing. Run the table locally in dev mode and commit it."
+            exit 1
+          fi
+
           cd scripts
           npm install
           grunt concat:prod
+          cd ..
 
-          # Replace the exact line only
-          $lines = Get-Content ../${{ steps.gamename.outputs.game_name }}.vbs
-          $lines = $lines | ForEach-Object {
-            if ($_ -eq 'Dim glf_production_mode : glf_production_mode = False') {
-              'Dim glf_production_mode : glf_production_mode = True'
-            } else {
-              $_
-            }
-          }
-          $lines = $lines | ForEach-Object {
-            if ($_ -eq 'Dim glf_FuncCount : glf_FuncCount = 0') {
-              'Dim glf_FuncCount : glf_FuncCount = 9999'
-            } else {
-              $_
-            }
-          }
-          $lines | Set-Content ../${{ steps.gamename.outputs.game_name }}.vbs
+          # Switch glf to production mode and convert to CRLF line endings (as a Windows build would)
+          sed -e 's/\r$//' \
+              -e 's/^Dim glf_production_mode : glf_production_mode = False$/Dim glf_production_mode : glf_production_mode = True/' \
+              -e 's/^Dim glf_FuncCount : glf_FuncCount = 0$/Dim glf_FuncCount : glf_FuncCount = 9999/' \
+              -e 's/$/\r/' \
+              "$GAME.vbs" > "$GAME/script.vbs"
+          rm "$GAME.vbs"
 
-          # Move modified script into game folder
-          Move-Item -Path ../${{ steps.gamename.outputs.game_name }}.vbs -Destination ../${{ steps.gamename.outputs.game_name }}/script.vbs -Force
-        shell: pwsh
-
-      - name: Install jq (JSON Processor)
-        run: |
-          choco install jq -y
-        shell: pwsh
+          # Fail rather than ship a dev-mode table if glf's lines ever change
+          grep -q '^Dim glf_production_mode : glf_production_mode = True' "$GAME/script.vbs" || { echo "::error::Could not enable glf_production_mode"; exit 1; }
+          grep -q '^Dim glf_FuncCount : glf_FuncCount = 9999' "$GAME/script.vbs" || { echo "::error::Could not set glf_FuncCount"; exit 1; }
 
       - name: Modify Locked Property in JSON
+        env:
+          GAME: ${{ steps.gamename.outputs.game_name }}
         run: |
-          jq '.locked = 1' ${{ steps.gamename.outputs.game_name }}/gamedata.json > temp.json
-          mv temp.json ${{ steps.gamename.outputs.game_name }}/gamedata.json
-        shell: bash
+          jq '.locked = 1' "$GAME/gamedata.json" > temp.json
+          mv temp.json "$GAME/gamedata.json"
 
       - name: Download vpxtool
         run: |
-          Invoke-WebRequest -Uri https://github.com/francisdb/vpxtool/releases/download/v0.34.8/vpxtool-Windows-x86_64-v0.34.8.zip -OutFile vpxtool.zip
-          Expand-Archive vpxtool.zip -DestinationPath .\vpxtool
+          mkdir vpxtool
+          curl -sSL https://github.com/francisdb/vpxtool/releases/download/v0.34.8/vpxtool-Linux-x86_64-v0.34.8.tar.gz | tar -xz -C vpxtool
           # Put vpxtool on PATH so scripts/vpx-tool.js can find it
-          Resolve-Path .\vpxtool | Select-Object -ExpandProperty Path >> $env:GITHUB_PATH
-        shell: pwsh
+          echo "$PWD/vpxtool" >> "$GITHUB_PATH"
 
       - name: Assemble VPX File
+        env:
+          GAME: ${{ steps.gamename.outputs.game_name }}
+          BUILD: ${{ steps.version.outputs.build_number }}
         run: |
           # Uses vpx-tool.js so copyrighted sounds missing from the repo are skipped
           node scripts/vpx-tool.js assemble
-          Rename-Item -Path .\${{ steps.gamename.outputs.game_name }}.vpx -NewName "${{ steps.gamename.outputs.game_name }}${{ steps.version.outputs.build_number }}.vpx"
-        shell: pwsh
+          mv "$GAME.vpx" "$GAME$BUILD.vpx"
 
       - name: Package Release Files
+        env:
+          GAME: ${{ steps.gamename.outputs.game_name }}
+          BUILD: ${{ steps.version.outputs.build_number }}
         run: |
-          $outDir = "release"
-          mkdir $outDir
-
-          Copy-Item "${{ steps.gamename.outputs.game_name }}${{ steps.version.outputs.build_number }}.vpx" -Destination $outDir/
+          mkdir release
+          cp "$GAME$BUILD.vpx" release/
 
           # Add .directb2s file if it exists
-          Copy-Item "${{ steps.gamename.outputs.game_name }}.directb2s" -Destination $outDir/ -ErrorAction SilentlyContinue
+          if [ -f "$GAME.directb2s" ]; then cp "$GAME.directb2s" release/; fi
 
           # Add default ini settings
-          $iniName = "${{ steps.gamename.outputs.game_name }}${{ steps.version.outputs.build_number }}.ini"
-          Copy-Item "default_ini_settings.txt" -Destination (Join-Path $outDir $iniName) -ErrorAction SilentlyContinue
-        shell: pwsh
+          if [ -f default_ini_settings.txt ]; then cp default_ini_settings.txt "release/$GAME$BUILD.ini"; fi
+
+          # Add DMD assets
+          cp -r StarsHollowDMD release/
 
       - name: Upload Game Bundle
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.gamename.outputs.game_name }}_${{ steps.version.outputs.build_number }}
-          path: release/*
+          path: release/
