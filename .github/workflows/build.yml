@@ -48,7 +48,7 @@ jobs:
           grunt concat:prod
 
           # Replace the exact line only
-          $lines = Get-Content dest/vpx/tablescript.vbs
+          $lines = Get-Content ../${{ steps.gamename.outputs.game_name }}.vbs
           $lines = $lines | ForEach-Object {
             if ($_ -eq 'Dim glf_production_mode : glf_production_mode = False') {
               'Dim glf_production_mode : glf_production_mode = True'
@@ -63,10 +63,10 @@ jobs:
               $_
             }
           }
-          $lines | Set-Content dest/vpx/tablescript.vbs
+          $lines | Set-Content ../${{ steps.gamename.outputs.game_name }}.vbs
 
           # Move modified script into game folder
-          Move-Item -Path dest/vpx/tablescript.vbs -Destination ../${{ steps.gamename.outputs.game_name }}/script.vbs -Force
+          Move-Item -Path ../${{ steps.gamename.outputs.game_name }}.vbs -Destination ../${{ steps.gamename.outputs.game_name }}/script.vbs -Force
         shell: pwsh
 
       - name: Install jq (JSON Processor)
