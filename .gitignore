@@ -62,7 +62,7 @@ glf_logs/
 *_export/
 user
 cache
-cached-functions.vbs
+# cached-functions.vbs
 starshollow.vbs
 music/
 callouts/
