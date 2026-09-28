@@ -3120,7 +3120,7 @@
     "refraction_tint": "#ffffff"
   },
   {
-    "name": "[Translucent_Glass_Sky_Reflection]1",
+    "name": "Translucent_Glass_Sky_Refl",
     "type": "basic",
     "wrap_lighting": 0.5,
     "roughness": 0.625,
