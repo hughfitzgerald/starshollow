@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch full history for versioning
+          fetch-depth: 0 # Fetch full history for versioning
 
       - name: Read Game Name from File
         id: gamename
@@ -82,7 +82,7 @@ jobs:
 
       - name: Download vpxtool
         run: |
-          Invoke-WebRequest -Uri https://github.com/francisdb/vpxtool/releases/download/v0.13.0/vpxtool-Windows-x86_64-v0.13.0.zip -OutFile vpxtool.zip
+          Invoke-WebRequest -Uri https://github.com/francisdb/vpxtool/releases/download/v0.34.8/vpxtool-Windows-x86_64-v0.34.8.zip -OutFile vpxtool.zip
           Expand-Archive vpxtool.zip -DestinationPath .\vpxtool
         shell: pwsh
 
@@ -91,7 +91,6 @@ jobs:
           .\vpxtool\vpxtool.exe assemble ${{ steps.gamename.outputs.game_name }}
           Rename-Item -Path .\${{ steps.gamename.outputs.game_name }}.vpx -NewName "${{ steps.gamename.outputs.game_name }}${{ steps.version.outputs.build_number }}.vpx"
         shell: pwsh
-
 
       - name: Check for Godot Project Folder
         id: check_godot
@@ -109,7 +108,6 @@ jobs:
         with:
           name: ${{ steps.gamename.outputs.game_name }}_${{ steps.version.outputs.build_number }}
           path: ./${{ steps.gamename.outputs.game_name }}${{ steps.version.outputs.build_number }}.vpx
-
 
       - name: Download Godot 4.4.1 Headless
         if: steps.check_godot.outputs.exists == 'true'
@@ -164,7 +162,6 @@ jobs:
           Rename-Item -Path $original -NewName (Split-Path $renamed -Leaf)
         shell: pwsh
 
-
       - name: Create Combined Artifact ZIP
         run: |
           $zipName = "${{ steps.gamename.outputs.game_name }}_${{ steps.version.outputs.build_number }}.zip"
@@ -192,8 +189,6 @@ jobs:
           Pop-Location
         shell: pwsh
 
-
-
       - name: Upload Game Bundle Files (no zip)
         uses: actions/upload-artifact@v4
         with:
@@ -204,4 +199,3 @@ jobs:
             release/*.directb2s
             release/*.ini
             bcp-controller/**
-
