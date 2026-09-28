@@ -230,7 +230,7 @@ Sub CreateLbtbMode()
                 End With
                 With .Variable("mode_display_instructions")
                     .Action = "set"
-                    .String = """SHOOT ORBITS TO SCORE"""
+                    .String = """BREAK BELLS TO SCORE"""
                 End With
             End With
 

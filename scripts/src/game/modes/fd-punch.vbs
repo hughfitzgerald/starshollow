@@ -199,7 +199,7 @@ Sub CreateFdPunchMode()
                 End With
                 With .Variable("mode_display_instructions")
                     .Action = "set"
-                    .String = """SHOOT ORBITS TO SCORE"""
+                    .String = """SHOOT LUKE'S OR MANSION TO SCORE"""
                 End With
             End With
 
