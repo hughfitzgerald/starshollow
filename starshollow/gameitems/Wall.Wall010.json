@@ -33,17 +33,6 @@
     "overwrite_physics": true,
     "drag_points": [
       {
-        "x": 742.3988,
-        "y": 624.00543,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
         "x": 706.5308,
         "y": 716.0411,
         "z": 0.0,
@@ -153,17 +142,6 @@
       {
         "x": 770.37897,
         "y": 755.12024,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      },
-      {
-        "x": 801.7264,
-        "y": 616.7599,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
