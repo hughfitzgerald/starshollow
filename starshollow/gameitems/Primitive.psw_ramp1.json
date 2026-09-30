@@ -21,11 +21,11 @@
       0.0,
       0.0
     ],
-    "image": "HitTarget",
+    "image": "target_thin_albedo",
     "normal_map": "",
     "sides": 4,
     "name": "psw_ramp1",
-    "material": "Plastic with an image",
+    "material": "Target_Albedo_White",
     "side_color": "#969696",
     "is_visible": true,
     "draw_textures_inside": false,
