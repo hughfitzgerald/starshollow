@@ -397,7 +397,7 @@ Sub CreateBaseMode()
                 With .Tokens()
                     .Add "lights", "FL1"
                     .Add "fade", 500
-                    .Add "color", "ff0000"
+                    .Add "color", "00ff00"
                 End With
             End With
             With .EventName("play_spin2_show") 
@@ -408,7 +408,7 @@ Sub CreateBaseMode()
                 With .Tokens()
                     .Add "lights", "FL2"
                     .Add "fade", 500
-                    .Add "color", "00ff00"
+                    .Add "color", "ff0000"
                 End With
             End With
             With .EventName("play_bumper1_show") 

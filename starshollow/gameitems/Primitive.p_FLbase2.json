@@ -24,7 +24,7 @@
     "image": "dome2basewhite",
     "normal_map": "",
     "sides": 4,
-    "name": "p_base_FL2",
+    "name": "p_FLbase2",
     "material": "domebasemat",
     "side_color": "#969696",
     "is_visible": true,
