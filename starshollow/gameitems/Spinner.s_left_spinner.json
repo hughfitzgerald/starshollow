@@ -14,7 +14,7 @@
     "angle_min": 0.0,
     "elasticity": 0.3,
     "is_visible": true,
-    "show_bracket": true,
+    "show_bracket": false,
     "material": "Plastic",
     "image": "spinner_talk",
     "surface": "",
