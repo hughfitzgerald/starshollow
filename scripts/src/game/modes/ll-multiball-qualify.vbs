@@ -10,6 +10,8 @@ Sub CreateLLMultiballQualifyMode()
 
         With .EventPlayer()
             .Add "mode_ll_multiball_qualify_started", Array("enable_captive_ramp_kicker_hold")
+            .Add "mode_ll_multiball_qualify_started{current_player.shot_logan_qualify == 2}", Array("dt2_knockdown")
+            .Add "mode_ll_multiball_qualify_started{current_player.shot_logan_qualify == 3}", Array("dt2_knockdown","logan_back_to_2")
             .Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", Array("release_captive_ramp_kicker_hold")
             .Add "logan_qualify_hit1_hit", Array("dt2_knockdown")
             .Add "s_CaptiveRampKicker_active", Array("logan_qualify_complete")
@@ -59,12 +61,16 @@ Sub CreateLLMultiballQualifyMode()
         End With
 
         With .Shots("logan_qualify")
-            .Persist = False
+            .Persist = True
             .HitEvents = Array("s_captive_ball_active{current_player.logan_cooldown_active == 0}")
             .Profile = "logan_ball"
             With .Tokens()
                 .Add "lights", "l57"
                 .Add "color", LoganColor
+            End With
+            With .ControlEvents()
+                .Events = Array("logan_back_to_2")
+                .State = 2
             End With
         End With
 
