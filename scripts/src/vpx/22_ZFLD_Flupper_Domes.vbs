@@ -63,8 +63,8 @@ Dim domeLevel(20), domebase(20), domelit(20), domeflasher(20),  domelight(20)
 'Dim tablewidth, tableheight : tablewidth = TableRef.width : tableheight = TableRef.height
 
 'initialise the flasher color, you can only choose from "green", "red", "purple", "blue", "white" and "yellow"
-InitFlasher 1, "green"
-InitFlasher 2, "red"
+InitFlasher 1, "red"
+InitFlasher 2, "green"
 InitFlasher 3, "blue"
 InitFlasher 4, "orange"
 InitFlasher 5, "yellow"
@@ -160,6 +160,7 @@ Sub InitFlasher(nr, col)
 			domelight(nr).color = RGB(230,49,255)
 			domeflasher(nr).color = RGB(255,64,255)
 		Case "yellow"
+			domebase(nr).color = RGB(255,230,90)
 			domelight(nr).color = RGB(200,173,25)
 			domeflasher(nr).color = RGB(255,200,50)
 		Case "white"

@@ -76,6 +76,15 @@ Sub CreateBaseMode()
             .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
             .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
 
+            .Add "s_ST11_active", Array("play_jess_letter_show")
+            .Add "s_ST12_active", Array("play_jess_letter_show")
+            .Add "s_ST13_active", Array("play_jess_letter_show")
+            .Add "s_ST14_active", Array("play_jess_letter_show")
+            .Add "s_ST15_active", Array("play_dean_letter_show")
+            .Add "s_ST16_active", Array("play_dean_letter_show")
+            .Add "s_ST17_active", Array("play_dean_letter_show")
+            .Add "s_ST18_active", Array("play_dean_letter_show")
+
             'TODO: Add JESS and DEAN hit targets, ramp rollovers, inlanes, bonus lanes, captive ball, ANY OTHERS?
 
             .Add "mode_eob_bonus_started", Array("base_music_stop")
@@ -397,7 +406,7 @@ Sub CreateBaseMode()
                 With .Tokens()
                     .Add "lights", "FL1"
                     .Add "fade", 500
-                    .Add "color", "00ff00"
+                    .Add "color", "ff0000"
                 End With
             End With
             With .EventName("play_spin2_show") 
@@ -408,7 +417,29 @@ Sub CreateBaseMode()
                 With .Tokens()
                     .Add "lights", "FL2"
                     .Add "fade", 500
+                    .Add "color", "00ff00"
+                End With
+            End With
+            With .EventName("play_jess_letter_show")
+                .Key = "key_jess_letter_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL1"
+                    .Add "fade", 500
                     .Add "color", "ff0000"
+                End With
+            End With
+            With .EventName("play_dean_letter_show")
+                .Key = "key_dean_letter_show"
+                .Show = "flash_color_with_fade"    'defined in CreateGeneralShows()
+                .Speed = 10
+                .Loops = 0
+                With .Tokens()
+                    .Add "lights", "FL2"
+                    .Add "fade", 500
+                    .Add "color", "00ff00"
                 End With
             End With
             With .EventName("play_bumper1_show") 
