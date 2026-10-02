@@ -3,6 +3,7 @@
 # requires-python = ">=3.14"
 # dependencies = [
 #   "lxml",
+#   "pillow",
 # ]
 # ///
 
@@ -14,11 +15,13 @@ import subprocess
 import tempfile
 
 from lxml import etree
+from PIL import Image
 
 filename = "playfield.svg"
-output_path = "../starshollow/images/playfield.png"
-insert_overlay_output_path = "../starshollow/images/playfield-insert-overlay.png"
-plastics_output_path = "../starshollow/images/plastics.png"
+output_path = "../starshollow/images/playfield.webp"
+insert_overlay_output_path = "../starshollow/images/playfield-insert-overlay.webp"
+plastics_output_path = "../starshollow/images/plastics.webp"
+apron_output_path = "../starshollow/images/ApronStarsHollow.webp"
 NS = {
     "svg": "http://www.w3.org/2000/svg",
     "inkscape": "http://www.inkscape.org/namespaces/inkscape",
@@ -55,15 +58,21 @@ def inkscape(*args):
     )
 
 
-def export(actions, output_path):
-    inkscape(
-        filename,
-        f"--actions={actions}",
-        "--export-type=png",
-        f"--export-filename={output_path}",
-        "--export-area-page",
-        "--export-overwrite",
-    )
+def export(actions, output_path, grain_aging=False):
+    """Render the page to a PNG with Inkscape, then save it as a lossless WebP."""
+    with tempfile.TemporaryDirectory() as tmp:
+        png_path = os.path.join(tmp, "export.png")
+        inkscape(
+            filename,
+            f"--actions={actions}",
+            "--export-type=png",
+            f"--export-filename={png_path}",
+            "--export-area-page",
+            "--export-overwrite",
+        )
+        if grain_aging:
+            apply_grain_aging(png_path)
+        Image.open(png_path).save(output_path, lossless=True)
 
 
 def png_size(path):
@@ -127,11 +136,47 @@ def apply_grain_aging(png_path):
         )
 
 
+# The apron layer holds ApronGenericWilliams.webp (1024x1024) placed as
+# <image x=APRON_X y=APRON_Y width=height=APRON_SIZE transform="rotate(-90)">,
+# i.e. turned 90 degrees counter-clockwise onto the page. Exporting that square
+# and turning it back clockwise reproduces the texture layout VPX expects.
+APRON_X = -1287.3503
+APRON_Y = -7.7104774
+APRON_SIZE = 446.35031
+APRON_PIXELS = 1024
+PX_PER_MM = 96 / 25.4  # --export-area takes px at 96 dpi, not document mm
+
+
+def export_apron(output_path):
+    area = (
+        APRON_Y,
+        -APRON_X - APRON_SIZE,
+        APRON_Y + APRON_SIZE,
+        -APRON_X,
+    )
+    with tempfile.TemporaryDirectory() as tmp:
+        raw = os.path.join(tmp, "apron.png")
+        inkscape(
+            filename,
+            f"--actions={show_only_actions('apron')}",
+            "--export-type=png",
+            f"--export-filename={raw}",
+            "--export-area=" + ":".join(str(v * PX_PER_MM) for v in area),
+            f"--export-width={APRON_PIXELS}",
+            f"--export-height={APRON_PIXELS}",
+            "--export-overwrite",
+        )
+        art = Image.open(raw).convert("RGBA").transpose(Image.Transpose.ROTATE_270)
+    image = Image.new("RGBA", art.size, (0, 0, 0, 255))
+    image.alpha_composite(art)
+    image.convert("RGB").save(output_path, lossless=True)
+
+
 parser_cli = argparse.ArgumentParser()
 parser_cli.add_argument(
     "--no-mask",
     action="store_true",
-    help="export playfield.png without clipping targets to the masks layer",
+    help="export playfield.webp without clipping targets to the masks layer",
 )
 args = parser_cli.parse_args()
 
@@ -150,8 +195,7 @@ playfield_actions = show_only_actions("table decals", "targets")
 if not args.no_mask:
     playfield_actions = f"{masking_actions};{playfield_actions}"
 
-export(playfield_actions, output_path)
-apply_grain_aging(output_path)
+export(playfield_actions, output_path, grain_aging=True)
 
 export(
     show_only_actions("insert text", "masks"),
@@ -162,3 +206,5 @@ export(
     show_only_actions("plastics"),
     plastics_output_path,
 )
+
+export_apron(apron_output_path)
