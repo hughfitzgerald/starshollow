@@ -448,7 +448,7 @@ Sub CreateBaseMode()
                 .Speed = 10
                 .Loops = 0
                 With .Tokens()
-                    .Add "lights", "FL2"
+                    .Add "lights", "FL1"
                     .Add "fade", 500
                     .Add "color", "ff0000"
                 End With
