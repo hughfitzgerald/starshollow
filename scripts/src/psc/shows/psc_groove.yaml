@@ -1,0 +1,25 @@
+# Port of the drum-beat flasher groove (drum_beat_animation.py) to every light
+# except the backglass logo.
+# The whole table idles at the old baseline (43%) and each region pulses to
+# full on its drum, rising and falling over 80ms like the Godot curves did.
+# Lights pulse in their default colors; backglass bulbs light on the peaks.
+#
+# MidLeft/MidRight were 18 steps long in the original; trimmed to 16 so the
+# loop is exactly one bar (the 3-step MidLeft figure still runs 3 against 4).
+show: psc_groove
+tempo: { bpm: 128, steps_per_beat: 4 }
+layers:
+  - target: all_lights          # baseline
+    pattern: solid
+    brightness: 43
+
+  - pattern: beat
+    attack: 80ms
+    decay: 80ms
+    tracks:
+      groove_lower_left:  "x...x...x...x..."
+      groove_lower_right: "..x...x...x...x."
+      groove_upper_left:  "x.x.x.x.x.x.x.x."
+      groove_upper_right: "....X..........."
+      groove_mid_left:    "x..x..x..x..x..x"
+      groove_mid_right:   "......x.....x..."

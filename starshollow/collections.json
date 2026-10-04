@@ -411,7 +411,12 @@
       "FL5",
       "SkillshotLight",
       "l72",
-      "l28"
+      "l28",
+      "bg_logo",
+      "bg_flash_lower_left",
+      "bg_flash_upper_left",
+      "bg_flash_upper_right",
+      "bg_flash_lower_right"
     ],
     "fire_events": false,
     "stop_single_events": false,

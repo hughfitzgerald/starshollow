@@ -36,6 +36,7 @@ Sub FrameTimer_Timer()
 	DoDTAnim
 	BSUpdate
 	UpdateGlfInserts   ' insert primitives follow GLF light colour
+	PscBackglassMirror ' backglass bulbs follow their PSC proxy lights
 
 	If Not glf_pump_checked And GameTime > 2000 Then
 		glf_pump_checked = True

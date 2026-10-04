@@ -1,0 +1,13 @@
+# psc_groove three times, then psc_all_lights_sweeps twice.
+# Each `show` layer inlines another PSC show's timeline at compile time, so
+# this is one ordinary GLF show: it plays, loops and stops as a unit.
+show: psc_groove_then_sweeps
+layers:
+  - pattern: show
+    show: psc_groove
+    count: 3
+
+  - pattern: show
+    show: psc_all_lights_sweeps
+    start: after           # when the layer above (3 x psc_groove) ends
+    count: 2

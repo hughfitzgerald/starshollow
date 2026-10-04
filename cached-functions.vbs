@@ -1397,6 +1397,16 @@ Dim glf_l72_lmarr : glf_l72_lmarr = Array()
 glf_lightMaps.Add "l72", glf_l72_lmarr
 Dim glf_l28_lmarr : glf_l28_lmarr = Array()
 glf_lightMaps.Add "l28", glf_l28_lmarr
+Dim glf_bg_logo_lmarr : glf_bg_logo_lmarr = Array()
+glf_lightMaps.Add "bg_logo", glf_bg_logo_lmarr
+Dim glf_bg_flash_lower_left_lmarr : glf_bg_flash_lower_left_lmarr = Array()
+glf_lightMaps.Add "bg_flash_lower_left", glf_bg_flash_lower_left_lmarr
+Dim glf_bg_flash_upper_left_lmarr : glf_bg_flash_upper_left_lmarr = Array()
+glf_lightMaps.Add "bg_flash_upper_left", glf_bg_flash_upper_left_lmarr
+Dim glf_bg_flash_upper_right_lmarr : glf_bg_flash_upper_right_lmarr = Array()
+glf_lightMaps.Add "bg_flash_upper_right", glf_bg_flash_upper_right_lmarr
+Dim glf_bg_flash_lower_right_lmarr : glf_bg_flash_lower_right_lmarr = Array()
+glf_lightMaps.Add "bg_flash_lower_right", glf_bg_flash_lower_right_lmarr
 
 glf_funcRefMap.Add "text_input: {action: ""left""}", "Glf_0"
 glf_funcRefMap.Add "text_input: {action: ""right""}", "Glf_1"

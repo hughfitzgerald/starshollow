@@ -1,0 +1,17 @@
+# Example: layering. The inserts breathe; a chase runs over them, and each
+# insert falls back to the breathe as the chase leaves it.
+show: psc_slim_inserts_demo
+length: 2s
+layers:
+  - target: slim_inserts
+    pattern: breathe
+    period: 2s
+    min: 10
+    max: 60
+  - target: slim_inserts
+    pattern: chase
+    order: x
+    interval: 80ms
+    tail: 120ms
+    color: ffffff
+    start: 500ms

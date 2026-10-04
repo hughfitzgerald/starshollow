@@ -4134,5 +4134,35 @@
     "is_locked": false,
     "editor_layer": 0,
     "editor_layer_visibility": false
+  },
+  {
+    "file_name": "Light.bg_logo.json",
+    "is_locked": false,
+    "editor_layer": 0,
+    "editor_layer_visibility": false
+  },
+  {
+    "file_name": "Light.bg_flash_lower_left.json",
+    "is_locked": false,
+    "editor_layer": 0,
+    "editor_layer_visibility": false
+  },
+  {
+    "file_name": "Light.bg_flash_upper_left.json",
+    "is_locked": false,
+    "editor_layer": 0,
+    "editor_layer_visibility": false
+  },
+  {
+    "file_name": "Light.bg_flash_upper_right.json",
+    "is_locked": false,
+    "editor_layer": 0,
+    "editor_layer_visibility": false
+  },
+  {
+    "file_name": "Light.bg_flash_lower_right.json",
+    "is_locked": false,
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   }
 ]

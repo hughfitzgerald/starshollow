@@ -1,0 +1,6 @@
+# Example: PSC version of backglass_flash1_show (lower-left backglass flash).
+show: psc_bg_flash_lower_left
+layers:
+  - target: bg_flash_lower_left
+    pattern: solid
+    duration: 200ms

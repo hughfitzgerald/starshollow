@@ -1,0 +1,37 @@
+# Every light (GI, inserts, flashers, backglass) sweeps up, then down, then
+# left, then right, each in its own default color. Vertical passes cover about
+# 2300 units (backglass included) and horizontal about 780, so the vertical
+# sweeps run faster to keep each pass roughly 0.8s.
+show: psc_all_lights_sweeps
+resolution: 30ms     # coarser timing keeps the step count down with 78 lights
+layers:
+  - target: all_lights
+    pattern: sweep
+    direction: up
+    speed: 3000
+    width: 250
+    tail: 150ms
+
+  - target: all_lights
+    pattern: sweep
+    direction: down
+    start: 900ms
+    speed: 3000
+    width: 250
+    tail: 150ms
+
+  - target: all_lights
+    pattern: sweep
+    direction: left
+    start: 1800ms
+    speed: 1200
+    width: 120
+    tail: 150ms
+
+  - target: all_lights
+    pattern: sweep
+    direction: right
+    start: 2600ms
+    speed: 1200
+    width: 120
+    tail: 150ms

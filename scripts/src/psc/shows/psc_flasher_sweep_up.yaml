@@ -1,0 +1,11 @@
+# Example: one wave up the playfield flashers and on into the backglass.
+# Playfield and backglass lights share the all_flashers group, so a single
+# spatial sweep covers both.
+show: psc_flasher_sweep_up
+layers:
+  - target: all_flashers
+    pattern: sweep
+    direction: up
+    speed: 2000        # table units per second
+    width: 150         # each light stays lit while the band passes
+    tail: 100ms

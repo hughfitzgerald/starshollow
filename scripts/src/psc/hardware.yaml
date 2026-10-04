@@ -1,0 +1,133 @@
+# PSC hardware config: the single place to define light groups, default
+# colors, anchors and backglass bulbs. See scripts/psc/SPEC.md.
+#
+#   uv run --project ../../psc psc sync      # write groups into the table JSON
+#   npm run psc-sync / npm run psc-compile  # same, from scripts/
+#
+# Colors: 6 hex digits. Quote them or not; PSC reads every value as text.
+
+paths:
+  table: ../../../starshollow # vpxtool extraction
+  shows: shows # show YAML files
+  output: ../game/shows/psc_shows.vbs # generated, concatenated by Grunt
+  script_src: .. # scanned for show-name collisions
+
+anchors: # table coordinates (x right, y down)
+  drain: [476, 2050]
+
+# Default color for every light. Shows use it whenever a layer doesn't set
+# `color:`. Every GLF light must get a color from here: its own entry below,
+# or a group's `color:` (GI and slim_inserts use group colors). `psc map`
+# shows where each light's color comes from.
+#
+# Seeded from the colors the mode scripts already use (named constants in
+# _configuration.vbs). Lights marked "no code evidence" are white inserts
+# that no script colors yet: set them to taste.
+lights:
+  # flashers (base.vbs bumper flash shows)
+  FL1: ff0000
+  FL2: 00ff00
+  FL3: 0000ff # from the commented-out bumper3 show
+  FL4: ffa500
+  FL5: ffea00
+
+  l1: 00ff00 # shoot again (ShootAgainColor)
+  l7: fc7703 # bonus lanes (BonusLaneColor)
+  l8: fc7703
+  l9: fc7703
+  SkillshotLight: fc7703 # SkillshotColor
+
+  l11: 0023cc # standups (StandupColor)
+  l12: 0023cc
+  l13: 0023cc
+  l14: 0023cc
+  l15: 0023cc
+  l16: 0023cc
+  l17: 0023cc
+  l18: 0023cc
+
+  l31: fc7703 # bonus multipliers (qualify_multiplier profile, BonusLaneColor)
+  l32: fc7703
+  l33: fc7703
+  l34: fc7703
+
+  l53: 1eff6b # JD multiball (MultiballColor)
+  l54: 1eff6b
+  l55: 8800ff # ramp shot (RampshotColor); JD multiball also lights it green
+  l56: 0000ff # extra ball (ExtraBallColor)
+  l57: 8800ff # Logan (LoganColor)
+  l72: 8800ff
+  l58: ffff00 # mystery
+
+  l51: ff9c15 # orange insert material; no code evidence
+  l52: ff9c15
+
+  l21: ffffff # minigame inserts; no code evidence
+  l22: ffffff
+  l23: ffffff
+  l24: ffffff
+  l25: ffffff
+  l26: ffffff
+  l27: ffffff
+  l28: ffffff
+  l59: ffffff # no code evidence
+  l60: ffffff
+  l61: ffffff
+  l62: ffffff
+  l63: ffffff
+  l64: ffffff
+  l65: ffffff
+
+groups:
+  GI:
+    color: ffa957 # GIColor2700k, in-play GI
+    members: ["@collection:GI"]
+  slim_inserts:
+    color: ffff00 # star lights (StarLightColor)
+    members: [l66, l67, l68, l69, l70, l71]
+  flashers:
+    members: [FL1, FL2, FL3, FL4, FL5]
+  backglass:
+    members:
+      [
+        bg_logo,
+        bg_flash_lower_left,
+        bg_flash_upper_left,
+        bg_flash_upper_right,
+        bg_flash_lower_right,
+      ]
+  backglass_flashers:
+    members:
+      [
+        bg_flash_lower_left,
+        bg_flash_upper_left,
+        bg_flash_upper_right,
+        bg_flash_lower_right,
+      ]
+  all_flashers: # playfield and backglass together
+    members: ["@flashers", "@backglass_flashers"]
+  all_lights: # every GLF light, backglass included
+    members: ["*"]
+
+  # Six regions covering every light except the backglass logo, for the
+  # groove show. Left/right split at the table's center line; bands split at
+  # y=700 and y=1250. The backglass flashers are part of the upper band.
+  groove_upper_left: { members: ["@area:x<=476,y<700"], exclude: [bg_logo] }
+  groove_upper_right: { members: ["@area:x>=476,y<700"], exclude: [bg_logo] }
+  groove_mid_left: { members: ["@area:x<476,y>=700,y<1250"] }
+  groove_mid_right: { members: ["@area:x>=476,y>=700,y<1250"] }
+  groove_lower_left: { members: ["@area:x<476,y>=1250"] }
+  groove_lower_right: { members: ["@area:x>=476,y>=1250"] }
+
+backglass:
+  source: ../../../starshollow.directb2s # gitignored; positions come from here
+  template: FL1 # light JSON cloned for proxies
+  # Bulbs are on/off. A bulb is on while its proxy's brightest channel is
+  # above `threshold` (0-254). 127 = above half brightness, so dim baselines
+  # leave the backglass dark and only real hits/sweeps light it.
+  bulbs:
+    bg_logo: { b2s_id: 1, color: ffffff, threshold: 127 }
+    bg_flash_lower_left: { b2s_id: 2, color: ffffff, threshold: 127 }
+    bg_flash_upper_left: { b2s_id: 3, color: ffffff, threshold: 127 }
+    bg_flash_upper_right: { b2s_id: 4, color: ffffff, threshold: 127 }
+    bg_flash_lower_right: { b2s_id: 5, color: ffffff, threshold: 127 }
