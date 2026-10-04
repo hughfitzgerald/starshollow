@@ -13,7 +13,7 @@
     "color2": "#ffffff",
     "is_timer_enabled": false,
     "timer_interval": 100,
-    "blink_pattern": "all_lights,backglass",
+    "blink_pattern": "all_lights,all_lights_no_flashers,backglass",
     "image": "",
     "blink_interval": 125,
     "intensity": 30.0,
