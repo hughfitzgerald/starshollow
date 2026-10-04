@@ -39,6 +39,19 @@ class HardwareMap:
                 return members
         return None
 
+    def anchor(self, name: str) -> tuple[float, float] | None:
+        """A named anchor, else a light's position, else the centre of a group's lights."""
+        if name in self.anchors:
+            return self.anchors[name]
+        light = self.light(name)
+        if light is not None:
+            return light.x, light.y
+        members = self.group(name)
+        if members:
+            points = [self.light(m) for m in members]
+            return sum(p.x for p in points) / len(points), sum(p.y for p in points) / len(points)
+        return None
+
     def resolve_target(self, target, where: str) -> list[str]:
         items = target if isinstance(target, list) else [target]
         if not items:
@@ -110,6 +123,14 @@ def build_map(cfg: Config, table: Table) -> HardwareMap:
     for group, ordered in config_groups.items():
         tagged = {l.name for l in lights.values() if group in l.tags}
         groups[group] = [n for n in ordered if n in tagged] + sorted(tagged - set(ordered))
+
+    # shows can name a light or group as an anchor, so a named anchor mustn't shadow one
+    group_names = {g.lower() for g in groups}
+    for anchor in cfg.anchors:
+        if anchor.lower() in lights:
+            errors.add(f"anchor {anchor} has the same name as a light; rename it (shows can use the light as an anchor directly)")
+        elif anchor.lower() in group_names:
+            errors.add(f"anchor {anchor} has the same name as a group; rename it (shows can use the group as an anchor directly)")
 
     group_colors = {g.name: g.color for g in cfg.groups.values() if g.color}
     # Every light's default color comes from hardware.yaml: its own entry,

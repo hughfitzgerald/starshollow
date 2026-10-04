@@ -147,6 +147,40 @@ layers:
     assert lights["l1"][-1][0] == 200
 
 
+def first_on(seq):
+    return next(t for t, s in seq if not s.endswith("|stop"))
+
+
+def test_light_and_group_anchors(env):
+    project, cfg, hw = env
+    assert hw.anchor("drain") == (100, 2000)
+    assert hw.anchor("L2") == (200, 900)
+    assert hw.anchor("pair") == (150, 950)  # centre of l1 and l2
+    assert hw.anchor("nope") is None
+    lights, c = timeline(project, hw, "a", """
+layers:
+  - { target: [l1, l2, l10], pattern: sweep, direction: out, anchor: l1, speed: 1000, width: 50 }
+""")
+    # distances from l1: 0, 141, 283 -> on at 0, 140, 280
+    assert [first_on(lights[n]) for n in ("l1", "l2", "l10")] == [0, 140, 280]
+    lights, c = timeline(project, hw, "g", """
+layers:
+  - { target: [l1, l2, l10], pattern: chase, order: distance:pair, interval: 100ms }
+""")
+    # from (150, 950): l1 and l2 tie at 71, l10 at 212
+    assert first_on(lights["l10"]) == 200
+
+
+def test_anchor_name_clash(project):
+    cfg = write_config(project, BASE.replace("drain:", "pair:"))
+    apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
+    with pytest.raises(PscError, match="same name as a group"):
+        build_map(cfg, Table(cfg.table_dir))
+    cfg = write_config(project, BASE.replace("drain:", "L10:"))
+    with pytest.raises(PscError, match="same name as a light"):
+        build_map(cfg, Table(cfg.table_dir))
+
+
 def test_tokens_pass_through(env):
     project, cfg, hw = env
     lights, c = timeline(project, hw, "k", """
@@ -164,6 +198,8 @@ def test_errors(env):
         parse_show(write_show(project, "e2", "layers:\n  - { target: l1, pattern: chase }\n"), hw)
     with pytest.raises(PscError, match="unknown key"):
         parse_show(write_show(project, "e3", "layers:\n  - { target: l1, pattern: solid, colour: ff0000 }\n"), hw)
+    with pytest.raises(PscError, match="unknown anchor"):
+        compile_show(parse_show(write_show(project, "e5", "layers:\n  - { target: l1, pattern: sweep, direction: out, anchor: nope, speed: 1000, width: 50 }\n"), hw), hw)
     with pytest.raises(PscError, match="shorter than"):
         compile_show(parse_show(write_show(project, "e4", "length: 100ms\nlayers:\n  - { target: l1, pattern: solid, start: 200ms }\n"), hw), hw)
 

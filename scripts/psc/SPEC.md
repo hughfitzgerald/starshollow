@@ -52,7 +52,7 @@ Backglass bulbs are first-class: they can be put in groups with playfield lights
 ## 3. Hardware config (`hardware.yaml`)
 
 ```yaml
-anchors:                   # named points in table coordinates, for radial sweeps and chase ordering
+anchors:                   # named points for sweeps and chase ordering; shows can also use a light or group (section 6)
   drain: [476, 2050]
   pops:  [610, 520]
 
@@ -176,7 +176,7 @@ layers:                  # later layers sit on top of earlier ones
   - target: left_ramp_fx
     pattern: sweep
     direction: up        # up | down | left | right | out | in
-    anchor: drain        # required for out/in
+    anchor: drain        # required for out/in; a named anchor, light or group
     speed: 1500          # table units per second
     width: 120           # band at full brightness, in table units
     tail: 200ms          # fade-out after the band passes
@@ -230,6 +230,15 @@ layers:
 | `chase` | `order`, `interval`, `width`, `tail?`, `count?` | Step through lights one at a time. `order` is `listed`, `x`, `y`, `-x`, `-y`, or `angle:<anchor>`. `width` is how many lights are lit at once, so it must be less than the number of lights when `count` is more than 1. |
 | `sweep` | `direction`, `anchor?`, `speed`, `width`, `tail` | Spatial band. Each light's on-time is its distance along the direction divided by `speed`. |
 | `breathe` | `period`, `min`, `max`, `cycles?` | Two keyframes per cycle, using GLF's fade field. No dense sampling. |
+
+**Anchors.** Wherever a show names an anchor (`anchor:` on a sweep, or `angle:<anchor>` and `distance:<anchor>` in a
+chase `order`), the name can be any of these, checked in order:
+1. a named anchor from `hardware.yaml`'s `anchors:`, for points that aren't lights, such as `drain`
+2. a light, at its position. Backglass bulbs count at their proxy positions.
+3. a group, at the centre (mean position) of its lights
+
+So `anchor: l58` sweeps out from l58, with no entry under `anchors:`. A named anchor can't share a name with a light
+or group; `psc map` and `psc compile` report it as an error.
 
 **Times** accept `ms` or `s` suffixes. A bare number is milliseconds. A show with a `tempo:` also accepts musical
 times: `3 steps`, `2 beats` or `1 bar`.
@@ -336,7 +345,7 @@ End Sub
 ```
 
 **Validation.** All of these are errors and nothing is written:
-- unknown targets or anchors, a layer with both `target` and `each`, or an `each` glob that matches no group
+- unknown targets or anchors, a named anchor with the same name as a light or group, a layer with both `target` and `each`, or an `each` glob that matches no group
 - `count: fill` in a show with no `length`
 - color conflicts between groups
 - missing `anchor` for out/in sweeps

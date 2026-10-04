@@ -60,9 +60,10 @@ DIRECTIONS = {
 def _anchor(layer: Layer, hw: HardwareMap, name: str | None):
     if not name:
         raise PscError(f"{layer.where}: an anchor is required")
-    if name not in hw.anchors:
-        raise PscError(f"{layer.where}: unknown anchor {name!r}")
-    return hw.anchors[name]
+    point = hw.anchor(name)
+    if point is None:
+        raise PscError(f"{layer.where}: unknown anchor {name!r} (not an anchor, light or group with lights)")
+    return point
 
 
 def order_lights(layer: Layer, hw: HardwareMap, order: str) -> list[str]:
