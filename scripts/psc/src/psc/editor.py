@@ -6,7 +6,6 @@ groups from hardware.yaml, and lets you select lights by clicking or
 dragging a box to create groups or change their members. Edits go through
 hwedit, so hardware.yaml keeps its comments and layout."""
 
-import base64
 import copy
 import json
 import webbrowser
@@ -14,6 +13,7 @@ import xml.etree.ElementTree as ET
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+from .b2s import Backglass, embedded_image, read_backglass
 from .config import Config, load_config
 from .errors import PscError
 from .groups import light_positions, light_universe, resolve_groups
@@ -62,15 +62,11 @@ def backglass_image(cfg: Config, table: Table) -> tuple[bytes, str] | None:
         return path.read_bytes(), IMAGE_TYPES.get(path.suffix.lower(), _sniff(path.read_bytes()))
     if cfg.directb2s and cfg.directb2s.is_file():
         try:
-            root = ET.parse(cfg.directb2s).getroot()
+            data = embedded_image(ET.parse(cfg.directb2s).getroot())
         except ET.ParseError:
-            root = None
-        if root is not None:
-            for tag in ("BackglassImage", "BackglassOffImage", "BackglassOnImage"):
-                node = next(root.iter(tag), None)
-                if node is not None and node.get("Value"):
-                    data = base64.b64decode(node.get("Value"))
-                    return data, _sniff(data)
+            data = None
+        if data:
+            return data, _sniff(data)
     images = table.dir / "images"
     if images.is_dir():
         for path in sorted(images.iterdir()):
@@ -93,6 +89,14 @@ def build_state(cfg: Config) -> dict:
         positions = {n: (r.x, r.y) for n in universe if (r := table.light(n))}
     group_colors = {g.name: g.color for g in cfg.groups.values() if g.color}
     bulbs = {b.name.lower(): b for b in cfg.bulbs.values()}
+    # With the .directb2s at hand, bulbs are drawn from their own rectangles
+    # over the picture's real size, as B2S Designer shows them.
+    b2s: Backglass | None = None
+    if cfg.directb2s and cfg.directb2s.is_file():
+        try:
+            b2s = read_backglass(cfg.directb2s)
+        except PscError:
+            b2s = None
 
     lights = []
     for name in universe:
@@ -106,14 +110,18 @@ def build_state(cfg: Config) -> dict:
             color = owners[0] if len(owners) == 1 else None
         if color is None and bulb and bulb.color:
             color = bulb.color
-        lights.append({
+        light = {
             "name": name,
             "x": positions[name][0], "y": positions[name][1],
             "color": color or (record.color if record else "ffffff"),
             "proxy": bulb is not None,
             "b2s_id": bulb.b2s_id if bulb else None,
             "groups": [g for g, members in groups.items() if name in members],
-        })
+        }
+        if bulb and b2s and bulb.b2s_id in b2s.rects:
+            x, y, w, h = b2s.rects[bulb.b2s_id]
+            light["b2s"] = {"x": x, "y": y, "w": w, "h": h}
+        lights.append(light)
     text = cfg.path.read_text(encoding="utf-8")
     out_groups = {}
     for name in cfg.groups:
@@ -130,7 +138,12 @@ def build_state(cfg: Config) -> dict:
         "lights": lights,
         "groups": out_groups,
         "anchors": {k: list(v) for k, v in cfg.anchors.items()},
-        "backglass": {"margin": PROXY_MARGIN, "span": PROXY_SPAN},
+        "backglass": {
+            "margin": PROXY_MARGIN, "span": PROXY_SPAN,
+            # the coordinate space of the b2s rectangles: the picture's pixel
+            # size when known, else the extent of the bulbs
+            "size": list(b2s.image_size) if b2s and b2s.image_size else ([b2s.width, b2s.height] if b2s else None),
+        },
         "error": error,
     }
 

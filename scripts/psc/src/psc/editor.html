@@ -55,6 +55,7 @@
   .light.sel { stroke: #fff; }
   .light.dim { opacity: .22; }
   .ring { fill: none; stroke: var(--accent-2); stroke-width: 2.5; pointer-events: none; vector-effect: non-scaling-stroke; }
+  .bulb { fill: none; stroke: #fff8; stroke-width: 1; stroke-dasharray: 3 2; pointer-events: none; vector-effect: non-scaling-stroke; }
   .lbl { fill: #fff; font-size: 11px; paint-order: stroke; stroke: #000c; stroke-width: 3px; pointer-events: none; vector-effect: non-scaling-stroke; }
   .anchor { fill: none; stroke: var(--accent); pointer-events: none; }
   #marquee { fill: #4fa3ff22; stroke: var(--accent); stroke-dasharray: 4 3; pointer-events: none; vector-effect: non-scaling-stroke; }
@@ -169,8 +170,16 @@
     S.panel = { x: t.left, y: t.top - gap - panelH, w: W, h: panelH };
     const bg = S.state.backglass;
     S.pos = {};
+    S.rect = {};
+    const sx = bg.size ? S.panel.w / bg.size[0] : 0, sy = bg.size ? S.panel.h / bg.size[1] : 0;
     for (const l of S.state.lights) {
-      if (l.proxy) {
+      if (l.proxy && l.b2s && bg.size) {
+        // exact: the bulb's rectangle in backglass pixels, scaled onto the panel
+        const r = l.b2s;
+        S.rect[l.name] = [S.panel.x + r.x * sx, S.panel.y + r.y * sy, r.w * sx, r.h * sy];
+        S.pos[l.name] = [S.panel.x + (r.x + r.w / 2) * sx, S.panel.y + (r.y + r.h / 2) * sy];
+      } else if (l.proxy) {
+        // no .directb2s: undo the proxy's virtual position (see psc sync)
         const fx = (l.x - t.left) / W;
         const fy = 1 - (t.top - bg.margin - l.y) / bg.span;
         S.pos[l.name] = [S.panel.x + fx * S.panel.w, S.panel.y + fy * S.panel.h];
@@ -279,8 +288,15 @@
         class: "light" + (l.proxy ? " proxy" : "") + (S.selected.has(l.name) ? " sel" : "") +
           (members && !members.has(l.name) ? " dim" : "") });
       c.dataset.name = l.name;
-      const t = el("title"); t.textContent = `${l.name}  (${l.groups.join(", ") || "no groups"})`; c.appendChild(t);
+      const t = el("title");
+      t.textContent = `${l.name}  (${l.groups.join(", ") || "no groups"})` +
+        (l.b2s ? `\nB2S #${l.b2s_id}: x ${l.b2s.x}, y ${l.b2s.y}, ${l.b2s.w}×${l.b2s.h}` : "");
+      c.appendChild(t);
       gl.appendChild(c);
+      if (S.rect[l.name]) {
+        const [rx, ry, rw, rh] = S.rect[l.name];
+        gr.appendChild(el("rect", { x: rx, y: ry, width: rw, height: rh, class: "bulb" }));
+      }
       if (members && members.has(l.name)) gr.appendChild(el("circle", { cx: x, cy: y, r: LIGHT_R + 5, class: "ring" }));
       const txt = el("text", { x: x + LIGHT_R + 2, y: y + 4 * S.scale, class: "lbl", "data-light": l.name, "data-x": x });
       txt.textContent = l.name; lb.appendChild(txt);

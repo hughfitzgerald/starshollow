@@ -110,3 +110,46 @@ def test_http_server(cfg):
     finally:
         server.shutdown()
         server.server_close()
+
+
+def tiny_png(width: int, height: int) -> bytes:
+    import struct
+    import zlib
+
+    def chunk(kind, body):
+        return struct.pack(">I", len(body)) + kind + body + struct.pack(">I", zlib.crc32(kind + body) & 0xFFFFFFFF)
+
+    raw = b"".join(b"\x00" + b"\x00\x00\x00" * width for _ in range(height))
+    return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0))
+            + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b""))
+
+
+def test_backglass_bulbs_come_from_the_directb2s(project):
+    import base64
+
+    png = tiny_png(400, 300)
+    (project / "table.directb2s").write_text(
+        '<DirectB2SData><Images><BackglassImage Value="%s"/></Images><Illumination>'
+        '<Bulb ID="1" Parent="Backglass" B2SID="7" LocX="20" LocY="30" Width="40" Height="20"/>'
+        '<Bulb ID="2" Parent="Backglass" B2SID="8" LocX="300" LocY="200" Width="40" Height="20"/>'
+        '</Illumination></DirectB2SData>' % base64.b64encode(png).decode())
+    cfg = write_config(project, """
+lights: { l1: ff0000, l2: ffffff, l10: ffffff, gi1: ffb464, FL1: ffffff }
+groups:
+  pair: { members: [l1, l2] }
+backglass:
+  source: ../../table.directb2s
+  template: FL1
+  bulbs:
+    bg_a: { b2s_id: 7, color: ffffff }
+    bg_b: { b2s_id: 8, color: ffffff }
+""")
+    from psc.editor import backglass_image
+    from psc.sync import apply_changes, plan_sync
+    from psc.table import Table
+    apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
+    state = build_state(load_config(cfg.path))
+    assert state["backglass"]["size"] == [400, 300]  # the picture, not the bulbs' extent (340 x 220)
+    a = next(l for l in state["lights"] if l["name"] == "bg_a")
+    assert a["proxy"] and a["b2s_id"] == 7 and a["b2s"] == {"x": 20.0, "y": 30.0, "w": 40.0, "h": 20.0}
+    assert backglass_image(cfg, Table(cfg.table_dir)) == (png, "image/png")
