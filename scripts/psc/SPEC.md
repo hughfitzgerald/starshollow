@@ -352,9 +352,10 @@ uv run psc sync [--check]     # apply groups and backglass proxies to the JSON
 uv run psc import-groups      # one-time bootstrap from existing tags
 uv run psc map                # print the hardware map: lights, positions, groups, colors
 uv run psc compile            # sync --check, then write psc_shows.vbs
+uv run psc edit [--port N] [--no-open]   # the light group editor, in a browser
 ```
 
-From `scripts/`, the same commands run as `npm run psc-sync`, `psc-map`, `psc-compile` and `psc-test`.
+From `scripts/`, the same commands run as `npm run psc-sync`, `psc-map`, `psc-compile`, `psc-edit` and `psc-test`.
 
 Typical loop:
 1. Edit `hardware.yaml`, then run `psc sync` and `npm run assemble-vpx`.
@@ -363,7 +364,34 @@ Typical loop:
 
 ---
 
-## 9. Milestones
+## 9. Group editor (`psc edit`)
+
+`psc edit` serves a one-page editor on `127.0.0.1:8765` and opens it in the browser. It draws every GLF light on
+the playfield image at its table position, and the backglass bulbs on the backglass image in a panel above the
+playfield, in each light's default color. Hovering a light shows its name and groups.
+
+- **Groups** are listed with their color and size. Click one to highlight its members; the others dim.
+  The panel shows the group's `members:` and `exclude:` as written, globs and `@` references included.
+- **Select** lights by clicking (shift adds, alt subtracts) or by dragging a box. Escape clears.
+- **Create** a group from the selection with a name and an optional color. **Add selected** and **Remove selected**
+  change the active group. Removing a light that the group lists by name takes it out of the list; removing one that
+  came from a glob, `@area`, `@collection` or `@group` adds it to `exclude:` instead. Adding an excluded light back
+  removes the exclusion.
+- Wheel zooms, space-drag or middle-drag pans, **Fit** resets, **Reload** re-reads hardware.yaml.
+
+Every action writes `hardware.yaml` at once, then reloads it and resolves the groups; a change that doesn't resolve
+is rolled back. Only the group entry being changed is rewritten, in the style it already uses, so comments and the
+rest of the file stay as they were (comments inside a rewritten multi-line members list are the exception). After
+editing, run `psc sync` and `npm run assemble-vpx` as usual.
+
+**Images.** The playfield is the table's `image` from gamedata. The backglass image is, in order: `backglass.image`
+in hardware.yaml (a table image name, or a path relative to hardware.yaml), the image embedded in the
+`.directb2s`, or a table image whose name contains "backglass". The page works without either image.
+
+The editor is a starting point. Ideas for later: show playback preview, anchors and `@area` boxes drawn and
+dragged on the canvas, per-light default colors.
+
+## 10. Milestones
 
 1. **Groups.** Done. Config loading, `sync` and `--check`, `import-groups`, `map`. The table JSON is synced, and
    vpxtool assembles and re-extracts it unchanged, including the empty tags.

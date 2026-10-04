@@ -56,6 +56,11 @@ def cmd_compile(cfg, args) -> int:
     return 0
 
 
+def cmd_edit(cfg, args) -> int:
+    from .editor import serve  # local import: only the editor needs the HTTP server
+    return serve(cfg, args.port, not args.no_open)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="psc", description="Pinball Show Compiler")
     parser.add_argument("--config", help="path to hardware.yaml (default: search upward from cwd)")
@@ -66,6 +71,10 @@ def main(argv=None) -> int:
     sub.add_parser("import-groups", help="print a groups: block built from the tags in the JSON").set_defaults(func=cmd_import_groups)
     sub.add_parser("map", help="print the hardware map").set_defaults(func=cmd_map)
     sub.add_parser("compile", help="compile show YAML to GLF VBScript").set_defaults(func=cmd_compile)
+    p = sub.add_parser("edit", help="open the light group editor in a browser")
+    p.add_argument("--port", type=int, default=8765, help="port on 127.0.0.1 (default 8765; 0 picks a free one)")
+    p.add_argument("--no-open", action="store_true", help="don't open a browser; just print the URL")
+    p.set_defaults(func=cmd_edit)
     args = parser.parse_args(argv)
     try:
         cfg = load_config(find_config(args.config))

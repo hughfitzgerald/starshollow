@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PSC Light Groups</title>
+<style>
+  :root {
+    --bg: #15171b; --panel: #1e2127; --line: #2e323a; --text: #e6e6e6; --muted: #9aa0a8;
+    --accent: #4fa3ff; --accent-2: #ffd166; --danger: #ff6b6b; --ok: #6ee7a8;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text);
+    font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #app { display: grid; grid-template-columns: 300px 1fr; height: 100%; }
+  #side { background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column;
+    min-height: 0; }
+  #side h1 { font-size: 14px; margin: 0; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  #side h1 small { color: var(--muted); font-weight: normal; margin-left: 6px; }
+  section { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  section h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; }
+  #groups { flex: 1; overflow: auto; min-height: 80px; }
+  .group { display: flex; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 6px; cursor: pointer; }
+  .group:hover { background: #262a31; }
+  .group.active { background: #2b3a4f; outline: 1px solid var(--accent); }
+  .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #0006; background: #555; flex: none; }
+  .group .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .group .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+  button { background: #2a2e36; color: var(--text); border: 1px solid #3a3f49; border-radius: 6px; padding: 5px 9px;
+    cursor: pointer; font: inherit; }
+  button:hover:not(:disabled) { background: #343946; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.primary { background: #2a4f80; border-color: #3a6fb0; }
+  button.danger { color: var(--danger); }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  input[type=text] { background: #12141a; color: var(--text); border: 1px solid #3a3f49; border-radius: 6px;
+    padding: 5px 8px; font: inherit; width: 100%; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; max-height: 110px; overflow: auto; margin-top: 6px; }
+  .chip { background: #2a2e36; border-radius: 10px; padding: 1px 8px; font-size: 12px; }
+  .chip.proxy { border: 1px dashed var(--muted); }
+  #decl { color: var(--muted); font-family: ui-monospace, Menlo, monospace; font-size: 11px; word-break: break-all;
+    margin-top: 4px; }
+  #status { padding: 8px 14px; color: var(--muted); min-height: 36px; font-size: 12px; white-space: pre-wrap; }
+  #status.err { color: var(--danger); } #status.ok { color: var(--ok); }
+  label.opt { display: inline-flex; gap: 5px; align-items: center; margin-right: 10px; color: var(--muted); }
+  #main { position: relative; min-width: 0; }
+  #canvas { width: 100%; height: 100%; display: block; touch-action: none; cursor: crosshair; }
+  #canvas.panning { cursor: grabbing; }
+  #toolbar { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; background: #1e2127cc;
+    padding: 6px; border-radius: 8px; backdrop-filter: blur(4px); }
+  #hint { position: absolute; left: 10px; bottom: 8px; color: var(--muted); font-size: 11px; background: #15171bbb;
+    padding: 3px 8px; border-radius: 6px; pointer-events: none; }
+  .light { stroke: #000a; cursor: pointer; }
+  .light.proxy { stroke-dasharray: 3 2; }
+  .light.sel { stroke: #fff; }
+  .light.dim { opacity: .22; }
+  .ring { fill: none; stroke: var(--accent-2); stroke-width: 2.5; pointer-events: none; vector-effect: non-scaling-stroke; }
+  .bulb { fill: none; stroke: #fff8; stroke-width: 1; stroke-dasharray: 3 2; pointer-events: none; vector-effect: non-scaling-stroke; }
+  .lbl { fill: #fff; font-size: 11px; paint-order: stroke; stroke: #000c; stroke-width: 3px; pointer-events: none; vector-effect: non-scaling-stroke; }
+  .anchor { fill: none; stroke: var(--accent); pointer-events: none; }
+  #marquee { fill: #4fa3ff22; stroke: var(--accent); stroke-dasharray: 4 3; pointer-events: none; vector-effect: non-scaling-stroke; }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <h1>Light groups <small id="cfg"></small></h1>
+    <section>
+      <h2>Groups</h2>
+      <div id="groups"></div>
+    </section>
+    <section id="active-sec" hidden>
+      <h2>Group <span id="active-name"></span></h2>
+      <div id="decl"></div>
+      <div class="row">
+        <button id="btn-select-members">Select members</button>
+        <button id="btn-add" class="primary">Add selected</button>
+        <button id="btn-remove">Remove selected</button>
+        <button id="btn-delete" class="danger">Delete group</button>
+      </div>
+    </section>
+    <section>
+      <h2>New group from selection</h2>
+      <input id="new-name" type="text" placeholder="name (letters, digits, _)" spellcheck="false">
+      <div class="row">
+        <input id="new-color" type="text" placeholder="color (optional, e.g. ff8800)" spellcheck="false" style="width: 170px">
+        <button id="btn-create" class="primary">Create</button>
+      </div>
+    </section>
+    <section>
+      <h2>Selection <span id="sel-count" style="color: var(--muted)"></span></h2>
+      <div class="row">
+        <button id="btn-clear">Clear</button>
+        <label class="opt"><input type="checkbox" id="opt-labels"> labels</label>
+        <label class="opt"><input type="checkbox" id="opt-gi" checked> GI</label>
+      </div>
+      <div id="chips" class="chips"></div>
+    </section>
+    <div id="status">loading…</div>
+  </aside>
+  <div id="main">
+    <svg id="canvas" xmlns="http://www.w3.org/2000/svg">
+      <g id="world">
+        <image id="img-backglass" preserveAspectRatio="none" style="display:none"></image>
+        <image id="img-playfield" preserveAspectRatio="none" style="display:none"></image>
+        <rect id="pf-outline" fill="none" stroke="#555" stroke-width="2"></rect>
+        <rect id="bg-outline" fill="none" stroke="#555" stroke-width="2" style="display:none"></rect>
+        <g id="anchors"></g>
+        <g id="rings"></g>
+        <g id="lights"></g>
+        <g id="labels" style="display:none"></g>
+        <rect id="marquee" style="display:none"></rect>
+      </g>
+    </svg>
+    <div id="toolbar">
+      <button id="btn-fit">Fit</button>
+      <button id="btn-reload">Reload</button>
+    </div>
+    <div id="hint">drag: box select · shift: add · alt: subtract · wheel: zoom · space/middle drag: pan · esc: clear</div>
+  </div>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const svg = $("canvas"), world = $("world");
+  const S = { state: null, selected: new Set(), active: null, view: null, bg: null, pf: null };
+  const LIGHT_PX = 7;  // light radius on screen; rescaled with the zoom
+  let LIGHT_R = 11;
+
+  // ---------- data ----------
+  async function load() {
+    try {
+      const r = await fetch("/api/state");
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || r.statusText);
+      setState(data, true);
+    } catch (e) { status(e.message, "err"); }
+  }
+  async function post(body) {
+    status("saving…");
+    const r = await fetch("/api/groups", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body) });
+    const data = await r.json();
+    if (!r.ok) { status(data.error || r.statusText, "err"); return false; }
+    setState(data, false);
+    status("wrote hardware.yaml. Run `npm run psc-sync` then `npm run assemble-vpx` to apply.", "ok");
+    return true;
+  }
+  function setState(data, first) {
+    S.state = data;
+    $("cfg").textContent = data.config.split("/").slice(-3).join("/");
+    const names = new Set(data.lights.map(l => l.name));
+    for (const n of [...S.selected]) if (!names.has(n)) S.selected.delete(n);
+    if (S.active && !(S.active in data.groups)) S.active = null;
+    if (first) { loadImages(); }
+    layout(); render();
+    if (data.error) status("hardware.yaml has a problem: " + data.error, "err");
+    else if (first) status("ready");
+  }
+
+  // ---------- geometry ----------
+  // Playfield lights are drawn at their table coordinates. Backglass proxies sit
+  // above the playfield at virtual positions (see psc sync); they are mapped
+  // onto a backglass panel drawn at its own aspect ratio above the table.
+  function layout() {
+    const t = S.state.table, W = t.right - t.left;
+    const gap = 60;
+    const aspect = S.bg ? S.bg.h / S.bg.w : 0.69;
+    const panelH = W * aspect;
+    S.panel = { x: t.left, y: t.top - gap - panelH, w: W, h: panelH };
+    const bg = S.state.backglass;
+    S.pos = {};
+    S.rect = {};
+    const sx = bg.size ? S.panel.w / bg.size[0] : 0, sy = bg.size ? S.panel.h / bg.size[1] : 0;
+    for (const l of S.state.lights) {
+      if (l.proxy && l.b2s && bg.size) {
+        // exact: the bulb's rectangle in backglass pixels, scaled onto the panel
+        const r = l.b2s;
+        S.rect[l.name] = [S.panel.x + r.x * sx, S.panel.y + r.y * sy, r.w * sx, r.h * sy];
+        S.pos[l.name] = [S.panel.x + (r.x + r.w / 2) * sx, S.panel.y + (r.y + r.h / 2) * sy];
+      } else if (l.proxy) {
+        // no .directb2s: undo the proxy's virtual position (see psc sync)
+        const fx = (l.x - t.left) / W;
+        const fy = 1 - (t.top - bg.margin - l.y) / bg.span;
+        S.pos[l.name] = [S.panel.x + fx * S.panel.w, S.panel.y + fy * S.panel.h];
+      } else S.pos[l.name] = [l.x, l.y];
+    }
+    const pf = $("img-playfield"), pfo = $("pf-outline");
+    for (const el of [pf, pfo]) { el.setAttribute("x", t.left); el.setAttribute("y", t.top);
+      el.setAttribute("width", W); el.setAttribute("height", t.bottom - t.top); }
+    const bgi = $("img-backglass"), bgo = $("bg-outline");
+    for (const el of [bgi, bgo]) { el.setAttribute("x", S.panel.x); el.setAttribute("y", S.panel.y);
+      el.setAttribute("width", S.panel.w); el.setAttribute("height", S.panel.h); }
+    const hasProxies = S.state.lights.some(l => l.proxy);
+    bgo.style.display = hasProxies ? "" : "none";
+    if (!S.view) fit();
+  }
+  function loadImages() {
+    const probe = (url, id, key) => {
+      const im = new Image();
+      im.onload = () => { S[key] = { w: im.naturalWidth, h: im.naturalHeight };
+        const el = $(id); el.setAttribute("href", url); el.style.display = "";
+        // the backglass panel's height follows the picture's aspect ratio, so
+        // the lights have to be redrawn once it is known
+        layout(); renderLights(); };
+      im.src = url;
+    };
+    probe("/img/playfield", "img-playfield", "pf");
+    probe("/img/backglass", "img-backglass", "bg");
+  }
+  function fit() {
+    const t = S.state.table, pad = 40;
+    const top = S.state.lights.some(l => l.proxy) ? S.panel.y : t.top;
+    S.view = { x: t.left - pad, y: top - pad, w: (t.right - t.left) + 2 * pad, h: (t.bottom - top) + 2 * pad };
+    applyView();
+  }
+  function applyView() {
+    // keep aspect: letterbox the requested box into the element
+    const r = svg.getBoundingClientRect();
+    const v = S.view, ar = r.width / r.height;
+    let w = v.w, h = v.h;
+    if (w / h < ar) w = h * ar; else h = w / ar;
+    const x = v.x - (w - v.w) / 2, y = v.y - (h - v.h) / 2;
+    svg.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
+    S.scale = w / r.width;  // table units per pixel
+    LIGHT_R = LIGHT_PX * S.scale;
+    document.querySelectorAll(".lbl").forEach(e => e.setAttribute("font-size", 11 * S.scale));
+    document.querySelectorAll(".light").forEach(e => e.setAttribute("r", LIGHT_R));
+    document.querySelectorAll(".ring").forEach(e => e.setAttribute("r", LIGHT_R + 4 * S.scale));
+    document.querySelectorAll(".lbl[data-light]").forEach(e => e.setAttribute("x", +e.dataset.x + LIGHT_R + 2 * S.scale));
+    document.querySelectorAll(".anchor").forEach(e => e.setAttribute("stroke-width", 2 * S.scale));
+    for (const sel of [".light", "#marquee"]) document.querySelectorAll(sel).forEach(e => e.setAttribute("stroke-width", (sel === ".light" ? 1.5 : 1.5) * S.scale));
+    document.querySelectorAll(".light.sel").forEach(e => e.setAttribute("stroke-width", 3 * S.scale));
+  }
+  function toWorld(ev) {
+    const p = new DOMPoint(ev.clientX, ev.clientY).matrixTransform(svg.getScreenCTM().inverse());
+    return [p.x, p.y];
+  }
+
+  // ---------- render ----------
+  function render() {
+    renderGroups(); renderActive(); renderSelection(); renderLights();
+  }
+  function renderGroups() {
+    const box = $("groups"); box.innerHTML = "";
+    for (const [name, g] of Object.entries(S.state.groups)) {
+      const row = document.createElement("div");
+      row.className = "group" + (name === S.active ? " active" : "");
+      const sw = document.createElement("span"); sw.className = "swatch";
+      if (g.color) sw.style.background = "#" + g.color;
+      const nm = document.createElement("span"); nm.className = "name"; nm.textContent = name;
+      const ct = document.createElement("span"); ct.className = "count"; ct.textContent = g.members.length;
+      row.append(sw, nm, ct);
+      row.onclick = () => { S.active = S.active === name ? null : name; render(); };
+      box.appendChild(row);
+    }
+    if (!Object.keys(S.state.groups).length) box.innerHTML = '<div style="color: var(--muted)">no groups yet</div>';
+  }
+  function renderActive() {
+    const sec = $("active-sec");
+    sec.hidden = !S.active;
+    if (!S.active) return;
+    const g = S.state.groups[S.active];
+    $("active-name").textContent = S.active;
+    $("decl").textContent = "members: [" + g.declared.join(", ") + "]" +
+      (g.exclude.length ? "\nexclude: [" + g.exclude.join(", ") + "]" : "");
+    const has = S.selected.size > 0;
+    $("btn-add").disabled = !has; $("btn-remove").disabled = !has;
+  }
+  function renderSelection() {
+    const chips = $("chips"); chips.innerHTML = "";
+    const byName = Object.fromEntries(S.state.lights.map(l => [l.name, l]));
+    for (const n of [...S.selected].sort(natural)) {
+      const c = document.createElement("span"); c.className = "chip" + (byName[n]?.proxy ? " proxy" : "");
+      c.textContent = n; c.title = (byName[n]?.groups || []).join(", ") || "no groups";
+      chips.appendChild(c);
+    }
+    $("sel-count").textContent = S.selected.size ? `(${S.selected.size})` : "";
+    $("btn-create").disabled = !S.selected.size;
+    if (S.active) { $("btn-add").disabled = !S.selected.size; $("btn-remove").disabled = !S.selected.size; }
+  }
+  function renderLights() {
+    const gl = $("lights"), gr = $("rings"), lb = $("labels"), ga = $("anchors");
+    gl.innerHTML = ""; gr.innerHTML = ""; lb.innerHTML = ""; ga.innerHTML = "";
+    const members = S.active ? new Set(S.state.groups[S.active].members) : null;
+    const showGI = $("opt-gi").checked;
+    for (const l of S.state.lights) {
+      if (!showGI && /^gi\d/i.test(l.name)) continue;
+      const [x, y] = S.pos[l.name];
+      const c = el("circle", { cx: x, cy: y, r: LIGHT_R, fill: "#" + l.color,
+        class: "light" + (l.proxy ? " proxy" : "") + (S.selected.has(l.name) ? " sel" : "") +
+          (members && !members.has(l.name) ? " dim" : "") });
+      c.dataset.name = l.name;
+      const t = el("title");
+      t.textContent = `${l.name}  (${l.groups.join(", ") || "no groups"})` +
+        (l.b2s ? `\nB2S #${l.b2s_id}: x ${l.b2s.x}, y ${l.b2s.y}, ${l.b2s.w}×${l.b2s.h}` : "");
+      c.appendChild(t);
+      gl.appendChild(c);
+      if (S.rect[l.name]) {
+        const [rx, ry, rw, rh] = S.rect[l.name];
+        gr.appendChild(el("rect", { x: rx, y: ry, width: rw, height: rh, class: "bulb" }));
+      }
+      if (members && members.has(l.name)) gr.appendChild(el("circle", { cx: x, cy: y, r: LIGHT_R + 5, class: "ring" }));
+      const txt = el("text", { x: x + LIGHT_R + 2, y: y + 4 * S.scale, class: "lbl", "data-light": l.name, "data-x": x });
+      txt.textContent = l.name; lb.appendChild(txt);
+    }
+    for (const [name, [x, y]] of Object.entries(S.state.anchors || {})) {
+      ga.appendChild(el("path", { d: `M${x - 10} ${y}h20M${x} ${y - 10}v20`, class: "anchor" }));
+      const txt = el("text", { x: x + 12, y: y - 6, class: "lbl" }); txt.textContent = "⚓ " + name; ga.appendChild(txt);
+    }
+    lb.style.display = $("opt-labels").checked ? "" : "none";
+    applyView();
+  }
+  function el(tag, attrs = {}) {
+    const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+    return n;
+  }
+  const natural = (a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+  function status(msg, cls = "") { const s = $("status"); s.textContent = msg; s.className = cls; }
+
+  // ---------- interaction ----------
+  let drag = null, space = false;
+  svg.addEventListener("pointerdown", (ev) => {
+    if (ev.button === 1 || (ev.button === 0 && space) || ev.button === 2) {
+      drag = { kind: "pan", last: [ev.clientX, ev.clientY] };
+      svg.classList.add("panning"); svg.setPointerCapture(ev.pointerId); ev.preventDefault(); return;
+    }
+    if (ev.button !== 0) return;
+    const name = ev.target.dataset && ev.target.dataset.name;
+    const [x, y] = toWorld(ev);
+    drag = { kind: "box", start: [x, y], px: [ev.clientX, ev.clientY], hit: name || null, moved: false };
+    svg.setPointerCapture(ev.pointerId);
+  });
+  svg.addEventListener("pointermove", (ev) => {
+    if (!drag) return;
+    if (drag.kind === "pan") {
+      const dx = (ev.clientX - drag.last[0]) * S.scale, dy = (ev.clientY - drag.last[1]) * S.scale;
+      S.view.x -= dx; S.view.y -= dy; drag.last = [ev.clientX, ev.clientY]; applyView(); return;
+    }
+    if (Math.hypot(ev.clientX - drag.px[0], ev.clientY - drag.px[1]) > 4) drag.moved = true;
+    if (!drag.moved) return;
+    const [x, y] = toWorld(ev), m = $("marquee");
+    const bx = Math.min(x, drag.start[0]), by = Math.min(y, drag.start[1]);
+    m.setAttribute("x", bx); m.setAttribute("y", by);
+    m.setAttribute("width", Math.abs(x - drag.start[0])); m.setAttribute("height", Math.abs(y - drag.start[1]));
+    m.style.display = "";
+  });
+  svg.addEventListener("pointerup", (ev) => {
+    if (!drag) return;
+    const d = drag; drag = null; svg.classList.remove("panning");
+    if (d.kind === "pan") return;
+    const add = ev.shiftKey, sub = ev.altKey;
+    if (!d.moved) {
+      if (d.hit) {
+        if (add || sub) { S.selected.has(d.hit) ? S.selected.delete(d.hit) : S.selected.add(d.hit); }
+        else { S.selected.clear(); S.selected.add(d.hit); }
+      } else if (!add && !sub) S.selected.clear();
+    } else {
+      $("marquee").style.display = "none";
+      const [x, y] = toWorld(ev);
+      const x0 = Math.min(x, d.start[0]), x1 = Math.max(x, d.start[0]);
+      const y0 = Math.min(y, d.start[1]), y1 = Math.max(y, d.start[1]);
+      if (!add && !sub) S.selected.clear();
+      const showGI = $("opt-gi").checked;
+      for (const l of S.state.lights) {
+        if (!showGI && /^gi\d/i.test(l.name)) continue;
+        const [lx, ly] = S.pos[l.name];
+        if (lx >= x0 && lx <= x1 && ly >= y0 && ly <= y1) sub ? S.selected.delete(l.name) : S.selected.add(l.name);
+      }
+    }
+    render();
+  });
+  svg.addEventListener("wheel", (ev) => {
+    ev.preventDefault();
+    const [x, y] = toWorld(ev), f = Math.exp(ev.deltaY * 0.0015);
+    const v = S.view;
+    v.x = x - (x - v.x) * f; v.y = y - (y - v.y) * f; v.w *= f; v.h *= f; applyView();
+  }, { passive: false });
+  svg.addEventListener("contextmenu", (ev) => ev.preventDefault());
+  window.addEventListener("keydown", (ev) => {
+    if (ev.target.tagName === "INPUT") return;
+    if (ev.code === "Space") { space = true; ev.preventDefault(); }
+    if (ev.key === "Escape") { S.selected.clear(); render(); }
+  });
+  window.addEventListener("keyup", (ev) => { if (ev.code === "Space") space = false; });
+  window.addEventListener("resize", () => S.view && applyView());
+
+  // ---------- actions ----------
+  $("btn-fit").onclick = fit;
+  $("btn-reload").onclick = load;
+  $("btn-clear").onclick = () => { S.selected.clear(); render(); };
+  $("opt-labels").onchange = renderLights;
+  $("opt-gi").onchange = renderLights;
+  $("btn-select-members").onclick = () => {
+    S.selected = new Set(S.state.groups[S.active].members); render();
+  };
+  $("btn-add").onclick = () => post({ op: "add", group: S.active, lights: [...S.selected] });
+  $("btn-remove").onclick = () => post({ op: "remove", group: S.active, lights: [...S.selected] });
+  $("btn-delete").onclick = () => {
+    if (confirm(`Delete group ${S.active} from hardware.yaml?`)) post({ op: "delete", group: S.active });
+  };
+  $("btn-create").onclick = async () => {
+    const name = $("new-name").value.trim(), color = $("new-color").value.trim().replace(/^#/, "");
+    if (!name) { status("give the new group a name", "err"); $("new-name").focus(); return; }
+    if (await post({ op: "create", group: name, lights: [...S.selected], color })) {
+      $("new-name").value = ""; $("new-color").value = ""; S.active = name; render();
+    }
+  };
+  $("new-name").addEventListener("keydown", (ev) => { if (ev.key === "Enter") $("btn-create").click(); });
+
+  load();
+})();
+</script>
+</body>
+</html>
