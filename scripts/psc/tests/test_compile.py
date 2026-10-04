@@ -212,3 +212,51 @@ def test_resolution_coarsens_timing(env):
     assert [x[0] for x in lights["l2"]] == [0, 120, 160]  # 100 -> 120 (halves round up), 150 -> 160
     with pytest.raises(PscError, match="multiple of 10ms"):
         parse_show(write_show(project, "bad", "resolution: 15ms\n" + body), hw)
+
+
+def test_each_runs_the_pattern_per_group(env):
+    project, cfg, hw = env
+    cfg = write_config(project, BASE + """
+  trio: { members: [l10, gi1, FL1] }
+""")
+    apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
+    hw = build_map(cfg, Table(cfg.table_dir))
+    # one chase per group, both starting at 0; the show ends with the longer one
+    lights, c = timeline(project, hw, "each", """
+layers:
+  - { each: [pair, trio], pattern: chase, interval: 100ms, color: 00ff00 }
+""")
+    assert [t for t, _ in lights["l1"]] == [0, 100]
+    assert [t for t, _ in lights["l2"]] == [0, 100, 200]
+    assert [t for t, _ in lights["l10"]] == [0, 100]
+    assert [t for t, _ in lights["gi1"]] == [0, 100, 200]
+    assert [t for t, _ in lights["FL1"]] == [0, 200]  # release at 300 == length is dropped
+    assert c.length == 300
+    # a glob over group names, natural order; same result as listing them
+    glob, c2 = timeline(project, hw, "glob", """
+layers:
+  - { each: "*", pattern: chase, interval: 100ms, color: 00ff00 }
+""")
+    assert set(hw.groups) == {"pair", "trio"}
+    assert glob["l2"] == lights["l2"] and glob["FL1"] == lights["FL1"]
+    # a flattened target: [pair, trio] is one long chain instead
+    flat, c3 = timeline(project, hw, "flat", """
+layers:
+  - { target: [pair, trio], pattern: chase, interval: 100ms, color: 00ff00 }
+""")
+    assert c3.length == 500
+    assert [t for t, _ in flat["FL1"]] == [0, 400]
+
+
+def test_each_errors(env):
+    project, cfg, hw = env
+    with pytest.raises(PscError, match="not both"):
+        parse_show(write_show(project, "x1", "layers:\n  - { target: l1, each: [pair], pattern: solid }\n"), hw)
+    with pytest.raises(PscError, match="no group matches"):
+        parse_show(write_show(project, "x2", "layers:\n  - { each: 'nope_*', pattern: solid }\n"), hw)
+    with pytest.raises(PscError, match="unknown target"):
+        parse_show(write_show(project, "x3", "layers:\n  - { each: [pair, nope], pattern: solid }\n"), hw)
+    with pytest.raises(PscError, match="instead of each"):
+        parse_show(write_show(project, "x4", "tempo: { bpm: 120 }\nlayers:\n  - { each: [pair], pattern: beat, tracks: { l1: 'x...' } }\n"), hw)
+    with pytest.raises(PscError, match="can't take each"):
+        parse_show(write_show(project, "x5", "layers:\n  - { each: [pair], pattern: show, show: other }\n"), hw)

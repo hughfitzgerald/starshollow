@@ -4,6 +4,7 @@ A keyframe means "starting at t, fade to value over `fade` ms". A value of
 None is a release: the layer lets go of the light, and whatever is beneath
 shows through (fading over `fade` ms)."""
 
+import dataclasses
 import math
 from dataclasses import dataclass
 
@@ -84,8 +85,17 @@ def order_lights(layer: Layer, hw: HardwareMap, order: str) -> list[str]:
 
 
 def expand_layer(layer: Layer, hw: HardwareMap, grid: int = 10) -> tuple[dict[str, list[Keyframe]], int]:
-    """Returns (keyframes per light, end time of the pattern)."""
+    """Returns (keyframes per light, end time of the pattern).
+
+    A layer with `each:` has several target lists; the pattern runs once per
+    list, all starting together, into one set of keyframes."""
     b = _Builder(grid)
+    for targets in layer.target_sets or [layer.targets]:
+        _expand_into(b, dataclasses.replace(layer, targets=targets), hw)
+    return b.frames, b.end
+
+
+def _expand_into(b: _Builder, layer: Layer, hw: HardwareMap):
     p = layer.params
     start = layer.start
 
@@ -203,5 +213,3 @@ def expand_layer(layer: Layer, hw: HardwareMap, grid: int = 10) -> tuple[dict[st
             if wrap:
                 b.add(n, rises[0] + loop_ms, light_value(layer, hw, n, hits[order[0]] * layer.brightness / 100), attack)
         b.until(start + loop_ms)
-
-    return b.frames, b.end

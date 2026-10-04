@@ -11,7 +11,7 @@ from .yamlio import load_yaml
 
 TIME, INT, NUMBER, TEXT, MAPPING = "time", "int", "number", "text", "mapping"
 
-COMMON = {"target", "pattern", "start", "color", "brightness", "priority"}
+COMMON = {"target", "each", "pattern", "start", "color", "brightness", "priority"}
 
 # pattern -> {param: (kind, default)}; a default of REQUIRED means required.
 REQUIRED = object()
@@ -75,6 +75,9 @@ class Layer:
     priority: int
     params: dict = field(default_factory=dict)
     start_after: bool = False  # `start: after` = when the layer above ends
+    # `each:` runs the pattern once per target list; `target:` is one list.
+    # `targets` is the union, in order.
+    target_sets: list[list[str]] = field(default_factory=list)
 
 
 @dataclass
@@ -113,19 +116,32 @@ def parse_layer(raw, index: int, show_where: str, hw: HardwareMap, tempo: Tempo 
     schema = PATTERNS[pattern]
     check_keys(raw, COMMON | set(schema), where)
     if pattern == "beat":
-        if "target" in raw:
-            raise PscError(f"{where}: a beat layer takes tracks: instead of target:")
+        extra = [k for k in ("target", "each") if k in raw]
+        if extra:
+            raise PscError(f"{where}: a beat layer takes tracks: instead of {', '.join(extra)}:")
     elif pattern == "show":
-        extra = [k for k in ("target", "color", "brightness") if k in raw]
+        extra = [k for k in ("target", "each", "color", "brightness") if k in raw]
         if extra:
             raise PscError(f"{where}: a show layer can't take {', '.join(extra)}; it plays the other show as written")
-    elif "target" not in raw:
+    elif "target" in raw and "each" in raw:
+        raise PscError(f"{where}: use target: or each:, not both")
+    elif "target" not in raw and "each" not in raw:
         raise PscError(f"{where}: target is required")
+    if "each" in raw:
+        target_sets = hw.resolve_each(raw["each"], f"{where}: each")
+    elif "target" in raw:
+        target_sets = [hw.resolve_target(raw["target"], where)]
+    else:
+        target_sets = []
+    targets: list[str] = []
+    for names in target_sets:
+        targets += [n for n in names if n not in targets]
     layer = Layer(
         index=index,
         where=where,
         pattern=pattern,
-        targets=hw.resolve_target(raw["target"], where) if "target" in raw else [],
+        targets=targets,
+        target_sets=target_sets,
         start=parse_time(raw["start"], f"{where}: start", tempo) if raw.get("start", "after") != "after" else 0.0,
         start_after=raw.get("start") == "after",
         color=parse_color(raw["color"], f"{where}: color") if "color" in raw else None,

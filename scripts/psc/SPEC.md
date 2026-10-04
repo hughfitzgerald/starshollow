@@ -190,8 +190,24 @@ layers:                  # later layers sit on top of earlier ones
     off: 80ms
 ```
 
-**Common layer keys:** `target` (group, light, or list of either), `pattern`, `start` (default 0, or `after`), `color`, `brightness`
-(default 100), `priority` (default: the layer's index).
+**Common layer keys:** `target` (group, light, or list of either) or `each` (below), `pattern`, `start` (default 0, or
+`after`), `color`, `brightness` (default 100), `priority` (default: the layer's index).
+
+**Each.** `each:` runs one layer's pattern separately on several targets at once, as if the layer were copied with
+`target:` set to each entry in turn. Entries are groups or lights, or a glob over group names such as `groove_*`
+(matches in natural order). `target: [a, b]` would merge both groups into one list, so a chase would step across all
+of them as one long chain; `each: [a, b]` runs a chase inside each group, both starting together:
+
+```yaml
+layers:
+  - { target: all_lights, pattern: solid, brightness: 30 }   # baseline
+  - { each: "groove_*", pattern: chase, order: y, interval: 80ms, tail: 120ms, count: 2 }
+```
+
+Everything else about the layer is shared: `start`, `priority`, `color` and the pattern's parameters. It works with any
+pattern that takes a `target`; `beat` and `show` layers don't take it. Groups of different sizes end at different times
+(a chase lasts lights x `interval` x `count`), so a show that mixes them should set `length:`. A group whose pattern has
+finished falls back to whatever is beneath the layer until the show loops.
 
 **Patterns:**
 
@@ -308,7 +324,7 @@ End Sub
 ```
 
 **Validation.** All of these are errors and nothing is written:
-- unknown targets or anchors
+- unknown targets or anchors, a layer with both `target` and `each`, or an `each` glob that matches no group
 - color conflicts between groups
 - missing `anchor` for out/in sweeps
 - a show `length` shorter than its content
