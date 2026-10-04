@@ -199,7 +199,10 @@
     const probe = (url, id, key) => {
       const im = new Image();
       im.onload = () => { S[key] = { w: im.naturalWidth, h: im.naturalHeight };
-        const el = $(id); el.setAttribute("href", url); el.style.display = ""; layout(); applyView(); };
+        const el = $(id); el.setAttribute("href", url); el.style.display = "";
+        // the backglass panel's height follows the picture's aspect ratio, so
+        // the lights have to be redrawn once it is known
+        layout(); renderLights(); };
       im.src = url;
     };
     probe("/img/playfield", "img-playfield", "pf");
