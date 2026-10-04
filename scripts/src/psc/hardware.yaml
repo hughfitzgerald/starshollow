@@ -104,6 +104,14 @@ groups:
         bg_flash_upper_right,
         bg_flash_lower_right,
       ]
+  jess:
+    members: [l11, l12, l13, l14]
+  dean:
+    members: [l15, l16, l17, l18]
+  scoop:
+    members: [l59, l58, l72]
+  left_ramp:
+    members: [l53, l54]
   all_flashers: # playfield and backglass together
     members: ["@flashers", "@backglass_flashers"]
   all_lights: # every GLF light, backglass included

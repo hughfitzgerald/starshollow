@@ -13,7 +13,7 @@
     "color2": "#ff7676",
     "is_timer_enabled": false,
     "timer_interval": 100,
-    "blink_pattern": "all_lights,groove_mid_left",
+    "blink_pattern": "all_lights,groove_mid_left,jess",
     "image": "playfield",
     "blink_interval": 1250,
     "intensity": 4.0,

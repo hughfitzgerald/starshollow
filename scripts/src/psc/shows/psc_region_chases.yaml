@@ -4,15 +4,12 @@
 # chasing until it finishes, so every region is moving for the whole show.
 # Lights chase in their default colors.
 show: psc_region_chases
+length: 4s
 layers:
-  - target: all_lights
-    pattern: solid
-    brightness: 30
-
-  - each: "groove_*"
+  - { target: all_lights, pattern: solid, brightness: 30 }
+  - each: [jess, dean, scoop, left_ramp]
     pattern: chase
-    order: y
+    order: x
     interval: 80ms
-    width: 2
     tail: 120ms
-    count: 2
+    count: fill
