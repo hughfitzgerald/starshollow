@@ -10,21 +10,22 @@ from .values import (GRID_MS, Tempo, check_keys, expect_mapping, parse_color, pa
 from .yamlio import load_yaml
 
 TIME, INT, NUMBER, TEXT, MAPPING = "time", "int", "number", "text", "mapping"
+REPEAT = "repeat"  # a count, or "fill": repeat until the show's length
 
-COMMON = {"target", "pattern", "start", "color", "brightness", "priority"}
+COMMON = {"target", "each", "pattern", "start", "color", "brightness", "priority"}
 
 # pattern -> {param: (kind, default)}; a default of REQUIRED means required.
 REQUIRED = object()
 PATTERNS = {
     "solid": {"duration": (TIME, None), "fade": (TIME, 0), "tail": (TIME, 0)},
-    "flash": {"count": (INT, 1), "on": (TIME, REQUIRED), "off": (TIME, None), "fade": (TIME, 0)},
+    "flash": {"count": (REPEAT, 1), "on": (TIME, REQUIRED), "off": (TIME, None), "fade": (TIME, 0)},
     "chase": {"interval": (TIME, REQUIRED), "order": (TEXT, "listed"), "width": (INT, 1),
-              "tail": (TIME, 0), "fade": (TIME, 0), "count": (INT, 1)},
+              "tail": (TIME, 0), "fade": (TIME, 0), "count": (REPEAT, 1)},
     "sweep": {"direction": (TEXT, REQUIRED), "anchor": (TEXT, None), "speed": (NUMBER, REQUIRED),
-              "width": (NUMBER, 100), "tail": (TIME, 0), "fade": (TIME, 0), "count": (INT, 1),
+              "width": (NUMBER, 100), "tail": (TIME, 0), "fade": (TIME, 0), "count": (REPEAT, 1),
               "gap": (TIME, 0)},
     "breathe": {"period": (TIME, REQUIRED), "min": (NUMBER, 0), "max": (NUMBER, None),
-                "cycles": (INT, 1)},
+                "cycles": (REPEAT, 1)},
     # tracks: {target: "x...x..."}, one character per tempo step
     # plays another PSC show's timeline, inlined at compile time
     "show": {"show": (TEXT, REQUIRED), "count": (INT, 1)},
@@ -75,6 +76,9 @@ class Layer:
     priority: int
     params: dict = field(default_factory=dict)
     start_after: bool = False  # `start: after` = when the layer above ends
+    # `each:` runs the pattern once per (entry name, target list); `target:`
+    # is one list. `targets` is the union, in order.
+    target_sets: list[tuple[str, list[str]]] = field(default_factory=list)
 
 
 @dataclass
@@ -94,7 +98,9 @@ def _parse_param(kind, value, where, tempo):
         if not isinstance(value, dict) or not value:
             raise PscError(f"{where}: expected a mapping")
         return value
-    if kind == INT:
+    if kind == REPEAT and isinstance(value, str) and value.strip() == "fill":
+        return "fill"
+    if kind in (INT, REPEAT):
         return parse_int(value, where, minimum=0)
     if kind == NUMBER:
         return parse_number(value, where)
@@ -113,19 +119,32 @@ def parse_layer(raw, index: int, show_where: str, hw: HardwareMap, tempo: Tempo 
     schema = PATTERNS[pattern]
     check_keys(raw, COMMON | set(schema), where)
     if pattern == "beat":
-        if "target" in raw:
-            raise PscError(f"{where}: a beat layer takes tracks: instead of target:")
+        extra = [k for k in ("target", "each") if k in raw]
+        if extra:
+            raise PscError(f"{where}: a beat layer takes tracks: instead of {', '.join(extra)}:")
     elif pattern == "show":
-        extra = [k for k in ("target", "color", "brightness") if k in raw]
+        extra = [k for k in ("target", "each", "color", "brightness") if k in raw]
         if extra:
             raise PscError(f"{where}: a show layer can't take {', '.join(extra)}; it plays the other show as written")
-    elif "target" not in raw:
+    elif "target" in raw and "each" in raw:
+        raise PscError(f"{where}: use target: or each:, not both")
+    elif "target" not in raw and "each" not in raw:
         raise PscError(f"{where}: target is required")
+    if "each" in raw:
+        target_sets = hw.resolve_each(raw["each"], f"{where}: each")
+    elif "target" in raw:
+        target_sets = [("", hw.resolve_target(raw["target"], where))]
+    else:
+        target_sets = []
+    targets: list[str] = []
+    for _, names in target_sets:
+        targets += [n for n in names if n not in targets]
     layer = Layer(
         index=index,
         where=where,
         pattern=pattern,
-        targets=hw.resolve_target(raw["target"], where) if "target" in raw else [],
+        targets=targets,
+        target_sets=target_sets,
         start=parse_time(raw["start"], f"{where}: start", tempo) if raw.get("start", "after") != "after" else 0.0,
         start_after=raw.get("start") == "after",
         color=parse_color(raw["color"], f"{where}: color") if "color" in raw else None,

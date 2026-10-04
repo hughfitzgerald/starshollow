@@ -1,11 +1,12 @@
 """The compile-time hardware map. Group membership is read back from the
 light JSON tags; group order comes from hardware.yaml."""
 
+import fnmatch
 from dataclasses import dataclass
 
 from .config import Config
 from .errors import ErrorCollector, PscError
-from .groups import light_universe, resolve_groups
+from .groups import light_universe, natural_key, resolve_groups
 from .table import Table, tags_of
 
 
@@ -56,6 +57,31 @@ class HardwareMap:
                 if m not in out:
                     out.append(m)
         return out
+
+    def resolve_each(self, spec, where: str) -> list[tuple[str, list[str]]]:
+        """`each:` fans a layer out: one (name, target list) per entry. An entry
+        is a group, a light, or a glob over group names such as `groove_*`."""
+        items = spec if isinstance(spec, list) else [spec]
+        if not items:
+            raise PscError(f"{where}: each is empty")
+        sets: list[tuple[str, list[str]]] = []
+        for item in items:
+            if not isinstance(item, str):
+                raise PscError(f"{where}: each entries must be names, got {item!r}")
+            if any(ch in item for ch in "*?["):
+                names = sorted((g for g in self.groups if fnmatch.fnmatchcase(g.lower(), item.lower())), key=natural_key)
+                if not names:
+                    raise PscError(f"{where}: no group matches {item!r}")
+                for g in names:
+                    if not self.groups[g]:
+                        raise PscError(f"{where}: group {g!r} has no lights")
+                    sets.append((g, list(self.groups[g])))
+            else:
+                members = self.resolve_target(item, where)
+                if not members:
+                    raise PscError(f"{where}: {item!r} has no lights")
+                sets.append((item, members))
+        return sets
 
 
 def build_map(cfg: Config, table: Table) -> HardwareMap:

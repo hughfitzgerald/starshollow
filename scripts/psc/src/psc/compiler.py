@@ -49,7 +49,7 @@ def show_timeline(show: Show, hw: HardwareMap, shows: dict[str, Show], stack: tu
         if layer.pattern == "show":
             frames_by_light, end = expand_show_layer(layer, show, hw, shows, stack)
         else:
-            frames_by_light, end = expand_layer(layer, hw, show.resolution)
+            frames_by_light, end = expand_layer(layer, hw, show.resolution, show.length)
         content = max(content, end)
         previous_end = end
         for light, frames in frames_by_light.items():

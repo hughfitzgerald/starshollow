@@ -4,6 +4,7 @@ A keyframe means "starting at t, fade to value over `fade` ms". A value of
 None is a release: the layer lets go of the light, and whatever is beneath
 shows through (fading over `fade` ms)."""
 
+import dataclasses
 import math
 from dataclasses import dataclass
 
@@ -83,9 +84,100 @@ def order_lights(layer: Layer, hw: HardwareMap, order: str) -> list[str]:
     raise PscError(f"{layer.where}: order must be listed, x, -x, y, -y, angle:<anchor> or distance:<anchor>, got {order!r}")
 
 
-def expand_layer(layer: Layer, hw: HardwareMap, grid: int = 10) -> tuple[dict[str, list[Keyframe]], int]:
-    """Returns (keyframes per light, end time of the pattern)."""
+# the parameter that repeats a pattern, for patterns that have one
+REPEAT_KEY = {"flash": "count", "chase": "count", "sweep": "count", "breathe": "cycles"}
+
+
+def expand_layer(layer: Layer, hw: HardwareMap, grid: int = 10,
+                 length: float | None = None) -> tuple[dict[str, list[Keyframe]], int]:
+    """Returns (keyframes per light, end time of the pattern).
+
+    A layer with `each:` has several target lists; the pattern runs once per
+    list, all starting together. Entries that finish early keep repeating
+    until the longest one is done, cut off at that moment, so every entry
+    runs for the whole layer. `count: fill` repeats until the show's
+    `length` instead."""
+    sets = layer.target_sets or [("", layer.targets)]
+    key = REPEAT_KEY.get(layer.pattern)
+    fill = key is not None and layer.params[key] == "fill"
+    if fill and length is None:
+        raise PscError(f"{layer.where}: {key}: fill needs a length: on the show")
+
+    entries: list[tuple[Layer, _Builder]] = []
+    for name, targets in sets:
+        where = f"{layer.where}, each {name}" if name else layer.where
+        sub = dataclasses.replace(layer, targets=targets, where=where)
+        if fill:
+            sub = _with_repeat(sub, key, 1)
+        entries.append((sub, _expand_one(sub, hw, grid)))
+
+    if key is not None and (fill or len(entries) > 1):
+        if fill:
+            stop_at, fade = quantize(length, grid), None
+        else:
+            # the entry that finishes last sets the pace; the others fill up
+            # to the moment its last light lets go, and fade out with it
+            longest = max(entries, key=lambda e: e[1].end)[1]
+            stop_at, fade = _last_release(longest.frames)
+        for i, (sub, pb) in enumerate(entries):
+            released, _ = _last_release(pb.frames)
+            if released is None or released >= stop_at:
+                continue
+            repeat = sub.params[key]
+            period = _expand_one(_with_repeat(sub, key, repeat + 1), hw, grid).end - pb.end
+            if period <= 0:
+                raise PscError(f"{sub.where}: can't repeat this pattern to fill the layer")
+            needed = repeat + math.ceil((stop_at - released) / period)
+            full = _expand_one(_with_repeat(sub, key, needed), hw, grid)
+            entries[i] = (sub, _truncate(full, stop_at, fade if fade is not None else sub.params.get("tail", 0), grid))
+
     b = _Builder(grid)
+    for _, pb in entries:
+        for light, kfs in pb.frames.items():
+            for kf in kfs:
+                b.seq += 1
+                b.frames.setdefault(light, []).append(dataclasses.replace(kf, seq=b.seq))
+        b.until(pb.end)
+    return b.frames, b.end
+
+
+def _with_repeat(layer: Layer, key: str, value: int) -> Layer:
+    return dataclasses.replace(layer, params={**layer.params, key: value})
+
+
+def _expand_one(layer: Layer, hw: HardwareMap, grid: int) -> _Builder:
+    b = _Builder(grid)
+    _expand_into(b, layer, hw)
+    return b
+
+
+def _last_release(frames: dict[str, list[Keyframe]]) -> tuple[int | None, int]:
+    """When the pattern's last light lets go, and that release's fade."""
+    releases = [kf for kfs in frames.values() for kf in kfs if kf.value is None]
+    if not releases:
+        return None, 0
+    last = max(releases, key=lambda kf: (kf.t, kf.seq))
+    return last.t, last.fade
+
+
+def _truncate(b: _Builder, stop_at: int, fade: float, grid: int) -> _Builder:
+    """Cut a pattern off at `stop_at`: drop what starts later, and release
+    any light still lit at that moment."""
+    out = _Builder(grid)
+    for light, kfs in b.frames.items():
+        kept = [kf for kf in kfs if kf.t < stop_at or (kf.t == stop_at and kf.value is None)]
+        if not kept:
+            continue
+        last = max(kept, key=lambda kf: (kf.t, kf.seq))
+        if last.value is not None:
+            kept.append(Keyframe(stop_at, None, quantize(fade, grid), last.seq + 1))
+        out.frames[light] = kept
+        for kf in kept:
+            out.until(kf.t + kf.fade)
+    return out
+
+
+def _expand_into(b: _Builder, layer: Layer, hw: HardwareMap):
     p = layer.params
     start = layer.start
 
@@ -203,5 +295,3 @@ def expand_layer(layer: Layer, hw: HardwareMap, grid: int = 10) -> tuple[dict[st
             if wrap:
                 b.add(n, rises[0] + loop_ms, light_value(layer, hw, n, hits[order[0]] * layer.brightness / 100), attack)
         b.until(start + loop_ms)
-
-    return b.frames, b.end

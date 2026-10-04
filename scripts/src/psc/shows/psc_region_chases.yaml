@@ -1,0 +1,18 @@
+# Example: `each`. One chase runs inside every groove region at the same time,
+# top to bottom within each region, over a dim baseline. The regions have 9 to
+# 16 lights; `count` is for the biggest one, and the smaller regions keep
+# chasing until it finishes, so every region is moving for the whole show.
+# Lights chase in their default colors.
+show: psc_region_chases
+layers:
+  - target: all_lights
+    pattern: solid
+    brightness: 30
+
+  - each: "groove_*"
+    pattern: chase
+    order: y
+    interval: 80ms
+    width: 2
+    tail: 120ms
+    count: 2
