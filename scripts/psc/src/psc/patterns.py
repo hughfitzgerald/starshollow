@@ -90,8 +90,9 @@ def expand_layer(layer: Layer, hw: HardwareMap, grid: int = 10) -> tuple[dict[st
     A layer with `each:` has several target lists; the pattern runs once per
     list, all starting together, into one set of keyframes."""
     b = _Builder(grid)
-    for targets in layer.target_sets or [layer.targets]:
-        _expand_into(b, dataclasses.replace(layer, targets=targets), hw)
+    for name, targets in layer.target_sets or [("", layer.targets)]:
+        where = f"{layer.where}, each {name}" if name else layer.where
+        _expand_into(b, dataclasses.replace(layer, targets=targets, where=where), hw)
     return b.frames, b.end
 
 

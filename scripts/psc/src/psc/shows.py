@@ -75,9 +75,9 @@ class Layer:
     priority: int
     params: dict = field(default_factory=dict)
     start_after: bool = False  # `start: after` = when the layer above ends
-    # `each:` runs the pattern once per target list; `target:` is one list.
-    # `targets` is the union, in order.
-    target_sets: list[list[str]] = field(default_factory=list)
+    # `each:` runs the pattern once per (entry name, target list); `target:`
+    # is one list. `targets` is the union, in order.
+    target_sets: list[tuple[str, list[str]]] = field(default_factory=list)
 
 
 @dataclass
@@ -130,11 +130,11 @@ def parse_layer(raw, index: int, show_where: str, hw: HardwareMap, tempo: Tempo 
     if "each" in raw:
         target_sets = hw.resolve_each(raw["each"], f"{where}: each")
     elif "target" in raw:
-        target_sets = [hw.resolve_target(raw["target"], where)]
+        target_sets = [("", hw.resolve_target(raw["target"], where))]
     else:
         target_sets = []
     targets: list[str] = []
-    for names in target_sets:
+    for _, names in target_sets:
         targets += [n for n in names if n not in targets]
     layer = Layer(
         index=index,

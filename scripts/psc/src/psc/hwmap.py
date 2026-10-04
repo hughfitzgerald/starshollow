@@ -58,13 +58,13 @@ class HardwareMap:
                     out.append(m)
         return out
 
-    def resolve_each(self, spec, where: str) -> list[list[str]]:
-        """`each:` fans a layer out: one target list per entry. An entry is a
-        group, a light, or a glob over group names such as `groove_*`."""
+    def resolve_each(self, spec, where: str) -> list[tuple[str, list[str]]]:
+        """`each:` fans a layer out: one (name, target list) per entry. An entry
+        is a group, a light, or a glob over group names such as `groove_*`."""
         items = spec if isinstance(spec, list) else [spec]
         if not items:
             raise PscError(f"{where}: each is empty")
-        sets: list[list[str]] = []
+        sets: list[tuple[str, list[str]]] = []
         for item in items:
             if not isinstance(item, str):
                 raise PscError(f"{where}: each entries must be names, got {item!r}")
@@ -75,12 +75,12 @@ class HardwareMap:
                 for g in names:
                     if not self.groups[g]:
                         raise PscError(f"{where}: group {g!r} has no lights")
-                    sets.append(list(self.groups[g]))
+                    sets.append((g, list(self.groups[g])))
             else:
                 members = self.resolve_target(item, where)
                 if not members:
                     raise PscError(f"{where}: {item!r} has no lights")
-                sets.append(members)
+                sets.append((item, members))
         return sets
 
 

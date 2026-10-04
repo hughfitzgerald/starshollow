@@ -258,5 +258,7 @@ def test_each_errors(env):
         parse_show(write_show(project, "x3", "layers:\n  - { each: [pair, nope], pattern: solid }\n"), hw)
     with pytest.raises(PscError, match="instead of each"):
         parse_show(write_show(project, "x4", "tempo: { bpm: 120 }\nlayers:\n  - { each: [pair], pattern: beat, tracks: { l1: 'x...' } }\n"), hw)
+    with pytest.raises(PscError, match=r"each pair.*width must be at least 1 and, when count > 1, less than the number of lights \(2\)"):
+        compile_show(parse_show(write_show(project, "x6", "layers:\n  - { each: [pair], pattern: chase, interval: 80ms, width: 2, count: 2 }\n"), hw), hw)
     with pytest.raises(PscError, match="can't take each"):
         parse_show(write_show(project, "x5", "layers:\n  - { each: [pair], pattern: show, show: other }\n"), hw)
