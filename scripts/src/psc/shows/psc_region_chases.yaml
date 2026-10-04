@@ -4,10 +4,25 @@
 # chasing until it finishes, so every region is moving for the whole show.
 # Lights chase in their default colors.
 show: psc_region_chases
-length: 4s
+length: 8s
 layers:
-  - { target: all_lights, pattern: solid, brightness: 30 }
-  - each: [jess, dean, scoop, left_ramp]
+  - { target: all_lights_no_flashers, pattern: solid, brightness: 30 }
+  - each:
+      [
+        jess,
+        dean,
+        scoop,
+        left_ramp,
+        bonus_lanes,
+        upper_shots,
+        right_ramp,
+        ramp_stars,
+        hidden_stars,
+        upper_modes,
+        lower_modes_and_lanes,
+        bonus_multis_and_mode,
+        backglass_flashers,
+      ]
     pattern: chase
     order: x
     interval: 80ms
