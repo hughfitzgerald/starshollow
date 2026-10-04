@@ -1,0 +1,7 @@
+# Files produced by `npm run extract-vpx` are written with LF line endings.
+# Keep them LF in the working copy so Windows (core.autocrlf=true) doesn't
+# check them out as CRLF and make every file look modified after an extract.
+starshollow/** text=auto eol=lf
+
+# The table script is stored with CRLF; leave it untouched.
+starshollow/script.vbs -text
