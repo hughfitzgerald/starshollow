@@ -221,16 +221,18 @@ def test_each_runs_the_pattern_per_group(env):
 """)
     apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
     hw = build_map(cfg, Table(cfg.table_dir))
-    # one chase per group, both starting at 0; the show ends with the longer one
+    # one chase per group, both starting at 0. The 3-light trio takes 300ms;
+    # the 2-light pair keeps chasing until then (l1 lights again at 200) and
+    # is cut off when the trio's last light lets go.
     lights, c = timeline(project, hw, "each", """
 layers:
   - { each: [pair, trio], pattern: chase, interval: 100ms, color: 00ff00 }
 """)
-    assert [t for t, _ in lights["l1"]] == [0, 100]
+    assert [t for t, _ in lights["l1"]] == [0, 100, 200]  # release at 300 == length is dropped
     assert [t for t, _ in lights["l2"]] == [0, 100, 200]
     assert [t for t, _ in lights["l10"]] == [0, 100]
     assert [t for t, _ in lights["gi1"]] == [0, 100, 200]
-    assert [t for t, _ in lights["FL1"]] == [0, 200]  # release at 300 == length is dropped
+    assert [t for t, _ in lights["FL1"]] == [0, 200]
     assert c.length == 300
     # a glob over group names, natural order; same result as listing them
     glob, c2 = timeline(project, hw, "glob", """
@@ -262,3 +264,47 @@ def test_each_errors(env):
         compile_show(parse_show(write_show(project, "x6", "layers:\n  - { each: [pair], pattern: chase, interval: 80ms, width: 2, count: 2 }\n"), hw), hw)
     with pytest.raises(PscError, match="can't take each"):
         parse_show(write_show(project, "x5", "layers:\n  - { each: [pair], pattern: show, show: other }\n"), hw)
+
+
+def test_each_fills_to_the_longest_entry_with_tail(env):
+    project, cfg, hw = env
+    cfg = write_config(project, BASE + """
+  trio: { members: [l10, gi1, FL1] }
+""")
+    apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
+    hw = build_map(cfg, Table(cfg.table_dir))
+    # trio, count 2: last light (FL1) on at 500, lets go at 600 with a 50ms tail.
+    # pair runs 3 passes (to 600) and l1, lit at 400-500, isn't cut; l2 lit at
+    # 500 is released at 600 with the same tail, so both fade out together.
+    lights, c = timeline(project, hw, "fill", """
+length: 700ms
+layers:
+  - { each: [pair, trio], pattern: chase, interval: 100ms, tail: 50ms, count: 2, color: 00ff00 }
+""")
+    on = lambda name: [t for t, s in lights[name] if s.endswith("00ff00")]
+    assert on("FL1") == [200, 500]
+    assert lights["FL1"][-2:] == [(600, "FL1|100|000000|50"), (650, "FL1|100|stop")]
+    assert on("l1") == [0, 200, 400]
+    assert on("l2") == [100, 300, 500]
+    assert lights["l2"][-2:] == [(600, "l2|100|000000|50"), (650, "l2|100|stop")]
+    assert c.length == 700
+
+
+def test_count_fill_repeats_until_length(env):
+    project, cfg, hw = env
+    lights, c = timeline(project, hw, "cf", """
+length: 500ms
+layers:
+  - { target: pair, pattern: chase, interval: 100ms, count: fill, color: 00ff00 }
+""")
+    assert [t for t, _ in lights["l1"]] == [0, 100, 200, 300, 400]
+    assert [t for t, _ in lights["l2"]] == [0, 100, 200, 300, 400]  # release at 500 == length is dropped
+    assert c.length == 500
+    lights, c = timeline(project, hw, "bf", """
+length: 1s
+layers:
+  - { target: l1, pattern: breathe, period: 400ms, cycles: fill, max: 100 }
+""")
+    assert [t for t, _ in lights["l1"]][:5] == [0, 200, 400, 600, 800]
+    with pytest.raises(PscError, match="fill needs a length"):
+        compile_show(parse_show(write_show(project, "nf", "layers:\n  - { target: pair, pattern: chase, interval: 100ms, count: fill }\n"), hw), hw)

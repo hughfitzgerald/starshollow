@@ -205,9 +205,21 @@ layers:
 ```
 
 Everything else about the layer is shared: `start`, `priority`, `color` and the pattern's parameters. It works with any
-pattern that takes a `target`; `beat` and `show` layers don't take it. Groups of different sizes end at different times
-(a chase lasts lights x `interval` x `count`), so a show that mixes them should set `length:`. A group whose pattern has
-finished falls back to whatever is beneath the layer until the show loops.
+pattern that takes a `target`; `beat` and `show` layers don't take it.
+
+Groups of different sizes take different times (a chase pass lasts lights x `interval`), so `count` (or `cycles`) is
+for the entry that runs longest. Every other entry keeps repeating its pattern until that entry's last light lets go,
+and is cut off at that moment, mid-pass if need be, fading out with the same `tail`. So all the chases run for the
+whole layer, and they end together.
+
+**Fill.** `count: fill` (or `cycles: fill` for `breathe`) repeats a pattern until the show's `length`, which the show
+must set. It works with or without `each`:
+
+```yaml
+length: 4s
+layers:
+  - { each: [jess, dean, scoop], pattern: chase, interval: 80ms, count: fill }
+```
 
 **Patterns:**
 
@@ -215,7 +227,7 @@ finished falls back to whatever is beneath the layer until the show loops.
 |---|---|---|
 | `solid` | `duration` | On at `start` for `duration`. |
 | `flash` | `count`, `on`, `off`, `fade?` | Blink the whole target. |
-| `chase` | `order`, `interval`, `width`, `tail?`, `count?` | Step through lights one at a time. `order` is `listed`, `x`, `y`, `-x`, `-y`, or `angle:<anchor>`. |
+| `chase` | `order`, `interval`, `width`, `tail?`, `count?` | Step through lights one at a time. `order` is `listed`, `x`, `y`, `-x`, `-y`, or `angle:<anchor>`. `width` is how many lights are lit at once, so it must be less than the number of lights when `count` is more than 1. |
 | `sweep` | `direction`, `anchor?`, `speed`, `width`, `tail` | Spatial band. Each light's on-time is its distance along the direction divided by `speed`. |
 | `breathe` | `period`, `min`, `max`, `cycles?` | Two keyframes per cycle, using GLF's fade field. No dense sampling. |
 
@@ -325,6 +337,7 @@ End Sub
 
 **Validation.** All of these are errors and nothing is written:
 - unknown targets or anchors, a layer with both `target` and `each`, or an `each` glob that matches no group
+- `count: fill` in a show with no `length`
 - color conflicts between groups
 - missing `anchor` for out/in sweeps
 - a show `length` shorter than its content

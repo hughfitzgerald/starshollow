@@ -10,6 +10,7 @@ from .values import (GRID_MS, Tempo, check_keys, expect_mapping, parse_color, pa
 from .yamlio import load_yaml
 
 TIME, INT, NUMBER, TEXT, MAPPING = "time", "int", "number", "text", "mapping"
+REPEAT = "repeat"  # a count, or "fill": repeat until the show's length
 
 COMMON = {"target", "each", "pattern", "start", "color", "brightness", "priority"}
 
@@ -17,14 +18,14 @@ COMMON = {"target", "each", "pattern", "start", "color", "brightness", "priority
 REQUIRED = object()
 PATTERNS = {
     "solid": {"duration": (TIME, None), "fade": (TIME, 0), "tail": (TIME, 0)},
-    "flash": {"count": (INT, 1), "on": (TIME, REQUIRED), "off": (TIME, None), "fade": (TIME, 0)},
+    "flash": {"count": (REPEAT, 1), "on": (TIME, REQUIRED), "off": (TIME, None), "fade": (TIME, 0)},
     "chase": {"interval": (TIME, REQUIRED), "order": (TEXT, "listed"), "width": (INT, 1),
-              "tail": (TIME, 0), "fade": (TIME, 0), "count": (INT, 1)},
+              "tail": (TIME, 0), "fade": (TIME, 0), "count": (REPEAT, 1)},
     "sweep": {"direction": (TEXT, REQUIRED), "anchor": (TEXT, None), "speed": (NUMBER, REQUIRED),
-              "width": (NUMBER, 100), "tail": (TIME, 0), "fade": (TIME, 0), "count": (INT, 1),
+              "width": (NUMBER, 100), "tail": (TIME, 0), "fade": (TIME, 0), "count": (REPEAT, 1),
               "gap": (TIME, 0)},
     "breathe": {"period": (TIME, REQUIRED), "min": (NUMBER, 0), "max": (NUMBER, None),
-                "cycles": (INT, 1)},
+                "cycles": (REPEAT, 1)},
     # tracks: {target: "x...x..."}, one character per tempo step
     # plays another PSC show's timeline, inlined at compile time
     "show": {"show": (TEXT, REQUIRED), "count": (INT, 1)},
@@ -97,7 +98,9 @@ def _parse_param(kind, value, where, tempo):
         if not isinstance(value, dict) or not value:
             raise PscError(f"{where}: expected a mapping")
         return value
-    if kind == INT:
+    if kind == REPEAT and isinstance(value, str) and value.strip() == "fill":
+        return "fill"
+    if kind in (INT, REPEAT):
         return parse_int(value, where, minimum=0)
     if kind == NUMBER:
         return parse_number(value, where)
