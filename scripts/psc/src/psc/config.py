@@ -51,6 +51,7 @@ class Config:
     groups: dict[str, Group] = field(default_factory=dict)
     bulbs: dict[str, Bulb] = field(default_factory=dict)
     proxy_template: str | None = None
+    backglass_image: str | None = None  # for the editor: a table image name or a file
 
 
 def find_config(explicit: str | None) -> Path:
@@ -127,9 +128,11 @@ def load_config(path: Path) -> Config:
             errors.extend(e)
 
     backglass = expect_mapping(raw.get("backglass"), f"{where}: backglass")
-    check_keys(backglass, {"source", "template", "bulbs"}, f"{where}: backglass")
+    check_keys(backglass, {"source", "template", "image", "bulbs"}, f"{where}: backglass")
     if backglass.get("source"):
         cfg.directb2s = (base / backglass["source"]).resolve()
+    if backglass.get("image"):
+        cfg.backglass_image = str(backglass["image"])
     if backglass.get("template"):
         cfg.proxy_template = backglass["template"]
     seen_ids = {}

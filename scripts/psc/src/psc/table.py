@@ -82,6 +82,7 @@ class Table:
         self.top = float(gamedata.get("top", 0.0))
         self.right = float(gamedata.get("right", 952.0))
         self.bottom = float(gamedata.get("bottom", 2162.0))
+        self.image = str(gamedata.get("image", "") or "")
 
     def light(self, name: str) -> LightRecord | None:
         return self.lights.get(name.lower())
