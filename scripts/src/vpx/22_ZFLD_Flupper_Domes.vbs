@@ -149,7 +149,7 @@ Sub InitFlasher(nr, col)
 		Case "blue"
 			domelight(nr).color = RGB(4,120,255)
 			domeflasher(nr).color = RGB(200,255,255)
-			domelight(nr).intensity = 5000
+			domelight(nr).intensity = 50
 		Case "green"
 			domelight(nr).color = RGB(12,255,4)
 			domeflasher(nr).color = RGB(12,255,4)
