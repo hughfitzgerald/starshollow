@@ -16,7 +16,7 @@ Sub CreateMysteryMode()
             ' .Add "balldevice_scoop_ball_entered{modes.jd_multiball.active==True}", Array("disable_scoop_hold")
 
             .Add "timer_mystery_show_complete", Array("select_random_mystery")
-            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_10m")
+            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_10m", "remove_mystery_show")
 
             .Add "restart_qualify_mystery", Array("check_minigame")
 
@@ -60,6 +60,18 @@ Sub CreateMysteryMode()
             With .ControlEvents
                 .EventName = "select_random_mystery"
                 .Action = "start"
+            End With
+        End With
+
+        With .ShowPlayer()
+            With .EventName("play_mystery_show")
+                .Key = "key_play_mystery_show"
+                .Show = "psc_mystery"
+            End With
+            With .EventName("remove_mystery_show")
+                .Key = "key_play_mystery_show"
+                .Show = "psc_mystery"
+                .Action = "stop"
             End With
         End With
 
@@ -143,7 +155,7 @@ Sub CreateMysteryMode()
                 .Events = Array("mystery_is_ready")
                 .State = 1
             End With
-            .RestartEvents = Array("restart_qualify_mystery")
+            .RestartEvents = Array("play_mystery_show")
         End With
 
         With .Shots("inlane_1")

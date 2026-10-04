@@ -1,0 +1,10 @@
+show: psc_mystery
+resolution: 30ms     # coarser timing keeps the step count down with 78 lights
+layers:
+  - target: all_lights
+    pattern: sweep
+    direction: out
+    anchor: l58
+    speed: 3000
+    width: 250
+    tail: 150ms
