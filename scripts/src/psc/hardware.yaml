@@ -104,6 +104,7 @@ groups:
         bg_flash_upper_right,
         bg_flash_lower_right,
       ]
+
   jess:
     members: [l11, l12, l13, l14]
   dean:
@@ -112,10 +113,30 @@ groups:
     members: [l59, l58, l72]
   left_ramp:
     members: [l53, l54]
+  bonus_lanes:
+    members: [l8, l9, l7]
+  upper_shots:
+    members: [l60, l61]
+  right_ramp:
+    members: [l55, l56]
+  ramp_stars:
+    members: [l66, l67, l68, l69]
+  hidden_stars:
+    members: [l71, l70]
+  upper_modes:
+    members: [l21, l22, l23]
+  lower_modes_and_lanes:
+    members: [l62, l63, l24, l25, l26, l27, l64, l65]
+  bonus_multis_and_mode:
+    members: [l31, l32, l28, l33, l34]
+
   all_flashers: # playfield and backglass together
     members: ["@flashers", "@backglass_flashers"]
   all_lights: # every GLF light, backglass included
     members: ["*"]
+  all_lights_no_flashers: # every GLF light except flashers
+    members: ["@all_lights"]
+    exclude: ["@flashers"]
 
   # Six regions covering every light except the backglass logo, for the
   # groove show. Left/right split at the table's center line; bands split at
