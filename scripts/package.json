@@ -11,6 +11,10 @@
     "concat-vpx": "grunt concat:prod",
     "convert-shows": "node mpf-show-convert.js src/glf/yamlshows",
     "convert-shows-tokens": "node mpf-show-convert-tokens.js src/glf/yamlshows",
+    "psc-sync": "uv run --project psc psc sync",
+    "psc-compile": "uv run --project psc psc compile",
+    "psc-map": "uv run --project psc psc map",
+    "psc-test": "uv run --project psc pytest psc/tests -q",
     "rename-project": "node rename-reset-project.js",
     "update-glf": "curl -o ./src/glf/glf.vbs https://raw.githubusercontent.com/mpcarr/vpx-glf/refs/heads/main/scripts/vpx-glf.vbs"
   },
