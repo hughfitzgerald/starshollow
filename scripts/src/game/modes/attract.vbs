@@ -35,8 +35,8 @@ Sub CreateAttractMode()
         With .ShowPlayer()
             With .EventName("mode_attract_started")
                 .Key = "key_mode_attract_started"
-                ' .Show = "generated_flash"
                 .Show = "psc_attract"
+                ' .Show = "generated_flash"
                 ' .Speed = 1
             End With
         End With

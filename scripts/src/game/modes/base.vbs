@@ -343,6 +343,24 @@ Sub CreateBaseMode()
             End With
         End With
 
+        With .ShowPlayer()
+            With .EventName("gi_lights_on")
+                .Key = "key_show_gi_lights_on"
+                .Show = "on_color"
+                With .Tokens()
+                    .Add "lights", "GI"
+                    .Add "color", GIColor2700k
+                End With
+            End With
+            With .EventName("gi_lights_off")
+                .Key = "key_show_gi_lights_off"
+                .Show = "off"
+                With .Tokens()
+                    .Add "lights", "GI"
+                End With
+            End With
+        End With
+
 
         '--- Lights --------------------------------------------------------
         With .LightPlayer()

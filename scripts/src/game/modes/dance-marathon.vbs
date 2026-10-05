@@ -34,11 +34,12 @@ Sub CreateDanceMarathonMode()
         .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_dance_marathon_started", Array("base_music_stop")
+            .Add "mode_dance_marathon_started", Array("base_music_stop", "gi_lights_off")
             .Add "mode_dance_marathon_stopping", Array("dm_shots_off")
             .Add "timer_dm_mode_complete", Array("base_music_start")
 
-            .Add "timer_dm_intro_delay_complete", Array("release_scoop_hold", "dm_start_shots")
+            .Add "timer_dm_intro_delay_tick{device.timers.dm_intro_delay.ticks == 27}", Array("dm_intro_show")
+            .Add "timer_dm_intro_delay_complete", Array("release_scoop_hold", "dm_start_shots", "dm_show_off", "gi_lights_on")
             
 
             .Add "timer_dm_shot_complete", Array("dm_reset_shots")
@@ -47,6 +48,19 @@ Sub CreateDanceMarathonMode()
             For Each shot In dm_shots
                 .Add shot.Name & "_lit_hit", Array("dm_shot_hit")
             Next
+        End With
+
+        With .ShowPlayer()
+            With .EventName("dm_intro_show")
+                .Key = "key_dm_intro_show"
+                .Show = "psc_dance_intro"
+                ' .Loops = 0
+            End With
+            With .EventName("dm_show_off")
+                .Key = "key_dm_intro_show"
+                .Show = "psc_dance_intro"
+                .Action = "stop"
+            End With
         End With
 
         With .SoundPlayer()
@@ -197,9 +211,9 @@ Sub CreateDanceMarathonMode()
         With .Timers("dm_intro_delay")
             .StartRunning = True
             .Direction = "down"
-            .StartValue = 14        ' 14 seconds until the clip of Taylor is done and we can start the mode
+            .StartValue = 28        ' 14 seconds until the clip of Taylor is done and we can start the mode
             .EndValue = 0
-            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+            .TickInterval = 500    ' Tick every 0.5 second (500 ms)
             With .ControlEvents
                 .EventName = "skip_minigame_intro{device.timers.dm_intro_delay.ticks > 0}"
                 .Action = "jump"
