@@ -926,7 +926,7 @@ minigames = Array( _
 )
 
 
-minigames = Array(NewMinigame("dance_marathon", "DANCE MARATHON", "l24"))
+' minigames = Array(NewMinigame("dance_marathon", "DANCE MARATHON", "l24"))
 ' minigames = Array(NewMinigame("town_meeting", "TOWN MEETING", "l25"))
 ' minigames = Array(NewMinigame("dinner", "FRIDAY NIGHT DINNER", "l26"))
 ' minigames = Array(NewMinigame("kims_antiques", "KIM'S ANTIQUES", "l21"))
