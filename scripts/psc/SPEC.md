@@ -291,6 +291,12 @@ layers:
   anticipates the downbeat.
 - If the next hit starts rising before the current one has decayed, the light goes straight into the next hit.
 
+**From MIDI.** `psc midi beat.mid` (or `npm run psc-midi -- beat.mid`) prints a `tempo:` and a beat layer for a
+MIDI drum file: every note-on becomes a hit on the nearest tempo step, the note number picks the track (named after
+the General MIDI drum map, `kick`, `snare`, `hihat`...), and a velocity of 96 or more is an `X`. Tempo and time
+signature come from the file. Rename the tracks to groups by hand or with `--map kick=groove_lower_left,...`;
+`--steps-per-beat`, `--bars` and `--accent-velocity` adjust the grid, the length and the accent threshold.
+
 **Length.** By default a show lasts until its last pattern ends, including trailing off-time. For example, a flash ends
 after its final `off`, and a sweep ends after its `gap`. An explicit `length` can extend that, but can't cut content short.
 
@@ -362,9 +368,10 @@ uv run psc import-groups      # one-time bootstrap from existing tags
 uv run psc map                # print the hardware map: lights, positions, groups, colors
 uv run psc compile            # sync --check, then write psc_shows.vbs
 uv run psc edit [--port N] [--no-open]   # the light group editor, in a browser
+uv run psc midi beat.mid [--map kick=group,...]   # beat-layer notation from a MIDI drum file
 ```
 
-From `scripts/`, the same commands run as `npm run psc-sync`, `psc-map`, `psc-compile`, `psc-edit` and `psc-test`.
+From `scripts/`, the same commands run as `npm run psc-sync`, `psc-map`, `psc-compile`, `psc-edit`, `psc-midi` and `psc-test`.
 
 Typical loop:
 1. Edit `hardware.yaml`, then run `psc sync` and `npm run assemble-vpx`.

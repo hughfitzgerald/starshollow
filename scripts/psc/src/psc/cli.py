@@ -61,6 +61,22 @@ def cmd_edit(cfg, args) -> int:
     return serve(cfg, args.port, not args.no_open)
 
 
+def cmd_midi(cfg, args) -> int:
+    from pathlib import Path
+
+    from .midi import convert_file
+    names = {}
+    for item in (args.map or "").split(","):
+        if item.strip():
+            drum, _, group = item.partition("=")
+            if not group:
+                raise PscError(f"--map expects drum=group pairs, got {item!r}")
+            names[drum.strip()] = group.strip()
+    print(convert_file(Path(args.file), steps_per_beat=args.steps_per_beat, bars=args.bars,
+                       accent_velocity=args.accent_velocity, names=names, all_channels=args.all_channels), end="")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="psc", description="Pinball Show Compiler")
     parser.add_argument("--config", help="path to hardware.yaml (default: search upward from cwd)")
@@ -75,9 +91,17 @@ def main(argv=None) -> int:
     p.add_argument("--port", type=int, default=8765, help="port on 127.0.0.1 (default 8765; 0 picks a free one)")
     p.add_argument("--no-open", action="store_true", help="don't open a browser; just print the URL")
     p.set_defaults(func=cmd_edit)
+    p = sub.add_parser("midi", help="print beat-layer notation for a MIDI drum file")
+    p.add_argument("file", help="a .mid file; drums are read from channel 10, or every channel if it has none")
+    p.add_argument("--steps-per-beat", type=int, default=4, help="grid per quarter note (default 4 = 16ths)")
+    p.add_argument("--bars", type=int, help="bars to keep (default: whole bars up to the last hit)")
+    p.add_argument("--accent-velocity", type=int, default=96, help="velocity from which a hit is X (default 96)")
+    p.add_argument("--map", help="rename tracks: kick=groove_lower_left,snare=groove_upper_right,...")
+    p.add_argument("--all-channels", action="store_true", help="take notes from every channel, not only channel 10")
+    p.set_defaults(func=cmd_midi)
     args = parser.parse_args(argv)
     try:
-        cfg = load_config(find_config(args.config))
+        cfg = None if args.command == "midi" else load_config(find_config(args.config))
         return args.func(cfg, args)
     except PscError as e:
         for message in e.messages:

@@ -15,6 +15,7 @@
     "psc-compile": "uv run --project psc psc compile",
     "psc-map": "uv run --project psc psc map",
     "psc-edit": "uv run --project psc psc edit",
+    "psc-midi": "uv run --project psc psc midi",
     "psc-test": "uv run --project psc pytest psc/tests -q",
     "svg-to-playfield": "uv run svg-to-playfield.py",
     "rename-project": "node rename-reset-project.js",
