@@ -103,7 +103,7 @@ def test_odd_meter_and_other_channels():
     assert "      note_60: |   # MIDI 60\n        X... .... ....\n      note_64: |   # MIDI 64\n        .... X... ....\n" in out
     assert "drifts" not in out
     out = midi_to_beat(read_midi(midi_file([track([(0, b"\xff\x51\x03" + (468_750).to_bytes(3, "big")), (0, on(36, 100))])])))
-    assert "128 bpm" in out and "117.19ms" in out and "drifts" in out
+    assert "bpm: 128" in out and "117.19ms" in out and "drifts" in out
 
 
 def test_errors():
