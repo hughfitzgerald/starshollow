@@ -12,7 +12,7 @@ Sub CreateBonusMode
 
         With .EventPlayer()
             .Debug = True
-            .Add "mode_eob_bonus_started", Array("run_bonus_started")
+            .Add "mode_eob_bonus_started", Array("run_bonus_started", "gi_lights_off")
 
             .Add "run_bonus_started", Array("calculate_bonus_total", "play_bonus_show1")
             .Add "calculate_bonus_total", Array("add_bonus_total_to_score")
@@ -87,9 +87,11 @@ Sub CreateBonusMode
             For x = 1 To BonusShows
                 With .EventName("bonus_light"&x&"_show")
                     .Key = "key_bonus_light"&x&"_show"
-                    .Show = "flash_color"
-                    .Speed = 20
-                    .Loops = 12
+                    ' .Show = "flash_color"
+                    ' .Speed = 20
+                    ' .Loops = 12
+                    .Show = "psc_eob_sweep"
+                    .Loops = 0
                     .Priority = 2000
                     'When the show ends, move to the next one
                     .EventsWhenCompleted = Array("play_bonus_show"&(x+1))
