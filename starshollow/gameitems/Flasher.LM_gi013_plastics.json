@@ -1,7 +1,7 @@
 {
   "Flasher": {
     "height": 58.5,
-    "pos_x": 812.6829268292684,
+    "pos_x": 812.1552106430156,
     "pos_y": 1066.220703125,
     "rot_x": 0.0,
     "rot_y": 0.0,
@@ -62,7 +62,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 880.758,
+        "x": 879.703,
         "y": 1184.455,
         "z": 0.0,
         "smooth": false,
@@ -75,7 +75,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 880.758,
+        "x": 879.703,
         "y": 947.986,
         "z": 0.0,
         "smooth": false,

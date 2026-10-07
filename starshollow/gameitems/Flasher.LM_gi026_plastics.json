@@ -1,7 +1,7 @@
 {
   "Flasher": {
     "height": 58.5,
-    "pos_x": 236.15299334811527,
+    "pos_x": 239.84700665188467,
     "pos_y": 652.136474609375,
     "rot_x": 0.0,
     "rot_y": 0.0,
@@ -36,7 +36,7 @@
     "part_group_name": "GI_Layer",
     "drag_points": [
       {
-        "x": 164.647,
+        "x": 172.035,
         "y": 534.694,
         "z": 0.0,
         "smooth": false,
@@ -49,7 +49,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 164.647,
+        "x": 172.035,
         "y": 769.579,
         "z": 0.0,
         "smooth": false,

@@ -1,7 +1,7 @@
 {
   "Flasher": {
     "height": 58.5,
-    "pos_x": 46.70288248337029,
+    "pos_x": 41.68957871396896,
     "pos_y": 889.9248046875,
     "rot_x": 0.0,
     "rot_y": 0.0,
@@ -36,7 +36,7 @@
     "part_group_name": "GI_Layer",
     "drag_points": [
       {
-        "x": 0.0,
+        "x": 1.055,
         "y": 772.218,
         "z": 0.0,
         "smooth": false,
@@ -49,7 +49,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 0.0,
+        "x": 1.055,
         "y": 1007.631,
         "z": 0.0,
         "smooth": false,
@@ -62,7 +62,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 93.406,
+        "x": 82.324,
         "y": 1007.631,
         "z": 0.0,
         "smooth": false,
@@ -75,7 +75,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 93.406,
+        "x": 82.324,
         "y": 772.218,
         "z": 0.0,
         "smooth": false,
