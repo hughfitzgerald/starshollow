@@ -4002,5 +4002,17 @@
     "file_name": "Primitive.Primitive039.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Light.gi025.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Light.gi027.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
   }
 ]
