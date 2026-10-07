@@ -49,5 +49,5 @@ Sub FrameTimer_Timer()
 End Sub
 
 'The CorTimer interval should be 10. Its sole purpose is Cor calculations.
-CorTimer.Interval = 10
-Sub CorTimer_Timer(): Cor.Update: End Sub
+' CorTimer.Interval = 10
+' Sub CorTimer_Timer(): Cor.Update: End Sub
