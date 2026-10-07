@@ -107,6 +107,10 @@ gi-3-plastic-halos` is exactly strategy 3, and likewise for 4. Check one out,
    exported page-size at 96 dpi, the same 1804×4096 as `plastics.webp`.
 4. `npm run gi-lighting lightmaps` crops, writes the webp, the `images.json`
    entry, and the flasher. Bulbs whose glow touches no plastic are skipped.
+5. Too bright or too dim overall: `npm run gi-lighting lightmaps-adjust --
+   --alpha 60` rewrites the existing flashers (alpha is the editor's Opacity,
+   100 = 1.0, linear). No re-render needed. The shape of each glow lives in
+   the SVG blobs, so a tighter or softer hotspot is steps 2 to 4 again.
 
 Table coordinates to SVG millimetres: `x_mm = x × 477.30832 / 952`,
 `y_mm = y × 1083.7333 / 2162` (about 0.5 mm per unit).
