@@ -102,7 +102,9 @@
       "gi007",
       "gi006",
       "gi050",
-      "gi026"
+      "gi026",
+      "gi025",
+      "gi027"
     ],
     "fire_events": false,
     "stop_single_events": false,
@@ -255,7 +257,9 @@
       "gi015",
       "gi014",
       "gi013",
-      "gi026"
+      "gi026",
+      "gi025",
+      "gi027"
     ],
     "fire_events": false,
     "stop_single_events": false,
@@ -416,7 +420,9 @@
       "bg_flash_lower_left",
       "bg_flash_upper_left",
       "bg_flash_upper_right",
-      "bg_flash_lower_right"
+      "bg_flash_lower_right",
+      "gi025",
+      "gi027"
     ],
     "fire_events": false,
     "stop_single_events": false,

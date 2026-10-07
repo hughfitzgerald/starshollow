@@ -1256,45 +1256,45 @@ End Function
 Function Glf_307(args)
 	Glf_307 = 1000
 End Function
-Dim glf_gi006_lmarr : glf_gi006_lmarr = Array()
+Dim glf_gi006_lmarr : glf_gi006_lmarr = Array(lm_gi006_plastics)
 glf_lightMaps.Add "gi006", glf_gi006_lmarr
-Dim glf_gi007_lmarr : glf_gi007_lmarr = Array()
+Dim glf_gi007_lmarr : glf_gi007_lmarr = Array(lm_gi007_plastics)
 glf_lightMaps.Add "gi007", glf_gi007_lmarr
 Dim glf_gi008_lmarr : glf_gi008_lmarr = Array()
 glf_lightMaps.Add "gi008", glf_gi008_lmarr
 Dim glf_gi009_lmarr : glf_gi009_lmarr = Array()
 glf_lightMaps.Add "gi009", glf_gi009_lmarr
-Dim glf_gi010_lmarr : glf_gi010_lmarr = Array()
+Dim glf_gi010_lmarr : glf_gi010_lmarr = Array(lm_gi010_plastics)
 glf_lightMaps.Add "gi010", glf_gi010_lmarr
-Dim glf_gi011_lmarr : glf_gi011_lmarr = Array()
+Dim glf_gi011_lmarr : glf_gi011_lmarr = Array(lm_gi011_plastics)
 glf_lightMaps.Add "gi011", glf_gi011_lmarr
-Dim glf_gi012_lmarr : glf_gi012_lmarr = Array()
+Dim glf_gi012_lmarr : glf_gi012_lmarr = Array(lm_gi012_plastics)
 glf_lightMaps.Add "gi012", glf_gi012_lmarr
-Dim glf_gi013_lmarr : glf_gi013_lmarr = Array()
+Dim glf_gi013_lmarr : glf_gi013_lmarr = Array(lm_gi013_plastics)
 glf_lightMaps.Add "gi013", glf_gi013_lmarr
-Dim glf_gi014_lmarr : glf_gi014_lmarr = Array()
+Dim glf_gi014_lmarr : glf_gi014_lmarr = Array(lm_gi014_plastics)
 glf_lightMaps.Add "gi014", glf_gi014_lmarr
-Dim glf_gi015_lmarr : glf_gi015_lmarr = Array()
+Dim glf_gi015_lmarr : glf_gi015_lmarr = Array(lm_gi015_plastics)
 glf_lightMaps.Add "gi015", glf_gi015_lmarr
-Dim glf_gi016_lmarr : glf_gi016_lmarr = Array()
+Dim glf_gi016_lmarr : glf_gi016_lmarr = Array(lm_gi016_plastics)
 glf_lightMaps.Add "gi016", glf_gi016_lmarr
-Dim glf_gi017_lmarr : glf_gi017_lmarr = Array()
+Dim glf_gi017_lmarr : glf_gi017_lmarr = Array(lm_gi017_plastics)
 glf_lightMaps.Add "gi017", glf_gi017_lmarr
-Dim glf_gi018_lmarr : glf_gi018_lmarr = Array()
+Dim glf_gi018_lmarr : glf_gi018_lmarr = Array(lm_gi018_plastics)
 glf_lightMaps.Add "gi018", glf_gi018_lmarr
-Dim glf_gi019_lmarr : glf_gi019_lmarr = Array()
+Dim glf_gi019_lmarr : glf_gi019_lmarr = Array(lm_gi019_plastics)
 glf_lightMaps.Add "gi019", glf_gi019_lmarr
-Dim glf_gi020_lmarr : glf_gi020_lmarr = Array()
+Dim glf_gi020_lmarr : glf_gi020_lmarr = Array(lm_gi020_plastics)
 glf_lightMaps.Add "gi020", glf_gi020_lmarr
-Dim glf_gi021_lmarr : glf_gi021_lmarr = Array()
+Dim glf_gi021_lmarr : glf_gi021_lmarr = Array(lm_gi021_plastics)
 glf_lightMaps.Add "gi021", glf_gi021_lmarr
-Dim glf_gi022_lmarr : glf_gi022_lmarr = Array()
+Dim glf_gi022_lmarr : glf_gi022_lmarr = Array(lm_gi022_plastics)
 glf_lightMaps.Add "gi022", glf_gi022_lmarr
-Dim glf_gi023_lmarr : glf_gi023_lmarr = Array()
+Dim glf_gi023_lmarr : glf_gi023_lmarr = Array(lm_gi023_plastics)
 glf_lightMaps.Add "gi023", glf_gi023_lmarr
-Dim glf_gi024_lmarr : glf_gi024_lmarr = Array()
+Dim glf_gi024_lmarr : glf_gi024_lmarr = Array(lm_gi024_plastics)
 glf_lightMaps.Add "gi024", glf_gi024_lmarr
-Dim glf_gi050_lmarr : glf_gi050_lmarr = Array()
+Dim glf_gi050_lmarr : glf_gi050_lmarr = Array(lm_gi050_plastics)
 glf_lightMaps.Add "gi050", glf_gi050_lmarr
 Dim glf_l1_lmarr : glf_l1_lmarr = Array()
 glf_lightMaps.Add "l1", glf_l1_lmarr
@@ -1356,7 +1356,7 @@ Dim glf_l7_lmarr : glf_l7_lmarr = Array()
 glf_lightMaps.Add "l7", glf_l7_lmarr
 Dim glf_l57_lmarr : glf_l57_lmarr = Array()
 glf_lightMaps.Add "l57", glf_l57_lmarr
-Dim glf_gi026_lmarr : glf_gi026_lmarr = Array()
+Dim glf_gi026_lmarr : glf_gi026_lmarr = Array(lm_gi026_plastics)
 glf_lightMaps.Add "gi026", glf_gi026_lmarr
 Dim glf_l58_lmarr : glf_l58_lmarr = Array()
 glf_lightMaps.Add "l58", glf_l58_lmarr
@@ -1412,6 +1412,10 @@ Dim glf_bg_flash_upper_right_lmarr : glf_bg_flash_upper_right_lmarr = Array()
 glf_lightMaps.Add "bg_flash_upper_right", glf_bg_flash_upper_right_lmarr
 Dim glf_bg_flash_lower_right_lmarr : glf_bg_flash_lower_right_lmarr = Array()
 glf_lightMaps.Add "bg_flash_lower_right", glf_bg_flash_lower_right_lmarr
+Dim glf_gi025_lmarr : glf_gi025_lmarr = Array(lm_gi025_plastics)
+glf_lightMaps.Add "gi025", glf_gi025_lmarr
+Dim glf_gi027_lmarr : glf_gi027_lmarr = Array(lm_gi027_plastics)
+glf_lightMaps.Add "gi027", glf_gi027_lmarr
 
 glf_funcRefMap.Add "text_input: {action: ""left""}", "Glf_0"
 glf_funcRefMap.Add "text_input: {action: ""right""}", "Glf_1"

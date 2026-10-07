@@ -74,3 +74,6 @@ b2s/B2SBackglassDesigner.chm
 b2s/Projects/B2SBackglassDesigner.Settings.xml
 b2s/Changelog.txt
 /starshollow.directb2s
+
+# GI lightmap renders (gi_lightmaps_render.py); the cropped webp lives in starshollow/images
+scripts/lightmaps/
