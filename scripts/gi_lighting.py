@@ -18,6 +18,7 @@ subcommand is idempotent: running it twice gives the same result.
     gi_lighting.py plastic-halos   # strategy 3: halo lights sitting on the plastics
     gi_lighting.py lightmaps       # strategy 4: additive lightmap flashers from
                                    #   the PNGs that gi_lightmaps_render.py wrote
+    gi_lighting.py lightmaps-adjust --alpha 60   # dim/brighten existing lightmaps
     gi_lighting.py remove-plastic-halos / remove-lightmaps
 
 See gi-lighting-notes.md for what each strategy does inside the renderer and
@@ -388,6 +389,20 @@ def cmd_lightmaps(t, render_dir, **overrides):
     print(f"{len(made)} lightmap flashers")
 
 
+def cmd_lightmaps_adjust(t, **params):
+    """Change alpha / modulate on the existing lightmap flashers without
+    re-rendering. alpha is the flasher Opacity (100 = 1.0) and scales the added
+    light linearly; modulate_vs_add shifts it from plain additive (0) towards
+    only brightening what is already lit (1)."""
+    n = 0
+    for _, fl in list(t.items("Flasher")):
+        if re.match(r"^LM_gi\d+_plastics$", fl["name"]):
+            fl.update({k: v for k, v in params.items() if v is not None})
+            t.write_item("Flasher", fl)
+            n += 1
+    print(f"{n} lightmap flashers: " + ", ".join(f"{k}={v}" for k, v in params.items() if v is not None))
+
+
 def cmd_remove_lightmaps(t, only=None, quiet=False):
     images_path = os.path.join(t.root, "images.json")
     images = load(images_path)
@@ -427,6 +442,9 @@ def main():
     p.add_argument("--render-dir", default=os.path.join(HERE, "lightmaps"))
     for k, v in LIGHTMAP_FLASHER.items():
         p.add_argument(f"--{k}", type=type(v), default=v)
+    p = sub.add_parser("lightmaps-adjust")
+    p.add_argument("--alpha", type=int)
+    p.add_argument("--modulate_vs_add", type=float)
     sub.add_parser("remove-lightmaps")
     args = vars(ap.parse_args())
 
@@ -444,6 +462,8 @@ def main():
         cmd_remove_plastic_halos(t)
     elif cmd == "lightmaps":
         cmd_lightmaps(t, **args)
+    elif cmd == "lightmaps-adjust":
+        cmd_lightmaps_adjust(t, **args)
     elif cmd == "remove-lightmaps":
         cmd_remove_lightmaps(t)
 
