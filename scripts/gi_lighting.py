@@ -19,6 +19,7 @@ subcommand is idempotent: running it twice gives the same result.
     gi_lighting.py lightmaps       # strategy 4: additive lightmap flashers from
                                    #   the PNGs that gi_lightmaps_render.py wrote
     gi_lighting.py lightmaps-adjust --alpha 60   # dim/brighten existing lightmaps
+    gi_lighting.py add-bulb gi025 30 890 --like gi024   # new GI bulb, same treatment
     gi_lighting.py remove-plastic-halos / remove-lightmaps
 
 See gi-lighting-notes.md for what each strategy does inside the renderer and
@@ -257,6 +258,30 @@ def cmd_halo(t, **overrides):
     print(f"GI bulbs: {params}")
 
 
+def cmd_add_bulb(t, name, x, y, like):
+    """Add a GI bulb at (x, y) cloned from an existing one: same settings, tags,
+    collections and outline (translated), so every strategy treats it alike."""
+    if not GI_NAME.match(name):
+        sys.exit("GI bulbs must be named giNNN")
+    if os.path.exists(t.item_path("Light", name)):
+        sys.exit(f"{name} already exists")
+    src = load(t.item_path("Light", like))["Light"]
+    l = copy.deepcopy(src)
+    l["name"] = name
+    dx, dy = x - src["center"]["x"], y - src["center"]["y"]
+    l["center"] = {"x": x, "y": y}
+    for p in l["drag_points"]:
+        p["x"] += dx
+        p["y"] += dy
+    t.write_item("Light", l)
+    cpath = os.path.join(t.root, "collections.json")
+    for c in load(cpath):
+        if like in c["items"]:
+            t.collection_add(c["name"], [name])
+    t.save_index()
+    print(f"{name} at {x:.0f},{y:.0f} cloned from {like} (tags {l['blink_pattern']})")
+
+
 def plastic_halo_name(gi, k):
     return f"{gi}p{k}"
 
@@ -434,6 +459,11 @@ def main():
     p = sub.add_parser("halo")
     for k, v in HALO.items():
         p.add_argument(f"--{k}", type=type(v), default=v)
+    p = sub.add_parser("add-bulb")
+    p.add_argument("name")
+    p.add_argument("x", type=float)
+    p.add_argument("y", type=float)
+    p.add_argument("--like", required=True, help="existing giNNN light to clone")
     p = sub.add_parser("plastic-halos")
     for k, v in PLASTIC_HALO.items():
         p.add_argument(f"--{k}", type=type(v), default=v)
@@ -456,6 +486,8 @@ def main():
         cmd_transmission(t, **args)
     elif cmd == "halo":
         cmd_halo(t, **args)
+    elif cmd == "add-bulb":
+        cmd_add_bulb(t, **args)
     elif cmd == "plastic-halos":
         cmd_plastic_halos(t, **args)
     elif cmd == "remove-plastic-halos":
