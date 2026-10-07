@@ -48,7 +48,7 @@ TABLE_H = 2162.0  # table bottom (gamedata.json)
 TRANSMIT_PRODUCT = 1.0
 PLASTIC_OPACITY = 0.9999  # < 1.0 is what unlocks the transmission term
 
-HALO = dict(intensity=5.0, falloff_radius=150.0, falloff_power=2.0,
+HALO = dict(intensity=3.0, falloff_radius=150.0, falloff_power=2.0,
             bulb_modulate_vs_add=0.9, color2="#ff8c3a")
 
 PLASTIC_HALO = dict(intensity=2.5, falloff_radius=90.0, falloff_power=2.0,

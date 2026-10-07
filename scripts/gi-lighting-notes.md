@@ -56,7 +56,7 @@ So name the flasher for GLF and still set *Light Map* for the shadows.
 | # | Strategy | What changes | Script |
 |---|----------|--------------|--------|
 | 1 | Transmission | `transmission_scale = 1.0 / intensity` on every `gi*` light; plastics material opacity `0.9999` | `gi_lighting.py transmission` |
-| 2 | Halo retune | `intensity 5`, `falloff 150`, `power 2`, `modulate 0.9`, outer colour `#ff8c3a`; transmission rescaled so `intensity × transmission` stays 1.0 | `gi_lighting.py halo` |
+| 2 | Halo retune | `intensity 3`, `falloff 150`, `power 2`, `modulate 0.9`, outer colour `#ff8c3a`; transmission rescaled so `intensity × transmission` stays 1.0 | `gi_lighting.py halo` |
 | 3 | Plastic halos | One extra bulb light per (bulb, plastic wall within 100 units): `Surface = wall`, outline = wall outline, `intensity 2.5`, `falloff 90`, `modulate 0.9`, halo height 1. Added to the `GI` and `glf_lights` collections with the same tags | `gi_lighting.py plastic-halos` |
 | 4 | Lightmaps | Hidden `GI glow` layer in `playfield.svg` (one radial blob per bulb). Each blob masks the plastics layer, renders to `scripts/lightmaps/LM_giNNN.png`, is cropped to `starshollow/images/LM_giNNN_plastics.webp`, and becomes an additive flasher `LM_giNNN_plastics` at `plastic top + 0.5`, `alpha 100`, `modulate 0.3`, `Light Map = giNNN` | `gi_lightmaps_render.py` then `gi_lighting.py lightmaps` |
 
@@ -69,8 +69,8 @@ for the numbers above.
 * `intensity × transmission ≈ 1.0` puts roughly `sqrt(albedo)` of extra light
   on the plastic right over a bulb (albedo ≈ 0.9 → +0.95), fading with the
   blur. Halve `--product` if it blows out.
-* Halo `5 / 150 / 2 / 0.9` on a 0.12-ish playfield: `0.12 × 5.5 + 0.5 ≈ 1.2`
-  at the bulb (bloom), `≈ 0.43` at half radius, 0 at the edge: hotspots, not a
+* Halo `3 / 150 / 2 / 0.9` on a 0.12-ish playfield: `0.12 × 3.7 + 0.3 ≈ 0.74`
+  at the bulb, `≈ 0.28` at half radius, 0 at the edge: hotspots, not a
   wash. Power 3 and 230 was one soft blob.
 * Plastic halo `2.5 / 90` on a lavender plastic at ≈ 0.27: `≈ 1.3` at the
   bulb, `≈ 0.5` at half radius.
