@@ -344,13 +344,14 @@ def cmd_lightmaps(t, render_dir, **overrides):
     Map points at the bulb (ball shadows, and intensity if State is ever used),
     and its name contains _giNNN_ so GLF copies the bulb's colour to it every
     time the bulb fades (GLF fades by Color with State fixed at 1)."""
-    from PIL import Image
+    from PIL import Image, ImageChops, ImageDraw
 
     params = dict(LIGHTMAP_FLASHER, **overrides)
     pngs = sorted(glob.glob(os.path.join(render_dir, "LM_gi*.png")))
     if not pngs:
         sys.exit(f"no LM_gi*.png in {render_dir}; run gi_lightmaps_render.py first")
     walls = [(w, subdivide(w["drag_points"])) for _, w in t.plastics_walls()]
+    wall_mask = None  # the plastics sheet has art outside the walls; only show what a wall shows
     images_path = os.path.join(t.root, "images.json")
     images = load(images_path)
     template = None
@@ -363,6 +364,12 @@ def cmd_lightmaps(t, render_dir, **overrides):
         name = lightmap_image_name(gi)
         im = Image.open(png).convert("RGBA")
         W, H = im.size
+        if wall_mask is None or wall_mask.size != im.size:
+            wall_mask = Image.new("L", im.size, 0)
+            draw = ImageDraw.Draw(wall_mask)
+            for _, poly in walls:
+                draw.polygon([(x * W / TABLE_W, y * H / TABLE_H) for x, y in poly], fill=255)
+        im.putalpha(ImageChops.multiply(im.getchannel("A"), wall_mask))
         alpha = im.getchannel("A")
         bbox = alpha.getbbox()
         count = sum(alpha.histogram()[1:]) if bbox else 0
