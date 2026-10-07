@@ -1436,5 +1436,166 @@
     "path": "target_thin_albedo.webp",
     "alpha_test_value": 128.0,
     "is_opaque": true
+  },
+  {
+    "name": "LM_gi006_plastics",
+    "path": "LM_gi006_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi007_plastics",
+    "path": "LM_gi007_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi008_plastics",
+    "path": "LM_gi008_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi009_plastics",
+    "path": "LM_gi009_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi010_plastics",
+    "path": "LM_gi010_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi011_plastics",
+    "path": "LM_gi011_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi012_plastics",
+    "path": "LM_gi012_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi013_plastics",
+    "path": "LM_gi013_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi014_plastics",
+    "path": "LM_gi014_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi015_plastics",
+    "path": "LM_gi015_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi016_plastics",
+    "path": "LM_gi016_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi017_plastics",
+    "path": "LM_gi017_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi018_plastics",
+    "path": "LM_gi018_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi019_plastics",
+    "path": "LM_gi019_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi020_plastics",
+    "path": "LM_gi020_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi021_plastics",
+    "path": "LM_gi021_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi022_plastics",
+    "path": "LM_gi022_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi023_plastics",
+    "path": "LM_gi023_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi024_plastics",
+    "path": "LM_gi024_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi025_plastics",
+    "path": "LM_gi025_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi026_plastics",
+    "path": "LM_gi026_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi027_plastics",
+    "path": "LM_gi027_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
+  },
+  {
+    "name": "LM_gi050_plastics",
+    "path": "LM_gi050_plastics.webp",
+    "alpha_test_value": 1.0,
+    "is_opaque": false,
+    "is_signed": false
   }
 ]
