@@ -376,6 +376,7 @@ def cmd_lightmaps(t, render_dir, **overrides):
         if not bbox or count < LIGHTMAP_MIN_PIXELS:
             print(f"{gi}: glow touches no plastic ({count} px), skipped")
             cmd_remove_lightmaps(t, only=[gi], quiet=True)
+            images = [i for i in images if i["name"] != name]  # keep our copy in step
             continue
         x0 = max(0, bbox[0] - LIGHTMAP_MARGIN_PX)
         y0 = max(0, bbox[1] - LIGHTMAP_MARGIN_PX)
