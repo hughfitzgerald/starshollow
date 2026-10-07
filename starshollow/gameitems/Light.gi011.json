@@ -17,7 +17,7 @@
     "image": "playfield",
     "blink_interval": 250,
     "intensity": 2.0,
-    "transmission_scale": 0.0,
+    "transmission_scale": 0.5,
     "surface": "",
     "name": "gi011",
     "is_backglass": false,
