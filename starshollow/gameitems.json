@@ -220,6 +220,12 @@
     "editor_layer_name": "Collidable Misc"
   },
   {
+    "file_name": "Timer.CorTimer.json",
+    "is_locked": true,
+    "editor_layer": 0,
+    "editor_layer_name": "Collidable Misc"
+  },
+  {
     "file_name": "Wall.Wall37.json",
     "is_locked": true,
     "editor_layer": 0,
