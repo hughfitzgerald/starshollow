@@ -108,7 +108,7 @@
   "light_range": 8000000.0,
   "light_emission_scale": 8000000.0,
   "env_emission_scale": 2.0,
-  "global_emission_scale": 0.05,
+  "global_emission_scale": 0.15,
   "ao_scale": 0.75,
   "ssr_scale": 0.25,
   "ground_to_lockbar_height": null,
