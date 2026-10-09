@@ -39,7 +39,7 @@
     "drag_points": [
       {
         "x": 734.5787,
-        "y": 688.9538999999999,
+        "y": 688.9539,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -52,7 +52,7 @@
       },
       {
         "x": 649.5249,
-        "y": 773.31815,
+        "y": 773.3182,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -64,7 +64,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 615.00594,
+        "x": 615.0059,
         "y": 899.924,
         "z": 0.0,
         "smooth": true,
@@ -78,7 +78,7 @@
       },
       {
         "x": 648.1937,
-        "y": 1010.0839999999998,
+        "y": 1010.084,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -90,8 +90,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 734.73616,
-        "y": 1093.0151999999998,
+        "x": 734.73615,
+        "y": 1093.0153,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -103,7 +103,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 851.8962600000001,
+        "x": 851.89624,
         "y": 1119.4578,
         "z": 0.0,
         "smooth": true,
@@ -129,7 +129,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 997.7904000000001,
+        "x": 997.7904,
         "y": 1058.3337,
         "z": 0.0,
         "smooth": false,
@@ -143,7 +143,7 @@
       },
       {
         "x": 996.8741,
-        "y": 720.9042999999999,
+        "y": 720.9043,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -155,8 +155,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 961.58144,
-        "y": 693.5740999999999,
+        "x": 961.5814,
+        "y": 693.5741,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
@@ -169,7 +169,7 @@
       },
       {
         "x": 851.4563,
-        "y": 659.2386999999999,
+        "y": 659.2387,
         "z": 0.0,
         "smooth": true,
         "is_slingshot": false,
