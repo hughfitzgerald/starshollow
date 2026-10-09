@@ -3307,14 +3307,12 @@
   {
     "file_name": "Primitive.p_FLbase3.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.p_FLbase4.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Primitive.p_FL2_.json",
@@ -3337,8 +3335,7 @@
   {
     "file_name": "Light.SkillshotLight.json",
     "is_locked": false,
-    "editor_layer": 0,
-    "editor_layer_visibility": false
+    "editor_layer": 0
   },
   {
     "file_name": "Light.l72.json",
@@ -4140,5 +4137,20 @@
     "is_locked": false,
     "editor_layer_name": "",
     "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Wall.Wall028.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light001.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.WallLightSurface.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]
