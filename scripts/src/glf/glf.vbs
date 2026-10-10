@@ -4774,6 +4774,7 @@ Class GlfCounter
 
     Private m_name
     Private m_counter_name
+    Private m_player_var_name
     Private m_priority
     Private m_mode
     Private m_base_device
@@ -4856,6 +4857,7 @@ Class GlfCounter
 	Public default Function init(name, mode)
         m_counter_name = name
         m_name = "counter_" & name
+        m_player_var_name = "counter_" & name
         m_mode = mode.Name
         m_priority = mode.Priority
         m_debug = False
@@ -4913,24 +4915,28 @@ Class GlfCounter
         Next
 
         m_last_hit_time = Empty
+        m_enabled = False
         If m_persist_state And HasPersistedState() Then
-            m_value = GetPlayerState(m_name & "_state")
-            m_enabled = GetPlayerState(m_name & "_enabled")
-            m_completed = GetPlayerState(m_name & "_completed")
-            Log "Restored persisted state. Value: " & m_value & ", Enabled: " & m_enabled & ", Completed: " & m_completed
+            ' Only the value is persisted (like shots and state machines). A restored
+            ' value already at the complete value is treated as completed, without
+            ' re-posting the complete events.
+            m_value = GetPlayerState(m_player_var_name)
+            m_completed = IsAtCompleteValue()
+            Log "Restored persisted value: " & m_value & ", Completed: " & m_completed
         Else
             m_completed = False
-            m_enabled = False
             SetValue m_starting_count.Value
-            Dim start_enabled : start_enabled = m_start_enabled
-            If IsEmpty(start_enabled) Then
-                start_enabled = (UBound(m_base_device.EnableEvents.Keys) = -1)
-            End If
-            If start_enabled Then
-                Enable()
-            Else
-                SaveState()
-            End If
+        End If
+
+        Dim start_enabled : start_enabled = m_start_enabled
+        If IsEmpty(start_enabled) Then
+            start_enabled = (UBound(m_base_device.EnableEvents.Keys) = -1)
+        End If
+        If m_completed And m_disable_on_complete Then
+            start_enabled = False
+        End If
+        If start_enabled Then
+            Enable()
         End If
     End Sub
 
@@ -4955,13 +4961,11 @@ Class GlfCounter
     Public Sub Enable()
         Log "Enabling"
         m_enabled = True
-        SaveState()
     End Sub
 
     Public Sub Disable()
         Log "Disabling"
         m_enabled = False
-        SaveState()
     End Sub
 
     Public Sub Reset()
@@ -5018,15 +5022,22 @@ Class GlfCounter
         CheckComplete()
     End Sub
 
-    Private Sub CheckComplete()
+    Private Function IsAtCompleteValue()
+        IsAtCompleteValue = False
         If IsNull(m_count_complete_value) Then
-            Exit Sub
+            Exit Function
         End If
         Dim complete_value : complete_value = m_count_complete_value.Value
         If m_direction = "down" Then
-            If m_value <= complete_value Then Complete()
+            IsAtCompleteValue = (m_value <= complete_value)
         Else
-            If m_value >= complete_value Then Complete()
+            IsAtCompleteValue = (m_value >= complete_value)
+        End If
+    End Function
+
+    Private Sub CheckComplete()
+        If IsAtCompleteValue() Then
+            Complete()
         End If
     End Sub
 
@@ -5036,7 +5047,6 @@ Class GlfCounter
         End If
         Log "Complete"
         m_completed = True
-        SaveState()
         If UBound(m_events_when_complete.Keys) > -1 Then
             Dim evt
             For Each evt in m_events_when_complete.Items()
@@ -5099,14 +5109,12 @@ Class GlfCounter
         If IsNull(glf_currentPlayer) Then
             Exit Function
         End If
-        HasPersistedState = glf_playerState(glf_currentPlayer).Exists(m_name & "_state")
+        HasPersistedState = glf_playerState(glf_currentPlayer).Exists(m_player_var_name)
     End Function
 
     Private Sub SaveState()
         If m_persist_state Then
-            SetPlayerState m_name & "_state", m_value
-            SetPlayerState m_name & "_enabled", m_enabled
-            SetPlayerState m_name & "_completed", m_completed
+            SetPlayerState m_player_var_name, m_value
         End If
     End Sub
 
