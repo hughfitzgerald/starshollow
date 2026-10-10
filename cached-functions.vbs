@@ -804,62 +804,62 @@ Function Glf_195(args)
 End Function
 Function Glf_196(args)
 	On Error Resume Next
-	    Glf_196 = glf_counters("sookie_hit_events").GetValue("value") = 4
+	    Glf_196 = glf_counters("sookie_hit_events").GetValue("value") = 49
 	If Err Then Glf_196 = False
 End Function
 Function Glf_197(args)
 	On Error Resume Next
-	    Glf_197 = glf_counters("sookie_hit_events").GetValue("value") = 9
+	    Glf_197 = glf_counters("sookie_hit_events").GetValue("value") = 99
 	If Err Then Glf_197 = False
 End Function
 Function Glf_198(args)
 	On Error Resume Next
-	    Glf_198 = glf_counters("sookie_hit_events").GetValue("value") = 14
+	    Glf_198 = glf_counters("sookie_hit_events").GetValue("value") = 149
 	If Err Then Glf_198 = False
 End Function
 Function Glf_199(args)
 	On Error Resume Next
-	    Glf_199 = glf_counters("kirk_hit_events").GetValue("value") = 3
+	    Glf_199 = glf_counters("kirk_hit_events").GetValue("value") = 9
 	If Err Then Glf_199 = False
 End Function
 Function Glf_200(args)
 	On Error Resume Next
-	    Glf_200 = glf_counters("kirk_hit_events").GetValue("value") = 7
+	    Glf_200 = glf_counters("kirk_hit_events").GetValue("value") = 19
 	If Err Then Glf_200 = False
 End Function
 Function Glf_201(args)
 	On Error Resume Next
-	    Glf_201 = glf_counters("kirk_hit_events").GetValue("value") = 11
+	    Glf_201 = glf_counters("kirk_hit_events").GetValue("value") = 29
 	If Err Then Glf_201 = False
 End Function
 Function Glf_202(args)
 	On Error Resume Next
-	    Glf_202 = glf_counters("lane_hit_events").GetValue("value") = 2
+	    Glf_202 = glf_counters("lane_hit_events").GetValue("value") = 9
 	If Err Then Glf_202 = False
 End Function
 Function Glf_203(args)
 	On Error Resume Next
-	    Glf_203 = glf_counters("lane_hit_events").GetValue("value") = 5
+	    Glf_203 = glf_counters("lane_hit_events").GetValue("value") = 19
 	If Err Then Glf_203 = False
 End Function
 Function Glf_204(args)
 	On Error Resume Next
-	    Glf_204 = glf_counters("lane_hit_events").GetValue("value") = 8
+	    Glf_204 = glf_counters("lane_hit_events").GetValue("value") = 29
 	If Err Then Glf_204 = False
 End Function
 Function Glf_205(args)
 	On Error Resume Next
-	    Glf_205 = glf_counters("paris_hit_events").GetValue("value") = 1
+	    Glf_205 = glf_counters("paris_hit_events").GetValue("value") = 4
 	If Err Then Glf_205 = False
 End Function
 Function Glf_206(args)
 	On Error Resume Next
-	    Glf_206 = glf_counters("paris_hit_events").GetValue("value") = 3
+	    Glf_206 = glf_counters("paris_hit_events").GetValue("value") = 9
 	If Err Then Glf_206 = False
 End Function
 Function Glf_207(args)
 	On Error Resume Next
-	    Glf_207 = glf_counters("paris_hit_events").GetValue("value") = 5
+	    Glf_207 = glf_counters("paris_hit_events").GetValue("value") = 14
 	If Err Then Glf_207 = False
 End Function
 Function Glf_208(args)
@@ -1696,18 +1696,18 @@ glf_funcRefMap.Add "mode_ll_multiball_qualify_started{current_player.shot_logan_
 glf_funcRefMap.Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", "Glf_193"
 glf_funcRefMap.Add "2", "Glf_194"
 glf_funcRefMap.Add "s_captive_ball_active{current_player.logan_cooldown_active == 0}", "Glf_195"
-glf_funcRefMap.Add "s_DropTargetKicker_active{device.counters.sookie_hit_events.value == 4}", "Glf_196"
-glf_funcRefMap.Add "s_DropTargetKicker_active{device.counters.sookie_hit_events.value == 9}", "Glf_197"
-glf_funcRefMap.Add "s_DropTargetKicker_active{device.counters.sookie_hit_events.value == 14}", "Glf_198"
-glf_funcRefMap.Add "s_left_spinner_active{device.counters.kirk_hit_events.value == 3}", "Glf_199"
-glf_funcRefMap.Add "s_left_spinner_active{device.counters.kirk_hit_events.value == 7}", "Glf_200"
-glf_funcRefMap.Add "s_left_spinner_active{device.counters.kirk_hit_events.value == 11}", "Glf_201"
-glf_funcRefMap.Add "s_right_spinner_active{device.counters.lane_hit_events.value == 2}", "Glf_202"
-glf_funcRefMap.Add "s_right_spinner_active{device.counters.lane_hit_events.value == 5}", "Glf_203"
-glf_funcRefMap.Add "s_right_spinner_active{device.counters.lane_hit_events.value == 8}", "Glf_204"
-glf_funcRefMap.Add "s_ST11_active{device.counters.paris_hit_events.value == 1}", "Glf_205"
-glf_funcRefMap.Add "s_ST11_active{device.counters.paris_hit_events.value == 3}", "Glf_206"
-glf_funcRefMap.Add "s_ST11_active{device.counters.paris_hit_events.value == 5}", "Glf_207"
+glf_funcRefMap.Add "any_spinner_hit{device.counters.sookie_hit_events.value == 49}", "Glf_196"
+glf_funcRefMap.Add "any_spinner_hit{device.counters.sookie_hit_events.value == 99}", "Glf_197"
+glf_funcRefMap.Add "any_spinner_hit{device.counters.sookie_hit_events.value == 149}", "Glf_198"
+glf_funcRefMap.Add "any_bumper_hit{device.counters.kirk_hit_events.value == 9}", "Glf_199"
+glf_funcRefMap.Add "any_bumper_hit{device.counters.kirk_hit_events.value == 19}", "Glf_200"
+glf_funcRefMap.Add "any_bumper_hit{device.counters.kirk_hit_events.value == 29}", "Glf_201"
+glf_funcRefMap.Add "any_sling_hit{device.counters.lane_hit_events.value == 9}", "Glf_202"
+glf_funcRefMap.Add "any_sling_hit{device.counters.lane_hit_events.value == 19}", "Glf_203"
+glf_funcRefMap.Add "any_sling_hit{device.counters.lane_hit_events.value == 29}", "Glf_204"
+glf_funcRefMap.Add "any_ramp_hit{device.counters.paris_hit_events.value == 4}", "Glf_205"
+glf_funcRefMap.Add "any_ramp_hit{device.counters.paris_hit_events.value == 9}", "Glf_206"
+glf_funcRefMap.Add "any_ramp_hit{device.counters.paris_hit_events.value == 14}", "Glf_207"
 glf_funcRefMap.Add "new_ball_started{machine.game_modes_enabled == 1}", "Glf_208"
 glf_funcRefMap.Add "mode_skillshots_started{current_player.ball_just_started == 1}", "Glf_209"
 glf_funcRefMap.Add "mode_skillshots_started{current_player.ball_just_started == 0}", "Glf_210"

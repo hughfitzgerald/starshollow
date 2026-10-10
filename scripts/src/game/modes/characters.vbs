@@ -18,10 +18,10 @@ Function NewCharacter(name, lights, color, hitEvent, count)
 End Function
 
 Dim sookie, kirk, lane, paris
-Set sookie = NewCharacter("sookie", Array("Light001", "Light002", "Light003"), "78bec0", "s_DropTargetKicker_active", 5)
-Set kirk = NewCharacter("kirk", Array("Light004", "Light005", "Light006"), "bae046", "s_left_spinner_active", 4)
-Set lane = NewCharacter("lane", Array("Light007", "Light008", "Light009"), "d938c7", "s_right_spinner_active", 3)
-Set paris = NewCharacter("paris", Array("Light010", "Light011", "Light012"), "bf3957", "s_ST11_active", 2)
+Set sookie = NewCharacter("sookie", Array("Light001", "Light002", "Light003"), "78bec0", "any_spinner_hit", 50) ' spinner hit at full speed is ~7 counts
+Set kirk = NewCharacter("kirk", Array("Light004", "Light005", "Light006"), "bae046", "any_bumper_hit", 10)
+Set lane = NewCharacter("lane", Array("Light007", "Light008", "Light009"), "d938c7", "any_sling_hit", 10)
+Set paris = NewCharacter("paris", Array("Light010", "Light011", "Light012"), "bf3957", "any_ramp_hit", 5)
 
 Dim characters
 characters = Array(sookie, kirk, lane, paris)
@@ -36,7 +36,12 @@ Sub CreateCharactersMode()
                 For y = 0 To UBound(characters(x).Lights)
                     .Add characters(x).HitEvent & "{device.counters." & characters(x).Name & "_hit_events.value == " & (characters(x).Count * (y+1)) - 1 & "}", Array(characters(x).Name & "_" & (y+1) & "_lit")
                 Next
+                .Add characters(x).Name & "_" & (UBound(characters(x).Lights) + 1) & "_lit", Array(characters(x).Name & "_complete")
             Next
+            ' Add a cool sound effect when you earn each one
+            ' ALONG WITH a funny callout for each one
+            ' When you actually COMPLETE one, do a quick fun lightshow, too
+            ' AND I still like the idea of a 3d mesh for each character: spoon in bowl for Sookie, snare drum (or kick drum) for lane, something for Paris, "Kirk's" sign for Kirk
         End With
         For x = 0 To UBound(characters)
             For y = 0 To UBound(characters(x).Lights)
