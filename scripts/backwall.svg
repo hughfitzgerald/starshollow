@@ -226,4 +226,116 @@
          x="607.2086"
          y="72.8689">Paris</tspan></text>
   </g>
+<defs
+     id="backwall_glow_defs">
+    <radialGradient
+       id="backwall_glow_gradient"
+       inkscape:collect="always">
+      <stop
+         offset="0.0"
+         style="stop-color:#ffffff;stop-opacity:1.0" />
+      <stop
+         offset="0.35"
+         style="stop-color:#ffffff;stop-opacity:0.85" />
+      <stop
+         offset="0.65"
+         style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop
+         offset="0.85"
+         style="stop-color:#ffffff;stop-opacity:0.12" />
+      <stop
+         offset="1.0"
+         style="stop-color:#ffffff;stop-opacity:0.0" />
+    </radialGradient>
+  </defs>
+<g
+     inkscape:groupmode="layer"
+     id="layer_light_glow"
+     inkscape:label="light glow"
+     style="display:none">
+    <circle
+       id="glow_Light001"
+       inkscape:label="glow Light001"
+       cx="56.3683"
+       cy="34.7339"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light002"
+       inkscape:label="glow Light002"
+       cx="99.8450"
+       cy="34.7339"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light003"
+       inkscape:label="glow Light003"
+       cx="143.3217"
+       cy="34.7339"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light004"
+       inkscape:label="glow Light004"
+       cx="269.2467"
+       cy="55.8053"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light005"
+       inkscape:label="glow Light005"
+       cx="295.6200"
+       cy="55.8053"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light006"
+       inkscape:label="glow Light006"
+       cx="321.9933"
+       cy="55.8053"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light007"
+       inkscape:label="glow Light007"
+       cx="443.2550"
+       cy="34.7339"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light008"
+       inkscape:label="glow Light008"
+       cx="473.8850"
+       cy="34.7339"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light009"
+       inkscape:label="glow Light009"
+       cx="504.5150"
+       cy="34.7339"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light010"
+       inkscape:label="glow Light010"
+       cx="623.6850"
+       cy="55.8053"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light011"
+       inkscape:label="glow Light011"
+       cx="655.8350"
+       cy="55.8053"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_Light012"
+       inkscape:label="glow Light012"
+       cx="687.9850"
+       cy="55.8053"
+       r="45.0000"
+       style="fill:url(#backwall_glow_gradient);fill-opacity:1;stroke:none" />
+  </g>
 </svg>

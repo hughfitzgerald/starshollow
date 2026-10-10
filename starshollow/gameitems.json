@@ -4215,5 +4215,77 @@
     "file_name": "Wall.WallLightSurfaceHigh.json",
     "is_locked": false,
     "editor_layer": 0
+  },
+  {
+    "file_name": "Flasher.LM_Light001_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light002_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light003_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light004_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light005_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light006_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light007_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light008_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light009_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light010_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light011_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flasher.LM_Light012_backwall.json",
+    "is_locked": false,
+    "editor_layer_name": "",
+    "editor_layer_visibility": true
   }
 ]

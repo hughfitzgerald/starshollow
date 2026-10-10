@@ -1416,29 +1416,29 @@ Dim glf_gi025_lmarr : glf_gi025_lmarr = Array(lm_gi025_plastics)
 glf_lightMaps.Add "gi025", glf_gi025_lmarr
 Dim glf_gi027_lmarr : glf_gi027_lmarr = Array(lm_gi027_plastics)
 glf_lightMaps.Add "gi027", glf_gi027_lmarr
-Dim glf_Light001_lmarr : glf_Light001_lmarr = Array()
+Dim glf_Light001_lmarr : glf_Light001_lmarr = Array(lm_light001_backwall)
 glf_lightMaps.Add "Light001", glf_Light001_lmarr
-Dim glf_Light002_lmarr : glf_Light002_lmarr = Array()
+Dim glf_Light002_lmarr : glf_Light002_lmarr = Array(lm_light002_backwall)
 glf_lightMaps.Add "Light002", glf_Light002_lmarr
-Dim glf_Light003_lmarr : glf_Light003_lmarr = Array()
+Dim glf_Light003_lmarr : glf_Light003_lmarr = Array(lm_light003_backwall)
 glf_lightMaps.Add "Light003", glf_Light003_lmarr
-Dim glf_Light004_lmarr : glf_Light004_lmarr = Array()
+Dim glf_Light004_lmarr : glf_Light004_lmarr = Array(lm_light004_backwall)
 glf_lightMaps.Add "Light004", glf_Light004_lmarr
-Dim glf_Light005_lmarr : glf_Light005_lmarr = Array()
+Dim glf_Light005_lmarr : glf_Light005_lmarr = Array(lm_light005_backwall)
 glf_lightMaps.Add "Light005", glf_Light005_lmarr
-Dim glf_Light006_lmarr : glf_Light006_lmarr = Array()
+Dim glf_Light006_lmarr : glf_Light006_lmarr = Array(lm_light006_backwall)
 glf_lightMaps.Add "Light006", glf_Light006_lmarr
-Dim glf_Light007_lmarr : glf_Light007_lmarr = Array()
+Dim glf_Light007_lmarr : glf_Light007_lmarr = Array(lm_light007_backwall)
 glf_lightMaps.Add "Light007", glf_Light007_lmarr
-Dim glf_Light008_lmarr : glf_Light008_lmarr = Array()
+Dim glf_Light008_lmarr : glf_Light008_lmarr = Array(lm_light008_backwall)
 glf_lightMaps.Add "Light008", glf_Light008_lmarr
-Dim glf_Light009_lmarr : glf_Light009_lmarr = Array()
+Dim glf_Light009_lmarr : glf_Light009_lmarr = Array(lm_light009_backwall)
 glf_lightMaps.Add "Light009", glf_Light009_lmarr
-Dim glf_Light010_lmarr : glf_Light010_lmarr = Array()
+Dim glf_Light010_lmarr : glf_Light010_lmarr = Array(lm_light010_backwall)
 glf_lightMaps.Add "Light010", glf_Light010_lmarr
-Dim glf_Light011_lmarr : glf_Light011_lmarr = Array()
+Dim glf_Light011_lmarr : glf_Light011_lmarr = Array(lm_light011_backwall)
 glf_lightMaps.Add "Light011", glf_Light011_lmarr
-Dim glf_Light012_lmarr : glf_Light012_lmarr = Array()
+Dim glf_Light012_lmarr : glf_Light012_lmarr = Array(lm_light012_backwall)
 glf_lightMaps.Add "Light012", glf_Light012_lmarr
 
 glf_funcRefMap.Add "text_input: {action: ""left""}", "Glf_0"
