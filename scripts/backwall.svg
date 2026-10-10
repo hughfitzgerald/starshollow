@@ -34,7 +34,7 @@
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer2"
      showguides="true"
      showgrid="false">
     <sodipodi:guide
@@ -64,16 +64,11 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="background"
-     style="opacity:0.207">
-    <rect
-       style="opacity:1;fill:#ffffff;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers;fill-opacity:1"
+     style="opacity:0.726">
+    <path
        id="rect1"
-       width="1496"
-       height="198"
-       x="1"
-       y="1"
-       rx="1"
-       ry="0.99999994" />
+       style="display:inline;opacity:1;fill:#927ade;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers;fill-opacity:1"
+       d="m 1.9998779,0.99993896 c -0.554,0 -0.99993894,0.44593904 -0.99993894,0.99993894 V 197.9998 c 0,0.554 0.44593894,1.00046 0.99993894,1.00046 H 1496.0002 c 0.554,0 0.9999,-0.44646 0.9999,-1.00046 V 1.9998779 c 0,-0.5539999 -0.4459,-0.99993894 -0.9999,-0.99993894 z M 347.9152,46.159973 A 20,20 0 0 1 367.91501,66.159786 20,20 0 0 1 347.9152,86.159599 20,20 0 0 1 327.91487,66.159786 20,20 0 0 1 347.9152,46.159973 Z m -59.69868,2.499589 A 17.5,17.5 0 0 1 305.71674,66.159786 17.5,17.5 0 0 1 288.21652,83.66001 17.5,17.5 0 0 1 270.71681,66.159786 17.5,17.5 0 0 1 288.21652,48.659562 Z m -59.69817,2.500106 a 15,15 0 0 1 15.00012,15.000118 15,15 0 0 1 -15.00012,15.000118 15,15 0 0 1 -15.00012,-15.000118 15,15 0 0 1 15.00012,-15.000118 z m 485.09132,0.514697 a 20,20 0 0 1 19.99981,20.00033 20,20 0 0 1 -19.99981,19.999813 20,20 0 0 1 -19.99981,-19.999813 20,20 0 0 1 19.99981,-20.00033 z m -59.69816,2.500106 a 17.5,17.5 0 0 1 17.4997,17.500224 17.5,17.5 0 0 1 -17.4997,17.499707 17.5,17.5 0 0 1 -17.50023,-17.499707 17.5,17.5 0 0 1 17.50023,-17.500224 z m -59.69868,2.500106 A 15,15 0 0 1 609.21294,71.674695 15,15 0 0 1 594.21283,86.674813 15,15 0 0 1 579.21271,71.674695 15,15 0 0 1 594.21283,56.674577 Z M 156.56615,90.000191 A 20,20 0 0 1 176.56597,110 20,20 0 0 1 156.56615,129.99982 20,20 0 0 1 136.56582,110 20,20 0 0 1 156.56615,90.000191 Z m 373.52397,0.100253 a 20,20 0 0 1 20.00033,19.999816 20,20 0 0 1 -20.00033,20.00033 20,20 0 0 1 -19.99981,-20.00033 20,20 0 0 1 19.99981,-19.999816 z M 96.867472,92.49978 A 17.5,17.5 0 0 1 114.3677,110 17.5,17.5 0 0 1 96.867472,127.50023 17.5,17.5 0 0 1 79.367765,110 17.5,17.5 0 0 1 96.867472,92.49978 Z m 373.524488,0.100769 a 17.5,17.5 0 0 1 17.49971,17.499711 17.5,17.5 0 0 1 -17.49971,17.50022 17.5,17.5 0 0 1 -17.50022,-17.50022 17.5,17.5 0 0 1 17.50022,-17.499711 z M 37.169307,94.999886 A 15,15 0 0 1 52.168909,110 15,15 0 0 1 37.169307,125.00012 15,15 0 0 1 22.169189,110 15,15 0 0 1 37.169307,94.999886 Z m 373.523973,0.100252 a 15,15 0 0 1 15.00012,15.000122 15,15 0 0 1 -15.00012,15.00011 15,15 0 0 1 -15.00012,-15.00011 15,15 0 0 1 15.00012,-15.000122 z" />
   </g>
   <g
      inkscape:label="letters"
@@ -148,76 +143,76 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="circles"
-     style="opacity:0.866">
+     style="display:inline;opacity:0.942">
     <circle
        style="fill:#78bec0;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7"
+       id="circle1"
        cx="37.169086"
        cy="110"
        r="15" />
     <circle
        style="fill:#78bec0;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-0"
+       id="circle2"
        cx="96.867516"
        cy="110"
        r="17.5" />
     <circle
        style="fill:#78bec0;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-8"
+       id="circle3"
        cx="156.56595"
        cy="110"
        r="20" />
     <circle
        style="fill:#bae046;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-9"
+       id="circle4"
        cx="228.51825"
        cy="66.159805"
        r="15" />
     <circle
        style="fill:#bae046;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-0-5"
+       id="circle5"
        cx="288.21667"
        cy="66.159805"
        r="17.5" />
     <circle
        style="fill:#bae046;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-8-6"
+       id="circle6"
        cx="347.9151"
        cy="66.159805"
        r="20" />
     <circle
        style="fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-4"
+       id="circle7"
        cx="410.69336"
        cy="110.10035"
        r="15" />
     <circle
        style="fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-0-3"
+       id="circle8"
        cx="470.39178"
        cy="110.10035"
        r="17.5" />
     <circle
        style="fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-8-9"
+       id="circle9"
        cx="530.09021"
        cy="110.10035"
        r="20" />
     <circle
        style="fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-6"
+       id="circle10"
        cx="594.21289"
        cy="71.674614"
        r="15" />
     <circle
        style="fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-0-30"
+       id="circle11"
        cx="653.91132"
        cy="71.674614"
        r="17.5" />
     <circle
        style="fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       id="path7-8-8"
+       id="circle12"
        cx="713.60974"
        cy="71.674614"
        r="20" />
