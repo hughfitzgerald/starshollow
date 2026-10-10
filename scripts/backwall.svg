@@ -3,8 +3,8 @@
 
 <svg
    width="1498mm"
-   height="200mm"
-   viewBox="0 0 1498 200"
+   height="105mm"
+   viewBox="0 0 1498 105"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
@@ -26,15 +26,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="0.23215071"
-     inkscape:cx="1499.0262"
-     inkscape:cy="303.68203"
+     inkscape:zoom="0.36912137"
+     inkscape:cx="1454.806"
+     inkscape:cy="-79.919512"
      inkscape:window-width="1728"
      inkscape:window-height="830"
-     inkscape:window-x="0"
+     inkscape:window-x="1"
      inkscape:window-y="32"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showguides="true"
      showgrid="false">
     <sodipodi:guide
@@ -53,7 +53,7 @@
        id="guide6"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="314.55859,99.705955"
+       position="314.55859,52.5"
        orientation="0,-1"
        id="guide7"
        inkscape:locked="false" />
@@ -64,60 +64,20 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="background"
-     style="opacity:0.726">
+     style="opacity:0.848">
     <path
        id="rect1"
-       style="display:inline;opacity:1;fill:#927ade;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers;fill-opacity:1"
+       style="display:none;opacity:1;fill:#927ade;fill-opacity:1;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        d="m 1.9998779,0.99993896 c -0.554,0 -0.99993894,0.44593904 -0.99993894,0.99993894 V 197.9998 c 0,0.554 0.44593894,1.00046 0.99993894,1.00046 H 1496.0002 c 0.554,0 0.9999,-0.44646 0.9999,-1.00046 V 1.9998779 c 0,-0.5539999 -0.4459,-0.99993894 -0.9999,-0.99993894 z M 347.9152,46.159973 A 20,20 0 0 1 367.91501,66.159786 20,20 0 0 1 347.9152,86.159599 20,20 0 0 1 327.91487,66.159786 20,20 0 0 1 347.9152,46.159973 Z m -59.69868,2.499589 A 17.5,17.5 0 0 1 305.71674,66.159786 17.5,17.5 0 0 1 288.21652,83.66001 17.5,17.5 0 0 1 270.71681,66.159786 17.5,17.5 0 0 1 288.21652,48.659562 Z m -59.69817,2.500106 a 15,15 0 0 1 15.00012,15.000118 15,15 0 0 1 -15.00012,15.000118 15,15 0 0 1 -15.00012,-15.000118 15,15 0 0 1 15.00012,-15.000118 z m 485.09132,0.514697 a 20,20 0 0 1 19.99981,20.00033 20,20 0 0 1 -19.99981,19.999813 20,20 0 0 1 -19.99981,-19.999813 20,20 0 0 1 19.99981,-20.00033 z m -59.69816,2.500106 a 17.5,17.5 0 0 1 17.4997,17.500224 17.5,17.5 0 0 1 -17.4997,17.499707 17.5,17.5 0 0 1 -17.50023,-17.499707 17.5,17.5 0 0 1 17.50023,-17.500224 z m -59.69868,2.500106 A 15,15 0 0 1 609.21294,71.674695 15,15 0 0 1 594.21283,86.674813 15,15 0 0 1 579.21271,71.674695 15,15 0 0 1 594.21283,56.674577 Z M 156.56615,90.000191 A 20,20 0 0 1 176.56597,110 20,20 0 0 1 156.56615,129.99982 20,20 0 0 1 136.56582,110 20,20 0 0 1 156.56615,90.000191 Z m 373.52397,0.100253 a 20,20 0 0 1 20.00033,19.999816 20,20 0 0 1 -20.00033,20.00033 20,20 0 0 1 -19.99981,-20.00033 20,20 0 0 1 19.99981,-19.999816 z M 96.867472,92.49978 A 17.5,17.5 0 0 1 114.3677,110 17.5,17.5 0 0 1 96.867472,127.50023 17.5,17.5 0 0 1 79.367765,110 17.5,17.5 0 0 1 96.867472,92.49978 Z m 373.524488,0.100769 a 17.5,17.5 0 0 1 17.49971,17.499711 17.5,17.5 0 0 1 -17.49971,17.50022 17.5,17.5 0 0 1 -17.50022,-17.50022 17.5,17.5 0 0 1 17.50022,-17.499711 z M 37.169307,94.999886 A 15,15 0 0 1 52.168909,110 15,15 0 0 1 37.169307,125.00012 15,15 0 0 1 22.169189,110 15,15 0 0 1 37.169307,94.999886 Z m 373.523973,0.100252 a 15,15 0 0 1 15.00012,15.000122 15,15 0 0 1 -15.00012,15.00011 15,15 0 0 1 -15.00012,-15.00011 15,15 0 0 1 15.00012,-15.000122 z" />
-  </g>
-  <g
-     inkscape:label="letters"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#78bec0;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       x="14.816164"
-       y="75.220543"
-       id="text1"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#78bec0;fill-opacity:1;stroke-width:0.264583"
-         x="14.816164"
-         y="75.220543">Sookie</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#bae046;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       x="242.75716"
-       y="145.33075"
-       id="text2"><tspan
-         sodipodi:role="line"
-         id="tspan2"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#bae046;fill-opacity:1;stroke-width:0.264583"
-         x="242.75716"
-         y="145.33075">Kirk</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       x="412.57321"
-       y="74.080833"
-       id="text3"><tspan
-         sodipodi:role="line"
-         id="tspan3"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#d938c7;fill-opacity:1;stroke-width:0.264583"
-         x="412.57321"
-         y="74.080833">Lane</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
-       x="591.5069"
-       y="141.91162"
-       id="text4"><tspan
-         sodipodi:role="line"
-         id="tspan4"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#bf3957;fill-opacity:1;stroke-width:0.264583"
-         x="591.5069"
-         y="141.91162">Paris</tspan></text>
+    <rect
+       style="opacity:1;fill:#927ade;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect12"
+       width="1496"
+       height="103"
+       x="1"
+       y="1"
+       rx="1"
+       ry="0.99999994" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -125,17 +85,17 @@
      inkscape:label="lines">
     <path
        style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 195.13971,27.35277 0.88956,145.8824 h -0.88956"
+       d="m 195.13971,14.3602 0.88956,76.5883 h -0.88956"
        id="path8"
        sodipodi:nodetypes="ccc" />
     <path
        style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 377.76361,27.352768 0.88956,145.882402 h -0.88956"
+       d="m 377.76361,14.3602 0.88956,76.5883 h -0.88956"
        id="path8-3"
        sodipodi:nodetypes="ccc" />
     <path
        style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 560.3875,27.352768 0.88956,145.882402 h -0.88956"
+       d="m 560.3875,14.3602 0.88956,76.5883 h -0.88956"
        id="path8-5"
        sodipodi:nodetypes="ccc" />
   </g>
@@ -143,7 +103,7 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="circles"
-     style="display:inline;opacity:0.942">
+     style="display:none;opacity:0.942">
     <circle
        style="fill:#78bec0;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle1"
@@ -184,37 +144,86 @@
        style="fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle7"
        cx="410.69336"
-       cy="110.10035"
+       cy="110"
        r="15" />
     <circle
        style="fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle8"
        cx="470.39178"
-       cy="110.10035"
+       cy="110"
        r="17.5" />
     <circle
        style="fill:#d938c7;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle9"
        cx="530.09021"
-       cy="110.10035"
+       cy="110"
        r="20" />
     <circle
        style="fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle10"
        cx="594.21289"
-       cy="71.674614"
+       cy="66.159805"
        r="15" />
     <circle
        style="fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle11"
        cx="653.91132"
-       cy="71.674614"
+       cy="66.159805"
        r="17.5" />
     <circle
        style="fill:#bf3957;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="circle12"
        cx="713.60974"
-       cy="71.674614"
+       cy="66.159805"
        r="20" />
+  </g>
+  <g
+     inkscape:label="letters"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#78bec0;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="35.5707"
+       y="51.9184"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#78bec0;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-dasharray:none;stroke-opacity:1"
+         x="35.5707"
+         y="51.9184">Sookie</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#bae046;fill-opacity:1;stroke-width:4;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
+       x="255.6609"
+       y="73.1329"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#bae046;fill-opacity:1;stroke-width:4;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
+         x="255.6609"
+         y="73.1329">Kirk</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#d938c7;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="427.5383"
+       y="51.6064"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#d938c7;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-dasharray:none;stroke-opacity:1"
+         x="427.5383"
+         y="51.6064">Lane</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;line-height:0.55;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;fill:#bf3957;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="607.2086"
+       y="72.8689"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:48px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#bf3957;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-dasharray:none;stroke-opacity:1"
+         x="607.2086"
+         y="72.8689">Paris</tspan></text>
   </g>
 </svg>

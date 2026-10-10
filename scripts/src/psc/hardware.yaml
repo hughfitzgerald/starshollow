@@ -78,18 +78,18 @@ lights:
   l64: ffffff
   l65: ffffff
 
-  Light001: ffffff
-  Light002: ffffff
-  Light003: ffffff
-  Light004: ffffff
-  Light005: ffffff
-  Light006: ffffff
-  Light007: ffffff
-  Light008: ffffff
-  Light009: ffffff
-  Light010: ffffff
-  Light011: ffffff
-  Light012: ffffff
+  Light001: 78bec0
+  Light002: 78bec0
+  Light003: 78bec0
+  Light004: bae046
+  Light005: bae046
+  Light006: bae046
+  Light007: d938c7
+  Light008: d938c7
+  Light009: d938c7
+  Light010: bf3957
+  Light011: bf3957
+  Light012: bf3957
 
 groups:
   GI:
