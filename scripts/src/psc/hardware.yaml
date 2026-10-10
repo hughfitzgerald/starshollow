@@ -78,6 +78,19 @@ lights:
   l64: ffffff
   l65: ffffff
 
+  Light001: ffffff
+  Light002: ffffff
+  Light003: ffffff
+  Light004: ffffff
+  Light005: ffffff
+  Light006: ffffff
+  Light007: ffffff
+  Light008: ffffff
+  Light009: ffffff
+  Light010: ffffff
+  Light011: ffffff
+  Light012: ffffff
+
 groups:
   GI:
     color: ffa957 # GIColor2700k, in-play GI

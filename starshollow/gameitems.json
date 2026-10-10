@@ -4149,7 +4149,67 @@
     "editor_layer": 0
   },
   {
-    "file_name": "Wall.WallLightSurface.json",
+    "file_name": "Light.Light002.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light003.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light004.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light005.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light006.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light007.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light008.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light009.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light010.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light011.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Light.Light012.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.WallLightSurfaceLow.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.WallLightSurfaceHigh.json",
     "is_locked": false,
     "editor_layer": 0
   }

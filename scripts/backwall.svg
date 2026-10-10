@@ -2,14 +2,14 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="1490mm"
+   width="1498mm"
    height="200mm"
-   viewBox="0 0 1490 200"
+   viewBox="0 0 1498 200"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
    sodipodi:docname="backwall.svg"
-   inkscape:export-filename="/Users/stephenjones/code/starshollow/starshollow/images/backwall.webp"
+   inkscape:export-filename="../starshollow/images/backwall.webp"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -27,14 +27,14 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
      inkscape:zoom="0.23215071"
-     inkscape:cx="1494.7187"
+     inkscape:cx="1499.0262"
      inkscape:cy="303.68203"
      inkscape:window-width="1728"
      inkscape:window-height="830"
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showguides="true"
      showgrid="false">
     <sodipodi:guide
@@ -61,7 +61,22 @@
   <defs
      id="defs1" />
   <g
-     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="background"
+     style="opacity:0.207">
+    <rect
+       style="opacity:1;fill:#ffffff;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers;fill-opacity:1"
+       id="rect1"
+       width="1496"
+       height="198"
+       x="1"
+       y="1"
+       rx="1"
+       ry="0.99999994" />
+  </g>
+  <g
+     inkscape:label="letters"
      inkscape:groupmode="layer"
      id="layer1">
     <text
@@ -108,6 +123,32 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:63.5px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#bf3957;fill-opacity:1;stroke-width:0.264583"
          x="591.5069"
          y="141.91162">Paris</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="lines">
+    <path
+       style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 195.13971,27.35277 0.88956,145.8824 h -0.88956"
+       id="path8"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 377.76361,27.352768 0.88956,145.882402 h -0.88956"
+       id="path8-3"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 560.3875,27.352768 0.88956,145.882402 h -0.88956"
+       id="path8-5"
+       sodipodi:nodetypes="ccc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="circles"
+     style="opacity:0.866">
     <circle
        style="fill:#78bec0;fill-opacity:1;stroke-width:0.264583;stroke-linecap:square;stroke-miterlimit:0;paint-order:stroke fill markers"
        id="path7"
@@ -180,20 +221,5 @@
        cx="713.60974"
        cy="71.674614"
        r="20" />
-    <path
-       style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 195.13971,27.35277 0.88956,145.8824 h -0.88956"
-       id="path8"
-       sodipodi:nodetypes="ccc" />
-    <path
-       style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 377.76361,27.352768 0.88956,145.882402 h -0.88956"
-       id="path8-3"
-       sodipodi:nodetypes="ccc" />
-    <path
-       style="fill:none;stroke:#48ff56;stroke-width:2;stroke-linecap:square;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m 560.3875,27.352768 0.88956,145.882402 h -0.88956"
-       id="path8-5"
-       sodipodi:nodetypes="ccc" />
   </g>
 </svg>
