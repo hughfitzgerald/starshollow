@@ -55,18 +55,22 @@ Sub CreateBaseMode()
             .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", "score_10000")
 
             'Bumpers
-            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1")
+            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
             ' .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
-            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3")
+            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
 
             'Slingshots
-            .Add "s_LeftSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash2")
-            .Add "s_RightSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash4")
+            .Add "s_LeftSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash2", "any_sling_hit")
+            .Add "s_RightSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash4", "any_sling_hit")
 
             'Spinners
-            .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment")
-            .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment")
+            .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
+            .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
             ' .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
+
+            'Ramps
+            .Add "s_complete_left_ramp_active", Array("score_10000", "total_switches_hit_increment", "any_ramp_hit")
+            .Add "s_complete_right_ramp_active", Array("score_10000", "total_switches_hit_increment", "any_ramp_hit")
 
             'Star Targets
             .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")

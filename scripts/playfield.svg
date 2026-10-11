@@ -5080,4 +5080,191 @@
      id="image1-7"
      x="-58.934868"
      y="-528.45874"
-     inkscape:label="characters" /></svg>
+     inkscape:label="characters" /><defs
+     id="gi_glow_defs">
+    <radialGradient
+       id="gi_glow_gradient"
+       inkscape:collect="always">
+      <stop
+         offset="0.0"
+         style="stop-color:#ffffff;stop-opacity:1.0" />
+      <stop
+         offset="0.35"
+         style="stop-color:#ffffff;stop-opacity:0.85" />
+      <stop
+         offset="0.65"
+         style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop
+         offset="0.85"
+         style="stop-color:#ffffff;stop-opacity:0.12" />
+      <stop
+         offset="1.0"
+         style="stop-color:#ffffff;stop-opacity:0.0" />
+    </radialGradient>
+  </defs><g
+     inkscape:groupmode="layer"
+     id="layer_gi_glow"
+     inkscape:label="GI glow"
+     style="display:none">
+    <circle
+       id="glow_gi006"
+       inkscape:label="glow gi006"
+       cx="320.3238"
+       cy="136.9919"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi007"
+       inkscape:label="glow gi007"
+       cx="269.8557"
+       cy="135.4248"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi008"
+       inkscape:label="glow gi008"
+       cx="220.2549"
+       cy="133.9948"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi009"
+       inkscape:label="glow gi009"
+       cx="170.1619"
+       cy="132.6060"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi010"
+       inkscape:label="glow gi010"
+       cx="100.7612"
+       cy="229.1121"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi011"
+       inkscape:label="glow gi011"
+       cx="370.5814"
+       cy="224.6730"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi012"
+       inkscape:label="glow gi012"
+       cx="355.8893"
+       cy="380.2168"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi013"
+       inkscape:label="glow gi013"
+       cx="399.8182"
+       cy="534.3475"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi014"
+       inkscape:label="glow gi014"
+       cx="415.4164"
+       cy="611.4306"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi015"
+       inkscape:label="glow gi015"
+       cx="352.5776"
+       cy="761.1421"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi016"
+       inkscape:label="glow gi016"
+       cx="336.5336"
+       cy="813.7188"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi017"
+       inkscape:label="glow gi017"
+       cx="367.2844"
+       cy="858.7216"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi018"
+       inkscape:label="glow gi018"
+       cx="332.9684"
+       cy="881.8909"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi019"
+       inkscape:label="glow gi019"
+       cx="104.3416"
+       cy="881.4454"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi020"
+       inkscape:label="glow gi020"
+       cx="71.8079"
+       cy="861.8402"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi021"
+       inkscape:label="glow gi021"
+       cx="105.6785"
+       cy="814.6099"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi022"
+       inkscape:label="glow gi022"
+       cx="92.7542"
+       cy="757.1316"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi023"
+       inkscape:label="glow gi023"
+       cx="23.2304"
+       cy="623.9068"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi024"
+       inkscape:label="glow gi024"
+       cx="40.6114"
+       cy="546.8733"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi026"
+       inkscape:label="glow gi026"
+       cx="112.7309"
+       cy="326.8116"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi050"
+       inkscape:label="glow gi050"
+       cx="356.5884"
+       cy="118.6326"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+      <circle
+       id="glow_gi025"
+       inkscape:label="glow gi025"
+       cx="16.0440"
+       cy="446.1252"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+    <circle
+       id="glow_gi027"
+       inkscape:label="glow gi027"
+       cx="424.1626"
+       cy="446.1252"
+       r="57.6580"
+       style="fill:url(#gi_glow_gradient);fill-opacity:1;stroke:none" />
+  </g></svg>

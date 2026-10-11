@@ -1,0 +1,11 @@
+show: psc_eob_sweep
+resolution: 30ms # coarser timing keeps the step count down with 78 lights
+layers:
+  - target: all_lights_no_gi
+    pattern: sweep
+    direction: up
+    speed: 2250
+    width: 250
+    tail: 150ms
+
+# try to make this last around 1.5 seconds

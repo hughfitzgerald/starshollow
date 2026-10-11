@@ -277,6 +277,7 @@ Sub ConfigureGlfDevices()
     CreateJDMultiballQualifyMode()    ' priority 200
     CreateBonusLanesMode()  ' priority 210
     CreateLLMultiballQualifyMode() ' priority 220
+    CreateCharactersMode()    ' priority 230
 
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500

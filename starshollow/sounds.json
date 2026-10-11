@@ -1,7 +1,7 @@
 [
   {
     "name": "Apron_Bounce_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Bounce_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Bounce_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -10,7 +10,7 @@
   },
   {
     "name": "Apron_Bounce_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Bounce_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Bounce_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -19,7 +19,7 @@
   },
   {
     "name": "Apron_Bounce_Soft_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Bounce_Soft_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Bounce_Soft_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -28,7 +28,7 @@
   },
   {
     "name": "Apron_Hard_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -37,7 +37,7 @@
   },
   {
     "name": "Apron_Hard_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -46,7 +46,7 @@
   },
   {
     "name": "Apron_Hard_Hit_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_Hit_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_Hit_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -55,7 +55,7 @@
   },
   {
     "name": "Apron_Hard_Hit_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_Hit_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_Hit_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -64,7 +64,7 @@
   },
   {
     "name": "Apron_Hard_Hit_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_Hit_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Hard_Hit_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -73,7 +73,7 @@
   },
   {
     "name": "Apron_Medium_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Medium_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Medium_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -82,7 +82,7 @@
   },
   {
     "name": "Apron_Medium_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Medium_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Medium_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -91,7 +91,7 @@
   },
   {
     "name": "Apron_Medium_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Medium_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Medium_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -100,7 +100,7 @@
   },
   {
     "name": "Apron_Soft_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -109,7 +109,7 @@
   },
   {
     "name": "Apron_Soft_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -118,7 +118,7 @@
   },
   {
     "name": "Apron_Soft_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -127,7 +127,7 @@
   },
   {
     "name": "Apron_Soft_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -136,7 +136,7 @@
   },
   {
     "name": "Apron_Soft_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -145,7 +145,7 @@
   },
   {
     "name": "Apron_Soft_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -154,7 +154,7 @@
   },
   {
     "name": "Apron_Soft_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Apron_Soft_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -163,7 +163,7 @@
   },
   {
     "name": "Arch_L1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -172,7 +172,7 @@
   },
   {
     "name": "Arch_L2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -181,7 +181,7 @@
   },
   {
     "name": "Arch_L3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -190,7 +190,7 @@
   },
   {
     "name": "Arch_L4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -199,7 +199,7 @@
   },
   {
     "name": "Arch_R1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -208,7 +208,7 @@
   },
   {
     "name": "Arch_R2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -217,7 +217,7 @@
   },
   {
     "name": "Arch_R3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -226,7 +226,7 @@
   },
   {
     "name": "Arch_R4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_R4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -235,7 +235,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -244,7 +244,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -253,7 +253,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -262,7 +262,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -271,7 +271,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -280,7 +280,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -289,7 +289,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Hard_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Hard_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -298,7 +298,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Soft_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -307,7 +307,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Soft_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -316,7 +316,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Soft_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -325,7 +325,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Soft_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -334,7 +334,7 @@
   },
   {
     "name": "Ball_Bounce_Playfield_Soft_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Bounce_Playfield_Soft_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -343,7 +343,7 @@
   },
   {
     "name": "Ball_Collide_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -352,7 +352,7 @@
   },
   {
     "name": "Ball_Collide_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -361,7 +361,7 @@
   },
   {
     "name": "Ball_Collide_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -370,7 +370,7 @@
   },
   {
     "name": "Ball_Collide_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -379,7 +379,7 @@
   },
   {
     "name": "Ball_Collide_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -388,7 +388,7 @@
   },
   {
     "name": "Ball_Collide_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -397,7 +397,7 @@
   },
   {
     "name": "Ball_Collide_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Collide_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -406,7 +406,7 @@
   },
   {
     "name": "Ball_Drop_Playfield_1_Delayed",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_1_Delayed.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_1_Delayed.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -415,7 +415,7 @@
   },
   {
     "name": "Ball_Drop_Playfield_2_Delayed",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_2_Delayed.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_2_Delayed.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -424,7 +424,7 @@
   },
   {
     "name": "Ball_Drop_Playfield_3_Delayed",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_3_Delayed.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_3_Delayed.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -433,7 +433,7 @@
   },
   {
     "name": "Ball_Drop_Playfield_4_Delayed",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_4_Delayed.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_4_Delayed.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -442,7 +442,7 @@
   },
   {
     "name": "Ball_Drop_Playfield_5_Delayed",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_5_Delayed.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_5_Delayed.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -451,7 +451,7 @@
   },
   {
     "name": "BallRelease1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -460,7 +460,7 @@
   },
   {
     "name": "BallRelease2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -469,7 +469,7 @@
   },
   {
     "name": "BallRelease3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -478,7 +478,7 @@
   },
   {
     "name": "BallRelease4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -487,7 +487,7 @@
   },
   {
     "name": "BallRelease5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -496,7 +496,7 @@
   },
   {
     "name": "BallRelease6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -505,7 +505,7 @@
   },
   {
     "name": "BallRelease7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\BallRelease7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -514,7 +514,7 @@
   },
   {
     "name": "Bumpers_Bottom_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -523,7 +523,7 @@
   },
   {
     "name": "Bumpers_Bottom_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -532,7 +532,7 @@
   },
   {
     "name": "Bumpers_Bottom_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -541,7 +541,7 @@
   },
   {
     "name": "Bumpers_Bottom_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -550,7 +550,7 @@
   },
   {
     "name": "Bumpers_Bottom_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Bottom_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -559,7 +559,7 @@
   },
   {
     "name": "Bumpers_Middle_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -568,7 +568,7 @@
   },
   {
     "name": "Bumpers_Middle_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -577,7 +577,7 @@
   },
   {
     "name": "Bumpers_Middle_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -586,7 +586,7 @@
   },
   {
     "name": "Bumpers_Middle_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -595,7 +595,7 @@
   },
   {
     "name": "Bumpers_Middle_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Middle_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -604,7 +604,7 @@
   },
   {
     "name": "Bumpers_Top_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -613,7 +613,7 @@
   },
   {
     "name": "Bumpers_Top_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -622,7 +622,7 @@
   },
   {
     "name": "Bumpers_Top_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -631,7 +631,7 @@
   },
   {
     "name": "Bumpers_Top_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -640,7 +640,7 @@
   },
   {
     "name": "Bumpers_Top_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Bumpers_Top_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -649,7 +649,7 @@
   },
   {
     "name": "Coin_In_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Coin_In_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Coin_In_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -658,7 +658,7 @@
   },
   {
     "name": "Coin_In_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Coin_In_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Coin_In_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -667,7 +667,7 @@
   },
   {
     "name": "Coin_In_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Coin_In_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Coin_In_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -676,7 +676,7 @@
   },
   {
     "name": "Drain_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -685,7 +685,7 @@
   },
   {
     "name": "Drain_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -694,7 +694,7 @@
   },
   {
     "name": "Drain_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -703,7 +703,7 @@
   },
   {
     "name": "Drain_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -712,7 +712,7 @@
   },
   {
     "name": "Drain_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -721,7 +721,7 @@
   },
   {
     "name": "Drain_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -730,7 +730,7 @@
   },
   {
     "name": "Drain_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -739,7 +739,7 @@
   },
   {
     "name": "Drain_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -748,7 +748,7 @@
   },
   {
     "name": "Drain_9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -757,7 +757,7 @@
   },
   {
     "name": "Drain_10",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_10.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -766,7 +766,7 @@
   },
   {
     "name": "Drain_11",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_11.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Drain_11.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -775,7 +775,7 @@
   },
   {
     "name": "Flipper_Attack-L01",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Attack-L01.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Attack-L01.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -784,7 +784,7 @@
   },
   {
     "name": "Flipper_Attack-R01",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Attack-R01.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Attack-R01.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -793,7 +793,7 @@
   },
   {
     "name": "Flipper_L01",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L01.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L01.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -802,7 +802,7 @@
   },
   {
     "name": "Flipper_L02",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L02.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L02.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -811,7 +811,7 @@
   },
   {
     "name": "Flipper_L03",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L03.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L03.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -820,7 +820,7 @@
   },
   {
     "name": "Flipper_L04",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L04.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L04.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -829,7 +829,7 @@
   },
   {
     "name": "Flipper_L05",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L05.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L05.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -838,7 +838,7 @@
   },
   {
     "name": "Flipper_L06",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L06.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L06.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -847,7 +847,7 @@
   },
   {
     "name": "Flipper_L07",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L07.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L07.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -856,7 +856,7 @@
   },
   {
     "name": "Flipper_L08",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L08.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L08.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -865,7 +865,7 @@
   },
   {
     "name": "Flipper_L09",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L09.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L09.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -874,7 +874,7 @@
   },
   {
     "name": "Flipper_L10",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L10.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -883,7 +883,7 @@
   },
   {
     "name": "Flipper_L11",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L11.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_L11.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -892,7 +892,7 @@
   },
   {
     "name": "Flipper_Left_Down_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -901,7 +901,7 @@
   },
   {
     "name": "Flipper_Left_Down_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -910,7 +910,7 @@
   },
   {
     "name": "Flipper_Left_Down_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -919,7 +919,7 @@
   },
   {
     "name": "Flipper_Left_Down_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -928,7 +928,7 @@
   },
   {
     "name": "Flipper_Left_Down_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -937,7 +937,7 @@
   },
   {
     "name": "Flipper_Left_Down_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -946,7 +946,7 @@
   },
   {
     "name": "Flipper_Left_Down_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Left_Down_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -955,7 +955,7 @@
   },
   {
     "name": "Flipper_R01",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R01.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R01.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -964,7 +964,7 @@
   },
   {
     "name": "Flipper_R02",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R02.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R02.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -973,7 +973,7 @@
   },
   {
     "name": "Flipper_R03",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R03.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R03.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -982,7 +982,7 @@
   },
   {
     "name": "Flipper_R04",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R04.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R04.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -991,7 +991,7 @@
   },
   {
     "name": "Flipper_R05",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R05.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R05.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1000,7 +1000,7 @@
   },
   {
     "name": "Flipper_R06",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R06.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R06.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1009,7 +1009,7 @@
   },
   {
     "name": "Flipper_R07",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R07.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R07.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1018,7 +1018,7 @@
   },
   {
     "name": "Flipper_R08",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R08.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R08.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1027,7 +1027,7 @@
   },
   {
     "name": "Flipper_R09",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R09.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R09.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1036,7 +1036,7 @@
   },
   {
     "name": "Flipper_R10",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R10.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1045,7 +1045,7 @@
   },
   {
     "name": "Flipper_R11",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R11.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_R11.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1054,7 +1054,7 @@
   },
   {
     "name": "Flipper_ReFlip_L01",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_L01.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_L01.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1063,7 +1063,7 @@
   },
   {
     "name": "Flipper_ReFlip_L02",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_L02.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_L02.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1072,7 +1072,7 @@
   },
   {
     "name": "Flipper_ReFlip_L03",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_L03.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_L03.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1081,7 +1081,7 @@
   },
   {
     "name": "Flipper_ReFlip_R01",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_R01.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_R01.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1090,7 +1090,7 @@
   },
   {
     "name": "Flipper_ReFlip_R02",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_R02.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_R02.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1099,7 +1099,7 @@
   },
   {
     "name": "Flipper_ReFlip_R03",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_R03.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_ReFlip_R03.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1108,7 +1108,7 @@
   },
   {
     "name": "Flipper_Right_Down_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1117,7 +1117,7 @@
   },
   {
     "name": "Flipper_Right_Down_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1126,7 +1126,7 @@
   },
   {
     "name": "Flipper_Right_Down_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1135,7 +1135,7 @@
   },
   {
     "name": "Flipper_Right_Down_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1144,7 +1144,7 @@
   },
   {
     "name": "Flipper_Right_Down_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1153,7 +1153,7 @@
   },
   {
     "name": "Flipper_Right_Down_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1162,7 +1162,7 @@
   },
   {
     "name": "Flipper_Right_Down_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1171,7 +1171,7 @@
   },
   {
     "name": "Flipper_Right_Down_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1180,7 +1180,7 @@
   },
   {
     "name": "Flipper_Rubber_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1189,7 +1189,7 @@
   },
   {
     "name": "Flipper_Rubber_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1198,7 +1198,7 @@
   },
   {
     "name": "Flipper_Rubber_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1207,7 +1207,7 @@
   },
   {
     "name": "Flipper_Rubber_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1216,7 +1216,7 @@
   },
   {
     "name": "Flipper_Rubber_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1225,7 +1225,7 @@
   },
   {
     "name": "Flipper_Rubber_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1234,7 +1234,7 @@
   },
   {
     "name": "Flipper_Rubber_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Rubber_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1243,7 +1243,7 @@
   },
   {
     "name": "Gate_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1252,7 +1252,7 @@
   },
   {
     "name": "Gate_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1261,7 +1261,7 @@
   },
   {
     "name": "Gate_FastTrigger_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_FastTrigger_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_FastTrigger_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1270,7 +1270,7 @@
   },
   {
     "name": "Gate_FastTrigger_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_FastTrigger_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Gate_FastTrigger_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1279,7 +1279,7 @@
   },
   {
     "name": "Knocker_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Knocker_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Knocker_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1288,7 +1288,7 @@
   },
   {
     "name": "Metal_Touch_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1297,7 +1297,7 @@
   },
   {
     "name": "Metal_Touch_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1306,7 +1306,7 @@
   },
   {
     "name": "Metal_Touch_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1315,7 +1315,7 @@
   },
   {
     "name": "Metal_Touch_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1324,7 +1324,7 @@
   },
   {
     "name": "Metal_Touch_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1333,7 +1333,7 @@
   },
   {
     "name": "Metal_Touch_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1342,7 +1342,7 @@
   },
   {
     "name": "Metal_Touch_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1351,7 +1351,7 @@
   },
   {
     "name": "Metal_Touch_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1360,7 +1360,7 @@
   },
   {
     "name": "Metal_Touch_9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1369,7 +1369,7 @@
   },
   {
     "name": "Metal_Touch_10",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_10.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1378,7 +1378,7 @@
   },
   {
     "name": "Metal_Touch_11",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_11.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_11.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1387,7 +1387,7 @@
   },
   {
     "name": "Metal_Touch_12",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_12.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_12.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1396,7 +1396,7 @@
   },
   {
     "name": "Metal_Touch_13",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_13.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Metal_Touch_13.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1405,7 +1405,7 @@
   },
   {
     "name": "Nudge_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Nudge_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Nudge_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1414,7 +1414,7 @@
   },
   {
     "name": "Nudge_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Nudge_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Nudge_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1423,7 +1423,7 @@
   },
   {
     "name": "Nudge_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Nudge_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Nudge_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1432,7 +1432,7 @@
   },
   {
     "name": "Plunger_Pull_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Plunger_Pull_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Plunger_Pull_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1441,7 +1441,7 @@
   },
   {
     "name": "Plunger_Release_Ball",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Plunger_Release_Ball.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Plunger_Release_Ball.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1450,7 +1450,7 @@
   },
   {
     "name": "Plunger_Release_No_Ball",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Plunger_Release_No_Ball.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Plunger_Release_No_Ball.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1459,7 +1459,7 @@
   },
   {
     "name": "Rollover_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1468,7 +1468,7 @@
   },
   {
     "name": "Rollover_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1477,7 +1477,7 @@
   },
   {
     "name": "Rollover_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1486,7 +1486,7 @@
   },
   {
     "name": "Rollover_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rollover_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1495,7 +1495,7 @@
   },
   {
     "name": "Rubber_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1504,7 +1504,7 @@
   },
   {
     "name": "Rubber_1_Hard",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_1_Hard.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_1_Hard.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1513,7 +1513,7 @@
   },
   {
     "name": "Rubber_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1522,7 +1522,7 @@
   },
   {
     "name": "Rubber_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1531,7 +1531,7 @@
   },
   {
     "name": "Rubber_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1540,7 +1540,7 @@
   },
   {
     "name": "Rubber_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1549,7 +1549,7 @@
   },
   {
     "name": "Rubber_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1558,7 +1558,7 @@
   },
   {
     "name": "Rubber_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1567,7 +1567,7 @@
   },
   {
     "name": "Rubber_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1576,7 +1576,7 @@
   },
   {
     "name": "Rubber_9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1585,7 +1585,7 @@
   },
   {
     "name": "Rubber_Strong_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1594,7 +1594,7 @@
   },
   {
     "name": "Rubber_Strong_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1603,7 +1603,7 @@
   },
   {
     "name": "Rubber_Strong_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1612,7 +1612,7 @@
   },
   {
     "name": "Rubber_Strong_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1621,7 +1621,7 @@
   },
   {
     "name": "Rubber_Strong_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1630,7 +1630,7 @@
   },
   {
     "name": "Rubber_Strong_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1639,7 +1639,7 @@
   },
   {
     "name": "Rubber_Strong_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1648,7 +1648,7 @@
   },
   {
     "name": "Rubber_Strong_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1657,7 +1657,7 @@
   },
   {
     "name": "Rubber_Strong_9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Rubber_Strong_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1666,7 +1666,7 @@
   },
   {
     "name": "Saucer_Empty",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Empty.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Empty.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1675,7 +1675,7 @@
   },
   {
     "name": "Saucer_Enter_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Enter_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Enter_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1684,7 +1684,7 @@
   },
   {
     "name": "Saucer_Enter_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Enter_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Enter_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1693,7 +1693,7 @@
   },
   {
     "name": "Saucer_Kick",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Kick.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Saucer_Kick.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1702,7 +1702,7 @@
   },
   {
     "name": "Sling_L1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1711,7 +1711,7 @@
   },
   {
     "name": "Sling_L2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1720,7 +1720,7 @@
   },
   {
     "name": "Sling_L3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1729,7 +1729,7 @@
   },
   {
     "name": "Sling_L4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1738,7 +1738,7 @@
   },
   {
     "name": "Sling_L5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1747,7 +1747,7 @@
   },
   {
     "name": "Sling_L6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1756,7 +1756,7 @@
   },
   {
     "name": "Sling_L7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1765,7 +1765,7 @@
   },
   {
     "name": "Sling_L8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1774,7 +1774,7 @@
   },
   {
     "name": "Sling_L9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1783,7 +1783,7 @@
   },
   {
     "name": "Sling_L10",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L10.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_L10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1792,7 +1792,7 @@
   },
   {
     "name": "Sling_R1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1801,7 +1801,7 @@
   },
   {
     "name": "Sling_R2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1810,7 +1810,7 @@
   },
   {
     "name": "Sling_R3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1819,7 +1819,7 @@
   },
   {
     "name": "Sling_R4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1828,7 +1828,7 @@
   },
   {
     "name": "Sling_R5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1837,7 +1837,7 @@
   },
   {
     "name": "Sling_R6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1846,7 +1846,7 @@
   },
   {
     "name": "Sling_R7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1855,7 +1855,7 @@
   },
   {
     "name": "Sling_R8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Sling_R8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1864,7 +1864,7 @@
   },
   {
     "name": "Start_Button",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Start_Button.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Start_Button.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1873,7 +1873,7 @@
   },
   {
     "name": "Target_Hit_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1882,7 +1882,7 @@
   },
   {
     "name": "Target_Hit_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1891,7 +1891,7 @@
   },
   {
     "name": "Target_Hit_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1900,7 +1900,7 @@
   },
   {
     "name": "Target_Hit_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1909,7 +1909,7 @@
   },
   {
     "name": "Target_Hit_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1918,7 +1918,7 @@
   },
   {
     "name": "Target_Hit_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1927,7 +1927,7 @@
   },
   {
     "name": "Target_Hit_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1936,7 +1936,7 @@
   },
   {
     "name": "Target_Hit_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1945,7 +1945,7 @@
   },
   {
     "name": "Target_Hit_9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Target_Hit_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1954,7 +1954,7 @@
   },
   {
     "name": "Wall_Hit_1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1963,7 +1963,7 @@
   },
   {
     "name": "Wall_Hit_2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1972,7 +1972,7 @@
   },
   {
     "name": "Wall_Hit_3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1981,7 +1981,7 @@
   },
   {
     "name": "Wall_Hit_4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1990,7 +1990,7 @@
   },
   {
     "name": "Wall_Hit_5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -1999,7 +1999,7 @@
   },
   {
     "name": "Wall_Hit_6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2008,7 +2008,7 @@
   },
   {
     "name": "Wall_Hit_7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2017,7 +2017,7 @@
   },
   {
     "name": "Wall_Hit_8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2026,7 +2026,7 @@
   },
   {
     "name": "Wall_Hit_9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Wall_Hit_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2035,7 +2035,7 @@
   },
   {
     "name": "Spinner",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Spinner.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Spinner.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2044,7 +2044,7 @@
   },
   {
     "name": "DropTarget_Down",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\DropTarget_Down.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\DropTarget_Down.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2053,7 +2053,7 @@
   },
   {
     "name": "DropTarget_Up",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\DropTarget_Up.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\DropTarget_Up.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2062,7 +2062,7 @@
   },
   {
     "name": "Drop_Target_Down_1",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_1.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2071,7 +2071,7 @@
   },
   {
     "name": "Drop_Target_Down_2",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_2.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2080,7 +2080,7 @@
   },
   {
     "name": "Drop_Target_Down_3",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_3.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2089,7 +2089,7 @@
   },
   {
     "name": "Drop_Target_Down_4",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_4.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2098,7 +2098,7 @@
   },
   {
     "name": "Drop_Target_Down_5",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_5.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2107,7 +2107,7 @@
   },
   {
     "name": "Drop_Target_Down_6",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_6.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Down_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2116,7 +2116,7 @@
   },
   {
     "name": "Drop_Target_Reset_1",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_1.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2125,7 +2125,7 @@
   },
   {
     "name": "Drop_Target_Reset_2",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_2.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2134,7 +2134,7 @@
   },
   {
     "name": "Drop_Target_Reset_3",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_3.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2143,7 +2143,7 @@
   },
   {
     "name": "Drop_Target_Reset_4",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_4.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2152,7 +2152,7 @@
   },
   {
     "name": "Drop_Target_Reset_5",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_5.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2161,7 +2161,7 @@
   },
   {
     "name": "Drop_Target_Reset_6",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_6.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Drop_Target_Reset_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2170,7 +2170,7 @@
   },
   {
     "name": "Relay_Flash_Off",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_Flash_Off.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_Flash_Off.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2179,7 +2179,7 @@
   },
   {
     "name": "Relay_Flash_On",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_Flash_On.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_Flash_On.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2188,7 +2188,7 @@
   },
   {
     "name": "Relay_GI_Off",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_GI_Off.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_GI_Off.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2197,7 +2197,7 @@
   },
   {
     "name": "Relay_GI_On",
-    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_GI_On.wav",
+    "path": "C:\\Users\\bill\\Dropbox\\BILL (1)\\Sounds\\Relay_GI_On.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2206,7 +2206,7 @@
   },
   {
     "name": "BallRoll_0",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_0.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_0.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2215,7 +2215,7 @@
   },
   {
     "name": "BallRoll_1",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_1.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2224,7 +2224,7 @@
   },
   {
     "name": "BallRoll_2",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_2.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2233,7 +2233,7 @@
   },
   {
     "name": "BallRoll_3",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_3.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2242,7 +2242,7 @@
   },
   {
     "name": "BallRoll_4",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_4.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2251,7 +2251,7 @@
   },
   {
     "name": "BallRoll_5",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_5.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2260,7 +2260,7 @@
   },
   {
     "name": "BallRoll_6",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_6.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2269,7 +2269,7 @@
   },
   {
     "name": "BallRoll_7",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_7.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2278,7 +2278,7 @@
   },
   {
     "name": "BallRoll_8",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_8.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2287,7 +2287,7 @@
   },
   {
     "name": "BallRoll_9",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_9.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2296,7 +2296,7 @@
   },
   {
     "name": "BallRoll_10",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_10.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2305,7 +2305,7 @@
   },
   {
     "name": "BallRoll_11",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_11.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\BallRoll_11.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2314,7 +2314,7 @@
   },
   {
     "name": "WireLoop1",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop1.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2323,7 +2323,7 @@
   },
   {
     "name": "WireLoop2",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop2.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2332,7 +2332,7 @@
   },
   {
     "name": "WireLoop3",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop3.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2341,7 +2341,7 @@
   },
   {
     "name": "WireLoop4",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop4.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2350,7 +2350,7 @@
   },
   {
     "name": "WireLoop5",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop5.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2359,7 +2359,7 @@
   },
   {
     "name": "WireLoop6",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop6.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2368,7 +2368,7 @@
   },
   {
     "name": "WireLoop7",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop7.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2377,7 +2377,7 @@
   },
   {
     "name": "WireLoop8",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop8.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2386,7 +2386,7 @@
   },
   {
     "name": "WireLoop9",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop9.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2395,7 +2395,7 @@
   },
   {
     "name": "WireLoop10",
-    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop10.wav",
+    "path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2404,7 +2404,7 @@
   },
   {
     "name": "RampLoop1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2413,7 +2413,7 @@
   },
   {
     "name": "RampLoop2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2422,7 +2422,7 @@
   },
   {
     "name": "RampLoop3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2431,7 +2431,7 @@
   },
   {
     "name": "RampLoop4",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop4.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop4.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2440,7 +2440,7 @@
   },
   {
     "name": "RampLoop5",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop5.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop5.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2449,7 +2449,7 @@
   },
   {
     "name": "RampLoop6",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop6.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop6.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2458,7 +2458,7 @@
   },
   {
     "name": "RampLoop7",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop7.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop7.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2467,7 +2467,7 @@
   },
   {
     "name": "RampLoop8",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop8.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop8.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2476,7 +2476,7 @@
   },
   {
     "name": "RampLoop9",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop9.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop9.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2485,7 +2485,7 @@
   },
   {
     "name": "RampLoop10",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop10.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\RampLoop10.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2494,7 +2494,7 @@
   },
   {
     "name": "WireRamp_Stop1",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\WireRamp_Stop1.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\WireRamp_Stop1.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2503,7 +2503,7 @@
   },
   {
     "name": "WireRamp_Stop2",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\WireRamp_Stop2.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\WireRamp_Stop2.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
@@ -2512,7 +2512,7 @@
   },
   {
     "name": "WireRamp_Stop3",
-    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\WireRamp_Stop3.wav",
+    "path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Fleep Sounds\\WireRamp_Stop3.flac",
     "internal_name": "",
     "fade": 0,
     "volume": 0,
