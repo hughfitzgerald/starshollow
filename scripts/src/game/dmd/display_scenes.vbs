@@ -46,119 +46,130 @@
 ' bottom. This is also the only scene that draws DMDBigText, which is
 ' what makes widgets an overlay on the scoreboard and nothing else.
 
+Dim bigFont, largeFont,smallFont, mediumFont, dimFont
 Sub DmdBuild_Score(entry)
-    Dim i, label
+    Set bigFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", vbWhite, vbWhite, 0)
+    Set largeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", vbWhite, vbWhite, 0)
+    Set mediumFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", vbWhite, vbWhite, 0)
+    Set smallFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f4by5.fnt", vbWhite, vbWhite, 0)
+    Set dimFont = FlexDMD.NewFont("FlexDMD.Resources.teeny_tiny_pixls-5.fnt", RGB(120, 120, 120), vbWhite, 0)
 
-    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
-    Set FontScoreInactive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", RGB(100, 100, 100), vbWhite, 0)
-    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-    Set FontBig2 = FlexDMD.NewFont("sys80_1.fnt", vbWhite, vbBlack, 0)
-    Set FontBig3 = FlexDMD.NewFont("sys80.fnt", RGB ( 10,10,10) ,vbBlack, 0)
+    Dim scene
+    Set scene = FlexDMD.NewGroup("Score")
+    scene.SetSize 128, 32
 
-    Dim g : Set g = FlexDMD.NewGroup("Score")
-    With g
-        For i = 1 To 4
-            Set label = FlexDMD.NewLabel("Score_" & i, FontScoreInactive, "0")
-            label.SetAlignedPosition 45, 1 + (i - 1) * 6, FlexDMD_Align_TopRight
-            .AddActor label
-        Next
-        .AddActor FlexDMD.NewFrame("VSeparator")
-        .GetFrame("VSeparator").Thickness = 1
-        .GetFrame("VSeparator").SetBounds 45, 0, 1, 32
-        .AddActor FlexDMD.NewGroup("Content")
-        .GetGroup("Content").Clip = True
-        .GetGroup("Content").SetBounds 47, 0, 81, 32
-    End With
+    Dim frame
+    Set frame = FlexDMD.NewFrame("Border")
+    frame.SetBounds 0, 0, 128, 32
+    frame.Thickness = 1
+    frame.BorderColor = RGB(90, 90, 90)
+    scene.AddActor frame
 
-    Dim title
-    Set title = FlexDMD.NewLabel("TitleScroller", FontScoreActive, ">>> Stars Hollow Showdown <<<")
-    Dim af
-    Set af = title.ActionFactory
-    Dim list
-    Set list = af.Sequence()
-    list.Add af.MoveTo(128, 2, 0)
-    list.Add af.Wait(0.5)
-    list.Add af.MoveTo( - 128, 2, 5.0)
-    list.Add af.Wait(3.0)
-    title.AddAction af.Repeat(list, - 1)
-    g.GetGroup("Content").AddActor title
+    Dim scoreDisplay
+    Set scoreDisplay = FlexDMD.NewGroup("ScoreDisplay")
+    scoreDisplay.SetBounds 1, 1, 127, 23
+    scene.AddActor scoreDisplay
 
-    Set title = FlexDMD.NewLabel("Title2", FontBig3, " ")
-    title.SetAlignedPosition 42, 16, FlexDMD_Align_Center
-    g.GetGroup("Content").AddActor title
+    Dim activeLeftScore
+    Set activeLeftScore = FlexDMD.NewGroup("ActiveLeftScore")
+    activeLeftScore.SetBounds 1, 1, 76, 23
+    scene.AddActor activeLeftScore
 
-    Set title = FlexDMD.NewLabel("Title", FontBig1, " ")
-    title.SetAlignedPosition 42, 16, FlexDMD_Align_Center
-    g.GetGroup("Content").AddActor title
+    Dim inactiveLeftScore
+    Set inactiveLeftScore = FlexDMD.NewGroup("InactiveLeftScore")
+    inactiveLeftScore.SetBounds 1, 1, 54, 23
+    scene.AddActor inactiveLeftScore
 
-    g.GetGroup("Content").AddActor FlexDMD.NewLabel("Ball", FontScoreActive, "Ball 1")
-    g.GetGroup("Content").AddActor FlexDMD.NewLabel("Credit", FontScoreActive, "Credit 5")
+    Dim p1Score
+    Set p1Score = FlexDMD.NewLabel("P1", mediumFont, "00")
+    p1Score.AutoPack = False
+    p1Score.FillParent = True
+    p1Score.Alignment = FlexDMD_Align_TopRight
+    inactiveLeftScore.AddActor p1Score
 
-    entry.SetScene g
+    Dim p2Score
+    Set p2Score = FlexDMD.NewLabel("P2", mediumFont, "00")
+    p2Score.AutoPack = False
+    p2Score.FillParent = True
+    p2Score.Alignment = FlexDMD_Align_TopRight
+    scoreDisplay.AddActor p2Score
+
+    Dim p3Score
+    Set p3Score = FlexDMD.NewLabel("P3", mediumFont, "00")
+    p3Score.AutoPack = False
+    p3Score.FillParent = True
+    p3Score.Alignment = FlexDMD_Align_BottomRight
+    inactiveLeftScore.AddActor p3Score
+
+    Dim p4Score
+    Set p4Score = FlexDMD.NewLabel("P4", mediumFont, "00")
+    p4Score.AutoPack = False
+    p4Score.FillParent = True
+    p4Score.Alignment = FlexDMD_Align_BottomRight
+    scoreDisplay.AddActor p4Score
+
+    Dim ball
+    Set ball = FlexDMD.NewLabel("BallCredits", smallFont, "BALL 2   CREDITS 1")
+    ball.SetAlignedPosition 64, 29, 4
+    scene.AddActor ball
+
+    entry.SetScene scene
 End Sub
-
 
 Sub DmdTick_Score(args)
-    Dim i, label
+  Dim scene, scoreDisplay, activeLeftScore, inactiveLeftScore, scoreLabel, scoreValue
+  Set scene = FlexDMD.Stage.GetGroup("Score")
+  Set scoreDisplay = scene.GetGroup("ScoreDisplay")
+  Set activeLeftScore = scene.GetGroup("ActiveLeftScore")
+  Set inactiveLeftScore = scene.GetGroup("InactiveLeftScore")
 
-    ' GLF: was "If (FlexFrame Mod 64) = 0 Then CurrentPlayer = 1 + (CurrentPlayer Mod 4)"
-    ' Turn advance is GLF's job now (Getglf_currentPlayerNumber tracks it);
-    ' nothing to do here.
-    If (FlexFrame Mod 16) = 0 Then
-        For i = 1 To 4
-            Set label = FlexDMD.Stage.GetLabel("Score_" & i)
-            If i = (Getglf_currentPlayerNumber() + 1) Then    'GLF: was "If i = CurrentPlayer Then"
-                label.Font = FontScoreActive
-            Else
-                label.Font = FontScoreInactive
-            End If
-            ' Only players actually in the game get a score line
-            If i <= glf_playerState.Count Then
-                label.Text = FormatNumber(Score2Num(GetPlayerStateForPlayer(i - 1, "score")), 0)   'GLF: was "PlayerScore(i)"
-            Else
-                label.Text = ""
-            End If
-            label.SetAlignedPosition 45, 1 + (i - 1) * 6, FlexDMD_Align_TopRight
-        Next
-    End If
-
-    ' If DMDBGFlash > 0 Then
-    ' 	DMDBGFlash = DMDBGFlash - 1
-    ' 	FlexDMD.Stage.GetImage("bg2").visible = True
-    ' Else
-    ' 	FlexDMD.Stage.GetImage("bg2").visible = False
-    ' End If
-
-    If DMDfire > FLEXframe And (FlexFrame Mod 8) > 3 Then
-        FlexDMD.Stage.GetLabel("Title").font = FontBig2
+  scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   CREDITS " & glf_machine_vars("credits").GetValue()
+  
+  scene.GetLabel("P1").Alignment = FlexDMD_Align_TopRight
+  scene.GetLabel("P2").Visible = False
+  scene.GetLabel("P3").Visible = False
+  scene.GetLabel("P4").Visible = False
+  Dim x
+  For x = 1 To glf_playerState.Count
+    scoreValue = GetPlayerStateForPlayer(x - 1, "score")
+    Set scoreLabel = scene.GetLabel("P" & x)
+    scoreLabel.Visible = True
+    If scoreValue = 0 Then
+      scoreLabel.Text = "00"
     Else
-        FlexDMD.Stage.GetLabel("Title").font = FontBig1
+        scoreLabel.Text = FormatNumber(scoreValue, 0, -2, -2, -1)
     End If
-
-    If DMDTextDisplayTime > FLEXframe Then
-        If DMDTextEffect = 1 And (FLEXframe Mod 20) > 10 Then
-            FlexDMD.Stage.GetLabel("Title").Text = " "
-            FlexDMD.Stage.GetLabel("Title2").Text = " "
-        Else
-            FlexDMD.Stage.GetLabel("Title").Text = DMDTextOnScore
-            FlexDMD.Stage.GetLabel("Title2").Text = DMDTextOnScore
+    If glf_playerState.Count > 1 Then
+      If Getglf_currentPlayerNumber() = x - 1 Then
+        If x = 1 or x = 3 Then
+          scene.RemoveActor scoreLabel
+          activeLeftScore.addActor scoreLabel
         End If
+        If scoreValue > 999999999 Then
+          scoreLabel.Font = mediumFont
+        ElseIf scoreValue > 99999999 Then
+          scoreLabel.Font = largeFont
+        Else
+          scoreLabel.Font = bigFont
+        End If
+      Else
+        If x = 1 or x = 3 Then
+          scene.RemoveActor scoreLabel
+          inactiveLeftScore.addActor scoreLabel
+        End If
+        If scoreValue > 9999999 Then
+          scoreLabel.Font = smallFont
+        Else
+          scoreLabel.Font = mediumFont
+        End If
+      End If
     Else
-        'GLF: was "PlayerScore(CurrentPlayer)" - GetPlayerState with no
-        'index always reads the CURRENT player, so no index is needed.
-        FlexDMD.Stage.GetLabel("Title").Text = FormatNumber(Score2Num(GetPlayerState("score")), 0)
-        FlexDMD.Stage.GetLabel("Title2").Text = FormatNumber(Score2Num(GetPlayerState("score")), 0)
+      scoreDisplay.AddActor scoreLabel
+      scoreLabel.Alignment = FlexDMD_Align_Center
+      scoreLabel.Font = bigFont
     End If
-
-    FlexDMD.Stage.GetLabel("Title").SetAlignedPosition 42, 16, FlexDMD_Align_Center
-    FlexDMD.Stage.GetLabel("Title2").SetAlignedPosition 43, 17, FlexDMD_Align_Center
-    FlexDMD.Stage.GetLabel("Ball").SetAlignedPosition 0, 33, FlexDMD_Align_BottomLeft
-    FlexDMD.Stage.GetLabel("Credit").SetAlignedPosition 81, 33, FlexDMD_Align_BottomRight
-    FlexDMD.Stage.GetLabel("Ball").Text = "Ball " & GetPlayerState("ball")
-    'Update with your own code for Credits
-    FlexDMD.Stage.GetLabel("Credit").Text = "Credit " & glf_machine_vars("credits").GetValue()
+  Next
 End Sub
-
 
 '*******************************************
 '  welcome - the attract intro
