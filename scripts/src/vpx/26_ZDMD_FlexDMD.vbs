@@ -66,7 +66,7 @@ FlexDMD_Align_BottomLeft = 6, _
 FlexDMD_Align_Bottom = 7, _
 FlexDMD_Align_BottomRight = 8
 
-Dim bigFont, largeFont, smallFont, mediumFont, tinyFont, bigFontDim, largeFontDim, smallFontDim, mediumFontDim, tinyFontDim
+Dim hugeFont, bigFont, largeFont, smallFont, mediumFont, tinyFont, hugeFontDim, bigFontDim, largeFontDim, smallFontDim, mediumFontDim, tinyFontDim
 
 Sub Flex_Init
 	If UseFlexDMD = 0 Then Exit Sub
@@ -88,13 +88,15 @@ Sub Flex_Init
 		.Run = True
 	End With
 
+    Set hugeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f14by26.fnt", vbWhite, vbWhite, 0)
     Set bigFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", vbWhite, vbWhite, 0)
     Set largeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", vbWhite, vbWhite, 0)
     Set mediumFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", vbWhite, vbWhite, 0)
     Set smallFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f4by5.fnt", vbWhite, vbWhite, 0)
     Set tinyFont = FlexDMD.NewFont("FlexDMD.Resources.teeny_tiny_pixls-5.fnt", vbWhite, vbWhite, 0)
 
-    Set bigFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", RGB(120, 120, 120), vbWhite, 0)
+    Set hugeFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f14by26.fnt", RGB(120, 120, 120), vbWhite, 0)
+	Set bigFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", RGB(120, 120, 120), vbWhite, 0)
     Set largeFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", RGB(120, 120, 120), vbWhite, 0)
     Set mediumFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", RGB(120, 120, 120), vbWhite, 0)
     Set smallFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f4by5.fnt", RGB(120, 120, 120), vbWhite, 0)
@@ -141,11 +143,28 @@ Dim DMDTextOnScore
 Dim DMDTextDisplayTime
 Dim DMDTextEffect
 Sub DMDBigText(text,Time,effect)
-	If UseFlexDMD = 0 Then Exit Sub
-	DMDTextOnScore = text
-	DMDTextDisplayTime = FLEXframe + Time
+	' If UseFlexDMD = 0 Then Exit Sub
+	' DMDTextOnScore = text
+	' DMDTextDisplayTime = FLEXframe + Time
 	
-	DMDTextEffect = effect
+	' DMDTextEffect = effect
+    Dim jp, af, seq
+    Set jp = FlexDMD.NewGroup("Jackpot")
+    jp.SetSize 128, 32
+    jp.ClearBackground = True
+    Dim lbl
+    Set lbl = FlexDMD.NewLabel("Text", hugeFont, text)
+    lbl.SetBounds 0, 0, 128, 32
+    jp.AddActor lbl
+    Set af = lbl.ActionFactory
+    lbl.AddAction af.Blink(0.15, 0.1, 6)
+    ' Show the scene on top of the stage, then remove it after 2 seconds
+    Set af = jp.ActionFactory
+    Set seq = af.Sequence()
+    seq.Add af.Wait(2)
+    seq.Add af.RemoveFromParent()
+    jp.AddAction seq
+    FlexDMD.Stage.AddActor jp
 End Sub
 
 Sub FlexFlasher 'Flex on vrroom and playfield runs this one
