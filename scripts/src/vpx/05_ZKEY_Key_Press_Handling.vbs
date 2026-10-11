@@ -14,7 +14,14 @@
 '   BIP / BIPL / SolRelease multiball test       (GLF owns ball state)
 
 Sub Table1_KeyDown(ByVal keycode)
-	Glf_KeyDown(keycode)
+	' Mid-game start press with no credits: GLF would add a player here, so keep
+	' the key from it but still raise s_start_active like Glf_KeyDown would.
+	' (Starting a new game is gated by CreditCheckStartGame in _configuration.vbs.)
+	If keycode = StartGameKey And glf_gameStarted And Not HasCreditForPlayer() Then
+		DispatchPinEvent "s_start_active", True
+	Else
+		Glf_KeyDown(keycode)
+	End If
 
 	' Debug shot tester (ZTST): 2 = blocker posts, W/E/R/Y/U/I/P/A/S/F/G = shots
 	DebugShotTableKeyDownCheck keycode

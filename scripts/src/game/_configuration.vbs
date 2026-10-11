@@ -128,6 +128,16 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "s_Trigger1_active",   "plunger_ball_in",  "PlungerBallIn",  100, Null
     AddPinEventListener "s_Trigger1_inactive", "plunger_ball_out", "PlungerBallOut", 100, Null
 
+    ' Credits. A game (player 1) and every extra player cost one credit.
+    '  - request_to_start_game is a relay: Glf_BallController (30) checks the trough,
+    '    then Glf_StartGame (20) starts if it gets True. Priority 25 slots between
+    '    them so a game with no credits is refused the same way an empty trough is.
+    '  - Mid-game "add player" presses are gated in Table1_KeyDown (05_ZKEY).
+    '  - player_added fires for every player GLF actually adds (p1 included), so
+    '    one listener takes the credit for both game start and add-player.
+    AddPinEventListener "request_to_start_game", "credit_check", "CreditCheckStartGame", 25, Null
+    AddPinEventListener "player_added", "deduct_credit", "DeductCreditForPlayer", 100, Null
+
 
     '*********** HIGH SCORES ***********
 
@@ -593,6 +603,30 @@ End Function
 
 Function PlungerBallOut(args)
     PlungerHasBall = False
+End Function
+
+' Relay handler on request_to_start_game. args(1) is the trough check result.
+Function CreditCheckStartGame(args)
+    If args(1) <> True Then
+        CreditCheckStartGame = args(1)
+    ElseIf HasCreditForPlayer() Then
+        CreditCheckStartGame = True
+    Else
+        Glf_WriteDebugLog "CreditCheckStartGame", "start refused - no credits"
+        CreditCheckStartGame = False
+    End If
+End Function
+
+Function HasCreditForPlayer()
+    HasCreditForPlayer = (glf_machine_vars("credits").GetValue() >= 1)
+End Function
+
+Function DeductCreditForPlayer(args)
+    Dim prev : prev = glf_machine_vars("credits").GetValue()
+    If prev >= 1 Then
+        glf_machine_vars("credits").Value = prev - 1
+        Glf_BcpSendMachineVar "credits", prev - 1, prev
+    End If
 End Function
 
 Dim glf_subwayBallsReturning : glf_subwayBallsReturning = 0

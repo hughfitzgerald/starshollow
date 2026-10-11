@@ -10,13 +10,15 @@
 '   Glf_KeyUp(StartGameKey)
 '     -> DispatchRelayPinEvent "request_to_start_game"
 '        -> Glf_BallController  (verifies all 5 balls are in the trough)
+'        -> CreditCheckStartGame (ours, _configuration.vbs: needs >= 1 credit)
 '        -> Glf_StartGame       (adds player 1, dispatches game_start)
 '        -> Glf_ReleaseBall     (kicks a ball to the plunger lane)
 '
 ' So if the start button does nothing, the cause is almost always the ball
 ' controller check failing - GLF counts swTrough1..5 + Drain and refuses to
-' start unless the count equals tnob. Turn on "Glf Debug Log" in the F6
-' tweak menu to see it reject.
+' start unless the count equals tnob - or there are no credits (the DMD shows
+' the count; the add-credit key adds one). Turn on "Glf Debug Log" in the F6
+' tweak menu to see which one rejected.
 '
 ' All this mode does is pulse the GI so the table doesn't look dead, and
 ' get out of the way the moment a game starts.
