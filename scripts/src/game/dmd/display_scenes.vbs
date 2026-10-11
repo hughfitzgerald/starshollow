@@ -418,26 +418,6 @@ Sub DmdTick_Mode(args)
     timer.Alignment = FlexDMD_Align_Right
 End Sub
 
-
-Sub DmdBuild_ScoreCentralLayout(entry)
-    Dim text, score, instructions
-    Dim g : Set g = FlexDMD.NewGroup("Mode")
-    With g
-        ' one spot with mode text
-        Set text = FlexDMD.NewLabel("mode_text", tinyFontDim, "")
-        .AddActor text
-
-        ' one spot with mode score
-        Set score = FlexDMD.NewLabel("mode_score", bigFont, "")
-        .AddActor score
-
-        ' one spot with mode instructions
-        Set instructions = FlexDMD.NewLabel("mode_instructions", tinyFontDim, "")
-        .AddActor instructions
-    End With
-    entry.SetScene g
-End Sub
-
 '*******************************************
 '  game_over - final scores
 '*******************************************
@@ -488,24 +468,4 @@ Sub DmdTick_GameOver(args)
         label.SetBounds ((i - 1) Mod 2) * 64, 12 + ((i - 1) \ 2) * 10, 64, 8
         label.Alignment = FlexDMD_Align_Center
     Next
-End Sub
-
-
-Sub DmdTick_ScoreCentralLayout(args)
-    Dim text, score, instructions
-    
-    Set text = FlexDMD.Stage.GetLabel("mode_text")
-    text.Text = glf_machine_vars("display_top_small_text").GetValue()
-    text.SetBounds 0, 1, 128, 8
-    text.Alignment = FlexDMD_Align_Center
-
-    Set score = FlexDMD.Stage.GetLabel("mode_score")
-    score.Text = glf_machine_vars("display_middle_large_text").GetValue()
-    score.SetBounds 0, 9, 128, 14
-    score.Alignment = FlexDMD_Align_Center
-
-    Set instructions = FlexDMD.Stage.GetLabel("mode_instructions")
-    instructions.Text = glf_machine_vars("display_bottom_small_text").GetValue()
-    instructions.SetBounds 0, 24, 128, 8
-    instructions.Alignment = FlexDMD_Align_Center
 End Sub

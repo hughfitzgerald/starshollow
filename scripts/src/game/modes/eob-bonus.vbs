@@ -113,17 +113,17 @@ Sub CreateBonusMode
             With .EventName("calculate_bonus_total")
                 With .Variable("bonus_total")
                     .Action = "add"
-                    .Int = "current_player.bonus_multiplier * " & BonusMultiplierFactor & _
+                    .Int = "{current_player.bonus_multiplier * " & BonusMultiplierFactor & _
                         " * current_player.total_switches_hit + current_player.bumper_count * " & BonusBumperFactor & _
                         " + current_player.diner_count * " & BonusDinerFactor & _
                         " + current_player.grandparents_count * " & BonusGrandparentsFactor & _
-                        " + current_player.spinner_count * " & BonusSpinnerFactor
+                        " + current_player.spinner_count * " & BonusSpinnerFactor & ":,}"
                 End With
             End With
             With .EventName("add_bonus_total_to_score")
                 With .Variable("score")
                     .Action = "add"
-                    .Int = "current_player.bonus_total"
+                    .Int = "{current_player.bonus_total:,}"
                 End With
             End With
             With .EventName("show_bonus_multiplier")
@@ -133,7 +133,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.bonus_multiplier * " & BonusMultiplierFactor & " * current_player.total_switches_hit"
+                    .String = "{current_player.bonus_multiplier * " & BonusMultiplierFactor & " * current_player.total_switches_hit:,}"
                 End With
             End With
             With .EventName("show_bonus_coffee")
@@ -183,7 +183,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_llmb_score"
+                    .String = "{current_player.mode_llmb_score:,}"
                 End With
             End With
             With .EventName("show_bonus_jdmb")
@@ -193,7 +193,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_jdmb_score"
+                    .String = "{current_player.mode_jdmb_score:,}"
                 End With
             End With
             With .EventName("show_bonus_dm")
@@ -203,7 +203,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_dance_marathon_score"
+                    .String = "{current_player.mode_dance_marathon_score:,}"
                 End With
             End With
             With .EventName("show_bonus_tm")
@@ -213,7 +213,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_town_meeting_score"
+                    .String = "{current_player.mode_town_meeting_score:,}"
                 End With
             End With
             With .EventName("show_bonus_lbtb")
@@ -223,7 +223,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_lbtb_score"
+                    .String = "{current_player.mode_lbtb_score:,}"
                 End With
             End With
             With .EventName("show_bonus_kims_antiques")
@@ -233,7 +233,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_kims_antiques_score"
+                    .String = "{current_player.mode_kims_antiques_score:,}"
                 End With
             End With
             With .EventName("show_bonus_dinner")
@@ -243,7 +243,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_dinner_score"
+                    .String = "{current_player.mode_dinner_score:,}"
                 End With
             End With
             With .EventName("show_bonus_fd_punch")
@@ -253,7 +253,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.mode_fd_punch_score"
+                    .String = "{current_player.mode_fd_punch_score:,}"
                 End With
             End With
             With .EventName("show_bonus_total")
@@ -263,7 +263,7 @@ Sub CreateBonusMode
                 End With
                 With .Variable("bonus_display_score")
                     .Action = "set"
-                    .String = "current_player.bonus_total"
+                    .String = "{current_player.bonus_total:,}"
                 End With
             End With
 

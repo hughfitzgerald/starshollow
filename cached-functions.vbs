@@ -705,16 +705,16 @@ Function Glf_163(args)
 	If Err Then Glf_163 = False
 End Function
 Function Glf_164(args)
-	Glf_164 = GetPlayerState("bonus_multiplier") * 1000 * GetPlayerState("total_switches_hit") + GetPlayerState("bumper_count") * 2000 + GetPlayerState("diner_count") * 3000 + GetPlayerState("grandparents_count") * 4000 + GetPlayerState("spinner_count") * 1000
+	Glf_164 = Glf_FormatValue(GetPlayerState("bonus_multiplier") * 1000 * GetPlayerState("total_switches_hit") + GetPlayerState("bumper_count") * 2000 + GetPlayerState("diner_count") * 3000 + GetPlayerState("grandparents_count") * 4000 + GetPlayerState("spinner_count") * 1000, ",")
 End Function
 Function Glf_165(args)
-	Glf_165 = GetPlayerState("bonus_total")
+	Glf_165 = Glf_FormatValue(GetPlayerState("bonus_total"), ",")
 End Function
 Function Glf_166(args)
 	Glf_166 = "BONUS " & GetPlayerState("bonus_multiplier") & "x"
 End Function
 Function Glf_167(args)
-	Glf_167 = GetPlayerState("bonus_multiplier") * 1000 * GetPlayerState("total_switches_hit")
+	Glf_167 = Glf_FormatValue(GetPlayerState("bonus_multiplier") * 1000 * GetPlayerState("total_switches_hit"), ",")
 End Function
 Function Glf_168(args)
 	Glf_168 = "COFFEE COFFEE COFFEE"
@@ -744,49 +744,49 @@ Function Glf_176(args)
 	Glf_176 = "LOCK-AWAY LOGAN"
 End Function
 Function Glf_177(args)
-	Glf_177 = GetPlayerState("mode_llmb_score")
+	Glf_177 = Glf_FormatValue(GetPlayerState("mode_llmb_score"), ",")
 End Function
 Function Glf_178(args)
 	Glf_178 = "JESS & DEAN: TO THE DEATH"
 End Function
 Function Glf_179(args)
-	Glf_179 = GetPlayerState("mode_jdmb_score")
+	Glf_179 = Glf_FormatValue(GetPlayerState("mode_jdmb_score"), ",")
 End Function
 Function Glf_180(args)
 	Glf_180 = "DANCE MARATHON"
 End Function
 Function Glf_181(args)
-	Glf_181 = GetPlayerState("mode_dance_marathon_score")
+	Glf_181 = Glf_FormatValue(GetPlayerState("mode_dance_marathon_score"), ",")
 End Function
 Function Glf_182(args)
 	Glf_182 = "TOWN MEETING"
 End Function
 Function Glf_183(args)
-	Glf_183 = GetPlayerState("mode_town_meeting_score")
+	Glf_183 = Glf_FormatValue(GetPlayerState("mode_town_meeting_score"), ",")
 End Function
 Function Glf_184(args)
 	Glf_184 = "LUKE BREAKS THE BELLS"
 End Function
 Function Glf_185(args)
-	Glf_185 = GetPlayerState("mode_lbtb_score")
+	Glf_185 = Glf_FormatValue(GetPlayerState("mode_lbtb_score"), ",")
 End Function
 Function Glf_186(args)
 	Glf_186 = "KIM'S ANTIQUES"
 End Function
 Function Glf_187(args)
-	Glf_187 = GetPlayerState("mode_kims_antiques_score")
+	Glf_187 = Glf_FormatValue(GetPlayerState("mode_kims_antiques_score"), ",")
 End Function
 Function Glf_188(args)
 	Glf_188 = "FRIDAY NIGHT DINNER"
 End Function
 Function Glf_189(args)
-	Glf_189 = GetPlayerState("mode_dinner_score")
+	Glf_189 = Glf_FormatValue(GetPlayerState("mode_dinner_score"), ",")
 End Function
 Function Glf_190(args)
 	Glf_190 = "FOUNDER'S DAY PUNCH"
 End Function
 Function Glf_191(args)
-	Glf_191 = GetPlayerState("mode_fd_punch_score")
+	Glf_191 = Glf_FormatValue(GetPlayerState("mode_fd_punch_score"), ",")
 End Function
 Function Glf_192(args)
 	Glf_192 = "TOTAL BONUS"
@@ -1706,10 +1706,10 @@ glf_funcRefMap.Add "play_bonus_show13{current_player.mode_fd_punch_score    > 0 
 glf_funcRefMap.Add "play_bonus_show13{current_player.mode_fd_punch_score   == 0 && current_player.bonus_skip == 0}", "Glf_161"
 glf_funcRefMap.Add "play_bonus_show14{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", "Glf_162"
 glf_funcRefMap.Add "play_bonus_show14{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", "Glf_163"
-glf_funcRefMap.Add "current_player.bonus_multiplier * 1000 * current_player.total_switches_hit + current_player.bumper_count * 2000 + current_player.diner_count * 3000 + current_player.grandparents_count * 4000 + current_player.spinner_count * 1000", "Glf_164"
-glf_funcRefMap.Add "current_player.bonus_total", "Glf_165"
+glf_funcRefMap.Add "{current_player.bonus_multiplier * 1000 * current_player.total_switches_hit + current_player.bumper_count * 2000 + current_player.diner_count * 3000 + current_player.grandparents_count * 4000 + current_player.spinner_count * 1000:,}", "Glf_164"
+glf_funcRefMap.Add "{current_player.bonus_total:,}", "Glf_165"
 glf_funcRefMap.Add """BONUS "" & current_player.bonus_multiplier & ""x""", "Glf_166"
-glf_funcRefMap.Add "current_player.bonus_multiplier * 1000 * current_player.total_switches_hit", "Glf_167"
+glf_funcRefMap.Add "{current_player.bonus_multiplier * 1000 * current_player.total_switches_hit:,}", "Glf_167"
 glf_funcRefMap.Add """COFFEE COFFEE COFFEE""", "Glf_168"
 glf_funcRefMap.Add "current_player.bumper_count & "" CUPS x "" & BonusBumperFactor", "Glf_169"
 glf_funcRefMap.Add """LUKE'S DINER""", "Glf_170"
@@ -1719,21 +1719,21 @@ glf_funcRefMap.Add "current_player.grandparents_count & "" VISITS x "" & BonusGr
 glf_funcRefMap.Add """FAST TALKING""", "Glf_174"
 glf_funcRefMap.Add "current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor", "Glf_175"
 glf_funcRefMap.Add """LOCK-AWAY LOGAN""", "Glf_176"
-glf_funcRefMap.Add "current_player.mode_llmb_score", "Glf_177"
+glf_funcRefMap.Add "{current_player.mode_llmb_score:,}", "Glf_177"
 glf_funcRefMap.Add """JESS & DEAN: TO THE DEATH""", "Glf_178"
-glf_funcRefMap.Add "current_player.mode_jdmb_score", "Glf_179"
+glf_funcRefMap.Add "{current_player.mode_jdmb_score:,}", "Glf_179"
 glf_funcRefMap.Add """DANCE MARATHON""", "Glf_180"
-glf_funcRefMap.Add "current_player.mode_dance_marathon_score", "Glf_181"
+glf_funcRefMap.Add "{current_player.mode_dance_marathon_score:,}", "Glf_181"
 glf_funcRefMap.Add """TOWN MEETING""", "Glf_182"
-glf_funcRefMap.Add "current_player.mode_town_meeting_score", "Glf_183"
+glf_funcRefMap.Add "{current_player.mode_town_meeting_score:,}", "Glf_183"
 glf_funcRefMap.Add """LUKE BREAKS THE BELLS""", "Glf_184"
-glf_funcRefMap.Add "current_player.mode_lbtb_score", "Glf_185"
+glf_funcRefMap.Add "{current_player.mode_lbtb_score:,}", "Glf_185"
 glf_funcRefMap.Add """KIM'S ANTIQUES""", "Glf_186"
-glf_funcRefMap.Add "current_player.mode_kims_antiques_score", "Glf_187"
+glf_funcRefMap.Add "{current_player.mode_kims_antiques_score:,}", "Glf_187"
 glf_funcRefMap.Add """FRIDAY NIGHT DINNER""", "Glf_188"
-glf_funcRefMap.Add "current_player.mode_dinner_score", "Glf_189"
+glf_funcRefMap.Add "{current_player.mode_dinner_score:,}", "Glf_189"
 glf_funcRefMap.Add """FOUNDER'S DAY PUNCH""", "Glf_190"
-glf_funcRefMap.Add "current_player.mode_fd_punch_score", "Glf_191"
+glf_funcRefMap.Add "{current_player.mode_fd_punch_score:,}", "Glf_191"
 glf_funcRefMap.Add """TOTAL BONUS""", "Glf_192"
 glf_funcRefMap.Add "mode_skillshots_stopped{machine.game_modes_enabled == 1}", "Glf_193"
 glf_funcRefMap.Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 1}", "Glf_194"

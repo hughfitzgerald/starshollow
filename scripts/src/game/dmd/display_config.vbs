@@ -144,11 +144,6 @@ Sub CreateFlexDmdDisplay()
         .Ticker  = "DmdTick_Mode"
     End With
 
-    With CreateDmdSlide("score_central_layout")
-        .Builder = "DmdBuild_ScoreCentralLayout"
-        .Ticker  = "DmdTick_ScoreCentralLayout"
-    End With
-
     ' Final scores after the game - one big score, or every player's.
     With CreateDmdSlide("game_over")
         .Builder = "DmdBuild_GameOver"

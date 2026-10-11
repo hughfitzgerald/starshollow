@@ -190,22 +190,6 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
-    With CreateMachineVar("display_top_small_text")   'text to display at the top of the screen
-        .InitialValue = ""
-        .ValueType = "string"
-        .Persist = False
-    End With
-    With CreateMachineVar("display_middle_large_text")   'text to display at the middle of the screen
-        .InitialValue = ""
-        .ValueType = "string"
-        .Persist = False
-    End With
-    With CreateMachineVar("display_bottom_small_text")   'text to display at the bottom of the screen
-        .InitialValue = ""
-        .ValueType = "string"
-        .Persist = False
-    End With
-
     With CreateMachineVar("num_balls_locked")         'number of balls locked
         .InitialValue = 0                               'used to maintain state of locks across players
         .ValueType = "int"
