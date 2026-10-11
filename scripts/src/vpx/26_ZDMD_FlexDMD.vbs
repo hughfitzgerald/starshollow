@@ -66,12 +66,7 @@ FlexDMD_Align_BottomLeft = 6, _
 FlexDMD_Align_Bottom = 7, _
 FlexDMD_Align_BottomRight = 8
 
-
-Dim FontScoreInactive
-Dim FontScoreActive
-Dim FontBig1
-Dim FontBig2
-Dim FontBig3
+Dim bigFont, largeFont, smallFont, mediumFont, tinyFont, bigFontDim, largeFontDim, smallFontDim, mediumFontDim, tinyFontDim
 
 Sub Flex_Init
 	If UseFlexDMD = 0 Then Exit Sub
@@ -92,6 +87,18 @@ Sub Flex_Init
 		.Clear = True
 		.Run = True
 	End With
+
+    Set bigFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", vbWhite, vbWhite, 0)
+    Set largeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", vbWhite, vbWhite, 0)
+    Set mediumFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", vbWhite, vbWhite, 0)
+    Set smallFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f4by5.fnt", vbWhite, vbWhite, 0)
+    Set tinyFont = FlexDMD.NewFont("FlexDMD.Resources.teeny_tiny_pixls-5.fnt", vbWhite, vbWhite, 0)
+
+    Set bigFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", RGB(120, 120, 120), vbWhite, 0)
+    Set largeFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", RGB(120, 120, 120), vbWhite, 0)
+    Set mediumFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", RGB(120, 120, 120), vbWhite, 0)
+    Set smallFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f4by5.fnt", RGB(120, 120, 120), vbWhite, 0)
+    Set tinyFontDim = FlexDMD.NewFont("FlexDMD.Resources.teeny_tiny_pixls-5.fnt", RGB(120, 120, 120), vbWhite, 0)
 	
 	' Build everything the config asked for. CreateFlexDmdDisplay is the
 	' list itself (src/game/dmd/display_config.vbs); FlexDmd_BuildScenes

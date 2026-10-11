@@ -46,14 +46,7 @@
 ' bottom. This is also the only scene that draws DMDBigText, which is
 ' what makes widgets an overlay on the scoreboard and nothing else.
 
-Dim bigFont, largeFont,smallFont, mediumFont, dimFont
 Sub DmdBuild_Score(entry)
-    Set bigFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", vbWhite, vbWhite, 0)
-    Set largeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", vbWhite, vbWhite, 0)
-    Set mediumFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", vbWhite, vbWhite, 0)
-    Set smallFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f4by5.fnt", vbWhite, vbWhite, 0)
-    Set dimFont = FlexDMD.NewFont("FlexDMD.Resources.teeny_tiny_pixls-5.fnt", RGB(120, 120, 120), vbWhite, 0)
-
     Dim scene
     Set scene = FlexDMD.NewGroup("Score")
     scene.SetSize 128, 32
@@ -158,9 +151,9 @@ Sub DmdTick_Score(args)
           inactiveLeftScore.addActor scoreLabel
         End If
         If scoreValue > 9999999 Then
-          scoreLabel.Font = smallFont
+          scoreLabel.Font = smallFontDim
         Else
-          scoreLabel.Font = mediumFont
+          scoreLabel.Font = mediumFontDim
         End If
       End If
     Else
@@ -320,23 +313,21 @@ End Sub
 
 
 Sub DmdBuild_HighScore(entry)
-    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-
     Dim text, initials, time
     Dim g : Set g = FlexDMD.NewGroup("HighScore")
     With g
         ' one spot with the text "P1 INITIALS" or "P2 INITIALS" etc
-        Set text = FlexDMD.NewLabel("high_score_text", FontBig1, "P1 INITIALS")
+        Set text = FlexDMD.NewLabel("high_score_text", bigFont, "P1 INITIALS")
         text.SetAlignedPosition 64, 8, FlexDMD_Align_Center
         .AddActor text
 
         ' one spot with the letters for the initials
-        Set initials = FlexDMD.NewLabel("high_score_initials", FontBig1, "")
+        Set initials = FlexDMD.NewLabel("high_score_initials", bigFont, "")
         initials.SetAlignedPosition 32, 16, FlexDMD_Align_Center
         .AddActor initials
         
         ' ' one spot for the time left before timeout
-        ' Set time = FlexDMD.NewLabel("high_score_time", FontBig1, "")
+        ' Set time = FlexDMD.NewLabel("high_score_time", bigFont, "")
         ' time.SetAlignedPosition 64, 24, FlexDMD_Align_Center
         ' .AddActor time
     End With
@@ -354,18 +345,15 @@ Sub DmdTick_HighScore(args)
 End Sub
 
 Sub DmdBuild_Bonus(entry)
-    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
-
     Dim text, score
     Dim g : Set g = FlexDMD.NewGroup("Bonus")
     With g
         ' one spot with bonus text
-        Set text = FlexDMD.NewLabel("bonus_text", FontScoreActive, "")
+        Set text = FlexDMD.NewLabel("bonus_text", tinyFontDim, "")
         .AddActor text
 
         ' one spot with bonus score
-        Set score = FlexDMD.NewLabel("bonus_score", FontBig1, "")
+        Set score = FlexDMD.NewLabel("bonus_score", bigFont, "")
         .AddActor score
     End With
     entry.SetScene g
@@ -384,26 +372,23 @@ Sub DmdTick_Bonus(args)
 End Sub
 
 Sub DmdBuild_Mode(entry)
-    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
-
     Dim text, score, instructions, timer
     Dim g : Set g = FlexDMD.NewGroup("Mode")
     With g
         ' one spot with mode text
-        Set text = FlexDMD.NewLabel("mode_text", FontScoreActive, "")
+        Set text = FlexDMD.NewLabel("mode_text", tinyFontDim, "")
         .AddActor text
 
         ' one spot with mode score
-        Set score = FlexDMD.NewLabel("mode_score", FontBig1, "")
+        Set score = FlexDMD.NewLabel("mode_score", bigFont, "")
         .AddActor score
 
         ' one spot with mode instructions
-        Set instructions = FlexDMD.NewLabel("mode_instructions", FontScoreActive, "")
+        Set instructions = FlexDMD.NewLabel("mode_instructions", tinyFontDim, "")
         .AddActor instructions
 
         ' one spot with mode timer
-        Set timer = FlexDMD.NewLabel("mode_timer", FontScoreActive, "")
+        Set timer = FlexDMD.NewLabel("mode_timer", tinyFontDim, "")
         .AddActor timer
     End With
     entry.SetScene g
@@ -435,22 +420,19 @@ End Sub
 
 
 Sub DmdBuild_ScoreCentralLayout(entry)
-    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
-
     Dim text, score, instructions
     Dim g : Set g = FlexDMD.NewGroup("Mode")
     With g
         ' one spot with mode text
-        Set text = FlexDMD.NewLabel("mode_text", FontScoreActive, "")
+        Set text = FlexDMD.NewLabel("mode_text", tinyFontDim, "")
         .AddActor text
 
         ' one spot with mode score
-        Set score = FlexDMD.NewLabel("mode_score", FontBig1, "")
+        Set score = FlexDMD.NewLabel("mode_score", bigFont, "")
         .AddActor score
 
         ' one spot with mode instructions
-        Set instructions = FlexDMD.NewLabel("mode_instructions", FontScoreActive, "")
+        Set instructions = FlexDMD.NewLabel("mode_instructions", tinyFontDim, "")
         .AddActor instructions
     End With
     entry.SetScene g
@@ -465,15 +447,13 @@ End Sub
 
 Sub DmdBuild_GameOver(entry)
     Dim i
-    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
-    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
 
     Dim g : Set g = FlexDMD.NewGroup("GameOver")
     With g
-        .AddActor FlexDMD.NewLabel("go_title", FontScoreActive, "GAME OVER")
-        .AddActor FlexDMD.NewLabel("go_big", FontBig1, "")
+        .AddActor FlexDMD.NewLabel("go_title", tinyFontDim, "GAME OVER")
+        .AddActor FlexDMD.NewLabel("go_big", bigFont, "")
         For i = 1 To 4
-            .AddActor FlexDMD.NewLabel("go_p" & i, FontScoreActive, "")
+            .AddActor FlexDMD.NewLabel("go_p" & i, tinyFontDim, "")
         Next
     End With
     entry.SetScene g
