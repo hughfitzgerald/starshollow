@@ -112,7 +112,12 @@ Sub DmdTick_Score(args)
             Else
                 label.Font = FontScoreInactive
             End If
-            label.Text = FormatNumber(Score2Num(GetPlayerStateForPlayer(i - 1, "score")), 0)   'GLF: was "PlayerScore(i)"
+            ' Only players actually in the game get a score line
+            If i <= glf_playerState.Count Then
+                label.Text = FormatNumber(Score2Num(GetPlayerStateForPlayer(i - 1, "score")), 0)   'GLF: was "PlayerScore(i)"
+            Else
+                label.Text = ""
+            End If
             label.SetAlignedPosition 45, 1 + (i - 1) * 6, FlexDMD_Align_TopRight
         Next
     End If
@@ -439,6 +444,61 @@ Sub DmdBuild_ScoreCentralLayout(entry)
     End With
     entry.SetScene g
 End Sub
+
+'*******************************************
+'  game_over - final scores
+'*******************************************
+' Reads the player1_score..player4_score machine vars, which GLF fills in
+' Glf_EndGame just before game_ended (player state is gone by then).
+' One player gets the big font; two or more share a 2x2 grid.
+
+Sub DmdBuild_GameOver(entry)
+    Dim i
+    Set FontBig1 = FlexDMD.NewFont("sys80.fnt", vbWhite, vbBlack, 0)
+    Set FontScoreActive = FlexDMD.NewFont("TeenyTinyPixls5.fnt", vbWhite, vbWhite, 0)
+
+    Dim g : Set g = FlexDMD.NewGroup("GameOver")
+    With g
+        .AddActor FlexDMD.NewLabel("go_title", FontScoreActive, "GAME OVER")
+        .AddActor FlexDMD.NewLabel("go_big", FontBig1, "")
+        For i = 1 To 4
+            .AddActor FlexDMD.NewLabel("go_p" & i, FontScoreActive, "")
+        Next
+    End With
+    entry.SetScene g
+End Sub
+
+Sub DmdTick_GameOver(args)
+    Dim i, label, numPlayers, score
+
+    Set label = FlexDMD.Stage.GetLabel("go_title")
+    label.SetBounds 0, 1, 128, 8
+    label.Alignment = FlexDMD_Align_Center
+
+    numPlayers = glf_machine_vars("num_players").GetValue()
+
+    Set label = FlexDMD.Stage.GetLabel("go_big")
+    If numPlayers <= 1 Then
+        label.Text = FormatNumber(Score2Num(glf_machine_vars("player1_score").GetValue()), 0)
+    Else
+        label.Text = ""
+    End If
+    label.SetBounds 0, 9, 128, 14
+    label.Alignment = FlexDMD_Align_Center
+
+    For i = 1 To 4
+        Set label = FlexDMD.Stage.GetLabel("go_p" & i)
+        If numPlayers > 1 And i <= numPlayers Then
+            score = Score2Num(glf_machine_vars("player" & i & "_score").GetValue())
+            label.Text = "P" & i & " " & FormatNumber(score, 0)
+        Else
+            label.Text = ""
+        End If
+        label.SetBounds ((i - 1) Mod 2) * 64, 12 + ((i - 1) \ 2) * 10, 64, 8
+        label.Alignment = FlexDMD_Align_Center
+    Next
+End Sub
+
 
 Sub DmdTick_ScoreCentralLayout(args)
     Dim text, score, instructions

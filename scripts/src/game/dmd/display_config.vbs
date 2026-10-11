@@ -105,6 +105,8 @@
 
 Sub CreateFlexDmdDisplay()
 
+    Dim x
+
     '*******************************************
     '  Slides
     '*******************************************
@@ -145,6 +147,12 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("score_central_layout")
         .Builder = "DmdBuild_ScoreCentralLayout"
         .Ticker  = "DmdTick_ScoreCentralLayout"
+    End With
+
+    ' Final scores after the game - one big score, or every player's.
+    With CreateDmdSlide("game_over")
+        .Builder = "DmdBuild_GameOver"
+        .Ticker  = "DmdTick_GameOver"
     End With
 
     ' A LAYER over the mode panel: two portraits that slide in from the
@@ -207,6 +215,12 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdWidget("team_dean")            : .Text = "TEAM DEAN"               : End With
     With CreateDmdWidget("jess_wins")            : .Text = "TEAM JESS WINS"          : End With
     With CreateDmdWidget("dean_wins")            : .Text = "TEAM DEAN WINS"          : End With
+
+    ' Multiplayer: whose turn it is, and a player joining mid ball 1
+    For x = 1 To 4
+        With CreateDmdWidget("player_" & x & "_up")    : .Text = "PLAYER " & x & " UP"    : End With
+        With CreateDmdWidget("player_" & x & "_added") : .Text = "PLAYER " & x & " ADDED" : End With
+    Next
 
     ' Generic: whatever the event carried under "text". Nothing is drawn
     ' if the event carried none.

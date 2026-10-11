@@ -551,6 +551,14 @@ Sub CreateBaseMode()
         End With
 
         With .WidgetPlayer()
+            ' Only once there's more than one player to tell apart
+            For x = 1 To 4
+                With .EventName("mode_base_started{machine.num_players > 1 and current_player.number == " & x & "}")
+                    .Widget = "player_" & x & "_up"
+                    .Action = "play"
+                    .Expire = 2
+                End With
+            Next
             With .EventName("balldevice_plunger_ball_exiting")
                 .Widget = "launch"
                 .Action = "play"

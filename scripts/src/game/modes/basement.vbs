@@ -37,6 +37,9 @@ Sub CreateBasementMode()
             .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
 
             .Add "mode_eob_bonus_started", Array("clear_multiball_locks")
+            ' eob_bonus doesn't run on a tilted ball, so clear the locks here too -
+            ' otherwise the next player inherits balls they never locked.
+            .Add "ball_ending{game.tilted == True}", Array("clear_multiball_locks")
             .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
             
             .Add "return_captive_from_drain", Array("disable_captive_ramp_kicker_hold")
@@ -117,10 +120,22 @@ Sub CreateBasementMode()
                     .Int = -1
                 End With
             End With
+            With .EventName("player_added")
+                With .Variable("num_players")
+                    .Action = "set_machine"
+                    .Int = "kwargs.num"
+                End With
+            End With
         End With
 
         ' ' Pome sound effects (outside of normal ball play time)
-        With .SoundPlayer() 
+        With .SoundPlayer()
+
+            ' Player 2-4 joined (player 1 is added by the game start itself)
+            With .EventName("player_added{kwargs.num > 1}")
+                .Key = "key_sfx_player_added"
+                .Sound = "sfx_dinerdoor"
+            End With
 
             ' 'When players get added
             ' With .EventName("player_added{kwargs.num==1}")
@@ -158,6 +173,16 @@ Sub CreateBasementMode()
             
         End With
 
+
+        With .WidgetPlayer()
+            For x = 2 To 4
+                With .EventName("player_added{kwargs.num == " & x & "}")
+                    .Widget = "player_" & x & "_added"
+                    .Action = "play"
+                    .Expire = 1.5
+                End With
+            Next
+        End With
 
         With .SegmentDisplayPlayer()
 
