@@ -60,6 +60,7 @@ Sub CreateCharactersMode()
                 With .EventName(characters(x).Name & "_hit")
                     .Slide = characters(x).Name
                     .Action = "play"
+                    .Priority = 0
                 End With
             Next
         End With

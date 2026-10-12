@@ -235,9 +235,14 @@ Const DMDBigTextImageInset = 28
 Dim DMDTextOnScore
 Dim DMDTextDisplayTime
 Dim DMDTextEffect
+' The group the last DMDBigText put on the stage, so the next call can
+' replace it instead of stacking a second copy on top.
+Dim DMDBigTextGroup
 ' image is a file in the DMD project folder, or "" for text alone. With
 ' an image, it sits at the left and the text is fitted into the 100
 ' pixels to its right; without one the text gets the whole DMD.
+'
+' Time is in frames (x17ms), as in the header; 0 or less means 2s.
 Sub DMDBigText(text,image,Time,effect)
 	' If UseFlexDMD = 0 Then Exit Sub
 	' DMDTextOnScore = text
@@ -269,13 +274,17 @@ Sub DMDBigText(text,image,Time,effect)
         Set af = lbl.ActionFactory
         lbl.AddAction af.Blink(0.15, 0.1, 6)
     End If
-    ' Show the scene on top of the stage, then remove it after 2 seconds
+    ' Show the scene on top of the stage, then remove it after Time
+    Dim secs : secs = Time * 0.017
+    If secs <= 0 Then secs = 2
     Set af = jp.ActionFactory
     Set seq = af.Sequence()
-    seq.Add af.Wait(2)
+    seq.Add af.Wait(secs)
     seq.Add af.RemoveFromParent()
     jp.AddAction seq
+    If IsObject(DMDBigTextGroup) Then FlexDMD.Stage.RemoveActor DMDBigTextGroup
     FlexDMD.Stage.AddActor jp
+    Set DMDBigTextGroup = jp
 End Sub
 
 Sub FlexFlasher 'Flex on vrroom and playfield runs this one

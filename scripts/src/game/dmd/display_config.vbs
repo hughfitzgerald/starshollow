@@ -195,6 +195,7 @@ Sub CreateFlexDmdDisplay()
             .Text = "(remaining) " & characterHitEvents(i) & " TO ADVANCE " & UCase(characterNames(i))
             .Image = characterImages(i)
             .Effect = "solid"
+            .Hold = 0.75
         End With
 
         With CreateDmdSlide(characterNames(i) & "_advance")
