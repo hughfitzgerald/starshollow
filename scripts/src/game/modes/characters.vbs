@@ -86,6 +86,7 @@ Sub CreateCharactersMode()
             For y = 0 To UBound(characters(x).Lights)
                 With .Shots(characters(x).Name & "_" & (y+1))
                     .Profile = "flicker_on"
+                    .Persist = True
                     With .Tokens()
                         .Add "lights", characters(x).Lights(y)
                         .Add "color", characters(x).Color
