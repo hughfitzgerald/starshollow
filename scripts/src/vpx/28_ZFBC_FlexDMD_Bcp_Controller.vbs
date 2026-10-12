@@ -451,6 +451,17 @@ Class GlfFlexDmdBcpController
             m_stack.Add key, item
         End If
 
+        ' A text slide played with no expire would otherwise sit on the
+        ' stack, at its mode's priority, long after its text has gone -
+        ' hiding every lower-priority slide until the mode stops. It
+        ' leaves when its text does, after .Hold.
+        If expire <= 0 And Not isWidget Then
+            Dim entry : Set entry = ItemEntry(item)
+            If Not entry Is Nothing Then
+                If Not entry.HasScene And entry.Text <> "" Then expire = entry.Hold
+            End If
+        End If
+
         m_seq = m_seq + 1
         item.Priority = FlexBcp_Num(priority)
         item.Context = FlexBcp_StripMode(context)
@@ -822,13 +833,8 @@ Class GlfDmdEntry
         ' see FlexDmd_Backdrop.
         Over = ""
 
-        If isWidget Then
-            ' A widget is a notification, so text blinks.
-            Effect = "blink"
-        Else
-            ' A text slide is continuous, so it does not.
-            Effect = "solid"
-        End If
+        ' Text blinks unless the entry asks for "solid".
+        Effect = "blink"
 
         Set Init = Me
     End Function
@@ -891,7 +897,9 @@ Sub FlexDmd_BuildRegistry(registry)
                 Set group = FlexDMD.NewGroup(entry.Name)
                 group.AddActor FlexDMD.NewVideo(entry.Name, entry.Gif)
                 entry.SetScene group
-            ElseIf entry.Image <> "" Then
+            ElseIf entry.Image <> "" And entry.Text = "" Then
+                ' With .Text as well, the image is drawn beside the
+                ' text by DMDBigText instead of being a scene.
                 Set group = FlexDMD.NewGroup(entry.Name)
                 group.AddActor FlexDMD.NewImage(entry.Name, entry.Image)
                 entry.SetScene group
@@ -1014,7 +1022,7 @@ Sub FlexDmd_DrawEntry(entry, kwargs, holdSeconds)
 
     Dim message : message = FlexDmd_Interpolate(entry.Text, kwargs)
     If message <> "" Then
-        DMDBigText message, FlexDmd_Frames(holdSeconds), FlexDmd_EffectCode(entry.Effect)
+        DMDBigText message, entry.Image, FlexDmd_Frames(holdSeconds), FlexDmd_EffectCode(entry.Effect)
     End If
 End Sub
 

@@ -10,7 +10,7 @@
 ' Update DMDTimer_Timer Sub to allow DMD to update remaining balls and credit: find ("Ball") and ("Credit")
 '
 ' Commands :
-'	 DMDBigText "LAUNCH",77,1  : display text instead of score : "text",frames(x17ms),effect  0=solid 1=blink
+'	 DMDBigText "LAUNCH","",77,1  : display text instead of score : "text",image,frames(x17ms),effect  0=solid 1=blink
 '	DMDBGFlash=15 : will light up background with new image for xx frames
 '	DMDFire=Flexframe+50  : will animate the font for 50 frames
 '
@@ -141,44 +141,104 @@ Sub ShowScene(flexScene, render) 'Easy wrapper to play a FlexDMD scene
 	FlexDMD.UnlockRenderThread
 End Sub
 
-' Picks the biggest font that fits text on the 128x32 DMD, by character
-' count. Past one line of bigFont, multi-word text is split onto two
-' lines at the space nearest the middle (two rows of bigFont fit in 32
-' pixels); anything still too long drops to mediumFont on one line.
-Sub DMDBigTextFit(ByRef text, ByRef font)
-	Dim n, i, best, l1, l2
-	text = Trim(text)
-	n = Len(text)
-	If n <= 8 Then
-		Set font = hugeFont
-	ElseIf n <= 9 Then
-		Set font = biggerFont
-	ElseIf n <= 16 Then
-		Set font = bigFont
-	Else
-		best = 0
-		For i = 1 To n
-			If Mid(text, i, 1) = " " Then
-				If best = 0 Or Abs(i - n / 2) < Abs(best - n / 2) Then best = i
+' Word-wraps text so no line is longer than maxChars, joining the lines
+' with vbLf. A single word longer than maxChars gets a line to itself
+' and overflows it - DMDBigTextFit treats that as "does not fit".
+Function DMDWrapText(text, maxChars)
+	Dim words, w, line, out
+	words = Split(Trim(text), " ")
+	line = ""
+	out = ""
+	For Each w In words
+		If w <> "" Then
+			If line = "" Then
+				line = w
+			ElseIf Len(line) + 1 + Len(w) <= maxChars Then
+				line = line & " " & w
+			Else
+				If out = "" Then out = line Else out = out & vbLf & line
+				line = w
 			End If
-		Next
-		If best > 0 Then
-			l1 = RTrim(Left(text, best - 1))
-			l2 = LTrim(Mid(text, best + 1))
 		End If
-		If best > 0 And Len(l1) <= 16 And Len(l2) <= 16 Then
-			text = l1 & vbLf & l2
-			Set font = bigFont
-		Else
-			Set font = mediumFont
+	Next
+	If out = "" Then out = line Else out = out & vbLf & line
+	DMDWrapText = out
+End Function
+
+' True when every line of wrapped text is at most maxChars long and
+' there are at most maxLines of them.
+Function DMDTextFits(wrapped, maxChars, maxLines)
+	Dim lines, l
+	lines = Split(wrapped, vbLf)
+	DMDTextFits = False
+	If UBound(lines) + 1 > maxLines Then Exit Function
+	For Each l In lines
+		If Len(l) > maxChars Then Exit Function
+	Next
+	DMDTextFits = True
+End Function
+
+' Picks the biggest font that fits text, wrapping it onto as many lines
+' as that font allows. rows is a list of Array(font, maxChars, maxLines),
+' biggest font first; past the last row, text gets the last row's font
+' wrapped to its width and is presumed to fit.
+'
+' Once a font fits, the wrap width is narrowed for as long as the line
+' count holds, so two lines come out roughly even rather than one long
+' line and a stub.
+Sub DMDBigTextFit(ByRef text, ByRef font, rows)
+	Dim row, wrapped, w, n
+	For Each row In rows
+		wrapped = DMDWrapText(text, row(1))
+		If DMDTextFits(wrapped, row(1), row(2)) Then
+			n = UBound(Split(wrapped, vbLf))
+			w = row(1)
+			Do While w > 1
+				If UBound(Split(DMDWrapText(text, w - 1), vbLf)) <> n Then Exit Do
+				If Not DMDTextFits(DMDWrapText(text, w - 1), w - 1, n + 1) Then Exit Do
+				w = w - 1
+			Loop
+			text = DMDWrapText(text, w)
+			Set font = row(0)
+			Exit Sub
 		End If
-	End If
+	Next
+	row = rows(UBound(rows))
+	text = DMDWrapText(text, row(1))
+	Set font = row(0)
 End Sub
+
+' Font limits for the full 128x32 DMD.
+Function DMDBigTextRowsFull()
+	DMDBigTextRowsFull = Array( _
+		Array(hugeFont, 8, 1), _
+		Array(biggerFont, 9, 1), _
+		Array(bigFont, 16, 2), _
+		Array(mediumFont, 21, 3))
+End Function
+
+' Font limits for the 100x32 text frame beside an image.
+Function DMDBigTextRowsBeside()
+	DMDBigTextRowsBeside = Array( _
+		Array(hugeFont, 6, 1), _
+		Array(biggerFont, 7, 1), _
+		Array(bigFont, 12, 2), _
+		Array(largeFont, 14, 2), _
+		Array(mediumFont, 17, 3), _
+		Array(smallFont, 20, 5))
+End Function
+
+' Where the text frame starts when there is an image: the image sits at
+' the left edge, and the frame overlaps its last few (blank) columns.
+Const DMDBigTextImageInset = 28
 
 Dim DMDTextOnScore
 Dim DMDTextDisplayTime
 Dim DMDTextEffect
-Sub DMDBigText(text,Time,effect)
+' image is a file in the DMD project folder, or "" for text alone. With
+' an image, it sits at the left and the text is fitted into the 100
+' pixels to its right; without one the text gets the whole DMD.
+Sub DMDBigText(text,image,Time,effect)
 	' If UseFlexDMD = 0 Then Exit Sub
 	' DMDTextOnScore = text
 	' DMDTextDisplayTime = FLEXframe + Time
@@ -188,14 +248,27 @@ Sub DMDBigText(text,Time,effect)
     Set jp = FlexDMD.NewGroup("Jackpot")
     jp.SetSize 128, 32
     jp.ClearBackground = True
-    Dim lbl, font, shown
+    Dim lbl, font, shown, frame
     shown = text
-    DMDBigTextFit shown, font
+    If image <> "" Then
+        jp.AddActor FlexDMD.NewImage("Image", image)
+        Set frame = FlexDMD.NewGroup("TextFrame")
+        frame.SetBounds DMDBigTextImageInset, 0, 128 - DMDBigTextImageInset, 32
+        jp.AddActor frame
+        DMDBigTextFit shown, font, DMDBigTextRowsBeside()
+    Else
+        Set frame = jp
+        DMDBigTextFit shown, font, DMDBigTextRowsFull()
+    End If
     Set lbl = FlexDMD.NewLabel("Text", font, shown)
-    lbl.SetBounds 0, 0, 128, 32
-    jp.AddActor lbl
-    Set af = lbl.ActionFactory
-    lbl.AddAction af.Blink(0.15, 0.1, 6)
+    lbl.AutoPack = False
+    lbl.FillParent = True
+    lbl.Alignment = FlexDMD_Align_Center
+    frame.AddActor lbl
+    If effect = 1 Then
+        Set af = lbl.ActionFactory
+        lbl.AddAction af.Blink(0.15, 0.1, 6)
+    End If
     ' Show the scene on top of the stage, then remove it after 2 seconds
     Set af = jp.ActionFactory
     Set seq = af.Sequence()

@@ -82,14 +82,15 @@
 ' EVERY FIELD
 '
 '   .Gif        animated file in StarsHollowDMD/; the scene is built for you
-'   .Image      still image, same
+'   .Image      still image, same - or, alongside .Text, a picture drawn
+'               at the left with the text fitted into the space beside it
 '   .Text       literal text, with (name) tokens from the event's kwargs;
 '               (name:,) adds thousands commas to a number
 '   .Builder    Sub name, builds the scene once at Flex_Init
 '   .Ticker     Sub name, runs every DMD frame while this is on screen
 '   .Callback   Sub name, replaces the default render entirely
 '   .RenderMode one of the FlexDMD_RenderMode_* constants (default DMD_GRAY)
-'   .Effect     "solid" or "blink"  (slides default solid, widgets blink)
+'   .Effect     "solid" or "blink"  (default blink)
 '   .Hold       seconds a text SLIDE stays up (default 1.2). Widgets use
 '               the .Expire from mode config instead.
 '   .Over       what this entry is drawn on top of: a slide name, or
@@ -190,6 +191,7 @@ Sub CreateFlexDmdDisplay()
     ' is continuous, not a notification.
     With CreateDmdSlide("dance_marathon_timer")
         .Text = "(ticks_remaining) SEC"
+        .Effect = "solid"
         .Hold = 1.2
     End With
 
@@ -199,18 +201,26 @@ Sub CreateFlexDmdDisplay()
 
     With CreateDmdSlide("sookie")
         .Text = "(hits_remaining) SPINS TO ADVANCE SOOKIE"
+        .Image = "sookie.png"
+        .Effect = "solid"
     End With
 
     With CreateDmdSlide("kirk")
         .Text = "(hits_remaining) BUMPERS TO ADVANCE KIRK"
+        .Image = "kirk.png"
+        .Effect = "solid"
     End With
 
     With CreateDmdSlide("lane")
         .Text = "(hits_remaining) SLINGS TO ADVANCE LANE"
+        .Image = "lane.png"
+        .Effect = "solid"
     End With
 
     With CreateDmdSlide("paris")
         .Text = "(hits_remaining) RAMPS TO ADVANCE PARIS"
+        .Image = "paris.png"
+        .Effect = "solid"
     End With
 
 
