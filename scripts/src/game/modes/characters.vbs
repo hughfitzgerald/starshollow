@@ -20,7 +20,7 @@ Function NewCharacter(name, lights, color, hitEvent, count, callouts)
 End Function
 
 Dim sookie, kirk, lane, paris
-Set sookie = NewCharacter("sookie", Array("Light001", "Light002", "Light003"), "78bec0", "any_spinner_hit", 50, Array("voc_lookgreat"))
+Set sookie = NewCharacter("sookie", Array("Light001", "Light002", "Light003"), "78bec0", "any_spinner_hit", 50, Array("voc_sookie1", "voc_sookie2", "voc_sookie3", "voc_sookie4"))
 Set kirk = NewCharacter("kirk", Array("Light004", "Light005", "Light006"), "bae046", "any_bumper_hit", 10, Array("voc_prostrate", "voc_tm_deer_wolf"))
 Set lane = NewCharacter("lane", Array("Light007", "Light008", "Light009"), "d938c7", "any_sling_hit", 10, Array("voc_fd_punch_ifwegetmarried", "voc_fd_punch_myface"))
 Set paris = NewCharacter("paris", Array("Light010", "Light011", "Light012"), "bf3957", "any_ramp_hit", 5, Array("voc_fd_punch_bathroom", "voc_fd_punch_keepwalking"))

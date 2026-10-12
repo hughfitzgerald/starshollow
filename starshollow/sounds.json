@@ -2556,6 +2556,42 @@
     "output_target": "backglass"
   },
   {
+    "name": "voc_sookie1",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_sookie1.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_sookie2",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_sookie2.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_sookie3",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_sookie3.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
+    "name": "voc_sookie4",
+    "path": "/Users/stephenjones/code/starshollow/sounds/voc_sookie4.ogg",
+    "internal_name": "",
+    "fade": 0,
+    "volume": 0,
+    "balance": 0,
+    "output_target": "backglass"
+  },
+  {
     "name": "voc_tm_cartkiosk_cartkiosk1",
     "path": "/Users/stephenjones/code/starshollow/sounds/voc_tm_cartkiosk_cartkiosk1.ogg",
     "internal_name": "",
