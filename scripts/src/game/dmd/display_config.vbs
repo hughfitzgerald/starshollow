@@ -197,6 +197,22 @@ Sub CreateFlexDmdDisplay()
         .Text = "SKILLSHOT! (points:,)"
     End With
 
+    With CreateDmdSlide("sookie")
+        .Text = "(hits_remaining) SPINS TO ADVANCE SOOKIE"
+    End With
+
+    With CreateDmdSlide("kirk")
+        .Text = "(hits_remaining) BUMPERS TO ADVANCE KIRK"
+    End With
+
+    With CreateDmdSlide("lane")
+        .Text = "(hits_remaining) SLINGS TO ADVANCE LANE"
+    End With
+
+    With CreateDmdSlide("paris")
+        .Text = "(hits_remaining) RAMPS TO ADVANCE PARIS"
+    End With
+
 
     '*******************************************
     '  Widgets

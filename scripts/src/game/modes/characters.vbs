@@ -39,11 +39,21 @@ Sub CreateCharactersMode()
                     .Add characters(x).HitEvent & "{device.counters." & characters(x).Name & "_hit_events.value == " & (characters(x).Count * (y+1)) - 1 & "}", Array(characters(x).Name & "_" & (y+1) & "_lit", characters(x).Name & "_callout")
                 Next
                 .Add characters(x).Name & "_" & (UBound(characters(x).Lights) + 1) & "_lit", Array(characters(x).Name & "_complete")
+                .Add characters(x).HitEvent, Array(characters(x).Name & "_hit:{hits_remaining:" & characters(x).Count & " - (device.counters." & characters(x).Name & "_hit_events.value Mod " & characters(x).Count & ")}")
             Next
+            ' .Add "any_spinner_hit", Array("sookie_hit:{hits_remaining:50 - device.counters.sookie_hit_events.value}")
             ' Add a cool sound effect when you earn each one
             ' ALONG WITH a funny callout for each one
             ' When you actually COMPLETE one, do a quick fun lightshow, too
             ' AND I still like the idea of a 3d mesh for each character: spoon in bowl for Sookie, snare drum (or kick drum) for lane, something for Paris, "Kirk's" sign for Kirk
+        End With
+        With .SlidePlayer()
+            For x = 0 To UBound(characters)
+                With .EventName(characters(x).Name & "_hit")
+                    .Slide = characters(x).Name
+                    .Action = "play"
+                End With
+            Next
         End With
         With .RandomEventPlayer()
             For x = 0 To UBound(characters)
