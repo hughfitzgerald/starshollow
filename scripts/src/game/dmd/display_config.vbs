@@ -181,20 +181,6 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("bonus_2")  : .Gif = "bonus2.gif"  : End With
     With CreateDmdSlide("bonus_3")  : .Gif = "bonus3.gif"  : End With
 
-    ' The Dance Marathon countdown. A slide and not a widget because only
-    ' the slide player passes the triggering event's kwargs through, and
-    ' the count lives in there - GLF's timer puts "ticks_remaining" in the
-    ' kwargs of every timer_X_tick.
-    '
-    ' Held slightly longer than the 1s tick interval so the text does not
-    ' blink out between ticks, and solid rather than blinking because it
-    ' is continuous, not a notification.
-    With CreateDmdSlide("dance_marathon_timer")
-        .Text = "(ticks_remaining) SEC"
-        .Effect = "solid"
-        .Hold = 1.2
-    End With
-
     With CreateDmdSlide("skillshot")
         .Text = "SKILLSHOT! (points:,)"
     End With

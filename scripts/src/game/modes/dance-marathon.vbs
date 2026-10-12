@@ -126,17 +126,6 @@ Sub CreateDanceMarathonMode()
         ' End With
 
         With .SlidePlayer()
-            ' The countdown, replayed on every tick of the dm_mode timer
-            ' below. A slide rather than a widget because the seconds left
-            ' arrive in the tick event's kwargs, and only the slide player
-            ' forwards those. It sits on the slide stack at this mode's
-            ' priority, so it outranks the base scoreboard while the mode
-            ' runs and is cleared automatically when the mode stops.
-            ' With .EventName("timer_dm_mode_tick")
-            '     .Slide  = "dance_marathon_timer"
-            '     .Action = "play"
-            ' End With
-
             With .EventName("mode_dance_marathon_started")
                 .Slide = "kirk-dances"
                 .Action = "play"
