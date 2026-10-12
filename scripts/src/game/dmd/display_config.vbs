@@ -205,8 +205,20 @@ Sub CreateFlexDmdDisplay()
         .Effect = "solid"
     End With
 
+    With CreateDmdSlide("sookie_advance")
+        .Text = "SOOKIE LEVEL (light) ACHIEVED"
+        .Image = "sookie.png"
+        .Effect = "solid"
+    End With
+
     With CreateDmdSlide("kirk")
         .Text = "(hits_remaining) BUMPERS TO ADVANCE KIRK"
+        .Image = "kirk_stern.png"
+        .Effect = "solid"
+    End With
+
+    With CreateDmdSlide("kirk_advance")
+        .Text = "KIRK LEVEL (light) ACHIEVED"
         .Image = "kirk_stern.png"
         .Effect = "solid"
     End With
@@ -217,8 +229,20 @@ Sub CreateFlexDmdDisplay()
         .Effect = "solid"
     End With
 
+    With CreateDmdSlide("lane_advance")
+        .Text = "LANE LEVEL (light) ACHIEVED"
+        .Image = "lane_glasses.png"
+        .Effect = "solid"
+    End With
+
     With CreateDmdSlide("paris")
         .Text = "(hits_remaining) RAMPS TO ADVANCE PARIS"
+        .Image = "paris.png"
+        .Effect = "solid"
+    End With
+
+    With CreateDmdSlide("paris_advance")
+        .Text = "PARIS LEVEL (light) ACHIEVED"
         .Image = "paris.png"
         .Effect = "solid"
     End With

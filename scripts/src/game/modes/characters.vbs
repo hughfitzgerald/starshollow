@@ -36,12 +36,11 @@ Sub CreateCharactersMode()
         With .EventPlayer()
             For x = 0 To UBound(characters)
                 For y = 0 To UBound(characters(x).Lights)
-                    .Add characters(x).HitEvent & "{device.counters." & characters(x).Name & "_hit_events.value == " & (characters(x).Count * (y+1)) - 1 & "}", Array(characters(x).Name & "_" & (y+1) & "_lit", characters(x).Name & "_callout")
+                    .Add characters(x).HitEvent & "{device.counters." & characters(x).Name & "_hit_events.value == " & (characters(x).Count * (y+1)) - 1 & "}", Array(characters(x).Name & "_lit:{light:" & (y+1) & "}", characters(x).Name & "_callout")
                 Next
-                .Add characters(x).Name & "_" & (UBound(characters(x).Lights) + 1) & "_lit", Array(characters(x).Name & "_complete")
+                ' .Add characters(x).Name & "_" & (UBound(characters(x).Lights) + 1) & "_lit", Array(characters(x).Name & "_complete")
                 .Add characters(x).HitEvent, Array(characters(x).Name & "_hit:{hits_remaining:" & characters(x).Count & " - (device.counters." & characters(x).Name & "_hit_events.value Mod " & characters(x).Count & ")}")
             Next
-            ' .Add "any_spinner_hit", Array("sookie_hit:{hits_remaining:50 - device.counters.sookie_hit_events.value}")
             ' Add a cool sound effect when you earn each one
             ' ALONG WITH a funny callout for each one
             ' When you actually COMPLETE one, do a quick fun lightshow, too
@@ -49,10 +48,22 @@ Sub CreateCharactersMode()
         End With
         With .SlidePlayer()
             For x = 0 To UBound(characters)
-                With .EventName(characters(x).Name & "_hit")
-                    .Slide = characters(x).Name
+                With .EventName(characters(x).Name & "_lit")
+                    .Slide = characters(x).Name & "_advance"
                     .Action = "play"
+                    .Priority = 1
                 End With
+                If characters(x).Name = "sookie" Then
+                    With .EventName("sookie_hit{kwargs.hits_remaining Mod 15 > 10}")
+                        .Slide = "sookie"
+                        .Action = "play"
+                    End With
+                Else
+                    With .EventName(characters(x).Name & "_hit")
+                        .Slide = characters(x).Name
+                        .Action = "play"
+                    End With
+                End If
             Next
         End With
         With .RandomEventPlayer()
@@ -83,7 +94,7 @@ Sub CreateCharactersMode()
                         .Add "color", characters(x).Color
                     End With
                     With .ControlEvents()
-                        .Events = Array(characters(x).Name & "_" & (y+1) & "_lit")
+                        .Events = Array(characters(x).Name & "_lit{kwargs.light == " & (y+1) & "}")
                         .State = 1
                     End With
                 End With
@@ -92,6 +103,9 @@ Sub CreateCharactersMode()
         For x = 0 To UBound(characters)
             With .Counters(characters(x).Name & "_hit_events")
                 .CountEvents = Array(characters(x).HitEvent)
+                .CountCompleteValue = characters(x).Count * (UBound(characters(x).Lights) + 1)
+                .EventsWhenComplete = Array(characters(x).Name & "_complete")
+                .DisableOnComplete = True
                 .PersistState = True
             End With
         Next
