@@ -207,13 +207,13 @@ Sub CreateFlexDmdDisplay()
 
     With CreateDmdSlide("kirk")
         .Text = "(hits_remaining) BUMPERS TO ADVANCE KIRK"
-        .Image = "kirk.png"
+        .Image = "kirk_stern.png"
         .Effect = "solid"
     End With
 
     With CreateDmdSlide("lane")
         .Text = "(hits_remaining) SLINGS TO ADVANCE LANE"
-        .Image = "lane.png"
+        .Image = "lane_glasses.png"
         .Effect = "solid"
     End With
 
