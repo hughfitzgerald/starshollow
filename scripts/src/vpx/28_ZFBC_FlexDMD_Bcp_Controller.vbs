@@ -1229,13 +1229,17 @@ End Function
 ' resolves to an empty string, so a text entry that is nothing but one
 ' token draws nothing rather than drawing a placeholder.
 '
+' A token can carry a format after a colon, the way GLF text does it:
+' (points:,) draws 500000 as 500,000. Only "," is understood, and a
+' value that is not a number is left as it is.
+'
 ' Substitution never rescans what it just inserted: pos moves past the
 ' replacement, so a kwarg whose value happens to contain brackets cannot
 ' send this round again.
 Function FlexDmd_Interpolate(text, kwargs)
     Dim result : result = text
     Dim pos : pos = 1
-    Dim openAt, closeAt, token, value
+    Dim openAt, closeAt, token, fmt, colonAt, value
 
     Do
         openAt = InStr(pos, result, "(")
@@ -1245,7 +1249,17 @@ Function FlexDmd_Interpolate(text, kwargs)
         If closeAt = 0 Then Exit Do
 
         token = Mid(result, openAt + 1, closeAt - openAt - 1)
+        fmt = ""
+        colonAt = InStr(token, ":")
+        If colonAt > 0 Then
+            fmt = Mid(token, colonAt + 1)
+            token = Left(token, colonAt - 1)
+        End If
+
         value = FlexBcp_Str(FlexDmd_Kwarg(kwargs, token, ""))
+        If fmt = "," And value <> "" And IsNumeric(value) Then
+            value = FormatNumber(value, 0)
+        End If
 
         result = Left(result, openAt - 1) & value & Mid(result, closeAt + 1)
         pos = openAt + Len(value)

@@ -83,7 +83,8 @@
 '
 '   .Gif        animated file in StarsHollowDMD/; the scene is built for you
 '   .Image      still image, same
-'   .Text       literal text, with (name) tokens from the event's kwargs
+'   .Text       literal text, with (name) tokens from the event's kwargs;
+'               (name:,) adds thousands commas to a number
 '   .Builder    Sub name, builds the scene once at Flex_Init
 '   .Ticker     Sub name, runs every DMD frame while this is on screen
 '   .Callback   Sub name, replaces the default render entirely
@@ -192,6 +193,10 @@ Sub CreateFlexDmdDisplay()
         .Hold = 1.2
     End With
 
+    With CreateDmdSlide("skillshot")
+        .Text = "SKILLSHOT! (points:,)"
+    End With
+
 
     '*******************************************
     '  Widgets
@@ -201,7 +206,7 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdWidget("launch")               : .Text = "LAUNCH"                  : End With
     With CreateDmdWidget("ball_1_locked")        : .Text = "BALL 1 LOCKED"           : End With
     With CreateDmdWidget("ball_2_locked")        : .Text = "BALL 2 LOCKED"           : End With
-    With CreateDmdWidget("skillshot")            : .Text = "SKILLSHOT HIT"           : End With
+    ' With CreateDmdWidget("skillshot")            : .Text = "SKILLSHOT HIT"           : End With
     With CreateDmdWidget("extra_ball_lit")       : .Text = "EXTRA BALL LIT"          : End With
     With CreateDmdWidget("extra_ball")           : .Text = "EXTRA BALL"              : End With
     With CreateDmdWidget("dance_marathon")       : .Text = "DANCE MARATHON"          : End With
