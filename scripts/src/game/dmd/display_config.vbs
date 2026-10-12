@@ -199,54 +199,30 @@ Sub CreateFlexDmdDisplay()
         .Text = "SKILLSHOT! (points:,)"
     End With
 
-    With CreateDmdSlide("sookie")
-        .Text = "(hits_remaining) SPINS TO ADVANCE SOOKIE"
-        .Image = "sookie.png"
-        .Effect = "solid"
-    End With
+    Dim characterNames, characterImages, characterHitEvents, i
+    characterNames = Array("sookie", "kirk", "lane", "paris")
+    characterImages = Array("sookie.png", "kirk_stern.png", "lane_glasses.png", "paris.png")
+    characterHitEvents = Array("SPINS", "BUMPERS", "SLINGS", "RAMPS")
 
-    With CreateDmdSlide("sookie_advance")
-        .Text = "SOOKIE LEVEL (light) ACHIEVED"
-        .Image = "sookie.png"
-        .Effect = "solid"
-    End With
+    For i = 0 To UBound(characterNames)
+        With CreateDmdSlide(characterNames(i))
+            .Text = "(remaining) " & characterHitEvents(i) & " TO ADVANCE " & UCase(characterNames(i))
+            .Image = characterImages(i)
+            .Effect = "solid"
+        End With
 
-    With CreateDmdSlide("kirk")
-        .Text = "(hits_remaining) BUMPERS TO ADVANCE KIRK"
-        .Image = "kirk_stern.png"
-        .Effect = "solid"
-    End With
+        With CreateDmdSlide(characterNames(i) & "_advance")
+            .Text = UCase(characterNames(i)) & " LEVEL (light) ACHIEVED"
+            .Image = characterImages(i)
+            .Effect = "solid"
+        End With
 
-    With CreateDmdSlide("kirk_advance")
-        .Text = "KIRK LEVEL (light) ACHIEVED"
-        .Image = "kirk_stern.png"
-        .Effect = "solid"
-    End With
-
-    With CreateDmdSlide("lane")
-        .Text = "(hits_remaining) SLINGS TO ADVANCE LANE"
-        .Image = "lane_glasses.png"
-        .Effect = "solid"
-    End With
-
-    With CreateDmdSlide("lane_advance")
-        .Text = "LANE LEVEL (light) ACHIEVED"
-        .Image = "lane_glasses.png"
-        .Effect = "solid"
-    End With
-
-    With CreateDmdSlide("paris")
-        .Text = "(hits_remaining) RAMPS TO ADVANCE PARIS"
-        .Image = "paris.png"
-        .Effect = "solid"
-    End With
-
-    With CreateDmdSlide("paris_advance")
-        .Text = "PARIS LEVEL (light) ACHIEVED"
-        .Image = "paris.png"
-        .Effect = "solid"
-    End With
-
+        With CreateDmdSlide(characterNames(i) & "_complete")
+            .Text = UCase(characterNames(i)) & " COMPLETE"
+            .Image = characterImages(i)
+            .Effect = "solid"
+        End With
+    Next
 
     '*******************************************
     '  Widgets
