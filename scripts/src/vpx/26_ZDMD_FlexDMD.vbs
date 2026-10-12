@@ -66,7 +66,7 @@ FlexDMD_Align_BottomLeft = 6, _
 FlexDMD_Align_Bottom = 7, _
 FlexDMD_Align_BottomRight = 8
 
-Dim hugeFont, bigFont, largeFont, smallFont, mediumFont, tinyFont, hugeFontDim, bigFontDim, largeFontDim, smallFontDim, mediumFontDim, tinyFontDim
+Dim hugeFont, biggerFont, bigFont, largeFont, smallFont, mediumFont, tinyFont, hugeFontDim, biggerFontDim, bigFontDim, largeFontDim, smallFontDim, mediumFontDim, tinyFontDim
 
 Sub Flex_Init
 	If UseFlexDMD = 0 Then Exit Sub
@@ -89,6 +89,7 @@ Sub Flex_Init
 	End With
 
     Set hugeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f14by26.fnt", vbWhite, vbWhite, 0)
+    Set biggerFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f12by24.fnt", vbWhite, vbWhite, 0)
     Set bigFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", vbWhite, vbWhite, 0)
     Set largeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", vbWhite, vbWhite, 0)
     Set mediumFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", vbWhite, vbWhite, 0)
@@ -96,6 +97,7 @@ Sub Flex_Init
     Set tinyFont = FlexDMD.NewFont("FlexDMD.Resources.teeny_tiny_pixls-5.fnt", vbWhite, vbWhite, 0)
 
     Set hugeFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f14by26.fnt", RGB(120, 120, 120), vbWhite, 0)
+    Set biggerFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f12by24.fnt", RGB(120, 120, 120), vbWhite, 0)
 	Set bigFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", RGB(120, 120, 120), vbWhite, 0)
     Set largeFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f6by12.fnt", RGB(120, 120, 120), vbWhite, 0)
     Set mediumFontDim = FlexDMD.NewFont("FlexDMD.Resources.udmd-f5by7.fnt", RGB(120, 120, 120), vbWhite, 0)
@@ -139,6 +141,40 @@ Sub ShowScene(flexScene, render) 'Easy wrapper to play a FlexDMD scene
 	FlexDMD.UnlockRenderThread
 End Sub
 
+' Picks the biggest font that fits text on the 128x32 DMD, by character
+' count. Past one line of bigFont, multi-word text is split onto two
+' lines at the space nearest the middle (two rows of bigFont fit in 32
+' pixels); anything still too long drops to mediumFont on one line.
+Sub DMDBigTextFit(ByRef text, ByRef font)
+	Dim n, i, best, l1, l2
+	text = Trim(text)
+	n = Len(text)
+	If n <= 8 Then
+		Set font = hugeFont
+	ElseIf n <= 9 Then
+		Set font = biggerFont
+	ElseIf n <= 16 Then
+		Set font = bigFont
+	Else
+		best = 0
+		For i = 1 To n
+			If Mid(text, i, 1) = " " Then
+				If best = 0 Or Abs(i - n / 2) < Abs(best - n / 2) Then best = i
+			End If
+		Next
+		If best > 0 Then
+			l1 = RTrim(Left(text, best - 1))
+			l2 = LTrim(Mid(text, best + 1))
+		End If
+		If best > 0 And Len(l1) <= 16 And Len(l2) <= 16 Then
+			text = l1 & vbLf & l2
+			Set font = bigFont
+		Else
+			Set font = mediumFont
+		End If
+	End If
+End Sub
+
 Dim DMDTextOnScore
 Dim DMDTextDisplayTime
 Dim DMDTextEffect
@@ -152,8 +188,10 @@ Sub DMDBigText(text,Time,effect)
     Set jp = FlexDMD.NewGroup("Jackpot")
     jp.SetSize 128, 32
     jp.ClearBackground = True
-    Dim lbl
-    Set lbl = FlexDMD.NewLabel("Text", hugeFont, text)
+    Dim lbl, font, shown
+    shown = text
+    DMDBigTextFit shown, font
+    Set lbl = FlexDMD.NewLabel("Text", font, shown)
     lbl.SetBounds 0, 0, 128, 32
     jp.AddActor lbl
     Set af = lbl.ActionFactory
