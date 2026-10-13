@@ -185,6 +185,10 @@ Sub CreateFlexDmdDisplay()
         .Text = "SKILLSHOT! (points:,)"
     End With
 
+    With CreateDmdSlide("hurryup_achieved")
+        .Text = "HURRY-UP BONUS (points:,)"
+    End With
+
     Dim characterNames, characterImages, characterHitEvents, i
     characterNames = Array("sookie", "kirk", "lane", "paris")
     characterImages = Array("sookie.png", "kirk_stern.png", "lane_glasses.png", "paris.png")

@@ -21,7 +21,7 @@ Sub CreateHurryupMode()
             .Add "mode_hurryup_started", Array("s_slim_target_ramp2_active", "s_slim_target_ramp3_active", "s_slim_target_ramp4_active", "s_slim_target_hidden1_active", "s_slim_target_hidden2_active")
             .Add "star_light_group_on_complete", Array("start_hurryup_timer")
 
-            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array("hurryup_achieved")
+            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array("hurryup_achieved:{points:" & hurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep & "}")
 
             .Add "timer_hurryup_complete", Array("hurryup_is_over")
             .Add "hurryup_achieved", Array("hurryup_is_over")
@@ -57,6 +57,10 @@ Sub CreateHurryupMode()
                 .Slide = "mode"
                 .Action = "remove"
             End With
+            With .EventName("hurryup_achieved")
+                .Slide = "hurryup_achieved"
+                .Action = "play"
+            End With
         End With
 
         With .VariablePlayer()
@@ -83,7 +87,7 @@ Sub CreateHurryupMode()
             With .EventName("hurryup_achieved")
                 With .Variable("score")
                     .Action = "add"
-                    .Int = hurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep
+                    .Int = "kwargs.points"
                 End With
             End With
         End With
