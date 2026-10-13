@@ -1,9 +1,93 @@
+Const hurryUpStartScore = 500000
+Const hurryUpEndScore = 2000000
+Const hurryUpDuration = 20 ' Duration in seconds
+Const hurryUpTickMs = 100 ' How often the value updates, in milliseconds
+Dim hurryUpSteps, hurryUpPointsPerStep
+
+' GlfTimer ticks move by 1, so the timer counts steps and each step is worth hurryUpPointsPerStep.
+' Current value = hurryUpStartScore + ticks * hurryUpPointsPerStep
+hurryUpSteps = (hurryUpDuration * 1000) / hurryUpTickMs
+hurryUpPointsPerStep = (hurryUpEndScore - hurryUpStartScore) / hurryUpSteps
+
 Sub CreateHurryupMode()
     Dim x
     With CreateGlfMode("hurryup", 240)
         .StartEvents = Array("mode_base_started")
         .StopEvents = Array("mode_base_stopping")
         .Debug = True
+
+        With .EventPlayer()
+            ' Shortcut to finish hurryup mode for testing purposes only
+            .Add "mode_hurryup_started", Array("s_slim_target_ramp2_active", "s_slim_target_ramp3_active", "s_slim_target_ramp4_active", "s_slim_target_hidden1_active", "s_slim_target_hidden2_active")
+            .Add "star_light_group_on_complete", Array("start_hurryup_timer")
+
+            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array("hurryup_achieved")
+
+            .Add "timer_hurryup_complete", Array("hurryup_is_over")
+            .Add "hurryup_achieved", Array("hurryup_is_over")
+        End With
+
+        With .Timers("hurryup")
+            .Debug = True
+            .StartValue = 0
+            .EndValue = hurryUpSteps
+            .TickInterval = hurryUpTickMs
+            .Direction = "up"
+            With .ControlEvents()
+                .EventName = "start_hurryup_timer"
+                .Action = "start"
+            End With
+            With .ControlEvents()
+                .EventName = "hurryup_achieved"
+                .Action = "stop"
+            End With
+            With .ControlEvents()
+                .EventName = "hurryup_is_over"
+                .Action = "reset"
+            End With
+        End With
+
+        With .SlidePlayer()
+            With .EventName("start_hurryup_timer")
+                .Slide = "mode"
+                .Action = "play"
+                .Priority = 1000
+            End With
+            With .EventName("hurryup_is_over")
+                .Slide = "mode"
+                .Action = "remove"
+            End With
+        End With
+
+        With .VariablePlayer()
+            With .EventName("start_hurryup_timer")
+                With .Variable("mode_display_text")
+                    .Action = "set"
+                    .String = """HURRY-UP"""
+                End With
+                With .Variable("mode_display_instructions")
+                    .Action = "set"
+                    .String = """SHOOT LUKE'S TO COLLECT JACKPOT"""
+                End With
+                With .Variable("mode_display_timer")
+                    .Action = "set"
+                    .String = """"""
+                End With
+            End With
+            With .EventName("timer_hurryup_tick")
+                With .Variable("mode_display_score")
+                    .Action = "set"
+                    .Int = hurryUpStartScore & " + kwargs.ticks * " & hurryUpPointsPerStep
+                End With
+            End With
+            With .EventName("hurryup_achieved")
+                With .Variable("score")
+                    .Action = "add"
+                    .Int = hurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep
+                End With
+            End With
+        End With
+
 
         With .ShotGroups("star_light_group")
             .Shots = Array("star_light_1", "star_light_2", "star_light_3", "star_light_4", "star_light_5", "star_light_6")
