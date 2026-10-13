@@ -1,0 +1,72 @@
+Sub CreateHurryupMode()
+    Dim x
+    With CreateGlfMode("hurryup", 240)
+        .StartEvents = Array("mode_base_started")
+        .StopEvents = Array("mode_base_stopping")
+        .Debug = True
+
+        With .ShotGroups("star_light_group")
+            .Shots = Array("star_light_1", "star_light_2", "star_light_3", "star_light_4", "star_light_5", "star_light_6")
+            .RestartEvents = Array("star_light_group_on_complete")
+        End With
+
+        For x = 1 To 4
+            With .Shots("star_light_" & x)
+                .Profile = "star_lights"
+                With .Tokens()
+                    .Add "lights", "l" & (x + 65)
+                End With
+                With .ControlEvents()
+                    .Events = Array("s_slim_target_ramp" & x & "_active")
+                    .State = 1
+                End With
+            End With
+        Next
+        For x = 1 To 2
+            With .Shots("star_light_" & (x + 4))
+                .Profile = "star_lights"
+                With .Tokens()
+                    .Add "lights", "l" & (x + 69)
+                End With
+                With .ControlEvents()
+                    .Events = Array("s_slim_target_hidden" & x & "_active")
+                    .State = 1
+                End With
+            End With
+        Next
+        
+        With .ShotProfiles("star_lights")
+            With .States("unlit")
+                .Show = "off"
+            End With
+            With .States("on")
+                .Show = "flicker_color_on"
+                .Speed = 4
+                .Priority = 100
+                With .Tokens()
+                    .Add "color", BonusLaneColor
+                End With
+            End With
+        End With
+
+        With .RandomEventPlayer()
+            With .EventName("star_target_hit")
+                .Add "stars_callout", 1.1
+                .Add "hollow_callout", 1
+            End With
+        End With
+
+        With .SoundPlayer()
+            With .EventName("stars_callout")
+                .Key = "key_voc_stars"
+                .Sound = "voc_stars"
+                .Priority = -1
+            End With
+            With .EventName("hollow_callout")
+                .Key = "key_voc_hollow"
+                .Sound = "voc_hollow"
+                .Priority = -1
+            End With
+        End With
+    End With
+End Sub

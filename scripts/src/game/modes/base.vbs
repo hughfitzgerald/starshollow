@@ -296,16 +296,6 @@ Sub CreateBaseMode()
                 .Key = "key_voc_coffeecoffeecoffee"
                 .Sound = "voc_coffeecoffeecoffee"
             End With
-            With .EventName("stars_callout")
-                .Key = "key_voc_stars"
-                .Sound = "voc_stars"
-                .Priority = -1
-            End With
-            With .EventName("hollow_callout")
-                .Key = "key_voc_hollow"
-                .Sound = "voc_hollow"
-                .Priority = -1
-            End With
             With .EventName("drop_target_drop1_down{modes.fd_punch.active==False}")
                 .Key = "key_voc_hollow"
                 .Sound = "voc_wereclosed"
@@ -337,13 +327,6 @@ Sub CreateBaseMode()
             With .EventName("auto_fire_coil_left_sling_activate{modes.lbtb.active==False}")
                 .Key = "key_sfx_copperboom2"
                 .Sound = "sfx_copperboom2"
-            End With
-        End With
-
-        With .RandomEventPlayer()
-            With .EventName("star_target_hit")
-                .Add "stars_callout", 1.1
-                .Add "hollow_callout", 1
             End With
         End With
 
@@ -387,23 +370,6 @@ Sub CreateBaseMode()
                 With .EventName("s_ST" & x & "_active")
                     With .Lights("l" & x)
                         .Color = StandupColor
-                        .Fade  = 60
-                    End With
-                End With
-            Next
-
-            For x = 1 To 4
-                With .EventName("s_slim_target_ramp" & x & "_active")
-                    With .Lights("l" & (x + 65))
-                        .Color = StarLightColor
-                        .Fade  = 60
-                    End With
-                End With
-            Next
-            For x = 1 To 2
-                With .EventName("s_slim_target_hidden" & x & "_active")
-                    With .Lights("l" & (x + 69))
-                        .Color = StarLightColor
                         .Fade  = 60
                     End With
                 End With
@@ -646,20 +612,6 @@ Sub CreateBaseMode()
         '         End With
         '     End With
         ' Next
-        
-        With .ShotProfiles("star_lights")
-            With .States("unlit")
-                .Show = "off"
-            End With
-            With .States("on")
-                .Show = "flicker_color_on"
-                .Speed = 4
-                .Priority = 100
-                With .Tokens()
-                    .Add "color", BonusLaneColor
-                End With
-            End With
-        End With
 
     End With
 

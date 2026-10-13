@@ -272,6 +272,7 @@ Sub ConfigureGlfDevices()
     CreateBonusLanesMode()  ' priority 210
     CreateLLMultiballQualifyMode() ' priority 220
     CreateCharactersMode()    ' priority 230
+    CreateHurryupMode()        ' priority 240
 
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
