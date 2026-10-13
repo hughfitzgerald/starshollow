@@ -63,6 +63,10 @@ Sub CreateBonusMode
                 .Sound = "sfx_eob_bonus"
                 .Action = "stop"
             End With
+            With .EventName("show_bonus_total")
+                .Key = "key_show_bonus_total"
+                .Sound = "voc_isthatgood"
+            End With
         End With
 
         'Skip the bonus tally animations
@@ -87,9 +91,6 @@ Sub CreateBonusMode
             For x = 1 To BonusShows
                 With .EventName("bonus_light"&x&"_show")
                     .Key = "key_bonus_light"&x&"_show"
-                    ' .Show = "flash_color"
-                    ' .Speed = 20
-                    ' .Loops = 12
                     .Show = "psc_eob_sweep"
                     .Loops = 0
                     .Priority = 2000

@@ -675,6 +675,9 @@ Sub CreateSounds()
     AddSoundEffect "sfx_bumper3", 1
     AddSoundEffect "sfx_eob_bonus", 2
 
+    AddCallout     "voc_shocksme", 3
+    AddCallout     "voc_isthatgood", 2
+
     AddCallout     "voc_sookie1", 6
     AddCallout     "voc_sookie2", 3
     AddCallout     "voc_sookie3", 4
