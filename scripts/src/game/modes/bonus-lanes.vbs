@@ -4,6 +4,19 @@ Sub CreateBonusLanesMode()
         .StartEvents = Array("mode_base_started")
         .StopEvents = Array("mode_base_stopping")
 
+        With .EventPlayer()
+            .Add "s_sw7_active", Array("bonus_lane_sfx")
+            .Add "s_sw8_active", Array("bonus_lane_sfx")
+            .Add "s_sw9_active", Array("bonus_lane_sfx")
+        End With
+
+        With .SoundPlayer()
+            With .EventName("bonus_lane_sfx")
+                .Key = "key_sfx_bonuslane"
+                .Sound = "sfx_bonuslane"
+            End With
+        End With
+
         'Define our shots
         For x = 7 to 9
             With .Shots("bonus_lane_"&x)
@@ -11,10 +24,6 @@ Sub CreateBonusLanesMode()
                 .Profile = "qualify_multiplier"
                 With .Tokens()
                     .Add "lights", "l"&x
-                End With
-                With .ControlEvents()
-                    .Events = Array("complete_qualify_multiplier")
-                    .State = 1
                 End With
             End With
         Next

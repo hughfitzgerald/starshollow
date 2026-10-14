@@ -674,6 +674,10 @@ Sub CreateSounds()
     AddSoundEffect "sfx_bumper2", 1
     AddSoundEffect "sfx_bumper3", 1
     AddSoundEffect "sfx_eob_bonus", 2
+    AddSoundEffect "sfx_bonuslane", 1
+    AddSoundEffect "sfx_outlane", 1
+    AddSoundEffect "sfx_whoosh1", 1
+    AddSoundEffect "sfx_whoosh2", 1
 
     AddCallout     "voc_shocksme", 3
     AddCallout     "voc_isthatgood", 2

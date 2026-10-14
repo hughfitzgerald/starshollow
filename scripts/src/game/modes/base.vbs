@@ -71,6 +71,8 @@ Sub CreateBaseMode()
             'Ramps
             .Add "s_complete_left_ramp_active", Array("score_10000", "total_switches_hit_increment", "any_ramp_hit")
             .Add "s_complete_right_ramp_active", Array("score_10000", "total_switches_hit_increment", "any_ramp_hit")
+            .Add "s_left_ramp_gate_active", Array("ramp_sfx")
+            .Add "s_right_ramp_gate_active", Array("ramp_sfx")
 
             'Star Targets
             .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
@@ -266,6 +268,10 @@ Sub CreateBaseMode()
                 .Add "poodles2_callout", 1
                 .Add "poodles3_callout", 1
             End With
+            With .EventName("ramp_sfx")
+                .Add "play_whoosh1", 1
+                .Add "play_whoosh2", 1
+            End With
         End With
 
         With .SoundPlayer()
@@ -280,6 +286,18 @@ Sub CreateBaseMode()
                     .Action = "stop"
                 End With
             Next
+            With .EventName("outlane_drain")
+                .Key = "key_sfx_outlane"
+                .Sound = "sfx_outlane"
+            End With
+            With .EventName("play_whoosh1")
+                .Key = "key_sfx_whoosh1"
+                .Sound = "sfx_whoosh1"
+            End With
+            With .EventName("play_whoosh2")
+                .Key = "key_sfx_whoosh2"
+                .Sound = "sfx_whoosh2"
+            End With
             With .EventName("poodles1_callout")
                 .Key = "key_voc_poodles1"
                 .Sound = "voc_poodles1"
