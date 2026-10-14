@@ -667,19 +667,7 @@ Sub CreatePscShows()
                 "FL3|80|0000ff", _
                 "SkillshotLight|60|fc7703", _
                 "bg_flash_lower_left|100|ffffff", _
-                "bg_flash_lower_right|100|ffffff", _
-                "Light001|80|78bec0", _
-                "Light002|80|78bec0", _
-                "Light003|80|78bec0", _
-                "Light004|80|bae046", _
-                "Light005|80|bae046", _
-                "Light006|80|bae046", _
-                "Light007|80|d938c7", _
-                "Light008|80|d938c7", _
-                "Light009|80|d938c7", _
-                "Light010|80|bf3957", _
-                "Light011|80|bf3957", _
-                "Light012|80|bf3957")
+                "bg_flash_lower_right|100|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.72s
             .Lights = Array( _
@@ -697,18 +685,18 @@ Sub CreatePscShows()
                 "FL4|80|ffa500", _
                 "SkillshotLight|40|fc7703", _
                 "bg_logo|100|ffffff", _
-                "Light001|60|78bec0", _
-                "Light002|60|78bec0", _
-                "Light003|60|78bec0", _
-                "Light004|60|bae046", _
-                "Light005|60|bae046", _
-                "Light006|60|bae046", _
-                "Light007|60|d938c7", _
-                "Light008|60|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|60|bf3957", _
-                "Light011|60|bf3957", _
-                "Light012|60|bf3957")
+                "Light001|80|78bec0", _
+                "Light002|80|78bec0", _
+                "Light003|80|78bec0", _
+                "Light004|80|bae046", _
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|80|d938c7", _
+                "Light008|80|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|80|bf3957", _
+                "Light011|80|bf3957", _
+                "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.75s
             .Lights = Array( _
@@ -723,18 +711,18 @@ Sub CreatePscShows()
                 "FL3|40|0000ff", _
                 "FL4|60|ffa500", _
                 "SkillshotLight|20|fc7703", _
-                "Light001|40|78bec0", _
-                "Light002|40|78bec0", _
-                "Light003|40|78bec0", _
-                "Light004|40|bae046", _
-                "Light005|40|bae046", _
-                "Light006|40|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|40|d938c7", _
-                "Light009|40|d938c7", _
-                "Light010|40|bf3957", _
-                "Light011|40|bf3957", _
-                "Light012|40|bf3957")
+                "Light001|60|78bec0", _
+                "Light002|60|78bec0", _
+                "Light003|60|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|60|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|60|d938c7", _
+                "Light010|60|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|60|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.78s
             .Lights = Array( _
@@ -753,6 +741,27 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|ffffff", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
+                "Light001|40|78bec0", _
+                "Light002|40|78bec0", _
+                "Light003|40|78bec0", _
+                "Light004|40|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046", _
+                "Light007|40|d938c7", _
+                "Light008|40|d938c7", _
+                "Light009|40|d938c7", _
+                "Light010|40|bf3957", _
+                "Light011|40|bf3957", _
+                "Light012|40|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.81s
+            .Lights = Array( _
+                "FL3|100|000000", _
+                "FL4|20|ffa500", _
+                "SkillshotLight|100|stop", _
+                "bg_logo|80|ffffff", _
+                "bg_flash_lower_left|60|ffffff", _
+                "bg_flash_lower_right|60|ffffff", _
                 "Light001|20|78bec0", _
                 "Light002|20|78bec0", _
                 "Light003|20|78bec0", _
@@ -766,14 +775,15 @@ Sub CreatePscShows()
                 "Light011|20|bf3957", _
                 "Light012|20|bf3957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.81s
+        With .AddStep(Null, Null, 0.03)  ' t=0.84s
             .Lights = Array( _
-                "FL3|100|000000", _
-                "FL4|20|ffa500", _
-                "SkillshotLight|100|stop", _
-                "bg_logo|80|ffffff", _
-                "bg_flash_lower_left|60|ffffff", _
-                "bg_flash_lower_right|60|ffffff", _
+                "FL3|100|stop", _
+                "FL4|100|000000", _
+                "bg_logo|60|ffffff", _
+                "bg_flash_lower_left|40|ffffff", _
+                "bg_flash_upper_left|80|ffffff", _
+                "bg_flash_upper_right|80|ffffff", _
+                "bg_flash_lower_right|40|ffffff", _
                 "Light001|100|000000", _
                 "Light002|100|000000", _
                 "Light003|100|000000", _
@@ -787,15 +797,14 @@ Sub CreatePscShows()
                 "Light011|100|000000", _
                 "Light012|100|000000")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.84s
+        With .AddStep(Null, Null, 0.03)  ' t=0.87s
             .Lights = Array( _
-                "FL3|100|stop", _
-                "FL4|100|000000", _
-                "bg_logo|60|ffffff", _
-                "bg_flash_lower_left|40|ffffff", _
-                "bg_flash_upper_left|80|ffffff", _
-                "bg_flash_upper_right|80|ffffff", _
-                "bg_flash_lower_right|40|ffffff", _
+                "FL4|100|stop", _
+                "bg_logo|40|ffffff", _
+                "bg_flash_lower_left|20|ffffff", _
+                "bg_flash_upper_left|60|ffffff", _
+                "bg_flash_upper_right|60|ffffff", _
+                "bg_flash_lower_right|20|ffffff", _
                 "Light001|100|stop", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
@@ -808,15 +817,6 @@ Sub CreatePscShows()
                 "Light010|100|stop", _
                 "Light011|100|stop", _
                 "Light012|100|stop")
-        End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.87s
-            .Lights = Array( _
-                "FL4|100|stop", _
-                "bg_logo|40|ffffff", _
-                "bg_flash_lower_left|20|ffffff", _
-                "bg_flash_upper_left|60|ffffff", _
-                "bg_flash_upper_right|60|ffffff", _
-                "bg_flash_lower_right|20|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.90s
             .Lights = Array( _
@@ -1559,8 +1559,7 @@ Sub CreatePscShows()
                 "l1|100|000000", _
                 "l65|100|ffffff", _
                 "FL2|100|00ff00", _
-                "gi027|100|ffa957", _
-                "Light012|100|bf3957")
+                "gi027|100|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.89s
             .Lights = Array( _
@@ -1569,7 +1568,8 @@ Sub CreatePscShows()
                 "l18|100|0023cc", _
                 "FL3|80|0000ff", _
                 "bg_flash_upper_right|100|ffffff", _
-                "bg_flash_lower_right|100|ffffff")
+                "bg_flash_lower_right|100|ffffff", _
+                "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.92s
             .Lights = Array( _
@@ -1592,7 +1592,8 @@ Sub CreatePscShows()
                 "l65|80|ffffff", _
                 "FL2|80|00ff00", _
                 "FL3|40|0000ff", _
-                "gi027|80|ffa957")
+                "gi027|80|ffa957", _
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.98s
             .Lights = Array( _
@@ -1609,7 +1610,6 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
                 "gi027|60|ffa957", _
-                "Light010|100|bf3957", _
                 "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.01s
@@ -1627,7 +1627,6 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
                 "gi027|40|ffa957", _
-                "Light009|100|d938c7", _
                 "Light011|80|bf3957", _
                 "Light012|60|bf3957")
         End With
@@ -1651,6 +1650,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|20|ffa957", _
+                "Light009|100|d938c7", _
+                "Light010|80|bf3957", _
                 "Light011|60|bf3957", _
                 "Light012|40|bf3957")
         End With
@@ -1681,7 +1682,7 @@ Sub CreatePscShows()
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|100|000000", _
                 "Light008|100|d938c7", _
-                "Light010|80|bf3957", _
+                "Light010|60|bf3957", _
                 "Light011|40|bf3957", _
                 "Light012|20|bf3957")
         End With
@@ -1715,7 +1716,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|100|000000", _
                 "bg_flash_lower_right|100|000000", _
                 "gi027|100|stop", _
-                "Light010|60|bf3957", _
+                "Light007|100|d938c7", _
+                "Light010|40|bf3957", _
                 "Light011|20|bf3957", _
                 "Light012|100|000000")
         End With
@@ -1749,9 +1751,7 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
-                "Light007|100|d938c7", _
-                "Light009|80|d938c7", _
-                "Light010|40|bf3957", _
+                "Light010|20|bf3957", _
                 "Light011|100|000000", _
                 "Light012|100|stop")
         End With
@@ -1782,8 +1782,8 @@ Sub CreatePscShows()
                 "SkillshotLight|60|fc7703", _
                 "bg_logo|100|ffffff", _
                 "Light008|80|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|20|bf3957", _
+                "Light009|80|d938c7", _
+                "Light010|100|000000", _
                 "Light011|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.19s
@@ -1817,9 +1817,10 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "l28|100|ffffff", _
                 "Light006|100|bae046", _
+                "Light007|80|d938c7", _
                 "Light008|60|d938c7", _
-                "Light009|40|d938c7", _
-                "Light010|100|000000")
+                "Light009|60|d938c7", _
+                "Light010|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.22s
             .Lights = Array( _
@@ -1846,10 +1847,9 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "SkillshotLight|20|fc7703", _
                 "Light005|100|bae046", _
-                "Light007|80|d938c7", _
+                "Light007|60|d938c7", _
                 "Light008|40|d938c7", _
-                "Light009|20|d938c7", _
-                "Light010|100|stop")
+                "Light009|40|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.25s
             .Lights = Array( _
@@ -1876,9 +1876,10 @@ Sub CreatePscShows()
                 "SkillshotLight|100|000000", _
                 "l72|100|8800ff", _
                 "bg_logo|80|ffffff", _
-                "Light007|60|d938c7", _
+                "Light004|100|bae046", _
+                "Light007|40|d938c7", _
                 "Light008|20|d938c7", _
-                "Light009|100|000000")
+                "Light009|20|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.28s
             .Lights = Array( _
@@ -1908,11 +1909,9 @@ Sub CreatePscShows()
                 "SkillshotLight|100|stop", _
                 "l28|80|ffffff", _
                 "bg_logo|60|ffffff", _
-                "Light004|100|bae046", _
-                "Light006|80|bae046", _
-                "Light007|40|d938c7", _
+                "Light007|20|d938c7", _
                 "Light008|100|000000", _
-                "Light009|100|stop")
+                "Light009|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.31s
             .Lights = Array( _
@@ -1935,9 +1934,11 @@ Sub CreatePscShows()
                 "l69|20|ffff00", _
                 "l28|60|ffffff", _
                 "bg_logo|40|ffffff", _
-                "Light006|60|bae046", _
-                "Light007|20|d938c7", _
-                "Light008|100|stop")
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|100|000000", _
+                "Light008|100|stop", _
+                "Light009|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.34s
             .Lights = Array( _
@@ -1963,9 +1964,10 @@ Sub CreatePscShows()
                 "l28|40|ffffff", _
                 "bg_logo|20|ffffff", _
                 "Light003|100|78bec0", _
-                "Light005|80|bae046", _
-                "Light006|40|bae046", _
-                "Light007|100|000000")
+                "Light004|80|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.37s
             .Lights = Array( _
@@ -1993,10 +1995,10 @@ Sub CreatePscShows()
                 "l72|60|8800ff", _
                 "l28|20|ffffff", _
                 "bg_logo|100|000000", _
-                "Light004|80|bae046", _
-                "Light005|60|bae046", _
-                "Light006|20|bae046", _
-                "Light007|100|stop")
+                "Light002|100|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.40s
             .Lights = Array( _
@@ -2020,10 +2022,9 @@ Sub CreatePscShows()
                 "l72|40|8800ff", _
                 "l28|100|000000", _
                 "bg_logo|100|stop", _
-                "Light002|100|78bec0", _
-                "Light004|60|bae046", _
-                "Light005|40|bae046", _
-                "Light006|100|000000")
+                "Light004|40|bae046", _
+                "Light005|20|bae046", _
+                "Light006|20|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.43s
             .Lights = Array( _
@@ -2052,10 +2053,9 @@ Sub CreatePscShows()
                 "bg_flash_lower_left|100|ffffff", _
                 "bg_flash_upper_left|100|ffffff", _
                 "Light001|100|78bec0", _
-                "Light003|80|78bec0", _
-                "Light004|40|bae046", _
-                "Light005|20|bae046", _
-                "Light006|100|stop")
+                "Light004|20|bae046", _
+                "Light005|100|000000", _
+                "Light006|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.46s
             .Lights = Array( _
@@ -2077,9 +2077,10 @@ Sub CreatePscShows()
                 "l59|20|ffffff", _
                 "FL5|60|ffea00", _
                 "l72|100|000000", _
-                "Light003|60|78bec0", _
-                "Light004|20|bae046", _
-                "Light005|100|000000")
+                "Light003|80|78bec0", _
+                "Light004|100|000000", _
+                "Light005|100|stop", _
+                "Light006|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.49s
             .Lights = Array( _
@@ -2106,9 +2107,8 @@ Sub CreatePscShows()
                 "FL5|40|ffea00", _
                 "l72|100|stop", _
                 "Light002|80|78bec0", _
-                "Light003|40|78bec0", _
-                "Light004|100|000000", _
-                "Light005|100|stop")
+                "Light003|60|78bec0", _
+                "Light004|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.52s
             .Lights = Array( _
@@ -2137,8 +2137,7 @@ Sub CreatePscShows()
                 "gi025|100|ffa957", _
                 "Light001|80|78bec0", _
                 "Light002|60|78bec0", _
-                "Light003|20|78bec0", _
-                "Light004|100|stop")
+                "Light003|40|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.55s
             .Lights = Array( _
@@ -2165,7 +2164,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "Light001|60|78bec0", _
                 "Light002|40|78bec0", _
-                "Light003|100|000000")
+                "Light003|20|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.58s
             .Lights = Array( _
@@ -2190,7 +2189,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|40|78bec0", _
                 "Light002|20|78bec0", _
-                "Light003|100|stop")
+                "Light003|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.61s
             .Lights = Array( _
@@ -2216,7 +2215,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|20|ffffff", _
                 "gi025|100|ffa957", _
                 "Light001|20|78bec0", _
-                "Light002|100|000000")
+                "Light002|100|000000", _
+                "Light003|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.64s
             .Lights = Array( _
@@ -2358,8 +2358,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "gi025|100|stop", _
                 "Light001|40|78bec0", _
-                "Light002|80|78bec0", _
-                "Light004|100|bae046")
+                "Light002|80|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.88s
             .Lights = Array( _
@@ -2389,7 +2388,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|20|78bec0", _
                 "Light002|60|78bec0", _
-                "Light003|80|78bec0")
+                "Light003|80|78bec0", _
+                "Light004|100|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.91s
             .Lights = Array( _
@@ -2449,7 +2449,6 @@ Sub CreatePscShows()
                 "Light001|100|stop", _
                 "Light002|20|78bec0", _
                 "Light003|40|78bec0", _
-                "Light004|80|bae046", _
                 "Light006|100|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.97s
@@ -2481,7 +2480,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|stop", _
                 "Light002|100|000000", _
                 "Light003|20|78bec0", _
-                "Light004|60|bae046")
+                "Light004|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.00s
             .Lights = Array( _
@@ -2507,9 +2506,8 @@ Sub CreatePscShows()
                 "l72|60|8800ff", _
                 "Light002|100|stop", _
                 "Light003|100|000000", _
-                "Light004|40|bae046", _
-                "Light005|80|bae046", _
-                "Light007|100|d938c7")
+                "Light004|60|bae046", _
+                "Light005|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.03s
             .Lights = Array( _
@@ -2535,8 +2533,10 @@ Sub CreatePscShows()
                 "l72|40|8800ff", _
                 "l28|80|ffffff", _
                 "Light003|100|stop", _
-                "Light004|20|bae046", _
-                "Light005|60|bae046")
+                "Light004|40|bae046", _
+                "Light005|60|bae046", _
+                "Light006|80|bae046", _
+                "Light007|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.06s
             .Lights = Array( _
@@ -2559,9 +2559,9 @@ Sub CreatePscShows()
                 "l72|20|8800ff", _
                 "l28|60|ffffff", _
                 "bg_logo|80|ffffff", _
-                "Light004|100|000000", _
+                "Light004|20|bae046", _
                 "Light005|40|bae046", _
-                "Light006|80|bae046", _
+                "Light006|60|bae046", _
                 "Light008|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.09s
@@ -2588,10 +2588,9 @@ Sub CreatePscShows()
                 "l72|100|000000", _
                 "l28|40|ffffff", _
                 "bg_logo|60|ffffff", _
-                "Light004|100|stop", _
+                "Light004|100|000000", _
                 "Light005|20|bae046", _
-                "Light006|60|bae046", _
-                "Light007|80|d938c7", _
+                "Light006|40|bae046", _
                 "Light009|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.12s
@@ -2619,9 +2618,10 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "l28|20|ffffff", _
                 "bg_logo|40|ffffff", _
+                "Light004|100|stop", _
                 "Light005|100|000000", _
-                "Light006|40|bae046", _
-                "Light007|60|d938c7")
+                "Light006|20|bae046", _
+                "Light007|80|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.15s
             .Lights = Array( _
@@ -2650,10 +2650,9 @@ Sub CreatePscShows()
                 "l28|100|000000", _
                 "bg_logo|20|ffffff", _
                 "Light005|100|stop", _
-                "Light006|20|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|80|d938c7", _
-                "Light010|100|bf3957")
+                "Light006|100|000000", _
+                "Light007|60|d938c7", _
+                "Light008|80|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.18s
             .Lights = Array( _
@@ -2683,9 +2682,11 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "l28|100|stop", _
                 "bg_logo|100|000000", _
-                "Light006|100|000000", _
-                "Light007|20|d938c7", _
-                "Light008|60|d938c7")
+                "Light006|100|stop", _
+                "Light007|40|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.21s
             .Lights = Array( _
@@ -2708,10 +2709,9 @@ Sub CreatePscShows()
                 "l69|100|000000", _
                 "SkillshotLight|60|fc7703", _
                 "bg_logo|100|stop", _
-                "Light006|100|stop", _
-                "Light007|100|000000", _
+                "Light007|20|d938c7", _
                 "Light008|40|d938c7", _
-                "Light009|80|d938c7", _
+                "Light009|60|d938c7", _
                 "Light011|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.24s
@@ -2740,10 +2740,9 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
-                "Light007|100|stop", _
+                "Light007|100|000000", _
                 "Light008|20|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|80|bf3957", _
+                "Light009|40|d938c7", _
                 "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.27s
@@ -2773,9 +2772,10 @@ Sub CreatePscShows()
                 "FL2|100|00ff00", _
                 "SkillshotLight|20|fc7703", _
                 "gi027|100|ffa957", _
+                "Light007|100|stop", _
                 "Light008|100|000000", _
-                "Light009|40|d938c7", _
-                "Light010|60|bf3957")
+                "Light009|20|d938c7", _
+                "Light010|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.30s
             .Lights = Array( _
@@ -2802,8 +2802,8 @@ Sub CreatePscShows()
                 "l71|40|ffff00", _
                 "SkillshotLight|100|000000", _
                 "Light008|100|stop", _
-                "Light009|20|d938c7", _
-                "Light010|40|bf3957", _
+                "Light009|100|000000", _
+                "Light010|60|bf3957", _
                 "Light011|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.33s
@@ -2832,9 +2832,10 @@ Sub CreatePscShows()
                 "SkillshotLight|100|stop", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
-                "Light009|100|000000", _
-                "Light010|20|bf3957", _
-                "Light011|60|bf3957")
+                "Light009|100|stop", _
+                "Light010|40|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.36s
             .Lights = Array( _
@@ -2863,10 +2864,9 @@ Sub CreatePscShows()
                 "FL2|80|00ff00", _
                 "bg_flash_upper_right|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
-                "Light009|100|stop", _
-                "Light010|100|000000", _
+                "Light010|20|bf3957", _
                 "Light011|40|bf3957", _
-                "Light012|80|bf3957")
+                "Light012|60|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.39s
             .Lights = Array( _
@@ -2893,9 +2893,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|80|ffa957", _
-                "Light010|100|stop", _
+                "Light010|100|000000", _
                 "Light011|20|bf3957", _
-                "Light012|60|bf3957")
+                "Light012|40|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.42s
             .Lights = Array( _
@@ -2919,8 +2919,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|20|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|60|ffa957", _
+                "Light010|100|stop", _
                 "Light011|100|000000", _
-                "Light012|40|bf3957")
+                "Light012|20|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.45s
             .Lights = Array( _
@@ -2939,7 +2940,7 @@ Sub CreatePscShows()
                 "bg_flash_lower_right|100|000000", _
                 "gi027|40|ffa957", _
                 "Light011|100|stop", _
-                "Light012|20|bf3957")
+                "Light012|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.48s
             .Lights = Array( _
@@ -2953,7 +2954,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|20|ffa957", _
-                "Light012|100|000000")
+                "Light012|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.51s
             .Lights = Array( _
@@ -2961,8 +2962,7 @@ Sub CreatePscShows()
                 "l65|100|stop", _
                 "FL2|100|stop", _
                 "FL3|20|0000ff", _
-                "gi027|100|000000", _
-                "Light012|100|stop")
+                "gi027|100|000000")
         End With
         With .AddStep(Null, Null, 0.02)  ' t=3.54s
             .Lights = Array("FL3|100|000000", "gi027|100|stop")
@@ -8192,19 +8192,7 @@ Sub CreatePscShows()
                 "FL3|80|0000ff", _
                 "SkillshotLight|60|fc7703", _
                 "bg_flash_lower_left|100|ffffff", _
-                "bg_flash_lower_right|100|ffffff", _
-                "Light001|80|78bec0", _
-                "Light002|80|78bec0", _
-                "Light003|80|78bec0", _
-                "Light004|80|bae046", _
-                "Light005|80|bae046", _
-                "Light006|80|bae046", _
-                "Light007|80|d938c7", _
-                "Light008|80|d938c7", _
-                "Light009|80|d938c7", _
-                "Light010|80|bf3957", _
-                "Light011|80|bf3957", _
-                "Light012|80|bf3957")
+                "bg_flash_lower_right|100|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.36s
             .Lights = Array( _
@@ -8222,18 +8210,18 @@ Sub CreatePscShows()
                 "FL4|80|ffa500", _
                 "SkillshotLight|40|fc7703", _
                 "bg_logo|100|ffffff", _
-                "Light001|60|78bec0", _
-                "Light002|60|78bec0", _
-                "Light003|60|78bec0", _
-                "Light004|60|bae046", _
-                "Light005|60|bae046", _
-                "Light006|60|bae046", _
-                "Light007|60|d938c7", _
-                "Light008|60|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|60|bf3957", _
-                "Light011|60|bf3957", _
-                "Light012|60|bf3957")
+                "Light001|80|78bec0", _
+                "Light002|80|78bec0", _
+                "Light003|80|78bec0", _
+                "Light004|80|bae046", _
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|80|d938c7", _
+                "Light008|80|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|80|bf3957", _
+                "Light011|80|bf3957", _
+                "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.39s
             .Lights = Array( _
@@ -8248,18 +8236,18 @@ Sub CreatePscShows()
                 "FL3|40|0000ff", _
                 "FL4|60|ffa500", _
                 "SkillshotLight|20|fc7703", _
-                "Light001|40|78bec0", _
-                "Light002|40|78bec0", _
-                "Light003|40|78bec0", _
-                "Light004|40|bae046", _
-                "Light005|40|bae046", _
-                "Light006|40|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|40|d938c7", _
-                "Light009|40|d938c7", _
-                "Light010|40|bf3957", _
-                "Light011|40|bf3957", _
-                "Light012|40|bf3957")
+                "Light001|60|78bec0", _
+                "Light002|60|78bec0", _
+                "Light003|60|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|60|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|60|d938c7", _
+                "Light010|60|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|60|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.42s
             .Lights = Array( _
@@ -8278,6 +8266,27 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|ffffff", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
+                "Light001|40|78bec0", _
+                "Light002|40|78bec0", _
+                "Light003|40|78bec0", _
+                "Light004|40|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046", _
+                "Light007|40|d938c7", _
+                "Light008|40|d938c7", _
+                "Light009|40|d938c7", _
+                "Light010|40|bf3957", _
+                "Light011|40|bf3957", _
+                "Light012|40|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=6.45s
+            .Lights = Array( _
+                "FL3|100|000000", _
+                "FL4|20|ffa500", _
+                "SkillshotLight|100|stop", _
+                "bg_logo|80|ffffff", _
+                "bg_flash_lower_left|60|ffffff", _
+                "bg_flash_lower_right|60|ffffff", _
                 "Light001|20|78bec0", _
                 "Light002|20|78bec0", _
                 "Light003|20|78bec0", _
@@ -8291,14 +8300,15 @@ Sub CreatePscShows()
                 "Light011|20|bf3957", _
                 "Light012|20|bf3957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=6.45s
+        With .AddStep(Null, Null, 0.03)  ' t=6.48s
             .Lights = Array( _
-                "FL3|100|000000", _
-                "FL4|20|ffa500", _
-                "SkillshotLight|100|stop", _
-                "bg_logo|80|ffffff", _
-                "bg_flash_lower_left|60|ffffff", _
-                "bg_flash_lower_right|60|ffffff", _
+                "FL3|100|stop", _
+                "FL4|100|000000", _
+                "bg_logo|60|ffffff", _
+                "bg_flash_lower_left|40|ffffff", _
+                "bg_flash_upper_left|80|ffffff", _
+                "bg_flash_upper_right|80|ffffff", _
+                "bg_flash_lower_right|40|ffffff", _
                 "Light001|100|000000", _
                 "Light002|100|000000", _
                 "Light003|100|000000", _
@@ -8312,15 +8322,14 @@ Sub CreatePscShows()
                 "Light011|100|000000", _
                 "Light012|100|000000")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=6.48s
+        With .AddStep(Null, Null, 0.03)  ' t=6.51s
             .Lights = Array( _
-                "FL3|100|stop", _
-                "FL4|100|000000", _
-                "bg_logo|60|ffffff", _
-                "bg_flash_lower_left|40|ffffff", _
-                "bg_flash_upper_left|80|ffffff", _
-                "bg_flash_upper_right|80|ffffff", _
-                "bg_flash_lower_right|40|ffffff", _
+                "FL4|100|stop", _
+                "bg_logo|40|ffffff", _
+                "bg_flash_lower_left|20|ffffff", _
+                "bg_flash_upper_left|60|ffffff", _
+                "bg_flash_upper_right|60|ffffff", _
+                "bg_flash_lower_right|20|ffffff", _
                 "Light001|100|stop", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
@@ -8333,15 +8342,6 @@ Sub CreatePscShows()
                 "Light010|100|stop", _
                 "Light011|100|stop", _
                 "Light012|100|stop")
-        End With
-        With .AddStep(Null, Null, 0.03)  ' t=6.51s
-            .Lights = Array( _
-                "FL4|100|stop", _
-                "bg_logo|40|ffffff", _
-                "bg_flash_lower_left|20|ffffff", _
-                "bg_flash_upper_left|60|ffffff", _
-                "bg_flash_upper_right|60|ffffff", _
-                "bg_flash_lower_right|20|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.54s
             .Lights = Array( _
@@ -9084,8 +9084,7 @@ Sub CreatePscShows()
                 "l1|100|000000", _
                 "l65|100|ffffff", _
                 "FL2|100|00ff00", _
-                "gi027|100|ffa957", _
-                "Light012|100|bf3957")
+                "gi027|100|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.53s
             .Lights = Array( _
@@ -9094,7 +9093,8 @@ Sub CreatePscShows()
                 "l18|100|0023cc", _
                 "FL3|80|0000ff", _
                 "bg_flash_upper_right|100|ffffff", _
-                "bg_flash_lower_right|100|ffffff")
+                "bg_flash_lower_right|100|ffffff", _
+                "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.56s
             .Lights = Array( _
@@ -9117,7 +9117,8 @@ Sub CreatePscShows()
                 "l65|80|ffffff", _
                 "FL2|80|00ff00", _
                 "FL3|40|0000ff", _
-                "gi027|80|ffa957")
+                "gi027|80|ffa957", _
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.62s
             .Lights = Array( _
@@ -9134,7 +9135,6 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
                 "gi027|60|ffa957", _
-                "Light010|100|bf3957", _
                 "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.65s
@@ -9152,7 +9152,6 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
                 "gi027|40|ffa957", _
-                "Light009|100|d938c7", _
                 "Light011|80|bf3957", _
                 "Light012|60|bf3957")
         End With
@@ -9176,6 +9175,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|20|ffa957", _
+                "Light009|100|d938c7", _
+                "Light010|80|bf3957", _
                 "Light011|60|bf3957", _
                 "Light012|40|bf3957")
         End With
@@ -9206,7 +9207,7 @@ Sub CreatePscShows()
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|100|000000", _
                 "Light008|100|d938c7", _
-                "Light010|80|bf3957", _
+                "Light010|60|bf3957", _
                 "Light011|40|bf3957", _
                 "Light012|20|bf3957")
         End With
@@ -9240,7 +9241,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|100|000000", _
                 "bg_flash_lower_right|100|000000", _
                 "gi027|100|stop", _
-                "Light010|60|bf3957", _
+                "Light007|100|d938c7", _
+                "Light010|40|bf3957", _
                 "Light011|20|bf3957", _
                 "Light012|100|000000")
         End With
@@ -9274,9 +9276,7 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
-                "Light007|100|d938c7", _
-                "Light009|80|d938c7", _
-                "Light010|40|bf3957", _
+                "Light010|20|bf3957", _
                 "Light011|100|000000", _
                 "Light012|100|stop")
         End With
@@ -9307,8 +9307,8 @@ Sub CreatePscShows()
                 "SkillshotLight|60|fc7703", _
                 "bg_logo|100|ffffff", _
                 "Light008|80|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|20|bf3957", _
+                "Light009|80|d938c7", _
+                "Light010|100|000000", _
                 "Light011|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.83s
@@ -9342,9 +9342,10 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "l28|100|ffffff", _
                 "Light006|100|bae046", _
+                "Light007|80|d938c7", _
                 "Light008|60|d938c7", _
-                "Light009|40|d938c7", _
-                "Light010|100|000000")
+                "Light009|60|d938c7", _
+                "Light010|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.86s
             .Lights = Array( _
@@ -9371,10 +9372,9 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "SkillshotLight|20|fc7703", _
                 "Light005|100|bae046", _
-                "Light007|80|d938c7", _
+                "Light007|60|d938c7", _
                 "Light008|40|d938c7", _
-                "Light009|20|d938c7", _
-                "Light010|100|stop")
+                "Light009|40|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.89s
             .Lights = Array( _
@@ -9401,9 +9401,10 @@ Sub CreatePscShows()
                 "SkillshotLight|100|000000", _
                 "l72|100|8800ff", _
                 "bg_logo|80|ffffff", _
-                "Light007|60|d938c7", _
+                "Light004|100|bae046", _
+                "Light007|40|d938c7", _
                 "Light008|20|d938c7", _
-                "Light009|100|000000")
+                "Light009|20|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.92s
             .Lights = Array( _
@@ -9433,11 +9434,9 @@ Sub CreatePscShows()
                 "SkillshotLight|100|stop", _
                 "l28|80|ffffff", _
                 "bg_logo|60|ffffff", _
-                "Light004|100|bae046", _
-                "Light006|80|bae046", _
-                "Light007|40|d938c7", _
+                "Light007|20|d938c7", _
                 "Light008|100|000000", _
-                "Light009|100|stop")
+                "Light009|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.95s
             .Lights = Array( _
@@ -9460,9 +9459,11 @@ Sub CreatePscShows()
                 "l69|20|ffff00", _
                 "l28|60|ffffff", _
                 "bg_logo|40|ffffff", _
-                "Light006|60|bae046", _
-                "Light007|20|d938c7", _
-                "Light008|100|stop")
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|100|000000", _
+                "Light008|100|stop", _
+                "Light009|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.98s
             .Lights = Array( _
@@ -9488,9 +9489,10 @@ Sub CreatePscShows()
                 "l28|40|ffffff", _
                 "bg_logo|20|ffffff", _
                 "Light003|100|78bec0", _
-                "Light005|80|bae046", _
-                "Light006|40|bae046", _
-                "Light007|100|000000")
+                "Light004|80|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.01s
             .Lights = Array( _
@@ -9518,10 +9520,10 @@ Sub CreatePscShows()
                 "l72|60|8800ff", _
                 "l28|20|ffffff", _
                 "bg_logo|100|000000", _
-                "Light004|80|bae046", _
-                "Light005|60|bae046", _
-                "Light006|20|bae046", _
-                "Light007|100|stop")
+                "Light002|100|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.04s
             .Lights = Array( _
@@ -9545,10 +9547,9 @@ Sub CreatePscShows()
                 "l72|40|8800ff", _
                 "l28|100|000000", _
                 "bg_logo|100|stop", _
-                "Light002|100|78bec0", _
-                "Light004|60|bae046", _
-                "Light005|40|bae046", _
-                "Light006|100|000000")
+                "Light004|40|bae046", _
+                "Light005|20|bae046", _
+                "Light006|20|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.07s
             .Lights = Array( _
@@ -9577,10 +9578,9 @@ Sub CreatePscShows()
                 "bg_flash_lower_left|100|ffffff", _
                 "bg_flash_upper_left|100|ffffff", _
                 "Light001|100|78bec0", _
-                "Light003|80|78bec0", _
-                "Light004|40|bae046", _
-                "Light005|20|bae046", _
-                "Light006|100|stop")
+                "Light004|20|bae046", _
+                "Light005|100|000000", _
+                "Light006|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.10s
             .Lights = Array( _
@@ -9602,9 +9602,10 @@ Sub CreatePscShows()
                 "l59|20|ffffff", _
                 "FL5|60|ffea00", _
                 "l72|100|000000", _
-                "Light003|60|78bec0", _
-                "Light004|20|bae046", _
-                "Light005|100|000000")
+                "Light003|80|78bec0", _
+                "Light004|100|000000", _
+                "Light005|100|stop", _
+                "Light006|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.13s
             .Lights = Array( _
@@ -9631,9 +9632,8 @@ Sub CreatePscShows()
                 "FL5|40|ffea00", _
                 "l72|100|stop", _
                 "Light002|80|78bec0", _
-                "Light003|40|78bec0", _
-                "Light004|100|000000", _
-                "Light005|100|stop")
+                "Light003|60|78bec0", _
+                "Light004|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.16s
             .Lights = Array( _
@@ -9662,8 +9662,7 @@ Sub CreatePscShows()
                 "gi025|100|ffa957", _
                 "Light001|80|78bec0", _
                 "Light002|60|78bec0", _
-                "Light003|20|78bec0", _
-                "Light004|100|stop")
+                "Light003|40|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.19s
             .Lights = Array( _
@@ -9690,7 +9689,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "Light001|60|78bec0", _
                 "Light002|40|78bec0", _
-                "Light003|100|000000")
+                "Light003|20|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.22s
             .Lights = Array( _
@@ -9715,7 +9714,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|40|78bec0", _
                 "Light002|20|78bec0", _
-                "Light003|100|stop")
+                "Light003|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.25s
             .Lights = Array( _
@@ -9741,7 +9740,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|20|ffffff", _
                 "gi025|100|ffa957", _
                 "Light001|20|78bec0", _
-                "Light002|100|000000")
+                "Light002|100|000000", _
+                "Light003|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.28s
             .Lights = Array( _
@@ -9883,8 +9883,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "gi025|100|stop", _
                 "Light001|40|78bec0", _
-                "Light002|80|78bec0", _
-                "Light004|100|bae046")
+                "Light002|80|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.52s
             .Lights = Array( _
@@ -9914,7 +9913,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|20|78bec0", _
                 "Light002|60|78bec0", _
-                "Light003|80|78bec0")
+                "Light003|80|78bec0", _
+                "Light004|100|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.55s
             .Lights = Array( _
@@ -9974,7 +9974,6 @@ Sub CreatePscShows()
                 "Light001|100|stop", _
                 "Light002|20|78bec0", _
                 "Light003|40|78bec0", _
-                "Light004|80|bae046", _
                 "Light006|100|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.61s
@@ -10006,7 +10005,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|stop", _
                 "Light002|100|000000", _
                 "Light003|20|78bec0", _
-                "Light004|60|bae046")
+                "Light004|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.64s
             .Lights = Array( _
@@ -10032,9 +10031,8 @@ Sub CreatePscShows()
                 "l72|60|8800ff", _
                 "Light002|100|stop", _
                 "Light003|100|000000", _
-                "Light004|40|bae046", _
-                "Light005|80|bae046", _
-                "Light007|100|d938c7")
+                "Light004|60|bae046", _
+                "Light005|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.67s
             .Lights = Array( _
@@ -10060,8 +10058,10 @@ Sub CreatePscShows()
                 "l72|40|8800ff", _
                 "l28|80|ffffff", _
                 "Light003|100|stop", _
-                "Light004|20|bae046", _
-                "Light005|60|bae046")
+                "Light004|40|bae046", _
+                "Light005|60|bae046", _
+                "Light006|80|bae046", _
+                "Light007|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.70s
             .Lights = Array( _
@@ -10084,9 +10084,9 @@ Sub CreatePscShows()
                 "l72|20|8800ff", _
                 "l28|60|ffffff", _
                 "bg_logo|80|ffffff", _
-                "Light004|100|000000", _
+                "Light004|20|bae046", _
                 "Light005|40|bae046", _
-                "Light006|80|bae046", _
+                "Light006|60|bae046", _
                 "Light008|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.73s
@@ -10113,10 +10113,9 @@ Sub CreatePscShows()
                 "l72|100|000000", _
                 "l28|40|ffffff", _
                 "bg_logo|60|ffffff", _
-                "Light004|100|stop", _
+                "Light004|100|000000", _
                 "Light005|20|bae046", _
-                "Light006|60|bae046", _
-                "Light007|80|d938c7", _
+                "Light006|40|bae046", _
                 "Light009|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.76s
@@ -10144,9 +10143,10 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "l28|20|ffffff", _
                 "bg_logo|40|ffffff", _
+                "Light004|100|stop", _
                 "Light005|100|000000", _
-                "Light006|40|bae046", _
-                "Light007|60|d938c7")
+                "Light006|20|bae046", _
+                "Light007|80|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.79s
             .Lights = Array( _
@@ -10175,10 +10175,9 @@ Sub CreatePscShows()
                 "l28|100|000000", _
                 "bg_logo|20|ffffff", _
                 "Light005|100|stop", _
-                "Light006|20|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|80|d938c7", _
-                "Light010|100|bf3957")
+                "Light006|100|000000", _
+                "Light007|60|d938c7", _
+                "Light008|80|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.82s
             .Lights = Array( _
@@ -10208,9 +10207,11 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "l28|100|stop", _
                 "bg_logo|100|000000", _
-                "Light006|100|000000", _
-                "Light007|20|d938c7", _
-                "Light008|60|d938c7")
+                "Light006|100|stop", _
+                "Light007|40|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.85s
             .Lights = Array( _
@@ -10233,10 +10234,9 @@ Sub CreatePscShows()
                 "l69|100|000000", _
                 "SkillshotLight|60|fc7703", _
                 "bg_logo|100|stop", _
-                "Light006|100|stop", _
-                "Light007|100|000000", _
+                "Light007|20|d938c7", _
                 "Light008|40|d938c7", _
-                "Light009|80|d938c7", _
+                "Light009|60|d938c7", _
                 "Light011|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.88s
@@ -10265,10 +10265,9 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
-                "Light007|100|stop", _
+                "Light007|100|000000", _
                 "Light008|20|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|80|bf3957", _
+                "Light009|40|d938c7", _
                 "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.91s
@@ -10298,9 +10297,10 @@ Sub CreatePscShows()
                 "FL2|100|00ff00", _
                 "SkillshotLight|20|fc7703", _
                 "gi027|100|ffa957", _
+                "Light007|100|stop", _
                 "Light008|100|000000", _
-                "Light009|40|d938c7", _
-                "Light010|60|bf3957")
+                "Light009|20|d938c7", _
+                "Light010|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.94s
             .Lights = Array( _
@@ -10327,8 +10327,8 @@ Sub CreatePscShows()
                 "l71|40|ffff00", _
                 "SkillshotLight|100|000000", _
                 "Light008|100|stop", _
-                "Light009|20|d938c7", _
-                "Light010|40|bf3957", _
+                "Light009|100|000000", _
+                "Light010|60|bf3957", _
                 "Light011|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.97s
@@ -10357,9 +10357,10 @@ Sub CreatePscShows()
                 "SkillshotLight|100|stop", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
-                "Light009|100|000000", _
-                "Light010|20|bf3957", _
-                "Light011|60|bf3957")
+                "Light009|100|stop", _
+                "Light010|40|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.00s
             .Lights = Array( _
@@ -10388,10 +10389,9 @@ Sub CreatePscShows()
                 "FL2|80|00ff00", _
                 "bg_flash_upper_right|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
-                "Light009|100|stop", _
-                "Light010|100|000000", _
+                "Light010|20|bf3957", _
                 "Light011|40|bf3957", _
-                "Light012|80|bf3957")
+                "Light012|60|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.03s
             .Lights = Array( _
@@ -10418,9 +10418,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|80|ffa957", _
-                "Light010|100|stop", _
+                "Light010|100|000000", _
                 "Light011|20|bf3957", _
-                "Light012|60|bf3957")
+                "Light012|40|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.06s
             .Lights = Array( _
@@ -10444,8 +10444,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|20|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|60|ffa957", _
+                "Light010|100|stop", _
                 "Light011|100|000000", _
-                "Light012|40|bf3957")
+                "Light012|20|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.09s
             .Lights = Array( _
@@ -10464,7 +10465,7 @@ Sub CreatePscShows()
                 "bg_flash_lower_right|100|000000", _
                 "gi027|40|ffa957", _
                 "Light011|100|stop", _
-                "Light012|20|bf3957")
+                "Light012|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.12s
             .Lights = Array( _
@@ -10478,7 +10479,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|20|ffa957", _
-                "Light012|100|000000")
+                "Light012|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.15s
             .Lights = Array( _
@@ -10486,8 +10487,7 @@ Sub CreatePscShows()
                 "l65|100|stop", _
                 "FL2|100|stop", _
                 "FL3|20|0000ff", _
-                "gi027|100|000000", _
-                "Light012|100|stop")
+                "gi027|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.18s
             .Lights = Array("FL3|100|000000", "gi027|100|stop")
@@ -11052,19 +11052,7 @@ Sub CreatePscShows()
                 "FL3|80|0000ff", _
                 "SkillshotLight|60|fc7703", _
                 "bg_flash_lower_left|100|ffffff", _
-                "bg_flash_lower_right|100|ffffff", _
-                "Light001|80|78bec0", _
-                "Light002|80|78bec0", _
-                "Light003|80|78bec0", _
-                "Light004|80|bae046", _
-                "Light005|80|bae046", _
-                "Light006|80|bae046", _
-                "Light007|80|d938c7", _
-                "Light008|80|d938c7", _
-                "Light009|80|d938c7", _
-                "Light010|80|bf3957", _
-                "Light011|80|bf3957", _
-                "Light012|80|bf3957")
+                "bg_flash_lower_right|100|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.93s
             .Lights = Array( _
@@ -11082,18 +11070,18 @@ Sub CreatePscShows()
                 "FL4|80|ffa500", _
                 "SkillshotLight|40|fc7703", _
                 "bg_logo|100|ffffff", _
-                "Light001|60|78bec0", _
-                "Light002|60|78bec0", _
-                "Light003|60|78bec0", _
-                "Light004|60|bae046", _
-                "Light005|60|bae046", _
-                "Light006|60|bae046", _
-                "Light007|60|d938c7", _
-                "Light008|60|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|60|bf3957", _
-                "Light011|60|bf3957", _
-                "Light012|60|bf3957")
+                "Light001|80|78bec0", _
+                "Light002|80|78bec0", _
+                "Light003|80|78bec0", _
+                "Light004|80|bae046", _
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|80|d938c7", _
+                "Light008|80|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|80|bf3957", _
+                "Light011|80|bf3957", _
+                "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.96s
             .Lights = Array( _
@@ -11108,18 +11096,18 @@ Sub CreatePscShows()
                 "FL3|40|0000ff", _
                 "FL4|60|ffa500", _
                 "SkillshotLight|20|fc7703", _
-                "Light001|40|78bec0", _
-                "Light002|40|78bec0", _
-                "Light003|40|78bec0", _
-                "Light004|40|bae046", _
-                "Light005|40|bae046", _
-                "Light006|40|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|40|d938c7", _
-                "Light009|40|d938c7", _
-                "Light010|40|bf3957", _
-                "Light011|40|bf3957", _
-                "Light012|40|bf3957")
+                "Light001|60|78bec0", _
+                "Light002|60|78bec0", _
+                "Light003|60|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|60|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|60|d938c7", _
+                "Light010|60|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|60|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.99s
             .Lights = Array( _
@@ -11138,6 +11126,27 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|ffffff", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
+                "Light001|40|78bec0", _
+                "Light002|40|78bec0", _
+                "Light003|40|78bec0", _
+                "Light004|40|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046", _
+                "Light007|40|d938c7", _
+                "Light008|40|d938c7", _
+                "Light009|40|d938c7", _
+                "Light010|40|bf3957", _
+                "Light011|40|bf3957", _
+                "Light012|40|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=10.02s
+            .Lights = Array( _
+                "FL3|100|000000", _
+                "FL4|20|ffa500", _
+                "SkillshotLight|100|stop", _
+                "bg_logo|80|ffffff", _
+                "bg_flash_lower_left|60|ffffff", _
+                "bg_flash_lower_right|60|ffffff", _
                 "Light001|20|78bec0", _
                 "Light002|20|78bec0", _
                 "Light003|20|78bec0", _
@@ -11151,14 +11160,15 @@ Sub CreatePscShows()
                 "Light011|20|bf3957", _
                 "Light012|20|bf3957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=10.02s
+        With .AddStep(Null, Null, 0.03)  ' t=10.05s
             .Lights = Array( _
-                "FL3|100|000000", _
-                "FL4|20|ffa500", _
-                "SkillshotLight|100|stop", _
-                "bg_logo|80|ffffff", _
-                "bg_flash_lower_left|60|ffffff", _
-                "bg_flash_lower_right|60|ffffff", _
+                "FL3|100|stop", _
+                "FL4|100|000000", _
+                "bg_logo|60|ffffff", _
+                "bg_flash_lower_left|40|ffffff", _
+                "bg_flash_upper_left|80|ffffff", _
+                "bg_flash_upper_right|80|ffffff", _
+                "bg_flash_lower_right|40|ffffff", _
                 "Light001|100|000000", _
                 "Light002|100|000000", _
                 "Light003|100|000000", _
@@ -11172,15 +11182,14 @@ Sub CreatePscShows()
                 "Light011|100|000000", _
                 "Light012|100|000000")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=10.05s
+        With .AddStep(Null, Null, 0.03)  ' t=10.08s
             .Lights = Array( _
-                "FL3|100|stop", _
-                "FL4|100|000000", _
-                "bg_logo|60|ffffff", _
-                "bg_flash_lower_left|40|ffffff", _
-                "bg_flash_upper_left|80|ffffff", _
-                "bg_flash_upper_right|80|ffffff", _
-                "bg_flash_lower_right|40|ffffff", _
+                "FL4|100|stop", _
+                "bg_logo|40|ffffff", _
+                "bg_flash_lower_left|20|ffffff", _
+                "bg_flash_upper_left|60|ffffff", _
+                "bg_flash_upper_right|60|ffffff", _
+                "bg_flash_lower_right|20|ffffff", _
                 "Light001|100|stop", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
@@ -11193,15 +11202,6 @@ Sub CreatePscShows()
                 "Light010|100|stop", _
                 "Light011|100|stop", _
                 "Light012|100|stop")
-        End With
-        With .AddStep(Null, Null, 0.03)  ' t=10.08s
-            .Lights = Array( _
-                "FL4|100|stop", _
-                "bg_logo|40|ffffff", _
-                "bg_flash_lower_left|20|ffffff", _
-                "bg_flash_upper_left|60|ffffff", _
-                "bg_flash_upper_right|60|ffffff", _
-                "bg_flash_lower_right|20|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.11s
             .Lights = Array( _
@@ -11944,8 +11944,7 @@ Sub CreatePscShows()
                 "l1|100|000000", _
                 "l65|100|ffffff", _
                 "FL2|100|00ff00", _
-                "gi027|100|ffa957", _
-                "Light012|100|bf3957")
+                "gi027|100|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.10s
             .Lights = Array( _
@@ -11954,7 +11953,8 @@ Sub CreatePscShows()
                 "l18|100|0023cc", _
                 "FL3|80|0000ff", _
                 "bg_flash_upper_right|100|ffffff", _
-                "bg_flash_lower_right|100|ffffff")
+                "bg_flash_lower_right|100|ffffff", _
+                "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.13s
             .Lights = Array( _
@@ -11977,7 +11977,8 @@ Sub CreatePscShows()
                 "l65|80|ffffff", _
                 "FL2|80|00ff00", _
                 "FL3|40|0000ff", _
-                "gi027|80|ffa957")
+                "gi027|80|ffa957", _
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.19s
             .Lights = Array( _
@@ -11994,7 +11995,6 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
                 "gi027|60|ffa957", _
-                "Light010|100|bf3957", _
                 "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.22s
@@ -12012,7 +12012,6 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
                 "gi027|40|ffa957", _
-                "Light009|100|d938c7", _
                 "Light011|80|bf3957", _
                 "Light012|60|bf3957")
         End With
@@ -12036,6 +12035,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|20|ffa957", _
+                "Light009|100|d938c7", _
+                "Light010|80|bf3957", _
                 "Light011|60|bf3957", _
                 "Light012|40|bf3957")
         End With
@@ -12066,7 +12067,7 @@ Sub CreatePscShows()
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|100|000000", _
                 "Light008|100|d938c7", _
-                "Light010|80|bf3957", _
+                "Light010|60|bf3957", _
                 "Light011|40|bf3957", _
                 "Light012|20|bf3957")
         End With
@@ -12100,7 +12101,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|100|000000", _
                 "bg_flash_lower_right|100|000000", _
                 "gi027|100|stop", _
-                "Light010|60|bf3957", _
+                "Light007|100|d938c7", _
+                "Light010|40|bf3957", _
                 "Light011|20|bf3957", _
                 "Light012|100|000000")
         End With
@@ -12134,9 +12136,7 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
-                "Light007|100|d938c7", _
-                "Light009|80|d938c7", _
-                "Light010|40|bf3957", _
+                "Light010|20|bf3957", _
                 "Light011|100|000000", _
                 "Light012|100|stop")
         End With
@@ -12167,8 +12167,8 @@ Sub CreatePscShows()
                 "SkillshotLight|60|fc7703", _
                 "bg_logo|100|ffffff", _
                 "Light008|80|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|20|bf3957", _
+                "Light009|80|d938c7", _
+                "Light010|100|000000", _
                 "Light011|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.40s
@@ -12202,9 +12202,10 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "l28|100|ffffff", _
                 "Light006|100|bae046", _
+                "Light007|80|d938c7", _
                 "Light008|60|d938c7", _
-                "Light009|40|d938c7", _
-                "Light010|100|000000")
+                "Light009|60|d938c7", _
+                "Light010|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.43s
             .Lights = Array( _
@@ -12231,10 +12232,9 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "SkillshotLight|20|fc7703", _
                 "Light005|100|bae046", _
-                "Light007|80|d938c7", _
+                "Light007|60|d938c7", _
                 "Light008|40|d938c7", _
-                "Light009|20|d938c7", _
-                "Light010|100|stop")
+                "Light009|40|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.46s
             .Lights = Array( _
@@ -12261,9 +12261,10 @@ Sub CreatePscShows()
                 "SkillshotLight|100|000000", _
                 "l72|100|8800ff", _
                 "bg_logo|80|ffffff", _
-                "Light007|60|d938c7", _
+                "Light004|100|bae046", _
+                "Light007|40|d938c7", _
                 "Light008|20|d938c7", _
-                "Light009|100|000000")
+                "Light009|20|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.49s
             .Lights = Array( _
@@ -12293,11 +12294,9 @@ Sub CreatePscShows()
                 "SkillshotLight|100|stop", _
                 "l28|80|ffffff", _
                 "bg_logo|60|ffffff", _
-                "Light004|100|bae046", _
-                "Light006|80|bae046", _
-                "Light007|40|d938c7", _
+                "Light007|20|d938c7", _
                 "Light008|100|000000", _
-                "Light009|100|stop")
+                "Light009|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.52s
             .Lights = Array( _
@@ -12320,9 +12319,11 @@ Sub CreatePscShows()
                 "l69|20|ffff00", _
                 "l28|60|ffffff", _
                 "bg_logo|40|ffffff", _
-                "Light006|60|bae046", _
-                "Light007|20|d938c7", _
-                "Light008|100|stop")
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|100|000000", _
+                "Light008|100|stop", _
+                "Light009|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.55s
             .Lights = Array( _
@@ -12348,9 +12349,10 @@ Sub CreatePscShows()
                 "l28|40|ffffff", _
                 "bg_logo|20|ffffff", _
                 "Light003|100|78bec0", _
-                "Light005|80|bae046", _
-                "Light006|40|bae046", _
-                "Light007|100|000000")
+                "Light004|80|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.58s
             .Lights = Array( _
@@ -12378,10 +12380,10 @@ Sub CreatePscShows()
                 "l72|60|8800ff", _
                 "l28|20|ffffff", _
                 "bg_logo|100|000000", _
-                "Light004|80|bae046", _
-                "Light005|60|bae046", _
-                "Light006|20|bae046", _
-                "Light007|100|stop")
+                "Light002|100|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.61s
             .Lights = Array( _
@@ -12405,10 +12407,9 @@ Sub CreatePscShows()
                 "l72|40|8800ff", _
                 "l28|100|000000", _
                 "bg_logo|100|stop", _
-                "Light002|100|78bec0", _
-                "Light004|60|bae046", _
-                "Light005|40|bae046", _
-                "Light006|100|000000")
+                "Light004|40|bae046", _
+                "Light005|20|bae046", _
+                "Light006|20|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.64s
             .Lights = Array( _
@@ -12437,10 +12438,9 @@ Sub CreatePscShows()
                 "bg_flash_lower_left|100|ffffff", _
                 "bg_flash_upper_left|100|ffffff", _
                 "Light001|100|78bec0", _
-                "Light003|80|78bec0", _
-                "Light004|40|bae046", _
-                "Light005|20|bae046", _
-                "Light006|100|stop")
+                "Light004|20|bae046", _
+                "Light005|100|000000", _
+                "Light006|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.67s
             .Lights = Array( _
@@ -12462,9 +12462,10 @@ Sub CreatePscShows()
                 "l59|20|ffffff", _
                 "FL5|60|ffea00", _
                 "l72|100|000000", _
-                "Light003|60|78bec0", _
-                "Light004|20|bae046", _
-                "Light005|100|000000")
+                "Light003|80|78bec0", _
+                "Light004|100|000000", _
+                "Light005|100|stop", _
+                "Light006|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.70s
             .Lights = Array( _
@@ -12491,9 +12492,8 @@ Sub CreatePscShows()
                 "FL5|40|ffea00", _
                 "l72|100|stop", _
                 "Light002|80|78bec0", _
-                "Light003|40|78bec0", _
-                "Light004|100|000000", _
-                "Light005|100|stop")
+                "Light003|60|78bec0", _
+                "Light004|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.73s
             .Lights = Array( _
@@ -12522,8 +12522,7 @@ Sub CreatePscShows()
                 "gi025|100|ffa957", _
                 "Light001|80|78bec0", _
                 "Light002|60|78bec0", _
-                "Light003|20|78bec0", _
-                "Light004|100|stop")
+                "Light003|40|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.76s
             .Lights = Array( _
@@ -12550,7 +12549,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "Light001|60|78bec0", _
                 "Light002|40|78bec0", _
-                "Light003|100|000000")
+                "Light003|20|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.79s
             .Lights = Array( _
@@ -12575,7 +12574,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|40|78bec0", _
                 "Light002|20|78bec0", _
-                "Light003|100|stop")
+                "Light003|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.82s
             .Lights = Array( _
@@ -12601,7 +12600,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|20|ffffff", _
                 "gi025|100|ffa957", _
                 "Light001|20|78bec0", _
-                "Light002|100|000000")
+                "Light002|100|000000", _
+                "Light003|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.85s
             .Lights = Array( _
@@ -12743,8 +12743,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "gi025|100|stop", _
                 "Light001|40|78bec0", _
-                "Light002|80|78bec0", _
-                "Light004|100|bae046")
+                "Light002|80|78bec0")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.09s
             .Lights = Array( _
@@ -12774,7 +12773,8 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|20|78bec0", _
                 "Light002|60|78bec0", _
-                "Light003|80|78bec0")
+                "Light003|80|78bec0", _
+                "Light004|100|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.12s
             .Lights = Array( _
@@ -12834,7 +12834,6 @@ Sub CreatePscShows()
                 "Light001|100|stop", _
                 "Light002|20|78bec0", _
                 "Light003|40|78bec0", _
-                "Light004|80|bae046", _
                 "Light006|100|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.18s
@@ -12866,7 +12865,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|stop", _
                 "Light002|100|000000", _
                 "Light003|20|78bec0", _
-                "Light004|60|bae046")
+                "Light004|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.21s
             .Lights = Array( _
@@ -12892,9 +12891,8 @@ Sub CreatePscShows()
                 "l72|60|8800ff", _
                 "Light002|100|stop", _
                 "Light003|100|000000", _
-                "Light004|40|bae046", _
-                "Light005|80|bae046", _
-                "Light007|100|d938c7")
+                "Light004|60|bae046", _
+                "Light005|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.24s
             .Lights = Array( _
@@ -12920,8 +12918,10 @@ Sub CreatePscShows()
                 "l72|40|8800ff", _
                 "l28|80|ffffff", _
                 "Light003|100|stop", _
-                "Light004|20|bae046", _
-                "Light005|60|bae046")
+                "Light004|40|bae046", _
+                "Light005|60|bae046", _
+                "Light006|80|bae046", _
+                "Light007|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.27s
             .Lights = Array( _
@@ -12944,9 +12944,9 @@ Sub CreatePscShows()
                 "l72|20|8800ff", _
                 "l28|60|ffffff", _
                 "bg_logo|80|ffffff", _
-                "Light004|100|000000", _
+                "Light004|20|bae046", _
                 "Light005|40|bae046", _
-                "Light006|80|bae046", _
+                "Light006|60|bae046", _
                 "Light008|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.30s
@@ -12973,10 +12973,9 @@ Sub CreatePscShows()
                 "l72|100|000000", _
                 "l28|40|ffffff", _
                 "bg_logo|60|ffffff", _
-                "Light004|100|stop", _
+                "Light004|100|000000", _
                 "Light005|20|bae046", _
-                "Light006|60|bae046", _
-                "Light007|80|d938c7", _
+                "Light006|40|bae046", _
                 "Light009|100|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.33s
@@ -13004,9 +13003,10 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "l28|20|ffffff", _
                 "bg_logo|40|ffffff", _
+                "Light004|100|stop", _
                 "Light005|100|000000", _
-                "Light006|40|bae046", _
-                "Light007|60|d938c7")
+                "Light006|20|bae046", _
+                "Light007|80|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.36s
             .Lights = Array( _
@@ -13035,10 +13035,9 @@ Sub CreatePscShows()
                 "l28|100|000000", _
                 "bg_logo|20|ffffff", _
                 "Light005|100|stop", _
-                "Light006|20|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|80|d938c7", _
-                "Light010|100|bf3957")
+                "Light006|100|000000", _
+                "Light007|60|d938c7", _
+                "Light008|80|d938c7")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.39s
             .Lights = Array( _
@@ -13068,9 +13067,11 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "l28|100|stop", _
                 "bg_logo|100|000000", _
-                "Light006|100|000000", _
-                "Light007|20|d938c7", _
-                "Light008|60|d938c7")
+                "Light006|100|stop", _
+                "Light007|40|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.42s
             .Lights = Array( _
@@ -13093,10 +13094,9 @@ Sub CreatePscShows()
                 "l69|100|000000", _
                 "SkillshotLight|60|fc7703", _
                 "bg_logo|100|stop", _
-                "Light006|100|stop", _
-                "Light007|100|000000", _
+                "Light007|20|d938c7", _
                 "Light008|40|d938c7", _
-                "Light009|80|d938c7", _
+                "Light009|60|d938c7", _
                 "Light011|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.45s
@@ -13125,10 +13125,9 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
-                "Light007|100|stop", _
+                "Light007|100|000000", _
                 "Light008|20|d938c7", _
-                "Light009|60|d938c7", _
-                "Light010|80|bf3957", _
+                "Light009|40|d938c7", _
                 "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.48s
@@ -13158,9 +13157,10 @@ Sub CreatePscShows()
                 "FL2|100|00ff00", _
                 "SkillshotLight|20|fc7703", _
                 "gi027|100|ffa957", _
+                "Light007|100|stop", _
                 "Light008|100|000000", _
-                "Light009|40|d938c7", _
-                "Light010|60|bf3957")
+                "Light009|20|d938c7", _
+                "Light010|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.51s
             .Lights = Array( _
@@ -13187,8 +13187,8 @@ Sub CreatePscShows()
                 "l71|40|ffff00", _
                 "SkillshotLight|100|000000", _
                 "Light008|100|stop", _
-                "Light009|20|d938c7", _
-                "Light010|40|bf3957", _
+                "Light009|100|000000", _
+                "Light010|60|bf3957", _
                 "Light011|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.54s
@@ -13217,9 +13217,10 @@ Sub CreatePscShows()
                 "SkillshotLight|100|stop", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
-                "Light009|100|000000", _
-                "Light010|20|bf3957", _
-                "Light011|60|bf3957")
+                "Light009|100|stop", _
+                "Light010|40|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|80|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.57s
             .Lights = Array( _
@@ -13248,10 +13249,9 @@ Sub CreatePscShows()
                 "FL2|80|00ff00", _
                 "bg_flash_upper_right|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
-                "Light009|100|stop", _
-                "Light010|100|000000", _
+                "Light010|20|bf3957", _
                 "Light011|40|bf3957", _
-                "Light012|80|bf3957")
+                "Light012|60|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.60s
             .Lights = Array( _
@@ -13278,9 +13278,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|80|ffa957", _
-                "Light010|100|stop", _
+                "Light010|100|000000", _
                 "Light011|20|bf3957", _
-                "Light012|60|bf3957")
+                "Light012|40|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.63s
             .Lights = Array( _
@@ -13304,8 +13304,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|20|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|60|ffa957", _
+                "Light010|100|stop", _
                 "Light011|100|000000", _
-                "Light012|40|bf3957")
+                "Light012|20|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.66s
             .Lights = Array( _
@@ -13324,7 +13325,7 @@ Sub CreatePscShows()
                 "bg_flash_lower_right|100|000000", _
                 "gi027|40|ffa957", _
                 "Light011|100|stop", _
-                "Light012|20|bf3957")
+                "Light012|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.69s
             .Lights = Array( _
@@ -13338,7 +13339,7 @@ Sub CreatePscShows()
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|20|ffa957", _
-                "Light012|100|000000")
+                "Light012|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.72s
             .Lights = Array( _
@@ -13346,8 +13347,7 @@ Sub CreatePscShows()
                 "l65|100|stop", _
                 "FL2|100|stop", _
                 "FL3|20|0000ff", _
-                "gi027|100|000000", _
-                "Light012|100|stop")
+                "gi027|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.75s
             .Lights = Array("FL3|100|000000", "gi027|100|stop")
@@ -32056,7 +32056,14 @@ Sub CreatePscShows()
                 "l61|100|000000", _
                 "l70|100|stop", _
                 "l71|20|ffff00", _
-                "FL3|100|0000ff", _
+                "FL3|100|0000ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.84s
+            .Lights = Array( _
+                "l60|100|000000", _
+                "l61|100|stop", _
+                "l71|100|000000", _
+                "FL4|100|ffa500", _
                 "Light001|100|78bec0", _
                 "Light002|100|78bec0", _
                 "Light003|100|78bec0", _
@@ -32069,13 +32076,6 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
-        End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.84s
-            .Lights = Array( _
-                "l60|100|000000", _
-                "l61|100|stop", _
-                "l71|100|000000", _
-                "FL4|100|ffa500")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.87s
             .Lights = Array( _
@@ -32252,6 +32252,1236 @@ Sub CreatePscShows()
             .Lights = Array("bg_flash_upper_left|100|000000", "bg_flash_upper_right|100|000000")
         End With
         With .AddStep(Null, Null, 0.01)  ' t=1.28s
+            ' end of show
+        End With
+    End With
+    With CreateGlfShow("psc_eob_sweep_up_and_down")
+        With .AddStep(Null, Null, 0.09)  ' t=0.00s
+            .Lights = Array( _
+                "l1|100|00ff00", _
+                "l11|100|stop", _
+                "l12|100|stop", _
+                "l13|100|stop", _
+                "l14|100|stop", _
+                "l15|100|stop", _
+                "l16|100|stop", _
+                "l17|100|stop", _
+                "l18|100|stop", _
+                "l8|100|stop", _
+                "l9|100|stop", _
+                "l51|100|stop", _
+                "l52|100|stop", _
+                "l53|100|stop", _
+                "l54|100|stop", _
+                "l55|100|stop", _
+                "l56|100|stop", _
+                "l21|100|stop", _
+                "l22|100|stop", _
+                "l23|100|stop", _
+                "l24|100|stop", _
+                "l25|100|stop", _
+                "l27|100|stop", _
+                "l31|100|stop", _
+                "l32|100|stop", _
+                "l33|100|stop", _
+                "l34|100|stop", _
+                "l26|100|stop", _
+                "l7|100|stop", _
+                "l57|100|stop", _
+                "l58|100|stop", _
+                "l60|100|stop", _
+                "l59|100|stop", _
+                "l61|100|stop", _
+                "l62|100|stop", _
+                "l63|100|stop", _
+                "l64|100|stop", _
+                "l65|100|stop", _
+                "l66|100|stop", _
+                "l67|100|stop", _
+                "l68|100|stop", _
+                "l69|100|stop", _
+                "l70|100|stop", _
+                "l71|100|stop", _
+                "FL1|100|stop", _
+                "FL2|100|stop", _
+                "FL3|100|stop", _
+                "FL4|100|stop", _
+                "FL5|100|stop", _
+                "SkillshotLight|100|stop", _
+                "l72|100|stop", _
+                "l28|100|stop", _
+                "bg_logo|100|stop", _
+                "bg_flash_lower_left|100|stop", _
+                "bg_flash_upper_left|100|stop", _
+                "bg_flash_upper_right|100|stop", _
+                "bg_flash_lower_right|100|stop", _
+                "Light001|100|stop", _
+                "Light002|100|stop", _
+                "Light003|100|stop", _
+                "Light004|100|stop", _
+                "Light005|100|stop", _
+                "Light006|100|stop", _
+                "Light007|100|stop", _
+                "Light008|100|stop", _
+                "Light009|100|stop", _
+                "Light010|100|stop", _
+                "Light011|100|stop", _
+                "Light012|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.09s
+            .Lights = Array("l1|80|00ff00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.12s
+            .Lights = Array("l1|60|00ff00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.15s
+            .Lights = Array( _
+                "l1|40|00ff00", _
+                "l31|100|fc7703", _
+                "l34|100|fc7703", _
+                "l62|100|ffffff", _
+                "l65|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.18s
+            .Lights = Array( _
+                "l1|20|00ff00", _
+                "l32|100|fc7703", _
+                "l33|100|fc7703", _
+                "l63|100|ffffff", _
+                "l64|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.21s
+            .Lights = Array( _
+                "l1|100|000000", _
+                "l18|100|0023cc", _
+                "l24|100|ffffff", _
+                "l25|100|ffffff", _
+                "l27|100|ffffff", _
+                "l26|100|ffffff", _
+                "l28|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.24s
+            .Lights = Array( _
+                "l1|100|stop", _
+                "l13|100|0023cc", _
+                "l14|100|0023cc", _
+                "l17|100|0023cc", _
+                "l21|100|ffffff", _
+                "l23|100|ffffff", _
+                "l31|80|fc7703", _
+                "l34|80|fc7703")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.27s
+            .Lights = Array( _
+                "l12|100|0023cc", _
+                "l16|100|0023cc", _
+                "l22|100|ffffff", _
+                "l31|60|fc7703", _
+                "l32|80|fc7703", _
+                "l33|80|fc7703", _
+                "l34|60|fc7703", _
+                "l62|80|ffffff", _
+                "l63|80|ffffff", _
+                "l64|80|ffffff", _
+                "l65|80|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.30s
+            .Lights = Array( _
+                "l11|100|0023cc", _
+                "l15|100|0023cc", _
+                "l24|80|ffffff", _
+                "l27|80|ffffff", _
+                "l31|40|fc7703", _
+                "l32|60|fc7703", _
+                "l33|60|fc7703", _
+                "l34|40|fc7703", _
+                "l62|60|ffffff", _
+                "l63|60|ffffff", _
+                "l64|60|ffffff", _
+                "l65|60|ffffff", _
+                "FL2|100|00ff00", _
+                "l28|80|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.33s
+            .Lights = Array( _
+                "l14|80|0023cc", _
+                "l17|80|0023cc", _
+                "l18|80|0023cc", _
+                "l56|100|0000ff", _
+                "l24|60|ffffff", _
+                "l25|80|ffffff", _
+                "l27|60|ffffff", _
+                "l31|20|fc7703", _
+                "l32|40|fc7703", _
+                "l33|40|fc7703", _
+                "l34|20|fc7703", _
+                "l26|80|ffffff", _
+                "l62|40|ffffff", _
+                "l63|40|ffffff", _
+                "l64|40|ffffff", _
+                "l65|40|ffffff", _
+                "FL1|100|ff0000", _
+                "l28|60|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.36s
+            .Lights = Array( _
+                "l13|80|0023cc", _
+                "l14|60|0023cc", _
+                "l16|80|0023cc", _
+                "l17|60|0023cc", _
+                "l18|60|0023cc", _
+                "l52|100|ff9c15", _
+                "l54|100|1eff6b", _
+                "l55|100|8800ff", _
+                "l21|80|ffffff", _
+                "l22|80|ffffff", _
+                "l23|80|ffffff", _
+                "l24|40|ffffff", _
+                "l25|60|ffffff", _
+                "l27|40|ffffff", _
+                "l31|100|000000", _
+                "l32|20|fc7703", _
+                "l33|20|fc7703", _
+                "l34|100|000000", _
+                "l26|60|ffffff", _
+                "l57|100|8800ff", _
+                "l58|100|ffff00", _
+                "l62|20|ffffff", _
+                "l63|20|ffffff", _
+                "l64|20|ffffff", _
+                "l65|20|ffffff", _
+                "l72|100|8800ff", _
+                "l28|40|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.39s
+            .Lights = Array( _
+                "l11|80|0023cc", _
+                "l12|80|0023cc", _
+                "l13|60|0023cc", _
+                "l14|40|0023cc", _
+                "l15|80|0023cc", _
+                "l16|60|0023cc", _
+                "l17|40|0023cc", _
+                "l18|40|0023cc", _
+                "l51|100|ff9c15", _
+                "l53|100|1eff6b", _
+                "l21|60|ffffff", _
+                "l22|60|ffffff", _
+                "l23|60|ffffff", _
+                "l24|20|ffffff", _
+                "l25|40|ffffff", _
+                "l27|20|ffffff", _
+                "l31|100|stop", _
+                "l32|100|000000", _
+                "l33|100|000000", _
+                "l34|100|stop", _
+                "l26|40|ffffff", _
+                "l59|100|ffffff", _
+                "l62|100|000000", _
+                "l63|100|000000", _
+                "l64|100|000000", _
+                "l65|100|000000", _
+                "l66|100|ffff00", _
+                "FL2|80|00ff00", _
+                "l28|20|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.42s
+            .Lights = Array( _
+                "l11|60|0023cc", _
+                "l12|60|0023cc", _
+                "l13|40|0023cc", _
+                "l14|20|0023cc", _
+                "l15|60|0023cc", _
+                "l16|40|0023cc", _
+                "l17|20|0023cc", _
+                "l18|20|0023cc", _
+                "l56|80|0000ff", _
+                "l21|40|ffffff", _
+                "l22|40|ffffff", _
+                "l23|40|ffffff", _
+                "l24|100|000000", _
+                "l25|20|ffffff", _
+                "l27|100|000000", _
+                "l32|100|stop", _
+                "l33|100|stop", _
+                "l26|20|ffffff", _
+                "l62|100|stop", _
+                "l63|100|stop", _
+                "l64|100|stop", _
+                "l65|100|stop", _
+                "l67|100|ffff00", _
+                "l68|100|ffff00", _
+                "FL1|80|ff0000", _
+                "FL2|60|00ff00", _
+                "l28|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.45s
+            .Lights = Array( _
+                "l11|40|0023cc", _
+                "l12|40|0023cc", _
+                "l13|20|0023cc", _
+                "l14|100|000000", _
+                "l15|40|0023cc", _
+                "l16|20|0023cc", _
+                "l17|100|000000", _
+                "l18|100|000000", _
+                "l52|80|ff9c15", _
+                "l54|80|1eff6b", _
+                "l55|80|8800ff", _
+                "l56|60|0000ff", _
+                "l21|20|ffffff", _
+                "l22|20|ffffff", _
+                "l23|20|ffffff", _
+                "l24|100|stop", _
+                "l25|100|000000", _
+                "l27|100|stop", _
+                "l26|100|000000", _
+                "l57|80|8800ff", _
+                "l69|100|ffff00", _
+                "FL1|60|ff0000", _
+                "FL2|40|00ff00", _
+                "l72|80|8800ff", _
+                "l28|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.48s
+            .Lights = Array( _
+                "l11|20|0023cc", _
+                "l12|20|0023cc", _
+                "l13|100|000000", _
+                "l14|100|stop", _
+                "l15|20|0023cc", _
+                "l16|100|000000", _
+                "l17|100|stop", _
+                "l18|100|stop", _
+                "l51|80|ff9c15", _
+                "l52|60|ff9c15", _
+                "l54|60|1eff6b", _
+                "l55|60|8800ff", _
+                "l56|40|0000ff", _
+                "l21|100|000000", _
+                "l22|100|000000", _
+                "l23|100|000000", _
+                "l25|100|stop", _
+                "l26|100|stop", _
+                "l57|60|8800ff", _
+                "l58|80|ffff00", _
+                "l59|80|ffffff", _
+                "l66|80|ffff00", _
+                "l70|100|ffff00", _
+                "FL1|40|ff0000", _
+                "FL2|20|00ff00", _
+                "FL5|100|ffea00", _
+                "l72|60|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.51s
+            .Lights = Array( _
+                "l11|100|000000", _
+                "l12|100|000000", _
+                "l13|100|stop", _
+                "l15|100|000000", _
+                "l16|100|stop", _
+                "l51|60|ff9c15", _
+                "l52|40|ff9c15", _
+                "l53|80|1eff6b", _
+                "l54|40|1eff6b", _
+                "l55|40|8800ff", _
+                "l56|20|0000ff", _
+                "l21|100|stop", _
+                "l22|100|stop", _
+                "l23|100|stop", _
+                "l57|40|8800ff", _
+                "l58|60|ffff00", _
+                "l59|60|ffffff", _
+                "l61|100|ffffff", _
+                "l66|60|ffff00", _
+                "l67|80|ffff00", _
+                "l68|80|ffff00", _
+                "FL1|20|ff0000", _
+                "FL2|100|000000", _
+                "l72|40|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.54s
+            .Lights = Array( _
+                "l11|100|stop", _
+                "l12|100|stop", _
+                "l15|100|stop", _
+                "l51|40|ff9c15", _
+                "l52|20|ff9c15", _
+                "l53|60|1eff6b", _
+                "l54|20|1eff6b", _
+                "l55|20|8800ff", _
+                "l56|100|000000", _
+                "l57|20|8800ff", _
+                "l58|40|ffff00", _
+                "l60|100|ffffff", _
+                "l59|40|ffffff", _
+                "l66|40|ffff00", _
+                "l67|60|ffff00", _
+                "l68|60|ffff00", _
+                "l69|80|ffff00", _
+                "l71|100|ffff00", _
+                "FL1|100|000000", _
+                "FL2|100|stop", _
+                "l72|20|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.57s
+            .Lights = Array( _
+                "l51|20|ff9c15", _
+                "l52|100|000000", _
+                "l53|40|1eff6b", _
+                "l54|100|000000", _
+                "l55|100|000000", _
+                "l56|100|stop", _
+                "l57|100|000000", _
+                "l58|20|ffff00", _
+                "l59|20|ffffff", _
+                "l66|20|ffff00", _
+                "l67|40|ffff00", _
+                "l68|40|ffff00", _
+                "l69|60|ffff00", _
+                "FL1|100|stop", _
+                "FL5|80|ffea00", _
+                "l72|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.60s
+            .Lights = Array( _
+                "l51|100|000000", _
+                "l52|100|stop", _
+                "l53|20|1eff6b", _
+                "l54|100|stop", _
+                "l55|100|stop", _
+                "l57|100|stop", _
+                "l58|100|000000", _
+                "l59|100|000000", _
+                "l61|80|ffffff", _
+                "l66|100|000000", _
+                "l67|20|ffff00", _
+                "l68|20|ffff00", _
+                "l69|40|ffff00", _
+                "l70|80|ffff00", _
+                "FL5|60|ffea00", _
+                "l72|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.63s
+            .Lights = Array( _
+                "l51|100|stop", _
+                "l53|100|000000", _
+                "l58|100|stop", _
+                "l59|100|stop", _
+                "l61|60|ffffff", _
+                "l66|100|stop", _
+                "l67|100|000000", _
+                "l68|100|000000", _
+                "l69|20|ffff00", _
+                "l70|60|ffff00", _
+                "FL5|40|ffea00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.66s
+            .Lights = Array( _
+                "l8|100|fc7703", _
+                "l9|100|fc7703", _
+                "l53|100|stop", _
+                "l7|100|fc7703", _
+                "l60|80|ffffff", _
+                "l61|40|ffffff", _
+                "l67|100|stop", _
+                "l68|100|stop", _
+                "l69|100|000000", _
+                "l70|40|ffff00", _
+                "l71|80|ffff00", _
+                "FL5|20|ffea00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.69s
+            .Lights = Array( _
+                "l60|60|ffffff", _
+                "l61|20|ffffff", _
+                "l69|100|stop", _
+                "l70|20|ffff00", _
+                "l71|60|ffff00", _
+                "FL5|100|000000", _
+                "SkillshotLight|100|fc7703")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.72s
+            .Lights = Array( _
+                "l60|40|ffffff", _
+                "l61|100|000000", _
+                "l70|100|000000", _
+                "l71|40|ffff00", _
+                "FL5|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.75s
+            .Lights = Array( _
+                "l60|20|ffffff", _
+                "l61|100|stop", _
+                "l70|100|stop", _
+                "l71|20|ffff00", _
+                "FL3|100|0000ff", _
+                "FL4|100|ffa500", _
+                "Light001|100|78bec0", _
+                "Light002|100|78bec0", _
+                "Light003|100|78bec0", _
+                "Light004|100|bae046", _
+                "Light005|100|bae046", _
+                "Light006|100|bae046", _
+                "Light007|100|d938c7", _
+                "Light008|100|d938c7", _
+                "Light009|100|d938c7", _
+                "Light010|100|bf3957", _
+                "Light011|100|bf3957", _
+                "Light012|100|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.78s
+            .Lights = Array( _
+                "l8|80|fc7703", _
+                "l9|80|fc7703", _
+                "l7|80|fc7703", _
+                "l60|100|000000", _
+                "l71|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.81s
+            .Lights = Array( _
+                "l8|60|fc7703", _
+                "l9|60|fc7703", _
+                "l7|60|fc7703", _
+                "l60|100|stop", _
+                "l71|100|stop", _
+                "SkillshotLight|80|fc7703", _
+                "bg_flash_lower_left|100|ffffff", _
+                "bg_flash_lower_right|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.84s
+            .Lights = Array( _
+                "l8|40|fc7703", _
+                "l9|40|fc7703", _
+                "l7|40|fc7703", _
+                "FL3|80|0000ff", _
+                "FL4|80|ffa500", _
+                "SkillshotLight|60|fc7703", _
+                "Light001|80|78bec0", _
+                "Light002|80|78bec0", _
+                "Light003|80|78bec0", _
+                "Light004|80|bae046", _
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|80|d938c7", _
+                "Light008|80|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|80|bf3957", _
+                "Light011|80|bf3957", _
+                "Light012|80|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.87s
+            .Lights = Array( _
+                "l8|20|fc7703", _
+                "l9|20|fc7703", _
+                "l7|20|fc7703", _
+                "FL3|60|0000ff", _
+                "FL4|60|ffa500", _
+                "SkillshotLight|40|fc7703", _
+                "bg_logo|100|ffffff", _
+                "Light001|60|78bec0", _
+                "Light002|60|78bec0", _
+                "Light003|60|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|60|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|60|d938c7", _
+                "Light010|60|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|60|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.90s
+            .Lights = Array( _
+                "l8|100|000000", _
+                "l9|100|000000", _
+                "l7|100|000000", _
+                "FL3|40|0000ff", _
+                "FL4|40|ffa500", _
+                "SkillshotLight|20|fc7703", _
+                "Light001|40|78bec0", _
+                "Light002|40|78bec0", _
+                "Light003|40|78bec0", _
+                "Light004|40|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046", _
+                "Light007|40|d938c7", _
+                "Light008|40|d938c7", _
+                "Light009|40|d938c7", _
+                "Light010|40|bf3957", _
+                "Light011|40|bf3957", _
+                "Light012|40|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.93s
+            .Lights = Array( _
+                "l8|100|stop", _
+                "l9|100|stop", _
+                "l7|100|stop", _
+                "FL3|20|0000ff", _
+                "FL4|20|ffa500", _
+                "SkillshotLight|100|000000", _
+                "bg_flash_lower_left|80|ffffff", _
+                "bg_flash_upper_left|100|ffffff", _
+                "bg_flash_upper_right|100|ffffff", _
+                "bg_flash_lower_right|80|ffffff", _
+                "Light001|20|78bec0", _
+                "Light002|20|78bec0", _
+                "Light003|20|78bec0", _
+                "Light004|20|bae046", _
+                "Light005|20|bae046", _
+                "Light006|20|bae046", _
+                "Light007|20|d938c7", _
+                "Light008|20|d938c7", _
+                "Light009|20|d938c7", _
+                "Light010|20|bf3957", _
+                "Light011|20|bf3957", _
+                "Light012|20|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.96s
+            .Lights = Array( _
+                "FL3|100|000000", _
+                "FL4|100|000000", _
+                "SkillshotLight|100|stop", _
+                "bg_logo|80|ffffff", _
+                "bg_flash_lower_left|60|ffffff", _
+                "bg_flash_lower_right|60|ffffff", _
+                "Light001|100|000000", _
+                "Light002|100|000000", _
+                "Light003|100|000000", _
+                "Light004|100|000000", _
+                "Light005|100|000000", _
+                "Light006|100|000000", _
+                "Light007|100|000000", _
+                "Light008|100|000000", _
+                "Light009|100|000000", _
+                "Light010|100|000000", _
+                "Light011|100|000000", _
+                "Light012|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=0.99s
+            .Lights = Array( _
+                "FL3|100|stop", _
+                "FL4|100|stop", _
+                "bg_logo|60|ffffff", _
+                "bg_flash_lower_left|40|ffffff", _
+                "bg_flash_lower_right|40|ffffff", _
+                "Light001|100|stop", _
+                "Light002|100|stop", _
+                "Light003|100|stop", _
+                "Light004|100|stop", _
+                "Light005|100|stop", _
+                "Light006|100|stop", _
+                "Light007|100|stop", _
+                "Light008|100|stop", _
+                "Light009|100|stop", _
+                "Light010|100|stop", _
+                "Light011|100|stop", _
+                "Light012|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.02s
+            .Lights = Array( _
+                "bg_logo|40|ffffff", _
+                "bg_flash_lower_left|20|ffffff", _
+                "bg_flash_upper_left|80|ffffff", _
+                "bg_flash_upper_right|80|ffffff", _
+                "bg_flash_lower_right|20|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.05s
+            .Lights = Array( _
+                "bg_logo|20|ffffff", _
+                "bg_flash_lower_left|100|000000", _
+                "bg_flash_upper_left|60|ffffff", _
+                "bg_flash_upper_right|60|ffffff", _
+                "bg_flash_lower_right|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.08s
+            .Lights = Array( _
+                "bg_logo|100|000000", _
+                "bg_flash_lower_left|100|stop", _
+                "bg_flash_upper_left|40|ffffff", _
+                "bg_flash_upper_right|40|ffffff", _
+                "bg_flash_lower_right|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.11s
+            .Lights = Array("bg_logo|100|stop", "bg_flash_upper_left|20|ffffff", "bg_flash_upper_right|20|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.14s
+            .Lights = Array("bg_flash_upper_left|100|000000", "bg_flash_upper_right|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.06)  ' t=1.17s
+            .Lights = Array("bg_flash_upper_left|100|ffffff", "bg_flash_upper_right|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.23s
+            .Lights = Array("bg_logo|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.26s
+            .Lights = Array( _
+                "bg_flash_lower_left|100|ffffff", _
+                "bg_flash_upper_left|80|ffffff", _
+                "bg_flash_upper_right|80|ffffff", _
+                "bg_flash_lower_right|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.29s
+            .Lights = Array("bg_flash_upper_left|60|ffffff", "bg_flash_upper_right|60|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.32s
+            .Lights = Array("bg_logo|80|ffffff", "bg_flash_upper_left|40|ffffff", "bg_flash_upper_right|40|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.35s
+            .Lights = Array( _
+                "FL3|100|0000ff", _
+                "FL4|100|ffa500", _
+                "bg_logo|60|ffffff", _
+                "bg_flash_upper_left|20|ffffff", _
+                "bg_flash_upper_right|20|ffffff", _
+                "Light001|100|78bec0", _
+                "Light002|100|78bec0", _
+                "Light003|100|78bec0", _
+                "Light004|100|bae046", _
+                "Light005|100|bae046", _
+                "Light006|100|bae046", _
+                "Light007|100|d938c7", _
+                "Light008|100|d938c7", _
+                "Light009|100|d938c7", _
+                "Light010|100|bf3957", _
+                "Light011|100|bf3957", _
+                "Light012|100|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.38s
+            .Lights = Array( _
+                "bg_logo|40|ffffff", _
+                "bg_flash_lower_left|80|ffffff", _
+                "bg_flash_upper_left|100|000000", _
+                "bg_flash_upper_right|100|000000", _
+                "bg_flash_lower_right|80|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.41s
+            .Lights = Array( _
+                "l8|100|fc7703", _
+                "l9|100|fc7703", _
+                "l7|100|fc7703", _
+                "SkillshotLight|100|fc7703", _
+                "bg_logo|20|ffffff", _
+                "bg_flash_lower_left|60|ffffff", _
+                "bg_flash_upper_left|100|stop", _
+                "bg_flash_upper_right|100|stop", _
+                "bg_flash_lower_right|60|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.44s
+            .Lights = Array( _
+                "FL3|80|0000ff", _
+                "FL4|80|ffa500", _
+                "bg_logo|100|000000", _
+                "bg_flash_lower_left|40|ffffff", _
+                "bg_flash_lower_right|40|ffffff", _
+                "Light001|80|78bec0", _
+                "Light002|80|78bec0", _
+                "Light003|80|78bec0", _
+                "Light004|80|bae046", _
+                "Light005|80|bae046", _
+                "Light006|80|bae046", _
+                "Light007|80|d938c7", _
+                "Light008|80|d938c7", _
+                "Light009|80|d938c7", _
+                "Light010|80|bf3957", _
+                "Light011|80|bf3957", _
+                "Light012|80|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.47s
+            .Lights = Array( _
+                "FL3|60|0000ff", _
+                "FL4|60|ffa500", _
+                "bg_logo|100|stop", _
+                "bg_flash_lower_left|20|ffffff", _
+                "bg_flash_lower_right|20|ffffff", _
+                "Light001|60|78bec0", _
+                "Light002|60|78bec0", _
+                "Light003|60|78bec0", _
+                "Light004|60|bae046", _
+                "Light005|60|bae046", _
+                "Light006|60|bae046", _
+                "Light007|60|d938c7", _
+                "Light008|60|d938c7", _
+                "Light009|60|d938c7", _
+                "Light010|60|bf3957", _
+                "Light011|60|bf3957", _
+                "Light012|60|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.50s
+            .Lights = Array( _
+                "FL3|40|0000ff", _
+                "FL4|40|ffa500", _
+                "SkillshotLight|80|fc7703", _
+                "bg_flash_lower_left|100|000000", _
+                "bg_flash_lower_right|100|000000", _
+                "Light001|40|78bec0", _
+                "Light002|40|78bec0", _
+                "Light003|40|78bec0", _
+                "Light004|40|bae046", _
+                "Light005|40|bae046", _
+                "Light006|40|bae046", _
+                "Light007|40|d938c7", _
+                "Light008|40|d938c7", _
+                "Light009|40|d938c7", _
+                "Light010|40|bf3957", _
+                "Light011|40|bf3957", _
+                "Light012|40|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.53s
+            .Lights = Array( _
+                "l8|80|fc7703", _
+                "l9|80|fc7703", _
+                "l7|80|fc7703", _
+                "l60|100|ffffff", _
+                "FL3|20|0000ff", _
+                "FL4|20|ffa500", _
+                "SkillshotLight|60|fc7703", _
+                "bg_flash_lower_left|100|stop", _
+                "bg_flash_lower_right|100|stop", _
+                "Light001|20|78bec0", _
+                "Light002|20|78bec0", _
+                "Light003|20|78bec0", _
+                "Light004|20|bae046", _
+                "Light005|20|bae046", _
+                "Light006|20|bae046", _
+                "Light007|20|d938c7", _
+                "Light008|20|d938c7", _
+                "Light009|20|d938c7", _
+                "Light010|20|bf3957", _
+                "Light011|20|bf3957", _
+                "Light012|20|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.56s
+            .Lights = Array( _
+                "l8|60|fc7703", _
+                "l9|60|fc7703", _
+                "l7|60|fc7703", _
+                "l71|100|ffff00", _
+                "FL3|100|000000", _
+                "FL4|100|000000", _
+                "SkillshotLight|40|fc7703", _
+                "Light001|100|000000", _
+                "Light002|100|000000", _
+                "Light003|100|000000", _
+                "Light004|100|000000", _
+                "Light005|100|000000", _
+                "Light006|100|000000", _
+                "Light007|100|000000", _
+                "Light008|100|000000", _
+                "Light009|100|000000", _
+                "Light010|100|000000", _
+                "Light011|100|000000", _
+                "Light012|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.59s
+            .Lights = Array( _
+                "l8|40|fc7703", _
+                "l9|40|fc7703", _
+                "l7|40|fc7703", _
+                "l61|100|ffffff", _
+                "l70|100|ffff00", _
+                "FL3|100|stop", _
+                "FL4|100|stop", _
+                "SkillshotLight|20|fc7703", _
+                "Light001|100|stop", _
+                "Light002|100|stop", _
+                "Light003|100|stop", _
+                "Light004|100|stop", _
+                "Light005|100|stop", _
+                "Light006|100|stop", _
+                "Light007|100|stop", _
+                "Light008|100|stop", _
+                "Light009|100|stop", _
+                "Light010|100|stop", _
+                "Light011|100|stop", _
+                "Light012|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.62s
+            .Lights = Array( _
+                "l8|20|fc7703", _
+                "l9|20|fc7703", _
+                "l7|20|fc7703", _
+                "FL5|100|ffea00", _
+                "SkillshotLight|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.65s
+            .Lights = Array( _
+                "l8|100|000000", _
+                "l9|100|000000", _
+                "l7|100|000000", _
+                "l60|80|ffffff", _
+                "l69|100|ffff00", _
+                "l71|80|ffff00", _
+                "SkillshotLight|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.68s
+            .Lights = Array( _
+                "l8|100|stop", _
+                "l9|100|stop", _
+                "l7|100|stop", _
+                "l60|60|ffffff", _
+                "l61|80|ffffff", _
+                "l67|100|ffff00", _
+                "l68|100|ffff00", _
+                "l71|60|ffff00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.71s
+            .Lights = Array( _
+                "l51|100|ff9c15", _
+                "l53|100|1eff6b", _
+                "l60|40|ffffff", _
+                "l59|100|ffffff", _
+                "l61|60|ffffff", _
+                "l66|100|ffff00", _
+                "l70|80|ffff00", _
+                "l71|40|ffff00", _
+                "FL5|80|ffea00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.74s
+            .Lights = Array( _
+                "l52|100|ff9c15", _
+                "l54|100|1eff6b", _
+                "l55|100|8800ff", _
+                "l57|100|8800ff", _
+                "l58|100|ffff00", _
+                "l60|20|ffffff", _
+                "l61|40|ffffff", _
+                "l70|60|ffff00", _
+                "l71|20|ffff00", _
+                "FL5|60|ffea00", _
+                "l72|100|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.77s
+            .Lights = Array( _
+                "l56|100|0000ff", _
+                "l60|100|000000", _
+                "l61|20|ffffff", _
+                "l67|80|ffff00", _
+                "l68|80|ffff00", _
+                "l69|80|ffff00", _
+                "l70|40|ffff00", _
+                "l71|100|000000", _
+                "FL1|100|ff0000", _
+                "FL5|40|ffea00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.80s
+            .Lights = Array( _
+                "l11|100|0023cc", _
+                "l15|100|0023cc", _
+                "l51|80|ff9c15", _
+                "l53|80|1eff6b", _
+                "l60|100|stop", _
+                "l59|80|ffffff", _
+                "l61|100|000000", _
+                "l67|60|ffff00", _
+                "l68|60|ffff00", _
+                "l69|60|ffff00", _
+                "l70|20|ffff00", _
+                "l71|100|stop", _
+                "FL2|100|00ff00", _
+                "FL5|20|ffea00")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.83s
+            .Lights = Array( _
+                "l12|100|0023cc", _
+                "l13|100|0023cc", _
+                "l16|100|0023cc", _
+                "l51|60|ff9c15", _
+                "l52|80|ff9c15", _
+                "l53|60|1eff6b", _
+                "l54|80|1eff6b", _
+                "l55|80|8800ff", _
+                "l21|100|ffffff", _
+                "l22|100|ffffff", _
+                "l23|100|ffffff", _
+                "l57|80|8800ff", _
+                "l58|80|ffff00", _
+                "l59|60|ffffff", _
+                "l61|100|stop", _
+                "l66|80|ffff00", _
+                "l67|40|ffff00", _
+                "l68|40|ffff00", _
+                "l69|40|ffff00", _
+                "l70|100|000000", _
+                "FL5|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.86s
+            .Lights = Array( _
+                "l14|100|0023cc", _
+                "l17|100|0023cc", _
+                "l18|100|0023cc", _
+                "l51|40|ff9c15", _
+                "l52|60|ff9c15", _
+                "l53|40|1eff6b", _
+                "l54|60|1eff6b", _
+                "l55|60|8800ff", _
+                "l56|80|0000ff", _
+                "l25|100|ffffff", _
+                "l26|100|ffffff", _
+                "l57|60|8800ff", _
+                "l58|60|ffff00", _
+                "l59|40|ffffff", _
+                "l66|60|ffff00", _
+                "l67|20|ffff00", _
+                "l68|20|ffff00", _
+                "l69|20|ffff00", _
+                "l70|100|stop", _
+                "FL1|80|ff0000", _
+                "FL5|100|stop", _
+                "l72|80|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.89s
+            .Lights = Array( _
+                "l11|80|0023cc", _
+                "l51|20|ff9c15", _
+                "l52|40|ff9c15", _
+                "l53|20|1eff6b", _
+                "l54|40|1eff6b", _
+                "l55|40|8800ff", _
+                "l56|60|0000ff", _
+                "l24|100|ffffff", _
+                "l27|100|ffffff", _
+                "l57|40|8800ff", _
+                "l58|40|ffff00", _
+                "l59|20|ffffff", _
+                "l66|40|ffff00", _
+                "l67|100|000000", _
+                "l68|100|000000", _
+                "l69|100|000000", _
+                "FL1|60|ff0000", _
+                "l72|60|8800ff", _
+                "l28|100|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.92s
+            .Lights = Array( _
+                "l11|60|0023cc", _
+                "l12|80|0023cc", _
+                "l15|80|0023cc", _
+                "l16|80|0023cc", _
+                "l51|100|000000", _
+                "l52|20|ff9c15", _
+                "l53|100|000000", _
+                "l54|20|1eff6b", _
+                "l55|20|8800ff", _
+                "l56|40|0000ff", _
+                "l22|80|ffffff", _
+                "l32|100|fc7703", _
+                "l33|100|fc7703", _
+                "l57|20|8800ff", _
+                "l58|20|ffff00", _
+                "l59|100|000000", _
+                "l63|100|ffffff", _
+                "l64|100|ffffff", _
+                "l66|20|ffff00", _
+                "l67|100|stop", _
+                "l68|100|stop", _
+                "l69|100|stop", _
+                "FL1|40|ff0000", _
+                "FL2|80|00ff00", _
+                "l72|40|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.95s
+            .Lights = Array( _
+                "l11|40|0023cc", _
+                "l12|60|0023cc", _
+                "l13|80|0023cc", _
+                "l14|80|0023cc", _
+                "l15|60|0023cc", _
+                "l16|60|0023cc", _
+                "l17|80|0023cc", _
+                "l51|100|stop", _
+                "l52|100|000000", _
+                "l53|100|stop", _
+                "l54|100|000000", _
+                "l55|100|000000", _
+                "l56|20|0000ff", _
+                "l21|80|ffffff", _
+                "l22|60|ffffff", _
+                "l23|80|ffffff", _
+                "l31|100|fc7703", _
+                "l34|100|fc7703", _
+                "l57|100|000000", _
+                "l58|100|000000", _
+                "l59|100|stop", _
+                "l62|100|ffffff", _
+                "l65|100|ffffff", _
+                "l66|100|000000", _
+                "FL1|20|ff0000", _
+                "FL2|60|00ff00", _
+                "l72|20|8800ff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=1.98s
+            .Lights = Array( _
+                "l11|20|0023cc", _
+                "l12|40|0023cc", _
+                "l13|60|0023cc", _
+                "l14|60|0023cc", _
+                "l15|40|0023cc", _
+                "l16|40|0023cc", _
+                "l17|60|0023cc", _
+                "l18|80|0023cc", _
+                "l52|100|stop", _
+                "l54|100|stop", _
+                "l55|100|stop", _
+                "l56|100|000000", _
+                "l21|60|ffffff", _
+                "l22|40|ffffff", _
+                "l23|60|ffffff", _
+                "l24|80|ffffff", _
+                "l25|80|ffffff", _
+                "l27|80|ffffff", _
+                "l26|80|ffffff", _
+                "l57|100|stop", _
+                "l58|100|stop", _
+                "l66|100|stop", _
+                "FL1|100|000000", _
+                "FL2|40|00ff00", _
+                "l72|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=2.01s
+            .Lights = Array( _
+                "l11|100|000000", _
+                "l12|20|0023cc", _
+                "l13|40|0023cc", _
+                "l14|40|0023cc", _
+                "l15|20|0023cc", _
+                "l16|20|0023cc", _
+                "l17|40|0023cc", _
+                "l18|60|0023cc", _
+                "l56|100|stop", _
+                "l21|40|ffffff", _
+                "l22|20|ffffff", _
+                "l23|40|ffffff", _
+                "l24|60|ffffff", _
+                "l25|60|ffffff", _
+                "l27|60|ffffff", _
+                "l32|80|fc7703", _
+                "l33|80|fc7703", _
+                "l26|60|ffffff", _
+                "l63|80|ffffff", _
+                "l64|80|ffffff", _
+                "FL1|100|stop", _
+                "FL2|20|00ff00", _
+                "l72|100|stop", _
+                "l28|80|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=2.04s
+            .Lights = Array( _
+                "l11|100|stop", _
+                "l12|100|000000", _
+                "l13|20|0023cc", _
+                "l14|20|0023cc", _
+                "l15|100|000000", _
+                "l16|100|000000", _
+                "l17|20|0023cc", _
+                "l18|40|0023cc", _
+                "l21|20|ffffff", _
+                "l22|100|000000", _
+                "l23|20|ffffff", _
+                "l24|40|ffffff", _
+                "l25|40|ffffff", _
+                "l27|40|ffffff", _
+                "l31|80|fc7703", _
+                "l32|60|fc7703", _
+                "l33|60|fc7703", _
+                "l34|80|fc7703", _
+                "l26|40|ffffff", _
+                "l62|80|ffffff", _
+                "l63|60|ffffff", _
+                "l64|60|ffffff", _
+                "l65|80|ffffff", _
+                "FL2|100|000000", _
+                "l28|60|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=2.07s
+            .Lights = Array( _
+                "l12|100|stop", _
+                "l13|100|000000", _
+                "l14|100|000000", _
+                "l15|100|stop", _
+                "l16|100|stop", _
+                "l17|100|000000", _
+                "l18|20|0023cc", _
+                "l21|100|000000", _
+                "l22|100|stop", _
+                "l23|100|000000", _
+                "l24|20|ffffff", _
+                "l25|20|ffffff", _
+                "l27|20|ffffff", _
+                "l31|60|fc7703", _
+                "l32|40|fc7703", _
+                "l33|40|fc7703", _
+                "l34|60|fc7703", _
+                "l26|20|ffffff", _
+                "l62|60|ffffff", _
+                "l63|40|ffffff", _
+                "l64|40|ffffff", _
+                "l65|60|ffffff", _
+                "FL2|100|stop", _
+                "l28|40|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=2.10s
+            .Lights = Array( _
+                "l1|100|00ff00", _
+                "l13|100|stop", _
+                "l14|100|stop", _
+                "l17|100|stop", _
+                "l18|100|000000", _
+                "l21|100|stop", _
+                "l23|100|stop", _
+                "l24|100|000000", _
+                "l25|100|000000", _
+                "l27|100|000000", _
+                "l31|40|fc7703", _
+                "l32|20|fc7703", _
+                "l33|20|fc7703", _
+                "l34|40|fc7703", _
+                "l26|100|000000", _
+                "l62|40|ffffff", _
+                "l63|20|ffffff", _
+                "l64|20|ffffff", _
+                "l65|40|ffffff", _
+                "l28|20|ffffff")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=2.13s
+            .Lights = Array( _
+                "l18|100|stop", _
+                "l24|100|stop", _
+                "l25|100|stop", _
+                "l27|100|stop", _
+                "l31|20|fc7703", _
+                "l32|100|000000", _
+                "l33|100|000000", _
+                "l34|20|fc7703", _
+                "l26|100|stop", _
+                "l62|20|ffffff", _
+                "l63|100|000000", _
+                "l64|100|000000", _
+                "l65|20|ffffff", _
+                "l28|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=2.16s
+            .Lights = Array( _
+                "l31|100|000000", _
+                "l32|100|stop", _
+                "l33|100|stop", _
+                "l34|100|000000", _
+                "l62|100|000000", _
+                "l63|100|stop", _
+                "l64|100|stop", _
+                "l65|100|000000", _
+                "l28|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.14)  ' t=2.19s
+            .Lights = Array( _
+                "l1|100|000000|150", _
+                "l31|100|stop", _
+                "l34|100|stop", _
+                "l62|100|stop", _
+                "l65|100|stop")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=2.33s
             ' end of show
         End With
     End With
@@ -34208,13 +35438,7 @@ Sub CreatePscShows()
                 "SkillshotLight|100|fc7703", _
                 "l28|40|ffffff", _
                 "gi025|100|000000", _
-                "gi027|40|ffa957", _
-                "Light002|100|78bec0", _
-                "Light003|100|78bec0", _
-                "Light004|100|bae046", _
-                "Light005|100|bae046", _
-                "Light006|100|bae046", _
-                "Light007|100|d938c7")
+                "gi027|40|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.33s
             .Lights = Array( _
@@ -34274,10 +35498,15 @@ Sub CreatePscShows()
                 "gi025|100|stop", _
                 "gi027|20|ffa957", _
                 "Light001|100|78bec0", _
+                "Light002|100|78bec0", _
+                "Light003|100|78bec0", _
+                "Light004|100|bae046", _
+                "Light005|100|bae046", _
+                "Light006|100|bae046", _
+                "Light007|100|d938c7", _
                 "Light008|100|d938c7", _
                 "Light009|100|d938c7", _
-                "Light010|100|bf3957", _
-                "Light011|100|bf3957")
+                "Light010|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.36s
             .Lights = Array( _
@@ -34333,6 +35562,7 @@ Sub CreatePscShows()
                 "SkillshotLight|80|fc7703", _
                 "l28|100|000000", _
                 "gi027|100|000000", _
+                "Light011|100|bf3957", _
                 "Light012|100|bf3957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.39s
@@ -34380,14 +35610,11 @@ Sub CreatePscShows()
                 "l28|100|stop", _
                 "bg_flash_lower_left|100|ffffff", _
                 "gi027|100|stop", _
-                "Light001|80|78bec0", _
                 "Light002|80|78bec0", _
                 "Light003|80|78bec0", _
                 "Light004|80|bae046", _
                 "Light005|80|bae046", _
-                "Light006|80|bae046", _
-                "Light007|80|d938c7", _
-                "Light008|80|d938c7")
+                "Light006|80|bae046")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.42s
             .Lights = Array( _
@@ -34426,14 +35653,14 @@ Sub CreatePscShows()
                 "SkillshotLight|40|fc7703", _
                 "bg_logo|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
-                "Light001|60|78bec0", _
+                "Light001|80|78bec0", _
                 "Light002|60|78bec0", _
                 "Light003|60|78bec0", _
                 "Light004|60|bae046", _
                 "Light005|60|bae046", _
                 "Light006|60|bae046", _
-                "Light007|60|d938c7", _
-                "Light008|60|d938c7", _
+                "Light007|80|d938c7", _
+                "Light008|80|d938c7", _
                 "Light009|80|d938c7", _
                 "Light010|80|bf3957", _
                 "Light011|80|bf3957", _
@@ -34464,14 +35691,14 @@ Sub CreatePscShows()
                 "FL3|80|0000ff", _
                 "FL4|60|ffa500", _
                 "SkillshotLight|20|fc7703", _
-                "Light001|40|78bec0", _
+                "Light001|60|78bec0", _
                 "Light002|40|78bec0", _
                 "Light003|40|78bec0", _
                 "Light004|40|bae046", _
                 "Light005|40|bae046", _
                 "Light006|40|bae046", _
-                "Light007|40|d938c7", _
-                "Light008|40|d938c7", _
+                "Light007|60|d938c7", _
+                "Light008|60|d938c7", _
                 "Light009|60|d938c7", _
                 "Light010|60|bf3957", _
                 "Light011|60|bf3957", _
@@ -34501,14 +35728,14 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|ffffff", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
-                "Light001|20|78bec0", _
+                "Light001|40|78bec0", _
                 "Light002|20|78bec0", _
                 "Light003|20|78bec0", _
                 "Light004|20|bae046", _
                 "Light005|20|bae046", _
                 "Light006|20|bae046", _
-                "Light007|20|d938c7", _
-                "Light008|20|d938c7", _
+                "Light007|40|d938c7", _
+                "Light008|40|d938c7", _
                 "Light009|40|d938c7", _
                 "Light010|40|bf3957", _
                 "Light011|40|bf3957", _
@@ -34528,14 +35755,14 @@ Sub CreatePscShows()
                 "bg_logo|80|ffffff", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_lower_right|60|ffffff", _
-                "Light001|100|000000", _
+                "Light001|20|78bec0", _
                 "Light002|100|000000", _
                 "Light003|100|000000", _
                 "Light004|100|000000", _
                 "Light005|100|000000", _
                 "Light006|100|000000", _
-                "Light007|100|000000", _
-                "Light008|100|000000", _
+                "Light007|20|d938c7", _
+                "Light008|20|d938c7", _
                 "Light009|20|d938c7", _
                 "Light010|20|bf3957", _
                 "Light011|20|bf3957", _
@@ -34550,14 +35777,14 @@ Sub CreatePscShows()
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
-                "Light001|100|stop", _
+                "Light001|100|000000", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
                 "Light004|100|stop", _
                 "Light005|100|stop", _
                 "Light006|100|stop", _
-                "Light007|100|stop", _
-                "Light008|100|stop", _
+                "Light007|100|000000", _
+                "Light008|100|000000", _
                 "Light009|100|000000", _
                 "Light010|100|000000", _
                 "Light011|100|000000", _
@@ -34572,6 +35799,9 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|60|ffffff", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
+                "Light001|100|stop", _
+                "Light007|100|stop", _
+                "Light008|100|stop", _
                 "Light009|100|stop", _
                 "Light010|100|stop", _
                 "Light011|100|stop", _

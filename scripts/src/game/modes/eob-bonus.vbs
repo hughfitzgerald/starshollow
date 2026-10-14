@@ -88,7 +88,7 @@ Sub CreateBonusMode
         End With
 
         With .ShowPlayer()
-            For x = 1 To BonusShows
+            For x = 1 To BonusShows - 1
                 With .EventName("bonus_light"&x&"_show")
                     .Key = "key_bonus_light"&x&"_show"
                     .Show = "psc_eob_sweep"
@@ -102,6 +102,17 @@ Sub CreateBonusMode
                     End With
                 End With
             Next
+            With .EventName("bonus_light"&BonusShows&"_show")
+                .Key = "key_bonus_light"&BonusShows&"_show"
+                .Show = "psc_eob_sweep_up_and_down"
+                .Loops = 0
+                .Priority = 2000
+                .EventsWhenCompleted = Array("play_bonus_show"&(BonusShows+1))
+                With .Tokens()
+                    .Add "lights", "GI"
+                    .Add "color", GIColorAttract
+                End With
+            End With
         End With
 
         With .VariablePlayer()
