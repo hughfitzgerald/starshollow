@@ -5,15 +5,26 @@ Sub CreateBonusLanesMode()
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
-            .Add "s_sw7_active", Array("bonus_lane_sfx")
-            .Add "s_sw8_active", Array("bonus_lane_sfx")
-            .Add "s_sw9_active", Array("bonus_lane_sfx")
+            .Add "s_sw7_active{current_player.shot_bonus_lane_7 == 0}", Array("bonus_lane_sfx")
+            .Add "s_sw7_active{current_player.shot_bonus_lane_7 == 1}", Array("bonus_lane_already_lit_sfx")
+            .Add "s_sw8_active{current_player.shot_bonus_lane_8 == 0}", Array("bonus_lane_sfx")
+            .Add "s_sw8_active{current_player.shot_bonus_lane_8 == 1}", Array("bonus_lane_already_lit_sfx")
+            .Add "s_sw9_active{current_player.shot_bonus_lane_9 == 0}", Array("bonus_lane_sfx")
+            .Add "s_sw9_active{current_player.shot_bonus_lane_9 == 1}", Array("bonus_lane_already_lit_sfx")
         End With
 
         With .SoundPlayer()
             With .EventName("bonus_lane_sfx")
                 .Key = "key_sfx_bonuslane"
                 .Sound = "sfx_bonuslane"
+            End With
+            With .EventName("qualify_multiplier_group_on_complete")
+                .Key = "key_sfx_bonuslanecomplete"
+                .Sound = "sfx_bonuslanecomplete"
+            End With
+            With .EventName("bonus_lane_already_lit_sfx")
+                .Key = "key_sfx_lowdouble"
+                .Sound = "sfx_lowdouble"
             End With
         End With
 

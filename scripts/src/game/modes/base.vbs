@@ -287,8 +287,8 @@ Sub CreateBaseMode()
                 End With
             Next
             With .EventName("outlane_drain")
-                .Key = "key_sfx_outlane"
-                .Sound = "sfx_outlane"
+                .Key = "key_sfx_lowtrill"
+                .Sound = "sfx_lowtrill"
             End With
             With .EventName("play_whoosh1")
                 .Key = "key_sfx_whoosh1"
