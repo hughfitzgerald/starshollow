@@ -32,6 +32,12 @@ Sub Table1_KeyDown(ByVal keycode)
 	If keycode = 18 Then KickBall ActiveBall, 0, 35, 0, 0 ' Kick the ball to the skillshot
 	' If keycode = 18 Then KickBall ActiveBall, 0, 35.7, 0, 0 ' Kick the ball to the bonus lanes
 
+	'Fire button: one-press launch. Goes through the GLF plunger device so
+	'PlungerEjectCallback does the kick + sounds and GLF tracks the eject.
+	If keycode = LockbarKey Then
+		If glf_gameStarted And glf_plunger.HasBall() Then glf_plunger.Eject
+	End If
+
 	'Plunger
 	If keycode = PlungerKey Then
 		Plunger.Pullback
