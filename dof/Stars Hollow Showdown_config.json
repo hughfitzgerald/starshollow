@@ -1,0 +1,83 @@
+{
+    "table": "Stars Hollow Showdown",
+    "type": "table_config",
+    "rom": "starshollow",
+    "rom_aliases": "",
+    "config": {
+        "1": {
+            "toy": "Start Button",
+            "public": "",
+            "user": "E102 Blink fu500 fd550"
+        },
+        "2": {
+            "toy": "Launch Button",
+            "public": "",
+            "user": "E101 Deep_pink Blink fu500 fd550"
+        },
+        "43": {
+            "toy": "Authentic Launch Ball",
+            "public": "",
+            "user": "E101 Deep_pink Blink fu500 fd550"
+        },
+        "79": {
+            "toy": "ZB Launch Ball",
+            "public": "",
+            "user": "E101"
+        },
+        "89": {
+            "toy": "Fire Button",
+            "public": "",
+            "user": "E101 Deep_pink Blink fu500 fd550"
+        },
+        "106": {
+            "toy": "RGB Fire Button",
+            "public": "",
+            "user": "E101 Deep_pink Blink fu500 fd550"
+        },
+        "3": {
+            "toy": "Extra Ball",
+            "public": "",
+            "user": "OFF"
+        },
+        "28": {
+            "toy": "RGB Flippers",
+            "public": "",
+            "user": "ON Dark_violet"
+        },
+        "73": {
+            "toy": "RGB Left Magnasave",
+            "public": "",
+            "user": "OFF"
+        },
+        "90": {
+            "toy": "RGB Right Magnasave",
+            "public": "",
+            "user": "OFF"
+        },
+        "108": {
+            "toy": "Launch Ball MX",
+            "public": "",
+            "user": "E101 Deep_pink Blink fu500 fd550"
+        },
+        "6": {
+            "toy": "Genre",
+            "public": "",
+            "user": "ON"
+        },
+        "4": {
+            "toy": "Coin",
+            "public": "",
+            "user": "Blink fu500 fd550"
+        },
+        "5": {
+            "toy": "How to play",
+            "public": "",
+            "user": "ON"
+        },
+        "29": {
+            "toy": "Exit",
+            "public": "",
+            "user": "ON"
+        }
+    }
+}
