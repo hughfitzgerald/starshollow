@@ -8,7 +8,7 @@
 ' at top level and was a guaranteed load-time crash once ZQUE was removed.
 
 ' --- GLF required globals ---
-Const cGameName = "StarsHollowShowdown"
+Const cGameName = "starshollow"
 Const BallSize  = 50                'Ball diameter in VPX units; must be 50
 Const BallMass  = 1                 'Ball mass must be 1
 Const tnob      = 5                 'Total playable balls (must equal swTrough count)
