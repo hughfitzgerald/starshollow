@@ -17,7 +17,7 @@ Sub CreateBasementMode()
             .Debug = True
 
             'Some table init stuff
-            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down")
+            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "check_start_button")
             .Add "mode_basement_stopped", Array("backglass_off")
 
             'Backglass stuff
@@ -29,6 +29,20 @@ Sub CreateBasementMode()
 
             .Add "s_add_credit_key_active", Array("add_credit")
             .Add "s_add_credit_key2_active", Array("add_credit")
+
+            'Start button DOF (E102) - is the start button going to do anything?
+            ' Re-check whenever credits, players, ball or game state change.
+            ' GLF queues posted events, so check_start_button is evaluated after
+            ' the VariablePlayer below has applied the change that triggered it.
+            .Add "add_credit", Array("check_start_button")
+            .Add "player_added", Array("check_start_button")
+            .Add "game_started", Array("check_start_button")
+            .Add "ball_started", Array("check_start_button")
+            .Add "game_ended", Array("check_start_button")
+            ' Mirrors GLF: no game -> needs a credit. In a game -> needs a credit,
+            ' fewer than 4 players, and the current player still on ball 1.
+            .Add "check_start_button{machine.credits >= 1 and (machine.game_active == 0 or (machine.num_players < 4 and current_player.ball == 1))}", Array("start_button_available")
+            .Add "check_start_button{machine.credits < 1 or (machine.game_active == 1 and (machine.num_players >= 4 or current_player.ball > 1))}", Array("start_button_unavailable")
 
             .Add "balldevice_lock1_ball_entered", Array("ball_locked")
             .Add "balldevice_lock2_ball_entered", Array("ball_locked")
@@ -125,6 +139,29 @@ Sub CreateBasementMode()
                     .Action = "set_machine"
                     .Int = "kwargs.num"
                 End With
+            End With
+            With .EventName("game_started")
+                With .Variable("game_active")
+                    .Action = "set_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("game_ended")
+                With .Variable("game_active")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
+        End With
+
+        With .DOFPlayer()
+            With .EventName("start_button_available")
+                .Action = "DOF_ON"
+                .DOFEvent = 102
+            End With
+            With .EventName("start_button_unavailable")
+                .Action = "DOF_OFF"
+                .DOFEvent = 102
             End With
         End With
 

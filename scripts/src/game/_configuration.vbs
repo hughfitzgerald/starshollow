@@ -202,6 +202,12 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
+    With CreateMachineVar("game_active")    '1 between game_started and game_ended - used by the start button DOF (E102)
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+
     With CreateMachineVar("credits")
         .InitialValue = 0
         .ValueType = "int"

@@ -48,6 +48,7 @@
 ' DOF IDs
 ' ------------
 ' E101 0/1 Trigger for ball in launcher
+' E102 0/1 Indicates whether start button will do anything (ie, enough credits and/or we haven't reached max players)
 
 Option Explicit
 Randomize
