@@ -506,6 +506,17 @@ Sub CreateBaseMode()
         '     End With
         ' End With
 
+        With .DOFPlayer()
+            With .EventName("s_Trigger1_active")
+                .Action = "DOF_ON"
+                .DOFEvent = 101
+            End With
+            With .EventName("s_Trigger1_inactive")
+                .Action = "DOF_OFF"
+                .DOFEvent = 101
+            End With
+        End With
+
 
         ' Backglass lights
         ' With .DOFPlayer()

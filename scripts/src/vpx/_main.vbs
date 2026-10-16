@@ -44,7 +44,10 @@
 '   ZTUT (tutorial links)                      ZDRN (GLF owns the trough)
 '   ZSCR (GLF player vars) ZLIS (ROM listener) ZRDT (no drop targets)
 '   ZTST (shot tester)     ZQUE (GLF SetDelay) ZLOG   ZCRD   ZPHY
-
+'
+' DOF IDs
+' ------------
+' E101 0/1 Trigger for ball in launcher
 
 Option Explicit
 Randomize
