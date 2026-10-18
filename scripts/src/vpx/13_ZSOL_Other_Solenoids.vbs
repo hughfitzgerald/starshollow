@@ -63,3 +63,11 @@ Sub SkillshotDiverterAction(Enabled)
 		SkillshotDiverter.RotateToStart
 	End If
 End Sub
+
+Sub OrbitGateAction(Enabled)
+	If Enabled Then
+		OrbitGate.Open = True
+	Else
+		OrbitGate.Open = False
+	End If
+End Sub

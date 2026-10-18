@@ -20,7 +20,7 @@
     "damping": 0.985,
     "gravity_factor": 0.25,
     "is_visible": true,
-    "name": "Gate002",
+    "name": "OrbitGate",
     "two_way": false,
     "is_reflection_enabled": true,
     "gate_type": "wire_w",

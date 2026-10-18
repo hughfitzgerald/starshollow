@@ -34,8 +34,8 @@ Sub CreateDanceMarathonMode()
         .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_dance_marathon_started", Array("base_music_stop", "gi_lights_off")
-            .Add "mode_dance_marathon_stopping", Array("dm_shots_off")
+            .Add "mode_dance_marathon_started", Array("base_music_stop", "gi_lights_off", "open_orbit_gate")
+            .Add "mode_dance_marathon_stopping", Array("dm_shots_off", "close_orbit_gate")
             .Add "timer_dm_mode_complete", Array("base_music_start")
 
             .Add "timer_dm_intro_delay_tick{device.timers.dm_intro_delay.ticks == 27}", Array("dm_intro_show")
