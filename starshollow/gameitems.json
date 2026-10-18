@@ -4142,9 +4142,10 @@
     "editor_layer_visibility": false
   },
   {
-    "file_name": "Wall.Wall028.json",
+    "file_name": "Wall.Backwall.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Light.Light001.json",
@@ -4209,12 +4210,14 @@
   {
     "file_name": "Wall.WallLightSurfaceLow.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Wall.WallLightSurfaceHigh.json",
     "is_locked": false,
-    "editor_layer": 0
+    "editor_layer": 0,
+    "editor_layer_visibility": false
   },
   {
     "file_name": "Flasher.LM_Light001_backwall.json",

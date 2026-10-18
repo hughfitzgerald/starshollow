@@ -7,7 +7,7 @@
 # ]
 # ///
 """
-Hand-made lightmaps for the backwall (Wall028), the same idea as strategy 4 in
+Hand-made lightmaps for the backwall (Backwall), the same idea as strategy 4 in
 gi-lighting-notes.md but for a vertical wall lit from behind.
 
 backwall.svg gets a hidden layer called "light glow" holding one soft radial
@@ -42,9 +42,8 @@ import subprocess
 import sys
 import tempfile
 
-from lxml import etree
-
 from gi_lighting import Table, load, save
+from lxml import etree
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SVG_PATH = os.path.join(HERE, "backwall.svg")
@@ -52,7 +51,7 @@ TABLE_DIR = os.path.normpath(os.path.join(HERE, "..", "starshollow"))
 OUT_DIR = os.path.join(HERE, "lightmaps")
 INKSCAPE = "/Applications/Inkscape.app/Contents/MacOS/inkscape"
 
-WALL = "Wall028"
+WALL = "Backwall"
 LIGHT_NAME = re.compile(r"Light\d{3}")
 
 SVG_NS = "http://www.w3.org/2000/svg"
@@ -107,7 +106,9 @@ class WallMap:
     def table_to_svg(self, x, z):
         s0, p0, p1, n = self.front
         u = s0 + (x - p0[0]) / (p1[0] - p0[0]) * n
-        return u / self.perimeter * self.vb_w, (self.top - z) / (self.top - self.bottom) * self.vb_h
+        return u / self.perimeter * self.vb_w, (self.top - z) / (
+            self.top - self.bottom
+        ) * self.vb_h
 
     def svg_to_table(self, sx, sy):
         s0, p0, p1, n = self.front
@@ -139,7 +140,10 @@ def parse(path):
 
 
 def layer(root, label):
-    found = root.xpath(f'/svg:svg/svg:g[@inkscape:groupmode="layer"][@inkscape:label="{label}"]', namespaces=NS)
+    found = root.xpath(
+        f'/svg:svg/svg:g[@inkscape:groupmode="layer"][@inkscape:label="{label}"]',
+        namespaces=NS,
+    )
     return found[0] if found else None
 
 
@@ -171,10 +175,14 @@ def cmd_init(t):
         text = f.read()
 
     if not root.xpath(f'//svg:radialGradient[@id="{GRADIENT_ID}"]', namespaces=NS):
-        stops = "".join(f'      <stop\n         offset="{o}"\n         style="stop-color:#ffffff;stop-opacity:{a}" />\n'
-                        for o, a in GLOW_STOPS)
-        defs = (f'<defs\n     id="{GLOW_DEFS_ID}">\n    <radialGradient\n       id="{GRADIENT_ID}"\n'
-                f'       inkscape:collect="always">\n{stops}    </radialGradient>\n  </defs>\n')
+        stops = "".join(
+            f'      <stop\n         offset="{o}"\n         style="stop-color:#ffffff;stop-opacity:{a}" />\n'
+            for o, a in GLOW_STOPS
+        )
+        defs = (
+            f'<defs\n     id="{GLOW_DEFS_ID}">\n    <radialGradient\n       id="{GRADIENT_ID}"\n'
+            f'       inkscape:collect="always">\n{stops}    </radialGradient>\n  </defs>\n'
+        )
         close = text.rfind("</svg>")
         text = text[:close] + defs + text[close:]
         print(f"added gradient #{GRADIENT_ID}")
@@ -187,12 +195,16 @@ def cmd_init(t):
         if name in existing:
             continue
         sx, sy = wm.table_to_svg(x, z)
-        blobs += (f'    <circle\n       id="glow_{name}"\n       inkscape:label="glow {name}"\n'
-                  f'       cx="{sx:.4f}"\n       cy="{sy:.4f}"\n       r="{r:.4f}"\n'
-                  f'       style="fill:url(#{GRADIENT_ID});fill-opacity:1;stroke:none" />\n')
+        blobs += (
+            f'    <circle\n       id="glow_{name}"\n       inkscape:label="glow {name}"\n'
+            f'       cx="{sx:.4f}"\n       cy="{sy:.4f}"\n       r="{r:.4f}"\n'
+            f'       style="fill:url(#{GRADIENT_ID});fill-opacity:1;stroke:none" />\n'
+        )
     if g is None:
-        layer_text = (f'<g\n     inkscape:groupmode="layer"\n     id="{GLOW_LAYER_ID}"\n'
-                      f'     inkscape:label="{GLOW_LAYER_LABEL}"\n     style="display:none">\n{blobs}  </g>\n')
+        layer_text = (
+            f'<g\n     inkscape:groupmode="layer"\n     id="{GLOW_LAYER_ID}"\n'
+            f'     inkscape:label="{GLOW_LAYER_LABEL}"\n     style="display:none">\n{blobs}  </g>\n'
+        )
         close = text.rfind("</svg>")
         text = text[:close] + layer_text + text[close:]
         print(f"added layer {GLOW_LAYER_LABEL!r} (hidden)")
@@ -215,13 +227,24 @@ def masked_copy(tree, glow_layer, element):
     defs = root.find(q("defs"))
     if defs is None:
         defs = etree.SubElement(root, q("defs"))
-    mask = etree.SubElement(defs, q("mask"), id=MASK_ID, maskUnits="userSpaceOnUse",
-                            x=str(vb[0]), y=str(vb[1]), width=str(vb[2]), height=str(vb[3]))
+    mask = etree.SubElement(
+        defs,
+        q("mask"),
+        id=MASK_ID,
+        maskUnits="userSpaceOnUse",
+        x=str(vb[0]),
+        y=str(vb[1]),
+        width=str(vb[2]),
+        height=str(vb[3]),
+    )
     holder = etree.SubElement(mask, q("g"))
     if glow_layer.get("transform"):
         holder.set("transform", glow_layer.get("transform"))
     blob = copy.deepcopy(element)
-    blob.set("style", re.sub(r"display:[^;]*;?", "", blob.get("style") or "") + ";display:inline")
+    blob.set(
+        "style",
+        re.sub(r"display:[^;]*;?", "", blob.get("style") or "") + ";display:inline",
+    )
     holder.append(blob)
     art = etree.Element(q("g"), mask=f"url(#{MASK_ID})")
     for g in root.xpath('/svg:svg/svg:g[@inkscape:groupmode="layer"]', namespaces=NS):
@@ -239,19 +262,32 @@ def cmd_render(args):
     glow_layer, blobs = glow_elements(tree.getroot())
     if args.only:
         blobs = [(n, e) for n, e in blobs if n in args.only]
-    inkscape = args.inkscape or (INKSCAPE if os.path.exists(INKSCAPE) else shutil.which("inkscape"))
+    inkscape = args.inkscape or (
+        INKSCAPE if os.path.exists(INKSCAPE) else shutil.which("inkscape")
+    )
     if not inkscape:
         sys.exit("Inkscape not found; pass --inkscape PATH")
     os.makedirs(args.out, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         for name, el in blobs:
             svg = os.path.join(tmp, f"{name}.svg")
-            masked_copy(tree, glow_layer, el).write(svg, xml_declaration=True, encoding="UTF-8")
+            masked_copy(tree, glow_layer, el).write(
+                svg, xml_declaration=True, encoding="UTF-8"
+            )
             png = os.path.join(args.out, f"{lightmap_name(name)}.png")
-            subprocess.run([inkscape, svg, "--export-type=png", f"--export-filename={png}",
-                            "--export-area-page", "--export-overwrite"],
-                           check=True, capture_output=True,
-                           env={**os.environ, "LC_ALL": "C.utf8", "LANG": "C.utf8"})
+            subprocess.run(
+                [
+                    inkscape,
+                    svg,
+                    "--export-type=png",
+                    f"--export-filename={png}",
+                    "--export-area-page",
+                    "--export-overwrite",
+                ],
+                check=True,
+                capture_output=True,
+                env={**os.environ, "LC_ALL": "C.utf8", "LANG": "C.utf8"},
+            )
             print(png)
     print(f"{len(blobs)} lightmaps rendered; next: backwall_lightmaps.py build")
 
@@ -294,8 +330,15 @@ def cmd_build(t, args):
         crop = im.crop((x0, y0, x1, y1))
         crop.save(os.path.join(t.root, "images", f"{name}.webp"), lossless=True)
         if not any(i["name"] == name for i in images):
-            images.append({"name": name, "path": f"{name}.webp",
-                           "alpha_test_value": 1.0, "is_opaque": False, "is_signed": False})
+            images.append(
+                {
+                    "name": name,
+                    "path": f"{name}.webp",
+                    "alpha_test_value": 1.0,
+                    "is_opaque": False,
+                    "is_signed": False,
+                }
+            )
 
         # pixels -> svg units -> table x / z
         tx0, tz_top = wm.svg_to_table(x0 * wm.vb_w / W, y0 * wm.vb_h / H)
@@ -303,30 +346,62 @@ def cmd_build(t, args):
         pos_x, pos_y = (tx0 + tx1) / 2, wm.front_y + FRONT_OFFSET
         half = (tz_top - tz_bot) / 2
         fl = copy.deepcopy(template)
-        fl.update({
-            "name": name, "height": round((tz_top + tz_bot) / 2, 4),
-            "pos_x": round(pos_x, 4), "pos_y": round(pos_y, 4),
-            # rot_x -90 turns the flasher's -y edge (the image top) straight up
-            "rot_x": -90.0, "rot_y": 0.0, "rot_z": 0.0,
-            "color": "#ffffff", "is_timer_enabled": False, "timer_interval": 100,
-            "image_a": name, "image_b": "",
-            "is_visible": True, "add_blend": "add", "is_dmd": False,
-            "display_texture": True, "depth_bias": 0.0,
-            "image_alignment": "wrap", "filter": "none", "filter_amount": 100,
-            "light_map": light, "part_group_name": GROUP,
-        })
+        fl.update(
+            {
+                "name": name,
+                "height": round((tz_top + tz_bot) / 2, 4),
+                "pos_x": round(pos_x, 4),
+                "pos_y": round(pos_y, 4),
+                # rot_x -90 turns the flasher's -y edge (the image top) straight up
+                "rot_x": -90.0,
+                "rot_y": 0.0,
+                "rot_z": 0.0,
+                "color": "#ffffff",
+                "is_timer_enabled": False,
+                "timer_interval": 100,
+                "image_a": name,
+                "image_b": "",
+                "is_visible": True,
+                "add_blend": "add",
+                "is_dmd": False,
+                "display_texture": True,
+                "depth_bias": 0.0,
+                "image_alignment": "wrap",
+                "filter": "none",
+                "filter_amount": 100,
+                "light_map": light,
+                "part_group_name": GROUP,
+            }
+        )
         fl.update(FLASHER)
         fl["drag_points"] = []
-        for (x, y) in ((tx0, pos_y - half), (tx0, pos_y + half), (tx1, pos_y + half), (tx1, pos_y - half)):
-            fl["drag_points"].append({
-                "x": round(x, 3), "y": round(y, 3), "z": 0.0, "smooth": False,
-                "is_slingshot": False, "has_auto_texture": True, "tex_coord": 0.0,
-                "is_locked": False, "editor_layer": 0, "editor_layer_name": "",
-                "editor_layer_visibility": True})
+        for x, y in (
+            (tx0, pos_y - half),
+            (tx0, pos_y + half),
+            (tx1, pos_y + half),
+            (tx1, pos_y - half),
+        ):
+            fl["drag_points"].append(
+                {
+                    "x": round(x, 3),
+                    "y": round(y, 3),
+                    "z": 0.0,
+                    "smooth": False,
+                    "is_slingshot": False,
+                    "has_auto_texture": True,
+                    "tex_coord": 0.0,
+                    "is_locked": False,
+                    "editor_layer": 0,
+                    "editor_layer_name": "",
+                    "editor_layer_visibility": True,
+                }
+            )
         t.write_item("Flasher", fl)
         made.append(name)
-        print(f"{name}: {crop.size[0]}x{crop.size[1]} px, x {tx0:.1f}-{tx1:.1f}, "
-              f"z {tz_bot:.1f}-{tz_top:.1f}, y {pos_y}")
+        print(
+            f"{name}: {crop.size[0]}x{crop.size[1]} px, x {tx0:.1f}-{tx1:.1f}, "
+            f"z {tz_bot:.1f}-{tz_top:.1f}, y {pos_y}"
+        )
     save(images_path, images)
     t.save_index()
     print(f"{len(made)} backwall lightmap flashers")
@@ -336,8 +411,16 @@ def cmd_adjust(t, args):
     n = 0
     for _, fl in list(t.items("Flasher")):
         if re.fullmatch(r"LM_Light\d{3}_backwall", fl["name"]):
-            fl.update({k: v for k, v in (("alpha", args.alpha), ("modulate_vs_add", args.modulate_vs_add))
-                       if v is not None})
+            fl.update(
+                {
+                    k: v
+                    for k, v in (
+                        ("alpha", args.alpha),
+                        ("modulate_vs_add", args.modulate_vs_add),
+                    )
+                    if v is not None
+                }
+            )
             t.write_item("Flasher", fl)
             n += 1
     print(f"{n} backwall lightmap flashers adjusted")
@@ -362,7 +445,9 @@ def cmd_remove(t):
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     ap.add_argument("--table", default=TABLE_DIR)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("init")
@@ -370,7 +455,9 @@ def main():
         p = sub.add_parser(name)
         p.add_argument("--inkscape", help="path to the inkscape binary")
         p.add_argument("--out", default=OUT_DIR)
-        p.add_argument("--only", nargs="*", help="only these lights, e.g. Light001 Light004")
+        p.add_argument(
+            "--only", nargs="*", help="only these lights, e.g. Light001 Light004"
+        )
     for name in ("build", "all"):
         p = sub.choices[name] if name in sub.choices else sub.add_parser(name)
         p.add_argument("--render-dir", default=OUT_DIR)

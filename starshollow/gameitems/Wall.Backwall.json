@@ -15,7 +15,7 @@
     "slingshot_material": "",
     "height_bottom": 60.0,
     "height_top": 165.0,
-    "name": "Wall028",
+    "name": "Backwall",
     "display_texture": false,
     "slingshot_force": 80.0,
     "slingshot_threshold": 0.0,
@@ -85,6 +85,7 @@
         "editor_layer_name": "",
         "editor_layer_visibility": true
       }
-    ]
+    ],
+    "part_group_name": "Plastics"
   }
 }
