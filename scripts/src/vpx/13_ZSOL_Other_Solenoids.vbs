@@ -55,3 +55,11 @@ Sub RightOrbitDiverterAction(Enabled)
 		ROrbitDiverterWallClosed.Collidable = True
 	End If
 End Sub
+
+Sub SkillshotDiverterAction(Enabled)
+	If Enabled Then
+		SkillshotDiverter.RotateToEnd
+	Else
+		SkillshotDiverter.RotateToStart
+	End If
+End Sub

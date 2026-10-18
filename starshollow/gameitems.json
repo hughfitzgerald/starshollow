@@ -4290,5 +4290,10 @@
     "is_locked": false,
     "editor_layer_name": "",
     "editor_layer_visibility": true
+  },
+  {
+    "file_name": "Flipper.SkillshotDiverter.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]

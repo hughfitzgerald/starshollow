@@ -1,0 +1,43 @@
+{
+  "Flipper": {
+    "center": {
+      "x": 604.1334,
+      "y": 108.73432
+    },
+    "base_radius": 0.5,
+    "end_radius": 0.5,
+    "flipper_radius_max": 69.0,
+    "return": 0.058,
+    "start_angle": -81.5,
+    "end_angle": 125.0,
+    "override_physics": 0,
+    "mass": 1.0,
+    "is_timer_enabled": false,
+    "timer_interval": 100,
+    "surface": "",
+    "material": "",
+    "name": "SkillshotDiverter",
+    "rubber_material": "",
+    "rubber_thickness_int": 7,
+    "rubber_thickness": 7.0,
+    "rubber_height_int": 19,
+    "rubber_height": 19.0,
+    "rubber_width_int": 24,
+    "rubber_width": 24.0,
+    "strength": 2200.0,
+    "elasticity": 0.8,
+    "elasticity_falloff": 0.43,
+    "friction": 0.6,
+    "ramp_up": 3.0,
+    "scatter": 0.0,
+    "torque_damping": 0.75,
+    "torque_damping_angle": 6.0,
+    "flipper_radius_min": 0.0,
+    "is_visible": true,
+    "is_enabled": true,
+    "height": 50.0,
+    "image": "",
+    "is_reflection_enabled": true,
+    "part_group_name": "Collidable_Misc"
+  }
+}

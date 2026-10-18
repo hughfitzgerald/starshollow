@@ -513,6 +513,13 @@ Sub ConfigureGlfDevices()
         .ActionCallback = "RightOrbitDiverterAction"
     End With
 
+    With CreateGlfDiverter("skillshot_diverter")
+        .EnableEvents = Array("ball_started", "reset_complete")
+        .ActivateEvents = Array("open_skillshot_diverter")
+        .DeactivateEvents = Array("close_skillshot_diverter")
+        .ActionCallback = "SkillshotDiverterAction"
+    End With
+
     ' --- Standup targets s_ST11..s_ST18 ---
     ' MUST NOT be in any collection. RothSTSwitchID must match the 3rd
     ' argument of the Set STnn = (new StandupTarget)(...) lines in ZRST.

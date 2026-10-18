@@ -26,6 +26,9 @@ Sub CreateSkillshotsMode()
             .Add "mode_skillshots_started{current_player.ball_just_started == 1}", Array("light_skillshots")
             .Add "mode_skillshots_started{current_player.ball_just_started == 0}", Array("stop_skillshots")
 
+            .Add "light_skillshots", Array("open_skillshot_diverter")
+            .Add "stop_skillshots", Array("close_skillshot_diverter")
+
             'Handle successful skillshots
             .Add "s_skillshot_active", Array("ss1_achieved")
             .Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", Array("ss_achieved:{points:500000}")
