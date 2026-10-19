@@ -96,8 +96,10 @@ jobs:
           mkdir release
           cp "$GAME$BUILD.vpx" release/
 
-          # Add .directb2s file if it exists
-          if [ -f "$GAME.directb2s" ]; then cp "$GAME.directb2s" release/; fi
+          # Add backglass, named to match the .vpx so B2S finds it
+          b2s="b2s/Projects/Stars Hollow Showdown/$GAME.directb2s"
+          [ -f "$b2s" ] || { echo "::error::Backglass not found at $b2s"; exit 1; }
+          cp "$b2s" "release/$GAME$BUILD.directb2s"
 
           # Add default ini settings
           if [ -f default_ini_settings.txt ]; then cp default_ini_settings.txt "release/$GAME$BUILD.ini"; fi
