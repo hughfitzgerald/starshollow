@@ -1,8 +1,8 @@
 {
   "Flasher": {
     "height": 58.5,
-    "pos_x": 53.035477,
-    "pos_y": 1244.364,
+    "pos_x": 53.035476718403544,
+    "pos_y": 1244.364013671875,
     "rot_x": 0.0,
     "rot_y": 0.0,
     "rot_z": 0.0,
@@ -12,7 +12,7 @@
     "name": "LM_gi023_plastics",
     "image_a": "LM_gi023_plastics",
     "image_b": "",
-    "alpha": 60,
+    "alpha": 100,
     "modulate_vs_add": 0.3,
     "is_visible": true,
     "add_blend": "add",

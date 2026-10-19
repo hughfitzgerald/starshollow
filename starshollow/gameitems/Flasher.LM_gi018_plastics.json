@@ -1,8 +1,8 @@
 {
   "Flasher": {
     "height": 55.5,
-    "pos_x": 653.5765,
-    "pos_y": 1699.883,
+    "pos_x": 653.0487804878048,
+    "pos_y": 1700.14697265625,
     "rot_x": 0.0,
     "rot_y": 0.0,
     "rot_z": 0.0,
@@ -12,7 +12,7 @@
     "name": "LM_gi018_plastics",
     "image_a": "LM_gi018_plastics",
     "image_b": "",
-    "alpha": 60,
+    "alpha": 100,
     "modulate_vs_add": 0.3,
     "is_visible": true,
     "add_blend": "add",
@@ -36,7 +36,7 @@
     "part_group_name": "GI_Layer",
     "drag_points": [
       {
-        "x": 605.29,
+        "x": 604.763,
         "y": 1641.558,
         "z": 0.0,
         "smooth": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 605.29,
-        "y": 1758.208,
+        "x": 604.763,
+        "y": 1758.736,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 701.863,
-        "y": 1758.208,
+        "x": 701.335,
+        "y": 1758.736,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -75,7 +75,7 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 701.863,
+        "x": 701.335,
         "y": 1641.558,
         "z": 0.0,
         "smooth": false,

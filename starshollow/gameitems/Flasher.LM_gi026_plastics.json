@@ -1,8 +1,8 @@
 {
   "Flasher": {
     "height": 58.5,
-    "pos_x": 239.847,
-    "pos_y": 652.1365,
+    "pos_x": 239.84700665188467,
+    "pos_y": 652.136474609375,
     "rot_x": 0.0,
     "rot_y": 0.0,
     "rot_z": 0.0,
@@ -12,7 +12,7 @@
     "name": "LM_gi026_plastics",
     "image_a": "LM_gi026_plastics",
     "image_b": "",
-    "alpha": 60,
+    "alpha": 100,
     "modulate_vs_add": 0.3,
     "is_visible": true,
     "add_blend": "add",
@@ -37,7 +37,7 @@
     "drag_points": [
       {
         "x": 172.035,
-        "y": 534.694,
+        "y": 534.166,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -50,7 +50,7 @@
       },
       {
         "x": 172.035,
-        "y": 769.579,
+        "y": 770.107,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -63,7 +63,7 @@
       },
       {
         "x": 307.659,
-        "y": 769.579,
+        "y": 770.107,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -76,7 +76,7 @@
       },
       {
         "x": 307.659,
-        "y": 534.694,
+        "y": 534.166,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
