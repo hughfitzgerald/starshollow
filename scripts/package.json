@@ -18,6 +18,7 @@
     "psc-midi": "uv run --project psc psc midi",
     "psc-test": "uv run --project psc pytest psc/tests -q",
     "svg-to-playfield": "uv run svg-to-playfield.py",
+    "plastics-to-svg": "uv run plastics-to-svg.py",
     "rename-project": "node rename-reset-project.js",
     "update-glf": "curl -o ./src/glf/glf.vbs https://raw.githubusercontent.com/mpcarr/vpx-glf/refs/heads/main/scripts/vpx-glf.vbs",
     "gi-lighting": "uv run gi_lighting.py",
