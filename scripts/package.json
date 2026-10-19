@@ -9,6 +9,7 @@
     "assemble-vpx": "node vpx-tool.js assemble",
     "script-watcher": "grunt watch:vpx",
     "concat-vpx": "grunt concat:prod",
+    "build-dev": "node build-dev.js",
     "convert-shows": "node mpf-show-convert.js src/glf/yamlshows",
     "convert-shows-tokens": "node mpf-show-convert-tokens.js src/glf/yamlshows",
     "psc-sync": "uv run --project psc psc sync",

@@ -13,7 +13,7 @@ function main() {
     const mode = process.argv[2];
 
     if (mode !== 'extract' && mode !== 'assemble') {
-        console.error('Usage: node vpx-tool.js <extract|assemble>');
+        console.error('Usage: node vpx-tool.js <extract|assemble> [target]');
         process.exit(1);
     }
 
@@ -31,9 +31,12 @@ function main() {
         process.exit(1);
     }
 
-    const target = mode === 'extract'
-        ? path.join(projectRoot, `${gameName}.vpx`)
-        : path.join(projectRoot, gameName);
+    // An explicit target lets other scripts (e.g. build-dev.js) assemble a staged copy
+    const target = process.argv[3]
+        ? path.resolve(process.argv[3])
+        : mode === 'extract'
+            ? path.join(projectRoot, `${gameName}.vpx`)
+            : path.join(projectRoot, gameName);
 
     // Copyrighted sounds (mus_*, voc_*, sfx_*) aren't committed. Temporarily drop
     // their sounds.json entries so vpxtool can still assemble without them.
