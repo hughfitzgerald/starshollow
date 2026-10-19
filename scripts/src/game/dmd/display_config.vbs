@@ -163,7 +163,6 @@ Sub CreateFlexDmdDisplay()
     End With
 
     With CreateDmdSlide("multiball")   : .Gif = "multiball.gif"   : End With
-    With CreateDmdSlide("jackpot")     : .Gif = "jackpot.gif"     : End With
     With CreateDmdSlide("kirk-dances") : .Gif = "kirk-dances.gif" : End With
     With CreateDmdSlide("logan-hit") : .Gif = "logan_hit_short_small.gif" : End With
 
@@ -173,13 +172,6 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("mystery1_ab") : .Gif = "Mystery1-AB.gif" : End With
     With CreateDmdSlide("mystery1_ib") : .Gif = "Mystery1-IB.gif" : End With
     With CreateDmdSlide("mystery1_10m") : .Gif = "Mystery1-10M.gif" : End With
-
-    ' Bonus X and the drop target bonus tiers
-    With CreateDmdSlide("bonus_x")  : .Gif = "bonusx.gif"  : End With
-    With CreateDmdSlide("no_bonus") : .Gif = "nobonus.gif" : End With
-    With CreateDmdSlide("bonus_1")  : .Gif = "bonus1.gif"  : End With
-    With CreateDmdSlide("bonus_2")  : .Gif = "bonus2.gif"  : End With
-    With CreateDmdSlide("bonus_3")  : .Gif = "bonus3.gif"  : End With
 
     With CreateDmdSlide("skillshot")
         .Text = "SKILLSHOT! (points:,)"
