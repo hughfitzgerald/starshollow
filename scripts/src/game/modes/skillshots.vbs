@@ -54,7 +54,7 @@ Sub CreateSkillshotsMode()
             .StartValue = 0
             .EndValue = 2
             With .ControlEvents()
-                .EventName = "Gate002_active"
+                .EventName = "OrbitGate_active"
                 .Action = "start"
             End With
         End With
