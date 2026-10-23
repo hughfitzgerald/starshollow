@@ -14,6 +14,31 @@
             "public": "",
             "user": "E101 Deep_pink Blink fu500 fd550"
         },
+        "23": {
+            "toy": "5 Flasher Outside Left",
+            "public": "",
+            "user": "E120 Crimson 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+        },
+        "24": {
+            "toy": "5 Flasher Left",
+            "public": "",
+            "user": "E108 Crimson fd120"
+        },
+        "25": {
+            "toy": "5 Flasher Center",
+            "public": "",
+            "user": "E107 Light_sea_green fd120\/E120 Crimson 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+        },
+        "26": {
+            "toy": "5 Flasher Right",
+            "public": "",
+            "user": "E109 Gold fd120"
+        },
+        "27": {
+            "toy": "5 Flasher Outside Right",
+            "public": "",
+            "user": "E120 Crimson 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+        },
         "43": {
             "toy": "Authentic Launch Ball",
             "public": "",

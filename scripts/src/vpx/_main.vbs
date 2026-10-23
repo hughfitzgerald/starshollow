@@ -49,6 +49,23 @@
 ' ------------
 ' E101 0/1 Trigger for ball in launcher
 ' E102 0/1 Indicates whether start button will do anything (ie, enough credits and/or we haven't reached max players)
+' E103 0/1 LeftFlipper
+' E104 0/1 RightFlipper
+' E105 2 Leftslingshot
+' E106 2 Rightslingshot
+' E107 2 top slingshot
+' E108 2 top bumper left red
+' E109 2 top bumper right yellow
+' E110 2 scoop solenoid
+' E111 2 plunger auto fire
+' E112 2 diverter pin
+' E113 2 lock pin
+' E114 2 knocker
+' E120 2 flashers red
+' E121 2 flashers green
+' E122 2 flashers orange
+' E123 2 flashers blue
+' E124 2 flashers yellow
 
 Option Explicit
 Randomize
