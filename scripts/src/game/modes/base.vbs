@@ -516,31 +516,31 @@ Sub CreateBaseMode()
                 .DOFEvent = 101
             End With
             With .EventName("play_bumper1_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 108
             End With
             With .EventName("play_bumper5_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 109
             End With
             With .EventName("play_spin1_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 120
             End With
             With .EventName("play_spin2_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 121
             End With
             With .EventName("play_jess_letter_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 120
             End With
             With .EventName("play_dean_letter_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 121
             End With
             With .EventName("play_scoop_eject_show")
-                .Action = "DOF_ON"
+                .Action = "DOF_PULSE"
                 .DOFEvent = 124
             End With
         End With
