@@ -34,7 +34,6 @@ Sub CreateMiniGameMode
 
             For Each minigame In minigames
                 .Add "check_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_" & minigame.ModeName)
-                .Add minigame.ModeName & "_minigame_lit", Array("enable_scoop_hold")
                 .Add "mode_" & minigame.ModeName & "_stopped", Array("minigame_select_delay")
                 .Add "clear_selected_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1}", Array(minigame.ModeName & "_minigame_unlit")
             Next

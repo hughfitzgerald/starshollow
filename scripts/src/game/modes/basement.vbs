@@ -17,7 +17,7 @@ Sub CreateBasementMode()
             .Debug = True
 
             'Some table init stuff
-            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "check_start_button")
+            .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "check_start_button", "enable_scoop_hold")
             .Add "mode_basement_stopped", Array("backglass_off")
 
             'Backglass stuff
