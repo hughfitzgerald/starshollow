@@ -172,6 +172,10 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("mystery1_ab") : .Gif = "Mystery1-AB.gif" : End With
     With CreateDmdSlide("mystery1_ib") : .Gif = "Mystery1-IB.gif" : End With
     With CreateDmdSlide("mystery1_10m") : .Gif = "Mystery1-10M.gif" : End With
+    With CreateDmdSlide("mystery1_points")
+        .Text = "MYSTERY (points:,)"
+        .Hold = 3
+    End With
 
     With CreateDmdSlide("skillshot")
         .Text = "SKILLSHOT! (points:,)"

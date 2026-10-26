@@ -8,9 +8,9 @@
 ' Runs for the whole of every ball. Owns anything that isn't specific to a
 ' feature mode: ball save, GI, the insert lights, tilt handling.
 '
-' No scoring anywhere in here yet - that's deliberate. When you add a score
-' mode, the scoring goes on the SAME events already listed below, e.g.
-'     .Add "s_ST11_active", Array(ScoreEvent(StarTargetScore))
+' Scoring for the playfield switches goes on the SAME events already listed
+' below, e.g.
+'     .Add "s_ST11_active", Array(ScoreEvent(JessDeanTargetScore, WithMultiplier))
 '
 ' NOTE on how the inserts reset: GlfLightPlayer.Deactivate() calls PlayOff
 ' for every event it registered, so when this mode stops on ball_ended the
@@ -18,7 +18,7 @@
 
 Sub CreateBaseMode()
 
-    Dim x, giName, baseMusicStopEvents, bm
+    Dim x, giName, baseMusicStopEvents, bm, timedMode
 
     ' programmatically build the Array of base music stop events
     baseMusicStopEvents = Array()
@@ -40,8 +40,15 @@ Sub CreateBaseMode()
             .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start", "backglass_on")
             .Add "mode_base_stopping", Array("base_music_stop", "backglass_off")
 
-            .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment")
-            .Add "s_LeftOutlane_active", Array("outlane_drain", "total_switches_hit_increment")
+            .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))
+            .Add "s_LeftOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))
+
+            'Inlanes and top (bonus) lanes
+            .Add "s_LeftInlane_active", Array(ScoreEvent(InlaneScore, WithMultiplier))
+            .Add "s_RightInlane_active", Array(ScoreEvent(InlaneScore, WithMultiplier))
+            .Add "s_sw7_active", Array(ScoreEvent(TopLaneScore, WithMultiplier))
+            .Add "s_sw8_active", Array(ScoreEvent(TopLaneScore, WithMultiplier))
+            .Add "s_sw9_active", Array(ScoreEvent(TopLaneScore, WithMultiplier))
 
             ' The ball leaving the plunger lane for the first time is what
             ' actually starts play - this is what arms the ball save.
@@ -50,48 +57,64 @@ Sub CreateBaseMode()
             ' Once play is live, clear the just-started flag
             .Add "new_ball_active", Array("clear_ball_just_started", "coffee_callout")
 
+            'Drop target guarding Luke's kicker. Founder's Day Punch knocks it
+            'down itself, so that knockdown doesn't score.
+            .Add "drop_target_drop1_down{modes.fd_punch.active==False}", Array(ScoreEvent(DinerDropTargetScore, WithMultiplier))
+
             'Kickers
-            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment", ScoreEvent(DinerKickerScore))
-            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", ScoreEvent(GrandparentsScore))
+            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment", ScoreEvent(DinerKickerScore, WithMultiplier))
+            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", ScoreEvent(GrandparentsScore, WithMultiplier))
 
             'Bumpers
-            .Add "s_Bumper1_active", Array(ScoreEvent(BumperScore), "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
-            ' .Add "s_Bumper3_active", Array(ScoreEvent(BumperScore), "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
-            .Add "s_Bumper5_active", Array(ScoreEvent(BumperScore), "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
+            .Add "s_Bumper1_active", Array(ScoreEvent(BumperScore, WithMultiplier), "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
+            ' .Add "s_Bumper3_active", Array(ScoreEvent(BumperScore, WithMultiplier), "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
+            .Add "s_Bumper5_active", Array(ScoreEvent(BumperScore, WithMultiplier), "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
 
             'Slingshots
-            .Add "s_LeftSlingShot_active", Array(ScoreEvent(SlingScore), "total_switches_hit_increment", "backglass_flash2", "any_sling_hit")
-            .Add "s_RightSlingShot_active", Array(ScoreEvent(SlingScore), "total_switches_hit_increment", "backglass_flash4", "any_sling_hit")
+            .Add "s_LeftSlingShot_active", Array(ScoreEvent(SlingScore, WithMultiplier), "total_switches_hit_increment", "backglass_flash2", "any_sling_hit")
+            .Add "s_RightSlingShot_active", Array(ScoreEvent(SlingScore, WithMultiplier), "total_switches_hit_increment", "backglass_flash4", "any_sling_hit")
 
             'Spinners
-            .Add "s_left_spinner_active", Array(ScoreEvent(SpinnerScore), "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
-            .Add "s_right_spinner_active", Array(ScoreEvent(SpinnerScore), "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
+            .Add "s_left_spinner_active", Array(ScoreEvent(SpinnerScore, WithMultiplier), "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
+            .Add "s_right_spinner_active", Array(ScoreEvent(SpinnerScore, WithMultiplier), "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
             ' .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
 
             'Ramps
-            .Add "s_complete_left_ramp_active", Array(ScoreEvent(UnlitRampScore), "total_switches_hit_increment", "any_ramp_hit")
-            .Add "s_complete_right_ramp_active", Array(ScoreEvent(UnlitRampScore), "total_switches_hit_increment", "any_ramp_hit")
+            .Add "s_complete_left_ramp_active", Array(ScoreEvent(UnlitRampScore, WithMultiplier), "total_switches_hit_increment", "any_ramp_hit")
+            .Add "s_complete_right_ramp_active", Array(ScoreEvent(UnlitRampScore, WithMultiplier), "total_switches_hit_increment", "any_ramp_hit")
             .Add "s_left_ramp_gate_active", Array("ramp_sfx")
             .Add "s_right_ramp_gate_active", Array("ramp_sfx")
 
             'Star Targets
-            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
-            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
-            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
-            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
-            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
-            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
+            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore, WithMultiplier))
+            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore, WithMultiplier))
+            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore, WithMultiplier))
+            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore, WithMultiplier))
+            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore, WithMultiplier))
+            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore, WithMultiplier))
 
-            .Add "s_ST11_active", Array("play_jess_letter_show")
-            .Add "s_ST12_active", Array("play_jess_letter_show")
-            .Add "s_ST13_active", Array("play_jess_letter_show")
-            .Add "s_ST14_active", Array("play_jess_letter_show")
-            .Add "s_ST15_active", Array("play_dean_letter_show")
-            .Add "s_ST16_active", Array("play_dean_letter_show")
-            .Add "s_ST17_active", Array("play_dean_letter_show")
-            .Add "s_ST18_active", Array("play_dean_letter_show")
+            .Add "s_ST11_active", Array("play_jess_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST12_active", Array("play_jess_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST13_active", Array("play_jess_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST14_active", Array("play_jess_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST15_active", Array("play_dean_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST16_active", Array("play_dean_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST17_active", Array("play_dean_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "s_ST18_active", Array("play_dean_letter_show", ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "jess_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
+            .Add "dean_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
 
-            'TODO: Add JESS and DEAN hit targets, ramp rollovers, inlanes, bonus lanes, captive ball, ANY OTHERS?
+            'TODO: Add ramp rollovers, ANY OTHERS?
+
+            'Timed modes: a start award, and a count for the end of ball bonus
+            For Each timedMode In Array("dance_marathon", "town_meeting", "dinner", "fd_punch", "kims_antiques", "lbtb")
+                .Add "mode_" & timedMode & "_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "modes_played_increment")
+            Next
+
+            'Multiball wins, counted for the end of ball bonus
+            .Add "jess_wins", Array("multiballs_won_increment")
+            .Add "dean_wins", Array("multiballs_won_increment")
+            .Add "logan_ball_captured", Array("multiballs_won_increment")
 
             .Add "mode_eob_bonus_started", Array("base_music_stop")
             .Add "base_music_stop", baseMusicStopEvents
@@ -179,6 +202,14 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 0
                 End With
+                With .Variable("modes_played_count")
+                    .Action = "set"
+                    .Int = 0
+                End With
+                With .Variable("multiballs_won_count")
+                    .Action = "set"
+                    .Int = 0
+                End With
                 With .Variable("bonus_total")
                     .Action = "set"
                     .Int = 0
@@ -248,6 +279,18 @@ Sub CreateBaseMode()
             End With
             With .EventName("grandparents_count_increment")
                 With .Variable("grandparents_count")
+                    .Action = "add"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("modes_played_increment")
+                With .Variable("modes_played_count")
+                    .Action = "add"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("multiballs_won_increment")
+                With .Variable("multiballs_won_count")
                     .Action = "add"
                     .Int = 1
                 End With
@@ -381,17 +424,6 @@ Sub CreateBaseMode()
                 '     .Color = GIColor2700k
                 ' End With
             End With
-
-            ' The eight standup targets each latch their own insert.
-            ' s_ST11 -> l11, s_ST12 -> l12, ... s_ST18 -> l18
-            For x = 11 To 18
-                With .EventName("s_ST" & x & "_active")
-                    With .Lights("l" & x)
-                        .Color = StandupColor
-                        .Fade  = 60
-                    End With
-                End With
-            Next
         End With
 
         With .ShowPlayer()
@@ -630,6 +662,43 @@ Sub CreateBaseMode()
                 .State = 2
             End With
             .RestartEvents = Array("ball_save_new_ball_grace_period","ball_save_new_ball_saving_ball")
+        End With
+
+
+        '--- JESS / DEAN standups -------------------------------------------
+        ' Each standup latches its own insert (s_ST11 -> l11 ... s_ST18 -> l18).
+        ' Completing all four of a bank scores it and resets that bank.
+        ' NOTE: the profile must be defined before the shot groups - see the
+        ' note in bonus-lanes.vbs.
+        With .ShotProfiles("jd_target")
+            With .States("unlit")
+                .Show = "off"
+            End With
+            With .States("lit")
+                .Show = "on_color"
+                With .Tokens()
+                    .Add "color", StandupColor
+                End With
+            End With
+        End With
+
+        For x = 11 To 18
+            With .Shots("jd_target_" & x)
+                .Switch = "s_ST" & x
+                .Profile = "jd_target"
+                With .Tokens()
+                    .Add "lights", "l" & x
+                End With
+            End With
+        Next
+
+        With .ShotGroups("jess_targets")
+            .Shots = Array("jd_target_11", "jd_target_12", "jd_target_13", "jd_target_14")
+            .RestartEvents = Array("jess_targets_lit_complete")
+        End With
+        With .ShotGroups("dean_targets")
+            .Shots = Array("jd_target_15", "jd_target_16", "jd_target_17", "jd_target_18")
+            .RestartEvents = Array("dean_targets_lit_complete")
         End With
 
 

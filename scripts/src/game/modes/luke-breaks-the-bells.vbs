@@ -29,7 +29,7 @@ Sub CreateLbtbMode()
             
             .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
 
-            .Add "lbtb_shot_hit", Array("play_bells_sfx")
+            .Add "lbtb_shot_hit", Array("play_bells_sfx", ScoreEvent(LbtbShotScore, NoMultiplier))
             
 
             For x = 3 To 8
@@ -246,10 +246,6 @@ Sub CreateLbtbMode()
                     .Int = LbtbShotScore
                 End With
                 With .Variable("mode_lbtb_score")
-                    .Action = "add"
-                    .Int = LbtbShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = LbtbShotScore
                 End With

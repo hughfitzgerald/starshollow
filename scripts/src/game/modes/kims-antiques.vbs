@@ -20,6 +20,9 @@ Sub CreateKimsAntiquesMode()
         .StopEvents = Array("timer_kims_antiques_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
+            'Scoring
+            .Add "kims_antiques_shot_hit", Array(ScoreEvent(KimsAntiquesShotScore, NoMultiplier))
+
             .Add "mode_kims_antiques_started", Array("base_music_stop", "release_scoop_hold", "move_miss_kim")
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start")
@@ -131,10 +134,6 @@ Sub CreateKimsAntiquesMode()
                     .Int = KimsAntiquesShotScore
                 End With
                 With .Variable("mode_kims_antiques_score")
-                    .Action = "add"
-                    .Int = KimsAntiquesShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = KimsAntiquesShotScore
                 End With

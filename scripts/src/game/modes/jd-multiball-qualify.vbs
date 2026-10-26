@@ -35,6 +35,8 @@ Sub CreateJDMultiballQualifyMode()
             .Add "lock_unlit", Array("close_ramp_diverter")
 
             .Add "s_lock3_trigger_active{current_player.multiball_lock_locked_balls == 2}", Array("start_jd_multiball")
+
+            .Add "multiball_lock_multiball_lock_locked_ball", Array(ScoreEvent(BallLockScore, WithMultiplier))
         End With
 
         With .VariablePlayer()

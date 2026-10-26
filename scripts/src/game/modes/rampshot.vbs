@@ -24,7 +24,7 @@ Sub CreateRampshotsMode()
 
             'Handle successful ramp hits
             .Add "s_complete_right_ramp_active", Array("light_ramp")
-            ' .Add "s_complete_right_ramp_active{current_player.shot_ramp == 1}", Array(ScoreEvent(LitRampScore),"add_bonus","play_sfx_alert1")
+            ' .Add "s_complete_right_ramp_active{current_player.shot_ramp == 1}", Array(ScoreEvent(LitRampScore, WithMultiplier),"add_bonus","play_sfx_alert1")
 
         End With
 
@@ -106,14 +106,14 @@ Sub CreateRampshotsMode()
                     .Source = Array("shot"&x)
                     .Target = "shot"&(x+1)
                     .Events = Array("s_complete_right_ramp_active{current_player.shot_ramp == 1}")   'ramp shot made and is lit
-                    .EventsWhenTransitioning = Array(ScoreEvent(LitRampScore),"add_bonus","play_sfx_alert1")
+                    .EventsWhenTransitioning = Array(ScoreEvent(LitRampScore, WithMultiplier),"add_bonus","play_sfx_alert1")
                 End With
             Next
             With .Transitions()
                 .Source = Array("shot3")
                 .Target = "completed"
                 .Events = Array("s_complete_right_ramp_active{current_player.shot_ramp == 1}")   'ramp shot made and is lit
-                .EventsWhenTransitioning = Array("eb_now_lit",ScoreEvent(LitRampScore),"add_bonus","play_sfx_alert1")
+                .EventsWhenTransitioning = Array("eb_now_lit",ScoreEvent(LitRampScore, WithMultiplier),"add_bonus","play_sfx_alert1")
             End With
             With .Transitions()
                 .Source = Array("completed")

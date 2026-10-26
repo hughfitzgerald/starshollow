@@ -6,6 +6,11 @@ Sub CreateLLMultiballMode()
         .Debug = True
 
         With .EventPlayer()
+            'Scoring
+            .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
+            .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier))
+            .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
+
             .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide")
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
@@ -59,10 +64,6 @@ Sub CreateLLMultiballMode()
                     .Action = "set"
                     .String = """LOCK-AWAY LOGAN IN THE SCOOP"""
                 End With
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = LoganTotallyBashedScore
-                End With
                 With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = LoganTotallyBashedScore
@@ -73,10 +74,6 @@ Sub CreateLLMultiballMode()
                 End With
             End With
             With .EventName("logan_ball_captured")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = LoganLockedAwayScore
-                End With
                 With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = LoganLockedAwayScore
@@ -87,10 +84,6 @@ Sub CreateLLMultiballMode()
                 End With
             End With
             With .EventName("logan_bumper_hit")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = LoganBumperScore
-                End With
                 With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = LoganBumperScore

@@ -15,6 +15,9 @@ Sub CreateFdPunchMode()
         .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_fd_punch_post_mode_complete")
 
         With .EventPlayer()
+            'Scoring
+            .Add "fd_punch_shot_hit", Array(ScoreEvent(FdPunchShotScore, NoMultiplier))
+
             .Add "mode_fd_punch_started", Array("base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
             .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
             .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music", "play_fd_punch_post_mode")
@@ -215,10 +218,6 @@ Sub CreateFdPunchMode()
                     .Int = FdPunchShotScore
                 End With
                 With .Variable("mode_fd_punch_score")
-                    .Action = "add"
-                    .Int = FdPunchShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = FdPunchShotScore
                 End With

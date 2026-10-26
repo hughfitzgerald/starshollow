@@ -15,7 +15,7 @@ Sub CreateMysteryMode()
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("play_mystery_show")
 
             .Add "timer_mystery_show_complete", Array("select_random_mystery")
-            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_10m", "remove_mystery_show")
+            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_10m", "remove_mystery_points", "remove_mystery_show")
 
             .Add "restart_qualify_mystery", Array("check_minigame")
 
@@ -25,7 +25,9 @@ Sub CreateMysteryMode()
             .Add "mystery_eb", Array("eb_now_lit")
             .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
             .Add "mystery_ab", Array("add_a_ball")
-            .Add "mystery_10m", Array(ScoreEvent(MysteryBigScore))
+            .Add "mystery_10m", Array(ScoreEvent(MysteryBigScore, WithMultiplier))
+            .Add "mystery_small", Array(ScoreEvent(MysterySmallScore, WithMultiplier), "mystery_points:{points:" & MysterySmallScore & "}")
+            .Add "mystery_medium", Array(ScoreEvent(MysteryMediumScore, WithMultiplier), "mystery_points:{points:" & MysteryMediumScore & "}")
         End With
 
 
@@ -114,6 +116,14 @@ Sub CreateMysteryMode()
                 .Slide = "mystery1_10m"
                 .Action = "remove"
             End With
+            With .EventName("mystery_points")
+                .Slide = "mystery1_points"
+                .Action = "play"
+            End With
+            With .EventName("remove_mystery_points")
+                .Slide = "mystery1_points"
+                .Action = "remove"
+            End With
         End With
 
         With .RandomEventPlayer()
@@ -123,6 +133,8 @@ Sub CreateMysteryMode()
                 .Add "mystery_ib", 1
                 .Add "mystery_ab", 1
                 .Add "mystery_10m", 1
+                .Add "mystery_small", 1
+                .Add "mystery_medium", 1
 
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
                 ' .Add "mystery_full_protons{current_player.shot_proton_round6 == 0}", 0.7

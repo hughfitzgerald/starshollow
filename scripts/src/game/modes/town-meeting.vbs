@@ -23,6 +23,9 @@ Sub CreateTownMeetingMode()
         .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_town_meeting_post_mode_complete")
 
         With .EventPlayer()
+            'Scoring
+            .Add "tm_shot_hit", Array(ScoreEvent(TownMeetingShotScore, NoMultiplier))
+
             .Add "mode_town_meeting_started", Array("base_music_stop")
             .Add "mode_town_meeting_stopping", Array("tm_shots_off")
             .Add "timer_tm_mode_complete", Array("town_meeting_post_mode")
@@ -31,7 +34,7 @@ Sub CreateTownMeetingMode()
             .Add "timer_town_meeting_post_mode_complete", Array("base_music_start")
             .Add "timer_town_meeting_intro_delay_complete", Array("release_scoop_hold","start_guitar_music", "tm_start_shots")
 
-            .Add "tm_lukes_lit_hit", Array("tm_start_shots")
+            .Add "tm_lukes_lit_hit", Array("tm_start_shots", ScoreEvent(TownMeetingLukesShotScore, NoMultiplier))
 
             ' .Add "tm_shot_group_unlit_complete", Array("light_lukes")
             .Add "timer_tm_lukes_complete", Array("tm_shots_off", "light_lukes", "play_tm_coffee")
@@ -171,10 +174,6 @@ Sub CreateTownMeetingMode()
                     .Action = "add"
                     .Int = TownMeetingShotScore
                 End With
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = TownMeetingShotScore
-                End With
                 With .Variable("mode_town_meeting_score")
                     .Action = "add"
                     .Int = TownMeetingShotScore
@@ -183,10 +182,6 @@ Sub CreateTownMeetingMode()
 
             With .EventName("tm_lukes_lit_hit")
                 With .Variable("mode_display_score")
-                    .Action = "add"
-                    .Int = TownMeetingLukesShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = TownMeetingLukesShotScore
                 End With

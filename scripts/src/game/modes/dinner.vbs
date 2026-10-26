@@ -15,6 +15,9 @@ Sub CreateDinnerMode()
         .StopEvents = Array("timer_dinner_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
+            'Scoring
+            .Add "dinner_shot_hit", Array(ScoreEvent(DinnerShotScore, NoMultiplier))
+
             .Add "mode_dinner_started", Array("base_music_stop", "release_scoop_hold")
             .Add "mode_dinner_stopping", Array("dinner_shots_off")
             .Add "timer_dinner_mode_complete", Array("base_music_start")
@@ -107,10 +110,6 @@ Sub CreateDinnerMode()
                     .Int = DinnerShotScore
                 End With
                 With .Variable("mode_dinner_score")
-                    .Action = "add"
-                    .Int = DinnerShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = DinnerShotScore
                 End With
