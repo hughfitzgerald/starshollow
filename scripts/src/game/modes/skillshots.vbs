@@ -31,7 +31,7 @@ Sub CreateSkillshotsMode()
 
             'Handle successful skillshots
             .Add "s_skillshot_active", Array("ss1_achieved")
-            .Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", Array("ss_achieved:{points:500000}")
+            .Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", Array("ss_achieved:{points:500000}", "release_scoop_hold")
             .Add "s_HiddenUpperRightKicker_active", Array("ss2_achieved", "ss_achieved:{points:200000}")
             .Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", Array("ss3_achieved", "ss_achieved:{points:300000}")
             .Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", Array("ss3_achieved", "ss_achieved:{points:300000}")
