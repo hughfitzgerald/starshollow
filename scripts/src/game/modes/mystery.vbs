@@ -25,7 +25,7 @@ Sub CreateMysteryMode()
             .Add "mystery_eb", Array("eb_now_lit")
             .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
             .Add "mystery_ab", Array("add_a_ball")
-            .Add "mystery_10m", Array("score_10000000")
+            .Add "mystery_10m", Array(ScoreEvent(MysteryBigScore))
         End With
 
 

@@ -14,7 +14,7 @@
 
 '*********** GLOBALS ***********
 
-Dim ScoreArray: ScoreArray = Array(1,10,100,333,500,1000,2000,3000,3333,5000,10000,20000,30000,33333,50000,100000,200000,500000,1000000,10000000)
+' Score values live in _scores.vbs.
 
 ' Set by the plunger-lane listeners below; read by ZKEY for the plunger
 ' release sound. s_Trigger1 is a Trigger, so it has no BallCntOver.
@@ -34,11 +34,6 @@ Const LoganColor = "8800ff"
 Const MultiballColor = "1eff6b"
 Const StarLightColor = "ffff00"   ' yellow for star lights
 
-Const BonusMultiplierFactor = 1000
-Const BonusSpinnerFactor = 1000
-Const BonusBumperFactor = 2000
-Const BonusDinerFactor = 3000
-Const BonusGrandparentsFactor = 4000
 
 Class BaseMusic
     Public Name

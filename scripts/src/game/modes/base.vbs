@@ -10,7 +10,7 @@
 '
 ' No scoring anywhere in here yet - that's deliberate. When you add a score
 ' mode, the scoring goes on the SAME events already listed below, e.g.
-'     .Add "s_ST11_active", Array("score_1000")
+'     .Add "s_ST11_active", Array(ScoreEvent(StarTargetScore))
 '
 ' NOTE on how the inserts reset: GlfLightPlayer.Deactivate() calls PlayOff
 ' for every event it registered, so when this mode stops on ball_ended the
@@ -51,36 +51,36 @@ Sub CreateBaseMode()
             .Add "new_ball_active", Array("clear_ball_just_started", "coffee_callout")
 
             'Kickers
-            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment", "score_10000")
-            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", "score_10000")
+            .Add "s_DropTargetKicker_active", Array("diner_callout", "diner_count_increment", "total_switches_hit_increment", ScoreEvent(DinerKickerScore))
+            .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", ScoreEvent(GrandparentsScore))
 
             'Bumpers
-            .Add "s_Bumper1_active", Array("score_5000", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
-            ' .Add "s_Bumper3_active", Array("score_5000", "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
-            .Add "s_Bumper5_active", Array("score_5000", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
+            .Add "s_Bumper1_active", Array(ScoreEvent(BumperScore), "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
+            ' .Add "s_Bumper3_active", Array(ScoreEvent(BumperScore), "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
+            .Add "s_Bumper5_active", Array(ScoreEvent(BumperScore), "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
 
             'Slingshots
-            .Add "s_LeftSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash2", "any_sling_hit")
-            .Add "s_RightSlingShot_active", Array("score_5000", "total_switches_hit_increment", "backglass_flash4", "any_sling_hit")
+            .Add "s_LeftSlingShot_active", Array(ScoreEvent(SlingScore), "total_switches_hit_increment", "backglass_flash2", "any_sling_hit")
+            .Add "s_RightSlingShot_active", Array(ScoreEvent(SlingScore), "total_switches_hit_increment", "backglass_flash4", "any_sling_hit")
 
             'Spinners
-            .Add "s_left_spinner_active", Array("score_3000", "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
-            .Add "s_right_spinner_active", Array("score_3000", "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
+            .Add "s_left_spinner_active", Array(ScoreEvent(SpinnerScore), "play_spin1_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
+            .Add "s_right_spinner_active", Array(ScoreEvent(SpinnerScore), "play_spin2_show", "spinner_count_increment", "total_switches_hit_increment", "any_spinner_hit")
             ' .Add "s_left_spinner_active{device.timers.left_spinner.ticks == 0}", Array("coffee_callout")
 
             'Ramps
-            .Add "s_complete_left_ramp_active", Array("score_10000", "total_switches_hit_increment", "any_ramp_hit")
-            .Add "s_complete_right_ramp_active", Array("score_10000", "total_switches_hit_increment", "any_ramp_hit")
+            .Add "s_complete_left_ramp_active", Array(ScoreEvent(UnlitRampScore), "total_switches_hit_increment", "any_ramp_hit")
+            .Add "s_complete_right_ramp_active", Array(ScoreEvent(UnlitRampScore), "total_switches_hit_increment", "any_ramp_hit")
             .Add "s_left_ramp_gate_active", Array("ramp_sfx")
             .Add "s_right_ramp_gate_active", Array("ramp_sfx")
 
             'Star Targets
-            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
-            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
-            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
-            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
-            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
-            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment", "score_1000")
+            .Add "s_slim_target_ramp1_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
+            .Add "s_slim_target_ramp2_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
+            .Add "s_slim_target_ramp3_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
+            .Add "s_slim_target_ramp4_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
+            .Add "s_slim_target_hidden1_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
+            .Add "s_slim_target_hidden2_active", Array("star_target_hit", "total_switches_hit_increment", ScoreEvent(StarTargetScore))
 
             .Add "s_ST11_active", Array("play_jess_letter_show")
             .Add "s_ST12_active", Array("play_jess_letter_show")

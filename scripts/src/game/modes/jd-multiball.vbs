@@ -1,5 +1,3 @@
-Const JDRampScore = 10000
-Const JDWinScore = 1000000
 
 Sub CreateJDMultiballMode()
     With CreateGlfMode("jd_multiball", 1000)

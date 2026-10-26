@@ -1,7 +1,8 @@
 ' Score Mode.
 '
 ' This mode manages scoring and score multipliers.
-' Throughout the game, when a score is awarded use the scoring event "score_xxx" where xxx is a value in the ScoreArray
+' Throughout the game, when a score is awarded use the scoring event ScoreEvent(SomeScore), where SomeScore
+' is one of the named values in _scores.vbs. That fires "score_xxx", where xxx is the number of points.
 ' There are also playfield and bonus multiplier events defined below.
 
 
@@ -20,7 +21,7 @@ Sub CreateScoreMode()
 
             'Respond to score_xxx events
             'These events will add to the players score, accounting for the current score multiplier value
-            For each x in ScoreArray
+            For each x in ScoreValues.Items
                 With .EventName("score_"&x)  'reserved for spinner
                     With .Variable("score")
                         .Action = "add"

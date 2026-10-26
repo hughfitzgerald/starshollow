@@ -1,7 +1,6 @@
 ' Dinner Mode
 
 Const DinnerTime = 60   'seconds
-Const DinnerShotScore = 20000
 
 Sub CreateDinnerMode()
     Dim dinner_shots, shot

@@ -1,7 +1,6 @@
 ' Founder's Day Punch Mode
 
 Const FdPunchTime = 60   'seconds
-Const FdPunchShotScore = 20000
 
 Sub CreateFdPunchMode()
     Dim fd_punch_shots, shot

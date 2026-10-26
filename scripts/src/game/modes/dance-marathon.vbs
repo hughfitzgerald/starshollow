@@ -5,8 +5,6 @@
 
 Const DanceMarathonShotTime = 15   'seconds
 Const DanceMarathonModeNumShots = 4   'how long does the mode last in terms of numbers of shots, though it can be more if they make the shots quickly
-Const DanceMarathonFirstShotScore = 20000
-Const DanceMarathonSecondShotScore = 40000
 
 Sub CreateDanceMarathonMode()
     Dim dm_shots, groupSeen, shot, g
