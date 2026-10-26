@@ -4,105 +4,409 @@
     "rom": "starshollow",
     "rom_aliases": "",
     "config": {
+        "65": {
+            "toy": "Table Variables",
+            "user": ""
+        },
         "1": {
             "toy": "Start Button",
-            "public": "",
             "user": "E102 Blink fu500 fd550"
         },
         "2": {
             "toy": "Launch Button",
-            "public": "",
             "user": "E101 Deep_pink Blink fu500 fd550"
-        },
-        "23": {
-            "toy": "5 Flasher Outside Left",
-            "public": "",
-            "user": "E120 Crimson 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
-        },
-        "24": {
-            "toy": "5 Flasher Left",
-            "public": "",
-            "user": "E108 Crimson fd120"
-        },
-        "25": {
-            "toy": "5 Flasher Center",
-            "public": "",
-            "user": "E107 Light_sea_green fd120\/E120 Crimson 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
-        },
-        "26": {
-            "toy": "5 Flasher Right",
-            "public": "",
-            "user": "E109 Gold fd120"
-        },
-        "27": {
-            "toy": "5 Flasher Outside Right",
-            "public": "",
-            "user": "E120 Crimson 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
         },
         "43": {
             "toy": "Authentic Launch Ball",
-            "public": "",
             "user": "E101 Deep_pink Blink fu500 fd550"
         },
         "79": {
             "toy": "ZB Launch Ball",
-            "public": "",
             "user": "E101"
         },
         "89": {
             "toy": "Fire Button",
-            "public": "",
             "user": "E101 Deep_pink Blink fu500 fd550"
         },
         "106": {
             "toy": "RGB Fire Button",
-            "public": "",
             "user": "E101 Deep_pink Blink fu500 fd550"
         },
         "3": {
             "toy": "Extra Ball",
-            "public": "",
             "user": "OFF"
+        },
+        "115": {
+            "toy": "Speaker",
+            "user": ""
+        },
+        "36": {
+            "toy": "10 Bumper Back Left",
+            "user": ""
+        },
+        "37": {
+            "toy": "10 Bumper Back Center",
+            "user": ""
+        },
+        "38": {
+            "toy": "10 Bumper Back Right",
+            "user": ""
+        },
+        "33": {
+            "toy": "10 Bumper Middle Left",
+            "user": ""
+        },
+        "34": {
+            "toy": "10 Bumper Middle Center",
+            "user": ""
+        },
+        "35": {
+            "toy": "10 Bumper Middle Right",
+            "user": ""
+        },
+        "17": {
+            "toy": "Slingshot Left",
+            "user": ""
+        },
+        "18": {
+            "toy": "Slingshot Right",
+            "user": ""
+        },
+        "8": {
+            "toy": "Flipper Left",
+            "user": ""
+        },
+        "9": {
+            "toy": "Flipper Right",
+            "user": ""
+        },
+        "11": {
+            "toy": "8 Bumper Left",
+            "user": ""
+        },
+        "10": {
+            "toy": "8 Bumper Center",
+            "user": ""
+        },
+        "12": {
+            "toy": "8 Bumper Right",
+            "user": ""
+        },
+        "13": {
+            "toy": "8 Bumper Back",
+            "user": ""
+        },
+        "14": {
+            "toy": "Knocker",
+            "user": ""
+        },
+        "15": {
+            "toy": "Shaker",
+            "user": ""
+        },
+        "16": {
+            "toy": "Gear",
+            "user": ""
+        },
+        "30": {
+            "toy": "Beacon",
+            "user": ""
+        },
+        "32": {
+            "toy": "Fan",
+            "user": ""
+        },
+        "19": {
+            "toy": "Strobe",
+            "user": ""
+        },
+        "23": {
+            "toy": "5 Flasher Outside Left",
+            "user": "E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+        },
+        "24": {
+            "toy": "5 Flasher Left",
+            "user": "E108 Dark_red fd120"
+        },
+        "25": {
+            "toy": "5 Flasher Center",
+            "user": "E107 Light_sea_green fd120\/E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+        },
+        "26": {
+            "toy": "5 Flasher Right",
+            "user": "E109 Gold fd120"
+        },
+        "27": {
+            "toy": "5 Flasher Outside Right",
+            "user": "E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+        },
+        "20": {
+            "toy": "3 Flasher Left",
+            "user": ""
+        },
+        "21": {
+            "toy": "3 Flasher Center",
+            "user": ""
+        },
+        "22": {
+            "toy": "3 Flasher Right",
+            "user": ""
         },
         "28": {
             "toy": "RGB Flippers",
-            "public": "",
             "user": "ON Dark_violet"
         },
         "73": {
             "toy": "RGB Left Magnasave",
-            "public": "",
-            "user": "OFF"
+            "user": ""
         },
         "90": {
             "toy": "RGB Right Magnasave",
-            "public": "",
-            "user": "OFF"
+            "user": ""
+        },
+        "31": {
+            "toy": "RGB Undercab Smart",
+            "user": ""
+        },
+        "72": {
+            "toy": "RGB Undercab Complex",
+            "user": ""
+        },
+        "96": {
+            "toy": "RGB Undercab Complex MX",
+            "user": ""
+        },
+        "112": {
+            "toy": "Start MX",
+            "user": ""
+        },
+        "113": {
+            "toy": "Exit MX",
+            "user": ""
+        },
+        "114": {
+            "toy": "Speaker MX",
+            "user": ""
+        },
+        "74": {
+            "toy": "PF Left Flashers MX",
+            "user": ""
+        },
+        "80": {
+            "toy": "PF Left Effects MX",
+            "user": ""
+        },
+        "76": {
+            "toy": "PF Back Flashers MX",
+            "user": ""
+        },
+        "83": {
+            "toy": "PF Back Effects MX",
+            "user": ""
+        },
+        "82": {
+            "toy": "PF Back Strobe MX",
+            "user": ""
+        },
+        "84": {
+            "toy": "PF Back Beacon MX",
+            "user": ""
+        },
+        "87": {
+            "toy": "PF Back PBX MX",
+            "user": ""
+        },
+        "75": {
+            "toy": "PF Right Flashers MX",
+            "user": ""
+        },
+        "81": {
+            "toy": "PF Right Effects MX",
+            "user": ""
+        },
+        "85": {
+            "toy": "Flipper Button MX",
+            "user": ""
+        },
+        "86": {
+            "toy": "Flipper Button PBX MX",
+            "user": ""
+        },
+        "91": {
+            "toy": "Magnasave Left MX",
+            "user": ""
+        },
+        "92": {
+            "toy": "Magnasave Right MX",
+            "user": ""
+        },
+        "107": {
+            "toy": "Fire MX",
+            "user": ""
         },
         "108": {
             "toy": "Launch Ball MX",
-            "public": "",
             "user": "E101 Deep_pink Blink fu500 fd550"
+        },
+        "109": {
+            "toy": "Extra Ball MX",
+            "user": ""
+        },
+        "120": {
+            "toy": "PF Logo Effects MX SD",
+            "user": ""
+        },
+        "116": {
+            "toy": "PF Left Effects MX HD",
+            "user": ""
+        },
+        "117": {
+            "toy": "PF Right Effects MX HD",
+            "user": ""
+        },
+        "118": {
+            "toy": "PF Back Effects MX HD",
+            "user": ""
+        },
+        "119": {
+            "toy": "PF Logo Effects MX HD",
+            "user": ""
+        },
+        "121": {
+            "toy": "PF Left Flashers MX HD",
+            "user": ""
+        },
+        "122": {
+            "toy": "PF Right Flashers MX HD",
+            "user": ""
+        },
+        "123": {
+            "toy": "PF Back Flashers MX HD",
+            "user": ""
         },
         "6": {
             "toy": "Genre",
-            "public": "",
             "user": "ON"
         },
         "4": {
             "toy": "Coin",
-            "public": "",
             "user": "Blink fu500 fd550"
         },
         "5": {
             "toy": "How to play",
-            "public": "",
             "user": "ON"
         },
         "29": {
             "toy": "Exit",
-            "public": "",
             "user": "ON"
+        },
+        "39": {
+            "toy": "Custom Output 1",
+            "user": ""
+        },
+        "40": {
+            "toy": "Custom Output 2",
+            "user": ""
+        },
+        "93": {
+            "toy": "Custom Output 3",
+            "user": ""
+        },
+        "94": {
+            "toy": "Custom Output 4",
+            "user": ""
+        },
+        "97": {
+            "toy": "Custom Output 5",
+            "user": ""
+        },
+        "98": {
+            "toy": "Custom Output 6",
+            "user": ""
+        },
+        "99": {
+            "toy": "Custom Output 7",
+            "user": ""
+        },
+        "100": {
+            "toy": "Custom Output 8",
+            "user": ""
+        },
+        "41": {
+            "toy": "Custom RGB 1",
+            "user": ""
+        },
+        "42": {
+            "toy": "Custom RGB 2",
+            "user": ""
+        },
+        "101": {
+            "toy": "Custom RGB 3",
+            "user": ""
+        },
+        "102": {
+            "toy": "Custom RGB 4",
+            "user": ""
+        },
+        "110": {
+            "toy": "Custom MX 1",
+            "user": ""
+        },
+        "111": {
+            "toy": "Custom MX 2",
+            "user": ""
+        },
+        "62": {
+            "toy": "Topper Bell",
+            "user": ""
+        },
+        "103": {
+            "toy": "Shell Bell Small",
+            "user": ""
+        },
+        "104": {
+            "toy": "Shell Bell Large",
+            "user": ""
+        },
+        "105": {
+            "toy": "Repeating Bell",
+            "user": ""
+        },
+        "69": {
+            "toy": "Chime Unit High Tone",
+            "user": ""
+        },
+        "70": {
+            "toy": "Chime Unit Mid Tone",
+            "user": ""
+        },
+        "71": {
+            "toy": "Chime Unit Low Tone",
+            "user": ""
+        },
+        "77": {
+            "toy": "Chime Unit Extra-Low Tone",
+            "user": ""
+        },
+        "78": {
+            "toy": "Chime 5",
+            "user": ""
+        },
+        "68": {
+            "toy": "Hellball Motor",
+            "user": ""
+        },
+        "67": {
+            "toy": "Hellball Color",
+            "user": ""
+        },
+        "124": {
+            "toy": "Custom MX 3",
+            "user": ""
+        },
+        "125": {
+            "toy": "Custom MX 4",
+            "user": ""
         }
     }
 }
