@@ -38,7 +38,8 @@ Sub CreateDanceMarathonMode()
 
             .Add "mode_dance_marathon_started", Array("base_music_stop", "gi_lights_off", "open_orbit_gate")
             .Add "mode_dance_marathon_stopping", Array("dm_shots_off", "close_orbit_gate")
-            .Add "timer_dm_mode_complete", Array("base_music_start")
+            'Lasted the full timer without draining
+            .Add "timer_dm_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             .Add "timer_dm_intro_delay_tick{device.timers.dm_intro_delay.ticks == 27}", Array("dm_intro_show")
             .Add "timer_dm_intro_delay_complete", Array("release_scoop_hold", "dm_start_shots", "dm_show_off", "gi_lights_on")
@@ -146,6 +147,14 @@ Sub CreateDanceMarathonMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: this is also the event the mode stops on
+            With .EventName("timer_dm_mode_complete")
+                With .Variable("mode_dance_marathon_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("mode_dance_marathon_started")
                 With .Variable("mode_display_text")
                     .Action = "set"

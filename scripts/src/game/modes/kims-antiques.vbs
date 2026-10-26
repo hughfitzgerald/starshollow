@@ -2,7 +2,7 @@
 '
 '  - Lit shots score KimsAntiquesShotScore
 '  - Hitting Miss Kim (solid light) ends the mode straight away
-'  - Lasting the full timer without hitting her scores ModeCompleteScore
+'  - Lasting the full timer without hitting her scores KimsAntiquesCompleteScore
 
 Const KimsAntiquesTime = 60   'seconds
 Const KimsAntiquesMoveTime = 5
@@ -30,7 +30,7 @@ Sub CreateKimsAntiquesMode()
             .Add "mode_kims_antiques_started", Array("base_music_stop", "release_scoop_hold", "move_miss_kim")
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             'Survived the full timer without hitting Miss Kim
-            .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
+            .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(KimsAntiquesCompleteScore, NoMultiplier))
 
             
 
@@ -138,7 +138,7 @@ Sub CreateKimsAntiquesMode()
             With .EventName("timer_kims_antiques_mode_complete")
                 With .Variable("mode_kims_antiques_score")
                     .Action = "add"
-                    .Int = ModeCompleteScore
+                    .Int = KimsAntiquesCompleteScore
                 End With
             End With
 

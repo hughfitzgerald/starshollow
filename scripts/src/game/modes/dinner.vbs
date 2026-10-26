@@ -20,7 +20,8 @@ Sub CreateDinnerMode()
 
             .Add "mode_dinner_started", Array("base_music_stop", "release_scoop_hold")
             .Add "mode_dinner_stopping", Array("dinner_shots_off")
-            .Add "timer_dinner_mode_complete", Array("base_music_start")
+            'Lasted the full timer without draining
+            .Add "timer_dinner_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             
 
@@ -82,6 +83,14 @@ Sub CreateDinnerMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: this is also the event the mode stops on
+            With .EventName("timer_dinner_mode_complete")
+                With .Variable("mode_dinner_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("mode_dinner_started")
                 With .Variable("mode_display_text")
                     .Action = "set"

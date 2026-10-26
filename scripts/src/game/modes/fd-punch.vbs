@@ -22,7 +22,8 @@ Sub CreateFdPunchMode()
             .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
             .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music", "play_fd_punch_post_mode")
             .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
-            .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode")
+            'Lasted the full timer without draining
+            .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             .Add "s_complete_left_ramp_active", Array("fd_punch_right_redirect")
             
@@ -177,6 +178,14 @@ Sub CreateFdPunchMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: the post-mode outro follows
+            With .EventName("timer_fd_punch_mode_complete")
+                With .Variable("mode_fd_punch_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("fd_punch_left_redirect")
                 With .Variable("fd_punch_left_redirect")
                     .Action = "set"

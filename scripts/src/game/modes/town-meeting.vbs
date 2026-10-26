@@ -28,7 +28,8 @@ Sub CreateTownMeetingMode()
 
             .Add "mode_town_meeting_started", Array("base_music_stop")
             .Add "mode_town_meeting_stopping", Array("tm_shots_off")
-            .Add "timer_tm_mode_complete", Array("town_meeting_post_mode")
+            'Lasted the full timer without draining
+            .Add "timer_tm_mode_complete", Array("town_meeting_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             .Add "town_meeting_post_mode", Array("tm_shots_off", "stop_guitar_music", "play_town_meeting_post_mode")
             .Add "timer_town_meeting_post_mode_complete", Array("base_music_start")
@@ -147,6 +148,14 @@ Sub CreateTownMeetingMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: the post-mode outro follows
+            With .EventName("timer_tm_mode_complete")
+                With .Variable("mode_town_meeting_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("mode_town_meeting_started")
                 With .Variable("mode_display_text")
                     .Action = "set"

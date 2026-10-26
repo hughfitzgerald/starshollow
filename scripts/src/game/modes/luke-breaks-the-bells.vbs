@@ -24,7 +24,8 @@ Sub CreateLbtbMode()
             .Add "choose_bell_two", Array("choose_bell", "choose_bell_three")
             .Add "choose_bell_three", Array("choose_bell")
 
-            .Add "timer_lbtb_mode_complete", Array("lbtb_post_mode")
+            'Lasted the full timer without draining
+            .Add "timer_lbtb_mode_complete", Array("lbtb_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
             .Add "lbtb_post_mode", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "play_lbtb_post_mode")
             
             .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
@@ -205,6 +206,14 @@ Sub CreateLbtbMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: the post-mode outro follows
+            With .EventName("timer_lbtb_mode_complete")
+                With .Variable("mode_lbtb_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("bells_down")
                 With .Variable("bells_not_hit")
                     .Action = "set"
