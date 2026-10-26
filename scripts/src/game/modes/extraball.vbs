@@ -30,7 +30,7 @@ Sub CreateExtraBallMode()
             .Add "check_eb{current_player.extra_balls > 0}", Array("eb_lit")
 
             'handle successful eb collection
-            .Add "s_complete_right_ramp_active{current_player.shot_eb_ready == 1}", Array("play_eb_show","eb_achieved","score_100000") 
+            .Add "s_complete_right_ramp_active{current_player.shot_eb_ready == 1}", Array("play_eb_show","eb_achieved",ScoreEvent(ExtraBallScore)) 
 
             'handle callouts
             ' .Add "eb_now_lit{current_player.extra_ball_eb_awarded < "&MaxEBs&"}", Array("play_voc_extra_ball_is_ready") 

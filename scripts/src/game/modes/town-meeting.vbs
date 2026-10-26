@@ -2,8 +2,6 @@
 ' Town Meeting Mode
 
 Const TownMeetingTime = 60   'seconds
-Const TownMeetingShotScore = 20000
-Const TownMeetingLukesShotScore = 100000
 Const TownMeetingLukesTime = 20   'seconds
 
 Sub CreateTownMeetingMode()

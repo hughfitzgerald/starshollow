@@ -1,7 +1,3 @@
-Const LoganBumperScore = 10000
-Const LoganTotallyBashedScore = 10000000
-Const LoganLockedAwayScore = 10000000
-Const LoganScoreToWin = 150000
 ' Const LoganScoreToWin = 10000
 Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)

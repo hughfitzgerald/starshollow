@@ -31,15 +31,15 @@ Sub CreateSkillshotsMode()
 
             'Handle successful skillshots
             .Add "s_skillshot_active", Array("ss1_achieved")
-            .Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", Array("ss_achieved:{points:500000}", "release_scoop_hold")
-            .Add "s_HiddenUpperRightKicker_active", Array("ss2_achieved", "ss_achieved:{points:200000}")
-            .Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", Array("ss3_achieved", "ss_achieved:{points:300000}")
-            .Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", Array("ss3_achieved", "ss_achieved:{points:300000}")
-            .Add "s_sw9_active{current_player.shot_ss_bonus_lane_9 == 1}", Array("ss3_achieved", "ss_achieved:{points:300000}")
+            .Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", Array("ss_achieved:{points:" & Skillshot1Score & "}", "release_scoop_hold")
+            .Add "s_HiddenUpperRightKicker_active", Array("ss2_achieved", "ss_achieved:{points:" & Skillshot2Score & "}")
+            .Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", Array("ss3_achieved", "ss_achieved:{points:" & Skillshot3Score & "}")
+            .Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", Array("ss3_achieved", "ss_achieved:{points:" & Skillshot3Score & "}")
+            .Add "s_sw9_active{current_player.shot_ss_bonus_lane_9 == 1}", Array("ss3_achieved", "ss_achieved:{points:" & Skillshot3Score & "}")
 
-            .Add "ss1_achieved", Array("score_500000")
-            .Add "ss2_achieved", Array("score_200000")
-            .Add "ss3_achieved", Array("score_300000")
+            .Add "ss1_achieved", Array(ScoreEvent(Skillshot1Score))
+            .Add "ss2_achieved", Array(ScoreEvent(Skillshot2Score))
+            .Add "ss3_achieved", Array(ScoreEvent(Skillshot3Score))
             
             .Add "timer_skillshots_complete", Array("stop_skillshots")
             .Add "balldevice_scoop_ball_exiting", Array("stop_skillshots")

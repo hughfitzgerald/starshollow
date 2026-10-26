@@ -1,16 +1,15 @@
-Const hurryUpStartScore = 500000
-Const hurryUpEndScore = 2000000
 Const hurryUpDuration = 20 ' Duration in seconds
 Const hurryUpTickMs = 100 ' How often the value updates, in milliseconds
 Dim hurryUpSteps, hurryUpPointsPerStep
 
 ' GlfTimer ticks move by 1, so the timer counts steps and each step is worth hurryUpPointsPerStep.
-' Current value = hurryUpStartScore + ticks * hurryUpPointsPerStep
-hurryUpSteps = (hurryUpDuration * 1000) / hurryUpTickMs
-hurryUpPointsPerStep = (hurryUpEndScore - hurryUpStartScore) / hurryUpSteps
+' Current value = HurryUpStartScore + ticks * hurryUpPointsPerStep
+' (HurryUpStartScore and HurryUpEndScore are in _scores.vbs)
 
 Sub CreateHurryupMode()
     Dim x
+    hurryUpSteps = (hurryUpDuration * 1000) / hurryUpTickMs
+    hurryUpPointsPerStep = (HurryUpEndScore - HurryUpStartScore) / hurryUpSteps
     With CreateGlfMode("hurryup", 240)
         .StartEvents = Array("mode_base_started")
         .StopEvents = Array("mode_base_stopping")
@@ -22,7 +21,7 @@ Sub CreateHurryupMode()
             
             .Add "star_light_group_on_complete", Array("start_hurryup_timer")
 
-            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array("hurryup_achieved:{points:" & hurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep & "}")
+            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array("hurryup_achieved:{points:" & HurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep & "}")
 
             .Add "timer_hurryup_complete", Array("hurryup_is_over")
             .Add "hurryup_achieved", Array("hurryup_is_over")
@@ -82,7 +81,7 @@ Sub CreateHurryupMode()
             With .EventName("timer_hurryup_tick")
                 With .Variable("mode_display_score")
                     .Action = "set"
-                    .Int = hurryUpStartScore & " + kwargs.ticks * " & hurryUpPointsPerStep
+                    .Int = HurryUpStartScore & " + kwargs.ticks * " & hurryUpPointsPerStep
                 End With
             End With
             With .EventName("hurryup_achieved")

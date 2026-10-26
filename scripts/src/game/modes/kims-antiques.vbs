@@ -1,7 +1,6 @@
 ' KimsAntiques Mode
 
 Const KimsAntiquesTime = 60   'seconds
-Const KimsAntiquesShotScore = 20000
 Const KimsAntiquesMoveTime = 5
 
 Sub CreateKimsAntiquesMode()
