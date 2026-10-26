@@ -124,7 +124,7 @@ Dim HurryUpEndScore     : HurryUpEndScore     = ScoreX(40)
 
 '*********** MODES ***********
 Dim ModeStartScore              : ModeStartScore              = ScoreX(2)    ' each timed mode, when it starts
-Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(30)   ' NOT WIRED, the timed modes have no win condition yet
+Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(30)   ' Kim's Antiques: last the timer without hitting Miss Kim
 Dim DinnerShotScore             : DinnerShotScore             = ScoreX(5)
 Dim FdPunchShotScore            : FdPunchShotScore            = ScoreX(5)
 Dim LbtbShotScore               : LbtbShotScore               = ScoreX(5)
