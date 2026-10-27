@@ -124,8 +124,8 @@ Dim HurryUpEndScore     : HurryUpEndScore     = ScoreX(40)
 
 '*********** MODES ***********
 Dim ModeStartScore              : ModeStartScore              = ScoreX(2)    ' each timed mode, when it starts
-Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(30)   ' last a timed mode's full timer without draining
-Dim KimsAntiquesCompleteScore   : KimsAntiquesCompleteScore   = ScoreX(40)   ' same, and without hitting Miss Kim (a second way to lose)
+Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(10)   ' last a timed mode's full timer without draining
+Dim KimsAntiquesCompleteScore   : KimsAntiquesCompleteScore   = ScoreX(15)   ' same, and without hitting Miss Kim (a second way to lose)
 Dim DinnerShotScore             : DinnerShotScore             = ScoreX(5)
 Dim FdPunchShotScore            : FdPunchShotScore            = ScoreX(5)
 Dim LbtbShotScore               : LbtbShotScore               = ScoreX(5)
