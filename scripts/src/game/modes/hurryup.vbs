@@ -21,6 +21,11 @@ Sub CreateHurryupMode()
             
             .Add "star_light_group_on_complete", Array("start_hurryup_timer")
 
+            'Each star target scores only when hit unlit
+            For x = 1 To 6
+                .Add "star_light_" & x & "_unlit_hit", Array(ScoreEvent(StarTargetScore, WithMultiplier))
+            Next
+
             hurryUpValue = HurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep
             .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array(ScoreEventExpr(hurryUpValue, NoMultiplier), "hurryup_achieved:{points:" & hurryUpValue & "}")
 
@@ -99,10 +104,7 @@ Sub CreateHurryupMode()
                 With .Tokens()
                     .Add "lights", "l" & (x + 65)
                 End With
-                With .ControlEvents()
-                    .Events = Array("s_slim_target_ramp" & x & "_active")
-                    .State = 1
-                End With
+                .Switch = "s_slim_target_ramp" & x
             End With
         Next
         For x = 1 To 2
@@ -111,10 +113,7 @@ Sub CreateHurryupMode()
                 With .Tokens()
                     .Add "lights", "l" & (x + 69)
                 End With
-                With .ControlEvents()
-                    .Events = Array("s_slim_target_hidden" & x & "_active")
-                    .State = 1
-                End With
+                .Switch = "s_slim_target_hidden" & x
             End With
         Next
         
