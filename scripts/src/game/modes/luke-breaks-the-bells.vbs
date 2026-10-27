@@ -13,7 +13,7 @@ Sub CreateLbtbMode()
 
         With .EventPlayer()
             .Debug = True
-            .Add "mode_lbtb_started", Array("base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei")
+            .Add "mode_lbtb_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei")
             .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "stop_lbtb_luke_and_lorelei")
             .Add "timer_lbtb_post_mode_complete", Array("base_music_start")
 
@@ -24,12 +24,13 @@ Sub CreateLbtbMode()
             .Add "choose_bell_two", Array("choose_bell", "choose_bell_three")
             .Add "choose_bell_three", Array("choose_bell")
 
-            .Add "timer_lbtb_mode_complete", Array("lbtb_post_mode")
+            'Lasted the full timer without draining
+            .Add "timer_lbtb_mode_complete", Array("lbtb_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
             .Add "lbtb_post_mode", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "play_lbtb_post_mode")
             
             .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
 
-            .Add "lbtb_shot_hit", Array("play_bells_sfx")
+            .Add "lbtb_shot_hit", Array("play_bells_sfx", ScoreEvent(LbtbShotScore, NoMultiplier))
             
 
             For x = 3 To 8
@@ -205,6 +206,18 @@ Sub CreateLbtbMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: the post-mode outro follows
+            With .EventName("timer_lbtb_mode_complete")
+                With .Variable("mode_lbtb_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("bells_down")
                 With .Variable("bells_not_hit")
                     .Action = "set"
@@ -219,6 +232,11 @@ Sub CreateLbtbMode()
             End With
 
             With .EventName("mode_lbtb_started")
+                'Start award, before mode_display_score is copied from it below
+                With .Variable("mode_lbtb_score")
+                    .Action = "add"
+                    .Int = ModeStartScore
+                End With
                 With .Variable("mode_display_text")
                     .Action = "set"
                     .String = """LUKE BREAKS THE BELLS!"""
@@ -246,10 +264,6 @@ Sub CreateLbtbMode()
                     .Int = LbtbShotScore
                 End With
                 With .Variable("mode_lbtb_score")
-                    .Action = "add"
-                    .Int = LbtbShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = LbtbShotScore
                 End With

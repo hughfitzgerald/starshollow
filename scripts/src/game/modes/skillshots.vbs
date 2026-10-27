@@ -37,9 +37,9 @@ Sub CreateSkillshotsMode()
             .Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", Array("ss3_achieved", "ss_achieved:{points:" & Skillshot3Score & "}")
             .Add "s_sw9_active{current_player.shot_ss_bonus_lane_9 == 1}", Array("ss3_achieved", "ss_achieved:{points:" & Skillshot3Score & "}")
 
-            .Add "ss1_achieved", Array(ScoreEvent(Skillshot1Score))
-            .Add "ss2_achieved", Array(ScoreEvent(Skillshot2Score))
-            .Add "ss3_achieved", Array(ScoreEvent(Skillshot3Score))
+            .Add "ss1_achieved", Array(ScoreEvent(Skillshot1Score, WithMultiplier))
+            .Add "ss2_achieved", Array(ScoreEvent(Skillshot2Score, WithMultiplier))
+            .Add "ss3_achieved", Array(ScoreEvent(Skillshot3Score, WithMultiplier))
             
             .Add "timer_skillshots_complete", Array("stop_skillshots")
             .Add "balldevice_scoop_ball_exiting", Array("stop_skillshots")

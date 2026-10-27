@@ -15,9 +15,13 @@ Sub CreateDinnerMode()
         .StopEvents = Array("timer_dinner_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_dinner_started", Array("base_music_stop", "release_scoop_hold")
+            'Scoring
+            .Add "dinner_shot_hit", Array(ScoreEvent(DinnerShotScore, NoMultiplier))
+
+            .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold")
             .Add "mode_dinner_stopping", Array("dinner_shots_off")
-            .Add "timer_dinner_mode_complete", Array("base_music_start")
+            'Lasted the full timer without draining
+            .Add "timer_dinner_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             
 
@@ -79,7 +83,24 @@ Sub CreateDinnerMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: this is also the event the mode stops on
+            With .EventName("timer_dinner_mode_complete")
+                With .Variable("mode_dinner_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("mode_dinner_started")
+                'Start award, before mode_display_score is copied from it below
+                With .Variable("mode_dinner_score")
+                    .Action = "add"
+                    .Int = ModeStartScore
+                End With
                 With .Variable("mode_display_text")
                     .Action = "set"
                     .String = """FRIDAY NIGHT DINNER"""
@@ -107,10 +128,6 @@ Sub CreateDinnerMode()
                     .Int = DinnerShotScore
                 End With
                 With .Variable("mode_dinner_score")
-                    .Action = "add"
-                    .Int = DinnerShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = DinnerShotScore
                 End With

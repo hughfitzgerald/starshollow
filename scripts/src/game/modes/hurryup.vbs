@@ -7,7 +7,7 @@ Dim hurryUpSteps, hurryUpPointsPerStep
 ' (HurryUpStartScore and HurryUpEndScore are in _scores.vbs)
 
 Sub CreateHurryupMode()
-    Dim x
+    Dim x, hurryUpValue
     hurryUpSteps = (hurryUpDuration * 1000) / hurryUpTickMs
     hurryUpPointsPerStep = (HurryUpEndScore - HurryUpStartScore) / hurryUpSteps
     With CreateGlfMode("hurryup", 240)
@@ -21,7 +21,13 @@ Sub CreateHurryupMode()
             
             .Add "star_light_group_on_complete", Array("start_hurryup_timer")
 
-            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array("hurryup_achieved:{points:" & HurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep & "}")
+            'Each star target scores only when hit unlit
+            For x = 1 To 6
+                .Add "star_light_" & x & "_unlit_hit", Array(ScoreEvent(StarTargetScore, WithMultiplier))
+            Next
+
+            hurryUpValue = HurryUpStartScore & " + device.timers.hurryup.ticks * " & hurryUpPointsPerStep
+            .Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", Array(ScoreEventExpr(hurryUpValue, NoMultiplier), "hurryup_achieved:{points:" & hurryUpValue & "}")
 
             .Add "timer_hurryup_complete", Array("hurryup_is_over")
             .Add "hurryup_achieved", Array("hurryup_is_over")
@@ -84,12 +90,6 @@ Sub CreateHurryupMode()
                     .Int = HurryUpStartScore & " + kwargs.ticks * " & hurryUpPointsPerStep
                 End With
             End With
-            With .EventName("hurryup_achieved")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = "kwargs.points"
-                End With
-            End With
         End With
 
 
@@ -104,10 +104,7 @@ Sub CreateHurryupMode()
                 With .Tokens()
                     .Add "lights", "l" & (x + 65)
                 End With
-                With .ControlEvents()
-                    .Events = Array("s_slim_target_ramp" & x & "_active")
-                    .State = 1
-                End With
+                .Switch = "s_slim_target_ramp" & x
             End With
         Next
         For x = 1 To 2
@@ -116,10 +113,7 @@ Sub CreateHurryupMode()
                 With .Tokens()
                     .Add "lights", "l" & (x + 69)
                 End With
-                With .ControlEvents()
-                    .Events = Array("s_slim_target_hidden" & x & "_active")
-                    .State = 1
-                End With
+                .Switch = "s_slim_target_hidden" & x
             End With
         Next
         

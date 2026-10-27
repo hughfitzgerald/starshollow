@@ -171,7 +171,13 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("mystery1_eb") : .Gif = "Mystery1-EB.gif" : End With
     With CreateDmdSlide("mystery1_ab") : .Gif = "Mystery1-AB.gif" : End With
     With CreateDmdSlide("mystery1_ib") : .Gif = "Mystery1-IB.gif" : End With
+    ' TODO: Mystery1-10M.gif says 10M, but MysteryBigScore in _scores.vbs is
+    ' now 50x BaseScore (2.5M at a 50,000 base).
     With CreateDmdSlide("mystery1_10m") : .Gif = "Mystery1-10M.gif" : End With
+    ' TODO: GIFs for the MysterySmallScore / MysteryMediumScore awards. Until
+    ' these exist the slide player asks for them and nothing is shown.
+    ' With CreateDmdSlide("mystery1_small") : .Gif = "Mystery1-Small.gif" : End With
+    ' With CreateDmdSlide("mystery1_medium") : .Gif = "Mystery1-Medium.gif" : End With
 
     With CreateDmdSlide("skillshot")
         .Text = "SKILLSHOT! (points:,)"

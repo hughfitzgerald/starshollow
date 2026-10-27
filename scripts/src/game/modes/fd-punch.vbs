@@ -15,11 +15,15 @@ Sub CreateFdPunchMode()
         .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_fd_punch_post_mode_complete")
 
         With .EventPlayer()
-            .Add "mode_fd_punch_started", Array("base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
+            'Scoring
+            .Add "fd_punch_shot_hit", Array(ScoreEvent(FdPunchShotScore, NoMultiplier))
+
+            .Add "mode_fd_punch_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
             .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
             .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music", "play_fd_punch_post_mode")
             .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
-            .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode")
+            'Lasted the full timer without draining
+            .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             .Add "s_complete_left_ramp_active", Array("fd_punch_right_redirect")
             
@@ -174,6 +178,18 @@ Sub CreateFdPunchMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: the post-mode outro follows
+            With .EventName("timer_fd_punch_mode_complete")
+                With .Variable("mode_fd_punch_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("fd_punch_left_redirect")
                 With .Variable("fd_punch_left_redirect")
                     .Action = "set"
@@ -188,6 +204,11 @@ Sub CreateFdPunchMode()
             End With
 
             With .EventName("mode_fd_punch_started")
+                'Start award, before mode_display_score is copied from it below
+                With .Variable("mode_fd_punch_score")
+                    .Action = "add"
+                    .Int = ModeStartScore
+                End With
                 With .Variable("mode_display_text")
                     .Action = "set"
                     .String = """FOUNDER'S DAY PUNCH"""
@@ -215,10 +236,6 @@ Sub CreateFdPunchMode()
                     .Int = FdPunchShotScore
                 End With
                 With .Variable("mode_fd_punch_score")
-                    .Action = "add"
-                    .Int = FdPunchShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = FdPunchShotScore
                 End With

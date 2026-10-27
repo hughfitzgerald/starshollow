@@ -7,13 +7,19 @@ Sub CreateJDMultiballMode()
         With .EventPlayer()
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
-            .Add "jess_ramp", Array("jd_ramp_score")
-            .Add "dean_ramp", Array("jd_ramp_score")
 
-            .Add "jess_hit3_hit", Array("jess_wins")
-            .Add "dean_hit3_hit", Array("dean_wins")
-            .Add "jess_wins", Array("jd_win_score")
-            .Add "dean_wins", Array("jd_win_score")
+            'Scoring. The first hit on each ramp is a jackpot, every hit after
+            'that on the same ramp is a super jackpot, and the fourth wins.
+            'Score events go out straight from the shot hits, ahead of
+            'jess_wins / dean_wins, which stop this mode.
+            .Add "jess_unlit_hit", Array(ScoreEvent(JDRampScore, NoMultiplier), "jd_jackpot")
+            .Add "dean_unlit_hit", Array(ScoreEvent(JDRampScore, NoMultiplier), "jd_jackpot")
+            .Add "jess_hit1_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
+            .Add "dean_hit1_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
+            .Add "jess_hit2_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
+            .Add "dean_hit2_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
+            .Add "jess_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jd_super_jackpot", "jd_win_score", "jess_wins")
+            .Add "dean_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jd_super_jackpot", "jd_win_score", "dean_wins")
 
             .Add "balldevice_scoop_ball_entered", Array("release_scoop_hold")
         End With
@@ -66,12 +72,8 @@ Sub CreateJDMultiballMode()
                     .String = """"""
                 End With
             End With
-            With .EventName("jd_ramp_score")
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = JDRampScore
-                End With
-                With .Variable("mode_jd_ramp_score")
+            With .EventName("jd_jackpot")
+                With .Variable("mode_jdmb_score")
                     .Action = "add"
                     .Int = JDRampScore
                 End With
@@ -80,12 +82,18 @@ Sub CreateJDMultiballMode()
                     .Int = JDRampScore
                 End With
             End With
-            With .EventName("jd_win_score")
-                With .Variable("score")
+            With .EventName("jd_super_jackpot")
+                With .Variable("mode_jdmb_score")
                     .Action = "add"
-                    .Int = JDWinScore
+                    .Int = JDSuperJackpotScore
                 End With
-                With .Variable("mode_jd_win_score")
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = JDSuperJackpotScore
+                End With
+            End With
+            With .EventName("jd_win_score")
+                With .Variable("mode_jdmb_score")
                     .Action = "add"
                     .Int = JDWinScore
                 End With

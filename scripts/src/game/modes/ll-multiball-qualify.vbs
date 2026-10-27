@@ -15,6 +15,9 @@ Sub CreateLLMultiballQualifyMode()
             .Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", Array("release_captive_ramp_kicker_hold")
             .Add "logan_qualify_hit1_hit", Array("dt2_knockdown")
             .Add "s_CaptiveRampKicker_active", Array("logan_qualify_complete")
+
+            'Same 2 second cooldown as the logan_qualify shot, so a rattling captive ball scores once
+            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0}", Array(ScoreEvent(LoganCaptiveScore, WithMultiplier))
         End With
 
         With .Shots("logan_light")

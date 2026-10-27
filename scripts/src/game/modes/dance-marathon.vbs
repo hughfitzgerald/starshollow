@@ -32,9 +32,14 @@ Sub CreateDanceMarathonMode()
         .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
 
         With .EventPlayer()
-            .Add "mode_dance_marathon_started", Array("base_music_stop", "gi_lights_off", "open_orbit_gate")
+            'Scoring
+            .Add "dm_first_shot_hit", Array(ScoreEvent(DanceMarathonFirstShotScore, NoMultiplier))
+            .Add "dm_second_shot_hit", Array(ScoreEvent(DanceMarathonSecondShotScore, NoMultiplier))
+
+            .Add "mode_dance_marathon_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "gi_lights_off", "open_orbit_gate")
             .Add "mode_dance_marathon_stopping", Array("dm_shots_off", "close_orbit_gate")
-            .Add "timer_dm_mode_complete", Array("base_music_start")
+            'Lasted the full timer without draining
+            .Add "timer_dm_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
             .Add "timer_dm_intro_delay_tick{device.timers.dm_intro_delay.ticks == 27}", Array("dm_intro_show")
             .Add "timer_dm_intro_delay_complete", Array("release_scoop_hold", "dm_start_shots", "dm_show_off", "gi_lights_on")
@@ -142,7 +147,24 @@ Sub CreateDanceMarathonMode()
         End With
 
         With .VariablePlayer()
+            'Mode complete: this is also the event the mode stops on
+            With .EventName("timer_dm_mode_complete")
+                With .Variable("mode_dance_marathon_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
+            End With
+
             With .EventName("mode_dance_marathon_started")
+                'Start award, before mode_display_score is copied from it below
+                With .Variable("mode_dance_marathon_score")
+                    .Action = "add"
+                    .Int = ModeStartScore
+                End With
                 With .Variable("mode_display_text")
                     .Action = "set"
                     .String = """DANCE MARATHON"""
@@ -173,10 +195,6 @@ Sub CreateDanceMarathonMode()
                     .Action = "add"
                     .Int = DanceMarathonFirstShotScore
                 End With
-                With .Variable("score")
-                    .Action = "add"
-                    .Int = DanceMarathonFirstShotScore
-                End With
             End With
             With .EventName("dm_second_shot_hit")
                 With .Variable("mode_display_score")
@@ -184,10 +202,6 @@ Sub CreateDanceMarathonMode()
                     .Int = DanceMarathonSecondShotScore
                 End With
                 With .Variable("mode_dance_marathon_score")
-                    .Action = "add"
-                    .Int = DanceMarathonSecondShotScore
-                End With
-                With .Variable("score")
                     .Action = "add"
                     .Int = DanceMarathonSecondShotScore
                 End With
