@@ -27,7 +27,7 @@ Sub CreateKimsAntiquesMode()
             'Scoring
             .Add "kims_antiques_shot_hit", Array(ScoreEvent(KimsAntiquesShotScore, NoMultiplier))
 
-            .Add "mode_kims_antiques_started", Array("base_music_stop", "release_scoop_hold", "move_miss_kim")
+            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold", "move_miss_kim")
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             'Survived the full timer without hitting Miss Kim
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(KimsAntiquesCompleteScore, NoMultiplier))
@@ -113,6 +113,11 @@ Sub CreateKimsAntiquesMode()
 
         With .VariablePlayer()
             With .EventName("mode_kims_antiques_started")
+                'Start award, before mode_display_score is copied from it below
+                With .Variable("mode_kims_antiques_score")
+                    .Action = "add"
+                    .Int = ModeStartScore
+                End With
                 With .Variable("mode_display_text")
                     .Action = "set"
                     .String = """KIM'S ANTIQUES"""
@@ -137,6 +142,10 @@ Sub CreateKimsAntiquesMode()
             'Same event the mode stops on, so add to the recap here rather than on a follow-on event
             With .EventName("timer_kims_antiques_mode_complete")
                 With .Variable("mode_kims_antiques_score")
+                    .Action = "add"
+                    .Int = KimsAntiquesCompleteScore
+                End With
+                With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = KimsAntiquesCompleteScore
                 End With

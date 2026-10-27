@@ -26,7 +26,7 @@ Sub CreateTownMeetingMode()
             'Scoring
             .Add "tm_shot_hit", Array(ScoreEvent(TownMeetingShotScore, NoMultiplier))
 
-            .Add "mode_town_meeting_started", Array("base_music_stop")
+            .Add "mode_town_meeting_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop")
             .Add "mode_town_meeting_stopping", Array("tm_shots_off")
             'Lasted the full timer without draining
             .Add "timer_tm_mode_complete", Array("town_meeting_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
@@ -154,9 +154,18 @@ Sub CreateTownMeetingMode()
                     .Action = "add"
                     .Int = ModeCompleteScore
                 End With
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = ModeCompleteScore
+                End With
             End With
 
             With .EventName("mode_town_meeting_started")
+                'Start award, before mode_display_score is copied from it below
+                With .Variable("mode_town_meeting_score")
+                    .Action = "add"
+                    .Int = ModeStartScore
+                End With
                 With .Variable("mode_display_text")
                     .Action = "set"
                     .String = """TOWN MEETING"""

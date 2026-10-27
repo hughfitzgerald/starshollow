@@ -106,9 +106,9 @@ Sub CreateBaseMode()
 
             'TODO: Add ramp rollovers, ANY OTHERS?
 
-            'Timed modes: a start award, and a count for the end of ball bonus
+            'Timed modes, counted for the end of ball bonus. Their start awards are in each mode.
             For Each timedMode In Array("dance_marathon", "town_meeting", "dinner", "fd_punch", "kims_antiques", "lbtb")
-                .Add "mode_" & timedMode & "_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "modes_played_increment")
+                .Add "mode_" & timedMode & "_started", Array("modes_played_increment")
             Next
 
             'Multiball wins, counted for the end of ball bonus
