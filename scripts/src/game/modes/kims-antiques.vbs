@@ -61,12 +61,12 @@ Sub CreateKimsAntiquesMode()
 
         With .SoundPlayer()
             With .EventName("mode_kims_antiques_started")
-                .Key = "key_mus_guitarmode"
-                .Sound = "mus_guitarmode"
+                .Key = "key_mus_ka"
+                .Sound = "mus_ka"
             End With
             With .EventName("mode_kims_antiques_stopping")
-                .Key = "key_mus_guitarmode"
-                .Sound = "mus_guitarmode"
+                .Key = "key_mus_ka"
+                .Sound = "mus_ka"
                 .Action = "stop"
             End With
             ' With .EventName("kims_antiques_voc_1")
