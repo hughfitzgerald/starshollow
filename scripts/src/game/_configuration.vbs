@@ -738,6 +738,8 @@ Sub CreateSounds()
     AddSoundEffect "sfx_bells_break2", 1
     AddSoundEffect "sfx_bells_break3", 1
     
+    
+    AddMusic       "mus_fd_punch", 241, -1
     AddCallout     "voc_fd_punch_intro", 6
     AddCallout     "voc_fd_punch_bathroom", 3
     AddCallout     "voc_fd_punch_fallinahole", 3

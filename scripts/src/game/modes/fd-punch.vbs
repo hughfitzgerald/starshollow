@@ -19,8 +19,8 @@ Sub CreateFdPunchMode()
             .Add "fd_punch_shot_hit", Array(ScoreEvent(FdPunchShotScore, NoMultiplier))
 
             .Add "mode_fd_punch_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
-            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music")
-            .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_guitar_music", "play_fd_punch_post_mode")
+            .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_fd_punch_music")
+            .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_fd_punch_music", "play_fd_punch_post_mode")
             .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
             'Lasted the full timer without draining
             .Add "timer_fd_punch_mode_complete", Array("fd_punch_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
@@ -32,7 +32,7 @@ Sub CreateFdPunchMode()
 
             
 
-            .Add "timer_fd_punch_intro_delay_complete", Array("release_scoop_hold","start_guitar_music")
+            .Add "timer_fd_punch_intro_delay_complete", Array("release_scoop_hold","start_fd_punch_music")
 
             ' For Each shot In fd_punch_shots
             '     .Add shot.Name & "_hit", Array("fd_punch_shot_hit")
@@ -94,13 +94,13 @@ Sub CreateFdPunchMode()
                 .Sound = "voc_fd_punch_idontfeelgood"
                 .Priority = 100
             End With
-            With .EventName("start_guitar_music")
-                .Key = "key_mus_guitarmode"
-                .Sound = "mus_guitarmode"
+            With .EventName("start_fd_punch_music")
+                .Key = "key_mus_fd_punch"
+                .Sound = "mus_fd_punch"
             End With
-            With .EventName("stop_guitar_music")
-                .Key = "key_mus_guitarmode"
-                .Sound = "mus_guitarmode"
+            With .EventName("stop_fd_punch_music")
+                .Key = "key_mus_fd_punch"
+                .Sound = "mus_fd_punch"
                 .Action = "stop"
             End With
             With .EventName("fd_punch_voc_1")
