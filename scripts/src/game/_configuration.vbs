@@ -739,6 +739,8 @@ Sub CreateSounds()
     AddSoundEffect "sfx_bells_break3", 1
 
     AddMusic       "mus_ka",  144, -1
+
+    AddMusic       "mus_dinner", 193, -1
     
     
     AddMusic       "mus_fd_punch", 241, -1

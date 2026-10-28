@@ -32,12 +32,12 @@ Sub CreateDinnerMode()
 
         With .SoundPlayer()
             With .EventName("mode_dinner_started")
-                .Key = "key_mus_guitarmode"
-                .Sound = "mus_guitarmode"
+                .Key = "key_mus_dinner"
+                .Sound = "mus_dinner"
             End With
             With .EventName("mode_dinner_stopping")
-                .Key = "key_mus_guitarmode"
-                .Sound = "mus_guitarmode"
+                .Key = "key_mus_dinner"
+                .Sound = "mus_dinner"
                 .Action = "stop"
             End With
             ' With .EventName("dinner_voc_1")
