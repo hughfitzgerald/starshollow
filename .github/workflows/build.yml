@@ -75,7 +75,7 @@ jobs:
       - name: Download vpxtool
         run: |
           mkdir vpxtool
-          curl -sSL https://github.com/francisdb/vpxtool/releases/download/v0.34.8/vpxtool-Linux-x86_64-v0.34.8.tar.gz | tar -xz -C vpxtool
+          curl -sSL https://github.com/francisdb/vpxtool/releases/download/v0.38.0/vpxtool-Linux-x86_64-v0.38.0.tar.gz | tar -xz -C vpxtool
           # Put vpxtool on PATH so scripts/vpx-tool.js can find it
           echo "$PWD/vpxtool" >> "$GITHUB_PATH"
 
