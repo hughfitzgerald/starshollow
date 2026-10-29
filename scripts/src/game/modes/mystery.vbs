@@ -18,13 +18,12 @@ Sub CreateMysteryMode()
             .Add "timer_mystery_show_tick{devices.timers.mystery_show.ticks == 1}", Array("award_mystery")
             .Add "timer_mystery_show_complete", Array("restart_qualify_mystery", "remove_mystery_show")
 
-            .Add "restart_qualify_mystery", Array("check_minigame")
+            .Add "restart_qualify_mystery{modes.jd_multiball.active==False}", Array("check_minigame")
 
             .Add "inlane_1_lit_hit", Array("mystery_is_ready")
             .Add "inlane_2_lit_hit", Array("mystery_is_ready")
 
             For x = 0 to UBound(mysteryAwards)
-                ' .Add "mystery_" & mysteryAwards(x).Short, Array(mysteryAwards(x).EventName)
                 .Add "timer_mystery_delay_complete{current_player.mystery_award == " & x & "}", Array(mysteryAwards(x).EventName)
             Next
         End With
@@ -96,8 +95,8 @@ Sub CreateMysteryMode()
         With .RandomEventPlayer()
             '.Debug = True
             With .EventName("select_random_mystery")
-                For x = 0 to UBound(mysteryAwards)
-                    .Add "mystery_" & mysteryAwards(x).Short, 1
+                For x = 4 to UBound(mysteryAwards)
+                    .Add "mystery_" & mysteryAwards(x).Short, mysteryAwards(x).Probability
                 Next
 
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1

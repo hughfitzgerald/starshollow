@@ -533,8 +533,12 @@ Sub DmdBuild_Mystery(entry, choice)
   woman.Alignment = FlexDMD_Align_Top
   scene.AddActor woman
   
-  Dim words
-  words = Array(mysteryAwards(0).Text, mysteryAwards(1).Text, mysteryAwards(2).Text, mysteryAwards(3).Text)
+  Dim words, i, groupNumber
+  ' For i = 0 to Int(UBound(mysteryAwards) / 4)
+  For i = 0 to 10
+    If i * 4 + (choice Mod 4) = choice Then groupNumber = i
+  Next
+  words = Array(mysteryAwards(groupNumber * 4 + 0).Text, mysteryAwards(groupNumber * 4 + 1).Text, mysteryAwards(groupNumber * 4 + 2).Text, mysteryAwards(groupNumber * 4 + 3).Text)
   
   Dim alignment
   alignment = Array(FlexDMD_Align_TopLeft, FlexDMD_Align_TopRight, FlexDMD_Align_BottomLeft, FlexDMD_Align_BottomRight)
@@ -544,7 +548,7 @@ Sub DmdBuild_Mystery(entry, choice)
   wordGroup.SetBounds 10, 10, 108, 18
   scene.AddActor wordGroup
   
-  Dim i, word
+  Dim word
   For i = 0 to 3
     Set word = FlexDMD.NewLabel("dim_word" & choice & i, tinyFontDim, words(i))
     word.AutoPack = False
@@ -573,14 +577,14 @@ Sub DmdBuild_Mystery(entry, choice)
   Set seq = af.Sequence()
   For i = 1 To steps
     Do : idx = Int(Rnd * 4) : Loop While idx = prev
-    seq.Add wordGroup.GetLabel("word" & choice & "" & idx).ActionFactory.Show(True)
+    seq.Add wordGroup.GetLabel("word" & choice & idx).ActionFactory.Show(True)
     seq.Add af.Wait(mysteryRandomStepSecs)
-    seq.Add wordGroup.GetLabel("word" & choice & "" & idx).ActionFactory.Show(False)
+    seq.Add wordGroup.GetLabel("word" & choice & idx).ActionFactory.Show(False)
     prev = idx
   Next
   
   mysterySelectedSteps = mysterySelectedDuration / mysterySelectedBlinkSecs
-  seq.Add wordGroup.GetLabel("word" & choice & choice).ActionFactory.Blink(mysterySelectedBlinkSecs/2.0, mysterySelectedBlinkSecs/2.0, mysterySelectedSteps)
+  seq.Add wordGroup.GetLabel("word" & choice & (choice Mod 4)).ActionFactory.Blink(mysterySelectedBlinkSecs/2.0, mysterySelectedBlinkSecs/2.0, mysterySelectedSteps)
 
   scene.AddAction seq
 
@@ -615,6 +619,38 @@ Sub DmdBuild_Mystery_ib(entry)
   Dim i, choice
   For i = 0 to UBound(mysteryAwards)
     If mysteryAwards(i).Short = "ib" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_jd(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "jd" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_ss(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "ss" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_al(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "al" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_ms(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "ms" Then choice = i
   Next
   DmdBuild_Mystery entry, choice
 End Sub
