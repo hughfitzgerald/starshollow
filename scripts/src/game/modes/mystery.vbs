@@ -15,7 +15,7 @@ Sub CreateMysteryMode()
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("play_mystery_show")
 
             .Add "timer_mystery_show_complete", Array("select_random_mystery")
-            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_10m", "remove_mystery_small", "remove_mystery_medium", "remove_mystery_show")
+            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_bs", "remove_mystery_show")
 
             .Add "restart_qualify_mystery", Array("check_minigame")
 
@@ -25,9 +25,7 @@ Sub CreateMysteryMode()
             .Add "mystery_eb", Array("eb_now_lit")
             .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
             .Add "mystery_ab", Array("add_a_ball")
-            .Add "mystery_10m", Array(ScoreEvent(MysteryBigScore, WithMultiplier))
-            .Add "mystery_small", Array(ScoreEvent(MysterySmallScore, WithMultiplier))
-            .Add "mystery_medium", Array(ScoreEvent(MysteryMediumScore, WithMultiplier))
+            .Add "mystery_bs", Array(ScoreEvent(MysteryBigScore, WithMultiplier))
         End With
 
 
@@ -108,29 +106,12 @@ Sub CreateMysteryMode()
                 .Slide = "mystery1_ab"
                 .Action = "remove"
             End With
-            With .EventName("mystery_10m")
-                .Slide = "mystery1_10m"
+            With .EventName("mystery_bs")
+                .Slide = "mystery1_bs"
                 .Action = "play"
             End With
-            With .EventName("remove_mystery_10m")
-                .Slide = "mystery1_10m"
-                .Action = "remove"
-            End With
-            ' mystery1_small / mystery1_medium have no GIF yet - see display_config.vbs
-            With .EventName("mystery_small")
-                .Slide = "mystery1_small"
-                .Action = "play"
-            End With
-            With .EventName("remove_mystery_small")
-                .Slide = "mystery1_small"
-                .Action = "remove"
-            End With
-            With .EventName("mystery_medium")
-                .Slide = "mystery1_medium"
-                .Action = "play"
-            End With
-            With .EventName("remove_mystery_medium")
-                .Slide = "mystery1_medium"
+            With .EventName("remove_mystery_bs")
+                .Slide = "mystery1_bs"
                 .Action = "remove"
             End With
         End With
@@ -141,9 +122,7 @@ Sub CreateMysteryMode()
                 .Add "mystery_eb", 1
                 .Add "mystery_ib", 1
                 .Add "mystery_ab", 1
-                .Add "mystery_10m", 1
-                .Add "mystery_small", 1
-                .Add "mystery_medium", 1
+                .Add "mystery_bs", 1
 
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
                 ' .Add "mystery_full_protons{current_player.shot_proton_round6 == 0}", 0.7

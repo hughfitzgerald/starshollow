@@ -469,3 +469,95 @@ Sub DmdTick_GameOver(args)
         label.Alignment = FlexDMD_Align_Center
     Next
 End Sub
+
+
+Sub DmdBuild_Mystery1(entry)
+  Dim scene
+  Set scene = FlexDMD.NewGroup("Mystery")
+  scene.SetSize 128, 30
+  scene.SetPosition 0, 2
+  
+  Dim woman
+  Set woman = FlexDMD.NewLabel("woman", smallFont, "Woman of Mystery")
+  woman.AutoPack = False
+  woman.FillParent = True
+  woman.Alignment = FlexDMD_Align_Top
+  scene.AddActor woman
+  
+  Dim words
+  words = Array("Lite Extra Ball", "Add-a-Ball", "Big Score", "Increase Bonus")
+  
+  Dim alignment
+  alignment = Array(FlexDMD_Align_TopLeft, FlexDMD_Align_TopRight, FlexDMD_Align_BottomLeft, FlexDMD_Align_BottomRight)
+  
+  Dim wordGroup
+  Set wordGroup = FlexDMD.NewGroup("wordGroup")
+  wordGroup.SetBounds 10, 8, 108, 22
+  scene.AddActor wordGroup
+  
+  Dim i, word
+  For i = 0 to 3
+    Set word = FlexDMD.NewLabel("dim_word" & i, tinyFontDim, words(i))
+    word.AutoPack = False
+    word.FillParent = True
+    word.Alignment = alignment(i)
+    wordGroup.AddActor(word)
+    
+    Set word = FlexDMD.NewLabel("word" & i, tinyFont, words(i))
+    word.AutoPack = False
+    word.FillParent = True
+    word.Alignment = alignment(i)
+    word.Visible = False
+    wordGroup.AddActor(word)
+  Next
+
+  entry.SetScene scene
+End Sub
+
+Dim tick
+Sub DmdTick_MysterySelectedHelper(choice)
+  tick = tick + 1
+  Dim litWord, scene, i
+  Set scene = FlexDMD.Stage.GetGroup("Mystery")
+  For i = 0 to 3
+    Set litWord = scene.GetLabel("word"&i)
+    If i = choice And tick Mod 30 < 15 Then
+      litWord.Visible = True
+    Else
+      litWord.Visible = False
+    End If
+  Next
+End Sub
+
+Sub DmdTick_Mystery1_EB(args)
+  DmdTick_MysterySelectedHelper 0
+End Sub
+
+Sub DmdTick_Mystery1_AB(args)
+  DmdTick_MysterySelectedHelper 1
+End Sub
+
+Sub DmdTick_Mystery1_BS(args)
+  DmdTick_MysterySelectedHelper 2
+End Sub
+
+Sub DmdTick_Mystery1_IB(args)
+  DmdTick_MysterySelectedHelper 3
+End Sub
+
+Sub DmdTick_Mystery1(args)
+  tick = tick + 1
+  If tick Mod 4 = 0 Then
+    Dim litWord, scene, randomWord, i
+    randomWord = Int(4 * Rnd)
+    Set scene = FlexDMD.Stage.GetGroup("Mystery")
+    For i = 0 to 3
+      Set litWord = scene.GetLabel("word"&i)
+      If i = randomWord Then
+        litWord.Visible = True
+      Else
+        litWord.Visible = False
+      End If
+    Next
+  End If
+End Sub
