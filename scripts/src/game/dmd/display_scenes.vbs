@@ -109,9 +109,9 @@ Sub DmdBuild_Score(entry)
     entry.SetScene scene
 End Sub
 
-Sub DmdTick_Score(args)
+Sub DmdTick_Score(entry)
   Dim scene, scoreDisplay, activeLeftScore, inactiveLeftScore, scoreLabel, scoreValue
-  Set scene = FlexDMD.Stage.GetGroup("Score")
+  Set scene = entry.Scene()
   Set scoreDisplay = scene.GetGroup("ScoreDisplay")
   Set activeLeftScore = scene.GetGroup("ActiveLeftScore")
   Set inactiveLeftScore = scene.GetGroup("InactiveLeftScore")
@@ -227,13 +227,7 @@ Sub DmdBuild_Welcome(entry)
 End Sub
 
 
-Sub DmdTick_Welcome(args)
-    ' If FlexFrame = 88 Then FlexDMD.Stage.Getimage("logo").visible = True
-
-    ' If FlexFrame > 110 Then
-    '     If (FlexFrame Mod 32) = 10 Then FlexDMD.Stage.Getimage("logo").visible = True
-    '     If (FlexFrame Mod 32) = 1 Then FlexDMD.Stage.Getimage("logo").visible = False
-    ' End If
+Sub DmdTick_Welcome(entry)
 End Sub
 
 '*******************************************
@@ -334,13 +328,14 @@ Sub DmdBuild_HighScore(entry)
     entry.SetScene g
 End Sub
 
-Sub DmdTick_HighScore(args)
-    Dim text, initials, time
-    Set text = FlexDMD.Stage.GetLabel("high_score_text")
+Sub DmdTick_HighScore(entry)
+    Dim text, initials, time, scene
+    Set scene = entry.Scene()
+    Set text = scene.GetLabel("high_score_text")
     text.Text = "P" & glf_machine_vars("high_score_player_num").GetValue() & " INITIALS"
-    Set initials = FlexDMD.Stage.GetLabel("high_score_initials")
+    Set initials = scene.GetLabel("high_score_initials")
     initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(glf_machine_vars("high_score_initials_index").GetValue())
-    ' Set time = FlexDMD.Stage.GetLabel("high_score_time")
+    ' Set time = scene.GetLabel("high_score_time")
     ' time.Text = "00:00"
 End Sub
 
@@ -359,13 +354,14 @@ Sub DmdBuild_Bonus(entry)
     entry.SetScene g
 End Sub
 
-Sub DmdTick_Bonus(args)
-    Dim text, score
-    Set text = FlexDMD.Stage.GetLabel("bonus_text")
+Sub DmdTick_Bonus(entry)
+    Dim text, score, scene
+    Set scene = entry.Scene()
+    Set text = scene.GetLabel("bonus_text")
     text.Text = GetPlayerState("bonus_display_text")
     text.SetBounds 0, 1, 128, 8
     text.Alignment = FlexDMD_Align_Center
-    Set score = FlexDMD.Stage.GetLabel("bonus_score")
+    Set score = scene.GetLabel("bonus_score")
     score.Text = GetPlayerState("bonus_display_score")
     score.SetBounds 0, 12, 128, 16
     score.Alignment = FlexDMD_Align_Center
@@ -394,25 +390,26 @@ Sub DmdBuild_Mode(entry)
     entry.SetScene g
 End Sub
 
-Sub DmdTick_Mode(args)
-    Dim text, score, instructions, timer
+Sub DmdTick_Mode(entry)
+    Dim text, score, instructions, timer, scene
     
-    Set text = FlexDMD.Stage.GetLabel("mode_text")
+    Set scene = entry.Scene()
+    Set text = scene.GetLabel("mode_text")
     text.Text = GetPlayerState("mode_display_text")
     text.SetBounds 0, 1, 128, 8
     text.Alignment = FlexDMD_Align_Center
 
-    Set score = FlexDMD.Stage.GetLabel("mode_score")
+    Set score = scene.GetLabel("mode_score")
     score.Text = FormatNumber(GetPlayerState("mode_display_score"), 0)
     score.SetBounds 0, 9, 128, 14
     score.Alignment = FlexDMD_Align_Center
 
-    Set instructions = FlexDMD.Stage.GetLabel("mode_instructions")
+    Set instructions = scene.GetLabel("mode_instructions")
     instructions.Text = GetPlayerState("mode_display_instructions")
     instructions.SetBounds 0, 24, 128, 8
     instructions.Alignment = FlexDMD_Align_Center
 
-    Set timer = FlexDMD.Stage.GetLabel("mode_timer")
+    Set timer = scene.GetLabel("mode_timer")
     timer.Text = GetPlayerState("mode_display_timer")
     timer.SetBounds 0, 1, 128, 8
     timer.Alignment = FlexDMD_Align_Right
@@ -439,16 +436,17 @@ Sub DmdBuild_GameOver(entry)
     entry.SetScene g
 End Sub
 
-Sub DmdTick_GameOver(args)
-    Dim i, label, numPlayers, score
+Sub DmdTick_GameOver(entry)
+    Dim i, label, numPlayers, score, scene
 
-    Set label = FlexDMD.Stage.GetLabel("go_title")
+    Set scene = entry.Scene()
+    Set label = scene.GetLabel("go_title")
     label.SetBounds 0, 1, 128, 8
     label.Alignment = FlexDMD_Align_Center
 
     numPlayers = glf_machine_vars("num_players").GetValue()
 
-    Set label = FlexDMD.Stage.GetLabel("go_big")
+    Set label = scene.GetLabel("go_big")
     If numPlayers <= 1 Then
         label.Text = FormatNumber(Score2Num(glf_machine_vars("player1_score").GetValue()), 0)
     Else
@@ -458,7 +456,7 @@ Sub DmdTick_GameOver(args)
     label.Alignment = FlexDMD_Align_Center
 
     For i = 1 To 4
-        Set label = FlexDMD.Stage.GetLabel("go_p" & i)
+        Set label = scene.GetLabel("go_p" & i)
         If numPlayers > 1 And i <= numPlayers Then
             score = Score2Num(glf_machine_vars("player" & i & "_score").GetValue())
             label.Text = "P" & i & " " & FormatNumber(score, 0)
@@ -515,10 +513,9 @@ Sub DmdBuild_Mystery1(entry)
 End Sub
 
 Dim tick
-Sub DmdTick_MysterySelectedHelper(choice)
+Sub DmdTick_MysterySelectedHelper(scene, choice)
   tick = tick + 1
-  Dim litWord, scene, i
-  Set scene = FlexDMD.Stage.GetGroup("Mystery")
+  Dim litWord, i
   For i = 0 to 3
     Set litWord = scene.GetLabel("word"&i)
     If i = choice And tick Mod 30 < 15 Then
@@ -529,28 +526,29 @@ Sub DmdTick_MysterySelectedHelper(choice)
   Next
 End Sub
 
-Sub DmdTick_Mystery1_EB(args)
-  DmdTick_MysterySelectedHelper 0
+Sub DmdTick_Mystery1_EB(entry)
+  DmdTick_MysterySelectedHelper entry.Scene(), 0
 End Sub
 
-Sub DmdTick_Mystery1_AB(args)
-  DmdTick_MysterySelectedHelper 1
+Sub DmdTick_Mystery1_AB(entry)
+  DmdTick_MysterySelectedHelper entry.Scene(), 1
 End Sub
 
-Sub DmdTick_Mystery1_BS(args)
-  DmdTick_MysterySelectedHelper 2
+Sub DmdTick_Mystery1_BS(entry)
+  DmdTick_MysterySelectedHelper entry.Scene(), 2
 End Sub
 
-Sub DmdTick_Mystery1_IB(args)
-  DmdTick_MysterySelectedHelper 3
+Sub DmdTick_Mystery1_IB(entry)
+  DmdTick_MysterySelectedHelper entry.Scene(), 3
 End Sub
 
-Sub DmdTick_Mystery1(args)
+Sub DmdTick_Mystery1(entry)
+  Dim scene
+  Set scene = entry.Scene()
   tick = tick + 1
   If tick Mod 4 = 0 Then
-    Dim litWord, scene, randomWord, i
+    Dim litWord, randomWord, i
     randomWord = Int(4 * Rnd)
-    Set scene = FlexDMD.Stage.GetGroup("Mystery")
     For i = 0 to 3
       Set litWord = scene.GetLabel("word"&i)
       If i = randomWord Then
