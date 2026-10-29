@@ -490,7 +490,7 @@ Sub DmdBuild_Mystery1(entry)
   
   Dim wordGroup
   Set wordGroup = FlexDMD.NewGroup("wordGroup")
-  wordGroup.SetBounds 10, 8, 108, 22
+  wordGroup.SetBounds 10, 10, 108, 18
   scene.AddActor wordGroup
   
   Dim i, word
