@@ -24,10 +24,16 @@
 ' the lock again), and must not do anything slow.
 '
 ' Both take a single argument - the GlfDmdEntry they belong to, matching
-' the GetRef(name)(args) callback convention GLF uses everywhere. The
-' full-screen scenes below ignore it and reach their actors through
-' FlexDMD.Stage, which is fine for something that owns the whole stage.
-' A LAYER must not: see DmdBuild_LukeAndLorelei.
+' the GetRef(name)(args) callback convention GLF uses everywhere. Every
+' ticker reaches its actors through entry.Scene(), never FlexDMD.Stage:
+' during a transition two scenes are on the stage at once, and a Stage
+' lookup can find the other one's label of the same name.
+'
+' Leave the scene group's own position alone once it is built (move the
+' actors inside it instead). A transition carries the group in a parent
+' of its own and puts it back where it was, so a builder may place it -
+' Mystery sits at 0,2 - but a ticker moving the group itself would fight
+' the transition.
 '
 ' FULL-SCREEN SCENES AND LAYERS
 '
@@ -167,9 +173,11 @@ End Sub
 '*******************************************
 '  welcome - the attract intro
 '*******************************************
-' The logo is hidden at build time and revealed by the ticker at an
-' absolute frame number, so this scene only plays correctly from a reset
-' frame counter - hence .ResetFrame = True on its config entry.
+' The logo slides in and then blinks, all with FlexDMD actions built
+' here - the ticker has nothing to do. FlexDMD runs an actor's actions
+' only while it is on the stage, so the slide-in starts when the scene
+' first goes on the DMD (at the start of its fade-in transition) and
+' does not restart on a later replay.
 
 Sub DmdBuild_Welcome(entry)
     ' Dim g : Set g = FlexDMD.NewGroup("Welcome")

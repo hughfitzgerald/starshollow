@@ -1,6 +1,6 @@
 # FlexDMD Scene Transitions — Integration Proposal
 
-**Status:** proposal, nothing implemented yet.
+**Status:** implemented as described below, not yet run on a table (see the test plan in section 11). One change from section 10: `eob_bonus` leaves with `move_out down`, the way it came in, rather than `move_out up`.
 **Responds to:** "FlexDMD Scene Transitions — Design Guide and Integration Brief" (the brief).
 **Files read:** `src/vpx/26_ZDMD_FlexDMD.vbs`, `src/vpx/28_ZFBC_FlexDMD_Bcp_Controller.vbs`,
 `src/game/dmd/display_config.vbs`, `src/game/dmd/display_scenes.vbs`, the GLF slide and segment players
@@ -914,7 +914,7 @@ Table default: **left unset** for v1 (opt-in per entry), with the
 | `score` | (none set) | (none set) | The home screen; whoever covers or uncovers it decides. |
 | `welcome` (attract) | `fade 0.5` | `fade 0.5` | Attract ↔ game is a big context change. |
 | `mode` | `push left` | `push right` | Forward into a mode, back out of it; exit mirrors entry. |
-| `eob_bonus` | `move_in up` | `move_out up` | Rises over the score at ball end, then leaves the way it came. |
+| `eob_bonus` | `move_in up` | `move_out down` | Rises over the score at ball end, then leaves the way it came. |
 | `high_score` | `curtain` | `fade 0.5` | Arcade "intermission". |
 | `game_over` | `fade 0.6` | `fade 0.5` | Ending. |
 | `multiball` | `flash 0.08` | `move_out up` | "Something happened NOW." |
