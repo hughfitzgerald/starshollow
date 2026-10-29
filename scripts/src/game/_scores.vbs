@@ -162,3 +162,26 @@ Dim BonusDinerFactor        : BonusDinerFactor        = ScoreX(0.1)
 Dim BonusGrandparentsFactor : BonusGrandparentsFactor = ScoreX(0.15)
 Dim BonusModePlayedFactor   : BonusModePlayedFactor   = ScoreX(20)    ' per mode played this ball
 Dim BonusMultiballWonFactor : BonusMultiballWonFactor = ScoreX(20)    ' per Jess/Dean or Logan win this ball
+
+
+Class MysteryAward
+    Public Short
+    Public Text
+    Public EventName
+End Class
+
+Function NewMysteryAward(short, text, eventName)
+    Dim m : Set m = New MysteryAward
+    m.Short = short
+    m.Text = text
+    m.EventName = eventName
+    Set NewMysteryAward = m
+End Function
+
+Dim mysteryAwards
+mysteryAwards = Array( _
+    NewMysteryAward("eb", "Lite Extra Ball", "eb_now_lit"), _
+    NewMysteryAward("ab", "Add-a-Ball", "add_a_ball"), _
+    NewMysteryAward("bs", "Big Score", ScoreEvent(MysteryBigScore, WithMultiplier)), _
+    NewMysteryAward("ib", "Increase Bonus", "qualify_multiplier_group_on_complete") _
+)

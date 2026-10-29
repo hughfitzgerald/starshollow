@@ -156,7 +156,7 @@
 
 Sub CreateFlexDmdDisplay()
 
-    Dim x
+    Dim x, i
 
     ' The table-wide transition: what a scene change does when neither
     ' entry involved says. The first is for arriving, the second for
@@ -250,39 +250,14 @@ Sub CreateFlexDmdDisplay()
         .TransitionOut = "move_out up"
     End With
 
-    ' Mystery slides. mystery1 drops in over the score; the four results
-    ' look the same as it, so each one replaces it with a cut ("none")
-    ' and then leaves the way mystery1 would have.
-    With CreateDmdSlide("mystery1")
-        .Builder       = "DmdBuild_Mystery1"
-        .Ticker        = "DmdTick_Mystery1"
-        .Transition    = "move_in down 0.5 out_bounce"
-        .TransitionOut = "move_out up"
-    End With
-    With CreateDmdSlide("mystery1_eb")
-        .Builder       = "DmdBuild_Mystery1"
-        .Ticker        = "DmdTick_Mystery1_EB"
-        .Transition    = "none"
-        .TransitionOut = "move_out up"
-    End With
-    With CreateDmdSlide("mystery1_ab")
-        .Builder       = "DmdBuild_Mystery1"
-        .Ticker        = "DmdTick_Mystery1_AB"
-        .Transition    = "none"
-        .TransitionOut = "move_out up"
-    End With
-    With CreateDmdSlide("mystery1_ib")
-        .Builder       = "DmdBuild_Mystery1"
-        .Ticker        = "DmdTick_Mystery1_IB"
-        .Transition    = "none"
-        .TransitionOut = "move_out up"
-    End With
-    With CreateDmdSlide("mystery1_bs")
-        .Builder       = "DmdBuild_Mystery1"
-        .Ticker        = "DmdTick_Mystery1_BS"
-        .Transition    = "none"
-        .TransitionOut = "move_out up"
-    End With
+    For i = 0 to UBound(mysteryAwards)
+        With CreateDmdSlide("mystery_" & mysteryAwards(i).Short)
+            .Builder       = "DmdBuild_Mystery_" & mysteryAwards(i).Short
+            .Ticker        = "DmdTick_Mystery"
+            .Transition    = "move_in down 0.5 out_bounce"
+            .TransitionOut = "move_out up"
+        End With
+    Next
 
     With CreateDmdSlide("skillshot")
         .Text = "SKILLSHOT! (points:,)"
@@ -292,7 +267,7 @@ Sub CreateFlexDmdDisplay()
         .Text = "HURRY-UP BONUS (points:,)"
     End With
 
-    Dim characterNames, characterImages, characterHitEvents, i
+    Dim characterNames, characterImages, characterHitEvents
     characterNames = Array("sookie", "kirk", "lane", "paris")
     characterImages = Array("sookie.png", "kirk_stern.png", "lane_glasses.png", "paris.png")
     characterHitEvents = Array("SPINS", "BUMPERS", "SLINGS", "RAMPS")

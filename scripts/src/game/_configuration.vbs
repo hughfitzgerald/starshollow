@@ -258,6 +258,8 @@ Sub ConfigureGlfDevices()
 
     Glf_SetInitialPlayerVar "fd_punch_left_redirect", 0
 
+    Glf_SetInitialPlayerVar "mystery_award", 0
+
 
     '*********** MODES ***********
     ' Order here does not matter - each mode registers its own start/stop
