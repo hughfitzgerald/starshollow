@@ -203,8 +203,10 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("eob_bonus")
         .Builder       = "DmdBuild_Bonus"
         .Ticker        = "DmdTick_Bonus"
-        .Transition    = "move_in up"
-        .TransitionOut = "move_out down"
+        .Transition    = "flash"
+        .TransitionOut = "curtain"
+        ' .Transition    = "move_in up"
+        ' .TransitionOut = "move_out down"
     End With
 
     ' Forward into a mode, back out of it.
@@ -241,8 +243,9 @@ Sub CreateFlexDmdDisplay()
     End With
     With CreateDmdSlide("kirk-dances")
         .Gif           = "kirk-dances.gif"
-        .Transition    = "move_in down 0.5 out_bounce"
-        .TransitionOut = "move_out up"
+        ' .Transition    = "move_in down 0.5 out_bounce"
+        .Transition   = "push left"
+        ' .TransitionOut = "move_out up"
     End With
     With CreateDmdSlide("logan-hit")
         .Gif           = "logan_hit_short_small.gif"
