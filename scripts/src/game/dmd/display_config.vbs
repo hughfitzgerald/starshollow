@@ -255,7 +255,6 @@ Sub CreateFlexDmdDisplay()
             .Builder       = "DmdBuild_Mystery_" & mysteryAwards(i).Short
             .Ticker        = "DmdTick_Mystery"
             .Transition    = "move_in down 0.5 out_bounce"
-            .TransitionOut = "move_out up"
         End With
     Next
 
