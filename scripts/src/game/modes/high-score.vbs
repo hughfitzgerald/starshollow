@@ -147,10 +147,10 @@ Sub CreateHighScoreMode()
                     .Action = "add_machine"
                     .Int = 1
                 End With
-                With .Variable("high_score_initials_index")
-                    .Action = "set_machine"
-                    .Int = 0
-                End With
+                ' With .Variable("high_score_initials_index")
+                '     .Action = "set_machine"
+                '     .Int = 0
+                ' End With
                 With .Variable("hs_input_ready")
                     .Action = "set"
                     .Int = 0

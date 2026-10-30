@@ -192,8 +192,8 @@ Sub CreateFlexDmdDisplay()
     ' With CreateDmdSlide("welcome")   : .Image = "stars_hollow_town_dark_logo.png"   : End With
 
     With CreateDmdSlide("high_score")
-        .Builder       = "DmdBuild_HighScore"
-        .Ticker        = "DmdTick_HighScore"
+        .Builder       = "DmdBuild_Initials"
+        .Ticker        = "DmdTick_Initials"
         .Aliases       = Array("highscore")
         .Transition    = "curtain"
         .TransitionOut = "fade 0.5"

@@ -347,6 +347,67 @@ Sub DmdTick_HighScore(entry)
     ' time.Text = "00:00"
 End Sub
 
+Sub DmdBuild_Initials(entry)
+  Dim scene
+  Set scene = FlexDMD.NewGroup("Initials Entry")
+  scene.SetSize 128, 32
+
+  Dim letters
+  Set letters = FlexDMD.NewGroup("Letters")
+  letters.setPosition -1, 24
+  Dim offset
+  offset = 0
+  Dim i, letter
+  For i = 0 to 16
+    Set letter = FlexDMD.NewLabel("letter" & i, smallFont, "")
+    letter.SetPosition offset, 0
+    offset = offset + 8
+    letters.AddActor letter
+  Next
+
+
+  Dim initials
+  Set initials = FlexDMD.NewLabel("Initials", bigFont, "")
+  initials.SetAlignedPosition 64, 10, 4
+  scene.AddActor initials
+
+  Dim frame
+  Set frame = FlexDMD.NewFrame("Border")
+  frame.SetBounds 22, -2, 8, 9
+  frame.Thickness = 1
+  frame.BorderColor = RGB(90, 90, 90)
+  letters.AddActor frame
+
+  scene.AddActor letters
+
+  entry.SetScene scene
+End Sub
+
+Sub DmdTick_Initials(entry)
+  Dim scene
+  Set scene = entry.Scene()
+
+  Dim idx
+  idx = glf_machine_vars("high_score_initials_index").GetValue()
+
+  Dim InitialValues
+  InitialValues = Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_")
+  Dim Count : Count = UBound(InitialValues) + 1
+  ' Calculate the starting index, handling negative and out-of-bounds numbers
+  Dim Shift : Shift = ((idx Mod Count) + Count - 3) Mod Count
+  Dim WrappedIndex : WrappedIndex = ((idx Mod Count) + Count) Mod Count
+
+  Dim i, letter
+  For i = 0 to 16
+    Set letter = scene.GetLabel("letter" & i)
+    letter.Text = InitialValues((i + Shift) Mod Count)
+  Next
+
+  Dim initials
+  Set initials = scene.GetLabel("Initials")
+  initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(idx)
+End Sub
+
 Sub DmdBuild_Bonus(entry)
     Dim text, score
     Dim g : Set g = FlexDMD.NewGroup("Bonus")
