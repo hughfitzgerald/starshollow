@@ -118,7 +118,8 @@
 ' .Ticker runs every frame while it is attached, after the backdrop's,
 ' and is handed its own entry - so it reaches its actors through
 ' entry.Scene() rather than hunting the whole stage, which would also
-' search the scene underneath.
+' search the scene underneath, and the kwargs of the event that played
+' it through entry.Kwargs().
 '
 ' A layer builder has two rules: build a Group of its own and hand it
 ' back with entry.SetScene (do not reach into FlexDMD.Stage), and leave
@@ -347,8 +348,10 @@ Class GlfFlexDmdBcpController
         If m_connected = False Then Exit Sub
         If m_stack.Exists(key) Then
             Log "Remove " & key
+            Dim entry : Set entry = ItemEntry(m_stack(key))
             m_stack.Remove key
             RemoveDelay key
+            SyncKwargs entry
         End If
         Render ""
     End Sub
@@ -376,11 +379,13 @@ Class GlfFlexDmdBcpController
 
         If n = -1 Then Exit Sub
 
-        Dim i
+        Dim i, entry
         For i = 0 To n
             Log "SlidesClear " & ctx & " -> removing " & doomed(i)
+            Set entry = ItemEntry(m_stack(doomed(i)))
             m_stack.Remove doomed(i)
             RemoveDelay doomed(i)
+            SyncKwargs entry
         Next
         Render ""
     End Sub
@@ -456,6 +461,11 @@ Class GlfFlexDmdBcpController
             Log "Disconnect"
             m_connected = False
             useBcp = False
+            Dim key, entry
+            For Each key In m_stack.Keys()
+                Set entry = ItemEntry(m_stack(key))
+                If Not entry Is Nothing Then entry.SetKwargs Null
+            Next
             m_stack.RemoveAll
             m_current = ""
             ClearStaleText ""
@@ -500,6 +510,7 @@ Class GlfFlexDmdBcpController
         item.Expire = expire
         item.Seq = m_seq
         item.SetKwargs kwargs
+        SyncKwargs ItemEntry(item)
 
         Log "Play " & key & " (context=" & item.Context & _
             ", priority=" & item.Priority & ", expire=" & expire & ")"
@@ -688,6 +699,35 @@ Class GlfFlexDmdBcpController
         Next
     End Function
 
+    ' Give an entry the kwargs of the most recent play of it still on the
+    ' stack, or Null when there is none, so its Ticker always reads the
+    ' event that is actually holding it up. Called whenever an item is
+    ' pushed or leaves. Usually one item names an entry, but an alias is
+    ' a stack key of its own, so two can - hence the search rather than
+    ' just copying or clearing.
+    Private Sub SyncKwargs(entry)
+        If entry Is Nothing Then Exit Sub
+
+        Dim key, item, best
+        Set best = Nothing
+        For Each key In m_stack.Keys()
+            Set item = m_stack(key)
+            If ItemEntry(item) Is entry Then
+                If best Is Nothing Then
+                    Set best = item
+                ElseIf item.Seq > best.Seq Then
+                    Set best = item
+                End If
+            End If
+        Next
+
+        If best Is Nothing Then
+            entry.SetKwargs Null
+        Else
+            entry.SetKwargs ItemKwargs(best)
+        End If
+    End Sub
+
     ' kwargs is an object or Null, so it cannot be a property - see
     ' GlfFlexDmdStackItem.SetKwargs.
     Private Function ItemKwargs(item)
@@ -831,7 +871,8 @@ Class GlfDmdEntry
     Public Image         ' still image, same
     Public Text          ' literal text, with (name) kwargs tokens
     Public Builder       ' Sub name: builds the scene once, at Flex_Init
-    Public Ticker        ' Sub name: runs every frame while this is on screen
+    Public Ticker        ' Sub name: runs every frame while this is on screen,
+                         ' and can read the event's kwargs - see Kwargs()
     Public Callback      ' Sub name: replaces the render entirely
     Public RenderMode    ' one of the FlexDMD_RenderMode_* constants
     Public Effect        ' "solid" or "blink"
@@ -921,6 +962,7 @@ Class GlfDmdEntry
         Set m_parent = Nothing
         Set m_transition = Nothing
         Set m_transitionOut = Nothing
+        m_kwargs = Null
         m_attachFrame = 0
         Gif = ""
         Image = ""
@@ -953,6 +995,40 @@ Class GlfDmdEntry
             Set Scene = m_scene
         Else
             Set Scene = Nothing
+        End If
+    End Function
+
+    ' The kwargs of the event that put this entry on the stack - a
+    ' Scripting.Dictionary - or Null: when nothing on the stack names it
+    ' (a backdrop brought up by some other entry's .Over), when it was
+    ' played from a show step or the widget player, or when it has not
+    ' been played at all. This is what lets a Ticker show live data out
+    ' of the event, the way a .Text token does. Read it with FlexDmd_Kwarg,
+    ' which copes with the Null:
+    '
+    '     value = FlexDmd_Kwarg(entry.Kwargs(), "value", 0)
+    '
+    ' The controller keeps it in step with the stack - see SyncKwargs. A
+    ' Builder never sees one: it runs at Flex_Init, before any event.
+    Private m_kwargs
+
+    Public Sub SetKwargs(input)
+        If IsObject(input) Then
+            Set m_kwargs = input
+        Else
+            m_kwargs = Null
+        End If
+    End Sub
+
+    Public Property Get HasKwargs()
+        HasKwargs = IsObject(m_kwargs)
+    End Property
+
+    Public Function Kwargs()
+        If IsObject(m_kwargs) Then
+            Set Kwargs = m_kwargs
+        Else
+            Kwargs = Null
         End If
     End Function
 
@@ -1046,6 +1122,10 @@ End Sub
 ' holdSeconds is how long a text entry stays up; a scene entry ignores
 ' it and stays until something replaces it.
 Sub FlexDmd_Render(entry, kwargs, holdSeconds)
+    ' No stack to keep this in step, so the entry simply keeps these until
+    ' it is shown again - by this route or by the controller.
+    entry.SetKwargs kwargs
+
     If entry.Callback <> "" Then
         GetRef(entry.Callback)(Array(entry.Name, kwargs, holdSeconds))
         Exit Sub
@@ -1324,7 +1404,8 @@ End Sub
 ' A Ticker is handed its own entry, so it can reach its actors through
 ' entry.Scene() instead of FlexDMD.Stage. For a layer that matters:
 ' Stage searches the scene underneath too, and two scenes are allowed to
-' hold labels of the same name.
+' hold labels of the same name. The entry also carries the kwargs of the
+' event that played it, through entry.Kwargs() - Null when there are none.
 Sub FlexDmd_Tick()
     Dim key, entry
 

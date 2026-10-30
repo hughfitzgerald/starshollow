@@ -29,6 +29,16 @@
 ' during a transition two scenes are on the stage at once, and a Stage
 ' lookup can find the other one's label of the same name.
 '
+' A ticker can read the kwargs of the event that played its slide off
+' that entry, just as a .Text token does:
+'
+'     value = FlexDmd_Kwarg(entry.Kwargs(), "value", 0)
+'
+' entry.Kwargs() is Null - and FlexDmd_Kwarg returns the fallback - when
+' the entry was played from a show step or the widget player, or is only
+' up as some other entry's .Over backdrop. A builder never has any: it
+' runs before the first event.
+'
 ' Leave the scene group's own position alone once it is built (move the
 ' actors inside it instead). A transition carries the group in a parent
 ' of its own and puts it back where it was, so a builder may place it -
@@ -412,7 +422,7 @@ Sub DmdTick_Initials(entry)
 
   Dim player
   Set player = scene.GetLabel("Initials Player")
-  player.Text = "Player " & glf_machine_vars("high_score_player_num").GetValue() & vbCrLf & "Grand Champion"
+  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "label", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "value", 0)
 
   Dim idx
   idx = glf_machine_vars("high_score_initials_index").GetValue()
@@ -421,8 +431,8 @@ Sub DmdTick_Initials(entry)
   InitialValues = Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_")
   Dim Count : Count = UBound(InitialValues) + 1
   ' Calculate the starting index, handling negative and out-of-bounds numbers
-  Dim Shift : Shift = ((idx Mod Count) + Count - 3) Mod Count
   Dim WrappedIndex : WrappedIndex = ((idx Mod Count) + Count) Mod Count
+  Dim Shift : Shift = (WrappedIndex + Count - 3) Mod Count
 
   Dim i, letter
   For i = 0 to 16
