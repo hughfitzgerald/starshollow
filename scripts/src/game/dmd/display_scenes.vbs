@@ -422,7 +422,7 @@ Sub DmdTick_Initials(entry)
 
   Dim player
   Set player = scene.GetLabel("Initials Player")
-  player.Text = "Player " & glf_machine_vars("high_score_player_num").GetValue() & vbCrLf & "Grand Champion"
+  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "label", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "value", 0)
 
   Dim idx
   idx = glf_machine_vars("high_score_initials_index").GetValue()
@@ -431,8 +431,8 @@ Sub DmdTick_Initials(entry)
   InitialValues = Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_")
   Dim Count : Count = UBound(InitialValues) + 1
   ' Calculate the starting index, handling negative and out-of-bounds numbers
-  Dim Shift : Shift = ((idx Mod Count) + Count - 3) Mod Count
   Dim WrappedIndex : WrappedIndex = ((idx Mod Count) + Count) Mod Count
+  Dim Shift : Shift = (WrappedIndex + Count - 3) Mod Count
 
   Dim i, letter
   For i = 0 to 16
