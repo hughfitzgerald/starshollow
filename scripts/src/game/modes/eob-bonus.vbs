@@ -1,7 +1,7 @@
 
 ' Bonus Mode.
 
-Const BonusShows = 16
+Const BonusShows = 14
 Sub CreateBonusMode
     Dim x
     With CreateGlfMode("eob_bonus", 150)
