@@ -95,7 +95,7 @@ Sub CreateMysteryMode()
         With .RandomEventPlayer()
             '.Debug = True
             With .EventName("select_random_mystery")
-                For x = 4 to UBound(mysteryAwards)
+                For x = 0 to UBound(mysteryAwards)
                     .Add "mystery_" & mysteryAwards(x).Short, mysteryAwards(x).Probability
                 Next
 
@@ -114,7 +114,7 @@ Sub CreateMysteryMode()
                 ' .Add "activate_nuke{current_player.nuke_acquired == 0}", 0.5
                 '.Add "mystery_eb_is_lit{current_player.eb_ready == 0}", 0.1
                 .ForceAll = False
-                .ForceDifferent = False
+                .ForceDifferent = True
             End With
         End With
 
