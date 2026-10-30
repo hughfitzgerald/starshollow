@@ -422,7 +422,7 @@ Sub DmdTick_Initials(entry)
 
   Dim player
   Set player = scene.GetLabel("Initials Player")
-  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "label", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "value", 0)
+  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "label", 0) & vbCrLf & FormatNumber(FlexDmd_Kwarg(entry.Kwargs(), "value", 0), 0)
 
   Dim idx
   idx = glf_machine_vars("high_score_initials_index").GetValue()
