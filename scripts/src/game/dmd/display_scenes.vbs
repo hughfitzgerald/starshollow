@@ -368,11 +368,13 @@ Sub DmdBuild_Initials(entry)
 
   Dim initials
   Set initials = FlexDMD.NewLabel("Initials", bigFont, "")
-  initials.SetAlignedPosition 64, 10, 4
+  initials.AutoPack = False
+  initials.FillParent = True
+  initials.Alignment = FlexDMD_Align_Center
   scene.AddActor initials
 
   Dim frame
-  Set frame = FlexDMD.NewFrame("Border")
+  Set frame = FlexDMD.NewFrame("Letter Border")
   frame.SetBounds 22, -2, 8, 9
   frame.Thickness = 1
   frame.BorderColor = RGB(90, 90, 90)
