@@ -87,7 +87,8 @@
 '   .Text       literal text, with (name) tokens from the event's kwargs;
 '               (name:,) adds thousands commas to a number
 '   .Builder    Sub name, builds the scene once at Flex_Init
-'   .Ticker     Sub name, runs every DMD frame while this is on screen
+'   .Ticker     Sub name, runs every DMD frame while this is on screen;
+'               reads the event's kwargs with entry.Kwargs()
 '   .Callback   Sub name, replaces the default render entirely
 '   .RenderMode one of the FlexDMD_RenderMode_* constants (default DMD_GRAY_4)
 '   .Effect     "solid" or "blink"  (default blink)

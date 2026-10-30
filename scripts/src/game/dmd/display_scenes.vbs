@@ -29,6 +29,16 @@
 ' during a transition two scenes are on the stage at once, and a Stage
 ' lookup can find the other one's label of the same name.
 '
+' A ticker can read the kwargs of the event that played its slide off
+' that entry, just as a .Text token does:
+'
+'     value = FlexDmd_Kwarg(entry.Kwargs(), "value", 0)
+'
+' entry.Kwargs() is Null - and FlexDmd_Kwarg returns the fallback - when
+' the entry was played from a show step or the widget player, or is only
+' up as some other entry's .Over backdrop. A builder never has any: it
+' runs before the first event.
+'
 ' Leave the scene group's own position alone once it is built (move the
 ' actors inside it instead). A transition carries the group in a parent
 ' of its own and puts it back where it was, so a builder may place it -
