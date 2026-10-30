@@ -432,7 +432,14 @@ Sub DmdTick_Initials(entry)
 
   Dim initials
   Set initials = scene.GetLabel("Initials")
-  initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(idx)
+  Dim highScoreInitials
+  highScoreInitials = glf_machine_vars("high_score_initials").GetValue()
+  
+  If Len(highScoreInitials) > 2 Then
+    initials.Text = highScoreInitials
+  Else
+    initials.Text = highScoreInitials & AZLookup(idx)
+  End If
 End Sub
 
 Sub DmdBuild_Bonus(entry)
