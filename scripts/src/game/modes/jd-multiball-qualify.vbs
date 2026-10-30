@@ -22,8 +22,7 @@ Sub CreateJDMultiballQualifyMode()
         With .EventPlayer()
             .Debug = True
 
-            .Add "s_ST11_active", Array("lock_qualified") ' TEMP: when you hit the J in "JESS" we get lock lit
-
+            .Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 0}", Array("lock_unlit")
             .Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 1}", Array("lock_lit")
             .Add "lock_qualified", Array("lock_lit")
             
@@ -37,21 +36,6 @@ Sub CreateJDMultiballQualifyMode()
             .Add "s_lock3_trigger_active{current_player.multiball_lock_locked_balls == 2}", Array("start_jd_multiball")
 
             .Add "multiball_lock_multiball_lock_locked_ball", Array(ScoreEvent(BallLockScore, WithMultiplier))
-        End With
-
-        With .VariablePlayer()
-            With .EventName("lock_qualified")
-                With .Variable("is_lock_qualified")
-                    .Action = "set"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("lock_unqualified")
-                With .Variable("is_lock_qualified")
-                    .Action = "set"
-                    .Int = 0
-                End With
-            End With
         End With
 
         With .MultiballLocks("multiball_lock")

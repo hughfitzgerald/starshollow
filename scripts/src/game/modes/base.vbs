@@ -108,6 +108,9 @@ Sub CreateBaseMode()
             .Add "jess_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
             .Add "dean_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
 
+            ' .Add "s_ST11_active", Array("lock_qualified") ' TEMP: when you hit the J in "JESS" we get lock lit
+            .Add "jess_and_dean_targets_lit_complete", Array("lock_qualified")
+
             'TODO: Add ramp rollovers, ANY OTHERS?
 
             .Add "mode_eob_bonus_started", Array("base_music_stop")
@@ -267,6 +270,18 @@ Sub CreateBaseMode()
                 With .Variable("grandparents_count")
                     .Action = "add"
                     .Int = 1
+                End With
+            End With
+            With .EventName("lock_qualified")
+                With .Variable("is_lock_qualified")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("lock_unqualified")
+                With .Variable("is_lock_qualified")
+                    .Action = "set"
+                    .Int = 0
                 End With
             End With
         End With
@@ -673,6 +688,10 @@ Sub CreateBaseMode()
         With .ShotGroups("dean_targets")
             .Shots = Array("jd_target_15", "jd_target_16", "jd_target_17", "jd_target_18")
             .RestartEvents = Array("mode_jd_multiball_started")
+        End With
+
+        With .ShotGroups("jess_and_dean_targets")
+            .Shots = Array("jd_target_11", "jd_target_12", "jd_target_13", "jd_target_14", "jd_target_15", "jd_target_16", "jd_target_17", "jd_target_18")
         End With
 
 
