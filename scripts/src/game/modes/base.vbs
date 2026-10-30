@@ -668,11 +668,11 @@ Sub CreateBaseMode()
 
         With .ShotGroups("jess_targets")
             .Shots = Array("jd_target_11", "jd_target_12", "jd_target_13", "jd_target_14")
-            .RestartEvents = Array("jess_targets_lit_complete")
+            .RestartEvents = Array("mode_jd_multiball_started")
         End With
         With .ShotGroups("dean_targets")
             .Shots = Array("jd_target_15", "jd_target_16", "jd_target_17", "jd_target_18")
-            .RestartEvents = Array("dean_targets_lit_complete")
+            .RestartEvents = Array("mode_jd_multiball_started")
         End With
 
 
