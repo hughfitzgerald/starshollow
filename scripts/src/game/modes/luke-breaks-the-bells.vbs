@@ -249,6 +249,10 @@ Sub CreateLbtbMode()
                     .Action = "set"
                     .String = """BREAK BELLS TO SCORE"""
                 End With
+                With .Variable("mode_display_timer")
+                    .Action = "set"
+                    .String = "LbtbTime"
+                End With
             End With
 
             With .EventName("timer_lbtb_mode_tick")

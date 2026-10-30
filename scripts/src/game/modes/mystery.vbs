@@ -8,27 +8,25 @@ Sub CreateMysteryMode()
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
+            .Debug = True
             .Add "mode_mystery_started", Array("light_inlanes")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("play_mystery_show")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("select_random_mystery")
 
-            .Add "timer_mystery_show_complete", Array("select_random_mystery")
-            .Add "timer_mystery_selected_complete", Array("restart_qualify_mystery", "remove_mystery_eb", "remove_mystery_ib", "remove_mystery_ab", "remove_mystery_bs", "remove_mystery_show")
+            .Add "timer_mystery_show_tick{devices.timers.mystery_show.ticks == 1}", Array("award_mystery")
+            .Add "timer_mystery_show_complete", Array("restart_qualify_mystery", "remove_mystery_show")
 
-            .Add "restart_qualify_mystery", Array("check_minigame")
+            .Add "restart_qualify_mystery{modes.jd_multiball.active==False}", Array("check_minigame")
 
             .Add "inlane_1_lit_hit", Array("mystery_is_ready")
             .Add "inlane_2_lit_hit", Array("mystery_is_ready")
 
-            .Add "mystery_eb", Array("eb_now_lit")
-            .Add "mystery_ib", Array("qualify_multiplier_group_on_complete")
-            .Add "mystery_ab", Array("add_a_ball")
-            .Add "mystery_bs", Array(ScoreEvent(MysteryBigScore, WithMultiplier))
+            For x = 0 to UBound(mysteryAwards)
+                .Add "timer_mystery_delay_complete{current_player.mystery_award == " & x & "}", Array(mysteryAwards(x).EventName)
+            Next
         End With
-
-
 
         With .Multiballs("add_a_ball")
             .StartEvents = Array("add_a_ball")
@@ -40,89 +38,66 @@ Sub CreateMysteryMode()
         With .Timers("mystery_show")
             .StartRunning = False
             .Direction = "down"      ' Count down
-            .StartValue = 3
-            .EndValue = 0            ' End at 0
-            .TickInterval = 1000     ' Tick every 1 second (1000 ms)
-            With .ControlEvents
-                .EventName = "play_mystery_show"
-                .Action = "start"
-            End With
-        End With
-
-        With .Timers("mystery_selected")
-            .StartRunning = False
-            .Direction = "down"      ' Count down
-            .StartValue = 3
+            .StartValue = 6
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
                 .EventName = "select_random_mystery"
-                .Action = "start"
+                .Action = "restart"
             End With
         End With
 
+        With .Timers("mystery_delay")
+            .StartRunning = False
+            .Direction = "down"      ' Count down
+            .StartValue = 4
+            .EndValue = 0            ' End at 0
+            .TickInterval = 1000     ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "select_random_mystery"
+                .Action = "restart"
+            End With
+        End With
+
+        With .VariablePlayer()
+            For x = 0 to UBound(mysteryAwards)
+                With .EventName("mystery_" & mysteryAwards(x).Short)
+                    With .Variable("mystery_award")
+                        .Action = "set"
+                        .Int = x
+                    End With
+                End With
+            Next
+        End With
+
         With .ShowPlayer()
-            With .EventName("play_mystery_show")
-                .Key = "key_play_mystery_show"
+            With .EventName("select_random_mystery")
+                .Key = "key_select_random_mystery"
                 .Show = "psc_mystery"
             End With
             With .EventName("remove_mystery_show")
-                .Key = "key_play_mystery_show"
+                .Key = "key_select_random_mystery"
                 .Show = "psc_mystery"
                 .Action = "stop"
             End With
         End With
 
         With .SlidePlayer()
-            With .EventName("play_mystery_show")
-                .Slide = "mystery1"
-                .Action = "play"
-            End With
-            With .EventName("timer_mystery_selected_complete")
-                .Slide = "mystery1"
-                .Action = "remove"
-            End With
-            With .EventName("mystery_eb")
-                .Slide = "mystery1_eb"
-                .Action = "play"
-            End With
-            With .EventName("remove_mystery_eb")
-                .Slide = "mystery1_eb"
-                .Action = "remove"
-            End With
-            With .EventName("mystery_ib")
-                .Slide = "mystery1_ib"
-                .Action = "play"
-            End With
-            With .EventName("remove_mystery_ib")
-                .Slide = "mystery1_ib"
-                .Action = "remove"
-            End With
-            With .EventName("mystery_ab")
-                .Slide = "mystery1_ab"
-                .Action = "play"
-            End With
-            With .EventName("remove_mystery_ab")
-                .Slide = "mystery1_ab"
-                .Action = "remove"
-            End With
-            With .EventName("mystery_bs")
-                .Slide = "mystery1_bs"
-                .Action = "play"
-            End With
-            With .EventName("remove_mystery_bs")
-                .Slide = "mystery1_bs"
-                .Action = "remove"
-            End With
+            For x = 0 to UBound(mysteryAwards)
+                With .EventName("mystery_" & mysteryAwards(x).Short)
+                    .Slide = "mystery_" & mysteryAwards(x).Short
+                    .Action = "play"
+                    .Expire = 6
+                End With
+            Next
         End With
 
         With .RandomEventPlayer()
             '.Debug = True
             With .EventName("select_random_mystery")
-                .Add "mystery_eb", 1
-                .Add "mystery_ib", 1
-                .Add "mystery_ab", 1
-                .Add "mystery_bs", 1
+                For x = 0 to UBound(mysteryAwards)
+                    .Add "mystery_" & mysteryAwards(x).Short, mysteryAwards(x).Probability
+                Next
 
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
                 ' .Add "mystery_full_protons{current_player.shot_proton_round6 == 0}", 0.7
@@ -139,7 +114,7 @@ Sub CreateMysteryMode()
                 ' .Add "activate_nuke{current_player.nuke_acquired == 0}", 0.5
                 '.Add "mystery_eb_is_lit{current_player.eb_ready == 0}", 0.1
                 .ForceAll = False
-                .ForceDifferent = False
+                .ForceDifferent = True
             End With
         End With
 
@@ -153,7 +128,7 @@ Sub CreateMysteryMode()
                 .Events = Array("mystery_is_ready")
                 .State = 1
             End With
-            .RestartEvents = Array("play_mystery_show")
+            .RestartEvents = Array("select_random_mystery")
         End With
 
         With .Shots("inlane_1")
@@ -198,7 +173,7 @@ Sub CreateMysteryMode()
         End With
 
         With .SoundPlayer()
-            With .EventName("play_mystery_show")
+            With .EventName("select_random_mystery")
                 .Key = "key_voc_mystery"
                 .Sound = "voc_mystery"
             End With

@@ -1,7 +1,7 @@
 
 ' Bonus Mode.
 
-Const BonusShows = 16
+Const BonusShows = 14
 Sub CreateBonusMode
     Dim x
     With CreateGlfMode("eob_bonus", 150)
@@ -45,14 +45,10 @@ Sub CreateBonusMode
             .Add "play_bonus_show12{current_player.mode_dinner_score  == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show13")
             .Add "play_bonus_show13{current_player.mode_fd_punch_score    > 0 && current_player.bonus_skip == 0}", Array("bonus_light13_show","do_sfx_bonus", "show_bonus_fd_punch")
             .Add "play_bonus_show13{current_player.mode_fd_punch_score   == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show14")
-            .Add "play_bonus_show14{current_player.modes_played_count   > 0 && current_player.bonus_skip == 0}", Array("bonus_light14_show","do_sfx_bonus", "show_bonus_modes_played")
-            .Add "play_bonus_show14{current_player.modes_played_count  == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show15")
-            .Add "play_bonus_show15{current_player.multiballs_won_count > 0 && current_player.bonus_skip == 0}", Array("bonus_light15_show","do_sfx_bonus", "show_bonus_multiballs_won")
-            .Add "play_bonus_show15{current_player.multiballs_won_count == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show16")
-            .Add "play_bonus_show16{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light16_show","do_sfx_bonus", "show_bonus_total")
-            .Add "play_bonus_show16{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show17")
+            .Add "play_bonus_show14{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light14_show","do_sfx_bonus", "show_bonus_total")
+            .Add "play_bonus_show14{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show15")
 
-            .Add "play_bonus_show17", Array("bonus_finished")
+            .Add "play_bonus_show15", Array("bonus_finished")
             .Add "timer_bonus_skip_complete", Array("bonus_finished")
 
             .Add "do_sfx_bonus", Array("stop_sfx_eob_bonus") 'first stop the sfx if it is already playing
@@ -135,9 +131,7 @@ Sub CreateBonusMode
                         " * current_player.total_switches_hit + current_player.bumper_count * " & BonusBumperFactor & _
                         " + current_player.diner_count * " & BonusDinerFactor & _
                         " + current_player.grandparents_count * " & BonusGrandparentsFactor & _
-                        " + current_player.spinner_count * " & BonusSpinnerFactor & _
-                        " + current_player.modes_played_count * " & BonusModePlayedFactor & _
-                        " + current_player.multiballs_won_count * " & BonusMultiballWonFactor & ":,}"
+                        " + current_player.spinner_count * " & BonusSpinnerFactor & ":,}"
                 End With
             End With
             With .EventName("show_bonus_multiplier")
@@ -268,26 +262,6 @@ Sub CreateBonusMode
                 With .Variable("bonus_display_score")
                     .Action = "set"
                     .String = "{current_player.mode_fd_punch_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_modes_played")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """MODES PLAYED"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "current_player.modes_played_count & "" MODES x "" & BonusModePlayedFactor"
-                End With
-            End With
-            With .EventName("show_bonus_multiballs_won")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """MULTIBALLS WON"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "current_player.multiballs_won_count & "" WINS x "" & BonusMultiballWonFactor"
                 End With
             End With
             With .EventName("show_bonus_total")

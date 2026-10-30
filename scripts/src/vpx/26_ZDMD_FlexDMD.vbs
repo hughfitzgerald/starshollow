@@ -31,8 +31,12 @@
 '    the two scenes that are real code live in display_scenes.vbs. This
 '    file is now the FlexDMD device setup and the render timer, nothing
 '    else.
-' 4. Everything else (ShowScene, DMDBigText, FlexFlasher) is untouched
-'    from the VPW original, bar ShowScene losing its mode argument.
+' 4. ShowScene no longer clears the Stage itself. It hands the scene to
+'    ZDTX (29_ZDTX_FlexDMD_Transitions.vbs), which owns the one group
+'    every scene lives in and can animate the change - push, fade and so
+'    on. DMDBigText's text sits on the Stage above that group, so a scene
+'    change no longer wipes it; ZFBC clears it when its slide leaves.
+'    FlexFlasher is untouched from the VPW original.
 
 
 Dim FlexDMD	 'This is the FlexDMD object
@@ -88,6 +92,10 @@ Sub Flex_Init
 		.Run = True
 	End With
 
+	' The group every scene is shown in. It has to be the Stage's first
+	' child, so that DMDBigText's text is always drawn on top of it.
+	DmdTx_Init()
+
     Set hugeFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f14by26.fnt", vbWhite, vbWhite, 0)
     Set biggerFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f12by24.fnt", vbWhite, vbWhite, 0)
     Set bigFont = FlexDMD.NewFont("FlexDMD.Resources.udmd-f7by13.fnt", vbWhite, vbWhite, 0)
@@ -122,6 +130,8 @@ End Sub
 '
 ' flexScene: FlexDMD.Group to play
 ' render: The render mode to use
+' transition: a DmdTransition to animate the change with, or Nothing for
+'   a straight cut (see ZDTX)
 '
 ' VPW's version took a third "mode" argument and assigned it to a global
 ' FlexMode, which DMDTimer_Timer switched on to pick a per-frame updater.
@@ -130,15 +140,18 @@ End Sub
 ' FlexDmd_Present (ZFBC) rather than calling this directly: it is what
 ' keeps "what is on screen" and "whose ticker runs" the same answer.
 '--------------------------------------------
-Sub ShowScene(flexScene, render) 'Easy wrapper to play a FlexDMD scene
+Sub ShowScene(flexScene, render, transition) 'Easy wrapper to play a FlexDMD scene
 	If UseFlexDMD = 0 Then Exit Sub
 
+	' RenderMode is global to the DMD, so a transition between scenes of
+	' different modes runs in the new scene's mode from the start.
 	FlexDMD.LockRenderThread
 	FlexDMD.RenderMode = render
-	FlexDMD.Stage.RemoveAll
-	FlexDMD.Stage.AddActor flexScene
 	If VRroom > 0 Or FlexONPlayfield Then FlexDMD.Show = False Else FlexDMD.Show = True
 	FlexDMD.UnlockRenderThread
+
+	' ZDTX takes the lock itself.
+	DmdTx_Start flexScene, transition
 End Sub
 
 ' Word-wraps text so no line is longer than maxChars, joining the lines
@@ -282,9 +295,24 @@ Sub DMDBigText(text,image,Time,effect)
     seq.Add af.Wait(secs)
     seq.Add af.RemoveFromParent()
     jp.AddAction seq
+    ' Under the lock: this runs from event context, while the render
+    ' thread may be drawing the Stage.
+    FlexDMD.LockRenderThread
     If IsObject(DMDBigTextGroup) Then FlexDMD.Stage.RemoveActor DMDBigTextGroup
     FlexDMD.Stage.AddActor jp
+    FlexDMD.UnlockRenderThread
     Set DMDBigTextGroup = jp
+End Sub
+
+' Take the last DMDBigText off the DMD now, rather than when its time
+' runs out. ZFBC calls this when the slide or widget that drew it stops
+' being the top of the stack. Safe to call when there is nothing up.
+Sub DMDBigTextClear()
+	If UseFlexDMD = 0 Then Exit Sub
+	If Not IsObject(DMDBigTextGroup) Then Exit Sub
+	FlexDMD.LockRenderThread
+	DMDBigTextGroup.Remove
+	FlexDMD.UnlockRenderThread
 End Sub
 
 Sub FlexFlasher 'Flex on vrroom and playfield runs this one
@@ -317,6 +345,10 @@ Sub DMDTimer_Timer 'Main FlexDMD Timer
 	
 	FlexFrame = FlexFrame + 1
 	FlexDMD.LockRenderThread
+
+	' A scene transition that has run its time is snapped to its end
+	' first, so the tickers below see the scene where it will stay.
+	DmdTx_Tick()
 	
 	' Whatever scene is on the DMD gets its per-frame update here, if it
 	' asked for one - the scoreboard refreshing scores and drawing widget

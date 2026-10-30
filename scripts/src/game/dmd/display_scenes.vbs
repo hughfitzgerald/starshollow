@@ -24,10 +24,16 @@
 ' the lock again), and must not do anything slow.
 '
 ' Both take a single argument - the GlfDmdEntry they belong to, matching
-' the GetRef(name)(args) callback convention GLF uses everywhere. The
-' full-screen scenes below ignore it and reach their actors through
-' FlexDMD.Stage, which is fine for something that owns the whole stage.
-' A LAYER must not: see DmdBuild_LukeAndLorelei.
+' the GetRef(name)(args) callback convention GLF uses everywhere. Every
+' ticker reaches its actors through entry.Scene(), never FlexDMD.Stage:
+' during a transition two scenes are on the stage at once, and a Stage
+' lookup can find the other one's label of the same name.
+'
+' Leave the scene group's own position alone once it is built (move the
+' actors inside it instead). A transition carries the group in a parent
+' of its own and puts it back where it was, so a builder may place it -
+' Mystery sits at 0,2 - but a ticker moving the group itself would fight
+' the transition.
 '
 ' FULL-SCREEN SCENES AND LAYERS
 '
@@ -167,9 +173,11 @@ End Sub
 '*******************************************
 '  welcome - the attract intro
 '*******************************************
-' The logo is hidden at build time and revealed by the ticker at an
-' absolute frame number, so this scene only plays correctly from a reset
-' frame counter - hence .ResetFrame = True on its config entry.
+' The logo slides in and then blinks, all with FlexDMD actions built
+' here - the ticker has nothing to do. FlexDMD runs an actor's actions
+' only while it is on the stage, so the slide-in starts when the scene
+' first goes on the DMD (at the start of its fade-in transition) and
+' does not restart on a later replay.
 
 Sub DmdBuild_Welcome(entry)
     ' Dim g : Set g = FlexDMD.NewGroup("Welcome")
@@ -339,6 +347,67 @@ Sub DmdTick_HighScore(entry)
     ' time.Text = "00:00"
 End Sub
 
+Sub DmdBuild_Initials(entry)
+  Dim scene
+  Set scene = FlexDMD.NewGroup("Initials Entry")
+  scene.SetSize 128, 32
+
+  Dim letters
+  Set letters = FlexDMD.NewGroup("Letters")
+  letters.setPosition -1, 24
+  Dim offset
+  offset = 0
+  Dim i, letter
+  For i = 0 to 16
+    Set letter = FlexDMD.NewLabel("letter" & i, smallFont, "")
+    letter.SetPosition offset, 0
+    offset = offset + 8
+    letters.AddActor letter
+  Next
+
+
+  Dim initials
+  Set initials = FlexDMD.NewLabel("Initials", bigFont, "")
+  initials.SetAlignedPosition 64, 10, 4
+  scene.AddActor initials
+
+  Dim frame
+  Set frame = FlexDMD.NewFrame("Border")
+  frame.SetBounds 22, -2, 8, 9
+  frame.Thickness = 1
+  frame.BorderColor = RGB(90, 90, 90)
+  letters.AddActor frame
+
+  scene.AddActor letters
+
+  entry.SetScene scene
+End Sub
+
+Sub DmdTick_Initials(entry)
+  Dim scene
+  Set scene = entry.Scene()
+
+  Dim idx
+  idx = glf_machine_vars("high_score_initials_index").GetValue()
+
+  Dim InitialValues
+  InitialValues = Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","_")
+  Dim Count : Count = UBound(InitialValues) + 1
+  ' Calculate the starting index, handling negative and out-of-bounds numbers
+  Dim Shift : Shift = ((idx Mod Count) + Count - 3) Mod Count
+  Dim WrappedIndex : WrappedIndex = ((idx Mod Count) + Count) Mod Count
+
+  Dim i, letter
+  For i = 0 to 16
+    Set letter = scene.GetLabel("letter" & i)
+    letter.Text = InitialValues((i + Shift) Mod Count)
+  Next
+
+  Dim initials
+  Set initials = scene.GetLabel("Initials")
+  initials.Text = glf_machine_vars("high_score_initials").GetValue() & AZLookup(idx)
+End Sub
+
 Sub DmdBuild_Bonus(entry)
     Dim text, score
     Dim g : Set g = FlexDMD.NewGroup("Bonus")
@@ -469,7 +538,7 @@ Sub DmdTick_GameOver(entry)
 End Sub
 
 
-Sub DmdBuild_Mystery1(entry)
+Sub DmdBuild_MysteryShared(entry)
   Dim scene
   Set scene = FlexDMD.NewGroup("Mystery")
   scene.SetSize 128, 30
@@ -512,50 +581,140 @@ Sub DmdBuild_Mystery1(entry)
   entry.SetScene scene
 End Sub
 
-Dim tick
-Sub DmdTick_MysterySelectedHelper(scene, choice)
-  tick = tick + 1
-  Dim litWord, i
-  For i = 0 to 3
-    Set litWord = scene.GetLabel("word"&i)
-    If i = choice And tick Mod 30 < 15 Then
-      litWord.Visible = True
-    Else
-      litWord.Visible = False
-    End If
-  Next
-End Sub
-
-Sub DmdTick_Mystery1_EB(entry)
-  DmdTick_MysterySelectedHelper entry.Scene(), 0
-End Sub
-
-Sub DmdTick_Mystery1_AB(entry)
-  DmdTick_MysterySelectedHelper entry.Scene(), 1
-End Sub
-
-Sub DmdTick_Mystery1_BS(entry)
-  DmdTick_MysterySelectedHelper entry.Scene(), 2
-End Sub
-
-Sub DmdTick_Mystery1_IB(entry)
-  DmdTick_MysterySelectedHelper entry.Scene(), 3
-End Sub
-
-Sub DmdTick_Mystery1(entry)
+Sub DmdBuild_Mystery(entry, choice)
   Dim scene
-  Set scene = entry.Scene()
-  tick = tick + 1
-  If tick Mod 4 = 0 Then
-    Dim litWord, randomWord, i
-    randomWord = Int(4 * Rnd)
-    For i = 0 to 3
-      Set litWord = scene.GetLabel("word"&i)
-      If i = randomWord Then
-        litWord.Visible = True
-      Else
-        litWord.Visible = False
-      End If
-    Next
-  End If
+  Set scene = FlexDMD.NewGroup("Mystery" & choice)
+  scene.SetSize 128, 30
+  scene.SetPosition 0, 2
+  
+  Dim woman
+  Set woman = FlexDMD.NewLabel("woman" & choice, smallFont, "Woman of Mystery")
+  woman.AutoPack = False
+  woman.FillParent = True
+  woman.Alignment = FlexDMD_Align_Top
+  scene.AddActor woman
+  
+  Dim words, i, groupNumber
+  ' For i = 0 to Int(UBound(mysteryAwards) / 4)
+  For i = 0 to 10
+    If i * 4 + (choice Mod 4) = choice Then groupNumber = i
+  Next
+  words = Array(mysteryAwards(groupNumber * 4 + 0).Text, mysteryAwards(groupNumber * 4 + 1).Text, mysteryAwards(groupNumber * 4 + 2).Text, mysteryAwards(groupNumber * 4 + 3).Text)
+  
+  Dim alignment
+  alignment = Array(FlexDMD_Align_TopLeft, FlexDMD_Align_TopRight, FlexDMD_Align_BottomLeft, FlexDMD_Align_BottomRight)
+  
+  Dim wordGroup
+  Set wordGroup = FlexDMD.NewGroup("wordGroup" & choice)
+  wordGroup.SetBounds 10, 10, 108, 18
+  scene.AddActor wordGroup
+  
+  Dim word
+  For i = 0 to 3
+    Set word = FlexDMD.NewLabel("dim_word" & choice & i, tinyFontDim, words(i))
+    word.AutoPack = False
+    word.FillParent = True
+    word.Alignment = alignment(i)
+    wordGroup.AddActor(word)
+    
+    Set word = FlexDMD.NewLabel("word" & choice & i, tinyFont, words(i))
+    word.AutoPack = False
+    word.FillParent = True
+    word.Alignment = alignment(i)
+    word.Visible = False
+    wordGroup.AddActor(word)
+  Next
+
+  Dim mysteryRandomStepSecs, steps, af, seq, idx, prev, mysteryDuration, mysteryShowDuration, mysterySelectedDuration, mysterySelectedBlinkSecs, mysterySelectedSteps
+  mysteryDuration = 6.0
+  mysteryRandomStepSecs = 0.10
+  mysterySelectedBlinkSecs = 0.8
+
+  mysteryShowDuration = mysteryDuration / 2.0
+  mysterySelectedDuration = mysteryDuration / 2.0
+  steps = mysteryShowDuration / mysteryRandomStepSecs
+  prev = -1
+  Set af = scene.ActionFactory
+  Set seq = af.Sequence()
+  For i = 1 To steps
+    Do : idx = Int(Rnd * 4) : Loop While idx = prev
+    seq.Add wordGroup.GetLabel("word" & choice & idx).ActionFactory.Show(True)
+    seq.Add af.Wait(mysteryRandomStepSecs)
+    seq.Add wordGroup.GetLabel("word" & choice & idx).ActionFactory.Show(False)
+    prev = idx
+  Next
+  
+  mysterySelectedSteps = mysterySelectedDuration / mysterySelectedBlinkSecs
+  seq.Add wordGroup.GetLabel("word" & choice & (choice Mod 4)).ActionFactory.Blink(mysterySelectedBlinkSecs/2.0, mysterySelectedBlinkSecs/2.0, mysterySelectedSteps)
+
+  scene.AddAction seq
+
+  entry.SetScene scene
+End Sub
+
+Sub DmdBuild_Mystery_eb(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "eb" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_ab(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "ab" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_bs(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "bs" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_ib(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "ib" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_jd(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "jd" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_ss(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "ss" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_al(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "al" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdBuild_Mystery_ms(entry)
+  Dim i, choice
+  For i = 0 to UBound(mysteryAwards)
+    If mysteryAwards(i).Short = "ms" Then choice = i
+  Next
+  DmdBuild_Mystery entry, choice
+End Sub
+
+Sub DmdTick_Mystery(entry)
 End Sub

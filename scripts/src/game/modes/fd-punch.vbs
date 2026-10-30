@@ -6,7 +6,9 @@ Sub CreateFdPunchMode()
     Dim fd_punch_shots, shot
     fd_punch_shots = Array( _
         NewShot("fd_punch_orbit_left",  "s_left_orbit",  "l51", "fd_punch_orbits"), _
-        NewShot("fd_punch_orbit_right", "s_right_orbit", "l52", "fd_punch_orbits") _
+        NewShot("fd_punch_orbit_right", "s_right_orbit", "l52", "fd_punch_orbits"), _
+        NewShot("fd_punch_lukes", "s_DropTargetKicker", "l60", "fd_punch_lukes_group"), _
+        NewShot("fd_punch_mansion", "s_HiddenUpperRightKicker", "l61", "fd_punch_mansion_group") _
     )
     With CreateGlfMode("fd_punch", 700)
 

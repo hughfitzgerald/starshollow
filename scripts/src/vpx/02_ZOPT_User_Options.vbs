@@ -58,6 +58,10 @@ Sub Table1_OptionEvent(ByVal eventId)
     StagedFlippers = Table1.Option("Staged Flippers", 0, 1, 1, 0, 0, Array("Disabled", "Enabled"))
 	glf_machine_vars("game_modes_enabled").Value = Table1.Option("Game Modes Enabled", 0, 1, 1, 1, 0, Array("Disabled", "Enabled"))
 
+	' DMD scene transitions (push, fade...). Off makes every change a
+	' straight cut, for players who find the motion distracting. See ZDTX.
+	DmdTx_Enabled = (Table1.Option("DMD Transitions", 0, 1, 1, 1, 0, Array("Off", "On")) = 1)
+
 
 	' GLF's own options: Debug Log, Debug Log Level, Backbox Control
 	' Protocol, Virtual Segment DMD, production mode. You will use the

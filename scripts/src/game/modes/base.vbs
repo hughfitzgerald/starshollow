@@ -108,17 +108,10 @@ Sub CreateBaseMode()
             .Add "jess_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
             .Add "dean_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
 
+            ' .Add "s_ST11_active", Array("lock_qualified") ' TEMP: when you hit the J in "JESS" we get lock lit
+            .Add "jess_and_dean_targets_lit_complete", Array("lock_qualified")
+
             'TODO: Add ramp rollovers, ANY OTHERS?
-
-            'Timed modes, counted for the end of ball bonus. Their start awards are in each mode.
-            For Each timedMode In Array("dance_marathon", "town_meeting", "dinner", "fd_punch", "kims_antiques", "lbtb")
-                .Add "mode_" & timedMode & "_started", Array("modes_played_increment")
-            Next
-
-            'Multiball wins, counted for the end of ball bonus
-            .Add "jess_wins", Array("multiballs_won_increment")
-            .Add "dean_wins", Array("multiballs_won_increment")
-            .Add "logan_ball_captured", Array("multiballs_won_increment")
 
             .Add "mode_eob_bonus_started", Array("base_music_stop")
             .Add "base_music_stop", baseMusicStopEvents
@@ -206,14 +199,6 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 0
                 End With
-                With .Variable("modes_played_count")
-                    .Action = "set"
-                    .Int = 0
-                End With
-                With .Variable("multiballs_won_count")
-                    .Action = "set"
-                    .Int = 0
-                End With
                 With .Variable("bonus_total")
                     .Action = "set"
                     .Int = 0
@@ -287,16 +272,16 @@ Sub CreateBaseMode()
                     .Int = 1
                 End With
             End With
-            With .EventName("modes_played_increment")
-                With .Variable("modes_played_count")
-                    .Action = "add"
+            With .EventName("lock_qualified")
+                With .Variable("is_lock_qualified")
+                    .Action = "set"
                     .Int = 1
                 End With
             End With
-            With .EventName("multiballs_won_increment")
-                With .Variable("multiballs_won_count")
-                    .Action = "add"
-                    .Int = 1
+            With .EventName("lock_unqualified")
+                With .Variable("is_lock_qualified")
+                    .Action = "set"
+                    .Int = 0
                 End With
             End With
         End With
@@ -698,11 +683,15 @@ Sub CreateBaseMode()
 
         With .ShotGroups("jess_targets")
             .Shots = Array("jd_target_11", "jd_target_12", "jd_target_13", "jd_target_14")
-            .RestartEvents = Array("jess_targets_lit_complete")
+            .RestartEvents = Array("mode_jd_multiball_started")
         End With
         With .ShotGroups("dean_targets")
             .Shots = Array("jd_target_15", "jd_target_16", "jd_target_17", "jd_target_18")
-            .RestartEvents = Array("dean_targets_lit_complete")
+            .RestartEvents = Array("mode_jd_multiball_started")
+        End With
+
+        With .ShotGroups("jess_and_dean_targets")
+            .Shots = Array("jd_target_11", "jd_target_12", "jd_target_13", "jd_target_14", "jd_target_15", "jd_target_16", "jd_target_17", "jd_target_18")
         End With
 
 

@@ -129,21 +129,49 @@
 '
 ' TEXT
 '
-' A .Text entry draws through DMDBigText, and the only thing that puts
-' DMDBigText on screen is DmdTick_Score, the scoreboard's ticker. So a
-' text entry needs the scoreboard underneath it, and .Over is how it
-' says so. The defaults keep the two players behaving the way you would
-' expect:
+' A .Text entry draws through DMDBigText: a full-screen, opaque group on
+' the Stage, above every scene, that takes itself off after its hold.
+' It is on screen exactly while its stack item is the TOP entry (layers
+' aside), and never longer than its hold:
+'
+'   - a scene change underneath it does not touch it, and is always a
+'     cut - nobody could see a transition under opaque text;
+'   - it comes off the moment something else becomes the top entry, or
+'     its own item leaves the stack (removed, expired, mode stopped);
+'   - it appears and disappears as a cut, never sliding with a scene.
+'
+' .Over says which scene should be up underneath it, for when the text
+' goes. The defaults:
 '
 '   a text SLIDE with no .Over falls back to FlexDmdTextBackdrop, and
 '   brings the scoreboard up - a slide is allowed to take the screen.
 '
-'   a text WIDGET with no .Over falls back to nothing, and appears only
-'   if the scoreboard happens to be up already - a notification must not
-'   yank the slide out from under itself.
+'   a text WIDGET with no .Over falls back to nothing, and leaves
+'   whatever is up where it is - a notification must not yank the slide
+'   out from under itself.
 '
 ' Either can say otherwise: .Over = "current" never disturbs anything,
 ' and .Over = "score" always brings the scoreboard up.
+'
+' TRANSITIONS
+'
+' A change of full-screen scene can be animated - push, move_in,
+' move_out, wipe, fade, flash, curtain - with the MPF names. Each entry
+' says how it arrives and how it leaves:
+'
+'     With CreateDmdSlide("mode")
+'         .Builder       = "DmdBuild_Mode"
+'         .Transition    = "push left"
+'         .TransitionOut = "push right"
+'     End With
+'
+' and SetDmdDefaultTransition (in display_config.vbs) sets a table-wide
+' fallback. ZDTX plays them; FlexDmd_PickTransition below picks one, the
+' way the Godot MC does: when the scene on the DMD is still wanted by
+' something on the stack it is being COVERED, and the arriving entry's
+' .Transition is used; when nothing wants it any more it is LEAVING, and
+' its own .TransitionOut comes first. An entry's own setting always
+' beats the table default.
 '
 ' THE COST OF useBcp = True
 '
@@ -272,6 +300,7 @@ Class GlfFlexDmdBcpController
     Private m_stack      ' stack key -> GlfFlexDmdStackItem
     Private m_current    ' name of the scene on the DMD ("" = none)
     Private m_drawn      ' stack key whose .Text/.Callback was last drawn
+    Private m_drawnText  ' True while m_drawn's DMDBigText may still be up
     Private m_seq        ' monotonic counter, breaks priority ties
     Private m_connected
 
@@ -279,6 +308,7 @@ Class GlfFlexDmdBcpController
         Set m_stack = CreateObject("Scripting.Dictionary")
         m_current = ""
         m_drawn = ""
+        m_drawnText = False
         m_seq = 0
         m_connected = True
         Set Init = Me
@@ -428,7 +458,9 @@ Class GlfFlexDmdBcpController
             useBcp = False
             m_stack.RemoveAll
             m_current = ""
+            ClearStaleText ""
             m_drawn = ""
+            DmdTx_Finish()
             FlexDmd_ClearLayers()
         End If
     End Sub
@@ -489,13 +521,15 @@ Class GlfFlexDmdBcpController
     ' about the stack changed; pass "" for "only what changed".
     Private Sub Render(forceKey)
         Dim keys : keys = OrderedKeys()
-        Dim i, n, entry, topEntry, topItem, topKey, baseEntry
+        Dim i, n, entry, topEntry, topItem, topKey, baseEntry, transition
         Dim wanted()
 
         If UBound(keys) < 0 Then
             ' Nothing left in the stack. Leave the last scene up, but
-            ' forget it, so replaying it later renders again.
+            ' forget it, so replaying it later renders again. Any text
+            ' it was showing has left with it.
             m_current = ""
+            ClearStaleText ""
             m_drawn = ""
             FlexDmd_ClearLayers()
             FlexDmd_StackEmpty()
@@ -528,6 +562,8 @@ Class GlfFlexDmdBcpController
         If Not topEntry Is Nothing Then
             If topEntry.Callback <> "" Then
                 If topKey <> m_drawn Or topKey = forceKey Then
+                    ClearStaleText topKey
+                    DmdTx_Finish()
                     FlexDmd_DrawEntry topEntry, ItemKwargs(topItem), ItemHold(topItem, topEntry)
                     m_drawn = topKey
                 End If
@@ -555,7 +591,13 @@ Class GlfFlexDmdBcpController
 
         If Not baseEntry Is Nothing Then
             If Not (FlexDmdCurrent Is baseEntry) Then
-                FlexDmd_Present baseEntry
+                ' Animated, unless the change happens under text - that
+                ' covers the whole DMD, so nobody would see it.
+                Set transition = Nothing
+                If Not FlexDmd_IsText(topEntry) Then
+                    Set transition = FlexDmd_PickTransition(FlexDmdCurrent, baseEntry, Not StackWants(FlexDmdCurrent))
+                End If
+                FlexDmd_Present baseEntry, transition
             ElseIf forceKey <> "" Then
                 ' Replaying the backdrop itself restarts it. Replaying
                 ' something that merely sits ON it must not - that would
@@ -563,7 +605,7 @@ Class GlfFlexDmdBcpController
                 ' scrolling title, on every tick of a countdown.
                 If m_stack.Exists(forceKey) Then
                     If ItemEntry(m_stack(forceKey)) Is baseEntry Then
-                        FlexDmd_Present baseEntry
+                        FlexDmd_Present baseEntry, Nothing
                     End If
                 End If
             End If
@@ -587,10 +629,13 @@ Class GlfFlexDmdBcpController
         Next
         FlexDmd_SetLayers wanted, n
 
-        ' And last, whatever the top entry draws for itself.
+        ' And last, whatever the top entry draws for itself - after taking
+        ' off any text whose entry is no longer the top one.
+        ClearStaleText topKey
         If Not topEntry Is Nothing Then
             If topKey <> m_drawn Or topKey = forceKey Then
                 FlexDmd_DrawEntry topEntry, ItemKwargs(topItem), ItemHold(topItem, topEntry)
+                m_drawnText = FlexDmd_IsText(topEntry)
             End If
         End If
         m_drawn = topKey
@@ -607,6 +652,40 @@ Class GlfFlexDmdBcpController
         Else
             Set ItemEntry = FlexDmd_Lookup(FlexDmdSlides, item.Name)
         End If
+    End Function
+
+    ' Text is on screen only while the item that drew it is the top entry.
+    ' Called with the key that is now on top ("" for none): if the last
+    ' text drawn belongs to a different key, take it off now rather than
+    ' letting it run out its hold over something it no longer belongs to.
+    Private Sub ClearStaleText(topKey)
+        If Not m_drawnText Then Exit Sub
+        If m_drawn = topKey Then Exit Sub
+        DMDBigTextClear
+        m_drawnText = False
+    End Sub
+
+    ' True when something on the stack still wants this entry's scene up:
+    ' an item that IS the entry, or that names it as its backdrop (a
+    ' layer's or a text entry's .Over). False means the scene is leaving
+    ' rather than being covered - see FlexDmd_PickTransition.
+    Private Function StackWants(entry)
+        Dim key, e
+        StackWants = False
+        If entry Is Nothing Then Exit Function
+        For Each key In m_stack.Keys()
+            Set e = ItemEntry(m_stack(key))
+            If Not e Is Nothing Then
+                If e Is entry Then
+                    StackWants = True
+                    Exit Function
+                End If
+                If FlexDmd_Backdrop(e) Is entry Then
+                    StackWants = True
+                    Exit Function
+                End If
+            End If
+        Next
     End Function
 
     ' kwargs is an object or Null, so it cannot be a property - see
@@ -761,6 +840,31 @@ Class GlfDmdEntry
     Public ResetFrame    ' zero FlexFrame before showing
     Public Aliases       ' extra names resolving to this same entry
 
+    ' How this entry's scene arrives on the DMD, and how it leaves - see
+    ' TRANSITIONS at the top of this file. Both are a DmdTransition (ZDTX),
+    ' set from a string or edited in a With block:
+    '
+    '     .Transition = "push left 0.4 out_cubic"
+    '     With .TransitionOut : .TransitionType = "push" : .Direction = "right" : End With
+    '
+    ' Nothing until set, which is what lets FlexDmd_PickTransition tell
+    ' "not set - use the table default" from an explicit "none".
+    Private m_transition, m_transitionOut
+
+    Public Property Get Transition()
+        If m_transition Is Nothing Then Set m_transition = (new DmdTransition)()
+        Set Transition = m_transition
+    End Property
+    Public Property Let Transition(spec) : Set m_transition = DmdTx_FromSpec(spec) : End Property
+    Public Function TransitionIfSet() : Set TransitionIfSet = m_transition : End Function
+
+    Public Property Get TransitionOut()
+        If m_transitionOut Is Nothing Then Set m_transitionOut = (new DmdTransition)()
+        Set TransitionOut = m_transitionOut
+    End Property
+    Public Property Let TransitionOut(spec) : Set m_transitionOut = DmdTx_FromSpec(spec) : End Property
+    Public Function TransitionOutIfSet() : Set TransitionOutIfSet = m_transitionOut : End Function
+
     ' The name as written in config - used for logs and for naming the
     ' FlexDMD actors of an auto-built scene. Read-only, the way every GLF
     ' class exposes its own name.
@@ -815,6 +919,8 @@ Class GlfDmdEntry
         m_name = entryName
         m_isWidget = isWidget
         Set m_parent = Nothing
+        Set m_transition = Nothing
+        Set m_transitionOut = Nothing
         m_attachFrame = 0
         Gif = ""
         Image = ""
@@ -948,9 +1054,13 @@ Sub FlexDmd_Render(entry, kwargs, holdSeconds)
     ' Whatever this entry says belongs underneath it. Skipping the
     ' present when it is already up avoids rebuilding the stage, and
     ' restarting the scrolling title, on every tick.
+    ' There is no stack here to say whether the old scene is leaving, so
+    ' every change counts as an arrival.
     Dim backdrop : Set backdrop = FlexDmd_Backdrop(entry)
     If Not backdrop Is Nothing Then
-        If Not (FlexDmdCurrent Is backdrop) Then FlexDmd_Present backdrop
+        If Not (FlexDmdCurrent Is backdrop) Then
+            FlexDmd_Present backdrop, FlexDmd_PickTransition(FlexDmdCurrent, backdrop, False)
+        End If
     End If
 
     If entry.IsLayer Then
@@ -961,7 +1071,7 @@ Sub FlexDmd_Render(entry, kwargs, holdSeconds)
     End If
 
     If entry.HasScene Then
-        FlexDmd_Present entry
+        FlexDmd_Present entry, FlexDmd_PickTransition(FlexDmdCurrent, entry, False)
         Exit Sub
     End If
 
@@ -1031,12 +1141,11 @@ End Sub
 ' already there".
 '
 ' .Over names it. When .Over is empty the answer depends on what the
-' entry is: a scene needs nothing under it, and a text entry needs the
-' scoreboard, because DMDBigText is drawn by the scoreboard's ticker and
-' by nothing else. A text SLIDE therefore falls back to it and brings it
-' up, while a text WIDGET falls back to nothing - a notification that
-' pulled the scoreboard up over a running mode animation would be worse
-' than a notification that quietly does not appear.
+' entry is: a scene needs nothing under it, and a text SLIDE falls back
+' to FlexDmdTextBackdrop (the scoreboard), so the score is what is left
+' when the text goes. A text WIDGET falls back to nothing and is drawn
+' over whatever is up - a notification that pulled the scoreboard up
+' over a running mode animation would be worse than one that does not.
 Function FlexDmd_Backdrop(entry)
     Set FlexDmd_Backdrop = Nothing
 
@@ -1078,7 +1187,11 @@ End Function
 ' Put an entry's scene on the DMD and make it the current one. This is
 ' the only place FlexDmdCurrent moves, which is what keeps "which tickers
 ' run" and "what is on screen" the same question.
-Sub FlexDmd_Present(entry)
+'
+' transition is a DmdTransition, or Nothing for a cut. The new scene is
+' current - its ticker runs, and its layers attach to it - from the
+' first frame of the transition; the old one is frozen while it leaves.
+Sub FlexDmd_Present(entry, transition)
     If Not entry.HasScene Then Exit Sub
 
     ' A layer is a child of the scene it was attached to, not of the DMD.
@@ -1088,9 +1201,43 @@ Sub FlexDmd_Present(entry)
     FlexDmd_ClearLayers()
 
     If entry.ResetFrame Then FlexFrame = 0
-    ShowScene entry.Scene(), entry.RenderMode
+    ShowScene entry.Scene(), entry.RenderMode, transition
     Set FlexDmdCurrent = entry
 End Sub
+
+
+' The transition a change of scene from oldEntry to newEntry gets, or
+' Nothing for a cut. leaving is True when nothing on the stack wants
+' oldEntry any more - it left, rather than being covered by newEntry.
+'
+' Two rules, the way the Godot MC plays slide animations: an entry's own
+' setting beats the table default, and the leaving entry beats the
+' arriving one. So a covered scene leaves however the arriving one says
+' it arrives; a scene that has gone uses its own .TransitionOut first.
+' An explicit "none" is a setting like any other and stops the search.
+'
+' The first scene ever shown is always a cut - there is nothing to
+' transition from.
+Function FlexDmd_PickTransition(oldEntry, newEntry, leaving)
+    Dim t : Set t = Nothing
+    If Not oldEntry Is Nothing Then
+        If leaving Then Set t = oldEntry.TransitionOutIfSet()
+        If t Is Nothing Then Set t = newEntry.TransitionIfSet()
+        If t Is Nothing And leaving Then Set t = DmdTx_DefaultOut
+        If t Is Nothing Then Set t = DmdTx_DefaultIn
+    End If
+    Set FlexDmd_PickTransition = t
+End Function
+
+
+' True for an entry that draws DMDBigText rather than a scene of its own.
+' Nothing (no entry) is not text.
+Function FlexDmd_IsText(entry)
+    FlexDmd_IsText = False
+    If entry Is Nothing Then Exit Function
+    If entry.HasScene Or entry.Callback <> "" Then Exit Function
+    FlexDmd_IsText = (entry.Text <> "")
+End Function
 
 
 ' Make the attached layers match a list, and do nothing at all when they

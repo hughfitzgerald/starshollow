@@ -5,6 +5,7 @@ Sub CreateJDMultiballMode()
         .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "multiball_jdmb_ended", "jess_wins", "dean_wins")
 
         With .EventPlayer()
+            .Add "mode_jd_multiball_started", Array("release_scoop_hold")
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
 
