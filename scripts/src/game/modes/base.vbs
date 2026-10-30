@@ -110,16 +110,6 @@ Sub CreateBaseMode()
 
             'TODO: Add ramp rollovers, ANY OTHERS?
 
-            'Timed modes, counted for the end of ball bonus. Their start awards are in each mode.
-            For Each timedMode In Array("dance_marathon", "town_meeting", "dinner", "fd_punch", "kims_antiques", "lbtb")
-                .Add "mode_" & timedMode & "_started", Array("modes_played_increment")
-            Next
-
-            'Multiball wins, counted for the end of ball bonus
-            .Add "jess_wins", Array("multiballs_won_increment")
-            .Add "dean_wins", Array("multiballs_won_increment")
-            .Add "logan_ball_captured", Array("multiballs_won_increment")
-
             .Add "mode_eob_bonus_started", Array("base_music_stop")
             .Add "base_music_stop", baseMusicStopEvents
 
@@ -206,14 +196,6 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 0
                 End With
-                With .Variable("modes_played_count")
-                    .Action = "set"
-                    .Int = 0
-                End With
-                With .Variable("multiballs_won_count")
-                    .Action = "set"
-                    .Int = 0
-                End With
                 With .Variable("bonus_total")
                     .Action = "set"
                     .Int = 0
@@ -283,18 +265,6 @@ Sub CreateBaseMode()
             End With
             With .EventName("grandparents_count_increment")
                 With .Variable("grandparents_count")
-                    .Action = "add"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("modes_played_increment")
-                With .Variable("modes_played_count")
-                    .Action = "add"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("multiballs_won_increment")
-                With .Variable("multiballs_won_count")
                     .Action = "add"
                     .Int = 1
                 End With

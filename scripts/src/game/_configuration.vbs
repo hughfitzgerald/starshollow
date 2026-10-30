@@ -228,8 +228,6 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "spinner_count", 0
     Glf_SetInitialPlayerVar "diner_count", 0
     Glf_SetInitialPlayerVar "grandparents_count", 0
-    Glf_SetInitialPlayerVar "modes_played_count", 0      ' timed modes started this ball
-    Glf_SetInitialPlayerVar "multiballs_won_count", 0    ' Jess/Dean or Logan wins this ball
     Glf_SetInitialPlayerVar "bonus_total", 0
 
     Glf_SetInitialPlayerVar "bonus_display_text", "BONUS 1x"
