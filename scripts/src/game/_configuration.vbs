@@ -230,8 +230,6 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "grandparents_count", 0
     Glf_SetInitialPlayerVar "bonus_total", 0
 
-    Glf_SetInitialPlayerVar "bonus_display_text", "BONUS 1x"
-    Glf_SetInitialPlayerVar "bonus_display_score", "0"
 
     Glf_SetInitialPlayerVar "mode_display_text", "MODE: NONE"
     Glf_SetInitialPlayerVar "mode_display_score", 0

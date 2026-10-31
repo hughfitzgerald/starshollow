@@ -48,6 +48,24 @@ Sub CreateBonusMode
             .Add "play_bonus_show14{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light14_show","do_sfx_bonus", "show_bonus_total")
             .Add "play_bonus_show14{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show15")
 
+            'Each bonus line plays the eob_bonus slide with its text and score as kwargs.
+            'The kwargs parser splits on "," and ":", so neither may appear inside a value
+            '(hence Chr(58) below); numeric scores are comma-formatted by DmdTick_Bonus.
+            .Add "show_bonus_multiplier", Array("show_bonus_slide:{text:""BONUS "" & current_player.bonus_multiplier & ""x"",score:current_player.bonus_multiplier * BonusMultiplierFactor * current_player.total_switches_hit}")
+            .Add "show_bonus_coffee", Array("show_bonus_slide:{text:""COFFEE COFFEE COFFEE"",score:current_player.bumper_count & "" CUPS x "" & BonusBumperFactor}")
+            .Add "show_bonus_diners", Array("show_bonus_slide:{text:""LUKE'S DINER"",score:current_player.diner_count & "" MEALS x "" & BonusDinerFactor}")
+            .Add "show_bonus_grandparents", Array("show_bonus_slide:{text:""GRANDPARENTS"",score:current_player.grandparents_count & "" VISITS x "" & BonusGrandparentsFactor}")
+            .Add "show_bonus_talking", Array("show_bonus_slide:{text:""FAST TALKING"",score:current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor}")
+            .Add "show_bonus_llmb", Array("show_bonus_slide:{text:""LOCK-AWAY LOGAN"",score:current_player.mode_llmb_score}")
+            .Add "show_bonus_jdmb", Array("show_bonus_slide:{text:""JESS & DEAN"" & Chr(58) & "" TO THE DEATH"",score:current_player.mode_jdmb_score}")
+            .Add "show_bonus_dm", Array("show_bonus_slide:{text:""DANCE MARATHON"",score:current_player.mode_dance_marathon_score}")
+            .Add "show_bonus_tm", Array("show_bonus_slide:{text:""TOWN MEETING"",score:current_player.mode_town_meeting_score}")
+            .Add "show_bonus_lbtb", Array("show_bonus_slide:{text:""LUKE BREAKS THE BELLS"",score:current_player.mode_lbtb_score}")
+            .Add "show_bonus_kims_antiques", Array("show_bonus_slide:{text:""KIM'S ANTIQUES"",score:current_player.mode_kims_antiques_score}")
+            .Add "show_bonus_dinner", Array("show_bonus_slide:{text:""FRIDAY NIGHT DINNER"",score:current_player.mode_dinner_score}")
+            .Add "show_bonus_fd_punch", Array("show_bonus_slide:{text:""FOUNDER'S DAY PUNCH"",score:current_player.mode_fd_punch_score}")
+            .Add "show_bonus_total", Array("show_bonus_slide:{text:""TOTAL BONUS"",score:current_player.bonus_total}")
+
             .Add "play_bonus_show15", Array("bonus_finished")
             .Add "timer_bonus_skip_complete", Array("bonus_finished")
 
@@ -134,147 +152,6 @@ Sub CreateBonusMode
                         " + current_player.spinner_count * " & BonusSpinnerFactor & ":,}"
                 End With
             End With
-            With .EventName("show_bonus_multiplier")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """BONUS "" & current_player.bonus_multiplier & ""x"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.bonus_multiplier * " & BonusMultiplierFactor & " * current_player.total_switches_hit:,}"
-                End With
-            End With
-            With .EventName("show_bonus_coffee")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """COFFEE COFFEE COFFEE"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "current_player.bumper_count & "" CUPS x "" & BonusBumperFactor"
-                End With
-            End With
-            With .EventName("show_bonus_diners")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """LUKE'S DINER"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "current_player.diner_count & "" MEALS x "" & BonusDinerFactor"
-                End With
-            End With
-            With .EventName("show_bonus_grandparents")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """GRANDPARENTS"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "current_player.grandparents_count & "" VISITS x "" & BonusGrandparentsFactor"
-                End With
-            End With
-            With .EventName("show_bonus_talking")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """FAST TALKING"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor"
-                End With
-            End With
-            With .EventName("show_bonus_llmb")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """LOCK-AWAY LOGAN"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_llmb_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_jdmb")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """JESS & DEAN: TO THE DEATH"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_jdmb_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_dm")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """DANCE MARATHON"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_dance_marathon_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_tm")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """TOWN MEETING"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_town_meeting_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_lbtb")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """LUKE BREAKS THE BELLS"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_lbtb_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_kims_antiques")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """KIM'S ANTIQUES"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_kims_antiques_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_dinner")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """FRIDAY NIGHT DINNER"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_dinner_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_fd_punch")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """FOUNDER'S DAY PUNCH"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.mode_fd_punch_score:,}"
-                End With
-            End With
-            With .EventName("show_bonus_total")
-                With .Variable("bonus_display_text")
-                    .Action = "set"
-                    .String = """TOTAL BONUS"""
-                End With
-                With .Variable("bonus_display_score")
-                    .Action = "set"
-                    .String = "{current_player.bonus_total:,}"
-                End With
-            End With
-
             With .EventName("skip_bonus_tally")
                 'Skip the bonus tally
 				With .Variable("bonus_skip")
@@ -297,7 +174,7 @@ Sub CreateBonusMode
         End With
 
         With .SlidePlayer()
-            With .EventName("run_bonus_started")
+            With .EventName("show_bonus_slide")
                 .Slide = "eob_bonus"
                 .Action = "play"
             End With
