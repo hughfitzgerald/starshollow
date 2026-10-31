@@ -5,37 +5,27 @@
 '     Array(name, count, title, score)
 '   name   suffix of the show_bonus_<name> event posted when the line is shown
 '   count  player variable; the line is skipped when it is 0
-'   title  VBScript expression for the slide's text - wrap fixed text in EobBonusLiteral
+'   title  VBScript expression for the slide's text - wrap fixed text in KwargText
 '   score  VBScript expression for the slide's score, or "" for current_player.<count>
 '          (numeric scores are comma-formatted by DmdTick_Bonus)
 ' Each line gets its own GI light show; the last line gets the up-and-down sweep.
 Function EobBonusLines()
     EobBonusLines = Array( _
         Array("multiplier",     "total_switches_hit",        """BONUS "" & current_player.bonus_multiplier & ""x""", "current_player.bonus_multiplier * BonusMultiplierFactor * current_player.total_switches_hit"), _
-        Array("coffee",         "bumper_count",              EobBonusLiteral("COFFEE COFFEE COFFEE"),  "current_player.bumper_count & "" CUPS x "" & BonusBumperFactor"), _
-        Array("diners",         "diner_count",               EobBonusLiteral("LUKE'S DINER"),          "current_player.diner_count & "" MEALS x "" & BonusDinerFactor"), _
-        Array("grandparents",   "grandparents_count",        EobBonusLiteral("GRANDPARENTS"),          "current_player.grandparents_count & "" VISITS x "" & BonusGrandparentsFactor"), _
-        Array("talking",        "spinner_count",             EobBonusLiteral("FAST TALKING"),          "current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor"), _
-        Array("llmb",           "mode_llmb_score",           EobBonusLiteral("LOCK-AWAY LOGAN"),       ""), _
-        Array("jdmb",           "mode_jdmb_score",           EobBonusLiteral("JESS & DEAN: TO THE DEATH"), ""), _
-        Array("dm",             "mode_dance_marathon_score", EobBonusLiteral("DANCE MARATHON"),        ""), _
-        Array("tm",             "mode_town_meeting_score",   EobBonusLiteral("TOWN MEETING"),          ""), _
-        Array("lbtb",           "mode_lbtb_score",           EobBonusLiteral("LUKE BREAKS THE BELLS"), ""), _
-        Array("kims_antiques",  "mode_kims_antiques_score",  EobBonusLiteral("KIM'S ANTIQUES"),        ""), _
-        Array("dinner",         "mode_dinner_score",         EobBonusLiteral("FRIDAY NIGHT DINNER"),   ""), _
-        Array("fd_punch",       "mode_fd_punch_score",       EobBonusLiteral("FOUNDER'S DAY PUNCH"),   ""), _
-        Array("total",          "bonus_total",               EobBonusLiteral("TOTAL BONUS"),           "") _
+        Array("coffee",         "bumper_count",              KwargText("COFFEE COFFEE COFFEE"),  "current_player.bumper_count & "" CUPS x "" & BonusBumperFactor"), _
+        Array("diners",         "diner_count",               KwargText("LUKE'S DINER"),          "current_player.diner_count & "" MEALS x "" & BonusDinerFactor"), _
+        Array("grandparents",   "grandparents_count",        KwargText("GRANDPARENTS"),          "current_player.grandparents_count & "" VISITS x "" & BonusGrandparentsFactor"), _
+        Array("talking",        "spinner_count",             KwargText("FAST TALKING"),          "current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor"), _
+        Array("llmb",           "mode_llmb_score",           KwargText("LOCK-AWAY LOGAN"),       ""), _
+        Array("jdmb",           "mode_jdmb_score",           KwargText("JESS & DEAN: TO THE DEATH"), ""), _
+        Array("dm",             "mode_dance_marathon_score", KwargText("DANCE MARATHON"),        ""), _
+        Array("tm",             "mode_town_meeting_score",   KwargText("TOWN MEETING"),          ""), _
+        Array("lbtb",           "mode_lbtb_score",           KwargText("LUKE BREAKS THE BELLS"), ""), _
+        Array("kims_antiques",  "mode_kims_antiques_score",  KwargText("KIM'S ANTIQUES"),        ""), _
+        Array("dinner",         "mode_dinner_score",         KwargText("FRIDAY NIGHT DINNER"),   ""), _
+        Array("fd_punch",       "mode_fd_punch_score",       KwargText("FOUNDER'S DAY PUNCH"),   ""), _
+        Array("total",          "bonus_total",               KwargText("TOTAL BONUS"),           "") _
     )
-End Function
-
-' Fixed text as a VBScript string expression that is safe to use as a kwarg.
-' GLF splits an event's kwargs on "," and ":" without regard to quotes, so
-' those two are spliced in with Chr() instead of appearing literally.
-Function EobBonusLiteral(text)
-    Dim expr : expr = Replace(text, """", """""")
-    expr = Replace(expr, ":", """ & Chr(58) & """)
-    expr = Replace(expr, ",", """ & Chr(44) & """)
-    EobBonusLiteral = """" & expr & """"
 End Function
 
 Sub CreateBonusMode

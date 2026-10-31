@@ -13,7 +13,7 @@ Sub CreateLbtbMode()
 
         With .EventPlayer()
             .Debug = True
-            .Add "mode_lbtb_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei")
+            .Add "mode_lbtb_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei", ModeSlideEvent("play_lbtb_mode_slide", "LUKE BREAKS THE BELLS!", "BREAK BELLS TO SCORE"))
             .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "stop_lbtb_luke_and_lorelei")
             .Add "timer_lbtb_post_mode_complete", Array("base_music_start")
 
@@ -186,7 +186,7 @@ Sub CreateLbtbMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("mode_lbtb_started")
+            With .EventName("play_lbtb_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -237,17 +237,9 @@ Sub CreateLbtbMode()
                     .Action = "add"
                     .Int = ModeStartScore
                 End With
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """LUKE BREAKS THE BELLS!"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_lbtb_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """BREAK BELLS TO SCORE"""
                 End With
                 With .Variable("mode_display_timer")
                     .Action = "set"

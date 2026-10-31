@@ -542,7 +542,7 @@ Sub DmdTick_Mode(entry)
     
     Set scene = entry.Scene()
     Set text = scene.GetLabel("mode_text")
-    text.Text = GetPlayerState("mode_display_text")
+    text.Text = FlexDmd_Kwarg(entry.Kwargs(), "text", "")
     text.SetBounds 0, 1, 128, 8
     text.Alignment = FlexDMD_Align_Center
 
@@ -552,7 +552,7 @@ Sub DmdTick_Mode(entry)
     score.Alignment = FlexDMD_Align_Center
 
     Set instructions = scene.GetLabel("mode_instructions")
-    instructions.Text = GetPlayerState("mode_display_instructions")
+    instructions.Text = FlexDmd_Kwarg(entry.Kwargs(), "instructions", "")
     instructions.SetBounds 0, 24, 128, 8
     instructions.Alignment = FlexDMD_Align_Center
 

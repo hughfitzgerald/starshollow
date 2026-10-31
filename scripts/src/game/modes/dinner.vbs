@@ -18,7 +18,7 @@ Sub CreateDinnerMode()
             'Scoring
             .Add "dinner_shot_hit", Array(ScoreEvent(DinnerShotScore, NoMultiplier))
 
-            .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold")
+            .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold", ModeSlideEvent("play_dinner_mode_slide", "FRIDAY NIGHT DINNER", "SHOOT ORBITS TO SCORE"))
             .Add "mode_dinner_stopping", Array("dinner_shots_off")
             'Lasted the full timer without draining
             .Add "timer_dinner_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
@@ -71,7 +71,7 @@ Sub CreateDinnerMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("mode_dinner_started")
+            With .EventName("play_dinner_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -101,17 +101,9 @@ Sub CreateDinnerMode()
                     .Action = "add"
                     .Int = ModeStartScore
                 End With
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """FRIDAY NIGHT DINNER"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_dinner_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """SHOOT ORBITS TO SCORE"""
                 End With
             End With
 

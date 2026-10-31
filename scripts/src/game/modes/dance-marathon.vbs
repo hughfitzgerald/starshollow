@@ -47,6 +47,7 @@ Sub CreateDanceMarathonMode()
 
             .Add "timer_dm_shot_complete", Array("dm_reset_shots")
             .Add "dm_reset_shots", Array("dm_shots_off","dm_start_shots")
+            .Add "dm_start_shots", Array(ModeSlideEvent("play_dance_marathon_mode_slide", "DANCE MARATHON", "HIT FLASHING SHOTS TO SCORE"))
 
             For Each shot In dm_shots
                 .Add shot.Name & "_lit_hit", Array("dm_shot_hit")
@@ -135,7 +136,7 @@ Sub CreateDanceMarathonMode()
             End With
 
 
-            With .EventName("dm_start_shots")
+            With .EventName("play_dance_marathon_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -165,17 +166,9 @@ Sub CreateDanceMarathonMode()
                     .Action = "add"
                     .Int = ModeStartScore
                 End With
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """DANCE MARATHON"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_dance_marathon_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """HIT FLASHING SHOTS TO SCORE"""
                 End With
             End With
 

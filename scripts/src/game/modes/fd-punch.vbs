@@ -20,7 +20,7 @@ Sub CreateFdPunchMode()
             'Scoring
             .Add "fd_punch_shot_hit", Array(ScoreEvent(FdPunchShotScore, NoMultiplier))
 
-            .Add "mode_fd_punch_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown")
+            .Add "mode_fd_punch_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "open_left_orbit_diverter", "open_right_orbit_diverter", "dt1_knockdown", ModeSlideEvent("play_fd_punch_mode_slide", "FOUNDER'S DAY PUNCH", "SHOOT LUKE'S OR MANSION TO SCORE"))
             .Add "mode_fd_punch_stopping", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_fd_punch_music")
             .Add "fd_punch_post_mode", Array("fd_punch_shots_off", "close_left_orbit_diverter", "close_right_orbit_diverter", "stop_fd_punch_music", "play_fd_punch_post_mode")
             .Add "timer_fd_punch_post_mode_complete", Array("base_music_start")
@@ -168,7 +168,7 @@ Sub CreateFdPunchMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("mode_fd_punch_started")
+            With .EventName("play_fd_punch_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -211,17 +211,9 @@ Sub CreateFdPunchMode()
                     .Action = "add"
                     .Int = ModeStartScore
                 End With
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """FOUNDER'S DAY PUNCH"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_fd_punch_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """SHOOT LUKE'S OR MANSION TO SCORE"""
                 End With
             End With
 

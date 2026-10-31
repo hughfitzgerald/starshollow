@@ -20,6 +20,7 @@ Sub CreateHurryupMode()
             ' .Add "mode_hurryup_started", Array("s_slim_target_ramp2_active", "s_slim_target_ramp3_active", "s_slim_target_ramp4_active", "s_slim_target_hidden1_active", "s_slim_target_hidden2_active")
             
             .Add "star_light_group_on_complete", Array("start_hurryup_timer")
+            .Add "start_hurryup_timer", Array(ModeSlideEvent("play_hurryup_mode_slide", "HURRY-UP", "SHOOT LUKE'S TO COLLECT JACKPOT"))
 
             'Each star target scores only when hit unlit
             For x = 1 To 6
@@ -54,7 +55,7 @@ Sub CreateHurryupMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("start_hurryup_timer")
+            With .EventName("play_hurryup_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -71,14 +72,6 @@ Sub CreateHurryupMode()
 
         With .VariablePlayer()
             With .EventName("start_hurryup_timer")
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """HURRY-UP"""
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """SHOOT LUKE'S TO COLLECT JACKPOT"""
-                End With
                 With .Variable("mode_display_timer")
                     .Action = "set"
                     .String = """"""

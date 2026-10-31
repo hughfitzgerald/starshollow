@@ -8,10 +8,10 @@ Sub CreateLLMultiballMode()
         With .EventPlayer()
             'Scoring
             .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
-            .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier))
+            .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"))
             .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
 
-            .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide")
+            .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             
@@ -42,17 +42,9 @@ Sub CreateLLMultiballMode()
 
         With .VariablePlayer()
             With .EventName("mode_ll_multiball_started")
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """LOCK-AWAY LOGAN"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_llmb_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """HIT BUMPERS TO BASH LOGAN"""
                 End With
                 With .Variable("mode_display_timer")
                     .Action = "set"
@@ -60,10 +52,6 @@ Sub CreateLLMultiballMode()
                 End With
             End With
             With .EventName("logan_totally_bashed")
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """LOCK-AWAY LOGAN IN THE SCOOP"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = LoganTotallyBashedScore
@@ -143,7 +131,7 @@ Sub CreateLLMultiballMode()
                 .Expire = 3
                 .Priority = 1010
             End With
-            With .EventName("mode_ll_multiball_started")
+            With .EventName("play_llmb_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
