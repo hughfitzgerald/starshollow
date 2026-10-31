@@ -200,6 +200,13 @@ Sub CreateFlexDmdDisplay()
         .TransitionOut = "fade 0.5"
     End With
 
+    With CreateDmdSlide("high_score_award")
+        .Builder       = "DmdBuild_Award"
+        .Ticker        = "DmdTick_Award"
+        .Transition    = "fade 0.5"
+        .TransitionOut = "fade 0.5"
+    End With
+
     ' Rises over the score at the end of a ball, and leaves the way it came.
     With CreateDmdSlide("eob_bonus")
         .Builder       = "DmdBuild_Bonus"

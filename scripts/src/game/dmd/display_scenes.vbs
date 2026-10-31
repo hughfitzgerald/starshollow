@@ -357,6 +357,38 @@ Sub DmdTick_HighScore(entry)
     ' time.Text = "00:00"
 End Sub
 
+Sub DmdBuild_Award(entry)
+  Dim scene
+  Set scene = FlexDMD.NewGroup("High Score Award")
+  scene.SetBounds 0, 1, 128, 28
+
+  Dim player
+  Set player = FlexDMD.NewLabel("Player", largeFont, "Player 1")
+  player.FillParent = True
+  player.Alignment = FlexDMD_Align_Top
+  scene.AddActor player
+
+  Dim category
+  Set category = FlexDMD.NewLabel("Category", bigFont, "Grand Champion")
+  category.FillParent = True
+  category.Alignment = FlexDMD_Align_Bottom
+  scene.AddActor category
+  entry.SetScene scene
+End Sub
+
+Sub DmdTick_Award(entry)
+  Dim scene
+  Set scene = entry.Scene()
+
+  Dim player
+  Set player = scene.GetLabel("Player")
+  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0)
+
+  Dim category
+  Set category = scene.GetLabel("Category")
+  category.Text = FlexDmd_Kwarg(entry.Kwargs(), "label", 0)
+End Sub
+
 Sub DmdBuild_Initials(entry)
   Dim scene
   Set scene = FlexDMD.NewGroup("Initials Entry")
