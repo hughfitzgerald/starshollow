@@ -5,7 +5,7 @@ Sub CreateJDMultiballMode()
         .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "multiball_jdmb_ended", "jess_wins", "dean_wins")
 
         With .EventPlayer()
-            .Add "mode_jd_multiball_started", Array("release_scoop_hold")
+            .Add "mode_jd_multiball_started", Array("release_scoop_hold", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
 
@@ -56,17 +56,9 @@ Sub CreateJDMultiballMode()
 
         With .VariablePlayer()
             With .EventName("mode_jd_multiball_started")
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """JESS VS. DEAN: TO THE DEATH"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_jdmb_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"""
                 End With
                 With .Variable("mode_display_timer")
                     .Action = "set"
@@ -111,7 +103,7 @@ Sub CreateJDMultiballMode()
                 .Action = "play"
                 .Expire = 3
             End With
-            With .EventName("mode_jd_multiball_started")
+            With .EventName("play_jdmb_mode_slide")
                 .Slide  = "mode"
                 .Action = "play"
                 .Priority = 1000

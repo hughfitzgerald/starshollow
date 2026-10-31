@@ -230,12 +230,8 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "grandparents_count", 0
     Glf_SetInitialPlayerVar "bonus_total", 0
 
-    Glf_SetInitialPlayerVar "bonus_display_text", "BONUS 1x"
-    Glf_SetInitialPlayerVar "bonus_display_score", "0"
 
-    Glf_SetInitialPlayerVar "mode_display_text", "MODE: NONE"
     Glf_SetInitialPlayerVar "mode_display_score", 0
-    Glf_SetInitialPlayerVar "mode_display_instructions", "INSTRUCTIONS: NONE"
     Glf_SetInitialPlayerVar "mode_display_timer", ""
 
     Glf_SetInitialPlayerVar "mode_llmb_score", 0 ' Lock-Away Logan Multiball
@@ -948,6 +944,24 @@ End Sub
 
 ' A single mode shot: which switch/light it uses, and which
 ' random-event group (e.g. "dm_orbits") lights it.
+' Fixed text as a VBScript string expression that is safe to use as an event
+' kwarg. GLF splits an event's kwargs on "," and ":" without regard to quotes,
+' so those two are spliced in with Chr() instead of appearing literally.
+Function KwargText(text)
+    Dim expr : expr = Replace(text, """", """""")
+    expr = Replace(expr, ":", """ & Chr(58) & """)
+    expr = Replace(expr, ",", """ & Chr(44) & """)
+    KwargText = """" & expr & """"
+End Function
+
+' An event-player entry that posts eventName with the mode slide's title and
+' instructions as kwargs. Play the "mode" slide on eventName and DmdTick_Mode
+' reads them; the score and timer stay player variables, since they change
+' while the slide is up.
+Function ModeSlideEvent(eventName, title, instructions)
+    ModeSlideEvent = eventName & ":{text:" & KwargText(title) & ",instructions:" & KwargText(instructions) & "}"
+End Function
+
 Class ShotDef
     Public Name
     Public Switch

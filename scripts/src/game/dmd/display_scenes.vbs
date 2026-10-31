@@ -500,14 +500,16 @@ Sub DmdBuild_Bonus(entry)
 End Sub
 
 Sub DmdTick_Bonus(entry)
-    Dim text, score, scene
+    Dim text, score, scene, scoreValue
     Set scene = entry.Scene()
     Set text = scene.GetLabel("bonus_text")
-    text.Text = GetPlayerState("bonus_display_text")
+    text.Text = FlexDmd_Kwarg(entry.Kwargs(), "text", "")
     text.SetBounds 0, 1, 128, 8
     text.Alignment = FlexDMD_Align_Center
     Set score = scene.GetLabel("bonus_score")
-    score.Text = GetPlayerState("bonus_display_score")
+    scoreValue = FlexDmd_Kwarg(entry.Kwargs(), "score", "")
+    If IsNumeric(scoreValue) Then scoreValue = FormatNumber(scoreValue, 0)
+    score.Text = scoreValue
     score.SetBounds 0, 12, 128, 16
     score.Alignment = FlexDMD_Align_Center
 End Sub
@@ -540,7 +542,7 @@ Sub DmdTick_Mode(entry)
     
     Set scene = entry.Scene()
     Set text = scene.GetLabel("mode_text")
-    text.Text = GetPlayerState("mode_display_text")
+    text.Text = FlexDmd_Kwarg(entry.Kwargs(), "text", "")
     text.SetBounds 0, 1, 128, 8
     text.Alignment = FlexDMD_Align_Center
 
@@ -550,7 +552,7 @@ Sub DmdTick_Mode(entry)
     score.Alignment = FlexDMD_Align_Center
 
     Set instructions = scene.GetLabel("mode_instructions")
-    instructions.Text = GetPlayerState("mode_display_instructions")
+    instructions.Text = FlexDmd_Kwarg(entry.Kwargs(), "instructions", "")
     instructions.SetBounds 0, 24, 128, 8
     instructions.Alignment = FlexDMD_Align_Center
 

@@ -27,7 +27,7 @@ Sub CreateKimsAntiquesMode()
             'Scoring
             .Add "kims_antiques_shot_hit", Array(ScoreEvent(KimsAntiquesShotScore, NoMultiplier))
 
-            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold", "move_miss_kim")
+            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold", "move_miss_kim", ModeSlideEvent("play_kims_antiques_mode_slide", "KIM'S ANTIQUES", "AVOID MISS KIM (SOLID LIGHT)"))
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             'Survived the full timer without hitting Miss Kim
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(KimsAntiquesCompleteScore, NoMultiplier))
@@ -100,7 +100,7 @@ Sub CreateKimsAntiquesMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("mode_kims_antiques_started")
+            With .EventName("play_kims_antiques_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -118,17 +118,9 @@ Sub CreateKimsAntiquesMode()
                     .Action = "add"
                     .Int = ModeStartScore
                 End With
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """KIM'S ANTIQUES"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_kims_antiques_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """AVOID MISS KIM (SOLID LIGHT)"""
                 End With
             End With
 

@@ -26,7 +26,7 @@ Sub CreateTownMeetingMode()
             'Scoring
             .Add "tm_shot_hit", Array(ScoreEvent(TownMeetingShotScore, NoMultiplier))
 
-            .Add "mode_town_meeting_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop")
+            .Add "mode_town_meeting_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_town_meeting_mode_slide", "TOWN MEETING", "HIT FLASHING SHOTS TO SCORE"))
             .Add "mode_town_meeting_stopping", Array("tm_shots_off")
             'Lasted the full timer without draining
             .Add "timer_tm_mode_complete", Array("town_meeting_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
@@ -136,7 +136,7 @@ Sub CreateTownMeetingMode()
         End With
 
         With .SlidePlayer()
-            With .EventName("mode_town_meeting_started")
+            With .EventName("play_town_meeting_mode_slide")
                 .Slide = "mode"
                 .Action = "play"
                 .Priority = 1000
@@ -166,17 +166,9 @@ Sub CreateTownMeetingMode()
                     .Action = "add"
                     .Int = ModeStartScore
                 End With
-                With .Variable("mode_display_text")
-                    .Action = "set"
-                    .String = """TOWN MEETING"""
-                End With
                 With .Variable("mode_display_score")
                     .Action = "set"
                     .Int = "{current_player.mode_town_meeting_score}"
-                End With
-                With .Variable("mode_display_instructions")
-                    .Action = "set"
-                    .String = """HIT FLASHING SHOTS TO SCORE"""
                 End With
             End With
 
