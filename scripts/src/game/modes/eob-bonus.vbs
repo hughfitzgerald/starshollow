@@ -1,9 +1,47 @@
 
 ' Bonus Mode.
 
-Const BonusShows = 14
+' The bonus tally, one row per line, in the order they are shown:
+'     Array(name, count, title, score)
+'   name   suffix of the show_bonus_<name> event posted when the line is shown
+'   count  player variable; the line is skipped when it is 0
+'   title  VBScript expression for the slide's text - wrap fixed text in EobBonusLiteral
+'   score  VBScript expression for the slide's score, or "" for current_player.<count>
+'          (numeric scores are comma-formatted by DmdTick_Bonus)
+' Each line gets its own GI light show; the last line gets the up-and-down sweep.
+Function EobBonusLines()
+    EobBonusLines = Array( _
+        Array("multiplier",     "total_switches_hit",        """BONUS "" & current_player.bonus_multiplier & ""x""", "current_player.bonus_multiplier * BonusMultiplierFactor * current_player.total_switches_hit"), _
+        Array("coffee",         "bumper_count",              EobBonusLiteral("COFFEE COFFEE COFFEE"),  "current_player.bumper_count & "" CUPS x "" & BonusBumperFactor"), _
+        Array("diners",         "diner_count",               EobBonusLiteral("LUKE'S DINER"),          "current_player.diner_count & "" MEALS x "" & BonusDinerFactor"), _
+        Array("grandparents",   "grandparents_count",        EobBonusLiteral("GRANDPARENTS"),          "current_player.grandparents_count & "" VISITS x "" & BonusGrandparentsFactor"), _
+        Array("talking",        "spinner_count",             EobBonusLiteral("FAST TALKING"),          "current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor"), _
+        Array("llmb",           "mode_llmb_score",           EobBonusLiteral("LOCK-AWAY LOGAN"),       ""), _
+        Array("jdmb",           "mode_jdmb_score",           EobBonusLiteral("JESS & DEAN: TO THE DEATH"), ""), _
+        Array("dm",             "mode_dance_marathon_score", EobBonusLiteral("DANCE MARATHON"),        ""), _
+        Array("tm",             "mode_town_meeting_score",   EobBonusLiteral("TOWN MEETING"),          ""), _
+        Array("lbtb",           "mode_lbtb_score",           EobBonusLiteral("LUKE BREAKS THE BELLS"), ""), _
+        Array("kims_antiques",  "mode_kims_antiques_score",  EobBonusLiteral("KIM'S ANTIQUES"),        ""), _
+        Array("dinner",         "mode_dinner_score",         EobBonusLiteral("FRIDAY NIGHT DINNER"),   ""), _
+        Array("fd_punch",       "mode_fd_punch_score",       EobBonusLiteral("FOUNDER'S DAY PUNCH"),   ""), _
+        Array("total",          "bonus_total",               EobBonusLiteral("TOTAL BONUS"),           "") _
+    )
+End Function
+
+' Fixed text as a VBScript string expression that is safe to use as a kwarg.
+' GLF splits an event's kwargs on "," and ":" without regard to quotes, so
+' those two are spliced in with Chr() instead of appearing literally.
+Function EobBonusLiteral(text)
+    Dim expr : expr = Replace(text, """", """""")
+    expr = Replace(expr, ":", """ & Chr(58) & """)
+    expr = Replace(expr, ",", """ & Chr(44) & """)
+    EobBonusLiteral = """" & expr & """"
+End Function
+
 Sub CreateBonusMode
-    Dim x
+    Dim x, row, score
+    Dim bonusLines : bonusLines = EobBonusLines()
+    Dim bonusShows : bonusShows = UBound(bonusLines) + 1
     With CreateGlfMode("eob_bonus", 150)
         .StartEvents = Array("ball_ending{game.tilted == False}")
         .StopEvents = Array("bonus_finished")
@@ -19,54 +57,18 @@ Sub CreateBonusMode
             'bonus_total is set by the variable player on calculate_bonus_total, so read it one event later
             .Add "add_bonus_total_to_score", Array(ScoreEventExpr("current_player.bonus_total", NoMultiplier))
 
-            .Add "play_bonus_show1{current_player.total_switches_hit  > 0 && current_player.bonus_skip == 0}", Array("bonus_light1_show","do_sfx_bonus", "show_bonus_multiplier")
-            .Add "play_bonus_show1{current_player.total_switches_hit == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show2")
-            .Add "play_bonus_show2{current_player.bumper_count        > 0 && current_player.bonus_skip == 0}", Array("bonus_light2_show","do_sfx_bonus", "show_bonus_coffee")
-            .Add "play_bonus_show2{current_player.bumper_count       == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show3")
-            .Add "play_bonus_show3{current_player.diner_count         > 0 && current_player.bonus_skip == 0}", Array("bonus_light3_show","do_sfx_bonus", "show_bonus_diners")
-            .Add "play_bonus_show3{current_player.diner_count        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show4")
-            .Add "play_bonus_show4{current_player.grandparents_count  > 0 && current_player.bonus_skip == 0}", Array("bonus_light4_show","do_sfx_bonus", "show_bonus_grandparents")
-            .Add "play_bonus_show4{current_player.grandparents_count == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show5")
-            .Add "play_bonus_show5{current_player.spinner_count       > 0 && current_player.bonus_skip == 0}", Array("bonus_light5_show","do_sfx_bonus", "show_bonus_talking")
-            .Add "play_bonus_show5{current_player.spinner_count      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show6")
-            .Add "play_bonus_show6{current_player.mode_llmb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light6_show","do_sfx_bonus", "show_bonus_llmb")
-            .Add "play_bonus_show6{current_player.mode_llmb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show7")
-            .Add "play_bonus_show7{current_player.mode_jdmb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light7_show","do_sfx_bonus", "show_bonus_jdmb")
-            .Add "play_bonus_show7{current_player.mode_jdmb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show8")
-            .Add "play_bonus_show8{current_player.mode_dance_marathon_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light8_show","do_sfx_bonus", "show_bonus_dm")
-            .Add "play_bonus_show8{current_player.mode_dance_marathon_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show9")
-            .Add "play_bonus_show9{current_player.mode_town_meeting_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light9_show","do_sfx_bonus", "show_bonus_tm")
-            .Add "play_bonus_show9{current_player.mode_town_meeting_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show10")
-            .Add "play_bonus_show10{current_player.mode_lbtb_score     > 0 && current_player.bonus_skip == 0}", Array("bonus_light10_show","do_sfx_bonus", "show_bonus_lbtb")
-            .Add "play_bonus_show10{current_player.mode_lbtb_score    == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show11")
-            .Add "play_bonus_show11{current_player.mode_kims_antiques_score       > 0 && current_player.bonus_skip == 0}", Array("bonus_light11_show","do_sfx_bonus", "show_bonus_kims_antiques")
-            .Add "play_bonus_show11{current_player.mode_kims_antiques_score      == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show12")
-            .Add "play_bonus_show12{current_player.mode_dinner_score   > 0 && current_player.bonus_skip == 0}", Array("bonus_light12_show","do_sfx_bonus", "show_bonus_dinner")
-            .Add "play_bonus_show12{current_player.mode_dinner_score  == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show13")
-            .Add "play_bonus_show13{current_player.mode_fd_punch_score    > 0 && current_player.bonus_skip == 0}", Array("bonus_light13_show","do_sfx_bonus", "show_bonus_fd_punch")
-            .Add "play_bonus_show13{current_player.mode_fd_punch_score   == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show14")
-            .Add "play_bonus_show14{current_player.bonus_total         > 0 && current_player.bonus_skip == 0}", Array("bonus_light14_show","do_sfx_bonus", "show_bonus_total")
-            .Add "play_bonus_show14{current_player.bonus_total        == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show15")
-
-            'Each bonus line plays the eob_bonus slide with its text and score as kwargs.
-            'The kwargs parser splits on "," and ":", so neither may appear inside a value
-            '(hence Chr(58) below); numeric scores are comma-formatted by DmdTick_Bonus.
-            .Add "show_bonus_multiplier", Array("show_bonus_slide:{text:""BONUS "" & current_player.bonus_multiplier & ""x"",score:current_player.bonus_multiplier * BonusMultiplierFactor * current_player.total_switches_hit}")
-            .Add "show_bonus_coffee", Array("show_bonus_slide:{text:""COFFEE COFFEE COFFEE"",score:current_player.bumper_count & "" CUPS x "" & BonusBumperFactor}")
-            .Add "show_bonus_diners", Array("show_bonus_slide:{text:""LUKE'S DINER"",score:current_player.diner_count & "" MEALS x "" & BonusDinerFactor}")
-            .Add "show_bonus_grandparents", Array("show_bonus_slide:{text:""GRANDPARENTS"",score:current_player.grandparents_count & "" VISITS x "" & BonusGrandparentsFactor}")
-            .Add "show_bonus_talking", Array("show_bonus_slide:{text:""FAST TALKING"",score:current_player.spinner_count & "" QUIPS x "" & BonusSpinnerFactor}")
-            .Add "show_bonus_llmb", Array("show_bonus_slide:{text:""LOCK-AWAY LOGAN"",score:current_player.mode_llmb_score}")
-            .Add "show_bonus_jdmb", Array("show_bonus_slide:{text:""JESS & DEAN"" & Chr(58) & "" TO THE DEATH"",score:current_player.mode_jdmb_score}")
-            .Add "show_bonus_dm", Array("show_bonus_slide:{text:""DANCE MARATHON"",score:current_player.mode_dance_marathon_score}")
-            .Add "show_bonus_tm", Array("show_bonus_slide:{text:""TOWN MEETING"",score:current_player.mode_town_meeting_score}")
-            .Add "show_bonus_lbtb", Array("show_bonus_slide:{text:""LUKE BREAKS THE BELLS"",score:current_player.mode_lbtb_score}")
-            .Add "show_bonus_kims_antiques", Array("show_bonus_slide:{text:""KIM'S ANTIQUES"",score:current_player.mode_kims_antiques_score}")
-            .Add "show_bonus_dinner", Array("show_bonus_slide:{text:""FRIDAY NIGHT DINNER"",score:current_player.mode_dinner_score}")
-            .Add "show_bonus_fd_punch", Array("show_bonus_slide:{text:""FOUNDER'S DAY PUNCH"",score:current_player.mode_fd_punch_score}")
-            .Add "show_bonus_total", Array("show_bonus_slide:{text:""TOTAL BONUS"",score:current_player.bonus_total}")
-
-            .Add "play_bonus_show15", Array("bonus_finished")
+            'Show each bonus line in turn, skipping those with nothing to show. Each one
+            'plays the eob_bonus slide with its text and score as kwargs, and the light
+            'show it starts moves on to the next line when it completes.
+            For x = 1 To bonusShows
+                row = bonusLines(x - 1)
+                score = row(3)
+                If score = "" Then score = "current_player." & row(1)
+                .Add "play_bonus_show" & x & "{current_player." & row(1) & " > 0 && current_player.bonus_skip == 0}", Array("bonus_light" & x & "_show", "do_sfx_bonus", "show_bonus_" & row(0))
+                .Add "play_bonus_show" & x & "{current_player." & row(1) & " == 0 && current_player.bonus_skip == 0}", Array("play_bonus_show" & (x + 1))
+                .Add "show_bonus_" & row(0), Array("show_bonus_slide:{text:" & row(2) & ",score:" & score & "}")
+            Next
+            .Add "play_bonus_show" & (bonusShows + 1), Array("bonus_finished")
             .Add "timer_bonus_skip_complete", Array("bonus_finished")
 
             .Add "do_sfx_bonus", Array("stop_sfx_eob_bonus") 'first stop the sfx if it is already playing
@@ -108,7 +110,7 @@ Sub CreateBonusMode
         End With
 
         With .ShowPlayer()
-            For x = 1 To BonusShows - 1
+            For x = 1 To bonusShows - 1
                 With .EventName("bonus_light"&x&"_show")
                     .Key = "key_bonus_light"&x&"_show"
                     .Show = "psc_eob_sweep"
@@ -122,12 +124,12 @@ Sub CreateBonusMode
                     End With
                 End With
             Next
-            With .EventName("bonus_light"&BonusShows&"_show")
-                .Key = "key_bonus_light"&BonusShows&"_show"
+            With .EventName("bonus_light"&bonusShows&"_show")
+                .Key = "key_bonus_light"&bonusShows&"_show"
                 .Show = "psc_eob_sweep_up_and_down"
                 .Loops = 0
                 .Priority = 2000
-                .EventsWhenCompleted = Array("play_bonus_show"&(BonusShows+1))
+                .EventsWhenCompleted = Array("play_bonus_show"&(bonusShows+1))
                 With .Tokens()
                     .Add "lights", "GI"
                     .Add "color", GIColorAttract
