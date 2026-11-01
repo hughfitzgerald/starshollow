@@ -4510,8 +4510,23 @@
   },
   {
     "file_name": "Flipper.SkillshotDiverter.json",
+"is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Wall.Wall028.json",
+    "is_locked": false,
+    "editor_layer": 0
+  },
+  {
+    "file_name": "Ramp.Ramp006.json",
     "is_locked": false,
     "editor_layer": 0,
     "editor_layer_visibility": false
+},
+  {
+    "file_name": "Ramp.Ramp010.json",
+    "is_locked": false,
+    "editor_layer": 0
   }
 ]
