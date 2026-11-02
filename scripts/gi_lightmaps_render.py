@@ -45,7 +45,7 @@ TABLE_DIR = os.path.normpath(os.path.join(HERE, "..", "starshollow"))
 OUT_DIR = os.path.join(HERE, "lightmaps")
 INKSCAPE = "/Applications/Inkscape.app/Contents/MacOS/inkscape"  # same as svg-to-playfield.py
 
-TABLE_W, TABLE_H = 952.0, 2162.0  # gamedata.json right/bottom
+TABLE_W, TABLE_H = 952.0, 2162.0  # table.json right/bottom
 
 SVG_NS = "http://www.w3.org/2000/svg"
 INK_NS = "http://www.inkscape.org/namespaces/inkscape"
@@ -115,11 +115,12 @@ def glow_elements(root):
 # ---- init -------------------------------------------------------------------
 def gi_light_centers():
     centers = {}
-    for path in sorted(glob.glob(os.path.join(TABLE_DIR, "gameitems", "Light.gi*.json"))):
+    for path in sorted(glob.glob(os.path.join(TABLE_DIR, "parts", "gi*.json"))):
+        name = os.path.splitext(os.path.basename(path))[0]
         with open(path, encoding="utf-8") as f:
-            light = json.load(f)["Light"]
-        if re.fullmatch(r"gi\d+", light["name"]):
-            centers[light["name"]] = (light["center"]["x"], light["center"]["y"])
+            light = json.load(f)
+        if light.get("$type") == "light" and re.fullmatch(r"gi\d+", name):
+            centers[name] = (light["center"]["x"], light["center"]["y"])
     return centers
 
 

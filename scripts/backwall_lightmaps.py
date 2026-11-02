@@ -20,7 +20,7 @@ additive flasher standing just in front of the wall's front face.
     backwall_lightmaps.py init      # add the gradient + "light glow" layer, one
                                     #   blob per light that has none yet
     backwall_lightmaps.py render    # write lightmaps/LM_LightNNN_backwall.png
-    backwall_lightmaps.py build     # webp + images.json + flasher per light
+    backwall_lightmaps.py build     # webp + image json + flasher per light
     backwall_lightmaps.py all       # init, render, build
     backwall_lightmaps.py adjust --alpha 60    # dim/brighten existing flashers
     backwall_lightmaps.py remove
@@ -42,7 +42,7 @@ import subprocess
 import sys
 import tempfile
 
-from gi_lighting import Table, load, save
+from gi_lighting import Table, dragpoint
 from lxml import etree
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -87,8 +87,8 @@ def lightmap_name(light):
 # ---- wall <-> svg mapping ---------------------------------------------------
 class WallMap:
     def __init__(self, t, root):
-        wall = load(t.item_path("Wall", WALL))["Wall"]
-        pts = [(p["x"], p["y"]) for p in wall["drag_points"]]
+        wall = t.item(WALL)
+        pts = [(p["center"]["x"], p["center"]["y"]) for p in wall["dragpoints"]]
         self.top, self.bottom = wall["height_top"], wall["height_bottom"]
         self.segs = []  # (start distance, p0, p1, length)
         s = 0.0
@@ -123,12 +123,12 @@ class WallMap:
 def backwall_lights(t):
     surfaces = {}
     out = {}
-    for _, light in t.items("Light"):
+    for _, light in t.items("light"):
         if not LIGHT_NAME.fullmatch(light["name"]):
             continue
         surf = light["surface"]
         if surf and surf not in surfaces:
-            surfaces[surf] = load(t.item_path("Wall", surf))["Wall"]["height_top"]
+            surfaces[surf] = t.item(surf)["height_top"]
         z = surfaces.get(surf, 0.0) + light["height"]
         out[light["name"]] = (light["center"]["x"], z)
     return out
@@ -294,16 +294,14 @@ def cmd_render(args):
 
 # ---- build ------------------------------------------------------------------
 def cmd_build(t, args):
-    """One additive flasher per light, stood upright (rot_x -90, like the DMD
+    """One additive flasher per light, stood upright (rotation_x -90, like the DMD
     and backglass flashers) just in front of the wall. Light Map points at the
     light, and the name contains _LightNNN_ so GLF copies the light's colour to
     it as it fades."""
     from PIL import Image
 
     wm = WallMap(t, parse(SVG_PATH).getroot())
-    images_path = os.path.join(t.root, "images.json")
-    images = load(images_path)
-    template = load(t.item_path("Flasher", TEMPLATE_FLASHER))["Flasher"]
+    template = t.item(TEMPLATE_FLASHER)
     made = []
     for light in sorted(backwall_lights(t)):
         name = lightmap_name(light)
@@ -329,87 +327,64 @@ def cmd_build(t, args):
         x1, y1 = min(fx1, bbox[2] + MARGIN_PX), min(H, bbox[3] + MARGIN_PX)
         crop = im.crop((x0, y0, x1, y1))
         crop.save(os.path.join(t.root, "images", f"{name}.webp"), lossless=True)
-        if not any(i["name"] == name for i in images):
-            images.append(
-                {
-                    "name": name,
-                    "path": f"{name}.webp",
-                    "alpha_test_value": 1.0,
-                    "is_opaque": False,
-                    "is_signed": False,
-                }
-            )
+        t.add_image(name, f"{name}.webp", *crop.size)
 
         # pixels -> svg units -> table x / z
         tx0, tz_top = wm.svg_to_table(x0 * wm.vb_w / W, y0 * wm.vb_h / H)
         tx1, tz_bot = wm.svg_to_table(x1 * wm.vb_w / W, y1 * wm.vb_h / H)
-        pos_x, pos_y = (tx0 + tx1) / 2, wm.front_y + FRONT_OFFSET
+        pos_y = wm.front_y + FRONT_OFFSET
         half = (tz_top - tz_bot) / 2
         fl = copy.deepcopy(template)
+        # the pack stores no flasher position; vpinball takes it from the drag points
         fl.update(
             {
                 "name": name,
                 "height": round((tz_top + tz_bot) / 2, 4),
-                "pos_x": round(pos_x, 4),
-                "pos_y": round(pos_y, 4),
-                # rot_x -90 turns the flasher's -y edge (the image top) straight up
-                "rot_x": -90.0,
-                "rot_y": 0.0,
-                "rot_z": 0.0,
-                "color": "#ffffff",
-                "is_timer_enabled": False,
+                # rotation_x -90 turns the flasher's -y edge (the image top) straight up
+                "rotation_x": -90.0,
+                "rotation_y": 0.0,
+                "rotation_z": 0.0,
+                "color": 0xFFFFFF,
+                "timer_enabled": False,
                 "timer_interval": 100,
-                "image_a": name,
+                "image": name,
                 "image_b": "",
-                "is_visible": True,
-                "add_blend": "add",
-                "is_dmd": False,
-                "display_texture": True,
+                "visible": True,
+                "add_blend": 1,  # additive
+                "dmd": False,
+                "ui_show_texture": True,
                 "depth_bias": 0.0,
-                "image_alignment": "wrap",
-                "filter": "none",
+                "alignment": 1,  # wrap
+                "filter_type": 0,  # none
                 "filter_amount": 100,
-                "light_map": light,
-                "part_group_name": GROUP,
+                "lightmap": light,
+                "part_group": GROUP,
+                "ui_locked": False,
             }
         )
         fl.update(FLASHER)
-        fl["drag_points"] = []
-        for x, y in (
-            (tx0, pos_y - half),
-            (tx0, pos_y + half),
-            (tx1, pos_y + half),
-            (tx1, pos_y - half),
-        ):
-            fl["drag_points"].append(
-                {
-                    "x": round(x, 3),
-                    "y": round(y, 3),
-                    "z": 0.0,
-                    "smooth": False,
-                    "is_slingshot": False,
-                    "has_auto_texture": True,
-                    "tex_coord": 0.0,
-                    "is_locked": False,
-                    "editor_layer": 0,
-                    "editor_layer_name": "",
-                    "editor_layer_visibility": True,
-                }
+        fl["dragpoints"] = [
+            dragpoint(x, y)
+            for x, y in (
+                (tx0, pos_y - half),
+                (tx0, pos_y + half),
+                (tx1, pos_y + half),
+                (tx1, pos_y - half),
             )
-        t.write_item("Flasher", fl)
+        ]
+        t.write_item("flasher", fl)
         made.append(name)
         print(
             f"{name}: {crop.size[0]}x{crop.size[1]} px, x {tx0:.1f}-{tx1:.1f}, "
             f"z {tz_bot:.1f}-{tz_top:.1f}, y {pos_y}"
         )
-    save(images_path, images)
-    t.save_index()
+    t.save_table()
     print(f"{len(made)} backwall lightmap flashers")
 
 
 def cmd_adjust(t, args):
     n = 0
-    for _, fl in list(t.items("Flasher")):
+    for _, fl in list(t.items("flasher")):
         if re.fullmatch(r"LM_Light\d{3}_backwall", fl["name"]):
             fl.update(
                 {
@@ -421,26 +396,20 @@ def cmd_adjust(t, args):
                     if v is not None
                 }
             )
-            t.write_item("Flasher", fl)
+            t.write_item("flasher", fl)
             n += 1
     print(f"{n} backwall lightmap flashers adjusted")
 
 
 def cmd_remove(t):
-    images_path = os.path.join(t.root, "images.json")
-    images = load(images_path)
     removed = []
-    for _, fl in list(t.items("Flasher")):
+    for _, fl in list(t.items("flasher")):
         if not re.fullmatch(r"LM_Light\d{3}_backwall", fl["name"]):
             continue
-        t.remove_item("Flasher", fl["name"])
-        images = [i for i in images if i["name"] != fl["name"]]
-        img = os.path.join(t.root, "images", f"{fl['name']}.webp")
-        if os.path.exists(img):
-            os.remove(img)
+        t.remove_item(fl["name"])
+        t.remove_image(fl["name"])
         removed.append(fl["name"])
-    save(images_path, images)
-    t.save_index()
+    t.save_table()
     print(f"removed {len(removed)} backwall lightmap flashers")
 
 

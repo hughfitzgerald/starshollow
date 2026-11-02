@@ -6,11 +6,11 @@
 # ]
 # ///
 """
-GI lighting experiments for the vpxtool-extracted table in ../starshollow.
+GI lighting experiments for the vpinball table pack in ../starshollow.
 
-Each subcommand rewrites the extracted JSON in place so that a plain
-`vpxtool assemble` (npm run assemble-vpx) picks the change up. Every
-subcommand is idempotent: running it twice gives the same result.
+Each subcommand rewrites the pack's JSON in place; reload the table in
+vpinball to pick the change up (and don't save over it from a session opened
+before). Every subcommand is idempotent: running it twice gives the same result.
 
     gi_lighting.py status          # print the current GI light / material values
     gi_lighting.py transmission    # strategy 1: bulb transmission onto the plastics
@@ -33,13 +33,15 @@ import json
 import math
 import os
 import re
+import struct
 import sys
+from decimal import Decimal
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_TABLE = os.path.normpath(os.path.join(HERE, "..", "starshollow"))
 
-TABLE_W = 952.0  # table right  (gamedata.json)
-TABLE_H = 2162.0  # table bottom (gamedata.json)
+TABLE_W = 952.0  # table right  (table.json)
+TABLE_H = 2162.0  # table bottom (table.json)
 
 # ---- tuning -----------------------------------------------------------------
 # The bulb halo blends as  dst' = dst*(1 + m*L) + L*(1 - m)   (m = modulate vs
@@ -50,11 +52,11 @@ TABLE_H = 2162.0  # table bottom (gamedata.json)
 TRANSMIT_PRODUCT = 1.0
 PLASTIC_OPACITY = 0.9999  # < 1.0 is what unlocks the transmission term
 
-HALO = dict(intensity=3.0, falloff_radius=150.0, falloff_power=2.0,
-            bulb_modulate_vs_add=0.9, color2="#ff8c3a")
+HALO = dict(intensity=3.0, radius=150.0, falloff_power=2.0,
+            modulate_vs_add=0.9, color2="#ff8c3a")
 
-PLASTIC_HALO = dict(intensity=2.5, falloff_radius=90.0, falloff_power=2.0,
-                    bulb_modulate_vs_add=0.9)
+PLASTIC_HALO = dict(intensity=2.5, radius=90.0, falloff_power=2.0,
+                    modulate_vs_add=0.9)
 PLASTIC_HALO_REACH = 100.0  # a bulb this close to a plastic gets a halo on it
 
 LIGHTMAP_FLASHER = dict(alpha=100, modulate_vs_add=0.3)
@@ -66,88 +68,170 @@ GROUP = "GI_Layer"
 
 
 # ---- json helpers -----------------------------------------------------------
+class Number(float):
+    """A float that remembers how vpinball wrote it. vpinball doesn't print the
+    shortest round-trip form Python does (518.7351684570313, not ...312), so
+    re-saving would otherwise churn digits on every untouched number."""
+
+    def __new__(cls, text):
+        number = super().__new__(cls, text)
+        number.text = text
+        return number
+
+
 def load(path):
     with open(path, encoding="utf-8") as f:
-        return json.load(f)
+        return json.load(f, parse_float=Number)
+
+
+def vp_float(value):
+    """A new float the way vpinball saves it: rounded to float32, shortest text
+    that reads back, and a tie in the last digit rounded away from zero
+    (Python rounds it to even)."""
+    f = struct.unpack("f", struct.pack("f", value))[0]
+    text = repr(f)
+    if "e" in text or not text[-1].isdigit():
+        return text
+    shown = Decimal(text)
+    unit = Decimal(1).scaleb(shown.as_tuple().exponent)
+    if abs(Decimal(f)) - abs(shown) == unit / 2:
+        bumped = str(shown + unit.copy_sign(shown))
+        if float(bumped) == f:
+            return bumped
+    return text
+
+
+def dump(data, indent=""):
+    """vpinball's format: 2-space indent, non-ASCII kept, no trailing newline."""
+    inner = indent + "  "
+    if isinstance(data, dict):
+        if not data:
+            return "{}"
+        items = (f"{inner}{json.dumps(k, ensure_ascii=False)}: {dump(v, inner)}" for k, v in data.items())
+        return "{\n" + ",\n".join(items) + f"\n{indent}}}"
+    if isinstance(data, list):
+        if not data:
+            return "[]"
+        return "[\n" + ",\n".join(f"{inner}{dump(v, inner)}" for v in data) + f"\n{indent}]"
+    if isinstance(data, Number):
+        return data.text
+    if isinstance(data, float):
+        return vp_float(data)
+    return json.dumps(data, ensure_ascii=False)
 
 
 def save(path, data):
-    # vpxtool writes 2-space pretty JSON without a trailing newline; match it so
-    # a round trip through this script and vpxtool stays diff-clean.
+    # match vpinball's own output so a round trip through this script and a
+    # vpinball save stays diff-clean
     with open(path, "w", encoding="utf-8", newline="\n") as f:
-        f.write(json.dumps(data, indent=2, ensure_ascii=False))
+        f.write(dump(data))
+
+
+def colorref(hex_rgb):
+    """vpinball stores colors as a Windows COLORREF (0x00BBGGRR)."""
+    rgb = int(hex_rgb.lstrip("#"), 16)
+    return ((rgb >> 16) & 0xff) | (rgb & 0xff00) | ((rgb & 0xff) << 16)
+
+
+def dragpoint(x, y):
+    return {"center": {"x": round(x, 3), "y": round(y, 3)}, "ui_locked": False, "ui_visible": True,
+            "position_z": 0.0, "smooth": False, "slingshot": False, "auto_texture": True,
+            "texture_coordinate": 0.0}
 
 
 class Table:
+    """The vpinball table pack folder. Parts, collections and materials are one
+    JSON file each, named after the element; table.json lists them in order.
+    Parts are handed out with their "name" filled in from the file name, and
+    written back without it."""
+
     def __init__(self, root):
         self.root = root
-        self.items_dir = os.path.join(root, "gameitems")
-        self.index_path = os.path.join(root, "gameitems.json")
-        self.index = load(self.index_path)
+        self.parts_dir = os.path.join(root, "parts")
+        self.table_path = os.path.join(root, "table.json")
+        self.table = load(self.table_path)
 
-    def item_path(self, kind, name):
-        return os.path.join(self.items_dir, f"{kind}.{name}.json")
+    def item_path(self, name):
+        return os.path.join(self.parts_dir, f"{name}.json")
+
+    def item(self, name):
+        return dict(load(self.item_path(name)), name=name)
 
     def items(self, kind):
-        for path in sorted(glob.glob(os.path.join(self.items_dir, f"{kind}.*.json"))):
-            yield path, load(path)[kind]
+        for path in sorted(glob.glob(os.path.join(self.parts_dir, "*.json"))):
+            data = load(path)
+            if data.get("$type") == kind:
+                yield path, dict(data, name=os.path.splitext(os.path.basename(path))[0])
 
     def write_item(self, kind, data):
-        path = self.item_path(kind, data["name"])
-        save(path, {kind: data})
-        file_name = os.path.basename(path)
-        if not any(e["file_name"] == file_name for e in self.index):
-            self.index.append({"file_name": file_name, "is_locked": False,
-                               "editor_layer_name": "", "editor_layer_visibility": True})
+        data = dict(data)
+        name = data.pop("name")
+        path = self.item_path(name)
+        save(path, {"$type": kind, **{k: v for k, v in data.items() if k != "$type"}})
+        if name not in self.table["parts"]:
+            self.table["parts"].append(name)
         return path
 
-    def remove_item(self, kind, name):
-        path = self.item_path(kind, name)
+    def remove_item(self, name):
+        path = self.item_path(name)
         if os.path.exists(path):
             os.remove(path)
-        file_name = os.path.basename(path)
-        self.index = [e for e in self.index if e["file_name"] != file_name]
+        self.table["parts"] = [n for n in self.table["parts"] if n != name]
 
-    def save_index(self):
-        save(self.index_path, self.index)
+    def save_table(self):
+        save(self.table_path, self.table)
 
-    # collections.json: {"name", "items": [...], ...}
+    # collections/<name>.json: {"$type": "collection", "parts": [...], ...}
+    def collections(self):
+        for path in sorted(glob.glob(os.path.join(self.root, "collections", "*.json"))):
+            yield path, load(path)
+
     def collection_add(self, collection, names):
-        path = os.path.join(self.root, "collections.json")
-        cols = load(path)
-        for c in cols:
-            if c["name"] == collection:
-                for n in names:
-                    if n not in c["items"]:
-                        c["items"].append(n)
-        save(path, cols)
+        path = os.path.join(self.root, "collections", f"{collection}.json")
+        col = load(path)
+        parts = col.setdefault("parts", [])  # vpinball leaves it out of an empty collection
+        for n in names:
+            if n not in parts:
+                parts.append(n)
+        save(path, col)
 
     def collection_remove(self, names):
-        path = os.path.join(self.root, "collections.json")
-        cols = load(path)
-        for c in cols:
-            c["items"] = [n for n in c["items"] if n not in names]
-        save(path, cols)
+        for path, col in self.collections():
+            kept = [n for n in col.get("parts", []) if n not in names]
+            if kept != col.get("parts", []):
+                col["parts"] = kept
+                save(path, col)
+
+    # images/<name>.json sits next to the image file it describes
+    def add_image(self, name, file_name, width, height):
+        save(os.path.join(self.root, "images", f"{name}.json"),
+             {"$type": "image", "import_path": file_name, "width": width, "height": height,
+              "alpha_test": 1.0, "opaque": False})
+
+    def remove_image(self, name):
+        for path in glob.glob(os.path.join(self.root, "images", glob.escape(name) + ".*")):
+            os.remove(path)
 
     def gi_lights(self):
-        for path, light in self.items("Light"):
+        for path, light in self.items("light"):
             if GI_NAME.match(light["name"]):
                 yield path, light
 
     def plastics_walls(self):
         """Walls textured with the plastics sheet, i.e. the actual plastics."""
-        for path, wall in self.items("Wall"):
-            if wall.get("image") == "plastics" and wall.get("is_top_bottom_visible", True):
+        for path, wall in self.items("surface"):
+            if wall.get("image") == "plastics" and wall.get("visible", True):
                 yield path, wall
 
     def materials(self):
-        path = os.path.join(self.root, "materials.json")
-        return path, load(path)
+        for path in sorted(glob.glob(os.path.join(self.root, "materials", "*.json"))):
+            yield path, dict(load(path), name=os.path.splitext(os.path.basename(path))[0])
 
 
 # ---- geometry (VPX drag points, Catmull-Rom for smooth points) ---------------
 def subdivide(points, steps=8):
     """Approximate a VPX drag-point outline as a plain polygon."""
+    points = [dict(p["center"], smooth=p.get("smooth")) for p in points]
     n = len(points)
     if n < 3:
         return [(p["x"], p["y"]) for p in points]
@@ -209,15 +293,14 @@ def bbox_overlaps(poly, x0, y0, x1, y1):
 def cmd_status(t):
     print(f"{'light':8} {'int':>5} {'fall':>6} {'pow':>4} {'mod':>5} {'trans':>6} {'halo':>5} surface")
     for _, l in t.gi_lights():
-        print(f"{l['name']:8} {l['intensity']:5.2f} {l['falloff_radius']:6.1f} {l['falloff_power']:4.1f} "
-              f"{l['bulb_modulate_vs_add']:5.2f} {l['transmission_scale']:6.3f} {l['bulb_halo_height']:5.1f} "
+        print(f"{l['name']:8} {l['intensity']:5.2f} {l['radius']:6.1f} {l['falloff_power']:4.1f} "
+              f"{l['modulate_vs_add']:5.2f} {l['transmission_scale']:6.3f} {l['bulb_halo_height']:5.1f} "
               f"{l['surface'] or '-'}")
-    _, mats = t.materials()
     used = {w["top_material"] for _, w in t.plastics_walls()}
-    for m in mats:
+    for _, m in t.materials():
         if m["name"] in used:
-            print(f"material {m['name']!r}: opacity {m['opacity']} active={m['opacity_active']}")
-    lm = [os.path.basename(p) for p, _ in t.items("Flasher") if _["name"].startswith("LM_")]
+            print(f"material {m['name']!r}: opacity {m['opacity']} active={m['is_opacity_active']}")
+    lm = [os.path.basename(p) for p, _ in t.items("flasher") if _["name"].startswith("LM_")]
     print(f"lightmap flashers: {len(lm)}")
 
 
@@ -230,16 +313,15 @@ def cmd_transmission(t, product=TRANSMIT_PRODUCT):
     for path, l in t.gi_lights():
         if l["intensity"] > 0:
             l["transmission_scale"] = round(product / l["intensity"], 4)
-        save(path, {"Light": l})
-    mpath, mats = t.materials()
+        t.write_item("light", l)
     used = {w["top_material"] for _, w in t.plastics_walls()}
-    for m in mats:
+    for mpath, m in t.materials():
         if m["name"] in used:
-            m["opacity_active"] = True
+            m["is_opacity_active"] = True
             if m["opacity"] >= 1.0:
                 m["opacity"] = PLASTIC_OPACITY
             print(f"material {m['name']!r}: opacity {m['opacity']} (active)")
-    save(mpath, mats)
+            save(mpath, {k: v for k, v in m.items() if k != "name"})
     print(f"GI bulbs: transmission_scale = {product} / intensity")
 
 
@@ -248,13 +330,14 @@ def cmd_halo(t, **overrides):
     tighter falloff with power 2 for visible hotspots, and a little additive
     share (modulate 0.9) so the halo still reads on a dark playfield."""
     params = dict(HALO, **overrides)
+    params["color2"] = colorref(params["color2"])
     for path, l in t.gi_lights():
         old_int = l["intensity"]
         l.update(params)
         # keep the transmitted light where strategy 1 put it
         if l["transmission_scale"] > 0 and old_int > 0:
             l["transmission_scale"] = round(l["transmission_scale"] * old_int / l["intensity"], 4)
-        save(path, {"Light": l})
+        t.write_item("light", l)
     print(f"GI bulbs: {params}")
 
 
@@ -263,22 +346,21 @@ def cmd_add_bulb(t, name, x, y, like):
     collections and outline (translated), so every strategy treats it alike."""
     if not GI_NAME.match(name):
         sys.exit("GI bulbs must be named giNNN")
-    if os.path.exists(t.item_path("Light", name)):
+    if os.path.exists(t.item_path(name)):
         sys.exit(f"{name} already exists")
-    src = load(t.item_path("Light", like))["Light"]
+    src = t.item(like)
     l = copy.deepcopy(src)
     l["name"] = name
     dx, dy = x - src["center"]["x"], y - src["center"]["y"]
-    l["center"] = {"x": x, "y": y}
-    for p in l["drag_points"]:
-        p["x"] += dx
-        p["y"] += dy
-    t.write_item("Light", l)
-    cpath = os.path.join(t.root, "collections.json")
-    for c in load(cpath):
-        if like in c["items"]:
-            t.collection_add(c["name"], [name])
-    t.save_index()
+    l["center"] = dict(src["center"], x=x, y=y)
+    for p in l["dragpoints"]:
+        p["center"]["x"] += dx
+        p["center"]["y"] += dy
+    t.write_item("light", l)
+    for cpath, c in t.collections():
+        if like in c.get("parts", []):
+            t.collection_add(os.path.splitext(os.path.basename(cpath))[0], [name])
+    t.save_table()
     print(f"{name} at {x:.0f},{y:.0f} cloned from {like} (tags {l['blink_pattern']})")
 
 
@@ -292,7 +374,7 @@ def cmd_plastic_halos(t, **overrides):
     draws the halo at surface height + halo height, so it lands on top of the
     plastic and modulates its texture: dst' = dst*(1 + 0.9*L) + 0.1*L."""
     params = dict(PLASTIC_HALO, **overrides)
-    walls = [(w, subdivide(w["drag_points"])) for _, w in t.plastics_walls()]
+    walls = [(w, subdivide(w["dragpoints"])) for _, w in t.plastics_walls()]
     created = []
     for _, gi in t.gi_lights():
         cx, cy = gi["center"]["x"], gi["center"]["y"]
@@ -309,27 +391,27 @@ def cmd_plastic_halos(t, **overrides):
             l["image"] = ""
             l["transmission_scale"] = 0.0
             l["show_bulb_mesh"] = False
-            l["has_static_bulb_mesh"] = False
+            l["static_bulb_mesh"] = False
             l["show_reflection_on_ball"] = False
-            l["shadows"] = "none"
-            l["part_group_name"] = GROUP
-            l["drag_points"] = copy.deepcopy(wall["drag_points"])
+            l["shadows"] = 0  # none
+            l["part_group"] = GROUP
+            l["dragpoints"] = copy.deepcopy(wall["dragpoints"])
             l.update(params)
-            t.write_item("Light", l)
+            t.write_item("light", l)
             created.append(l["name"])
             print(f"{l['name']}: on {wall['name']} (bulb {gi['name']} at {cx:.0f},{cy:.0f})")
     t.collection_add("GI", created)
     t.collection_add("glf_lights", created)
-    t.save_index()
+    t.save_table()
     print(f"{len(created)} plastic halo lights")
 
 
 def cmd_remove_plastic_halos(t):
-    names = [l["name"] for _, l in t.items("Light") if re.match(r"^gi\d+p\d+$", l["name"])]
+    names = [l["name"] for _, l in t.items("light") if re.match(r"^gi\d+p\d+$", l["name"])]
     for n in names:
-        t.remove_item("Light", n)
+        t.remove_item(n)
     t.collection_remove(names)
-    t.save_index()
+    t.save_table()
     print(f"removed {len(names)} plastic halo lights")
 
 
@@ -350,12 +432,10 @@ def cmd_lightmaps(t, render_dir, **overrides):
     pngs = sorted(glob.glob(os.path.join(render_dir, "LM_gi*.png")))
     if not pngs:
         sys.exit(f"no LM_gi*.png in {render_dir}; run gi_lightmaps_render.py first")
-    walls = [(w, subdivide(w["drag_points"])) for _, w in t.plastics_walls()]
+    walls = [(w, subdivide(w["dragpoints"])) for _, w in t.plastics_walls()]
     wall_mask = None  # the plastics sheet has art outside the walls; only show what a wall shows
-    images_path = os.path.join(t.root, "images.json")
-    images = load(images_path)
     template = None
-    for _, fl in t.items("Flasher"):
+    for _, fl in t.items("flasher"):
         template = fl
         break
     made = []
@@ -376,7 +456,6 @@ def cmd_lightmaps(t, render_dir, **overrides):
         if not bbox or count < LIGHTMAP_MIN_PIXELS:
             print(f"{gi}: glow touches no plastic ({count} px), skipped")
             cmd_remove_lightmaps(t, only=[gi], quiet=True)
-            images = [i for i in images if i["name"] != name]  # keep our copy in step
             continue
         x0 = max(0, bbox[0] - LIGHTMAP_MARGIN_PX)
         y0 = max(0, bbox[1] - LIGHTMAP_MARGIN_PX)
@@ -385,40 +464,31 @@ def cmd_lightmaps(t, render_dir, **overrides):
         crop = im.crop((x0, y0, x1, y1))
         out = os.path.join(t.root, "images", f"{name}.webp")
         crop.save(out, lossless=True)
-        if not any(i["name"] == name for i in images):
-            images.append({"name": name, "path": f"{name}.webp",
-                           "alpha_test_value": 1.0, "is_opaque": False, "is_signed": False})
+        t.add_image(name, f"{name}.webp", *crop.size)
         # pixel -> table units, the same mapping the plastics sheet uses on the walls
         sx, sy = TABLE_W / W, TABLE_H / H
         tx0, ty0, tx1, ty1 = x0 * sx, y0 * sy, x1 * sx, y1 * sy
         tops = [w["height_top"] for w, poly in walls if bbox_overlaps(poly, tx0, ty0, tx1, ty1)]
         height = (max(tops) if tops else 58.0) + 0.5
         fl = copy.deepcopy(template)
+        # the pack stores no flasher position; vpinball takes it from the drag points
         fl.update({
             "name": name, "height": height,
-            "pos_x": (tx0 + tx1) / 2, "pos_y": (ty0 + ty1) / 2,
-            "rot_x": 0.0, "rot_y": 0.0, "rot_z": 0.0,
-            "color": "#ffffff", "is_timer_enabled": False, "timer_interval": 100,
-            "image_a": name, "image_b": "",
-            "is_visible": True, "add_blend": "add", "is_dmd": False,
-            "display_texture": True, "depth_bias": 0.0,
-            "image_alignment": "wrap", "filter": "none", "filter_amount": 100,
-            "light_map": gi, "part_group_name": GROUP,
+            "rotation_x": 0.0, "rotation_y": 0.0, "rotation_z": 0.0,
+            "color": 0xffffff, "timer_enabled": False, "timer_interval": 100,
+            "image": name, "image_b": "",
+            "visible": True, "add_blend": 1, "dmd": False,  # add_blend 1: additive
+            "ui_show_texture": True, "depth_bias": 0.0,
+            "alignment": 1, "filter_type": 0, "filter_amount": 100,  # wrap, no filter
+            "lightmap": gi, "part_group": GROUP, "ui_locked": False,
         })
         fl.update(params)
-        fl["drag_points"] = []
-        for (x, y) in ((tx0, ty0), (tx0, ty1), (tx1, ty1), (tx1, ty0)):
-            fl["drag_points"].append({
-                "x": round(x, 3), "y": round(y, 3), "z": 0.0, "smooth": False,
-                "is_slingshot": False, "has_auto_texture": True, "tex_coord": 0.0,
-                "is_locked": False, "editor_layer": 0, "editor_layer_name": "",
-                "editor_layer_visibility": True})
-        t.write_item("Flasher", fl)
+        fl["dragpoints"] = [dragpoint(x, y) for (x, y) in ((tx0, ty0), (tx0, ty1), (tx1, ty1), (tx1, ty0))]
+        t.write_item("flasher", fl)
         made.append(name)
         print(f"{name}: {crop.size[0]}x{crop.size[1]} px at z={height}, table box "
               f"{tx0:.0f},{ty0:.0f}-{tx1:.0f},{ty1:.0f}")
-    save(images_path, images)
-    t.save_index()
+    t.save_table()
     print(f"{len(made)} lightmap flashers")
 
 
@@ -428,37 +498,31 @@ def cmd_lightmaps_adjust(t, **params):
     light linearly; modulate_vs_add shifts it from plain additive (0) towards
     only brightening what is already lit (1)."""
     n = 0
-    for _, fl in list(t.items("Flasher")):
+    for _, fl in list(t.items("flasher")):
         if re.match(r"^LM_gi\d+_plastics$", fl["name"]):
             fl.update({k: v for k, v in params.items() if v is not None})
-            t.write_item("Flasher", fl)
+            t.write_item("flasher", fl)
             n += 1
     print(f"{n} lightmap flashers: " + ", ".join(f"{k}={v}" for k, v in params.items() if v is not None))
 
 
 def cmd_remove_lightmaps(t, only=None, quiet=False):
-    images_path = os.path.join(t.root, "images.json")
-    images = load(images_path)
     removed = []
-    for _, fl in list(t.items("Flasher")):
+    for _, fl in list(t.items("flasher")):
         m = re.match(r"^LM_(gi\d+)_plastics$", fl["name"])
         if not m or (only and m.group(1) not in only):
             continue
-        t.remove_item("Flasher", fl["name"])
-        images = [i for i in images if i["name"] != fl["name"]]
-        img = os.path.join(t.root, "images", f"{fl['name']}.webp")
-        if os.path.exists(img):
-            os.remove(img)
+        t.remove_item(fl["name"])
+        t.remove_image(fl["name"])
         removed.append(fl["name"])
-    save(images_path, images)
-    t.save_index()
+    t.save_table()
     if not quiet:
         print(f"removed {len(removed)} lightmap flashers")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--table", default=DEFAULT_TABLE, help="vpxtool extract directory")
+    ap.add_argument("--table", default=DEFAULT_TABLE, help="vpinball table pack folder")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("status")
     p = sub.add_parser("transmission")
