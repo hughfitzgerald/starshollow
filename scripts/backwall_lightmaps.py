@@ -69,7 +69,7 @@ MASK_ID = "backwall_lightmap_mask"
 GLOW_RADIUS_UNITS = 45.0
 GLOW_STOPS = [(0.0, 1.0), (0.35, 0.85), (0.65, 0.4), (0.85, 0.12), (1.0, 0.0)]
 
-FLASHER = dict(alpha=100, modulate_vs_add=0.3)
+FLASHER = dict(alpha=100, modulate_vs_add=0.0)
 FRONT_OFFSET = 0.5  # flasher distance in front of the wall's front face
 MARGIN_PX = 6
 GROUP = "GI_Layer"
