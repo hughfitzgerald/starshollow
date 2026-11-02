@@ -1,0 +1,99 @@
+{
+  "$type": "ramp",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Subway",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 669.1380615234375,
+        "y": 680.7178955078125
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 703.5027465820313,
+        "y": 667.381591796875
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 720.7158203125,
+        "y": 499.22998046875
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 774.9187622070313,
+        "y": 461.73797607421875
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 795.8792724609375,
+        "y": 461.7802734375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "alignment": 0,
+  "collidable": true,
+  "elasticity": 0.30000001192092896,
+  "height_bottom": -75.0,
+  "hitEvent": false,
+  "height_top": -115.0,
+  "image": "",
+  "image_walls": true,
+  "physics_material": "",
+  "material": "",
+  "overwrite_physics": true,
+  "depth_bias": 0.0,
+  "radius": 8.0,
+  "wire_distance_x": 38.0,
+  "wire_distance_y": 88.0,
+  "reflection_enabled": true,
+  "friction": 0.30000001192092896,
+  "scatter": 0.0,
+  "visible": false,
+  "threshold": 2.0,
+  "type": 0,
+  "width_bottom": 55.0,
+  "width_top": 60.0,
+  "left_wall_height": 62.0,
+  "right_wall_height": 62.0,
+  "left_wall_height_visible": 30.0,
+  "right_wall_height_visible": 30.0
+}

@@ -1,0 +1,99 @@
+{
+  "$type": "ramp",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Subway",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 440.74365234375,
+        "y": 831.1721801757813
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 458.5879211425781,
+        "y": 829.0628051757813
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 499.4757080078125,
+        "y": 808.0641479492188
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 575.3591918945313,
+        "y": 708.6029663085938
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 612.4227905273438,
+        "y": 693.9869384765625
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "alignment": 0,
+  "collidable": true,
+  "elasticity": 0.30000001192092896,
+  "height_bottom": -85.0,
+  "hitEvent": false,
+  "height_top": -75.0,
+  "image": "",
+  "image_walls": true,
+  "physics_material": "",
+  "material": "",
+  "overwrite_physics": true,
+  "depth_bias": 0.0,
+  "radius": 8.0,
+  "wire_distance_x": 38.0,
+  "wire_distance_y": 88.0,
+  "reflection_enabled": true,
+  "friction": 0.30000001192092896,
+  "scatter": 0.0,
+  "visible": false,
+  "threshold": 2.0,
+  "type": 0,
+  "width_bottom": 60.0,
+  "width_top": 60.0,
+  "left_wall_height": 62.0,
+  "right_wall_height": 62.0,
+  "left_wall_height_visible": 30.0,
+  "right_wall_height_visible": 30.0
+}

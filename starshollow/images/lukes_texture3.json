@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "/Users/stephenjones/Documents/pinball_tables/starshollow/objects/lukes cc attr share alike/textures/lukes_texture3.webp",
+  "width": 1024,
+  "height": 1024,
+  "alpha_test": 128.0,
+  "opaque": false
+}

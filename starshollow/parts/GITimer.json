@@ -1,0 +1,12 @@
+{
+  "$type": "timer",
+  "center": {
+    "x": 245.0,
+    "y": 2444.0
+  },
+  "timer_enabled": false,
+  "timer_interval": 500,
+  "ui_locked": true,
+  "part_group": "Collidable_Misc",
+  "desktop_backdrop": false
+}

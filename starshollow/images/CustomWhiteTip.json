@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "D:\\temp\\CustomWhiteTip.png",
+  "width": 256,
+  "height": 341,
+  "alpha_test": 1.0,
+  "opaque": true
+}

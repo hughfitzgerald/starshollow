@@ -1,0 +1,123 @@
+{
+  "$type": "ramp",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Collidable_Ramps",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 409.72821044921875,
+        "y": 175.08726501464844
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 453.0694274902344,
+        "y": 177.3590087890625
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 523.243896484375,
+        "y": 189.4031524658203
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 658.6803588867188,
+        "y": 204.9702606201172
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 834.1431884765625,
+        "y": 240.4469451904297
+      },
+      "ui_locked": false,
+      "position_z": -9.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 853.6041259765625,
+        "y": 284.3096618652344
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 867.091796875,
+        "y": 326.45855712890625
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "alignment": 0,
+  "collidable": true,
+  "elasticity": 0.30000001192092896,
+  "height_bottom": 90.0,
+  "hitEvent": false,
+  "height_top": 60.0,
+  "image": "",
+  "image_walls": true,
+  "physics_material": "zCol_MetalRamp",
+  "material": "Metal",
+  "overwrite_physics": false,
+  "depth_bias": 0.0,
+  "radius": 8.0,
+  "wire_distance_x": 38.0,
+  "wire_distance_y": 88.0,
+  "reflection_enabled": true,
+  "friction": 0.30000001192092896,
+  "scatter": 0.0,
+  "visible": true,
+  "threshold": 2.0,
+  "type": 1,
+  "width_bottom": 65.0,
+  "width_top": 50.0,
+  "left_wall_height": 62.0,
+  "right_wall_height": 62.0,
+  "left_wall_height_visible": 30.0,
+  "right_wall_height_visible": 30.0
+}

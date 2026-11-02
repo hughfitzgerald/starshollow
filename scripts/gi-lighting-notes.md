@@ -90,7 +90,8 @@ for the numbers above.
 
 Branches 3 and 4 both start from 2, so `git diff gi-2-transmission-halo
 gi-3-plastic-halos` is exactly strategy 3, and likewise for 4. Check one out,
-`npm run assemble-vpx`, play. Mixing is just running the other script on top.
+`vpxtool assemble starshollow` (these branches predate the table pack), play.
+Mixing is just running the other script on top.
 
 ## Workflow for the lightmaps (strategy 4)
 
@@ -105,8 +106,8 @@ gi-3-plastic-halos` is exactly strategy 3, and likewise for 4. Check one out,
    `svg-to-playfield.py`) or `... -- --renderer cairosvg`. Each bulb's blob is
    copied into an SVG `<mask>` on the plastics layer in a temp copy and
    exported page-size at 96 dpi, the same 1804×4096 as `plastics.webp`.
-4. `npm run gi-lighting lightmaps` crops, writes the webp, the `images.json`
-   entry, and the flasher. Bulbs whose glow touches no plastic are skipped.
+4. `npm run gi-lighting lightmaps` crops, writes the webp, its
+   `images/*.json` sidecar, and the flasher. Bulbs whose glow touches no plastic are skipped.
 5. Too bright or too dim overall: `npm run gi-lighting lightmaps-adjust --
    --alpha 60` rewrites the existing flashers (alpha is the editor's Opacity,
    100 = 1.0, linear). No re-render needed. The shape of each glow lives in

@@ -1,0 +1,22 @@
+{
+  "$type": "kicker",
+  "center": {
+    "x": 440.2758483886719,
+    "y": 2079.763916015625
+  },
+  "timer_enabled": false,
+  "timer_interval": 256,
+  "ui_locked": true,
+  "part_group": "Collidable_Misc",
+  "enabled": true,
+  "fall_through": false,
+  "hit_accuracy": 0.8999999761581421,
+  "hit_height": 40.0,
+  "orientation": 0.0,
+  "scatter": 0.0,
+  "legacy_mode": true,
+  "material": "",
+  "radius": 25.0,
+  "surface": "",
+  "type": 0
+}

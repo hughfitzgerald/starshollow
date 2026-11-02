@@ -1,0 +1,28 @@
+{
+  "$type": "gate",
+  "center": {
+    "x": 861.6443481445313,
+    "y": 1848.4969482421875
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": true,
+  "part_group": "Collidable_Misc",
+  "damping": 0.9850000143051147,
+  "elasticity": 0.30000001192092896,
+  "angle_max": 1.5707963705062866,
+  "angle_min": 0.0,
+  "type": 1,
+  "collidable": true,
+  "friction": 0.019999999552965164,
+  "gravity_factor": 0.25,
+  "show_bracket": true,
+  "visible": false,
+  "height": 50.0,
+  "length": 70.0,
+  "material": "",
+  "reflection_enabled": true,
+  "rotation": 90.0,
+  "surface": "",
+  "two_way": false
+}

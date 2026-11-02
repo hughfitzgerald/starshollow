@@ -1,0 +1,22 @@
+{
+  "$type": "collection",
+  "parts": [
+    "PinCab_Backglass",
+    "PinCab_Coindoor",
+    "PinCab_Backbox",
+    "PinCab_Buttons",
+    "PinCab_Cabinet",
+    "PinCab_Metals",
+    "VR_Floor",
+    "VR_Roof",
+    "VR_Wall_Left",
+    "VR_Wall_Right",
+    "PinCab_Shooter",
+    "PinCab_Housing",
+    "VR_Logo",
+    "PinCab_Bottom"
+  ],
+  "fire_events": false,
+  "stop_single_events": false,
+  "group_elements": false
+}

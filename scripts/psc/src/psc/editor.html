@@ -143,7 +143,7 @@
     const data = await r.json();
     if (!r.ok) { status(data.error || r.statusText, "err"); return false; }
     setState(data, false);
-    status("wrote hardware.yaml. Run `npm run psc-sync` then `npm run assemble-vpx` to apply.", "ok");
+    status("wrote hardware.yaml. Run `npm run psc-sync` then reload the table in vpinball to apply.", "ok");
     return true;
   }
   function setState(data, first) {

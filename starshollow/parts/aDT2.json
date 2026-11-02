@@ -1,0 +1,90 @@
+{
+  "$type": "surface",
+  "timer_enabled": false,
+  "timer_interval": 2,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Targets_Layer",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 724.4265747070313,
+        "y": 828.0796508789063
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 727.5977172851563,
+        "y": 819.8006591796875
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": false,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 691.3275756835938,
+        "y": 803.4844360351563
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": false,
+      "texture_coordinate": 1.0
+    },
+    {
+      "center": {
+        "x": 687.5509033203125,
+        "y": 812.12109375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": true,
+  "disable_lighting_below": 0.0,
+  "disable_lighting_top": 0.0,
+  "droppable": true,
+  "ui_show_texture": false,
+  "elasticity": 0.4000000059604645,
+  "elasticity_falloff": 0.0,
+  "flipbook": false,
+  "height_bottom": 0.0,
+  "hitEvent": true,
+  "height_top": 44.0,
+  "image": "",
+  "is_bottom_solid": false,
+  "physics_material": "zCol_DropTarget",
+  "overwrite_physics": false,
+  "reflection_enabled": true,
+  "side_material": "",
+  "side_image": "",
+  "slingshot_animation": true,
+  "slingshot_force": 80.0,
+  "sling_shot_material": "",
+  "slingshot_threshold": 0.0,
+  "side_visible": false,
+  "threshold": 0.5,
+  "top_material": "",
+  "visible": false,
+  "friction": 0.30000001192092896,
+  "scatter": 5.0
+}

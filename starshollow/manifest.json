@@ -1,0 +1,10 @@
+{
+  "$type": "manifest",
+  "file_format": "vpinball-pack",
+  "file_version": 1,
+  "name": "Stars Hollow Showdown",
+  "author": "Stephen Jones (hughfitzgerald)",
+  "version": "0.2.2",
+  "description": "",
+  "save_date": "Mon Nov  2 13:08:17 2026"
+}

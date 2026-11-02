@@ -1,0 +1,29 @@
+{
+  "$type": "gate",
+  "center": {
+    "x": 370.73223876953125,
+    "y": 2045.42333984375
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Subway",
+  "damping": 0.9850000143051147,
+  "elasticity": 0.30000001192092896,
+  "angle_max": 0.0,
+  "angle_min": 90.0,
+  "type": 1,
+  "collidable": true,
+  "friction": 0.019999999552965164,
+  "gravity_factor": 0.25,
+  "show_bracket": true,
+  "visible": false,
+  "height": 50.0,
+  "length": 100.0,
+  "material": "",
+  "reflection_enabled": true,
+  "rotation": 53.0,
+  "surface": "",
+  "two_way": false
+}

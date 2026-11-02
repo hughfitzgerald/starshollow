@@ -107,7 +107,7 @@ def build_map(cfg: Config, table: Table) -> HardwareMap:
     for name in universe:
         record = table.light(name)
         if record is None:
-            errors.add(f"light {name} is missing from gameitems; run `psc sync`")
+            errors.add(f"light {name} is missing from the table parts; run `psc sync`")
             continue
         bulb = bulbs.get(name.lower())
         lights[name.lower()] = HwLight(

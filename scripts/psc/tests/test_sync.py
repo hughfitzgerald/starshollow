@@ -51,15 +51,15 @@ def test_group_errors(project, body, message):
 
 def test_sync_writes_tags_surgically(project):
     cfg = write_config(project, GROUPS)
-    path = project / "table" / "gameitems" / "Light.l1.json"
+    path = project / "table" / "parts" / "l1.json"
     before = path.read_text().splitlines()
     apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
     after = path.read_text().splitlines()
     diff = [(a, b) for a, b in zip(before, after) if a != b]
-    assert diff == [('    "blink_pattern": "10",', '    "blink_pattern": "combo,inserts,left",')]
+    assert diff == [('  "blink_pattern": "10",', '  "blink_pattern": "combo,inserts,left",')]
     assert plan_sync(cfg, Table(cfg.table_dir)) == []
-    untouched = json.loads((project / "table" / "gameitems" / "Light.other.json").read_text())
-    assert untouched["Light"]["blink_pattern"] == "10"
+    untouched = json.loads((project / "table" / "parts" / "other.json").read_text())
+    assert untouched["blink_pattern"] == "10"
 
 
 def test_sync_creates_proxies(project):
@@ -72,14 +72,13 @@ backglass:
 """)
     apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
     table = Table(cfg.table_dir)
-    proxy = json.loads((project / "table" / "gameitems" / "Light.bg_a.json").read_text())["Light"]
+    proxy = json.loads((project / "table" / "parts" / "bg_a.json").read_text())
     assert proxy["center"] == {"x": 500.0, "y": -200.0}
     assert proxy["visible"] is False
     assert proxy["blink_pattern"] == "bgfx"
-    assert [p["x"] for p in proxy["drag_points"]] == [510.0, 490.0]
+    assert [p["center"]["x"] for p in proxy["dragpoints"]] == [510.0, 490.0]
     assert "bg_a" in table.collection_items("glf_lights")
-    index = json.loads((project / "table" / "gameitems.json").read_text())
-    assert index[-1]["file_name"] == "Light.bg_a.json"
+    assert json.loads((project / "table" / "table.json").read_text())["parts"][-1] == "bg_a"
     assert plan_sync(cfg, table) == []
 
     hw = build_map(cfg, table)

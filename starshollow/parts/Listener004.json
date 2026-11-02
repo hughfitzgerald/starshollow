@@ -1,0 +1,31 @@
+{
+  "$type": "textbox",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "part_group": "Collidable_Misc",
+  "alignment": 2,
+  "back_color": 0,
+  "font_color": 16777215,
+  "font": {
+    "name": "Arial",
+    "size": 142500,
+    "weight": 400,
+    "charset": 0,
+    "italic": false,
+    "underline": false,
+    "strikethrough": false
+  },
+  "dmd": false,
+  "intensity_scale": 1.0,
+  "text": "0",
+  "transparent": false,
+  "v1": {
+    "x": 1000.0,
+    "y": 300.0
+  },
+  "v2": {
+    "x": 1100.0,
+    "y": 350.0
+  }
+}

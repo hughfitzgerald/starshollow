@@ -1,0 +1,29 @@
+{
+  "$type": "gate",
+  "center": {
+    "x": 171.52272033691406,
+    "y": 779.298828125
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Triggers",
+  "damping": 0.9850000143051147,
+  "elasticity": 0.30000001192092896,
+  "angle_max": 0.0,
+  "angle_min": 90.0,
+  "type": 1,
+  "collidable": true,
+  "friction": 0.019999999552965164,
+  "gravity_factor": 0.25,
+  "show_bracket": true,
+  "visible": true,
+  "height": 60.0,
+  "length": 115.0,
+  "material": "Metal",
+  "reflection_enabled": true,
+  "rotation": -19.5,
+  "surface": "",
+  "two_way": true
+}

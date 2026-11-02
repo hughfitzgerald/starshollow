@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "/Users/stephenjones/code/starshollow/starshollow/images/playfield-insert-overlay.webp",
+  "width": 1804,
+  "height": 4096,
+  "alpha_test": 1.0,
+  "opaque": false
+}

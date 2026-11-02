@@ -1,0 +1,42 @@
+{
+  "$type": "hittarget",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Targets_Layer",
+  "collidable": true,
+  "disable_lighting_below": 0.0,
+  "disable_lighting_top": 0.0,
+  "drop_speed": 0.20000000298023224,
+  "elasticity": 0.5,
+  "elasticity_falloff": 0.5,
+  "hitEvent": true,
+  "image": "hittarget",
+  "is_dropped": false,
+  "legacy_mode": false,
+  "physics_material": "zCol_Targets",
+  "material": "Plastic",
+  "overwrite_physics": false,
+  "depth_bias": 0.0,
+  "raise_delay": 100,
+  "reflection_enabled": false,
+  "friction": 0.10000000149011612,
+  "rot_z": -75.0,
+  "scatter": 5.0,
+  "threshold": 2.0,
+  "target_type": 3,
+  "visible": false,
+  "position": {
+    "x": 79.40814208984375,
+    "y": 1235.233642578125,
+    "z": 0.0,
+    "w": 0.0
+  },
+  "size": {
+    "x": 32.0,
+    "y": 32.0,
+    "z": 32.0,
+    "w": 0.0
+  }
+}

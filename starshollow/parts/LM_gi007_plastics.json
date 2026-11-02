@@ -1,0 +1,80 @@
+{
+  "$type": "flasher",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "GI_Layer",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 594.2080078125,
+        "y": 168.906005859375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 594.2080078125,
+        "y": 259.6929931640625
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 655.4240112304688,
+        "y": 259.6929931640625
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 655.4240112304688,
+        "y": 168.906005859375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "add_blend": 1,
+  "alignment": 1,
+  "color": 16777215,
+  "ui_show_texture": true,
+  "alpha": 100,
+  "height": 58.5,
+  "filter_amount": 100,
+  "filter_type": 0,
+  "depth_bias": 0.0,
+  "rotation_x": 0.0,
+  "rotation_y": 0.0,
+  "rotation_z": 0.0,
+  "visible": true,
+  "dmd": false,
+  "image_b": "",
+  "image": "LM_gi007_plastics",
+  "lightmap": "gi007",
+  "modulate_vs_add": 0.30000001192092896
+}

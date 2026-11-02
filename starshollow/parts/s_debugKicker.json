@@ -1,0 +1,23 @@
+{
+  "$type": "kicker",
+  "center": {
+    "x": 494.80780029296875,
+    "y": 1842.31201171875
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Shot_tester",
+  "enabled": false,
+  "fall_through": false,
+  "hit_accuracy": 0.699999988079071,
+  "hit_height": 40.0,
+  "orientation": 0.0,
+  "scatter": 0.0,
+  "legacy_mode": true,
+  "material": "",
+  "radius": 100.0,
+  "surface": "",
+  "type": 0
+}

@@ -1,0 +1,23 @@
+{
+  "$type": "kicker",
+  "center": {
+    "x": 286.0797424316406,
+    "y": 848.8751220703125
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": true,
+  "ui_visible": false,
+  "part_group": "Subway",
+  "enabled": true,
+  "fall_through": false,
+  "hit_accuracy": 0.5,
+  "hit_height": 35.0,
+  "orientation": 0.0,
+  "scatter": 0.0,
+  "legacy_mode": true,
+  "material": "",
+  "radius": 25.0,
+  "surface": "ScoopFloor",
+  "type": 0
+}

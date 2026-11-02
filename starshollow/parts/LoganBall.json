@@ -1,0 +1,24 @@
+{
+  "$type": "ball",
+  "center": {
+    "x": 684.0887451171875,
+    "y": 890.1136474609375,
+    "z": 25.0
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Captive Balls",
+  "bulb_intensity_scale": 1.0,
+  "color": 16777215,
+  "decal_mode": false,
+  "image_decal": "",
+  "force_reflection": false,
+  "image": "",
+  "mass": 1.0,
+  "playfield_reflection_strength": 1.0,
+  "radius": 25.0,
+  "reflection_enabled": true,
+  "pinball_env_spherical_mapping": true
+}

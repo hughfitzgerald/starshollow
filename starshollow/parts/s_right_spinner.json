@@ -1,0 +1,25 @@
+{
+  "$type": "spinner",
+  "center": {
+    "x": 809.4185791015625,
+    "y": 776.8427124023438
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Spinners",
+  "damping": 0.9800000190734863,
+  "height": 60.0,
+  "image": "spinner_talk",
+  "length": 80.0,
+  "material": "Plastic",
+  "reflection_enabled": true,
+  "rotation": 17.0,
+  "elasticity": 0.30000001192092896,
+  "angle_max": 0.0,
+  "angle_min": 0.0,
+  "show_bracket": false,
+  "surface": "",
+  "visible": true
+}

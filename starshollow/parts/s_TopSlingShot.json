@@ -1,0 +1,116 @@
+{
+  "$type": "surface",
+  "timer_enabled": false,
+  "timer_interval": 50,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Slingshots",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 452.20294189453125,
+        "y": 548.8549194335938
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 492.7455139160156,
+        "y": 632.9686889648438
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 506.9109191894531,
+        "y": 642.3475341796875
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 500.7528076171875,
+        "y": 629.73583984375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": true,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 459.30072021484375,
+        "y": 544.0944213867188
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 453.2466125488281,
+        "y": 531.7798461914063
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": true,
+  "disable_lighting_below": 0.0,
+  "disable_lighting_top": 0.0,
+  "droppable": false,
+  "ui_show_texture": false,
+  "elasticity": 0.8999999761581421,
+  "elasticity_falloff": 0.0,
+  "flipbook": false,
+  "height_bottom": 29.5,
+  "hitEvent": true,
+  "height_top": 29.5,
+  "image": "",
+  "is_bottom_solid": false,
+  "physics_material": "zCol_Slings",
+  "overwrite_physics": false,
+  "reflection_enabled": true,
+  "side_material": "",
+  "side_image": "",
+  "slingshot_animation": false,
+  "slingshot_force": 40.0,
+  "sling_shot_material": "",
+  "slingshot_threshold": 2.5,
+  "side_visible": false,
+  "threshold": 2.0,
+  "top_material": "",
+  "visible": false,
+  "friction": 0.8999999761581421,
+  "scatter": 0.5
+}

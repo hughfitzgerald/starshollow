@@ -29,7 +29,7 @@ def get_collection(parent_col, name, create=False):
 # ---- One-time config: fill these in for your table -------------------------
 
 # VPX material names -> Steel. MUST be lowercase (matched against casefolded names).
-# Candidates below are from this table's materials.json -- review before using.
+# Candidates below are from this table's materials/ folder -- review before using.
 # Deliberately excluded: 'peg' (metal-typed but dark red), 'plastic cobalt blue'
 # (metal-typed but a plastic), 'opacity80' (translucent), all 'zcol_*' (collision-
 # only physics materials), all 'bumperscrew*' (colour-coded, not bare steel).
@@ -123,25 +123,25 @@ def matches_vpx_material(blender_mat_name, target):
     return suffix == target or suffix.startswith(target + ".")
 
 
-def validate_targets(targets, materials_json_path=None):
+def validate_targets(targets, materials_dir=None):
     """Warn about names that don't exist in the table. Without this, a typo or a
-    guessed name is a silent no-op."""
-    if not materials_json_path:
+    guessed name is a silent no-op. materials_dir is the table pack's
+    materials/ folder, one <name>.json per material."""
+    if not materials_dir:
         return targets
-    import json
-    with open(materials_json_path, "r", encoding="utf-8") as f:
-        known = {m["name"].casefold() for m in json.load(f)}
+    import os
+    known = {os.path.splitext(f)[0].casefold() for f in os.listdir(materials_dir) if f.endswith(".json")}
     unknown = {t for t in targets if t not in known}
     for t in sorted(unknown):
         print(f"WARNING: '{t}' is not a material in this table -- will match nothing")
     return targets
 
 
-def swap_steel_materials(context, materials_json_path=None):
+def swap_steel_materials(context, materials_dir=None):
     steel = append_material(ASSET_LIBRARY_PATH, STEEL_MATERIAL_NAME)
     if not steel:
         return
-    targets = validate_targets(STEEL_VPX_MATERIALS, materials_json_path)
+    targets = validate_targets(STEEL_VPX_MATERIALS, materials_dir)
     # Longest first, so 'metal0.2' wins over a hypothetical 'metal0'
     ordered = sorted(targets, key=len, reverse=True)
     count = 0
@@ -277,9 +277,9 @@ def snap_sockets_to_surface(context, objects, start_offset=0.01, max_dist=0.05):
 
 # Run order after each Import/Update (placeholder args below -- "bumpercap" is
 # NOT a real material name, just illustrating the call shape; substitute
-# confirmed names from your own materials.json):
+# confirmed names from your own materials/ folder):
 #   rig_lights(bpy.context)
-#   swap_steel_materials(bpy.context, "MyTable/materials.json")
+#   swap_steel_materials(bpy.context, "MyTable/materials")
 #   set_translucency(bpy.context, {"<your bumper cap material name>"}, 0.4)
 #   snap_sockets_to_surface(bpy.context, [obj for obj in ... your socket objects ...])
 #   bpy.ops.vlm.fitcamera()

@@ -35,18 +35,18 @@ function main() {
     const build = `dev-${gitShortSha()}`;
     const name = `${game}-${build}`;
 
-    // Concat the dev-mode script (no cached functions, glf_production_mode stays False)
+    // Concat the dev-mode script into <game>/script.vbs (no cached functions, glf_production_mode stays False)
     run('npx', ['grunt', 'concat:vpx'], { cwd: __dirname });
-    const script = fs.readFileSync(path.join(__dirname, 'dest', 'vpx', 'tablescript.vbs'), 'utf8');
+    const script = fs.readFileSync(path.join(projectRoot, game, 'script.vbs'), 'utf8');
 
-    // Stage a copy of the table folder and embed the full script (CRLF, as a Windows build would)
+    // Stage a copy of the table pack folder with the script in CRLF, as a Windows build would
     fs.rmSync(stageDir, { recursive: true, force: true });
     const stagedGame = path.join(stageDir, game);
     fs.cpSync(path.join(projectRoot, game), stagedGame, { recursive: true });
     fs.writeFileSync(path.join(stagedGame, 'script.vbs'), script.replace(/\r?\n/g, '\r\n'));
 
-    // Assemble <stage>/<game>.vpx (vpx-tool.js skips sounds missing from the folder)
-    run('node', [path.join(__dirname, 'vpx-tool.js'), 'assemble', stagedGame]);
+    // Convert the pack folder to <stage>/<game>.vpx
+    run('vpxtool', ['convert', '--force', stagedGame, path.join(stageDir, `${game}.vpx`)]);
 
     // Package release files
     const releaseDir = path.join(stageDir, 'release');

@@ -1,0 +1,17 @@
+{
+  "$type": "collection",
+  "parts": [
+    "s_LeftInlane",
+    "s_RightInlane",
+    "s_sw8",
+    "s_sw9",
+    "s_RightOutlane",
+    "s_LeftOutlane",
+    "s_left_orbit",
+    "s_right_orbit",
+    "s_sw7"
+  ],
+  "fire_events": true,
+  "stop_single_events": false,
+  "group_elements": false
+}

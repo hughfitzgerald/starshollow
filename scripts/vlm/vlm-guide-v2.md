@@ -11,7 +11,7 @@ wrong]**.
 
 | Script | Runs where | Does what |
 | --- | --- | --- |
-| `vlm_vpx_prep.py` | Host shell (Python 3) | Normalizes light settings on a `vpxtool`-extracted table |
+| `vlm_vpx_prep.py` | Host shell (Python 3) | Normalizes light settings in a vpinball table pack folder |
 | `vlm_rig.py` | Inside Blender | Classifies lights, applies node/material treatments, snaps sockets |
 | `vlm_prep.py` | Inside Blender | Locks import flags, runs preflight validation, triggers the bake |
 
@@ -94,17 +94,18 @@ Two more Windows-isms that are cosmetic but confusing on macOS:
 ### 2.1 The round trip
 
 ```bash
-vpxtool extract MyTable.vpx
-# → MyTable/gameitems/Light.<name>.json, Wall.*.json, Primitive.*.json, …
-#   plus MyTable/gameitems.json as the index
+# skip this if the table already lives as a pack folder
+vpxtool convert MyTable.vpx MyTable
+# → MyTable/parts/<name>.json (one per element, "$type": "light", …),
+#   plus MyTable/table.json listing them in order
 
 python3 vlm_vpx_prep.py MyTable/ --dry-run    # inspect first
 python3 vlm_vpx_prep.py MyTable/
 
-vpxtool assemble MyTable/ MyTable-prepped.vpx
+vpxtool convert MyTable MyTable-prepped.vpx   # VLM imports a .vpx
 ```
 
-The extracted JSON is plain and diffable — put the extract directory in git before running the
+The pack's JSON is plain and diffable — keep the pack folder in git before running the
 script and you get a reviewable diff of every light change. That is a far better safety net than
 editing the binary.
 
@@ -436,7 +437,7 @@ Miss this and that area's light map never triggers.
 
 ```
 VPX edit
-  → vpxtool extract → vlm_vpx_prep.py → vpxtool assemble
+  → save the pack → vlm_vpx_prep.py → vpxtool convert to .vpx
   → Blender: vlm.update_operator   (NOT Import — Update preserves collections)
   → vlm_rig.py
   → manual verification pass (§5)
@@ -476,12 +477,14 @@ have work invested.
 `bake_collections`, `bake_sync_light`, `bake_sync_trans`, `is_lightmap`, `bake_hdr_range`,
 `bake_nestmap`
 
-**VPX light JSON fields** (from `vpin`'s `light.rs`, no serde renames — Rust field names are the JSON
-keys): `name`, `center`, `height`, `falloff_radius`, `falloff_power`, `state_u32`, `state`, `color`,
-`color2`, `blink_pattern`, `image`, `blink_interval`, `intensity`, `transmission_scale`, `surface`,
-`is_backglass`, `depth_bias`, `fade_speed_up`, `fade_speed_down`, `is_bulb_light`, `is_image_mode`,
-`show_bulb_mesh`, `has_static_bulb_mesh`, `show_reflection_on_ball`, `mesh_radius`,
-`bulb_modulate_vs_add`, `bulb_halo_height`, `shadows`, `fader`, `visible`, `timer`, `drag_points`
+**Table pack light JSON fields** (`parts/<name>.json`; the name is the file name): `$type`
+(`"light"`), `center`, `height`, `radius` (falloff radius), `falloff_power`, `state_legacy`, `state`,
+`color`, `color2` (BGR integers), `blink_pattern`, `image`, `blink_interval`, `intensity`,
+`transmission_scale`, `surface`, `desktop_backdrop`, `depth_bias`, `fade_speed_up`,
+`fade_speed_down`, `bulb_light`, `image_mode`, `show_bulb_mesh`, `static_bulb_mesh`,
+`show_reflection_on_ball`, `mesh_radius`, `modulate_vs_add`, `bulb_halo_height`, `shadows`
+(0 none, 1 raytraced ball shadows), `fader` (0 none, 1 linear, 2 incandescent), `visible`,
+`timer_enabled`, `timer_interval`, `dragpoints`
 
 ---
 
