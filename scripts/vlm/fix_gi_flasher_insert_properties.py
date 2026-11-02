@@ -1,6 +1,6 @@
 """
-Run on a `vpxtool extract` of the source table, then `vpxtool assemble` and
-bring into Blender via Update.
+Run on the vpinball table pack folder, then `vpxtool convert` it to a .vpx and
+bring that into Blender via Update.
 
 Every field change below is confirmed against the actual Space Station (1987
 VPW) extraction -- direct field comparison, not inference from a Blender
@@ -34,6 +34,11 @@ import glob
 import os
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from gi_lighting import load, save  # vpinball's JSON formatting
+
+FADER_NONE, FADER_LINEAR = 0, 1  # the pack stores vpinball's Fader ordinal
+
 GI_NAMES_ARE_PREFIX = "gi"  # matches vlm_import.py's is_gi check: name.casefold().startswith("gi")
 
 FLASHER_LIGHT_NAMES = {
@@ -42,7 +47,7 @@ FLASHER_LIGHT_NAMES = {
     "bumpersmalllight1", "bumpersmalllight3", "bumpersmalllight5",
 }
 
-# From gamedata.json's "image" field -- confirm this matches YOUR table before
+# From table.json's "image" field -- confirm this matches YOUR table before
 # running, it's not a universal constant.
 PLAYFIELD_IMAGE = "playfield"
 
@@ -58,7 +63,7 @@ FLASHER_INTENSITY_TARGET = None  # Deliberately left off -- see docstring.
 
 def classify(light):
     """Mirrors vlm_import.py's actual is_insert formula in full (all four
-    clauses), not just the is_bulb_light/halo_height shortcut -- that
+    clauses), not just the bulb_light/halo_height shortcut -- that
     shortcut produced a false positive on 'SkillshotLight' (a wall-mounted
     indicator bulb, surface='Wall010'), which the real formula correctly
     excludes via the surface clause. A light excluded here isn't an error --
@@ -73,7 +78,7 @@ def classify(light):
         return "flasher"
 
     is_gi = name.casefold().startswith(GI_NAMES_ARE_PREFIX)
-    bulb = light.get("is_bulb_light", False)
+    bulb = light.get("bulb_light", False)
     image = light.get("image", "")
     halo = light.get("bulb_halo_height", 0)
     surface = light.get("surface", "")
@@ -90,8 +95,8 @@ def apply_fix(light, role):
     changed = False
 
     if role == "gi":
-        if light.get("fader") != "none":
-            light["fader"] = "none"; changed = True
+        if light.get("fader") != FADER_NONE:
+            light["fader"] = FADER_NONE; changed = True
         if light.get("show_bulb_mesh") is not False:
             light["show_bulb_mesh"] = False; changed = True
         if light.get("visible") is not False:
@@ -101,8 +106,8 @@ def apply_fix(light, role):
                 light["intensity"] = GI_INTENSITY_TARGET; changed = True
 
     elif role == "flasher":
-        if light.get("fader") != "none":
-            light["fader"] = "none"; changed = True
+        if light.get("fader") != FADER_NONE:
+            light["fader"] = FADER_NONE; changed = True
         if light.get("visible") is not False:
             light["visible"] = False; changed = True
         if APPLY_INTENSITY_CHANGES and FLASHER_INTENSITY_TARGET is not None:
@@ -110,8 +115,8 @@ def apply_fix(light, role):
                 light["intensity"] = FLASHER_INTENSITY_TARGET; changed = True
 
     elif role == "insert":
-        if light.get("fader") != "linear":
-            light["fader"] = "linear"; changed = True
+        if light.get("fader") != FADER_LINEAR:
+            light["fader"] = FADER_LINEAR; changed = True
         if APPLY_INTENSITY_CHANGES and INSERT_INTENSITY_TARGET is not None:
             if light.get("intensity") != INSERT_INTENSITY_TARGET:
                 light["intensity"] = INSERT_INTENSITY_TARGET; changed = True
@@ -120,30 +125,29 @@ def apply_fix(light, role):
 
 
 def process_file(path, dry_run):
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    if "Light" not in data:
+    light = load(path)
+    if light.get("$type") != "light":
         return None
-    light = data["Light"]
+    light["name"] = os.path.splitext(os.path.basename(path))[0]
     role = classify(light)
     if role is None:
         return None
     before = json.dumps(light, sort_keys=True)
     changed = apply_fix(light, role)
     after = json.dumps(light, sort_keys=True)
+    name = light.pop("name")
     if changed and not dry_run:
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
-    return (light.get("name"), role) if changed else None
+        save(path, light)
+    return (name, role) if changed else None
 
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: fix_gi_flasher_insert_properties.py <extracted_table_dir> [--dry-run]")
+        print("Usage: fix_gi_flasher_insert_properties.py <table_pack_dir> [--dry-run]")
         sys.exit(1)
     root = sys.argv[1]
     dry_run = "--dry-run" in sys.argv
-    pattern = os.path.join(root, "gameitems", "Light.*.json")
+    pattern = os.path.join(root, "parts", "*.json")
     counts = {"gi": [], "flasher": [], "insert": []}
     for path in glob.glob(pattern):
         result = process_file(path, dry_run)
