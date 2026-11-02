@@ -1,8 +1,8 @@
 {
   "Flasher": {
     "height": 0.1,
-    "pos_x": 1428.2299,
-    "pos_y": 708.0833,
+    "pos_x": 1446.3162,
+    "pos_y": 699.4603,
     "rot_x": 0.0,
     "rot_y": 0.0,
     "rot_z": 0.0,
@@ -36,8 +36,8 @@
     "part_group_name": "Bumpers",
     "drag_points": [
       {
-        "x": 369.1676,
-        "y": 378.86093,
+        "x": 387.25388,
+        "y": 370.23798,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -49,8 +49,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 369.1676,
-        "y": 516.7207,
+        "x": 387.25388,
+        "y": 508.09775,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -62,8 +62,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 507.02734,
-        "y": 516.7207,
+        "x": 525.1136,
+        "y": 508.09775,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
@@ -75,8 +75,8 @@
         "editor_layer_visibility": true
       },
       {
-        "x": 507.02734,
-        "y": 378.86093,
+        "x": 525.1136,
+        "y": 370.23798,
         "z": 0.0,
         "smooth": false,
         "is_slingshot": false,
