@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from psc.config import load_config
+from psc.table import colorref
 
 LIGHTS = {  # name: (x, y, color, blink_pattern)
     "l1": (100, 1000, "#ff0000", "10"),
@@ -16,17 +17,18 @@ LIGHTS = {  # name: (x, y, color, blink_pattern)
 }
 
 
-def light_json(name, x, y, color, blink):
-    return {"Light": {
+def light_json(x, y, color, blink):
+    return {
+        "$type": "light",
         "center": {"x": float(x), "y": float(y)},
-        "color": color,
+        "timer_enabled": False,
+        "dragpoints": [{"center": {"x": float(x) + 10, "y": float(y)}},
+                       {"center": {"x": float(x) - 10, "y": float(y)}}],
+        "desktop_backdrop": False,
         "blink_pattern": blink,
-        "name": name,
+        "color": colorref(color),
         "visible": True,
-        "is_timer_enabled": False,
-        "is_backglass": False,
-        "drag_points": [{"x": float(x) + 10, "y": float(y)}, {"x": float(x) - 10, "y": float(y)}],
-    }}
+    }
 
 
 def dump(data):
@@ -36,17 +38,16 @@ def dump(data):
 @pytest.fixture
 def project(tmp_path: Path):
     table = tmp_path / "table"
-    (table / "gameitems").mkdir(parents=True)
-    index = []
+    (table / "parts").mkdir(parents=True)
+    (table / "collections").mkdir()
     for name, (x, y, color, blink) in LIGHTS.items():
-        (table / "gameitems" / f"Light.{name}.json").write_text(dump(light_json(name, x, y, color, blink)))
-        index.append({"file_name": f"Light.{name}.json", "is_locked": False, "editor_layer": 0})
-    (table / "gameitems.json").write_text(dump(index))
-    (table / "collections.json").write_text(dump([
-        {"name": "glf_lights", "items": ["l1", "l2", "l10", "gi1", "FL1"]},
-        {"name": "GI", "items": ["gi1"]},
-    ]))
-    (table / "gamedata.json").write_text(dump({"left": 0.0, "top": 0.0, "right": 1000.0, "bottom": 2000.0}))
+        (table / "parts" / f"{name}.json").write_text(dump(light_json(x, y, color, blink)))
+    collections = {"glf_lights": ["l1", "l2", "l10", "gi1", "FL1"], "GI": ["gi1"]}
+    for name, parts in collections.items():
+        (table / "collections" / f"{name}.json").write_text(dump({"$type": "collection", "parts": parts}))
+    (table / "table.json").write_text(dump({
+        "$type": "table", "left": 0.0, "top": 0.0, "right": 1000.0, "bottom": 2000.0,
+        "parts": list(LIGHTS), "collections": list(collections)}))
     (tmp_path / "src" / "psc" / "shows").mkdir(parents=True)
     (tmp_path / "src" / "game").mkdir(parents=True)
     return tmp_path

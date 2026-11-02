@@ -50,14 +50,14 @@ def light_universe(cfg: Config, table: Table) -> list[str]:
     """Every light PSC manages: the GLF light collection plus backglass proxies."""
     items = table.collection_items(cfg.collection)
     if items is None:
-        raise PscError(f"collection {cfg.collection!r} not found in {table.collections_path}")
+        raise PscError(f"collection {cfg.collection!r} not found in {table.collections_dir}")
     errors = ErrorCollector()
     names = []
     seen = set()
     for item in items:
         record = table.light(item)
         if record is None:
-            errors.add(f"collection {cfg.collection}: {item!r} is not a Light in gameitems")
+            errors.add(f"collection {cfg.collection}: {item!r} is not a light in the table parts")
             continue
         if record.name.lower() not in seen:
             seen.add(record.name.lower())

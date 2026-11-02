@@ -21,7 +21,7 @@ def cmd_sync(cfg, args) -> int:
         print(f"{len(changes)} change(s) pending; run `psc sync`", file=sys.stderr)
         return 1
     apply_changes(changes)
-    print(f"applied {len(changes)} change(s). Run `npm run assemble-vpx` before opening the table in VPX.")
+    print(f"applied {len(changes)} change(s). Reload the table in vpinball to pick them up.")
     return 0
 
 

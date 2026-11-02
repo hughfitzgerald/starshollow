@@ -7,7 +7,7 @@
 # Colors: 6 hex digits. Quote them or not; PSC reads every value as text.
 
 paths:
-  table: ../../../starshollow # vpxtool extraction
+  table: ../../../starshollow # vpinball table pack folder
   shows: shows # show YAML files
   output: ../game/shows/psc_shows.vbs # generated, concatenated by Grunt
   script_src: .. # scanned for show-name collisions

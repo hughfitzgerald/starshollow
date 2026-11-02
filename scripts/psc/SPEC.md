@@ -3,7 +3,7 @@
 PSC is a build-time Python tool for Stars Hollow Showdown. It does two jobs:
 
 1. **Light groups in one place.** You define groups in one config file. PSC writes them into each light's
-   GLF tags (the VPX `blink_pattern` field) in the extracted `gameitems/*.json`, and reads them back when it builds the hardware map.
+   GLF tags (the VPX `blink_pattern` field) in the table pack's `parts/*.json`, and reads them back when it builds the hardware map.
 2. **Show compilation.** You write layered show choreography in YAML. PSC compiles it into GLF VBScript (`CreateGlfShow` blocks).
 
 Backglass bulbs are first-class: they can be put in groups with playfield lights and driven by the same shows.
@@ -38,8 +38,8 @@ Backglass bulbs are first-class: they can be put in groups with playfield lights
 | `scripts/psc/` | Tool source, tests | PSC code |
 | `scripts/src/psc/hardware.yaml` | Groups, colors, backglass bulbs, anchors (source of truth) | Hand-edited |
 | `scripts/src/psc/shows/*.yaml` | Show choreography | Hand-edited |
-| `starshollow/gameitems/Light.*.json` | Light positions, colors, applied tags | vpxtool, plus PSC (`blink_pattern` only) |
-| `starshollow/collections.json` | `glf_lights` collection: the set of lights GLF drives | VPX, plus PSC (proxy membership) |
+| `starshollow/parts/*.json` (`"$type": "light"`) | Light positions, colors, applied tags | VPX, plus PSC (`blink_pattern` only) |
+| `starshollow/collections/glf_lights.json` | The set of lights GLF drives | VPX, plus PSC (proxy membership) |
 | `starshollow.directb2s` | Backglass bulb IDs and positions | B2S Designer (read-only for PSC) |
 | `scripts/src/game/shows/psc_shows.vbs` | Compiled output: `Sub CreatePscShows()` | Generated. Never edit. |
 | `scripts/src/game/psc_backglass_mirror.vbs` | Proxy-to-DOF mirror (section 5), called from `FrameTimer_Timer` | Hand-written, once |
@@ -121,15 +121,15 @@ fail and list the lights to add. `psc map` shows where each light's color comes 
   Lights in no group get `""`. This also clears the VPX default `"10"`, which GLF currently registers as a junk tag `T_10`.
 - Lights outside `glf_lights` are never touched.
 - **Edits are surgical.** PSC rewrites only the `"blink_pattern": "..."` line by text replacement. It never re-serializes
-  vpxtool's JSON, so diffs stay one line per light and float formatting is never disturbed.
+  vpinball's JSON, so diffs stay one line per light and float formatting is never disturbed.
 - `psc sync --check` writes nothing. It exits non-zero and prints the differences if the JSON doesn't match the config.
   `psc compile` runs this check first.
 - `psc import-groups` is a one-time bootstrap. It prints a `groups:` block built from the tags already in the JSON.
 - At compile time, group membership is read back from the JSON tags. Member order comes from `hardware.yaml`.
 - GLF also uses tags to link lights to lightmaps named with `_T_<tag>_`. Avoid group names that match such element names.
 
-**Workflow hazard:** after `psc sync`, run `npm run assemble-vpx` before opening VPX. If you extract from an older `.vpx`, the
-tags revert. `sync --check` catches this, and the next `psc sync` repairs it.
+**Workflow hazard:** vpinball plays and saves the pack folder directly, so run `psc sync` with the table closed in
+vpinball (or reload it afterwards). Saving from a vpinball session opened before the sync writes the old tags back. `sync --check` catches this, and the next `psc sync` repairs it.
 
 ---
 
@@ -144,8 +144,8 @@ straight from compiled shows has two problems, both confirmed in `glf.vbs`:
 Instead, each backglass bulb gets a **proxy light**. That's a hidden VPX `Light` object named after the bulb, for example
 `bg_logo`, that is a member of `glf_lights`. GLF treats it like any other light: tags, priorities, stop cleanup, and fades.
 
-- **Creation:** `psc sync` creates the proxies. It clones a template `Light.*.json` and sets `name`, `center`, and `visible: false`.
-  It then adds the file to `gameitems.json` and the bulb to the `glf_lights` collection. Re-runs update proxies in place.
+- **Creation:** `psc sync` creates the proxies. It clones a template light's `parts/*.json` into `parts/<name>.json` and sets `center`
+  and `visible: false`. It then adds the part to `table.json`'s `parts` list and to the `glf_lights` collection. Re-runs update proxies in place.
   If cloning proves fragile in testing, the fallback is to create the proxies once by hand in VPX. PSC then only verifies them.
 - **Position:** each proxy's `center` is set to a virtual spot above the playfield top. By default, the bulb's B2S X maps
   linearly onto the table width, at a fixed y above the playfield. A bulb can override this with `position: [x, y]`.
@@ -374,8 +374,8 @@ uv run psc midi beat.mid [--map kick=group,...]   # beat-layer notation from a M
 From `scripts/`, the same commands run as `npm run psc-sync`, `psc-map`, `psc-compile`, `psc-edit`, `psc-midi` and `psc-test`.
 
 Typical loop:
-1. Edit `hardware.yaml`, then run `psc sync` and `npm run assemble-vpx`.
-2. Edit the show YAML, then run `psc compile`. Grunt concatenates the result into `starshollow.vbs`.
+1. Edit `hardware.yaml`, then run `psc sync` and reload the table in vpinball.
+2. Edit the show YAML, then run `psc compile`. Grunt concatenates the result into `starshollow/script.vbs`.
 3. Test in VPX.
 
 ---
@@ -398,9 +398,9 @@ playfield, in each light's default color. Hovering a light shows its name and gr
 Every action writes `hardware.yaml` at once, then reloads it and resolves the groups; a change that doesn't resolve
 is rolled back. Only the group entry being changed is rewritten, in the style it already uses, so comments and the
 rest of the file stay as they were (comments inside a rewritten multi-line members list are the exception). After
-editing, run `psc sync` and `npm run assemble-vpx` as usual.
+editing, run `psc sync` and reload the table as usual.
 
-**Images.** The playfield is the table's `image` from gamedata. The backglass image is, in order: `backglass.image`
+**Images.** The playfield is the table's `image` from `table.json`. The backglass image is, in order: `backglass.image`
 in hardware.yaml (a table image name, or a path relative to hardware.yaml), the image embedded in the
 `.directb2s`, or a table image whose name contains "backglass". The page works without either image.
 

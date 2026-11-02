@@ -221,7 +221,7 @@ def test_compile_all_writes_file_and_detects_collisions(env):
 
 def test_compile_refuses_stale_json(env):
     project, cfg, hw = env
-    path = project / "table" / "gameitems" / "Light.l1.json"
+    path = project / "table" / "parts" / "l1.json"
     path.write_text(path.read_text().replace('"blink_pattern": "pair"', '"blink_pattern": "10"'))
     with pytest.raises(PscError, match="run `psc sync`"):
         compile_all(cfg)

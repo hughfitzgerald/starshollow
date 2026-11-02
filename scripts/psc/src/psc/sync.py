@@ -1,4 +1,4 @@
-"""Plans and applies changes to the extracted table JSON: group tags in each
+"""Plans and applies changes to the table pack's JSON: group tags in each
 light's blink_pattern, and hidden proxy lights for backglass bulbs."""
 
 import copy
@@ -10,7 +10,7 @@ from .b2s import read_backglass
 from .config import Bulb, Config
 from .errors import ErrorCollector, PscError
 from .groups import desired_tags, light_universe, resolve_groups
-from .table import (Table, dump_json, read_json, rewrite_json,
+from .table import (Table, colorref, dump_json, read_json, rewrite_json,
                     set_blink_pattern)
 
 # Proxies sit above the playfield's top edge, mirroring the backglass layout:
@@ -75,10 +75,11 @@ def pick_template(cfg: Config, table: Table, universe: list[str]):
 def _move_light(light: dict, x: float, y: float):
     old = light.get("center", {"x": 0.0, "y": 0.0})
     dx, dy = x - old.get("x", 0.0), y - old.get("y", 0.0)
-    light["center"] = {"x": x, "y": y}
-    for point in light.get("drag_points", []):
-        point["x"] = round(point["x"] + dx, 4)
-        point["y"] = round(point["y"] + dy, 4)
+    light["center"] = {**old, "x": x, "y": y}
+    for point in light.get("dragpoints", []):
+        center = point["center"]
+        center["x"] = round(center["x"] + dx, 4)
+        center["y"] = round(center["y"] + dy, 4)
 
 
 def plan_sync(cfg: Config, table: Table) -> list[Change]:
@@ -119,46 +120,39 @@ def plan_sync(cfg: Config, table: Table) -> list[Change]:
 
 
 def _rewrite_light(path, mutate):
-    return lambda: rewrite_json(path, lambda data: mutate(data["Light"]))
+    return lambda: rewrite_json(path, mutate)
 
 
 def _create_proxy(cfg: Config, table: Table, template, bulb: Bulb, x: float, y: float, tags: str) -> Change:
     def apply():
-        data = copy.deepcopy(read_json(template.path))
-        light = data["Light"]
-        light["name"] = bulb.name
+        light = copy.deepcopy(read_json(template.path))
         _move_light(light, x, y)
         light["visible"] = False
         light["blink_pattern"] = tags
-        light["is_timer_enabled"] = False
-        light["is_backglass"] = False
+        light["timer_enabled"] = False
+        light["desktop_backdrop"] = False
         if bulb.color:
-            light["color"] = "#" + bulb.color
-        path = table.dir / "gameitems" / f"Light.{bulb.name}.json"
-        path.write_text(dump_json(data), encoding="utf-8")
+            light["color"] = colorref(bulb.color)
+        path = table.dir / "parts" / f"{bulb.name}.json"
+        path.write_text(dump_json(light), encoding="utf-8")
 
-        def add_index(items):
-            file_name = f"Light.{bulb.name}.json"
-            if any(i.get("file_name") == file_name for i in items):
-                return
-            entry = next((dict(i) for i in items if i.get("file_name") == template.path.name),
-                         {"is_locked": False, "editor_layer": 0, "editor_layer_visibility": True})
-            entry["file_name"] = file_name
-            items.append(entry)
-        rewrite_json(table.gameitems_path, add_index)
+        def add_part(data):
+            if bulb.name not in data["parts"]:
+                data["parts"].append(bulb.name)
+        rewrite_json(table.table_path, add_part)
 
     return Change("create", bulb.name, f"proxy light at ({x:g}, {y:g}) cloned from {template.name}", apply)
 
 
 def _add_to_collection(table: Table, collection: str, name: str):
-    def mutate(collections):
-        for c in collections:
-            if c.get("name", "").lower() == collection.lower():
-                if name.lower() not in (i.lower() for i in c["items"]):
-                    c["items"].append(name)
-                return
+    path = table.collection_path(collection)
+    if path is None:
         raise PscError(f"collection {collection!r} not found")
-    rewrite_json(table.collections_path, mutate)
+
+    def mutate(data):
+        if name.lower() not in (i.lower() for i in data["parts"]):
+            data["parts"].append(name)
+    rewrite_json(path, mutate)
 
 
 def apply_changes(changes: list[Change]):
