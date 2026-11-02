@@ -71,3 +71,11 @@ Sub OrbitGateAction(Enabled)
 		OrbitGate.Open = False
 	End If
 End Sub
+
+Sub OrbitGate2Action(Enabled)
+	If Enabled Then
+		OrbitGate2.Open = True
+	Else
+		OrbitGate2.Open = False
+	End If
+End Sub

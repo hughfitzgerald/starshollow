@@ -37,7 +37,7 @@ Sub CreateBaseMode()
         With .EventPlayer()
 
             ' Kill the attract mode as soon as a ball starts
-            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start", "backglass_on")
+            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start", "backglass_on", "open_orbit_gate2")
             .Add "mode_base_stopping", Array("base_music_stop", "backglass_off")
 
             .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))

@@ -6,12 +6,14 @@ Sub CreateLLMultiballMode()
         .Debug = True
 
         With .EventPlayer()
+            .Add "mode_ll_multiball_stopping", Array("open_orbit_gate2")
+            
             'Scoring
             .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
             .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"))
             .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
 
-            .Add "mode_ll_multiball_started", Array("release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
+            .Add "mode_ll_multiball_started", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             
