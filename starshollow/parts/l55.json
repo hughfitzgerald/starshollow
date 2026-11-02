@@ -1,159 +1,159 @@
 {
-  "Light": {
-    "center": {
-      "x": 554.9482,
-      "y": 993.54175
+  "$type": "light",
+  "center": {
+    "x": 554.9481811523438,
+    "y": 993.541748046875
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Insert_Lights",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 567.9888916015625,
+        "y": 948.5778198242188
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
     },
-    "height": 0.0,
-    "falloff_radius": 25.0,
-    "falloff_power": 2.0,
-    "state_u32": 0,
-    "state": 0.0,
-    "color": "#ffffff",
-    "color2": "#000000",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "blink_pattern": "all_lights,all_lights_no_flashers,all_lights_no_gi,groove_mid_right,right_ramp",
-    "image": "playfield",
-    "blink_interval": 1250,
-    "intensity": 10.0,
-    "transmission_scale": 0.0,
-    "surface": "",
-    "name": "l55",
-    "is_backglass": false,
-    "depth_bias": 0.0,
-    "fade_speed_up": 0.1,
-    "fade_speed_down": 0.1,
-    "is_bulb_light": true,
-    "is_image_mode": false,
-    "show_bulb_mesh": false,
-    "has_static_bulb_mesh": true,
-    "show_reflection_on_ball": true,
-    "mesh_radius": 20.0,
-    "bulb_modulate_vs_add": 1.0,
-    "bulb_halo_height": -1.0,
-    "shadows": "none",
-    "fader": "none",
-    "visible": true,
-    "part_group_name": "Insert_Lights",
-    "drag_points": [
-      {
-        "x": 567.9889,
-        "y": 948.5778,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+    {
+      "center": {
+        "x": 559.8265380859375,
+        "y": 952.6276245117188
       },
-      {
-        "x": 559.82654,
-        "y": 952.6276,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 527.6410522460938,
+        "y": 1011.8182373046875
       },
-      {
-        "x": 527.64105,
-        "y": 1011.81824,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 526.3846435546875,
+        "y": 1019.4705200195313
       },
-      {
-        "x": 526.38464,
-        "y": 1019.4705,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 530.6072998046875,
+        "y": 1024.7364501953125
       },
-      {
-        "x": 530.6073,
-        "y": 1024.7365,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 555.9713134765625,
+        "y": 1032.73876953125
       },
-      {
-        "x": 555.9713,
-        "y": 1032.7388,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 562.6809692382813,
+        "y": 1029.80029296875
       },
-      {
-        "x": 562.68097,
-        "y": 1029.8003,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 565.2835693359375,
+        "y": 1021.8616333007813
       },
-      {
-        "x": 565.28357,
-        "y": 1021.86163,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 572.5543212890625,
+        "y": 955.7692260742188
       },
-      {
-        "x": 572.5543,
-        "y": 955.7692,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ]
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "desktop_backdrop": false,
+  "bulb_halo_height": -1.0,
+  "blink_interval": 1250,
+  "mesh_radius": 20.0,
+  "modulate_vs_add": 1.0,
+  "blink_pattern": "all_lights,all_lights_no_flashers,all_lights_no_gi,groove_mid_right,right_ramp",
+  "bulb_light": true,
+  "intensity": 10.0,
+  "color2": 0,
+  "color": 16777215,
+  "fader": 0,
+  "falloff_power": 2.0,
+  "fade_speed_down": 0.10000000149011612,
+  "fade_speed_up": 0.10000000149011612,
+  "height": 0.0,
+  "image": "playfield",
+  "image_mode": false,
+  "depth_bias": 0.0,
+  "radius": 25.0,
+  "show_bulb_mesh": false,
+  "shadows": 0,
+  "show_reflection_on_ball": true,
+  "state_legacy": 0,
+  "static_bulb_mesh": true,
+  "state": 0.0,
+  "surface": "",
+  "transmission_scale": 0.0,
+  "visible": true
 }

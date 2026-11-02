@@ -1,506 +1,532 @@
 {
-  "Wall": {
-    "hit_event": false,
-    "is_droppable": false,
-    "is_flipbook": false,
-    "is_bottom_solid": false,
-    "is_collidable": true,
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "threshold": 1.0,
-    "image": "plastics",
-    "side_image": "metal3",
-    "side_material": "Metal",
-    "top_material": "Plastic Lavender White",
-    "slingshot_material": "",
-    "height_bottom": 50.0,
-    "height_top": 55.0,
-    "name": "Wall31",
-    "display_texture": false,
-    "slingshot_force": 80.0,
-    "slingshot_threshold": 0.0,
-    "elasticity": 0.3,
-    "elasticity_falloff": 0.0,
-    "friction": 0.02,
-    "scatter": 0.0,
-    "is_top_bottom_visible": true,
-    "slingshot_animation": true,
-    "is_side_visible": true,
-    "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
-    "is_reflection_enabled": true,
-    "physics_material": "zCol_Plastics",
-    "overwrite_physics": false,
-    "drag_points": [
-      {
-        "x": 681.53564,
-        "y": 1458.8912,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "surface",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": true,
+  "ui_visible": false,
+  "part_group": "Plastics",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 681.53564453125,
+        "y": 1458.8912353515625
       },
-      {
-        "x": 676.9112,
-        "y": 1467.5109,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 676.9111938476563,
+        "y": 1467.5108642578125
       },
-      {
-        "x": 610.08545,
-        "y": 1641.849,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 610.08544921875,
+        "y": 1641.8489990234375
       },
-      {
-        "x": 607.12177,
-        "y": 1653.3761,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 607.1217651367188,
+        "y": 1653.3760986328125
       },
-      {
-        "x": 612.88586,
-        "y": 1667.512,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 612.8858642578125,
+        "y": 1667.511962890625
       },
-      {
-        "x": 629.5765,
-        "y": 1671.5519,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 629.5764770507813,
+        "y": 1671.5518798828125
       },
-      {
-        "x": 644.0553,
-        "y": 1663.6763,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 644.0552978515625,
+        "y": 1663.67626953125
       },
-      {
-        "x": 651.1984,
-        "y": 1658.7476,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 651.1984252929688,
+        "y": 1658.74755859375
       },
-      {
-        "x": 657.69464,
-        "y": 1653.8843,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 657.6946411132813,
+        "y": 1653.88427734375
       },
-      {
-        "x": 664.5535,
-        "y": 1657.3602,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 664.5535278320313,
+        "y": 1657.3602294921875
       },
-      {
-        "x": 664.7004,
-        "y": 1660.1495,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 664.7003784179688,
+        "y": 1660.1495361328125
       },
-      {
-        "x": 671.17944,
-        "y": 1683.0087,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 671.179443359375,
+        "y": 1683.0086669921875
       },
-      {
-        "x": 676.66534,
-        "y": 1725.5697,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 676.6653442382813,
+        "y": 1725.5697021484375
       },
-      {
-        "x": 666.7963,
-        "y": 1736.6952,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 666.7963256835938,
+        "y": 1736.6951904296875
       },
-      {
-        "x": 658.081,
-        "y": 1740.4285,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 658.0809936523438,
+        "y": 1740.428466796875
       },
-      {
-        "x": 657.17865,
-        "y": 1743.3558,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 657.1786499023438,
+        "y": 1743.3558349609375
       },
-      {
-        "x": 660.9844,
-        "y": 1745.4241,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 660.984375,
+        "y": 1745.424072265625
       },
-      {
-        "x": 671.20465,
-        "y": 1745.3363,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 671.2046508789063,
+        "y": 1745.3363037109375
       },
-      {
-        "x": 675.42786,
-        "y": 1744.0527,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 675.4278564453125,
+        "y": 1744.052734375
       },
-      {
-        "x": 677.1094,
-        "y": 1741.5045,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 677.109375,
+        "y": 1741.5045166015625
       },
-      {
-        "x": 683.2789,
-        "y": 1741.289,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 683.2788696289063,
+        "y": 1741.2889404296875
       },
-      {
-        "x": 684.76874,
-        "y": 1751.0486,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 684.7687377929688,
+        "y": 1751.048583984375
       },
-      {
-        "x": 694.6487,
-        "y": 1755.217,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 694.648681640625,
+        "y": 1755.217041015625
       },
-      {
-        "x": 696.80493,
-        "y": 1752.2616,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 696.804931640625,
+        "y": 1752.2615966796875
       },
-      {
-        "x": 696.81195,
-        "y": 1748.4712,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 696.8119506835938,
+        "y": 1748.47119140625
       },
-      {
-        "x": 688.7893,
-        "y": 1725.5392,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 688.789306640625,
+        "y": 1725.5391845703125
       },
-      {
-        "x": 689.94635,
-        "y": 1691.6978,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 689.9463500976563,
+        "y": 1691.69775390625
       },
-      {
-        "x": 689.37134,
-        "y": 1668.0764,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 689.371337890625,
+        "y": 1668.076416015625
       },
-      {
-        "x": 685.2833,
-        "y": 1656.9548,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 685.2833251953125,
+        "y": 1656.954833984375
       },
-      {
-        "x": 700.719,
-        "y": 1648.7512,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 700.718994140625,
+        "y": 1648.751220703125
       },
-      {
-        "x": 702.29297,
-        "y": 1643.7772,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 702.29296875,
+        "y": 1643.7772216796875
       },
-      {
-        "x": 704.54364,
-        "y": 1638.75,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 704.5436401367188,
+        "y": 1638.75
       },
-      {
-        "x": 708.85156,
-        "y": 1638.3676,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 708.8515625,
+        "y": 1638.3675537109375
       },
-      {
-        "x": 708.8911,
-        "y": 1627.5336,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 708.89111328125,
+        "y": 1627.5335693359375
       },
-      {
-        "x": 713.13306,
-        "y": 1624.302,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 713.133056640625,
+        "y": 1624.302001953125
       },
-      {
-        "x": 712.11334,
-        "y": 1615.6062,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 712.1133422851563,
+        "y": 1615.606201171875
       },
-      {
-        "x": 710.5525,
-        "y": 1605.9521,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 710.552490234375,
+        "y": 1605.9521484375
       },
-      {
-        "x": 712.7584,
-        "y": 1470.5284,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 712.7584228515625,
+        "y": 1470.5284423828125
       },
-      {
-        "x": 708.2865,
-        "y": 1460.3654,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 708.2864990234375,
+        "y": 1460.3653564453125
       },
-      {
-        "x": 694.2109,
-        "y": 1454.1863,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ],
-    "part_group_name": "Plastics"
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 694.2108764648438,
+        "y": 1454.186279296875
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": true,
+  "disable_lighting_below": 0.0,
+  "disable_lighting_top": 0.0,
+  "droppable": false,
+  "ui_show_texture": false,
+  "elasticity": 0.30000001192092896,
+  "elasticity_falloff": 0.0,
+  "flipbook": false,
+  "height_bottom": 50.0,
+  "hitEvent": false,
+  "height_top": 55.0,
+  "image": "plastics",
+  "is_bottom_solid": false,
+  "physics_material": "zCol_Plastics",
+  "overwrite_physics": false,
+  "reflection_enabled": true,
+  "side_material": "Metal",
+  "side_image": "metal3",
+  "slingshot_animation": true,
+  "slingshot_force": 80.0,
+  "sling_shot_material": "",
+  "slingshot_threshold": 0.0,
+  "side_visible": true,
+  "threshold": 1.0,
+  "top_material": "Plastic Lavender White",
+  "visible": true,
+  "friction": 0.019999999552965164,
+  "scatter": 0.0
 }

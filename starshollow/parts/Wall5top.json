@@ -1,86 +1,87 @@
 {
-  "Wall": {
-    "hit_event": true,
-    "is_droppable": false,
-    "is_flipbook": false,
-    "is_bottom_solid": false,
-    "is_collidable": true,
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "threshold": 1.0,
-    "image": "Colour_Dark",
-    "side_image": "Colour_Dark",
-    "side_material": "Plastic with opaque image",
-    "top_material": "Plastic with opaque image",
-    "slingshot_material": "",
-    "height_bottom": 0.0,
-    "height_top": 54.0,
-    "name": "Wall5top",
-    "display_texture": false,
-    "slingshot_force": 80.0,
-    "slingshot_threshold": 0.0,
-    "elasticity": 0.25,
-    "elasticity_falloff": 0.0,
-    "friction": 0.25,
-    "scatter": 5.0,
-    "is_top_bottom_visible": true,
-    "slingshot_animation": false,
-    "is_side_visible": true,
-    "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
-    "is_reflection_enabled": true,
-    "physics_material": "zCol_Wood",
-    "overwrite_physics": false,
-    "drag_points": [
-      {
-        "x": 852.9519,
-        "y": 796.769,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+  "$type": "surface",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "part_group": "Collidable_Misc",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 852.951904296875,
+        "y": 796.7689819335938
       },
-      {
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
         "x": 850.0,
-        "y": 1814.5,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": false,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "y": 1814.5
       },
-      {
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": false,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
         "x": 875.0,
-        "y": 1818.5,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "y": 1818.5
       },
-      {
-        "x": 875.6263,
-        "y": 723.304,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
-      }
-    ],
-    "part_group_name": "Collidable_Misc"
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 875.6262817382813,
+        "y": 723.3040161132813
+      },
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": true,
+  "disable_lighting_below": 0.0,
+  "disable_lighting_top": 0.0,
+  "droppable": false,
+  "ui_show_texture": false,
+  "elasticity": 0.25,
+  "elasticity_falloff": 0.0,
+  "flipbook": false,
+  "height_bottom": 0.0,
+  "hitEvent": true,
+  "height_top": 54.0,
+  "image": "Colour_Dark",
+  "is_bottom_solid": false,
+  "physics_material": "zCol_Wood",
+  "overwrite_physics": false,
+  "reflection_enabled": true,
+  "side_material": "Plastic with opaque image",
+  "side_image": "Colour_Dark",
+  "slingshot_animation": false,
+  "slingshot_force": 80.0,
+  "sling_shot_material": "",
+  "slingshot_threshold": 0.0,
+  "side_visible": true,
+  "threshold": 1.0,
+  "top_material": "Plastic with opaque image",
+  "visible": true,
+  "friction": 0.25,
+  "scatter": 5.0
 }

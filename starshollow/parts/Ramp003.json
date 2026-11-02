@@ -1,140 +1,147 @@
 {
-  "Ramp": {
-    "height_bottom": 50.0,
-    "height_top": 150.0,
-    "width_bottom": 75.0,
-    "width_top": 60.0,
-    "material": "Metal",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "ramp_type": "four_wire",
-    "name": "Ramp003",
-    "image": "",
-    "image_alignment": "world",
-    "image_walls": true,
-    "left_wall_height": 62.0,
-    "right_wall_height": 62.0,
-    "left_wall_height_visible": 30.0,
-    "right_wall_height_visible": 30.0,
-    "hit_event": true,
-    "threshold": 2.0,
-    "elasticity": 0.3,
-    "friction": 0.3,
-    "scatter": 0.0,
-    "is_collidable": true,
-    "is_visible": true,
-    "depth_bias": 0.0,
-    "wire_diameter": 8.0,
-    "wire_distance_x": 38.0,
-    "wire_distance_y": 88.0,
-    "is_reflection_enabled": true,
-    "physics_material": "zCol_MetalRamp",
-    "overwrite_physics": false,
-    "drag_points": [
-      {
-        "x": 136.38208,
-        "y": 1537.7927,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "ramp",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Collidable_Ramps",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 136.382080078125,
+        "y": 1537.792724609375
       },
-      {
-        "x": 135.90471,
-        "y": 1436.185,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 135.9047088623047,
+        "y": 1436.18505859375
       },
-      {
-        "x": 141.77013,
-        "y": 1298.5225,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 141.77012634277344,
+        "y": 1298.5224609375
       },
-      {
-        "x": 877.85297,
-        "y": 1047.8395,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 877.8529663085938,
+        "y": 1047.8394775390625
       },
-      {
-        "x": 911.60297,
-        "y": 837.8394,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 911.6029663085938,
+        "y": 837.8394165039063
       },
-      {
-        "x": 910.91693,
-        "y": 689.2121,
-        "z": 4.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 910.9169311523438,
+        "y": 689.2120971679688
       },
-      {
-        "x": 907.5412,
-        "y": 375.78693,
-        "z": 5.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 4.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 907.5411987304688,
+        "y": 375.78692626953125
       },
-      {
-        "x": 898.08093,
-        "y": 260.01544,
-        "z": 2.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 5.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 898.0809326171875,
+        "y": 260.01544189453125
       },
-      {
-        "x": 832.9101,
-        "y": 241.39522,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ],
-    "part_group_name": "Collidable_Ramps"
-  }
+      "ui_locked": false,
+      "position_z": 2.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 832.9100952148438,
+        "y": 241.3952178955078
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "alignment": 0,
+  "collidable": true,
+  "elasticity": 0.30000001192092896,
+  "height_bottom": 50.0,
+  "hitEvent": true,
+  "height_top": 150.0,
+  "image": "",
+  "image_walls": true,
+  "physics_material": "zCol_MetalRamp",
+  "material": "Metal",
+  "overwrite_physics": false,
+  "depth_bias": 0.0,
+  "radius": 8.0,
+  "wire_distance_x": 38.0,
+  "wire_distance_y": 88.0,
+  "reflection_enabled": true,
+  "friction": 0.30000001192092896,
+  "scatter": 0.0,
+  "visible": true,
+  "threshold": 2.0,
+  "type": 1,
+  "width_bottom": 75.0,
+  "width_top": 60.0,
+  "left_wall_height": 62.0,
+  "right_wall_height": 62.0,
+  "left_wall_height_visible": 30.0,
+  "right_wall_height_visible": 30.0
 }

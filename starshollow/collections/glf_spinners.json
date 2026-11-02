@@ -1,0 +1,10 @@
+{
+  "$type": "collection",
+  "parts": [
+    "s_left_spinner",
+    "s_right_spinner"
+  ],
+  "fire_events": false,
+  "stop_single_events": false,
+  "group_elements": false
+}

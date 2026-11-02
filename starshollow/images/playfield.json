@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "/Users/stephenjones/Documents/pinball_tables/starshollow/playfield_image/playfield.webp",
+  "width": 1804,
+  "height": 4096,
+  "alpha_test": 1.0,
+  "opaque": false
+}

@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "F:\\vp\\res\\kickerHoleWood.webp",
+  "width": 512,
+  "height": 64,
+  "alpha_test": 1.0,
+  "opaque": true
+}

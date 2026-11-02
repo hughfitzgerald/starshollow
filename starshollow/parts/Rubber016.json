@@ -1,134 +1,134 @@
 {
-  "Rubber": {
-    "height": 29.5,
-    "hit_height": 29.5,
-    "thickness": 9,
-    "hit_event": true,
-    "material": "Rubber White",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "name": "Rubber016",
-    "image": "",
-    "elasticity": 0.8,
-    "elasticity_falloff": 0.1,
-    "friction": 0.9,
-    "scatter": 0.05,
-    "is_collidable": false,
-    "is_visible": true,
-    "static_rendering": true,
-    "show_in_editor": false,
-    "rot_x": 0.0,
-    "rot_y": 0.0,
-    "rot_z": 0.0,
-    "is_reflection_enabled": true,
-    "physics_material": "",
-    "overwrite_physics": true,
-    "drag_points": [
-      {
-        "x": 638.5626,
-        "y": 175.42535,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "rubber",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Visual_Rubbers",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 638.5626220703125,
+        "y": 175.42535400390625
       },
-      {
-        "x": 632.835,
-        "y": 177.79776,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 632.8350219726563,
+        "y": 177.79776000976563
       },
-      {
-        "x": 630.46265,
-        "y": 183.52524,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 630.462646484375,
+        "y": 183.52523803710938
       },
-      {
-        "x": 632.835,
-        "y": 189.25284,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 632.8350219726563,
+        "y": 189.25283813476563
       },
-      {
-        "x": 638.5626,
-        "y": 191.62526,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 638.5626220703125,
+        "y": 191.62525939941406
       },
-      {
-        "x": 644.2902,
-        "y": 189.25284,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 644.2902221679688,
+        "y": 189.25283813476563
       },
-      {
-        "x": 646.6626,
-        "y": 183.52524,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 646.66259765625,
+        "y": 183.52523803710938
       },
-      {
-        "x": 644.2902,
-        "y": 177.79776,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ],
-    "part_group_name": "Visual_Rubbers"
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 644.2902221679688,
+        "y": 177.79776000976563
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": false,
+  "elasticity": 0.800000011920929,
+  "elasticity_falloff": 0.10000000149011612,
+  "show_in_editor": false,
+  "static_rendering": true,
+  "hitEvent": true,
+  "hit_height": 29.5,
+  "height_top": 29.5,
+  "image": "",
+  "physics_material": "",
+  "material": "Rubber White",
+  "overwrite_physics": true,
+  "reflection_enabled": true,
+  "friction": 0.8999999761581421,
+  "rot_x": 0.0,
+  "rot_y": 0.0,
+  "rot_z": 0.0,
+  "scatter": 0.05000000074505806,
+  "visible": true,
+  "thickness": 9
 }

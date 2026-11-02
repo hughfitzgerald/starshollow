@@ -1,92 +1,80 @@
 {
-  "Flasher": {
-    "height": 100.0,
-    "pos_x": 1581.5806,
-    "pos_y": 925.5507,
-    "rot_x": -45.0,
-    "rot_y": 0.0,
-    "rot_z": 0.0,
-    "color": "#c0c0c0",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "name": "VR_Logo",
-    "image_a": "",
-    "image_b": "",
-    "alpha": 100,
-    "modulate_vs_add": 1.0,
-    "is_visible": true,
-    "add_blend": "none",
-    "is_dmd": false,
-    "render_mode": null,
-    "render_style": null,
-    "glass_roughness": null,
-    "glass_ambient": null,
-    "glass_pad_top": null,
-    "glass_pad_bottom": null,
-    "glass_pad_left": null,
-    "glass_pad_right": null,
-    "image_src_link": null,
-    "display_texture": true,
-    "depth_bias": 0.0,
-    "image_alignment": "wrap",
-    "filter": "overlay",
-    "filter_amount": 100,
-    "light_map": "",
-    "backglass": null,
-    "part_group_name": "VR",
-    "drag_points": [
-      {
-        "x": 1181.5806,
-        "y": 733.52344,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "flasher",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": true,
+  "ui_visible": false,
+  "part_group": "VR",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 1181.58056640625,
+        "y": 733.5234375
       },
-      {
-        "x": 1181.5806,
-        "y": 1117.578,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 1181.58056640625,
+        "y": 1117.5780029296875
       },
-      {
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
         "x": 1900.0,
-        "y": 1117.578,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+        "y": 1117.5780029296875
       },
-      {
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
         "x": 1900.0,
-        "y": 733.52344,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ]
-  }
+        "y": 733.5234375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "add_blend": 0,
+  "alignment": 1,
+  "color": 12632256,
+  "ui_show_texture": true,
+  "alpha": 100,
+  "height": 100.0,
+  "filter_amount": 100,
+  "filter_type": 2,
+  "depth_bias": 0.0,
+  "rotation_x": -45.0,
+  "rotation_y": 0.0,
+  "rotation_z": 0.0,
+  "visible": true,
+  "dmd": false,
+  "image_b": "",
+  "image": "",
+  "lightmap": "",
+  "modulate_vs_add": 1.0
 }

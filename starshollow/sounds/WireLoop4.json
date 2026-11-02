@@ -1,0 +1,8 @@
+{
+  "$type": "sound",
+  "import_path": "C:\\Users\\sacam\\Downloads\\Ball__Ramp_Sounds_Amp9\\Ball & Ramp Sounds Amp9\\WireLoop4.flac",
+  "output_target": "playfield",
+  "volume_offset": 0,
+  "left_right_offset": 0,
+  "rear_front_offset": 0
+}

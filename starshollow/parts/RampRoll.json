@@ -1,13 +1,12 @@
 {
-  "Timer": {
-    "center": {
-      "x": 187.03706,
-      "y": 2384.2227
-    },
-    "is_timer_enabled": true,
-    "timer_interval": 100,
-    "name": "RampRoll",
-    "backglass": false,
-    "part_group_name": "Collidable_Misc"
-  }
+  "$type": "timer",
+  "center": {
+    "x": 187.0370635986328,
+    "y": 2384.22265625
+  },
+  "timer_enabled": true,
+  "timer_interval": 100,
+  "ui_locked": true,
+  "part_group": "Collidable_Misc",
+  "desktop_backdrop": false
 }

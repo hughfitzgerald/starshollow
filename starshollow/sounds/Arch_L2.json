@@ -1,0 +1,8 @@
+{
+  "$type": "sound",
+  "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Arch_L2.flac",
+  "output_target": "playfield",
+  "volume_offset": 0,
+  "left_right_offset": 0,
+  "rear_front_offset": 0
+}

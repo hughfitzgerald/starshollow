@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "LM_gi006_plastics.webp",
+  "width": 310,
+  "height": 400,
+  "alpha_test": 1.0,
+  "opaque": false
+}

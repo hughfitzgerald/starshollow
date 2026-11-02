@@ -1,92 +1,80 @@
 {
-  "Flasher": {
-    "height": 109.194,
-    "pos_x": 724.7257,
-    "pos_y": 30.5,
-    "rot_x": -90.0,
-    "rot_y": 0.0,
-    "rot_z": 0.0,
-    "color": "#ffffff",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "name": "LM_Light010_backwall",
-    "image_a": "LM_Light010_backwall",
-    "image_b": "",
-    "alpha": 100,
-    "modulate_vs_add": 0.0,
-    "is_visible": true,
-    "add_blend": "add",
-    "is_dmd": false,
-    "render_mode": null,
-    "render_style": null,
-    "glass_roughness": null,
-    "glass_ambient": null,
-    "glass_pad_top": null,
-    "glass_pad_bottom": null,
-    "glass_pad_left": null,
-    "glass_pad_right": null,
-    "image_src_link": null,
-    "display_texture": true,
-    "depth_bias": 0.0,
-    "image_alignment": "wrap",
-    "filter": "none",
-    "filter_amount": 100,
-    "light_map": "Light010",
-    "backglass": null,
-    "part_group_name": "GI_Layer",
-    "drag_points": [
-      {
-        "x": 678.294,
-        "y": -16.049,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "flasher",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "GI_Layer",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 678.2940063476563,
+        "y": -16.048999786376953
       },
-      {
-        "x": 678.294,
-        "y": 77.049,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 678.2940063476563,
+        "y": 77.04900360107422
       },
-      {
-        "x": 771.158,
-        "y": 77.049,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 771.1580200195313,
+        "y": 77.04900360107422
       },
-      {
-        "x": 771.158,
-        "y": -16.049,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ]
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 771.1580200195313,
+        "y": -16.048999786376953
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "add_blend": 1,
+  "alignment": 1,
+  "color": 16777215,
+  "ui_show_texture": true,
+  "alpha": 100,
+  "height": 109.19400024414063,
+  "filter_amount": 100,
+  "filter_type": 0,
+  "depth_bias": 0.0,
+  "rotation_x": -90.0,
+  "rotation_y": 0.0,
+  "rotation_z": 0.0,
+  "visible": true,
+  "dmd": false,
+  "image_b": "",
+  "image": "LM_Light010_backwall",
+  "lightmap": "Light010",
+  "modulate_vs_add": 0.0
 }

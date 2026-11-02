@@ -1,0 +1,11 @@
+{
+  "$type": "collection",
+  "parts": [
+    "s_LeftSlingShot",
+    "s_RightSlingShot",
+    "s_TopSlingShot"
+  ],
+  "fire_events": false,
+  "stop_single_events": false,
+  "group_elements": false
+}

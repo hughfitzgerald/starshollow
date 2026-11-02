@@ -1,129 +1,135 @@
 {
-  "Ramp": {
-    "height_bottom": 0.0,
-    "height_top": 150.0,
-    "width_bottom": 110.0,
-    "width_top": 60.0,
-    "material": "Opacity80",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "ramp_type": "flat",
-    "name": "Ramp001",
-    "image": "",
-    "image_alignment": "world",
-    "image_walls": true,
-    "left_wall_height": 62.0,
-    "right_wall_height": 62.0,
-    "left_wall_height_visible": 50.0,
-    "right_wall_height_visible": 50.0,
-    "hit_event": false,
-    "threshold": 2.0,
-    "elasticity": 0.3,
-    "friction": 0.3,
-    "scatter": 0.0,
-    "is_collidable": true,
-    "is_visible": true,
-    "depth_bias": 0.0,
-    "wire_diameter": 8.0,
-    "wire_distance_x": 38.0,
-    "wire_distance_y": 88.0,
-    "is_reflection_enabled": true,
-    "physics_material": "zCol_Ramp",
-    "overwrite_physics": false,
-    "drag_points": [
-      {
-        "x": 569.7801,
-        "y": 935.6055,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "ramp",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Collidable_Ramps",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 569.7800903320313,
+        "y": 935.6055297851563
       },
-      {
-        "x": 602.92926,
-        "y": 789.3142,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 602.9292602539063,
+        "y": 789.314208984375
       },
-      {
-        "x": 619.4385,
-        "y": 727.3209,
-        "z": 10.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 619.4384765625,
+        "y": 727.3209228515625
       },
-      {
-        "x": 656.9929,
-        "y": 589.9262,
-        "z": 25.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 10.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 656.992919921875,
+        "y": 589.9262084960938
       },
-      {
-        "x": 725.5398,
-        "y": 360.5486,
-        "z": 31.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 25.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 725.539794921875,
+        "y": 360.5486145019531
       },
-      {
-        "x": 756.48035,
-        "y": 267.80566,
-        "z": 14.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 31.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 756.4803466796875,
+        "y": 267.8056640625
       },
-      {
-        "x": 784.9279,
-        "y": 237.28914,
-        "z": 7.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0
+      "ui_locked": false,
+      "position_z": 14.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 784.9279174804688,
+        "y": 237.2891387939453
       },
-      {
-        "x": 833.0303,
-        "y": 241.42696,
-        "z": 0.0,
-        "smooth": true,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ],
-    "part_group_name": "Collidable_Ramps"
-  }
+      "ui_locked": false,
+      "position_z": 7.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 833.0302734375,
+        "y": 241.4269561767578
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": true,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "alignment": 0,
+  "collidable": true,
+  "elasticity": 0.30000001192092896,
+  "height_bottom": 0.0,
+  "hitEvent": false,
+  "height_top": 150.0,
+  "image": "",
+  "image_walls": true,
+  "physics_material": "zCol_Ramp",
+  "material": "Opacity80",
+  "overwrite_physics": false,
+  "depth_bias": 0.0,
+  "radius": 8.0,
+  "wire_distance_x": 38.0,
+  "wire_distance_y": 88.0,
+  "reflection_enabled": true,
+  "friction": 0.30000001192092896,
+  "scatter": 0.0,
+  "visible": true,
+  "threshold": 2.0,
+  "type": 0,
+  "width_bottom": 110.0,
+  "width_top": 60.0,
+  "left_wall_height": 62.0,
+  "right_wall_height": 62.0,
+  "left_wall_height_visible": 50.0,
+  "right_wall_height_visible": 50.0
 }

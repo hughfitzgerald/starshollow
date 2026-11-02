@@ -1,0 +1,8 @@
+{
+  "$type": "image",
+  "import_path": "LM_Light001_backwall.webp",
+  "width": 350,
+  "height": 307,
+  "alpha_test": 1.0,
+  "opaque": false
+}

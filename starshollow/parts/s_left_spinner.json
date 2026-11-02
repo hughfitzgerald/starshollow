@@ -1,25 +1,25 @@
 {
-  "Spinner": {
-    "center": {
-      "x": 61.537186,
-      "y": 691.9846
-    },
-    "rotation": -10.0,
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "height": 60.0,
-    "length": 80.0,
-    "damping": 0.98,
-    "angle_max": 0.0,
-    "angle_min": 0.0,
-    "elasticity": 0.3,
-    "is_visible": true,
-    "show_bracket": false,
-    "material": "Plastic",
-    "image": "spinner_talk",
-    "surface": "",
-    "name": "s_left_spinner",
-    "is_reflection_enabled": true,
-    "part_group_name": "Spinners"
-  }
+  "$type": "spinner",
+  "center": {
+    "x": 61.53718566894531,
+    "y": 691.984619140625
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Spinners",
+  "damping": 0.9800000190734863,
+  "height": 60.0,
+  "image": "spinner_talk",
+  "length": 80.0,
+  "material": "Plastic",
+  "reflection_enabled": true,
+  "rotation": -10.0,
+  "elasticity": 0.30000001192092896,
+  "angle_max": 0.0,
+  "angle_min": 0.0,
+  "show_bracket": false,
+  "surface": "",
+  "visible": true
 }

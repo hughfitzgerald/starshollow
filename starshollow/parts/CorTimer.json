@@ -1,13 +1,12 @@
 {
-  "Timer": {
-    "center": {
-      "x": 84.99999,
-      "y": 2382.1672
-    },
-    "is_timer_enabled": true,
-    "timer_interval": 10,
-    "name": "CorTimer",
-    "backglass": false,
-    "part_group_name": "Collidable_Misc"
-  }
+  "$type": "timer",
+  "center": {
+    "x": 84.99999237060547,
+    "y": 2382.167236328125
+  },
+  "timer_enabled": true,
+  "timer_interval": 10,
+  "ui_locked": true,
+  "part_group": "Collidable_Misc",
+  "desktop_backdrop": false
 }

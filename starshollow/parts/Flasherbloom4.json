@@ -1,92 +1,80 @@
 {
-  "Flasher": {
-    "height": 250.0,
-    "pos_x": -765.1245,
-    "pos_y": 893.3215,
-    "rot_x": -6.5,
-    "rot_y": 0.0,
-    "rot_z": 0.0,
-    "color": "#ffffff",
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "name": "Flasherbloom4",
-    "image_a": "flasherbloomUpperLeft",
-    "image_b": "flasherbloomUpperLeft",
-    "alpha": 100,
-    "modulate_vs_add": 1.0,
-    "is_visible": false,
-    "add_blend": "add",
-    "is_dmd": false,
-    "render_mode": null,
-    "render_style": null,
-    "glass_roughness": null,
-    "glass_ambient": null,
-    "glass_pad_top": null,
-    "glass_pad_bottom": null,
-    "glass_pad_left": null,
-    "glass_pad_right": null,
-    "image_src_link": null,
-    "display_texture": true,
-    "depth_bias": -1500.0,
-    "image_alignment": "wrap",
-    "filter": "additive",
-    "filter_amount": 800,
-    "light_map": "",
-    "backglass": null,
-    "part_group_name": "PF_Sized_Flashers",
-    "drag_points": [
-      {
-        "x": -23.199108,
-        "y": -13.059291,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "flasher",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": true,
+  "ui_visible": false,
+  "part_group": "PF_Sized_Flashers",
+  "dragpoints": [
+    {
+      "center": {
+        "x": -23.199108123779297,
+        "y": -13.059290885925293
       },
-      {
-        "x": -22.7644,
-        "y": 2102.0693,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": -22.764400482177734,
+        "y": 2102.0693359375
       },
-      {
-        "x": 971.93036,
-        "y": 2100.9321,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 971.9303588867188,
+        "y": 2100.93212890625
       },
-      {
-        "x": 974.2096,
-        "y": -11.250602,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ]
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 974.2095947265625,
+        "y": -11.250601768493652
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "add_blend": 1,
+  "alignment": 1,
+  "color": 16777215,
+  "ui_show_texture": true,
+  "alpha": 100,
+  "height": 250.0,
+  "filter_amount": 800,
+  "filter_type": 1,
+  "depth_bias": -1500.0,
+  "rotation_x": -6.5,
+  "rotation_y": 0.0,
+  "rotation_z": 0.0,
+  "visible": false,
+  "dmd": false,
+  "image_b": "flasherbloomUpperLeft",
+  "image": "flasherbloomUpperLeft",
+  "lightmap": "",
+  "modulate_vs_add": 1.0
 }

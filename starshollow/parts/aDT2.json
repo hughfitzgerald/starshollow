@@ -1,90 +1,90 @@
 {
-  "Wall": {
-    "hit_event": true,
-    "is_droppable": true,
-    "is_flipbook": false,
-    "is_bottom_solid": false,
-    "is_collidable": true,
-    "is_timer_enabled": false,
-    "timer_interval": 2,
-    "threshold": 0.5,
-    "image": "",
-    "side_image": "",
-    "side_material": "",
-    "top_material": "",
-    "slingshot_material": "",
-    "height_bottom": 0.0,
-    "height_top": 44.0,
-    "name": "aDT2",
-    "display_texture": false,
-    "slingshot_force": 80.0,
-    "slingshot_threshold": 0.0,
-    "elasticity": 0.4,
-    "elasticity_falloff": 0.0,
-    "friction": 0.3,
-    "scatter": 5.0,
-    "is_top_bottom_visible": false,
-    "slingshot_animation": true,
-    "is_side_visible": false,
-    "disable_lighting_top": 0.0,
-    "disable_lighting_below": 0.0,
-    "is_reflection_enabled": true,
-    "physics_material": "zCol_DropTarget",
-    "overwrite_physics": false,
-    "drag_points": [
-      {
-        "x": 724.4266,
-        "y": 828.07965,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "surface",
+  "timer_enabled": false,
+  "timer_interval": 2,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Targets_Layer",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 724.4265747070313,
+        "y": 828.0796508789063
       },
-      {
-        "x": 727.5977,
-        "y": 819.80066,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": false,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 727.5977172851563,
+        "y": 819.8006591796875
       },
-      {
-        "x": 691.3276,
-        "y": 803.48444,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": false,
-        "tex_coord": 1.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": false,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 691.3275756835938,
+        "y": 803.4844360351563
       },
-      {
-        "x": 687.5509,
-        "y": 812.1211,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ],
-    "part_group_name": "Targets_Layer"
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": false,
+      "texture_coordinate": 1.0
+    },
+    {
+      "center": {
+        "x": 687.5509033203125,
+        "y": 812.12109375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": true,
+  "disable_lighting_below": 0.0,
+  "disable_lighting_top": 0.0,
+  "droppable": true,
+  "ui_show_texture": false,
+  "elasticity": 0.4000000059604645,
+  "elasticity_falloff": 0.0,
+  "flipbook": false,
+  "height_bottom": 0.0,
+  "hitEvent": true,
+  "height_top": 44.0,
+  "image": "",
+  "is_bottom_solid": false,
+  "physics_material": "zCol_DropTarget",
+  "overwrite_physics": false,
+  "reflection_enabled": true,
+  "side_material": "",
+  "side_image": "",
+  "slingshot_animation": true,
+  "slingshot_force": 80.0,
+  "sling_shot_material": "",
+  "slingshot_threshold": 0.0,
+  "side_visible": false,
+  "threshold": 0.5,
+  "top_material": "",
+  "visible": false,
+  "friction": 0.30000001192092896,
+  "scatter": 5.0
 }

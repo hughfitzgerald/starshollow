@@ -1,13 +1,13 @@
 {
-  "Timer": {
-    "center": {
-      "x": 301.09573,
-      "y": 2437.9192
-    },
-    "is_timer_enabled": true,
-    "timer_interval": -1,
-    "name": "Glf_GameTimer",
-    "backglass": false,
-    "part_group_name": "Timers"
-  }
+  "$type": "timer",
+  "center": {
+    "x": 301.0957336425781,
+    "y": 2437.919189453125
+  },
+  "timer_enabled": true,
+  "timer_interval": -1,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Timers",
+  "desktop_backdrop": false
 }

@@ -1,23 +1,23 @@
 {
-  "Kicker": {
-    "center": {
-      "x": 359.20804,
-      "y": 842.9375
-    },
-    "radius": 25.0,
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "material": "",
-    "surface": "SubwayFloor",
-    "is_enabled": false,
-    "name": "s_Lock1",
-    "kicker_type": "invisible",
-    "scatter": 0.0,
-    "hit_accuracy": 0.5,
-    "hit_height": 35.0,
-    "orientation": 0.0,
-    "fall_through": false,
-    "legacy_mode": true,
-    "part_group_name": "Subway"
-  }
+  "$type": "kicker",
+  "center": {
+    "x": 359.2080383300781,
+    "y": 842.9375
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Subway",
+  "enabled": false,
+  "fall_through": false,
+  "hit_accuracy": 0.5,
+  "hit_height": 35.0,
+  "orientation": 0.0,
+  "scatter": 0.0,
+  "legacy_mode": true,
+  "material": "",
+  "radius": 25.0,
+  "surface": "SubwayFloor",
+  "type": 0
 }

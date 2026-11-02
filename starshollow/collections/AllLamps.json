@@ -1,0 +1,12 @@
+{
+  "$type": "collection",
+  "parts": [
+    "l1",
+    "l12",
+    "l8",
+    "l9"
+  ],
+  "fire_events": true,
+  "stop_single_events": false,
+  "group_elements": false
+}

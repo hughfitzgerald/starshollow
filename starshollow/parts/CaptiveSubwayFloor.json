@@ -1,91 +1,90 @@
 {
-  "Wall": {
-    "hit_event": false,
-    "is_droppable": false,
-    "is_flipbook": false,
-    "is_bottom_solid": false,
-    "is_collidable": true,
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "threshold": 2.0,
-    "image": "",
-    "side_image": "",
-    "side_material": "",
-    "top_material": "",
-    "slingshot_material": "",
-    "height_bottom": -80.0,
-    "height_top": -75.0,
-    "name": "CaptiveSubwayFloor",
-    "display_texture": false,
-    "slingshot_force": 80.0,
-    "slingshot_threshold": 0.0,
-    "elasticity": 0.3,
-    "elasticity_falloff": 0.0,
-    "friction": 0.3,
-    "scatter": 0.0,
-    "is_top_bottom_visible": false,
-    "slingshot_animation": true,
-    "is_side_visible": false,
-    "disable_lighting_top_old": 0.0,
-    "disable_lighting_top": null,
-    "disable_lighting_below": 1.0,
-    "is_reflection_enabled": true,
-    "physics_material": "",
-    "overwrite_physics": true,
-    "drag_points": [
-      {
-        "x": 604.2717,
-        "y": 665.17126,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+  "$type": "surface",
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Subway",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 604.271728515625,
+        "y": 665.1712646484375
       },
-      {
-        "x": 620.60114,
-        "y": 722.77545,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 620.6011352539063,
+        "y": 722.7754516601563
       },
-      {
-        "x": 674.67267,
-        "y": 707.80664,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 674.6726684570313,
+        "y": 707.806640625
       },
-      {
-        "x": 663.89343,
-        "y": 655.7135,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ],
-    "part_group_name": "Subway"
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 663.8934326171875,
+        "y": 655.7135009765625
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "collidable": true,
+  "disable_lighting_below": 1.0,
+  "disable_lighting_legacy": 0,
+  "droppable": false,
+  "ui_show_texture": false,
+  "elasticity": 0.30000001192092896,
+  "elasticity_falloff": 0.0,
+  "flipbook": false,
+  "height_bottom": -80.0,
+  "hitEvent": false,
+  "height_top": -75.0,
+  "image": "",
+  "is_bottom_solid": false,
+  "physics_material": "",
+  "overwrite_physics": true,
+  "reflection_enabled": true,
+  "side_material": "",
+  "side_image": "",
+  "slingshot_animation": true,
+  "slingshot_force": 80.0,
+  "sling_shot_material": "",
+  "slingshot_threshold": 0.0,
+  "side_visible": false,
+  "threshold": 2.0,
+  "top_material": "",
+  "visible": false,
+  "friction": 0.30000001192092896,
+  "scatter": 0.0
 }

@@ -1,0 +1,21 @@
+{
+  "$type": "collection",
+  "parts": [
+    "gi012",
+    "gi010",
+    "gi022",
+    "gi024",
+    "gi023",
+    "gi021",
+    "gi016",
+    "gi015",
+    "gi014",
+    "gi013",
+    "gi026",
+    "gi025",
+    "gi027"
+  ],
+  "fire_events": false,
+  "stop_single_events": false,
+  "group_elements": false
+}

@@ -1,0 +1,7 @@
+{
+  "$type": "image",
+  "import_path": "C:\\ColorGradeLUT256x16_1to1.webp",
+  "width": 256,
+  "height": 16,
+  "alpha_test": 128.0
+}

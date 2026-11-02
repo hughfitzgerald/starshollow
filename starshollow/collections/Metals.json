@@ -1,0 +1,27 @@
+{
+  "$type": "collection",
+  "parts": [
+    "Wall37",
+    "Wall002",
+    "Wall003",
+    "Wall004",
+    "Wall005",
+    "Wall006",
+    "Wall007",
+    "Wall011",
+    "Wall012",
+    "Wall015",
+    "Wall017",
+    "Wall021",
+    "Wall022",
+    "Wall023",
+    "Wall024",
+    "Wall025",
+    "ROrbitDiverterWallClosed",
+    "RampDiverterWall1",
+    "RampDiverterWall2"
+  ],
+  "fire_events": true,
+  "stop_single_events": false,
+  "group_elements": false
+}

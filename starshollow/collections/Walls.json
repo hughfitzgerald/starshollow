@@ -1,0 +1,22 @@
+{
+  "$type": "collection",
+  "parts": [
+    "plastic2",
+    "plastic1",
+    "plastic5",
+    "Wall5top",
+    "Wall350",
+    "Wall3",
+    "Wall12",
+    "Wall228",
+    "Wall4",
+    "Wall5",
+    "Wall7",
+    "Wall5bottom",
+    "Wall020",
+    "Wall009"
+  ],
+  "fire_events": true,
+  "stop_single_events": false,
+  "group_elements": false
+}

@@ -1,79 +1,79 @@
 {
-  "Trigger": {
-    "center": {
-      "x": 685.4767,
-      "y": 864.30096
+  "$type": "trigger",
+  "center": {
+    "x": 685.4766845703125,
+    "y": 864.3009643554688
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": false,
+  "part_group": "Triggers",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 669.2262573242188,
+        "y": 827.628173828125
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
     },
-    "radius": 25.0,
-    "rotation": 0.0,
-    "wire_thickness": 0.0,
-    "scale_x": 1.0,
-    "scale_y": 1.0,
-    "is_timer_enabled": false,
-    "timer_interval": 100,
-    "material": "",
-    "surface": "",
-    "is_visible": false,
-    "is_enabled": true,
-    "hit_height": 100.0,
-    "name": "s_captive_ball",
-    "shape": "none",
-    "anim_speed": 1.0,
-    "is_reflection_enabled": false,
-    "part_group_name": "Triggers",
-    "drag_points": [
-      {
-        "x": 669.22626,
-        "y": 827.6282,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+    {
+      "center": {
+        "x": 662.1563720703125,
+        "y": 843.1487426757813
       },
-      {
-        "x": 662.1564,
-        "y": 843.14874,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 725.5899047851563,
+        "y": 861.65234375
       },
-      {
-        "x": 725.5899,
-        "y": 861.65234,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 730.4822998046875,
+        "y": 847.0032348632813
       },
-      {
-        "x": 730.4823,
-        "y": 847.00323,
-        "z": 0.0,
-        "smooth": false,
-        "is_slingshot": false,
-        "has_auto_texture": true,
-        "tex_coord": 0.0,
-        "is_locked": false,
-        "editor_layer": 0,
-        "editor_layer_name": "",
-        "editor_layer_visibility": true
-      }
-    ]
-  }
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "anim_speed": 1.0,
+  "enabled": true,
+  "material": "",
+  "radius": 25.0,
+  "reflection_enabled": false,
+  "rotation": 0.0,
+  "scale_x": 1.0,
+  "scale_y": 1.0,
+  "shape": 0,
+  "surface": "",
+  "hit_height": 100.0,
+  "visible": false,
+  "wire_thickness": 0.0
 }

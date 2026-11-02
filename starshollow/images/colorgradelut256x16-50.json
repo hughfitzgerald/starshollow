@@ -1,0 +1,7 @@
+{
+  "$type": "image",
+  "import_path": "C:\\VirtualPinball\\VisualPinball\\dev\\LUT\\colorgradelut256x16-50.jpg",
+  "width": 256,
+  "height": 16,
+  "alpha_test": -1.0
+}

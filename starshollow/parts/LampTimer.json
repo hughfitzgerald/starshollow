@@ -1,13 +1,12 @@
 {
-  "Timer": {
-    "center": {
-      "x": 191.05762,
-      "y": 2444.0144
-    },
-    "is_timer_enabled": false,
-    "timer_interval": 10,
-    "name": "LampTimer",
-    "backglass": false,
-    "part_group_name": "Collidable_Misc"
-  }
+  "$type": "timer",
+  "center": {
+    "x": 191.0576171875,
+    "y": 2444.014404296875
+  },
+  "timer_enabled": false,
+  "timer_interval": 10,
+  "ui_locked": true,
+  "part_group": "Collidable_Misc",
+  "desktop_backdrop": false
 }

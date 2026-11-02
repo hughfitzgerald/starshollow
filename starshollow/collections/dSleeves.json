@@ -1,0 +1,12 @@
+{
+  "$type": "collection",
+  "parts": [
+    "zCol_Rubber_Sleeve001",
+    "Primitive032",
+    "Primitive059",
+    "Primitive060"
+  ],
+  "fire_events": true,
+  "stop_single_events": false,
+  "group_elements": false
+}
