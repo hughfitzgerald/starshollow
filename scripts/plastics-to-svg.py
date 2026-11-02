@@ -56,7 +56,7 @@ PART_GROUP = "Plastics"
 PLASTICS_IMAGE = "plastics"
 FILL_LAYER_ID = "vpx_plastic_fills"
 OUTLINE_LAYER_ID = "vpx_plastic_outlines"
-FILL_STYLE = "fill:#d5c2e7;fill-opacity:1;stroke:none"
+FILL_STYLE = "fill:#3a1846;fill-opacity:1;stroke:none"
 OUTLINE_STYLE = "fill:none;stroke:#ff00ff;stroke-width:0.25;stroke-opacity:1"
 
 
