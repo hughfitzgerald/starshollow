@@ -1,0 +1,8 @@
+{
+  "$type": "sound",
+  "import_path": "/Users/stephenjones/code/starshollow/callouts/voc_truman.ogg",
+  "output_target": "backglass",
+  "volume_offset": 0,
+  "left_right_offset": 0,
+  "rear_front_offset": 0
+}

@@ -69,9 +69,12 @@ starshollow/script.vbs
 starshollow.info
 music/
 callouts/
-mus_*
-voc_*
-sfx_*
+mus_*.ogg
+voc_*.ogg
+sfx_*.ogg
+mus_*.flac
+voc_*.flac
+sfx_*.flac
 b2s/license.txt
 b2s/B2SBackglassDesigner.chm
 b2s/Projects/B2SBackglassDesigner.Settings.xml
