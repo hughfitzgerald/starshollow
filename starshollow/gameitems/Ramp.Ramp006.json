@@ -136,6 +136,6 @@
         "editor_layer_visibility": true
       }
     ],
-    "part_group_name": "Colladiable_ramps"
+    "part_group_name": "Collidable_Ramps"
   }
 }
