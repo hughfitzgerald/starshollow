@@ -15,7 +15,7 @@ Every Wall and Primitive in PartGroup "Plastics" becomes two paths:
     grown by --bleed mm and filled, so it ends up in plastics.webp.
 
 Both layers belong to this script and are replaced wholesale on every run;
-make changes in VPX (then `npm run extract-vpx`) rather than in Inkscape.
+make changes in VPX (and save the table) rather than in Inkscape.
 
 Only those two layers are spliced into the file text, so the rest of the
 Inkscape-formatted SVG is left byte-for-byte untouched.
@@ -33,7 +33,7 @@ Primitives also get their table files updated so they can share
 plastics.webp with the walls: the image is set to "plastics" and the mesh
 UVs are rewritten to the table-space mapping VPX gives wall tops
 (Surface::GenerateMesh: tu = x / table width, tv = y / table height).
-Run `npm run assemble-vpx` afterwards to put them back in the .vpx.
+Reload the table in vpinball afterwards to pick them up.
 """
 
 import argparse
@@ -42,6 +42,7 @@ import json
 import math
 import os
 import re
+import struct
 
 from shapely import make_valid, unary_union
 from shapely.affinity import scale, translate
@@ -65,23 +66,23 @@ def read_game_name():
 
 
 def read_table(table_dir):
-    with open(os.path.join(table_dir, "gamedata.json")) as f:
+    with open(os.path.join(table_dir, "table.json")) as f:
         gamedata = json.load(f)
     walls, primitives = [], []
-    for path in sorted(glob.glob(os.path.join(table_dir, "gameitems", "*.json"))):
-        kind = os.path.basename(path).split(".")[0]
-        if kind not in ("Wall", "Primitive"):
-            continue
+    for path in sorted(glob.glob(os.path.join(table_dir, "parts", "*.json"))):
         with open(path) as f:
-            item = json.load(f)[kind]
-        if item.get("part_group_name") != PART_GROUP:
+            item = json.load(f)
+        kind = item.get("$type")
+        if kind not in ("surface", "primitive") or item.get("part_group") != PART_GROUP:
             continue
-        if kind == "Wall":
+        item["name"] = os.path.splitext(os.path.basename(path))[0]
+        item["json_path"] = path
+        if kind == "surface":
             walls.append(item)
-        elif not item["use_3d_mesh"]:
+        elif not item["use_mesh"]:
             print(f"skipping {item['name']}: built-in primitive shapes aren't supported")
         else:
-            item["mesh_path"] = path.removesuffix(".json") + ".obj"
+            item["mesh_path"] = os.path.join(table_dir, item["mesh"])
             primitives.append(item)
     return gamedata, walls, primitives
 
@@ -110,7 +111,7 @@ def catmull_tangents(p0, p1, p2, p3):
 
 def wall_beziers(drag_points):
     """Closed loop of cubic beziers [(p1, c1, c2, p2), ...] in VPX units (IHaveDragPoints::GetRgVertex, loop=true)."""
-    pts = [(p["x"], p["y"]) for p in drag_points]
+    pts = [(p["center"]["x"], p["center"]["y"]) for p in drag_points]
     smooth = [p["smooth"] for p in drag_points]
     n = len(pts)
     segments = []
@@ -156,35 +157,74 @@ def matrix_multiply(*matrices):
 
 def primitive_matrix(primitive):
     """Primitive::RecalculateMatrices: scale * rotation/translation * position."""
-    rt = primitive["rot_and_tra"]
-    size, position = primitive["size"], primitive["position"]
+    p = primitive
+    size, position = p["size"], p["position"]
     return matrix_multiply(
         matrix_scale(size["x"], size["y"], size["z"]),
-        matrix_translate(rt[3], rt[4], rt[5]),
-        matrix_rotate("z", rt[2]),
-        matrix_rotate("y", rt[1]),
-        matrix_rotate("x", rt[0]),
-        matrix_rotate("z", rt[8]),
-        matrix_rotate("y", rt[7]),
-        matrix_rotate("x", rt[6]),
+        matrix_translate(p["prim_trans_x"], p["prim_trans_y"], p["prim_trans_z"]),
+        matrix_rotate("z", p["prim_rot1_z"]),
+        matrix_rotate("y", p["prim_rot1_y"]),
+        matrix_rotate("x", p["prim_rot1_x"]),
+        matrix_rotate("z", p["prim_rot2_z"]),
+        matrix_rotate("y", p["prim_rot2_y"]),
+        matrix_rotate("x", p["prim_rot2_x"]),
         matrix_translate(position["x"], position["y"], position["z"]),
     )
 
 
-def read_obj(path):
-    """Vertices (in VPX space) and triangles of a vpxtool OBJ, which stores z negated."""
-    vertices, triangles = [], []
-    with open(path) as f:
-        for line in f:
-            parts = line.split()
-            if not parts:
-                continue
-            if parts[0] == "v":
-                x, y, z = map(float, parts[1:4])
-                vertices.append((x, y, -z))
-            elif parts[0] == "f":
-                corners = [int(p.split("/")[0]) - 1 for p in parts[1:]]
-                triangles += [(corners[0], corners[k], corners[k + 1]) for k in range(1, len(corners) - 1)]
+# glTF is Y-up and in metres; a VPX unit is 0.53975 mm (1 1/16" ball / 50).
+GLB_METRES_PER_UNIT = 0.00053975
+
+
+class Glb:
+    """The parts of a vpinball .glb mesh this script uses: one mesh primitive
+    with POSITION, TEXCOORD_0 and triangle indices in the binary chunk."""
+
+    def __init__(self, path):
+        with open(path, "rb") as f:
+            self.data = bytearray(f.read())
+        magic, _, _ = struct.unpack_from("<4sII", self.data, 0)
+        json_length, json_type = struct.unpack_from("<I4s", self.data, 12)
+        if magic != b"glTF" or json_type != b"JSON":
+            raise ValueError(f"{path}: not a binary glTF file")
+        self.gltf = json.loads(self.data[20 : 20 + json_length])
+        self.bin_offset = 20 + json_length + 8
+        (mesh,) = self.gltf["meshes"]
+        (self.primitive,) = mesh["primitives"]
+        if self.primitive.get("mode", 4) != 4:
+            raise ValueError(f"{path}: mesh is not a triangle list")
+
+    def accessor(self, index, expected_type):
+        a = self.gltf["accessors"][index]
+        view = self.gltf["bufferViews"][a["bufferView"]]
+        if a["type"] != expected_type or view.get("byteStride"):
+            raise ValueError(f"accessor {index}: unexpected layout")
+        fmt = {5126: "f", 5125: "I", 5123: "H", 5121: "B"}[a["componentType"]]
+        width = {"SCALAR": 1, "VEC2": 2, "VEC3": 3}[a["type"]]
+        offset = self.bin_offset + view.get("byteOffset", 0) + a.get("byteOffset", 0)
+        return offset, f"<{width}{fmt}", a["count"]
+
+    def read(self, attribute, expected_type):
+        index = self.primitive["attributes"][attribute] if attribute != "indices" else self.primitive["indices"]
+        offset, fmt, count = self.accessor(index, expected_type)
+        size = struct.calcsize(fmt)
+        return [struct.unpack_from(fmt, self.data, offset + k * size) for k in range(count)]
+
+    def write_uvs(self, uvs):
+        offset, fmt, count = self.accessor(self.primitive["attributes"]["TEXCOORD_0"], "VEC2")
+        if len(uvs) != count:
+            raise ValueError(f"{len(uvs)} UVs for {count} vertices")
+        for k, uv in enumerate(uvs):
+            struct.pack_into(fmt, self.data, offset + k * struct.calcsize(fmt), *uv)
+
+
+def read_mesh(path):
+    """Vertices (in VPX space) and triangles of a vpinball .glb mesh."""
+    glb = Glb(path)
+    s = 1.0 / GLB_METRES_PER_UNIT
+    vertices = [(x * s, z * s, y * s) for x, y, z in glb.read("POSITION", "VEC3")]
+    indices = [i for (i,) in glb.read("indices", "SCALAR")]
+    triangles = [tuple(indices[k : k + 3]) for k in range(0, len(indices), 3)]
     return vertices, triangles
 
 
@@ -205,7 +245,7 @@ def table_vertices(primitive, vertices):
 
 def primitive_footprint(primitive):
     """Top-down silhouette of the transformed mesh, in VPX units."""
-    vertices, triangles = read_obj(primitive["mesh_path"])
+    vertices, triangles = read_mesh(primitive["mesh_path"])
     flat = table_vertices(primitive, vertices)
     faces = [Polygon([flat[i] for i in tri]) for tri in triangles]
     footprint = unary_union([face for face in faces if face.area > 1e-9])
@@ -218,46 +258,36 @@ def update_primitive_files(primitive, gamedata):
 
     Returns True if either file changed.
     """
-    with open(primitive["mesh_path"]) as f:
-        lines = f.read().split("\n")
-    vertices, _ = read_obj(primitive["mesh_path"])
-    for line in lines:
-        if line.startswith("f "):
-            for corner in line.split()[1:]:
-                v, vt = corner.split("/")[:2]
-                if v != vt:
-                    raise ValueError(f"{primitive['mesh_path']}: face uses different v and vt indices")
-        if line.startswith("# vpx "):
-            raise ValueError(f"{primitive['mesh_path']}: has raw vpx vertex comments that would override new UVs")
-
+    vertices, _ = read_mesh(primitive["mesh_path"])
     inv_width = 1.0 / (gamedata["right"] - gamedata["left"])
     inv_height = 1.0 / (gamedata["bottom"] - gamedata["top"])
-    # vpxtool writes V flipped (obj_v = 1 - tv).
-    uvs = iter(f"vt {fmt_uv(x * inv_width)} {fmt_uv(1.0 - y * inv_height)}" for x, y in table_vertices(primitive, vertices))
-    new_lines = [next(uvs) if line.startswith("vt ") else line for line in lines]
-    if next(uvs, None) is not None:
-        raise ValueError(f"{primitive['mesh_path']}: fewer vt lines than vertices")
-    changed = write_if_changed(primitive["mesh_path"], "\n".join(new_lines))
+    # V is flipped (v = 1 - tv), as in vpinball's other glTF meshes. Rounding
+    # to 7 places keeps UVs written back when meshes were OBJ files unchanged.
+    uvs = [(round(x * inv_width, 7), round(1.0 - y * inv_height, 7)) for x, y in table_vertices(primitive, vertices)]
+    glb = Glb(primitive["mesh_path"])
+    # float32 positions put recomputed UVs a ulp or so off; don't churn the binary over that
+    current = glb.read("TEXCOORD_0", "VEC2")
+    changed = any(abs(a - b) > 1e-6 for old, new in zip(current, uvs) for a, b in zip(old, new))
+    if changed:
+        glb.write_uvs(uvs)
+        write_if_changed(primitive["mesh_path"], bytes(glb.data))
 
-    json_path = primitive["mesh_path"].removesuffix(".obj") + ".json"
+    json_path = primitive["json_path"]
     with open(json_path) as f:
         text = f.read()
-    text, count = re.subn(r'^(    "image": )"[^"]*"', rf'\1"{PLASTICS_IMAGE}"', text, count=1, flags=re.M)
+    text, count = re.subn(r'^(  "image": )"[^"]*"', rf'\1"{PLASTICS_IMAGE}"', text, count=1, flags=re.M)
     if count != 1:
         raise ValueError(f"{json_path}: no image field found")
     return write_if_changed(json_path, text) or changed
 
 
-def fmt_uv(v):
-    return f"{v:.7f}".rstrip("0").rstrip(".")
-
-
-def write_if_changed(path, text):
-    with open(path) as f:
-        if f.read() == text:
+def write_if_changed(path, content):
+    mode = "b" if isinstance(content, bytes) else ""
+    with open(path, "r" + mode) as f:
+        if f.read() == content:
             return False
-    with open(path, "w") as f:
-        f.write(text)
+    with open(path, "w" + mode) as f:
+        f.write(content)
     return True
 
 
@@ -314,7 +344,7 @@ def to_svg(walls, primitives, gamedata, page_w, page_h, bleed):
     outlines, fills = [], []
     for wall in walls:
         name = wall["name"]
-        segments = [tuple(map(to_page, seg)) for seg in wall_beziers(wall["drag_points"])]
+        segments = [tuple(map(to_page, seg)) for seg in wall_beziers(wall["dragpoints"])]
         if not segments:
             continue
         outlines.append(path_xml(f"vpx_outline_{name}", name, OUTLINE_STYLE, bezier_d(segments)))
@@ -390,7 +420,7 @@ def page_size(svg):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--bleed", type=float, default=1.0, help="fill outset in mm (default 1.0)")
-    parser.add_argument("--table", default=os.path.join(PROJECT_ROOT, read_game_name()), help="extracted table directory")
+    parser.add_argument("--table", default=os.path.join(PROJECT_ROOT, read_game_name()), help="vpinball table pack folder")
     parser.add_argument("--svg", default=SVG_PATH)
     parser.add_argument("-o", "--output", help="write here instead of overwriting --svg")
     args = parser.parse_args()
@@ -415,7 +445,7 @@ def main():
 
     for primitive in primitives:
         if update_primitive_files(primitive, gamedata):
-            print(f"updated {primitive['name']}: image and table-space UVs (run `npm run assemble-vpx`)")
+            print(f"updated {primitive['name']}: image and table-space UVs (reload the table in vpinball)")
 
 
 if __name__ == "__main__":
