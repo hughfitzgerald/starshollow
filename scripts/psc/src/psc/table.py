@@ -2,7 +2,9 @@
 
 import json
 import re
+import struct
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 
 from .errors import PscError
@@ -43,6 +45,23 @@ def read_json(path: Path):
         raise PscError(f"{path}: invalid JSON: {e}") from None
 
 
+def vp_float(value):
+    """A new float the way vpinball saves it: rounded to float32, shortest text
+    that reads back, and a tie in the last digit rounded away from zero
+    (Python rounds it to even)."""
+    f = struct.unpack("f", struct.pack("f", value))[0]
+    text = repr(f)
+    if "e" in text or not text[-1].isdigit():
+        return text
+    shown = Decimal(text)
+    unit = Decimal(1).scaleb(shown.as_tuple().exponent)
+    if abs(Decimal(f)) - abs(shown) == unit / 2:
+        bumped = str(shown + unit.copy_sign(shown))
+        if float(bumped) == f:
+            return bumped
+    return text
+
+
 def dump_json(data, indent: str = "") -> str:
     """vpinball's format: 2-space indent, non-ASCII kept, no trailing newline."""
     inner = indent + "  "
@@ -57,6 +76,8 @@ def dump_json(data, indent: str = "") -> str:
         return "[\n" + ",\n".join(f"{inner}{dump_json(v, inner)}" for v in data) + f"\n{indent}]"
     if isinstance(data, Number):
         return data.text
+    if isinstance(data, float):
+        return vp_float(data)
     return json.dumps(data, ensure_ascii=False)
 
 

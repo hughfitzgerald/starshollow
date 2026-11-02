@@ -150,8 +150,9 @@ def _add_to_collection(table: Table, collection: str, name: str):
         raise PscError(f"collection {collection!r} not found")
 
     def mutate(data):
-        if name.lower() not in (i.lower() for i in data["parts"]):
-            data["parts"].append(name)
+        parts = data.setdefault("parts", [])  # vpinball leaves it out of an empty collection
+        if name.lower() not in (i.lower() for i in parts):
+            parts.append(name)
     rewrite_json(path, mutate)
 
 
