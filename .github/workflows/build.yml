@@ -65,28 +65,20 @@ jobs:
           grep -q '^Dim glf_production_mode : glf_production_mode = True' "$GAME/script.vbs" || { echo "::error::Could not enable glf_production_mode"; exit 1; }
           grep -q '^Dim glf_FuncCount : glf_FuncCount = 9999' "$GAME/script.vbs" || { echo "::error::Could not set glf_FuncCount"; exit 1; }
 
-      - name: Modify Locked Property in JSON
-        env:
-          GAME: ${{ steps.gamename.outputs.game_name }}
-        run: |
-          jq '.locked = 1' "$GAME/gamedata.json" > temp.json
-          mv temp.json "$GAME/gamedata.json"
-
       - name: Download vpxtool
         run: |
           mkdir vpxtool
           curl -sSL https://github.com/francisdb/vpxtool/releases/download/v0.38.0/vpxtool-Linux-x86_64-v0.38.0.tar.gz | tar -xz -C vpxtool
-          # Put vpxtool on PATH so scripts/vpx-tool.js can find it
           echo "$PWD/vpxtool" >> "$GITHUB_PATH"
 
-      - name: Assemble VPX File
+      - name: Convert Table Pack to VPX File
         env:
           GAME: ${{ steps.gamename.outputs.game_name }}
           BUILD: ${{ steps.version.outputs.build_number }}
         run: |
-          # Uses vpx-tool.js so copyrighted sounds missing from the repo are skipped
-          node scripts/vpx-tool.js assemble
-          mv "$GAME.vpx" "$GAME$BUILD.vpx"
+          # Copyrighted sounds aren't in the repo; the pack simply has no files for them
+          vpxtool convert --force "$GAME" "$GAME$BUILD.vpx"
+          vpxtool lock "$GAME$BUILD.vpx"
 
       - name: Package Release Files
         env:
