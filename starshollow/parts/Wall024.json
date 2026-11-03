@@ -3,6 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
+  "ui_visible": true,
+  "legacy_layer": 2,
+  "named_layer": "Collidable_Misc",
   "part_group": "Collidable_Misc",
   "dragpoints": [
     {
@@ -11,6 +14,7 @@
         "y": 253.36024475097656
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -23,6 +27,7 @@
         "y": 259.4850769042969
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -35,6 +40,7 @@
         "y": 310.0189208984375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -47,6 +53,7 @@
         "y": 359.8310546875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -59,6 +66,7 @@
         "y": 390.5555114746094
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -71,6 +79,7 @@
         "y": 390.1346435546875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -83,6 +92,7 @@
         "y": 359.48272705078125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -95,6 +105,7 @@
         "y": 306.18719482421875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -107,6 +118,7 @@
         "y": 253.68331909179688
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -119,6 +131,7 @@
         "y": 249.0801544189453
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -128,7 +141,7 @@
   ],
   "collidable": false,
   "disable_lighting_below": 1.0,
-  "disable_lighting_legacy": 0,
+  "disable_lighting_top": 0.0,
   "droppable": false,
   "ui_show_texture": false,
   "elasticity": 0.30000001192092896,

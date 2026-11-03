@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 3,
+  "named_layer": "Plastics",
   "part_group": "Plastics",
   "dragpoints": [
     {
@@ -25,6 +27,7 @@
         "y": 220.63082885742188
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -50,6 +53,7 @@
         "y": 174.92335510253906
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -62,6 +66,7 @@
         "y": 238.02952575683594
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -87,6 +92,7 @@
         "y": 390.19708251953125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -99,6 +105,7 @@
         "y": 375.4894714355469
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,

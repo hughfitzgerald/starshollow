@@ -7,6 +7,9 @@
   "timer_enabled": true,
   "timer_interval": 33,
   "ui_locked": true,
+  "ui_visible": true,
+  "legacy_layer": 2,
+  "named_layer": "Collidable_Misc",
   "part_group": "Collidable_Misc",
   "desktop_backdrop": false
 }

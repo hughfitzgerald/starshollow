@@ -3,5 +3,7 @@
   "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Flupper Domes\\Flasher Textures\\domeearbaseblue.png",
   "width": 256,
   "height": 256,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "beee66faa1772e87282efe69ec741ea7",
+  "opaque": false
 }

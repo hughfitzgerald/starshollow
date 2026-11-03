@@ -3,6 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
+  "ui_visible": true,
+  "legacy_layer": 2,
+  "named_layer": "Collidable_Misc",
   "part_group": "Collidable_Misc",
   "dragpoints": [
     {
@@ -50,6 +53,7 @@
         "y": 332.95404052734375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -62,6 +66,7 @@
         "y": 345.7056579589844
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -74,6 +79,7 @@
         "y": 390.7857666015625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -86,6 +92,7 @@
         "y": 387.67486572265625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -98,6 +105,7 @@
         "y": 324.6054382324219
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -120,7 +128,7 @@
   ],
   "collidable": true,
   "disable_lighting_below": 1.0,
-  "disable_lighting_legacy": 0,
+  "disable_lighting_top": 0.0,
   "droppable": false,
   "ui_show_texture": false,
   "elasticity": 0.30000001192092896,

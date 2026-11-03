@@ -3,5 +3,7 @@
   "import_path": "E:\\Pinball\\Tables\\Materials\\LockdownBarreal-JR.webp",
   "width": 1024,
   "height": 125,
-  "alpha_test": 128.0
+  "alpha_test": 128.0,
+  "md5": "6e92a1c88ff428c76d335b74fb505e32",
+  "opaque": false
 }

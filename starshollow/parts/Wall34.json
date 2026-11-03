@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 3,
+  "named_layer": "Plastics",
   "part_group": "Plastics",
   "dragpoints": [
     {
@@ -103,6 +105,7 @@
         "y": 1101.35107421875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -115,6 +118,7 @@
         "y": 1099.72900390625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -140,6 +144,7 @@
         "y": 1077.4368896484375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -152,6 +157,7 @@
         "y": 1079.57421875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -164,6 +170,7 @@
         "y": 1079.1085205078125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -189,6 +196,7 @@
         "y": 967.7435302734375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -201,6 +209,7 @@
         "y": 958.3775634765625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -213,6 +222,7 @@
         "y": 948.1044921875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -225,6 +235,7 @@
         "y": 940.7523803710938
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -237,6 +248,7 @@
         "y": 940.76123046875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -249,6 +261,7 @@
         "y": 945.9511108398438
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,

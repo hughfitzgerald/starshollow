@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "Subway",
   "part_group": "Subway",
   "dragpoints": [
     {
@@ -25,6 +27,7 @@
         "y": 384.509521484375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -37,6 +40,7 @@
         "y": 125.21653747558594
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -49,6 +53,7 @@
         "y": 109.18489837646484
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -61,6 +66,7 @@
         "y": 299.08331298828125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -73,6 +79,7 @@
         "y": 728.860595703125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -85,6 +92,7 @@
         "y": 2028.549560546875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,

@@ -3,5 +3,7 @@
   "import_path": "C:\\ColorGradeLUT256x16_1to1.webp",
   "width": 256,
   "height": 16,
-  "alpha_test": 128.0
+  "alpha_test": 128.0,
+  "md5": "892ce83d8977c8515bc5bc47cad82ce3",
+  "opaque": true
 }

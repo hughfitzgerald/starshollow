@@ -3,5 +3,7 @@
   "import_path": "E:\\\\flipperImage-testW.webp",
   "width": 1024,
   "height": 1024,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "6b3af5d708ac63666f6c93474d836951",
+  "opaque": false
 }

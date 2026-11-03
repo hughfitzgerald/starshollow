@@ -3,6 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
+  "ui_visible": true,
+  "legacy_layer": 2,
+  "named_layer": "Collidable_Misc",
   "part_group": "Collidable_Misc",
   "dragpoints": [
     {
@@ -11,6 +14,7 @@
         "y": 703.9622192382813
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -23,6 +27,7 @@
         "y": 707.6666259765625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -35,6 +40,7 @@
         "y": 722.0264282226563
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -47,6 +53,7 @@
         "y": 732.992431640625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -59,6 +66,7 @@
         "y": 741.041748046875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -71,6 +79,7 @@
         "y": 751.1009521484375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -83,6 +92,7 @@
         "y": 792.2265625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -95,6 +105,7 @@
         "y": 940.9801635742188
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -120,6 +131,7 @@
         "y": 793.0032958984375
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -132,6 +144,7 @@
         "y": 751.0074462890625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -144,6 +157,7 @@
         "y": 738.3355712890625
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -156,6 +170,7 @@
         "y": 730.049560546875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -168,6 +183,7 @@
         "y": 719.5265502929688
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -180,6 +196,7 @@
         "y": 705.0431518554688
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -192,6 +209,7 @@
         "y": 701.2139892578125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,

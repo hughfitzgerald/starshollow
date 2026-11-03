@@ -3,5 +3,7 @@
   "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Flupper Domes\\Flasher Textures\\domeearbasepurple.webp",
   "width": 256,
   "height": 256,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "8850cc286d312b39ffb5ba32e0083aef",
+  "opaque": false
 }

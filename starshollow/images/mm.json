@@ -3,5 +3,7 @@
   "import_path": "C:\\mm.webp",
   "width": 1024,
   "height": 1024,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "fcf7c441f1f775287fed5bd7cdda2bce",
+  "opaque": true
 }

@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": true,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 4,
+  "named_layer": "Visual_Rubbers",
   "part_group": "Visual_Rubbers",
   "dragpoints": [
     {

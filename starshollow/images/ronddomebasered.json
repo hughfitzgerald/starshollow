@@ -3,5 +3,7 @@
   "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Flupper Domes\\Flasher Textures\\ronddomebasered.png",
   "width": 256,
   "height": 256,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "1ec9610fb566532f615f47bdd7f2265c",
+  "opaque": false
 }

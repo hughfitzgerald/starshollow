@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 4,
+  "named_layer": "Visual_Rubbers",
   "part_group": "Visual_Rubbers",
   "dragpoints": [
     {
@@ -103,6 +105,7 @@
         "y": 598.495361328125
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -115,6 +118,7 @@
         "y": 583.3964233398438
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,
@@ -127,6 +131,7 @@
         "y": 570.0707397460938
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": false,
       "slingshot": false,

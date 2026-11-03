@@ -3,5 +3,7 @@
   "import_path": "C:\\Visual Pinball\\Tables VR\\VR Room WIP\\_Assets\\Room\\VR_Floor.png",
   "width": 2000,
   "height": 2000,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "5ee3315723765102f92541b1ea467fcd",
+  "opaque": true
 }

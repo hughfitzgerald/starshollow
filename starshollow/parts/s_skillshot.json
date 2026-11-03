@@ -7,7 +7,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 7,
+  "named_layer": "Triggers",
   "part_group": "Triggers",
   "dragpoints": [
     {
@@ -65,6 +67,7 @@
   ],
   "anim_speed": 1.0,
   "enabled": true,
+  "state_src_link": "",
   "material": "",
   "radius": 25.0,
   "reflection_enabled": true,
@@ -74,6 +77,6 @@
   "shape": 0,
   "surface": "skillshot_trigger_surface",
   "hit_height": 50.0,
-  "visible": true,
+  "visible": false,
   "wire_thickness": 0.0
 }

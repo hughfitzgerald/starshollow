@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "Collidable_Ramps",
   "part_group": "Collidable_Ramps",
   "dragpoints": [
     {
@@ -25,6 +27,7 @@
         "y": 644.3179321289063
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,
@@ -37,6 +40,7 @@
         "y": 508.32244873046875
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 12.0,
       "smooth": true,
       "slingshot": false,
@@ -49,6 +53,7 @@
         "y": 308.7027893066406
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 25.0,
       "smooth": true,
       "slingshot": false,
@@ -61,6 +66,7 @@
         "y": 196.98684692382813
       },
       "ui_locked": false,
+      "ui_visible": true,
       "position_z": 0.0,
       "smooth": true,
       "slingshot": false,

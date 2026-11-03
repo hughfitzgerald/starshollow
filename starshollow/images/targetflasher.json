@@ -3,5 +3,7 @@
   "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Flupper Domes\\Flasher Textures\\targetflasher.jpg",
   "width": 1024,
   "height": 1024,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "34fff382ba80464333e5ee796860a028",
+  "opaque": true
 }

@@ -7,7 +7,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 8,
+  "named_layer": "Insert_Lights",
   "part_group": "Insert_Lights",
   "dragpoints": [
     {
@@ -224,6 +226,7 @@
   "image": "playfield",
   "image_mode": false,
   "depth_bias": 0.0,
+  "state_src_link": "",
   "radius": 60.0,
   "show_bulb_mesh": false,
   "shadows": 0,

@@ -3,5 +3,7 @@
   "import_path": "C:\\UPin\\bumper-cap-t2.webp",
   "width": 256,
   "height": 256,
-  "alpha_test": 128.0
+  "alpha_test": 128.0,
+  "md5": "dcd82808ad62df8edb175132666c1ad8",
+  "opaque": true
 }

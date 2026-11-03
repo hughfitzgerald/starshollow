@@ -3,5 +3,7 @@
   "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Flupper Domes\\Flasher Textures\\domeflashwhite.jpg",
   "width": 1024,
   "height": 1024,
-  "alpha_test": 1.0
+  "alpha_test": 1.0,
+  "md5": "aba94c65cc851da199a69b2dc93c592b",
+  "opaque": true
 }

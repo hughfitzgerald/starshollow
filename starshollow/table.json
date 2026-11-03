@@ -101,6 +101,7 @@
   "global_emission_scale": 0.15000000596046448,
   "AO_scale": 0.75,
   "SSR_scale": 0.25,
+  "ground_to_lockbar_height": 1685.9656982421875,
   "table_sound_volume": 1.0,
   "table_music_volume": 1.0,
   "playfield_reflection_strength": 75,
@@ -111,6 +112,7 @@
   "enable_AO": 0,
   "enable_SSR": 0,
   "tonemapper": 0,
+  "exposure": 1.0,
   "bloom_strength": 1.0,
   "materials": [
     "a_physics_Rubbers",
@@ -307,8 +309,8 @@
   "blurb": "",
   "description": "",
   "rules": "",
-  "date_saved": "Mon Nov  2 13:08:17 2026",
-  "save_rev": 217,
+  "date_saved": "Mon Nov  2 15:54:34 2026",
+  "save_rev": 218,
   "parts": [
     "Flippers",
     "Shadows",

@@ -3,5 +3,7 @@
   "import_path": "E:\\pinballArtwork\\PBTextures\\p1-beachwood.jpg",
   "width": 512,
   "height": 1024,
-  "alpha_test": 128.0
+  "alpha_test": 128.0,
+  "md5": "5f580eab851e69dcad1889f8fe82fc13",
+  "opaque": true
 }

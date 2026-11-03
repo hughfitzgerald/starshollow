@@ -8,17 +8,19 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "Captive Balls",
   "part_group": "Captive Balls",
   "bulb_intensity_scale": 1.0,
   "color": 16777215,
   "decal_mode": false,
-  "image_decal": "",
+  "image_decal": "Scratches",
   "force_reflection": false,
-  "image": "",
+  "image": "ball_HDR",
   "mass": 1.0,
   "playfield_reflection_strength": 1.0,
   "radius": 25.0,
   "reflection_enabled": true,
-  "pinball_env_spherical_mapping": true
+  "pinball_env_spherical_mapping": false
 }

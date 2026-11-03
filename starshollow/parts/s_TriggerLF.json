@@ -7,7 +7,9 @@
   "timer_enabled": false,
   "timer_interval": 32,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 0,
+  "named_layer": "Flippers",
   "part_group": "Flippers",
   "dragpoints": [
     {
@@ -273,6 +275,7 @@
   ],
   "anim_speed": 1.0,
   "enabled": true,
+  "state_src_link": "",
   "material": "",
   "radius": 25.0,
   "reflection_enabled": false,

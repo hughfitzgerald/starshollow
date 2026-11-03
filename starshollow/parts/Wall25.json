@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": true,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 10,
+  "named_layer": "Slingshots",
   "part_group": "Slingshots",
   "dragpoints": [
     {

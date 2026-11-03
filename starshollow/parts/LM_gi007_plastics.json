@@ -3,7 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 100,
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "GI_Layer",
   "part_group": "GI_Layer",
   "dragpoints": [
     {
@@ -61,6 +63,7 @@
   ],
   "add_blend": 1,
   "alignment": 1,
+  "desktop_backdrop": false,
   "color": 16777215,
   "ui_show_texture": true,
   "alpha": 100,
@@ -72,9 +75,18 @@
   "rotation_y": 0.0,
   "rotation_z": 0.0,
   "visible": true,
-  "dmd": false,
+  "glass_ambient": 0,
+  "glass_pad_bottom": 0.0,
+  "glass_pad_left": 0.0,
+  "glass_roughness": 0.0,
+  "glass_pad_right": 0.0,
+  "glass_pad_top": 0.0,
   "image_b": "",
   "image": "LM_gi007_plastics",
+  "image_src_link": "",
   "lightmap": "gi007",
-  "modulate_vs_add": 0.30000001192092896
+  "modulate_vs_add": 0.30000001192092896,
+  "render_mode": 0,
+  "render_style": 0,
+  "state_src_link": ""
 }

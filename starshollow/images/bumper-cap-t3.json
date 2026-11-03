@@ -3,5 +3,7 @@
   "import_path": "C:\\UPin\\bumper-cap-t3.png",
   "width": 256,
   "height": 256,
-  "alpha_test": 128.0
+  "alpha_test": 128.0,
+  "md5": "739ae7c48c4f8aac3f58a11bb4222875",
+  "opaque": true
 }

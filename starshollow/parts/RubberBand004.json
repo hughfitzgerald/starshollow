@@ -3,6 +3,9 @@
   "timer_enabled": false,
   "timer_interval": 20,
   "ui_locked": true,
+  "ui_visible": true,
+  "legacy_layer": 6,
+  "named_layer": "Collidable_Rubbers",
   "part_group": "Collidable_Rubbers",
   "dragpoints": [
     {

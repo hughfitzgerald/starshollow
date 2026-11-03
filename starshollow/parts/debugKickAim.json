@@ -1,7 +1,9 @@
 {
   "$type": "primitive",
   "ui_locked": false,
-  "ui_visible": false,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "Shot_tester",
   "part_group": "Shot_tester",
   "add_blend": false,
   "collidable": false,
@@ -45,6 +47,7 @@
   "prim_rot2_z": 0.0,
   "side_color": 9868950,
   "sides": 4,
+  "state_src_link": "",
   "static_rendering": false,
   "threshold": 2.0,
   "visible": false,

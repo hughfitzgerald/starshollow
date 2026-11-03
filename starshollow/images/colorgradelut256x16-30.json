@@ -3,5 +3,7 @@
   "import_path": "C:\\VirtualPinball\\VisualPinball\\dev\\LUT\\colorgradelut256x16-30.jpg",
   "width": 256,
   "height": 16,
-  "alpha_test": -1.0
+  "alpha_test": -1.0,
+  "md5": "58e0cafdb3b487b2cf0bd07ed81dabbf",
+  "opaque": true
 }
