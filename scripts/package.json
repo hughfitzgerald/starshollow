@@ -16,6 +16,8 @@
     "psc-edit": "uv run --project psc psc edit",
     "psc-midi": "uv run --project psc psc midi",
     "psc-test": "uv run --project psc pytest psc/tests -q",
+    "play": "/Applications/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX -Play ../starshollow",
+    "edit": "/Applications/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX -LiveEdit ../starshollow",
     "svg-to-playfield": "uv run svg-to-playfield.py",
     "plastics-to-svg": "uv run plastics-to-svg.py",
     "rename-project": "node rename-reset-project.js",
