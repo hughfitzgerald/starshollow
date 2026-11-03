@@ -1,6 +1,6 @@
 {
   "$type": "sound",
-  "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_3_Delayed.flac",
+  "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Ball_Drop_Playfield_3_Delayed.opus",
   "output_target": "playfield",
   "volume_offset": 0,
   "left_right_offset": 0,

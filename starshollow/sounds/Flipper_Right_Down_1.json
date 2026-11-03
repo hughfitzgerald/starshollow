@@ -1,6 +1,6 @@
 {
   "$type": "sound",
-  "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_1.flac",
+  "import_path": "C:\\Users\\dan\\OneDrive\\Documents\\Dan\\Pinball\\Fleep\\Sounds\\Flipper_Right_Down_1.opus",
   "output_target": "playfield",
   "volume_offset": 0,
   "left_right_offset": 0,
