@@ -72,6 +72,9 @@ callouts/
 mus_*.ogg
 voc_*.ogg
 sfx_*.ogg
+mus_*.opus
+voc_*.opus
+sfx_*.opus
 mus_*.flac
 voc_*.flac
 sfx_*.flac
