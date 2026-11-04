@@ -744,6 +744,9 @@ Sub CreateSounds()
     AddMusic       "mus_ka",  144, -1
 
     AddMusic       "mus_dinner", 193, -1
+
+    AddMusic       "mus_magictodo1", 48, -1
+    AddMusic       "mus_magictodo2", 16, -1
     
     
     AddMusic       "mus_fd_punch", 241, -1
@@ -764,6 +767,8 @@ Sub CreateSounds()
     AddCallout     "voc_fd_punch_twoplustwo", 8
     AddCallout     "voc_fd_punch_wherehewasgoing", 5
     AddCallout     "voc_fd_punch_atmisspattys", 3
+
+    AddCallout     "voc_ka_mothercanhear", 7
 
     AddCallout     "voc_tm_central_nervous_system", 4
     AddCallout     "voc_tm_coffee_in_an_iv", 2

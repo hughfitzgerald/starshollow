@@ -27,10 +27,12 @@ Sub CreateKimsAntiquesMode()
             'Scoring
             .Add "kims_antiques_shot_hit", Array(ScoreEvent(KimsAntiquesShotScore, NoMultiplier))
 
-            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold", "move_miss_kim", ModeSlideEvent("play_kims_antiques_mode_slide", "KIM'S ANTIQUES", "AVOID MISS KIM (SOLID LIGHT)"))
+            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_kims_antiques_mode_slide", "KIM'S ANTIQUES", "AVOID MISS KIM (SOLID LIGHT)"))
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             'Survived the full timer without hitting Miss Kim
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(KimsAntiquesCompleteScore, NoMultiplier))
+
+            .Add "timer_kims_antiques_intro_delay_complete", Array("release_scoop_hold", "start_kims_antiques_music", "move_miss_kim")
 
             
 
@@ -47,6 +49,19 @@ Sub CreateKimsAntiquesMode()
             .Add "miss_kim_shot_hit", Array("base_music_start")
         End With
 
+        With .Timers("kims_antiques_intro_delay")
+            .StartRunning = True
+            .Direction = "down"
+            .StartValue = 7
+            .EndValue = 0
+            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "skip_minigame_intro{device.timers.kims_antiques_intro_delay.ticks > 0}"
+                .Action = "jump"
+                .Value = 0
+            End With
+        End With
+
         With .Timers("move_miss_kim")
             .StartRunning = False
             .Direction = "down"
@@ -61,6 +76,11 @@ Sub CreateKimsAntiquesMode()
 
         With .SoundPlayer()
             With .EventName("mode_kims_antiques_started")
+                .Key = "key_voc_ka_mothercanhear"
+                .Sound = "voc_ka_mothercanhear"
+                .Priority = 100
+            End With
+            With .EventName("start_kims_antiques_music")
                 .Key = "key_mus_ka"
                 .Sound = "mus_ka"
             End With
@@ -162,7 +182,7 @@ Sub CreateKimsAntiquesMode()
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "mode_kims_antiques_started"
+                .EventName = "timer_kims_antiques_intro_delay_complete"
                 .Action = "start"
             End With
         End With
