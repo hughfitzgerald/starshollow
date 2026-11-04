@@ -31,10 +31,25 @@ Sub CreateHighScoreMode()
             'Handle timeout
             .Add "timer_high_score_timeout_complete", Array("text_input_high_score_complete:{text: machine.high_score_initials}")
 
+            .Add "high_score_award_display", Array("stop_magictodo", "restart_magictodo", "play_truman")
+
         End With
 
         With .SoundPlayer()
             With .EventName("mode_high_score_started")
+                .Key = "key_mus_magictodo3"
+                .Sound = "mus_magictodo3"
+            End With
+            With .EventName("stop_magictodo")
+                .Key = "key_mus_magictodo3"
+                .Sound = "mus_magictodo3"
+                .Action = "stop"
+            End With
+            With .EventName("restart_magictodo")
+                .Key = "key_mus_magictodo3_again"
+                .Sound = "mus_magictodo3"
+            End With
+            With .EventName("play_truman")
                 .Key = "key_voc_truman"
                 .Sound = "voc_truman"
             End With
@@ -163,7 +178,6 @@ Sub CreateHighScoreMode()
 					.Int = 1
 				End With
 			End With
-
         End With
 
         With .Timers("high_score_timeout")

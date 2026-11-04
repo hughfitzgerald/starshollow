@@ -137,6 +137,8 @@ Sub ConfigureGlfDevices()
     '*********** HIGH SCORES ***********
 
     With EnableGlfHighScores()
+        .EnterInitialsTimeout = 45000
+        .AwardSlideDisplayTime = 6000
         With .Categories()
             .Add "score", Array("GRAND CHAMPION", "HIGH SCORE 1", "HIGH SCORE 2", "HIGH SCORE 3")
         End With
@@ -747,6 +749,7 @@ Sub CreateSounds()
 
     AddMusic       "mus_magictodo1", 48, -1
     AddMusic       "mus_magictodo2", 16, -1
+    AddMusic       "mus_magictodo3", 36, -1
     
     
     AddMusic       "mus_fd_punch", 241, -1
