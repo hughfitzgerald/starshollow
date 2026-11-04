@@ -28,7 +28,7 @@ Sub CreateLbtbMode()
             .Add "timer_lbtb_mode_complete", Array("lbtb_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
             .Add "lbtb_post_mode", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "play_lbtb_post_mode")
             
-            .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music")
+            .Add "timer_lbtb_intro_delay_complete", Array("release_scoop_hold", "start_bells_loop", "start_guitar_music", "stop_bells_intro")
 
             .Add "lbtb_shot_hit", Array("play_bells_sfx", ScoreEvent(LbtbShotScore, NoMultiplier))
             
@@ -111,6 +111,11 @@ Sub CreateLbtbMode()
                 .Key = "key_voc_bells_intro"
                 .Sound = "voc_bells_intro"
                 .Priority = 100
+            End With
+            With .EventName("stop_bells_intro")
+                .Key = "key_voc_bells_intro"
+                .Sound = "voc_bells_intro"
+                .Action = "stop"
             End With
             With .EventName("start_bells_loop")
                 .Key = "key_mus_bells_loop"
