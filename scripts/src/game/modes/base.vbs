@@ -572,7 +572,7 @@ Sub CreateBaseMode()
                 .Action = "DOF_PULSE"
                 .DOFEvent = 131
             End With
-            With .EventName(GLF_BALL_ENDING)
+            With .EventName(GLF_BALL_DRAIN)
                 .Action = "DOF_PULSE"
                 .DOFEvent = 132
             End With
