@@ -66,6 +66,9 @@
 ' E122 2 flashers orange
 ' E123 2 flashers blue
 ' E124 2 flashers yellow
+' E130 2 left outlane
+' E131 2 right outlane
+' E132 2 ball ended
 
 Option Explicit
 Randomize

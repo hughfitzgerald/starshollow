@@ -564,6 +564,18 @@ Sub CreateBaseMode()
                 .Action = "DOF_PULSE"
                 .DOFEvent = 124
             End With
+            With .EventName("s_RightOutlane_active")
+                .Action = "DOF_PULSE"
+                .DOFEvent = 130
+            End With
+            With .EventName("s_LeftOutlane_active")
+                .Action = "DOF_PULSE"
+                .DOFEvent = 131
+            End With
+            With .EventName(GLF_BALL_ENDING)
+                .Action = "DOF_PULSE"
+                .DOFEvent = 132
+            End With
         End With
 
 
