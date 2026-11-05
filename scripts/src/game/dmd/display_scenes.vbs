@@ -409,7 +409,7 @@ Sub DmdBuild_Initials(entry)
 
   Dim upperFrame
   Set upperFrame = FlexDMD.NewGroup("Initials Upper Group")
-  upperFrame.SetSize 120, 19
+  upperFrame.SetSize 120, 20
   upperFrame.SetAlignedPosition FlexDMD.Width / 2, 2, FlexDMD_Align_Top
   scene.AddActor upperFrame
 
@@ -433,8 +433,14 @@ Sub DmdBuild_Initials(entry)
   Dim player
   Set player = FlexDMD.NewLabel("Initials Player", smallFont, "Player 1" & vbCrLf & "Grand Champion")
   player.FillParent = True
-  player.Alignment = FlexDMD_Align_Center
+  player.Alignment = FlexDMD_Align_Top
   playerFrame.AddActor player
+
+  Dim playerScore
+  Set playerScore = FlexDMD.NewLabel("Initials Player Score", mediumFont, "5,678,432")
+  playerScore.FillParent = True
+  playerScore.Alignment = FlexDMD_Align_Bottom
+  playerFrame.AddActor playerScore
 
   Dim frame
   Set frame = FlexDMD.NewFrame("Letter Border")
@@ -454,7 +460,11 @@ Sub DmdTick_Initials(entry)
 
   Dim player
   Set player = scene.GetLabel("Initials Player")
-  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "label", 0) & vbCrLf & FormatNumber(FlexDmd_Kwarg(entry.Kwargs(), "value", 0), 0)
+  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & vbCrLf & FlexDmd_Kwarg(entry.Kwargs(), "label", 0)
+
+  Dim playerScore
+  Set playerScore = scene.GetLabel("Initials Player Score")
+  playerScore.Text = FormatNumber(FlexDmd_Kwarg(entry.Kwargs(), "value", 0), 0)
 
   Dim idx
   idx = glf_machine_vars("high_score_initials_index").GetValue()
