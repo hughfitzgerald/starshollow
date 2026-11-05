@@ -1,7 +1,7 @@
 // build-dev.js
 // Local equivalent of .github/workflows/build.yml, but leaves glf in dev mode
 // and the table unlocked. Works on a staged copy of the table folder so the
-// working tree isn't modified. Output: build/<game>-dev-<sha>.zip
+// working tree isn't modified. Output: build/<game>-dev-<count>-<sha>.zip
 
 const fs = require('fs');
 const path = require('path');
@@ -23,16 +23,19 @@ function run(cmd, args, options = {}) {
     }
 }
 
-function gitShortSha() {
-    const result = spawnSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: projectRoot, encoding: 'utf8' });
-    if (result.status !== 0) return 'local';
-    const dirty = spawnSync('git', ['status', '--porcelain'], { cwd: projectRoot, encoding: 'utf8' }).stdout.trim();
-    return result.stdout.trim() + (dirty ? '-dirty' : '');
+// <commit count, zero-padded so filenames sort in order>-<short sha>[-dirty]
+function gitBuildId() {
+    const git = (...args) => spawnSync('git', args, { cwd: projectRoot, encoding: 'utf8' });
+    const sha = git('rev-parse', '--short', 'HEAD');
+    const count = git('rev-list', '--count', 'HEAD');
+    if (sha.status !== 0 || count.status !== 0) return 'local';
+    const dirty = git('status', '--porcelain').stdout.trim();
+    return `${count.stdout.trim().padStart(4, '0')}-${sha.stdout.trim()}${dirty ? '-dirty' : ''}`;
 }
 
 function main() {
     const game = fs.readFileSync(path.join(projectRoot, 'gamename.txt'), 'utf8').split(/\r?\n/)[0].trim();
-    const build = `dev-${gitShortSha()}`;
+    const build = `dev-${gitBuildId()}`;
     const name = `${game}-${build}`;
 
     // Concat the dev-mode script into <game>/script.vbs (no cached functions, glf_production_mode stays False)
