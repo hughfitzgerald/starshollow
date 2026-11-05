@@ -1,5 +1,5 @@
 # PSC hardware config: the single place to define light groups, default
-# colors, anchors and backglass bulbs. See scripts/psc/SPEC.md.
+# colors, anchors, backglass bulbs and DOF pulses. See scripts/psc/SPEC.md.
 #
 #   uv run --project ../../psc psc sync      # write groups into the table JSON
 #   npm run psc-sync / npm run psc-compile  # same, from scripts/
@@ -163,6 +163,25 @@ groups:
   groove_mid_right: { members: ["@area:x>=476,y>=700,y<1250"] }
   groove_lower_left: { members: ["@area:x<476,y>=1250"] }
   groove_lower_right: { members: ["@area:x>=476,y>=1250"] }
+
+# Each time one of these lights flashes in a PSC show, the show also pulses its
+# DOF event, unless the show sets `dof_pulses: false`. A flash is brightness
+# rising past `threshold` (0-99), so dim baselines don't pulse. Rises closer
+# together than `min_gap` don't pulse again; 120ms matches the fd120 fade these
+# events have in the DOF config.
+#
+# E125-E129 are the show versions of E120-E124 (same colors, +5). Each drives
+# one flasher toy, so flashers in a show don't compete for the same toy. Toys
+# run left to right by the lights' x positions.
+dof_pulses:
+  threshold: 50
+  min_gap: 120ms
+  lights:
+    FL1: 125 # red, 5 Flasher Outside Left
+    FL2: 126 # green, 5 Flasher Right
+    FL4: 127 # orange, 5 Flasher Left
+    FL3: 128 # blue, 5 Flasher Outside Right
+    FL5: 129 # yellow, 5 Flasher Center
 
 backglass:
   source: ../../../starshollow.directb2s # gitignored; positions come from here

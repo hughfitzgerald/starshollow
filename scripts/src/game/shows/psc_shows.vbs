@@ -212,6 +212,9 @@ Sub CreatePscShows()
                 "l65|60|ffffff", _
                 "FL2|100|00ff00", _
                 "l28|80|ffffff")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.27s
             .Lights = Array( _
@@ -242,6 +245,9 @@ Sub CreatePscShows()
                 "l65|40|ffffff", _
                 "FL1|100|ff0000", _
                 "l28|60|ffffff")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.30s
             .Lights = Array( _
@@ -399,6 +405,9 @@ Sub CreatePscShows()
                 "FL5|100|ffea00", _
                 "l72|60|8800ff", _
                 "l28|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.42s
             .Lights = Array( _
@@ -631,6 +640,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.66s
             .Lights = Array( _
@@ -858,6 +873,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.08s
             .Lights = Array( _
@@ -1047,6 +1068,9 @@ Sub CreatePscShows()
                 "Light010|100|stop", _
                 "Light011|100|stop", _
                 "Light012|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.32s
             .Lights = Array( _
@@ -1136,6 +1160,9 @@ Sub CreatePscShows()
                 "FL5|40|ffea00", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.44s
             .Lights = Array( _
@@ -1165,6 +1192,9 @@ Sub CreatePscShows()
                 "FL5|20|ffea00", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.47s
             .Lights = Array( _
@@ -1538,6 +1568,9 @@ Sub CreatePscShows()
                 "gi021|100|000000", _
                 "l1|40|00ff00", _
                 "FL3|100|0000ff")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.83s
             .Lights = Array( _
@@ -1560,6 +1593,9 @@ Sub CreatePscShows()
                 "l65|100|ffffff", _
                 "FL2|100|00ff00", _
                 "gi027|100|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.89s
             .Lights = Array( _
@@ -1968,6 +2004,9 @@ Sub CreatePscShows()
                 "Light005|60|bae046", _
                 "Light006|60|bae046", _
                 "Light007|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.37s
             .Lights = Array( _
@@ -2109,6 +2148,12 @@ Sub CreatePscShows()
                 "Light002|80|78bec0", _
                 "Light003|60|78bec0", _
                 "Light004|100|stop")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.52s
             .Lights = Array( _
@@ -2306,6 +2351,9 @@ Sub CreatePscShows()
                 "gi025|20|ffa957", _
                 "Light001|80|78bec0", _
                 "Light003|100|78bec0")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.82s
             .Lights = Array( _
@@ -2776,6 +2824,9 @@ Sub CreatePscShows()
                 "Light008|100|000000", _
                 "Light009|20|d938c7", _
                 "Light010|80|bf3957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.30s
             .Lights = Array( _
@@ -2836,6 +2887,9 @@ Sub CreatePscShows()
                 "Light010|40|bf3957", _
                 "Light011|60|bf3957", _
                 "Light012|80|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.36s
             .Lights = Array( _
@@ -3066,6 +3120,15 @@ Sub CreatePscShows()
                 "Light010|43|bf3957", _
                 "Light011|43|bf3957", _
                 "Light012|43|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.14)  ' t=0.01s
             .Lights = Array( _
@@ -3115,7 +3178,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=0.15s
+        With .AddStep(Null, Null, 0.01)  ' t=0.15s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -3144,6 +3207,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=0.16s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.24s
             .Lights = Array( _
@@ -3175,7 +3243,7 @@ Sub CreatePscShows()
                 "Light005|79|bae046", _
                 "Light006|79|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.27s
+        With .AddStep(Null, Null, 0.01)  ' t=0.27s
             .Lights = Array( _
                 "gi008|57|ffa957", _
                 "gi009|57|ffa957", _
@@ -3221,6 +3289,14 @@ Sub CreatePscShows()
                 "Light004|57|bae046", _
                 "Light005|57|bae046", _
                 "Light006|57|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.28s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.30s
             .Lights = Array( _
@@ -3309,7 +3385,7 @@ Sub CreatePscShows()
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.39s
+        With .AddStep(Null, Null, 0.01)  ' t=0.39s
             .Lights = Array( _
                 "gi006|64|ffa957", _
                 "gi007|64|ffa957", _
@@ -3375,6 +3451,14 @@ Sub CreatePscShows()
                 "Light010|64|bf3957", _
                 "Light011|64|bf3957", _
                 "Light012|64|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.40s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.42s
             .Lights = Array( _
@@ -3543,7 +3627,7 @@ Sub CreatePscShows()
                 "Light011|43|bf3957|80", _
                 "Light012|43|bf3957|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=0.62s
+        With .AddStep(Null, Null, 0.01)  ' t=0.62s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -3604,6 +3688,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=0.63s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.15)  ' t=0.71s
             .Lights = Array( _
@@ -3667,7 +3765,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=0.86s
+        With .AddStep(Null, Null, 0.01)  ' t=0.86s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -3697,6 +3795,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=0.87s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=0.95s
             .Lights = Array( _
@@ -3760,7 +3863,7 @@ Sub CreatePscShows()
                 "Light005|72|bae046", _
                 "Light006|72|bae046")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=0.97s
+        With .AddStep(Null, Null, 0.01)  ' t=0.97s
             .Lights = Array( _
                 "gi023|64|ffa957", _
                 "gi024|64|ffa957", _
@@ -3779,6 +3882,14 @@ Sub CreatePscShows()
                 "FL5|64|ffea00", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=0.98s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.99s
             .Lights = Array( _
@@ -3916,7 +4027,7 @@ Sub CreatePscShows()
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=1.09s
+        With .AddStep(Null, Null, 0.01)  ' t=1.09s
             .Lights = Array( _
                 "gi008|64|ffa957", _
                 "gi009|64|ffa957", _
@@ -3945,6 +4056,11 @@ Sub CreatePscShows()
                 "Light004|64|bae046", _
                 "Light005|64|bae046", _
                 "Light006|64|bae046")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=1.10s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.11s
             .Lights = Array( _
@@ -4053,7 +4169,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=1.33s
+        With .AddStep(Null, Null, 0.01)  ' t=1.33s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -4115,6 +4231,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=1.34s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.14)  ' t=1.42s
             .Lights = Array( _
@@ -4179,7 +4309,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=1.56s
+        With .AddStep(Null, Null, 0.01)  ' t=1.56s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -4208,6 +4338,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=1.57s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.65s
             .Lights = Array( _
@@ -4239,7 +4374,7 @@ Sub CreatePscShows()
                 "Light005|79|bae046", _
                 "Light006|79|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=1.68s
+        With .AddStep(Null, Null, 0.01)  ' t=1.68s
             .Lights = Array( _
                 "gi008|57|ffa957", _
                 "gi009|57|ffa957", _
@@ -4285,6 +4420,14 @@ Sub CreatePscShows()
                 "Light004|57|bae046", _
                 "Light005|57|bae046", _
                 "Light006|57|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=1.69s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.71s
             .Lights = Array( _
@@ -4373,7 +4516,7 @@ Sub CreatePscShows()
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
-        With .AddStep(Null, Null, 0.08)  ' t=1.80s
+        With .AddStep(Null, Null, 0.01)  ' t=1.80s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -4420,6 +4563,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.07)  ' t=1.81s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=1.88s
             .Lights = Array( _
@@ -4564,7 +4712,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=2.03s
+        With .AddStep(Null, Null, 0.01)  ' t=2.03s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -4593,6 +4741,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=2.04s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=2.12s
             .Lights = Array( _
@@ -4720,6 +4873,12 @@ Sub CreatePscShows()
                 "Light004|50|bae046", _
                 "Light005|50|bae046", _
                 "Light006|50|bae046")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.19s
             .Lights = Array( _
@@ -4944,6 +5103,12 @@ Sub CreatePscShows()
                 "Light010|72|bf3957", _
                 "Light011|72|bf3957", _
                 "Light012|72|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.31s
             .Lights = Array( _
@@ -5112,7 +5277,7 @@ Sub CreatePscShows()
                 "Light011|43|bf3957|80", _
                 "Light012|43|bf3957|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=2.50s
+        With .AddStep(Null, Null, 0.01)  ' t=2.50s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -5173,6 +5338,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=2.51s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.15)  ' t=2.59s
             .Lights = Array( _
@@ -5236,7 +5415,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=2.74s
+        With .AddStep(Null, Null, 0.01)  ' t=2.74s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -5266,6 +5445,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=2.75s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=2.83s
             .Lights = Array( _
@@ -5298,7 +5482,7 @@ Sub CreatePscShows()
                 "Light005|79|bae046", _
                 "Light006|79|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=2.85s
+        With .AddStep(Null, Null, 0.01)  ' t=2.85s
             .Lights = Array( _
                 "gi008|64|ffa957", _
                 "gi009|64|ffa957", _
@@ -5345,6 +5529,14 @@ Sub CreatePscShows()
                 "Light004|64|bae046", _
                 "Light005|64|bae046", _
                 "Light006|64|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=2.86s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.88s
             .Lights = Array( _
@@ -5434,7 +5626,7 @@ Sub CreatePscShows()
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=2.97s
+        With .AddStep(Null, Null, 0.01)  ' t=2.97s
             .Lights = Array( _
                 "gi008|64|ffa957", _
                 "gi009|64|ffa957", _
@@ -5480,6 +5672,11 @@ Sub CreatePscShows()
                 "Light004|64|bae046", _
                 "Light005|64|bae046", _
                 "Light006|64|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=2.98s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.00s
             .Lights = Array( _
@@ -5588,7 +5785,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=3.21s
+        With .AddStep(Null, Null, 0.01)  ' t=3.21s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -5650,6 +5847,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=3.22s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.14)  ' t=3.30s
             .Lights = Array( _
@@ -5714,7 +5925,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=3.44s
+        With .AddStep(Null, Null, 0.01)  ' t=3.44s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -5743,6 +5954,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=3.45s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=3.53s
             .Lights = Array( _
@@ -5870,6 +6086,12 @@ Sub CreatePscShows()
                 "Light004|50|bae046", _
                 "Light005|50|bae046", _
                 "Light006|50|bae046")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=3.60s
             .Lights = Array( _
@@ -5978,7 +6200,7 @@ Sub CreatePscShows()
                 "l72|72|8800ff", _
                 "gi025|72|ffa957")
         End With
-        With .AddStep(Null, Null, 0.08)  ' t=3.68s
+        With .AddStep(Null, Null, 0.01)  ' t=3.68s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -6025,6 +6247,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.07)  ' t=3.69s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=3.76s
             .Lights = Array( _
@@ -6169,7 +6396,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=3.91s
+        With .AddStep(Null, Null, 0.01)  ' t=3.91s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -6198,6 +6425,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=3.92s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=4.00s
             .Lights = Array( _
@@ -6259,7 +6491,7 @@ Sub CreatePscShows()
                 "Light005|64|bae046", _
                 "Light006|64|bae046")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=4.03s
+        With .AddStep(Null, Null, 0.01)  ' t=4.03s
             .Lights = Array( _
                 "gi023|64|ffa957", _
                 "gi024|64|ffa957", _
@@ -6278,6 +6510,14 @@ Sub CreatePscShows()
                 "FL5|64|ffea00", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=4.04s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=4.05s
             .Lights = Array( _
@@ -6386,7 +6626,7 @@ Sub CreatePscShows()
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=4.15s
+        With .AddStep(Null, Null, 0.01)  ' t=4.15s
             .Lights = Array( _
                 "gi006|64|ffa957", _
                 "gi007|64|ffa957", _
@@ -6435,6 +6675,14 @@ Sub CreatePscShows()
                 "Light010|64|bf3957", _
                 "Light011|64|bf3957", _
                 "Light012|64|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=4.16s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=4.17s
             .Lights = Array( _
@@ -6603,7 +6851,7 @@ Sub CreatePscShows()
                 "Light011|43|bf3957|80", _
                 "Light012|43|bf3957|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=4.38s
+        With .AddStep(Null, Null, 0.01)  ' t=4.38s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -6664,6 +6912,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=4.39s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.15)  ' t=4.47s
             .Lights = Array( _
@@ -6727,7 +6989,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=4.62s
+        With .AddStep(Null, Null, 0.01)  ' t=4.62s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -6757,6 +7019,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=4.63s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=4.71s
             .Lights = Array( _
@@ -6856,6 +7123,12 @@ Sub CreatePscShows()
                 "Light004|57|bae046", _
                 "Light005|57|bae046", _
                 "Light006|57|bae046")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=4.77s
             .Lights = Array( _
@@ -7041,6 +7314,9 @@ Sub CreatePscShows()
                 "Light004|72|bae046", _
                 "Light005|72|bae046", _
                 "Light006|72|bae046")
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=4.89s
             .Lights = Array( _
@@ -7149,7 +7425,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=5.09s
+        With .AddStep(Null, Null, 0.01)  ' t=5.09s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -7211,6 +7487,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=5.10s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.14)  ' t=5.18s
             .Lights = Array( _
@@ -7275,7 +7565,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=5.32s
+        With .AddStep(Null, Null, 0.01)  ' t=5.32s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -7304,6 +7594,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=5.33s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=5.41s
             .Lights = Array( _
@@ -7365,7 +7660,7 @@ Sub CreatePscShows()
                 "Light005|64|bae046", _
                 "Light006|64|bae046")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=5.44s
+        With .AddStep(Null, Null, 0.01)  ' t=5.44s
             .Lights = Array( _
                 "gi023|64|ffa957", _
                 "gi024|64|ffa957", _
@@ -7384,6 +7679,14 @@ Sub CreatePscShows()
                 "FL5|64|ffea00", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=5.45s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=5.46s
             .Lights = Array( _
@@ -7492,7 +7795,7 @@ Sub CreatePscShows()
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
-        With .AddStep(Null, Null, 0.08)  ' t=5.56s
+        With .AddStep(Null, Null, 0.01)  ' t=5.56s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -7539,6 +7842,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.07)  ' t=5.57s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=5.64s
             .Lights = Array( _
@@ -7737,6 +8045,9 @@ Sub CreatePscShows()
                 "l65|60|ffffff", _
                 "FL2|100|00ff00", _
                 "l28|80|ffffff")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=5.91s
             .Lights = Array( _
@@ -7767,6 +8078,9 @@ Sub CreatePscShows()
                 "l65|40|ffffff", _
                 "FL1|100|ff0000", _
                 "l28|60|ffffff")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=5.94s
             .Lights = Array( _
@@ -7924,6 +8238,9 @@ Sub CreatePscShows()
                 "FL5|100|ffea00", _
                 "l72|60|8800ff", _
                 "l28|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.06s
             .Lights = Array( _
@@ -8156,6 +8473,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.30s
             .Lights = Array( _
@@ -8383,6 +8706,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.72s
             .Lights = Array( _
@@ -8572,6 +8901,9 @@ Sub CreatePscShows()
                 "Light010|100|stop", _
                 "Light011|100|stop", _
                 "Light012|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.96s
             .Lights = Array( _
@@ -8661,6 +8993,9 @@ Sub CreatePscShows()
                 "FL5|40|ffea00", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.08s
             .Lights = Array( _
@@ -8690,6 +9025,9 @@ Sub CreatePscShows()
                 "FL5|20|ffea00", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.11s
             .Lights = Array( _
@@ -9063,6 +9401,9 @@ Sub CreatePscShows()
                 "gi021|100|000000", _
                 "l1|40|00ff00", _
                 "FL3|100|0000ff")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.47s
             .Lights = Array( _
@@ -9085,6 +9426,9 @@ Sub CreatePscShows()
                 "l65|100|ffffff", _
                 "FL2|100|00ff00", _
                 "gi027|100|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.53s
             .Lights = Array( _
@@ -9493,6 +9837,9 @@ Sub CreatePscShows()
                 "Light005|60|bae046", _
                 "Light006|60|bae046", _
                 "Light007|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.01s
             .Lights = Array( _
@@ -9634,6 +9981,12 @@ Sub CreatePscShows()
                 "Light002|80|78bec0", _
                 "Light003|60|78bec0", _
                 "Light004|100|stop")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.16s
             .Lights = Array( _
@@ -9831,6 +10184,9 @@ Sub CreatePscShows()
                 "gi025|20|ffa957", _
                 "Light001|80|78bec0", _
                 "Light003|100|78bec0")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.46s
             .Lights = Array( _
@@ -10301,6 +10657,9 @@ Sub CreatePscShows()
                 "Light008|100|000000", _
                 "Light009|20|d938c7", _
                 "Light010|80|bf3957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.94s
             .Lights = Array( _
@@ -10361,6 +10720,9 @@ Sub CreatePscShows()
                 "Light010|40|bf3957", _
                 "Light011|60|bf3957", _
                 "Light012|80|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.00s
             .Lights = Array( _
@@ -10597,6 +10959,9 @@ Sub CreatePscShows()
                 "l65|60|ffffff", _
                 "FL2|100|00ff00", _
                 "l28|80|ffffff")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.48s
             .Lights = Array( _
@@ -10627,6 +10992,9 @@ Sub CreatePscShows()
                 "l65|40|ffffff", _
                 "FL1|100|ff0000", _
                 "l28|60|ffffff")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.51s
             .Lights = Array( _
@@ -10784,6 +11152,9 @@ Sub CreatePscShows()
                 "FL5|100|ffea00", _
                 "l72|60|8800ff", _
                 "l28|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.63s
             .Lights = Array( _
@@ -11016,6 +11387,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.87s
             .Lights = Array( _
@@ -11243,6 +11620,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.29s
             .Lights = Array( _
@@ -11432,6 +11815,9 @@ Sub CreatePscShows()
                 "Light010|100|stop", _
                 "Light011|100|stop", _
                 "Light012|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.53s
             .Lights = Array( _
@@ -11521,6 +11907,9 @@ Sub CreatePscShows()
                 "FL5|40|ffea00", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.65s
             .Lights = Array( _
@@ -11550,6 +11939,9 @@ Sub CreatePscShows()
                 "FL5|20|ffea00", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.68s
             .Lights = Array( _
@@ -11923,6 +12315,9 @@ Sub CreatePscShows()
                 "gi021|100|000000", _
                 "l1|40|00ff00", _
                 "FL3|100|0000ff")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.04s
             .Lights = Array( _
@@ -11945,6 +12340,9 @@ Sub CreatePscShows()
                 "l65|100|ffffff", _
                 "FL2|100|00ff00", _
                 "gi027|100|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.10s
             .Lights = Array( _
@@ -12353,6 +12751,9 @@ Sub CreatePscShows()
                 "Light005|60|bae046", _
                 "Light006|60|bae046", _
                 "Light007|100|stop")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.58s
             .Lights = Array( _
@@ -12494,6 +12895,12 @@ Sub CreatePscShows()
                 "Light002|80|78bec0", _
                 "Light003|60|78bec0", _
                 "Light004|100|stop")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=11.73s
             .Lights = Array( _
@@ -12691,6 +13098,9 @@ Sub CreatePscShows()
                 "gi025|20|ffa957", _
                 "Light001|80|78bec0", _
                 "Light003|100|78bec0")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.03s
             .Lights = Array( _
@@ -13161,6 +13571,9 @@ Sub CreatePscShows()
                 "Light008|100|000000", _
                 "Light009|20|d938c7", _
                 "Light010|80|bf3957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.51s
             .Lights = Array( _
@@ -13221,6 +13634,9 @@ Sub CreatePscShows()
                 "Light010|40|bf3957", _
                 "Light011|60|bf3957", _
                 "Light012|80|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.57s
             .Lights = Array( _
@@ -21295,6 +21711,9 @@ Sub CreatePscShows()
                 "Light010|70|bf3957", _
                 "Light011|70|bf3957", _
                 "Light012|70|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=0.01s
             .Lights = Array( _
@@ -21364,7 +21783,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=0.24s
+        With .AddStep(Null, Null, 0.03)  ' t=0.24s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -21383,6 +21802,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.27s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=0.29s
             .Lights = Array( _
@@ -21424,7 +21851,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=0.44s
+        With .AddStep(Null, Null, 0.03)  ' t=0.44s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -21460,6 +21887,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.47s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=0.49s
             .Lights = Array( _
@@ -21535,7 +21970,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=0.72s
+        With .AddStep(Null, Null, 0.03)  ' t=0.72s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -21569,6 +22004,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.75s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=0.77s
             .Lights = Array( _
@@ -21675,7 +22115,7 @@ Sub CreatePscShows()
                 "Light005|52|bae046", _
                 "Light006|52|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.81s
+        With .AddStep(Null, Null, 0.01)  ' t=0.81s
             .Lights = Array( _
                 "gi006|29|ffa957", _
                 "gi007|29|ffa957", _
@@ -21741,6 +22181,17 @@ Sub CreatePscShows()
                 "Light010|29|bf3957", _
                 "Light011|29|bf3957", _
                 "Light012|29|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.82s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.84s
             .Lights = Array( _
@@ -22016,7 +22467,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=1.06s
+        With .AddStep(Null, Null, 0.03)  ' t=1.06s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -22049,6 +22500,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=1.09s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=1.11s
             .Lights = Array( _
@@ -22118,7 +22574,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=1.34s
+        With .AddStep(Null, Null, 0.03)  ' t=1.34s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -22137,6 +22593,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=1.37s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=1.39s
             .Lights = Array( _
@@ -22178,7 +22642,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=1.54s
+        With .AddStep(Null, Null, 0.03)  ' t=1.54s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -22214,6 +22678,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=1.57s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=1.59s
             .Lights = Array( _
@@ -22289,7 +22761,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=1.82s
+        With .AddStep(Null, Null, 0.03)  ' t=1.82s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -22323,6 +22795,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=1.85s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=1.87s
             .Lights = Array( _
@@ -22486,6 +22963,12 @@ Sub CreatePscShows()
                 "Light010|23|bf3957", _
                 "Light011|23|bf3957", _
                 "Light012|23|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=1.94s
             .Lights = Array( _
@@ -22778,7 +23261,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=2.16s
+        With .AddStep(Null, Null, 0.03)  ' t=2.16s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -22811,6 +23294,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=2.19s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=2.21s
             .Lights = Array( _
@@ -22880,7 +23368,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=2.44s
+        With .AddStep(Null, Null, 0.03)  ' t=2.44s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -22914,6 +23402,17 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=2.47s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=2.49s
             .Lights = Array( _
@@ -22985,7 +23484,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=2.71s
+        With .AddStep(Null, Null, 0.03)  ' t=2.71s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -23018,6 +23517,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=2.74s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=2.76s
             .Lights = Array( _
@@ -23087,7 +23591,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=2.99s
+        With .AddStep(Null, Null, 0.03)  ' t=2.99s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -23121,6 +23625,17 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=3.02s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=3.04s
             .Lights = Array( _
@@ -23192,7 +23707,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=3.26s
+        With .AddStep(Null, Null, 0.03)  ' t=3.26s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -23225,6 +23740,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=3.29s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=3.31s
             .Lights = Array( _
@@ -23294,7 +23814,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=3.54s
+        With .AddStep(Null, Null, 0.03)  ' t=3.54s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -23313,6 +23833,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=3.57s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=3.59s
             .Lights = Array( _
@@ -23354,7 +23882,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=3.74s
+        With .AddStep(Null, Null, 0.03)  ' t=3.74s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -23390,6 +23918,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=3.77s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=3.79s
             .Lights = Array( _
@@ -23465,7 +24001,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=4.02s
+        With .AddStep(Null, Null, 0.03)  ' t=4.02s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -23499,6 +24035,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=4.05s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=4.07s
             .Lights = Array( _
@@ -23590,7 +24131,7 @@ Sub CreatePscShows()
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=4.11s
+        With .AddStep(Null, Null, 0.01)  ' t=4.11s
             .Lights = Array( _
                 "gi006|29|ffa957", _
                 "gi007|29|ffa957", _
@@ -23641,6 +24182,14 @@ Sub CreatePscShows()
                 "Light010|29|bf3957", _
                 "Light011|29|bf3957", _
                 "Light012|29|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=4.12s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=4.14s
             .Lights = Array( _
@@ -23841,7 +24390,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=4.36s
+        With .AddStep(Null, Null, 0.03)  ' t=4.36s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -23874,6 +24423,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=4.39s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=4.41s
             .Lights = Array( _
@@ -23943,7 +24497,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=4.64s
+        With .AddStep(Null, Null, 0.03)  ' t=4.64s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -23962,6 +24516,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=4.67s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=4.69s
             .Lights = Array( _
@@ -24003,7 +24565,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=4.85s
+        With .AddStep(Null, Null, 0.03)  ' t=4.85s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -24039,6 +24601,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=4.88s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=4.90s
             .Lights = Array( _
@@ -24114,7 +24684,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=5.12s
+        With .AddStep(Null, Null, 0.03)  ' t=5.12s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -24148,6 +24718,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=5.15s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=5.17s
             .Lights = Array( _
@@ -24287,6 +24862,12 @@ Sub CreatePscShows()
                 "Light010|23|bf3957", _
                 "Light011|23|bf3957", _
                 "Light012|23|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=5.24s
             .Lights = Array( _
@@ -24507,7 +25088,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=5.46s
+        With .AddStep(Null, Null, 0.03)  ' t=5.46s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -24540,6 +25121,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=5.49s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=5.51s
             .Lights = Array( _
@@ -24609,7 +25195,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=5.74s
+        With .AddStep(Null, Null, 0.03)  ' t=5.74s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -24628,6 +25214,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=5.77s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=5.79s
             .Lights = Array( _
@@ -24669,7 +25263,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=5.95s
+        With .AddStep(Null, Null, 0.03)  ' t=5.95s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -24705,6 +25299,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=5.98s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=6.00s
             .Lights = Array( _
@@ -24780,7 +25382,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=6.22s
+        With .AddStep(Null, Null, 0.03)  ' t=6.22s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -24829,6 +25431,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=6.25s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=6.27s
             .Lights = Array( _
@@ -24913,7 +25523,7 @@ Sub CreatePscShows()
                 "l28|67|ffffff", _
                 "gi025|52|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=6.30s
+        With .AddStep(Null, Null, 0.02)  ' t=6.30s
             .Lights = Array( _
                 "gi006|35|ffa957", _
                 "gi007|35|ffa957", _
@@ -24979,6 +25589,14 @@ Sub CreatePscShows()
                 "Light010|35|bf3957", _
                 "Light011|35|bf3957", _
                 "Light012|35|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=6.32s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=6.33s
             .Lights = Array( _
@@ -25283,7 +25901,7 @@ Sub CreatePscShows()
                 "l28|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=6.57s
+        With .AddStep(Null, Null, 0.03)  ' t=6.57s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -25300,6 +25918,11 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=6.60s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=6.62s
             .Lights = Array( _
@@ -25337,7 +25960,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=6.84s
+        With .AddStep(Null, Null, 0.03)  ' t=6.84s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -25390,6 +26013,20 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=6.87s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=6.89s
             .Lights = Array( _
@@ -25582,7 +26219,7 @@ Sub CreatePscShows()
                 "Light005|52|bae046", _
                 "Light006|52|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=7.41s
+        With .AddStep(Null, Null, 0.01)  ' t=7.41s
             .Lights = Array( _
                 "gi008|70|ffa957", _
                 "gi009|70|ffa957", _
@@ -25629,6 +26266,17 @@ Sub CreatePscShows()
                 "Light004|70|bae046", _
                 "Light005|70|bae046", _
                 "Light006|70|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=7.42s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.44s
             .Lights = Array( _
@@ -25847,7 +26495,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=7.67s
+        With .AddStep(Null, Null, 0.03)  ' t=7.67s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -25880,6 +26528,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=7.70s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=7.72s
             .Lights = Array( _
@@ -25949,7 +26602,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=7.94s
+        With .AddStep(Null, Null, 0.03)  ' t=7.94s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -25968,6 +26621,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=7.97s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=7.99s
             .Lights = Array( _
@@ -26009,7 +26670,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=8.15s
+        With .AddStep(Null, Null, 0.03)  ' t=8.15s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -26045,6 +26706,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=8.18s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=8.20s
             .Lights = Array( _
@@ -26120,7 +26789,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=8.42s
+        With .AddStep(Null, Null, 0.03)  ' t=8.42s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -26154,6 +26823,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=8.45s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=8.47s
             .Lights = Array( _
@@ -26293,6 +26967,12 @@ Sub CreatePscShows()
                 "Light010|23|bf3957", _
                 "Light011|23|bf3957", _
                 "Light012|23|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=8.54s
             .Lights = Array( _
@@ -26513,7 +27193,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=8.77s
+        With .AddStep(Null, Null, 0.03)  ' t=8.77s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -26530,6 +27210,11 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=8.80s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=8.82s
             .Lights = Array( _
@@ -26567,7 +27252,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=9.04s
+        With .AddStep(Null, Null, 0.03)  ' t=9.04s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -26620,6 +27305,20 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=9.07s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=9.09s
             .Lights = Array( _
@@ -26729,7 +27428,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=9.52s
+        With .AddStep(Null, Null, 0.03)  ' t=9.52s
             .Lights = Array( _
                 "gi012|70|ffa957|40", _
                 "gi013|70|ffa957|40", _
@@ -26759,6 +27458,11 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "l28|70|ffffff|40", _
                 "gi027|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=9.55s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=9.57s
             .Lights = Array( _
@@ -26826,7 +27530,7 @@ Sub CreatePscShows()
                 "Light005|52|bae046", _
                 "Light006|52|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=9.60s
+        With .AddStep(Null, Null, 0.02)  ' t=9.60s
             .Lights = Array( _
                 "gi008|70|ffa957", _
                 "gi009|70|ffa957", _
@@ -26888,6 +27592,17 @@ Sub CreatePscShows()
                 "Light004|70|bae046", _
                 "Light005|70|bae046", _
                 "Light006|70|bae046")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=9.62s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=9.63s
             .Lights = Array( _
@@ -27186,7 +27901,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=9.87s
+        With .AddStep(Null, Null, 0.03)  ' t=9.87s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -27219,6 +27934,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=9.90s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=9.92s
             .Lights = Array( _
@@ -27288,7 +28008,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=10.14s
+        With .AddStep(Null, Null, 0.03)  ' t=10.14s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -27307,6 +28027,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=10.17s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=10.19s
             .Lights = Array( _
@@ -27348,7 +28076,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=10.35s
+        With .AddStep(Null, Null, 0.03)  ' t=10.35s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -27384,6 +28112,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=10.38s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=10.40s
             .Lights = Array( _
@@ -27459,7 +28195,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=10.63s
+        With .AddStep(Null, Null, 0.03)  ' t=10.63s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -27493,6 +28229,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=10.66s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=10.68s
             .Lights = Array( _
@@ -27549,7 +28290,7 @@ Sub CreatePscShows()
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=10.71s
+        With .AddStep(Null, Null, 0.01)  ' t=10.71s
             .Lights = Array( _
                 "gi006|35|ffa957", _
                 "gi007|35|ffa957", _
@@ -27600,6 +28341,14 @@ Sub CreatePscShows()
                 "Light010|35|bf3957", _
                 "Light011|35|bf3957", _
                 "Light012|35|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=10.72s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.74s
             .Lights = Array( _
@@ -27797,7 +28546,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=10.97s
+        With .AddStep(Null, Null, 0.03)  ' t=10.97s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -27814,6 +28563,11 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=11.00s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=11.02s
             .Lights = Array( _
@@ -27851,7 +28605,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=11.24s
+        With .AddStep(Null, Null, 0.03)  ' t=11.24s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -27904,6 +28658,20 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=11.27s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=11.29s
             .Lights = Array( _
@@ -28140,6 +28908,15 @@ Sub CreatePscShows()
                 "Light004|70|bae046", _
                 "Light005|70|bae046", _
                 "Light006|70|bae046")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=11.84s
             .Lights = Array( _
@@ -28393,7 +29170,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=12.07s
+        With .AddStep(Null, Null, 0.03)  ' t=12.07s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -28426,6 +29203,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=12.10s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=12.12s
             .Lights = Array( _
@@ -28495,7 +29277,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=12.35s
+        With .AddStep(Null, Null, 0.03)  ' t=12.35s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -28514,6 +29296,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=12.38s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=12.40s
             .Lights = Array( _
@@ -28555,7 +29345,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=12.55s
+        With .AddStep(Null, Null, 0.03)  ' t=12.55s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -28591,6 +29381,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=12.58s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=12.60s
             .Lights = Array( _
@@ -28666,7 +29464,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=12.83s
+        With .AddStep(Null, Null, 0.03)  ' t=12.83s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -28700,6 +29498,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=12.86s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=12.88s
             .Lights = Array( _
@@ -28839,6 +29642,12 @@ Sub CreatePscShows()
                 "Light010|23|bf3957", _
                 "Light011|23|bf3957", _
                 "Light012|23|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=12.95s
             .Lights = Array( _
@@ -29059,7 +29868,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=13.17s
+        With .AddStep(Null, Null, 0.03)  ' t=13.17s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -29092,6 +29901,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=13.20s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=13.22s
             .Lights = Array( _
@@ -29161,7 +29975,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=13.45s
+        With .AddStep(Null, Null, 0.03)  ' t=13.45s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -29195,6 +30009,17 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=13.48s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=13.50s
             .Lights = Array( _
@@ -29266,7 +30091,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=13.72s
+        With .AddStep(Null, Null, 0.03)  ' t=13.72s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -29299,6 +30124,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=13.75s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=13.77s
             .Lights = Array( _
@@ -29368,7 +30198,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=14.00s
+        With .AddStep(Null, Null, 0.03)  ' t=14.00s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -29402,6 +30232,17 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=14.03s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=14.05s
             .Lights = Array( _
@@ -29473,7 +30314,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=14.27s
+        With .AddStep(Null, Null, 0.03)  ' t=14.27s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -29506,6 +30347,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=14.30s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=14.32s
             .Lights = Array( _
@@ -29575,7 +30421,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=14.55s
+        With .AddStep(Null, Null, 0.03)  ' t=14.55s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -29594,6 +30440,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=14.58s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=14.60s
             .Lights = Array( _
@@ -29635,7 +30489,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=14.75s
+        With .AddStep(Null, Null, 0.03)  ' t=14.75s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -29671,6 +30525,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=14.78s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=14.80s
             .Lights = Array( _
@@ -29746,7 +30608,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=15.03s
+        With .AddStep(Null, Null, 0.03)  ' t=15.03s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -29780,6 +30642,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=15.06s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=15.08s
             .Lights = Array( _
@@ -29871,7 +30738,7 @@ Sub CreatePscShows()
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=15.12s
+        With .AddStep(Null, Null, 0.01)  ' t=15.12s
             .Lights = Array( _
                 "gi006|29|ffa957", _
                 "gi007|29|ffa957", _
@@ -29922,6 +30789,14 @@ Sub CreatePscShows()
                 "Light010|29|bf3957", _
                 "Light011|29|bf3957", _
                 "Light012|29|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=15.13s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=15.15s
             .Lights = Array( _
@@ -30122,7 +30997,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=15.37s
+        With .AddStep(Null, Null, 0.03)  ' t=15.37s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -30155,6 +31030,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=15.40s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=15.42s
             .Lights = Array( _
@@ -30224,7 +31104,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=15.65s
+        With .AddStep(Null, Null, 0.03)  ' t=15.65s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -30243,6 +31123,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=15.68s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=15.70s
             .Lights = Array( _
@@ -30284,7 +31172,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=15.85s
+        With .AddStep(Null, Null, 0.03)  ' t=15.85s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -30320,6 +31208,14 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=15.88s
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=15.90s
             .Lights = Array( _
@@ -30395,7 +31291,7 @@ Sub CreatePscShows()
                 "Light011|100|stop", _
                 "Light012|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=16.13s
+        With .AddStep(Null, Null, 0.03)  ' t=16.13s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -30429,6 +31325,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=16.16s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=16.18s
             .Lights = Array( _
@@ -30568,6 +31469,12 @@ Sub CreatePscShows()
                 "Light010|23|bf3957", _
                 "Light011|23|bf3957", _
                 "Light012|23|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=16.25s
             .Lights = Array( _
@@ -30788,7 +31695,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=16.40s
+        With .AddStep(Null, Null, 0.03)  ' t=16.40s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -30809,6 +31716,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=16.43s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=16.45s
             .Lights = Array( _
@@ -30905,6 +31817,9 @@ Sub CreatePscShows()
                 "Light010|23|bf3957", _
                 "Light011|23|bf3957", _
                 "Light012|23|bf3957")
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=16.52s
             .Lights = Array( _
@@ -31074,7 +31989,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=16.68s
+        With .AddStep(Null, Null, 0.03)  ' t=16.68s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -31091,6 +32006,11 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=16.71s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=16.73s
             .Lights = Array( _
@@ -31236,6 +32156,12 @@ Sub CreatePscShows()
                 "Light004|100|stop", _
                 "Light005|100|stop", _
                 "Light006|100|stop")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.02)  ' t=16.87s
             .Lights = Array( _
@@ -31389,6 +32315,9 @@ Sub CreatePscShows()
                 "FL5|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=17.01s
             .Lights = Array( _
@@ -31444,7 +32373,7 @@ Sub CreatePscShows()
                 "Light005|18|bae046", _
                 "Light006|18|bae046")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=17.09s
+        With .AddStep(Null, Null, 0.02)  ' t=17.09s
             .Lights = Array( _
                 "gi008|70|ffa957|40", _
                 "gi009|70|ffa957|40", _
@@ -31461,6 +32390,11 @@ Sub CreatePscShows()
                 "Light004|70|bae046|40", _
                 "Light005|70|bae046|40", _
                 "Light006|70|bae046|40")
+        End With
+        With .AddStep(Null, Null, 0.03)  ' t=17.11s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=17.14s
             .Lights = Array( _
@@ -31498,7 +32432,7 @@ Sub CreatePscShows()
                 "Light005|100|stop", _
                 "Light006|100|stop")
         End With
-        With .AddStep(Null, Null, 0.05)  ' t=17.37s
+        With .AddStep(Null, Null, 0.03)  ' t=17.37s
             .Lights = Array( _
                 "gi023|70|ffa957|40", _
                 "gi024|70|ffa957|40", _
@@ -31517,6 +32451,14 @@ Sub CreatePscShows()
                 "FL5|70|ffea00|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=17.40s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.12)  ' t=17.42s
             .Lights = Array( _
@@ -31558,7 +32500,7 @@ Sub CreatePscShows()
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
-        With .AddStep(Null, Null, 0.04)  ' t=17.57s
+        With .AddStep(Null, Null, 0.03)  ' t=17.57s
             .Lights = Array( _
                 "gi006|70|ffa957|40", _
                 "gi007|70|ffa957|40", _
@@ -31591,6 +32533,11 @@ Sub CreatePscShows()
                 "Light010|70|bf3957|40", _
                 "Light011|70|bf3957|40", _
                 "Light012|70|bf3957|40")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=17.60s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=17.61s
             ' end of show
@@ -31742,6 +32689,9 @@ Sub CreatePscShows()
                 "l65|40|ffffff", _
                 "FL2|100|00ff00", _
                 "l28|80|ffffff")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.36s
             .Lights = Array( _
@@ -31762,6 +32712,9 @@ Sub CreatePscShows()
                 "l65|20|ffffff", _
                 "FL1|100|ff0000", _
                 "l28|60|ffffff")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.39s
             .Lights = Array( _
@@ -31896,6 +32849,9 @@ Sub CreatePscShows()
                 "FL2|20|00ff00", _
                 "FL5|100|ffea00", _
                 "l72|80|8800ff")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.54s
             .Lights = Array( _
@@ -32057,6 +33013,9 @@ Sub CreatePscShows()
                 "l70|100|stop", _
                 "l71|20|ffff00", _
                 "FL3|100|0000ff")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.84s
             .Lights = Array( _
@@ -32076,6 +33035,9 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.87s
             .Lights = Array( _
@@ -32401,6 +33363,9 @@ Sub CreatePscShows()
                 "l65|60|ffffff", _
                 "FL2|100|00ff00", _
                 "l28|80|ffffff")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.33s
             .Lights = Array( _
@@ -32422,6 +33387,9 @@ Sub CreatePscShows()
                 "l65|40|ffffff", _
                 "FL1|100|ff0000", _
                 "l28|60|ffffff")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.36s
             .Lights = Array( _
@@ -32572,6 +33540,9 @@ Sub CreatePscShows()
                 "FL2|20|00ff00", _
                 "FL5|100|ffea00", _
                 "l72|60|8800ff")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.51s
             .Lights = Array( _
@@ -32729,6 +33700,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.78s
             .Lights = Array( _
@@ -32947,6 +33924,12 @@ Sub CreatePscShows()
                 "Light010|100|bf3957", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.38s
             .Lights = Array( _
@@ -33104,6 +34087,9 @@ Sub CreatePscShows()
                 "l7|20|fc7703", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|100|000000")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.65s
             .Lights = Array( _
@@ -33164,6 +34150,9 @@ Sub CreatePscShows()
                 "l71|100|000000", _
                 "FL1|100|ff0000", _
                 "FL5|40|ffea00")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.80s
             .Lights = Array( _
@@ -33181,6 +34170,9 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "FL2|100|00ff00", _
                 "FL5|20|ffea00")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.83s
             .Lights = Array( _
@@ -33497,9 +34489,15 @@ Sub CreatePscShows()
                 "bg_flash_upper_left|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.05s
             .Lights = Array("FL1|100|ff0000")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=0.08s
             .Lights = Array("FL2|70|00ff00")
@@ -33524,6 +34522,9 @@ Sub CreatePscShows()
         End With
         With .AddStep(Null, Null, 0.07)  ' t=0.23s
             .Lights = Array("FL1|100|stop", "FL5|100|ffea00")
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.10)  ' t=0.30s
             .Lights = Array("FL5|100|000000|100")
@@ -33533,6 +34534,12 @@ Sub CreatePscShows()
         End With
         With .AddStep(Null, Null, 0.07)  ' t=0.57s
             .Lights = Array("FL3|100|0000ff", "FL4|100|ffa500")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=0.64s
             .Lights = Array("FL3|70|0000ff")
@@ -33672,6 +34679,15 @@ Sub CreatePscShows()
                 "Light010|43|bf3957", _
                 "Light011|43|bf3957", _
                 "Light012|43|bf3957")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.14)  ' t=0.01s
             .Lights = Array( _
@@ -33721,7 +34737,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=0.15s
+        With .AddStep(Null, Null, 0.01)  ' t=0.15s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -33750,6 +34766,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=0.16s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.24s
             .Lights = Array( _
@@ -33781,7 +34802,7 @@ Sub CreatePscShows()
                 "Light005|79|bae046", _
                 "Light006|79|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.27s
+        With .AddStep(Null, Null, 0.01)  ' t=0.27s
             .Lights = Array( _
                 "gi008|57|ffa957", _
                 "gi009|57|ffa957", _
@@ -33827,6 +34848,14 @@ Sub CreatePscShows()
                 "Light004|57|bae046", _
                 "Light005|57|bae046", _
                 "Light006|57|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.28s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.30s
             .Lights = Array( _
@@ -33915,7 +34944,7 @@ Sub CreatePscShows()
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=0.39s
+        With .AddStep(Null, Null, 0.01)  ' t=0.39s
             .Lights = Array( _
                 "gi006|64|ffa957", _
                 "gi007|64|ffa957", _
@@ -33981,6 +35010,14 @@ Sub CreatePscShows()
                 "Light010|64|bf3957", _
                 "Light011|64|bf3957", _
                 "Light012|64|bf3957")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=0.40s
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.42s
             .Lights = Array( _
@@ -34149,7 +35186,7 @@ Sub CreatePscShows()
                 "Light011|43|bf3957|80", _
                 "Light012|43|bf3957|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=0.62s
+        With .AddStep(Null, Null, 0.01)  ' t=0.62s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -34210,6 +35247,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=0.63s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.15)  ' t=0.71s
             .Lights = Array( _
@@ -34273,7 +35324,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=0.86s
+        With .AddStep(Null, Null, 0.01)  ' t=0.86s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -34303,6 +35354,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=0.87s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=0.95s
             .Lights = Array( _
@@ -34366,7 +35422,7 @@ Sub CreatePscShows()
                 "Light005|72|bae046", _
                 "Light006|72|bae046")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=0.97s
+        With .AddStep(Null, Null, 0.01)  ' t=0.97s
             .Lights = Array( _
                 "gi023|64|ffa957", _
                 "gi024|64|ffa957", _
@@ -34385,6 +35441,14 @@ Sub CreatePscShows()
                 "FL5|64|ffea00", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=0.98s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.99s
             .Lights = Array( _
@@ -34522,7 +35586,7 @@ Sub CreatePscShows()
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
-        With .AddStep(Null, Null, 0.02)  ' t=1.09s
+        With .AddStep(Null, Null, 0.01)  ' t=1.09s
             .Lights = Array( _
                 "gi008|64|ffa957", _
                 "gi009|64|ffa957", _
@@ -34551,6 +35615,11 @@ Sub CreatePscShows()
                 "Light004|64|bae046", _
                 "Light005|64|bae046", _
                 "Light006|64|bae046")
+        End With
+        With .AddStep(Null, Null, 0.01)  ' t=1.10s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.11s
             .Lights = Array( _
@@ -34659,7 +35728,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=1.33s
+        With .AddStep(Null, Null, 0.01)  ' t=1.33s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -34721,6 +35790,20 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=1.34s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.14)  ' t=1.42s
             .Lights = Array( _
@@ -34785,7 +35868,7 @@ Sub CreatePscShows()
                 "Light005|43|bae046|80", _
                 "Light006|43|bae046|80")
         End With
-        With .AddStep(Null, Null, 0.09)  ' t=1.56s
+        With .AddStep(Null, Null, 0.01)  ' t=1.56s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -34814,6 +35897,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.08)  ' t=1.57s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.65s
             .Lights = Array( _
@@ -34845,7 +35933,7 @@ Sub CreatePscShows()
                 "Light005|79|bae046", _
                 "Light006|79|bae046")
         End With
-        With .AddStep(Null, Null, 0.03)  ' t=1.68s
+        With .AddStep(Null, Null, 0.01)  ' t=1.68s
             .Lights = Array( _
                 "gi008|57|ffa957", _
                 "gi009|57|ffa957", _
@@ -34891,6 +35979,14 @@ Sub CreatePscShows()
                 "Light004|57|bae046", _
                 "Light005|57|bae046", _
                 "Light006|57|bae046")
+        End With
+        With .AddStep(Null, Null, 0.02)  ' t=1.69s
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.71s
             .Lights = Array( _
@@ -34979,7 +36075,7 @@ Sub CreatePscShows()
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
-        With .AddStep(Null, Null, 0.07)  ' t=1.80s
+        With .AddStep(Null, Null, 0.01)  ' t=1.80s
             .Lights = Array( _
                 "gi008|100|ffa957|80", _
                 "gi009|100|ffa957|80", _
@@ -35026,6 +36122,11 @@ Sub CreatePscShows()
                 "Light004|100|bae046|80", _
                 "Light005|100|bae046|80", _
                 "Light006|100|bae046|80")
+        End With
+        With .AddStep(Null, Null, 0.06)  ' t=1.81s
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.01)  ' t=1.87s
             ' end of show
@@ -35153,6 +36254,12 @@ Sub CreatePscShows()
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
                 "l72|80|8800ff")
+            With .DOFEvent(125)
+                .Action = "DOF_PULSE"
+            End With
+            With .DOFEvent(129)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.12s
             .Lights = Array( _
@@ -35232,6 +36339,9 @@ Sub CreatePscShows()
                 "l72|20|8800ff", _
                 "gi025|80|ffa957", _
                 "gi027|100|ffa957")
+            With .DOFEvent(126)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.21s
             .Lights = Array( _
@@ -35507,6 +36617,9 @@ Sub CreatePscShows()
                 "Light008|100|d938c7", _
                 "Light009|100|d938c7", _
                 "Light010|100|bf3957")
+            With .DOFEvent(127)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.36s
             .Lights = Array( _
@@ -35564,6 +36677,9 @@ Sub CreatePscShows()
                 "gi027|100|000000", _
                 "Light011|100|bf3957", _
                 "Light012|100|bf3957")
+            With .DOFEvent(128)
+                .Action = "DOF_PULSE"
+            End With
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.39s
             .Lights = Array( _

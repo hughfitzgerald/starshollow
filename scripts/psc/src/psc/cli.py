@@ -44,6 +44,10 @@ def cmd_map(cfg, args) -> int:
         print()
         for anchor, (x, y) in hw.anchors.items():
             print(f"anchor {anchor}: ({x:g}, {y:g})")
+    if hw.dof_pulses:
+        print()
+        for light, pulse in hw.dof_pulses.items():
+            print(f"dof pulse {light}: E{pulse.event}, above {pulse.threshold:g}%, min gap {pulse.min_gap:g}ms")
     return 0
 
 

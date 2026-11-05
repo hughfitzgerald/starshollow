@@ -17,10 +17,11 @@ Backglass bulbs are first-class: they can be put in groups with playfield lights
 - Backglass bulbs, through proxy lights (section 5).
 - Light patterns: `solid`, `flash`, `chase`, `sweep`, `breathe`, layered with priorities.
 - Default color per light or group, so most shows never name a color.
+- DOF pulses that follow mapped flasher lights (section 5a).
 
 **Deferred:**
 - Sounds, slides, widgets, nested sub-shows.
-- Generic DOF toys like shakers or beacons. The table has no DOF hardware today besides the backglass.
+- Generic DOF toys like shakers or beacons, beyond the pulses in section 5a.
 
 **Non-goals:**
 - Replacing the GMC/Godot show pipeline or `mpf-show-convert.js`. They keep working as they are. PSC doesn't use them.
@@ -36,7 +37,7 @@ Backglass bulbs are first-class: they can be put in groups with playfield lights
 | Path | Role | Owner |
 |---|---|---|
 | `scripts/psc/` | Tool source, tests | PSC code |
-| `scripts/src/psc/hardware.yaml` | Groups, colors, backglass bulbs, anchors (source of truth) | Hand-edited |
+| `scripts/src/psc/hardware.yaml` | Groups, colors, backglass bulbs, anchors, DOF pulses (source of truth) | Hand-edited |
 | `scripts/src/psc/shows/*.yaml` | Show choreography | Hand-edited |
 | `starshollow/parts/*.json` (`"$type": "light"`) | Light positions, colors, applied tags | VPX, plus PSC (`blink_pattern` only) |
 | `starshollow/collections/glf_lights.json` | The set of lights GLF drives | VPX, plus PSC (proxy membership) |
@@ -159,6 +160,51 @@ Instead, each backglass bulb gets a **proxy light**. That's a hidden VPX `Light`
 
 ---
 
+## 5a. DOF pulses
+
+A light can be mapped to a DOF event, so each flash of that light in a PSC show also pulses the event. This is how
+shows fire the cabinet's external flashers.
+
+```yaml
+dof_pulses:
+  threshold: 50      # brightness 0-99; default 50
+  min_gap: 120ms     # default 0
+  lights:
+    FL1: 125
+    FL2: { event: 126, threshold: 70, min_gap: 200ms }   # per-light overrides
+```
+
+- **What counts as a flash.** A pulse fires where the light's brightness rises past `threshold`, so a dim baseline
+  stays quiet and each hit above it pulses. A fade pulses at the moment it crosses the threshold. A rise closer than
+  `min_gap` to the light's previous pulse doesn't pulse.
+- **Compile time.** Pulses come from the flattened timeline and are written into the show as `.DOFEvent` steps with
+  `Action = "DOF_PULSE"`. A pulse with no light change gets a step of its own. Those are safe for fades, because GLF only
+  cancels fades on steps with lights.
+- **Why not a mirror like section 5.** A pulse ends by itself, so a stopped show can't leave anything on, and that's the
+  main problem the proxy mirror solves. A mirror would also catch hand-written GLF shows, but those already fire DOF
+  through `DOFPlayer` and would double-fire.
+- **Limits.** Only PSC shows pulse. Pulses bypass GLF's priority stack, so one still fires if a higher-priority show is
+  holding the light. A light held on across a loop pulses again each loop, because every loop starts from off. If a
+  `DOFPlayer` fires a mapped event alongside a PSC show, both happen.
+- **Opting out.** `dof_pulses: false` on a show turns its pulses off. Only the show being compiled counts: a show layer
+  included in it follows the parent's setting, not its own.
+- **DOF config.** `DOF id, 2` turns the event on and straight back off, so the event needs a timed effect in the DOF
+  config, such as `fd120`, or nothing visible happens. Events are in the table's DOF config, and in
+  `dof/Stars Hollow Showdown_config.json` in this repo.
+
+`E125`-`E129` exist for this: each drives a single flasher toy, whereas `E120`-`E124` all drive the same three toys and
+are meant for one flasher firing on its own.
+
+| Light | Event | Color | Toy |
+|---|---|---|---|
+| FL1 | E125 | red | 5 Flasher Outside Left |
+| FL4 | E127 | orange | 5 Flasher Left |
+| FL5 | E129 | yellow | 5 Flasher Center |
+| FL2 | E126 | green | 5 Flasher Right |
+| FL3 | E128 | blue | 5 Flasher Outside Right |
+
+---
+
 ## 6. Show schema
 
 One show per file. File name and `show` must match.
@@ -189,6 +235,8 @@ layers:                  # later layers sit on top of earlier ones
     on: 80ms
     off: 80ms
 ```
+
+**Show keys:** `show`, `length`, `layers`, `tempo`, `resolution`, and `dof_pulses` (`true` by default, section 5a).
 
 **Common layer keys:** `target` (group, light, or list of either) or `each` (below), `pattern`, `start` (default 0, or
 `after`), `color`, `brightness` (default 100), `priority` (default: the layer's index).
@@ -321,11 +369,12 @@ The light's resolved default is not applied in that case. Callers set the token 
      its interpolated value, assuming linear RGB, with the remaining fade time. If no layer has the light, PSC emits `stop`.
 4. **Quantize.** Snap every keyframe to a 10ms grid. GLF rounds step durations to 0.01s anyway, and snapping keeps
    rounding from accumulating into drift on loops.
-5. **Render fades.** GLF has a quirk here. When a show runs a step with lights, it cancels every fade the show's previous
+5. **Pulse.** Find DOF pulses (section 5a) on the flattened timeline, before fades are rendered.
+6. **Render fades.** GLF has a quirk here. When a show runs a step with lights, it cancels every fade the show's previous
    light step started, and those lights jump to their targets. PSC keeps a native GLF fade only if no other light step
    lands inside it. Otherwise PSC writes the fade as explicit 30ms frames. A light's first fade in a show starts from
    the value the light holds at the end of the show, so loops are seamless.
-6. **Emit.** Use duration-form steps, `AddStep(Null, Null, <seconds>)`, as `general_shows.vbs` does. Each step's duration
+7. **Emit.** Use duration-form steps, `AddStep(Null, Null, <seconds>)`, as `general_shows.vbs` does. Each step's duration
    is the gap to the next keyframe. The last step runs to `length`, which makes loop periods exact.
    - Light strings are `"name|brightness|RRGGBB"` or `"name|brightness|RRGGBB|fade_ms"`.
    - A stop is `"name|100|stop"`. GLF reads the color from the third field, so a two-field `"name|stop"` would break.
@@ -356,6 +405,7 @@ End Sub
 - color conflicts between groups
 - missing `anchor` for out/in sweeps
 - a show `length` shorter than its content
+- a `dof_pulses` light that isn't a GLF light, or an event that's used twice or is also a backglass bulb's `b2s_id`
 - duplicate show names, across PSC shows and a scan of existing `CreateGlfShow("...")` names in `scripts/src`
 
 ---
@@ -419,7 +469,9 @@ dragged on the canvas, per-light default colors.
 4. **Layers and spatial.** Done. Flattening with priorities and fade fallback, `breathe`, `sweep`, tokens, fade rendering.
 5. **Beats.** Done. Tempo, musical time units, `beat` layers, `@area` groups. `psc_groove` ports the old Godot
    drum groove to every light, including the backglass.
-6. **Later.** Sounds, slides, widgets, generic DOF toys, sub-shows. Hits could also drive other patterns, for
+6. **DOF pulses.** Built: mapped lights pulse DOF events from shows (section 5a). Still to do: check them on real
+   flashers in VPX.
+7. **Later.** Sounds, slides, widgets, generic DOF toys, sub-shows. Hits could also drive other patterns, for
    example a chase that moves one light per hit.
 
 Tests live in `scripts/psc/tests` (`npm run psc-test`).

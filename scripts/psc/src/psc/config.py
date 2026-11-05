@@ -7,7 +7,7 @@ from pathlib import Path
 
 from .errors import ErrorCollector, PscError
 from .values import (check_keys, expect_mapping, parse_color, parse_int,
-                     parse_name, parse_number, parse_point)
+                     parse_name, parse_number, parse_point, parse_time)
 from .yamlio import load_yaml
 
 CONFIG_SEARCH = [Path("scripts/src/psc/hardware.yaml"), Path("src/psc/hardware.yaml")]
@@ -38,6 +38,14 @@ class Bulb:
 
 
 @dataclass
+class DofPulse:
+    light: str
+    event: int
+    threshold: float = 50.0  # brightness 0-99; a pulse fires when it rises past this
+    min_gap: float = 0.0     # ms; rises closer together than this don't pulse again
+
+
+@dataclass
 class Config:
     path: Path
     table_dir: Path
@@ -50,6 +58,7 @@ class Config:
     light_colors: dict[str, str] = field(default_factory=dict)
     groups: dict[str, Group] = field(default_factory=dict)
     bulbs: dict[str, Bulb] = field(default_factory=dict)
+    dof_pulses: dict[str, DofPulse] = field(default_factory=dict)  # keyed by lowercase light name
     proxy_template: str | None = None
     backglass_image: str | None = None  # for the editor: a table image name or a file
 
@@ -71,7 +80,7 @@ def find_config(explicit: str | None) -> Path:
 def load_config(path: Path) -> Config:
     raw = expect_mapping(load_yaml(path), str(path))
     where = path.name
-    check_keys(raw, {"paths", "anchors", "lights", "groups", "backglass"}, where)
+    check_keys(raw, {"paths", "anchors", "lights", "groups", "backglass", "dof_pulses"}, where)
     errors = ErrorCollector()
     base = path.parent
 
@@ -158,5 +167,44 @@ def load_config(path: Path) -> Config:
         except PscError as e:
             errors.extend(e)
 
+    _load_dof_pulses(raw.get("dof_pulses"), cfg, seen_ids, errors, where)
+
     errors.raise_if_any()
     return cfg
+
+
+def _load_dof_pulses(raw, cfg: Config, bulb_ids: dict, errors: ErrorCollector, where: str):
+    dw = f"{where}: dof_pulses"
+    try:
+        section = expect_mapping(raw, dw)
+        check_keys(section, {"threshold", "min_gap", "lights"}, dw)
+        threshold = parse_number(section.get("threshold", "50"), f"{dw}.threshold", 0, 99)
+        min_gap = parse_time(section.get("min_gap", "0"), f"{dw}.min_gap")
+        lights = expect_mapping(section.get("lights"), f"{dw}.lights")
+    except PscError as e:
+        errors.extend(e)
+        return
+    seen_events = {}
+    for name, spec in lights.items():
+        lw = f"{dw}.lights.{name}"
+        try:
+            if isinstance(spec, str):  # shorthand: `FL1: 125`
+                spec = {"event": spec}
+            spec = expect_mapping(spec, lw)
+            check_keys(spec, {"event", "threshold", "min_gap"}, lw)
+            if "event" not in spec:
+                raise PscError(f"{lw}: event is required")
+            event = parse_int(spec["event"], f"{lw}.event", minimum=1)
+            if event in bulb_ids:
+                raise PscError(f"{lw}: event {event} is backglass bulb {bulb_ids[event]}'s b2s_id")
+            if event in seen_events:
+                raise PscError(f"{lw}: event {event} is already used by {seen_events[event]}")
+            seen_events[event] = name
+            cfg.dof_pulses[name.lower()] = DofPulse(
+                light=name,
+                event=event,
+                threshold=parse_number(spec["threshold"], f"{lw}.threshold", 0, 99) if "threshold" in spec else threshold,
+                min_gap=parse_time(spec["min_gap"], f"{lw}.min_gap") if "min_gap" in spec else min_gap,
+            )
+        except PscError as e:
+            errors.extend(e)

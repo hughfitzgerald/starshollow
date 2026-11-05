@@ -66,6 +66,11 @@
 ' E122 2 flashers orange
 ' E123 2 flashers blue
 ' E124 2 flashers yellow
+' E125 2 show flasher red (FL1), single toy; fired by PSC shows, see dof_pulses in hardware.yaml
+' E126 2 show flasher green (FL2), single toy
+' E127 2 show flasher orange (FL4), single toy
+' E128 2 show flasher blue (FL3), single toy
+' E129 2 show flasher yellow (FL5), single toy
 ' E130 2 left outlane
 ' E131 2 right outlane
 ' E132 2 ball ended

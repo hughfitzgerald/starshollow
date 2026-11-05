@@ -344,3 +344,176 @@ layers:
     assert [t for t, _ in lights["l1"]][:5] == [0, 200, 400, 600, 800]
     with pytest.raises(PscError, match="fill needs a length"):
         compile_show(parse_show(write_show(project, "nf", "layers:\n  - { target: pair, pattern: chase, interval: 100ms, count: fill }\n"), hw), hw)
+
+
+# DOF pulses
+
+DOF = BASE + """
+dof_pulses:
+  threshold: 50
+  lights:
+    l1: 125
+    l2: { event: 126, threshold: 20, min_gap: 200ms }
+"""
+
+
+@pytest.fixture
+def dof_env(project):
+    cfg = write_config(project, DOF)
+    apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
+    return project, cfg, build_map(cfg, Table(cfg.table_dir))
+
+
+def pulses(project, hw, name, body):
+    """Compile one show; return ([(t, event)], the compiled show)."""
+    show = parse_show(write_show(project, name, body), hw)
+    compiled = compile_show(show, hw)
+    found, current = [], None
+    for line in compiled.vbs.splitlines():
+        line = line.strip()
+        if line.startswith("With .AddStep"):
+            current = int(round(float(line.split("t=")[1].rstrip("s")) * 1000))
+        elif line.startswith("With .DOFEvent"):
+            found.append((current, int(re.search(r"\((\d+)\)", line).group(1))))
+    return found, compiled
+
+
+def test_dof_pulse_on_each_flash(dof_env):
+    project, cfg, hw = dof_env
+    found, c = pulses(project, hw, "p", """
+layers:
+  - { target: l1, pattern: flash, count: 3, on: 100ms }
+""")
+    assert found == [(0, 125), (200, 125), (400, 125)]
+    assert c.vbs.count('.Action = "DOF_PULSE"') == 3
+
+
+def test_dof_pulse_only_for_mapped_lights(dof_env):
+    project, cfg, hw = dof_env
+    found, c = pulses(project, hw, "p", """
+layers:
+  - { target: l10, pattern: flash, count: 3, on: 100ms }
+""")
+    assert found == []
+    assert "DOFEvent" not in c.vbs
+
+
+def test_dof_pulse_ignores_dim_baseline_but_not_hits_above_it(dof_env):
+    project, cfg, hw = dof_env
+    found, c = pulses(project, hw, "p", """
+length: 1000ms
+layers:
+  - { target: l1, pattern: solid, brightness: 40 }
+  - { target: l1, pattern: flash, start: 200ms, count: 2, on: 100ms, off: 200ms }
+""")
+    assert found == [(200, 125), (500, 125)]
+
+
+def test_dof_pulse_on_fade_at_threshold_crossing(dof_env):
+    project, cfg, hw = dof_env
+    found, c = pulses(project, hw, "p", """
+length: 1000ms
+layers:
+  - { target: l1, pattern: solid, fade: 400ms, duration: 800ms }
+""")
+    assert found == [(200, 125)]
+
+
+def test_dof_pulse_not_fired_for_interrupted_fade(dof_env):
+    project, cfg, hw = dof_env
+    # the fade would pass 50 at 400ms, but the higher layer dims it at 100ms
+    found, c = pulses(project, hw, "p", """
+length: 1000ms
+layers:
+  - { target: l1, pattern: solid, fade: 800ms, duration: 900ms }
+  - { target: l1, pattern: solid, start: 100ms, duration: 800ms, brightness: 30 }
+""")
+    assert found == []
+
+
+def test_dof_pulse_min_gap_and_per_light_threshold(dof_env):
+    project, cfg, hw = dof_env
+    # l2 has min_gap 200ms: flashes every 150ms pulse on every other flash
+    found, c = pulses(project, hw, "p", """
+layers:
+  - { target: l2, pattern: flash, count: 4, on: 50ms, off: 100ms, brightness: 30 }
+""")
+    assert found == [(0, 126), (300, 126)]
+
+
+def test_dof_pulse_from_included_show(dof_env):
+    project, cfg, hw = dof_env
+    write_show(project, "child", """
+layers:
+  - { target: l1, pattern: flash, on: 100ms, off: 100ms }
+""")
+    parent = parse_show(write_show(project, "parent", """
+layers:
+  - { pattern: show, show: child, count: 2 }
+"""), hw)
+    child = parse_show(project / "src" / "psc" / "shows" / "child.yaml", hw)
+    compiled = compile_show(parent, hw, {"parent": parent, "child": child})
+    assert compiled.vbs.count("With .DOFEvent(125)") == 2
+
+
+def test_dof_pulses_false_opts_out(dof_env):
+    project, cfg, hw = dof_env
+    found, c = pulses(project, hw, "p", """
+dof_pulses: false
+layers:
+  - { target: l1, pattern: flash, count: 3, on: 100ms }
+""")
+    assert found == []
+
+
+def test_dof_pulses_bad_show_value(dof_env):
+    project, cfg, hw = dof_env
+    with pytest.raises(PscError, match="dof_pulses must be true or false"):
+        parse_show(write_show(project, "p", """
+dof_pulses: maybe
+layers:
+  - { target: l1, pattern: flash, on: 100ms }
+"""), hw)
+
+
+def test_dof_pulse_only_step_keeps_show_shape(dof_env):
+    project, cfg, hw = dof_env
+    # the crossing at 200ms lands between the fade's only keyframes
+    found, c = pulses(project, hw, "p", """
+length: 1000ms
+layers:
+  - { target: l1, pattern: solid, fade: 400ms, duration: 800ms }
+""")
+    step = next(block for block in c.vbs.split("With .AddStep")[1:] if "t=0.20s" in block)
+    assert ".Lights" not in step
+    assert "' end of show" not in step
+    assert "t=0.20s" in c.vbs
+    assert c.vbs.split("With .AddStep")[-1].count("' end of show") == 1
+    # step durations still add up to the show length
+    durations = re.findall(r"With \.AddStep\(Null, Null, ([\d.]+)\)", c.vbs)
+    assert round(sum(float(d) for d in durations) * 1000) == c.length
+
+
+@pytest.mark.parametrize("section, message", [
+    ("lights: { nope: 125 }", "nope is not a GLF light"),
+    ("lights: { l1: 125, l2: 125 }", "event 125 is already used by l1"),
+    ("lights: { l1: abc }", "expected a number"),
+    ("threshold: 100\n  lights: { l1: 125 }", "threshold"),
+    ("lights: { l1: { threshold: 60 } }", "event is required"),
+])
+def test_dof_pulse_config_errors(project, section, message):
+    with pytest.raises(PscError, match=message):
+        cfg = write_config(project, BASE + f"\ndof_pulses:\n  {section}\n")
+        apply_changes(plan_sync(cfg, Table(cfg.table_dir)))
+        build_map(cfg, Table(cfg.table_dir))
+
+
+def test_dof_pulse_event_cant_be_backglass_id(project):
+    with pytest.raises(PscError, match="backglass bulb"):
+        write_config(project, BASE + """
+backglass:
+  bulbs:
+    bg_logo: { b2s_id: 1 }
+dof_pulses:
+  lights: { l1: 1 }
+""")

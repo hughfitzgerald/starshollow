@@ -122,23 +122,23 @@
         },
         "23": {
             "toy": "5 Flasher Outside Left",
-            "user": "E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3\/E130 Blue f200"
+            "user": "E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3\/E130 Blue f200\/E125 Dark_red fd120"
         },
         "24": {
             "toy": "5 Flasher Left",
-            "user": "E108 Dark_red fd120"
+            "user": "E108 Dark_red fd120\/E127 Orange fd120"
         },
         "25": {
             "toy": "5 Flasher Center",
-            "user": "E132 White fd800\/E107 Light_sea_green fd120\/E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3"
+            "user": "E132 White fd800\/E107 Light_sea_green fd120\/E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3\/E129 Amber fd120"
         },
         "26": {
             "toy": "5 Flasher Right",
-            "user": "E109 Gold fd120"
+            "user": "E109 Gold fd120\/E128 Navy fd120"
         },
         "27": {
             "toy": "5 Flasher Outside Right",
-            "user": "E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3\/E131 Blue f200"
+            "user": "E120 Dark_red 240 3\/E121 Dark_green 240 3\/E122 Orange 240 3\/E123 Navy 240 3\/E124 Amber 240 3\/E131 Blue f200\/E126 Dark_green fd120"
         },
         "20": {
             "toy": "3 Flasher Left",

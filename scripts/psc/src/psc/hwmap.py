@@ -2,9 +2,9 @@
 light JSON tags; group order comes from hardware.yaml."""
 
 import fnmatch
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from .config import Config
+from .config import Config, DofPulse
 from .errors import ErrorCollector, PscError
 from .groups import light_universe, natural_key, resolve_groups
 from .table import Table, tags_of
@@ -29,6 +29,7 @@ class HardwareMap:
     order: list[str]                    # canonical names in collection order
     groups: dict[str, list[str]]
     anchors: dict[str, tuple[float, float]]
+    dof_pulses: dict[str, DofPulse] = field(default_factory=dict)  # keyed by canonical light name
 
     def light(self, name: str) -> HwLight | None:
         return self.lights.get(name.lower())
@@ -154,7 +155,13 @@ def build_map(cfg: Config, table: Table) -> HardwareMap:
     if missing:
         errors.add(f"{len(missing)} light(s) have no color in {cfg.path.name}; add them under lights: "
                    f"(e.g. `{missing[0]}: ffffff`): {', '.join(missing)}")
+    dof_pulses: dict[str, DofPulse] = {}
+    for key, pulse in cfg.dof_pulses.items():
+        if key in lights:
+            dof_pulses[lights[key].name] = pulse
+        else:
+            errors.add(f"dof_pulses: {pulse.light} is not a GLF light")
     errors.raise_if_any()
 
     order = [lights[n.lower()].name for n in universe if n.lower() in lights]
-    return HardwareMap(lights=lights, order=order, groups=groups, anchors=dict(cfg.anchors))
+    return HardwareMap(lights=lights, order=order, groups=groups, anchors=dict(cfg.anchors), dof_pulses=dof_pulses)

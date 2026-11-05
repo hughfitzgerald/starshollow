@@ -89,6 +89,7 @@ class Show:
     layers: list[Layer]
     resolution: int = 10
     tempo: Tempo | None = None
+    dof_pulses: bool = True
 
 
 def _parse_param(kind, value, where, tempo):
@@ -190,7 +191,7 @@ def _finish_beat(layer: Layer, hw: HardwareMap, tempo: Tempo | None):
 def parse_show(path: Path, hw: HardwareMap) -> Show:
     raw = expect_mapping(load_yaml(path), str(path))
     where = path.name
-    check_keys(raw, {"show", "tempo", "length", "resolution", "layers"}, where)
+    check_keys(raw, {"show", "tempo", "length", "resolution", "layers", "dof_pulses"}, where)
     tempo = None
     if "tempo" in raw:
         tw = f"{where}: tempo"
@@ -212,6 +213,9 @@ def parse_show(path: Path, hw: HardwareMap) -> Show:
         resolution = int(parse_time(raw["resolution"], f"{where}: resolution"))
         if resolution < GRID_MS or resolution % GRID_MS:
             raise PscError(f"{where}: resolution must be a multiple of {GRID_MS}ms")
+    dof_pulses = str(raw.get("dof_pulses", "true")).strip().lower()
+    if dof_pulses not in ("true", "false"):
+        raise PscError(f"{where}: dof_pulses must be true or false, got {raw['dof_pulses']!r}")
     layers_raw = raw.get("layers")
     if not isinstance(layers_raw, list) or not layers_raw:
         raise PscError(f"{where}: layers must be a non-empty list")
@@ -225,4 +229,5 @@ def parse_show(path: Path, hw: HardwareMap) -> Show:
     errors.raise_if_any()
     if layers[0].start_after:
         raise PscError(f"{where}: layer 1 can't start after a previous layer")
-    return Show(name=name, path=path, length=length, layers=layers, resolution=resolution, tempo=tempo)
+    return Show(name=name, path=path, length=length, layers=layers, resolution=resolution, tempo=tempo,
+                dof_pulses=dof_pulses == "true")

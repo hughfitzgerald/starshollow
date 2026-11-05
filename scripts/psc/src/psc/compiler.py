@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .config import Config
+from .dof import show_pulses
 from .emit import emit_file, emit_show
 from .errors import ErrorCollector, PscError
 from .flatten import STOP, Emission, LayerTrack, flatten_light
@@ -122,10 +123,11 @@ def expand_show_layer(layer, parent: Show, hw: HardwareMap, shows: dict[str, Sho
 
 def compile_show(show: Show, hw: HardwareMap, shows: dict[str, Show] | None = None) -> CompiledShow:
     flattened, length = show_timeline(show, hw, shows or {show.name.lower(): show})
+    pulses = show_pulses(flattened, length, hw, show.resolution) if show.dof_pulses else {}
     emissions = render(flattened, length, show.resolution)
     order = [n for n in hw.order if n in emissions]
-    vbs = emit_show(show.name, length, emissions, order)
-    steps = len({e.t for es in emissions.values() for e in es})
+    vbs = emit_show(show.name, length, emissions, order, pulses)
+    steps = len({e.t for es in emissions.values() for e in es} | set(pulses))
     return CompiledShow(show.name, vbs, steps, length, len(emissions))
 
 

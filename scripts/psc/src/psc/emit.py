@@ -21,11 +21,15 @@ def seconds(ms: int) -> str:
     return f"{ms / 1000:.2f}"
 
 
-def emit_show(name: str, length: int, emissions: dict[str, list[Emission]], order: list[str]) -> str:
+def emit_show(name: str, length: int, emissions: dict[str, list[Emission]], order: list[str],
+              pulses: dict[int, list[int]] | None = None) -> str:
+    pulses = pulses or {}
     by_time: dict[int, list[str]] = {}
     for light in order:
         for e in emissions.get(light, []):
             by_time.setdefault(e.t, []).append(light_string(light, e))
+    for t in pulses:  # GLF only cancels fades on steps with lights, so pulse-only steps are safe
+        by_time.setdefault(t, [])
     # GLF stops a non-looping show as soon as its last step runs, ignoring that
     # step's duration. An empty final step makes the show last its full length.
     # It goes 10ms early when there is room, so loop periods stay exact.
@@ -38,17 +42,22 @@ def emit_show(name: str, length: int, emissions: dict[str, list[Emission]], orde
         end = times[i + 1] if i + 1 < len(times) else max(length, t + GRID_MS)
         lines.append(f"        With .AddStep(Null, Null, {seconds(end - t)})  ' t={seconds(t)}s")
         entries = by_time[t]
-        if not entries:
+        events = pulses.get(t, [])
+        if not entries and not events:
             lines.append("            ' end of show")
             lines.append("        End With")
             continue
-        if len(entries) <= 3:
+        if len(entries) <= 3 and entries:
             lines.append("            .Lights = Array(" + ", ".join(f'"{s}"' for s in entries) + ")")
-        else:
+        elif entries:
             lines.append("            .Lights = Array( _")
             for j, s in enumerate(entries):
                 tail = ", _" if j < len(entries) - 1 else ")"
                 lines.append(f'                "{s}"{tail}')
+        for event in events:
+            lines.append(f"            With .DOFEvent({event})")
+            lines.append('                .Action = "DOF_PULSE"')
+            lines.append("            End With")
         lines.append("        End With")
     lines.append("    End With")
     return "\n".join(lines)
