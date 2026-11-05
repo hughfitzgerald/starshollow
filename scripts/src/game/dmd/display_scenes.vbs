@@ -382,7 +382,7 @@ Sub DmdTick_Award(entry)
 
   Dim player
   Set player = scene.GetLabel("Player")
-  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0)
+  player.Text = "Player " & FlexDmd_Kwarg(entry.Kwargs(), "player_num", 0) & ": " & FlexDmd_Kwarg(entry.Kwargs(), "player_name", 0)
 
   Dim category
   Set category = scene.GetLabel("Category")
