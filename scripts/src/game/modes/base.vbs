@@ -378,6 +378,10 @@ Sub CreateBaseMode()
                 .Key = "key_sfx_copperboom2"
                 .Sound = "sfx_copperboom2"
             End With
+            With .EventName("ball_save_new_ball_saving_ball")
+                .Key = "key_voc_yousavedme"
+                .Sound = "voc_yousavedme"
+            End With
         End With
 
         With .ShowPlayer()

@@ -708,6 +708,7 @@ Sub CreateSounds()
     AddCallout     "voc_youaimedforme", 2
     AddCallout     "voc_shocksme", 3
     AddCallout     "voc_isthatgood", 2
+    AddCallout     "voc_yousavedme", 4
 
     AddCallout     "voc_sookie1", 6
     AddCallout     "voc_sookie2", 3
