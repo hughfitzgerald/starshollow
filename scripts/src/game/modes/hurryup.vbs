@@ -142,6 +142,10 @@ Sub CreateHurryupMode()
                 .Sound = "voc_hollow"
                 .Priority = -1
             End With
+            With .EventName("start_hurryup_timer")
+                .Key = "key_voc_justhurry"
+                .Sound = "voc_justhurry"
+            End With
             With .EventName("hurryup_achieved")
                 .Key = "key_voc_shocksme"
                 .Sound = "voc_shocksme"

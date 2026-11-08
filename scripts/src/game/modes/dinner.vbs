@@ -18,20 +18,38 @@ Sub CreateDinnerMode()
             'Scoring
             .Add "dinner_shot_hit", Array(ScoreEvent(DinnerShotScore, NoMultiplier))
 
-            .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "release_scoop_hold", ModeSlideEvent("play_dinner_mode_slide", "FRIDAY NIGHT DINNER", "SHOOT ORBITS TO SCORE"))
+            .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_dinner_mode_slide", "FRIDAY NIGHT DINNER", "SHOOT ORBITS TO SCORE"))
             .Add "mode_dinner_stopping", Array("dinner_shots_off")
             'Lasted the full timer without draining
             .Add "timer_dinner_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
 
-            
+            .Add "timer_dinner_intro_delay_complete", Array("release_scoop_hold","start_dinner_music")
 
             For Each shot In dinner_shots
                 .Add shot.Name & "_hit", Array("dinner_shot_hit")
             Next
         End With
 
+        With .Timers("dinner_intro_delay")
+            .StartRunning = True
+            .Direction = "down"
+            .StartValue = 9
+            .EndValue = 0
+            .TickInterval = 1000    ' Tick every 1 second (1000 ms)
+            With .ControlEvents
+                .EventName = "skip_minigame_intro{device.timers.dinner_intro_delay.ticks > 0}"
+                .Action = "jump"
+                .Value = 0
+            End With
+        End With
+
         With .SoundPlayer()
             With .EventName("mode_dinner_started")
+                .Key = "key_voc_dinner_lastchancetorun"
+                .Sound = "voc_dinner_lastchancetorun"
+                .Priority = 100
+            End With
+            With .EventName("start_dinner_music")
                 .Key = "key_mus_dinner"
                 .Sound = "mus_dinner"
             End With
@@ -40,10 +58,10 @@ Sub CreateDinnerMode()
                 .Sound = "mus_dinner"
                 .Action = "stop"
             End With
-            ' With .EventName("dinner_voc_1")
-            '     .Key = "key_voc_dancingfun"
-            '     .Sound = "voc_dancingfun"
-            ' End With
+            With .EventName("dinner_voc_1")
+                .Key = "key_voc_dinner_menken"
+                .Sound = "voc_dinner_menken"
+            End With
             ' With .EventName("dinner_voc_2")
             '     .Key = "key_voc_flipallyouwant"
             '     .Sound = "voc_flipallyouwant"
@@ -133,7 +151,7 @@ Sub CreateDinnerMode()
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
-                .EventName = "mode_dinner_started"
+                .EventName = "timer_dinner_intro_delay_complete"
                 .Action = "start"
             End With
         End With

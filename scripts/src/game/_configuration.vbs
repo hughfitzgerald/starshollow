@@ -703,6 +703,9 @@ Sub CreateSounds()
     AddSoundEffect "sfx_whoosh1", 1
     AddSoundEffect "sfx_whoosh2", 1
 
+    AddCallout     "voc_justhurry", 2
+    AddCallout     "voc_pureskill", 4
+    AddCallout     "voc_youaimedforme", 2
     AddCallout     "voc_shocksme", 3
     AddCallout     "voc_isthatgood", 2
 
@@ -726,6 +729,9 @@ Sub CreateSounds()
     AddCallout     "voc_lookgreat", 2
     AddCallout     "voc_neeson", 2
     AddCallout     "voc_prostrate", 6
+
+    AddCallout     "voc_dinner_lastchancetorun", 10
+    AddCallout     "voc_dinner_menken", 6
     
     AddMusic       "mus_bells_loop",  3.486, -1
     AddCallout     "voc_bells_intro", 12.088

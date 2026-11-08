@@ -47,6 +47,14 @@ Sub CreateSkillshotsMode()
             .Add "s_right_orbit_active", Array("stop_skillshots")
         End With
 
+        With .SoundPlayer()
+            With .EventName("ss_achieved")
+                .Key = "key_voc_pureskill"
+                .Sound = "voc_pureskill"
+                .Action = "play"
+            End With
+        End With
+
         ' if the player goes past the initial skillshot, give them 5 seconds to hit one of the others
         With .Timers("skillshots")
             .StartRunning = False
