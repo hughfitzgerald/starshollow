@@ -47,14 +47,6 @@ Sub CreateSkillshotsMode()
             .Add "s_right_orbit_active", Array("stop_skillshots")
         End With
 
-        With .SoundPlayer()
-            With .EventName("ss_achieved")
-                .Key = "key_voc_pureskill"
-                .Sound = "voc_pureskill"
-                .Action = "play"
-            End With
-        End With
-
         ' if the player goes past the initial skillshot, give them 5 seconds to hit one of the others
         With .Timers("skillshots")
             .StartRunning = False
@@ -79,19 +71,6 @@ Sub CreateSkillshotsMode()
                     .Action = "set"
                     .Int = 1
                 End With
-            End With
-        End With
-
-
-        '--- DMD ---------------------------------------------------------
-        ' Name maps to a FlexDMD overlay in FlexDmd_ShowWidget (ZFBC).
-        With .SlidePlayer()
-            .Debug = True
-            With .EventName("ss_achieved")
-                ' .Widget = "skillshot"
-                .Slide = "skillshot"
-                .Action = "play"
-                ' .Expire = 1.3
             End With
         End With
 

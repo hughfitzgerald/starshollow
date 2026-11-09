@@ -382,6 +382,11 @@ Sub CreateBaseMode()
                 .Key = "key_voc_yousavedme"
                 .Sound = "voc_yousavedme"
             End With
+            With .EventName("ss_achieved")
+                .Key = "key_voc_pureskill"
+                .Sound = "voc_pureskill"
+                .Action = "play"
+            End With
         End With
 
         With .ShowPlayer()
@@ -611,6 +616,12 @@ Sub CreateBaseMode()
             With .EventName("mode_base_started")
                 .Slide  = "score"
                 .Action = "play"
+            End With
+            With .EventName("ss_achieved")
+                ' .Widget = "skillshot"
+                .Slide = "skillshot"
+                .Action = "play"
+                ' .Expire = 1.3
             End With
         End With
 
