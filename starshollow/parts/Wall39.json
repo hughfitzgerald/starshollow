@@ -207,7 +207,7 @@
   "physics_material": "zCol_Plastics",
   "overwrite_physics": false,
   "reflection_enabled": true,
-  "side_material": "Metal0.8",
+  "side_material": "Metal",
   "side_image": "metal3",
   "slingshot_animation": true,
   "slingshot_force": 80.0,

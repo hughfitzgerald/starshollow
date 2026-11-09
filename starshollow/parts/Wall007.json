@@ -501,7 +501,7 @@
   "slingshot_threshold": 0.0,
   "side_visible": true,
   "threshold": 2.0,
-  "top_material": "Metal0.2",
+  "top_material": "Metal0.8",
   "visible": true,
   "friction": 0.20000000298023224,
   "scatter": 0.0
