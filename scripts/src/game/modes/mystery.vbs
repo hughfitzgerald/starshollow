@@ -8,7 +8,6 @@ Sub CreateMysteryMode()
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
-            .
             .Add "mode_mystery_started", Array("light_inlanes")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 

@@ -3,8 +3,6 @@ Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)
         .StartEvents = Array("start_ll_multiball")
         .StopEvents = Array("mode_base_stopping", "captive_ball_is_home", "mode_eob_bonus_started")
-        .
-
         With .EventPlayer()
             .Add "mode_ll_multiball_stopping", Array("open_orbit_gate2")
             

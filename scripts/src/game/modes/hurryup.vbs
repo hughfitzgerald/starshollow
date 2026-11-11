@@ -13,8 +13,6 @@ Sub CreateHurryupMode()
     With CreateGlfMode("hurryup", 240)
         .StartEvents = Array("mode_base_started")
         .StopEvents = Array("mode_base_stopping")
-        .
-
         With .EventPlayer()
             ' Shortcut to finish hurryup mode for testing purposes only
             ' .Add "mode_hurryup_started", Array("s_slim_target_ramp2_active", "s_slim_target_ramp3_active", "s_slim_target_ramp4_active", "s_slim_target_hidden1_active", "s_slim_target_hidden2_active")
@@ -35,7 +33,6 @@ Sub CreateHurryupMode()
         End With
 
         With .Timers("hurryup")
-            .
             .StartValue = 0
             .EndValue = hurryUpSteps
             .TickInterval = hurryUpTickMs

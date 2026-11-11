@@ -10,12 +10,9 @@ Sub CreateBasementMode()
     Dim x
 
     With CreateGlfMode("basement", 100)
-        .
         .StartEvents = Array("reset_complete")
 
         With .EventPlayer()
-            .
-
             'Some table init stuff
             .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "check_start_button", "enable_scoop_hold")
             .Add "mode_basement_stopped", Array("backglass_off")
@@ -107,7 +104,6 @@ Sub CreateBasementMode()
         End With
 
         With .BallHolds("captive_ramp_kicker_hold")
-            .
             .BallsToHold = 1
             .HoldDevices = Array("captive_ramp_kicker")
             .EnableEvents = Array("enable_captive_ramp_kicker_hold") 

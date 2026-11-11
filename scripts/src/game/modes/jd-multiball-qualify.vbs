@@ -11,7 +11,6 @@ Sub CreateJDMultiballQualifyMode()
     Dim x
 
     With CreateGlfMode("jd_multiball_qualify", 200)
-        .
         
         'Define the events that start and stop this mode
         .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}", "mode_jd_multiball_stopped", "mode_ll_multiball_stopped", "mode_dance_marathon_stopped", "mode_town_meeting_stopped", "mode_dinner_stopped", "mode_fd_punch_stopped", "mode_kims_antiques_stopped", "mode_lbtb_stopped")
@@ -20,8 +19,6 @@ Sub CreateJDMultiballQualifyMode()
 
         'The event player will respond to events during this mode
         With .EventPlayer()
-            .
-
             .Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 0}", Array("lock_unlit")
             .Add "mode_jd_multiball_qualify_started{current_player.is_lock_qualified == 1}", Array("lock_lit")
             .Add "lock_qualified", Array("lock_lit")
@@ -45,7 +42,6 @@ Sub CreateJDMultiballQualifyMode()
             .BallsToReplace = 2
             .EnableEvents = Array("lock_lit")
             .DisableEvents = Array("lock_unlit")
-            .
         End With
 
         With .WidgetPlayer()
@@ -65,8 +61,6 @@ Sub CreateJDMultiballQualifyMode()
         'SHOTS
 
         With .Shots("ramp_lock_light")
-            .
-
             .Profile = "lock"   'defined below
             With .ControlEvents()
                 .Events = Array("lock_lit")

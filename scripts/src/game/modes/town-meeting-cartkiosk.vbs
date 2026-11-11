@@ -2,8 +2,6 @@ Sub CreateTownMeetingCartKioskMode()
     With CreateGlfMode("town_meeting_cartkiosk", 905)
         .StartEvents = Array("town_meeting_cartkiosk_start")
         .StopEvents = Array("tm_shots_off", "mode_town_meeting_stopping")
-        .
-
         With .RandomEventPlayer()
             With .EventName("tm_shot_hit")
                 .Add "tm_cartkiosk_voc_1", 1

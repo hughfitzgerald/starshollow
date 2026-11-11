@@ -2,8 +2,6 @@ Sub CreateTownMeetingDeerMode()
     With CreateGlfMode("town_meeting_deer", 900)
         .StartEvents = Array("town_meeting_deer_start")
         .StopEvents = Array("tm_shots_off", "mode_town_meeting_stopping")
-        .
-
         With .RandomEventPlayer()
             With .EventName("tm_shot_hit")
                 .Add "tm_deer_voc_1", 1
