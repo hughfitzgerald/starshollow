@@ -26,9 +26,6 @@ Sub Table1_KeyDown(ByVal keycode)
 	' Debug shot tester (ZTST): 2 = blocker posts, W/E/R/Y/U/I/P/A/S/F/G = shots
 	DebugShotTableKeyDownCheck keycode
 
-	' TEMPORARY - D dumps the GLF diagnostic. Remove with _diagnostics.vbs.
-	If keycode = 32 Then MsgBox GlfDiag_Report()
-
 	If keycode = 18 Then KickBall ActiveBall, 0, 35.1, 0, 0 ' Kick the ball to the skillshot
 	' If keycode = 18 Then KickBall ActiveBall, 0, 35.7, 0, 0 ' Kick the ball to the bonus lanes
 

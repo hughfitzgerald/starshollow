@@ -48,10 +48,6 @@ Sub Table1_Init
 	' exist before a slide can render) and after Glf_Init (Glf_Options
 	' clears bcpController on its way through). See ZFBC.
 	FlexBcp_Attach()
-
-	' TEMPORARY diagnostics - delete this line and src/game/_diagnostics.vbs
-	' once the table is starting games reliably.
-	GlfDiag_Init()
 End Sub
 
 

@@ -108,7 +108,7 @@ Sub CreateCharactersMode()
                 .PersistState = True
             End With
             With .StateMachines(characters(x).Name + "_state")
-                .Debug = True
+                .
                 .StartingState = "light_0"
                 .PersistState = True
                 For y = 0 To UBound(characters(x).Lights) + 1

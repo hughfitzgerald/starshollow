@@ -33,7 +33,7 @@ Sub CreateJDMultiballMode()
             .HurryUp = 3000
             .GracePeriod = 2000
             .BallLocks = Array("lock1", "lock2")
-            .Debug = True
+            .
         End With
 
         With .RandomEventPlayer()

@@ -395,9 +395,6 @@ Sub ConfigureGlfDevices()
         .BallSwitches = Array("s_VUK1")
         .EjectTimeout = 2000
         .MechanicalEject = True
-        ' .Debug = True
-        ' .AutoFireOnUnexpectedBall = False
-        ' .EjectAllEvents = Array("eject_vuk")
         .EjectCallback = "ScoopEjectCallback"
     End With
 

@@ -36,10 +36,10 @@ Sub CreateBonusMode
         .StartEvents = Array("ball_ending{game.tilted == False}")
         .StopEvents = Array("bonus_finished")
         .UseWaitQueue = True
-        .Debug = True
+        .
 
         With .EventPlayer()
-            .Debug = True
+            .
             .Add "mode_eob_bonus_started", Array("run_bonus_started", "gi_lights_off")
 
             .Add "run_bonus_started", Array("calculate_bonus_total", "play_bonus_show1")

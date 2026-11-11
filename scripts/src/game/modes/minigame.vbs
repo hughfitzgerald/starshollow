@@ -19,7 +19,7 @@ Sub CreateMiniGameMode
     With CreateGlfMode("minigame", 500)
         .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
-        .Debug = True
+        .
 
         With .EventPlayer()
             .Add "mode_eob_bonus_started", Array("clear_selected_minigame")

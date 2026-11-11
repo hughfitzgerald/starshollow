@@ -13,7 +13,7 @@ Sub CreateHurryupMode()
     With CreateGlfMode("hurryup", 240)
         .StartEvents = Array("mode_base_started")
         .StopEvents = Array("mode_base_stopping")
-        .Debug = True
+        .
 
         With .EventPlayer()
             ' Shortcut to finish hurryup mode for testing purposes only
@@ -35,7 +35,7 @@ Sub CreateHurryupMode()
         End With
 
         With .Timers("hurryup")
-            .Debug = True
+            .
             .StartValue = 0
             .EndValue = hurryUpSteps
             .TickInterval = hurryUpTickMs

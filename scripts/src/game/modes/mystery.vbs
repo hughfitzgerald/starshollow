@@ -8,7 +8,7 @@ Sub CreateMysteryMode()
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
-            .Debug = True
+            .
             .Add "mode_mystery_started", Array("light_inlanes")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
@@ -93,7 +93,7 @@ Sub CreateMysteryMode()
         End With
 
         With .RandomEventPlayer()
-            '.Debug = True
+            '.
             With .EventName("select_random_mystery")
                 For x = 0 to UBound(mysteryAwards)
                     .Add "mystery_" & mysteryAwards(x).Short, mysteryAwards(x).Probability

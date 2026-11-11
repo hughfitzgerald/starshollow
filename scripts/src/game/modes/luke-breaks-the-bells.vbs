@@ -12,7 +12,7 @@ Sub CreateLbtbMode()
         .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_lbtb_post_mode_complete")
 
         With .EventPlayer()
-            .Debug = True
+            .
             .Add "mode_lbtb_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei", ModeSlideEvent("play_lbtb_mode_slide", "LUKE BREAKS THE BELLS!", "BREAK BELLS TO SCORE"))
             .Add "mode_lbtb_stopping", Array("lbtb_shots_off", "bells_down", "stop_bells_loop", "stop_guitar_music", "stop_lbtb_luke_and_lorelei")
             .Add "timer_lbtb_post_mode_complete", Array("base_music_start")
@@ -64,7 +64,7 @@ Sub CreateLbtbMode()
         End With
 
         With .RandomEventPlayer()
-            .Debug = True
+            .
             With .EventName("choose_bell")
                 For x = 3 To 8
                     .Add "drop" & x & "_reset{device.drop_targets.drop" & x & ".state == 1}", 1

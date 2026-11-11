@@ -10,11 +10,11 @@ Sub CreateBasementMode()
     Dim x
 
     With CreateGlfMode("basement", 100)
-        .Debug = True
+        .
         .StartEvents = Array("reset_complete")
 
         With .EventPlayer()
-            .Debug = True
+            .
 
             'Some table init stuff
             .Add "mode_basement_started", Array("close_ramp_diverter","backglass_on", "dt2_enable_keepup", "bells_down", "check_start_button", "enable_scoop_hold")
@@ -107,7 +107,7 @@ Sub CreateBasementMode()
         End With
 
         With .BallHolds("captive_ramp_kicker_hold")
-            .Debug = True
+            .
             .BallsToHold = 1
             .HoldDevices = Array("captive_ramp_kicker")
             .EnableEvents = Array("enable_captive_ramp_kicker_hold") 
@@ -387,7 +387,7 @@ Sub CreateBasementMode()
 
         ' Backglass lights (for B2S backglass)
         ' With .DOFPlayer()
-        '     .Debug = True
+        '     .
         '     'Logo backglass light
         '     With .EventName("backglass_logo_on")
         '         .Action = "DOF_ON"
