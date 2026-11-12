@@ -10,6 +10,8 @@ const { spawnSync } = require('child_process');
 const projectRoot = path.join(__dirname, '..');
 const buildRoot = path.join(projectRoot, 'build');
 const stageDir = path.join(buildRoot, 'dev');
+const VPINBALL = process.env.VPINBALL
+    || '/Applications/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX';
 
 function run(cmd, args, options = {}) {
     const result = spawnSync(cmd, args, {
@@ -48,8 +50,14 @@ function main() {
     fs.cpSync(path.join(projectRoot, game), stagedGame, { recursive: true });
     fs.writeFileSync(path.join(stagedGame, 'script.vbs'), script.replace(/\r?\n/g, '\r\n'));
 
-    // Convert the pack folder to <stage>/<game>.vpx
-    run('vpxtool', ['convert', '--force', stagedGame, path.join(stageDir, `${game}.vpx`)]);
+    // Convert the pack folder to <stage>/<game>.vpx using the same VPinball build used for editing
+    const vpxOut = path.join(stageDir, `${game}.vpx`);
+    fs.rmSync(vpxOut, { force: true });
+    run(VPINBALL, ['-Convert', stagedGame, vpxOut]);
+    if (!fs.existsSync(vpxOut)) {
+        console.error(`Conversion produced no file at ${vpxOut}`);
+        process.exit(1);
+    }
 
     // Package release files
     const releaseDir = path.join(stageDir, 'release');
