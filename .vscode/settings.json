@@ -1,0 +1,20 @@
+{
+    "VsCodeTaskButtons.tasks": [
+        {
+            "label": "$(play) Play Table",
+            "task": "play",
+        },
+        {
+            "label": "$(pencil) Edit Table",
+            "task": "edit",
+        },
+        {
+            "label": "$(eye) Script Watcher",
+            "task": "script-watcher"
+        },
+        {
+            "label": "$(gear) Build Dev",
+            "task": "build-dev"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "play",
+			"path": "scripts",
+			"problemMatcher": [],
+			"label": "npm: play - scripts",
+			"detail": "/Applications/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX -Play ../starshollow"
+		},
+		{
+			"type": "npm",
+			"script": "edit",
+			"path": "scripts",
+			"problemMatcher": [],
+			"label": "npm: edit - scripts",
+			"detail": "/Applications/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX -LiveEdit ../starshollow"
+		},
+		{
+			"type": "npm",
+			"script": "script-watcher",
+			"path": "scripts",
+			"problemMatcher": [],
+			"label": "npm: script-watcher - scripts",
+			"detail": "Script watcher for VPX"
+		},
+		{
+			"type": "npm",
+			"script": "build-dev",
+			"path": "scripts",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build-dev - scripts",
+			"detail": "node build-dev.js"
+		}
+	]
+}
