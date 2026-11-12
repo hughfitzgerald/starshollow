@@ -10,8 +10,7 @@ const { spawnSync } = require('child_process');
 const projectRoot = path.join(__dirname, '..');
 const buildRoot = path.join(projectRoot, 'build');
 const stageDir = path.join(buildRoot, 'dev');
-const VPINBALL = process.env.VPINBALL
-    || '/Applications/VPinballX_BGFX.app/Contents/MacOS/VPinballX_BGFX';
+const { VPINBALL } = require('./vpinball');
 
 function run(cmd, args, options = {}) {
     const result = spawnSync(cmd, args, {
