@@ -1,4 +1,4 @@
-' GLF build: hughfitzgerald/vpx-glf starshollow @ 96910fc (2026-11-13). Do not edit; see FORK.md in that repo.
+' GLF build: hughfitzgerald/vpx-glf starshollow @ c7815d9 (2026-11-13). Do not edit; see FORK.md in that repo.
 'VPX Game Logic Framework (https://mpcarr.github.io/vpx-glf/)
 
 '
@@ -14286,12 +14286,13 @@ Class GlfBallDevice
     End Sub
 
     Private Function BallsEntering()
-        Dim x : BallsEntering = 0
+        Dim x, entering : entering = 0
         For x = 0 to UBound(m_entering)
             If m_entering(x) = True Then
-                BallsEntering = BallsEntering + 1
+                entering = entering + 1
             End If
         Next
+        BallsEntering = entering
     End Function
 
     Public Sub BallEnter(ball, switch)
