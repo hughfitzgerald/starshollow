@@ -1,4 +1,4 @@
-' GLF build: hughfitzgerald/vpx-glf starshollow @ 11fe68f (2026-11-11). Do not edit; see FORK.md in that repo.
+' GLF build: hughfitzgerald/vpx-glf starshollow @ 696240d (2026-11-13). Do not edit; see FORK.md in that repo.
 'VPX Game Logic Framework (https://mpcarr.github.io/vpx-glf/)
 
 '
@@ -3126,17 +3126,49 @@ Class GlfBallSearch
         If glf_gameStarted = True And glf_BIP > 0 And (glf_BIP-held_balls)>0 And glf_plunger.HasBall() = False Then
             m_phase = phase
             glf_last_switch_hit_time = 0
-            'Fire all auto fire devices, slings, pops.
-            m_devices = glf_autofiredevices.Items()
-            m_current_device_type = "autofire"
             DispatchPinEvent "ball_search_started", Null
-            If UBound(m_devices) > -1 Then
-                m_devices(0).BallSearch(m_phase)
-                SetDelay "ball_search_next_device" , "BallSearchHandler", Array(Array("next_device", Me, 0), Null), m_search_interval.Value
-            End If
+            'Fire all auto fire devices, slings, pops, then the other device types in turn.
+            m_current_device_type = "start"
+            NextDeviceType
         Else
             SetDelay "ball_search" , "BallSearchHandler", Array(Array("start", Me), Null), m_timeout.Value
         End If
+    End Sub
+
+    'Moves on to the next type of device that has something to search. A table with no
+    'devices of some type skips it; before, the search stopped there without finishing.
+    Private Sub NextDeviceType()
+        Do
+            Select Case m_current_device_type
+                Case "start"
+                    m_devices = glf_autofiredevices.Items()
+                    m_current_device_type = "autofire"
+                Case "autofire"
+                    m_devices = glf_ball_devices.Items()
+                    m_current_device_type = "balldevices"
+                Case "balldevices"
+                    m_devices = glf_drop_targets.Items()
+                    m_current_device_type = "droptargets"
+                Case "droptargets"
+                    m_devices = glf_diverters.Items()
+                    m_current_device_type = "diverters"
+                Case Else
+                    'Every type has been searched in this phase
+                    m_current_device_type = Empty
+                    If m_phase < 3 Then
+                        Start m_phase+1
+                    Else
+                        m_phase = 0
+                        SetDelay "ball_search" , "BallSearchHandler", Array(Array("start", Me), Null), m_timeout.Value
+                    End If
+                    Exit Sub
+            End Select
+            If UBound(m_devices) > -1 Then
+                m_devices(0).BallSearch(m_phase)
+                SetDelay "ball_search_next_device" , "BallSearchHandler", Array(Array("next_device", Me, 0), Null), m_search_interval.Value
+                Exit Sub
+            End If
+        Loop
     End Sub
 
     Public Sub NextDevice(device_index)
@@ -3144,36 +3176,7 @@ Class GlfBallSearch
             m_devices(device_index+1).BallSearch(m_phase)
             SetDelay "ball_search_next_device" , "BallSearchHandler", Array(Array("next_device", Me, device_index+1), Null), m_search_interval.Value
         Else
-            If m_current_device_type = "autofire" Then
-                m_devices = glf_ball_devices.Items()
-                m_current_device_type = "balldevices"
-                If UBound(m_devices) > -1 Then
-                    m_devices(0).BallSearch(m_phase)
-                    SetDelay "ball_search_next_device" , "BallSearchHandler", Array(Array("next_device", Me, 0), Null), m_search_interval.Value
-                End If
-            ElseIf m_current_device_type = "balldevices" Then
-                m_devices = glf_drop_targets.Items()
-                m_current_device_type = "droptargets"
-                If UBound(m_devices) > -1 Then
-                    m_devices(0).BallSearch(m_phase)
-                    SetDelay "ball_search_next_device" , "BallSearchHandler", Array(Array("next_device", Me, 0), Null), m_search_interval.Value
-                End If
-            ElseIf m_current_device_type = "droptargets" Then
-                m_devices = glf_diverters.Items()
-                m_current_device_type = "diverters"
-                If UBound(m_devices) > -1 Then
-                    m_devices(0).BallSearch(m_phase)
-                    SetDelay "ball_search_next_device" , "BallSearchHandler", Array(Array("next_device", Me, 0), Null), m_search_interval.Value
-                End If
-            Else
-                m_current_device_type = Empty
-                If m_phase < 3 Then
-                    Start m_phase+1
-                Else
-                    m_phase = 0
-                    SetDelay "ball_search" , "BallSearchHandler", Array(Array("start", Me), Null), m_timeout.Value
-                End If
-            End If
+            NextDeviceType
         End If
     End Sub
 
@@ -4193,6 +4196,31 @@ Class GlfBallHold
         HoldBall = unclaimed_balls - balls_to_hold
     End Function
 
+    'Called when a ball this hold was keeping has left its device without being released.
+    'Returns the number of balls written off.
+    Public Function BallMissing(device)
+        BallMissing = 0
+        If Not m_hold_queue.Exists(device) Then
+            Exit Function
+        End If
+        Dim in_device : in_device = glf_ball_devices(device).Balls()
+        Dim lost : lost = m_hold_queue(device) - in_device
+        If lost <= 0 Then
+            Exit Function
+        End If
+        If in_device > 0 Then
+            m_hold_queue(device) = in_device
+        Else
+            m_hold_queue.Remove device
+        End If
+        m_balls_held = m_balls_held - lost
+        If m_balls_held < 0 Then
+            m_balls_held = 0
+        End If
+        Log "Lost " & lost & " held balls from " & device
+        BallMissing = lost
+    End Function
+
     Public Function ReleaseAll()
         'Release all balls in hold.
         ReleaseAll = ReleaseBalls(m_balls_held)
@@ -4252,7 +4280,13 @@ Class GlfBallHold
             DispatchPinEvent m_name & "_balls_released", kwargs
         End If
 
-        m_balls_held = m_balls_held - balls_released
+        'Count what is still queued instead of subtracting what was ejected. If a device
+        'had fewer balls than this hold thought, the difference is gone and must not stay counted.
+        Dim queued_device
+        m_balls_held = 0
+        For Each queued_device in m_hold_queue.Keys()
+            m_balls_held = m_balls_held + m_hold_queue(queued_device)
+        Next
         ReleaseBalls = balls_released
     End Function
 
@@ -8384,11 +8418,15 @@ Class GlfMultiballs
         'eject balls from locks
         Dim ball_lock
         For Each ball_lock in m_ball_locks
+            'Take only as many locked balls as this multiball still needs. Any others stay locked.
             Dim available_balls : available_balls = glf_ball_devices(ball_lock).Balls()
-            If available_balls > 0 Then
-                glf_ball_devices(ball_lock).EjectAll()
+            If available_balls > m_balls_added_live - balls_added Then
+                available_balls = m_balls_added_live - balls_added
             End If
-            balls_added = balls_added + available_balls
+            If available_balls > 0 Then
+                glf_ball_devices(ball_lock).EjectBalls available_balls
+                balls_added = balls_added + available_balls
+            End If
         Next
         Log "Balls added: " & balls_added
         glf_BIP = m_balls_live_target
@@ -8462,12 +8500,14 @@ Class GlfMultiballs
             Exit Function
         End If
 
-        balls_to_save = m_balls_live_target - balls
+        'This runs before the game lowers glf_BIP for the drain, so add the drained balls back
+        balls_to_save = m_balls_live_target - glf_BIP + balls
 
         Log "Balls to save: " & balls_to_save & ". Balls live target: " & m_balls_live_target & ". Balls in Play: " & glf_BIP & ". Balls Drained: " & balls
         
         If balls_to_save <= 0 Then
             BallDrainShootAgain = balls
+            Exit Function
         End If
 
         If balls_to_save > balls Then
@@ -8481,7 +8521,7 @@ Class GlfMultiballs
         DispatchPinEvent m_name & "_shoot_again", kwargs
         
         Log("Ball drained during MB. Requesting a new one")
-        m_queued_balls = m_queued_balls + 1
+        m_queued_balls = m_queued_balls + balls_to_save
         SetDelay m_name&"_queued_release", "MultiballsHandler" , Array(Array("queue_release", Me, m_queued_balls),Null), 1000
 
         BallDrainShootAgain = balls - balls_to_save
@@ -14163,7 +14203,12 @@ Class GlfBallDevice
     Private m_eject_targets
     Private m_entrance_count_delay
     Private m_incoming_balls
+    Private m_entering
+    Private m_empty_eject_retries
     Private m_lost_balls
+    Private m_claimed_balls
+    Private m_eject_requested
+    Private m_shifting_balls
     Private m_exclude_from_ball_search
     Private m_auto_fire_on_unexpected_ball
     Private m_debug
@@ -14214,7 +14259,7 @@ Class GlfBallDevice
         m_eject_targets = value
         Dim evt
         For Each evt in m_eject_targets
-            AddPinEventListener evt & "_active", m_name & "_eject_target", "BallDeviceEventHandler", 1000, Array("eject_timeout", Me)
+            AddPinEventListener evt & "_active", m_name & "_eject_target", "BallDeviceEventHandler", 1000, Array("eject_target", Me)
         Next
     End Property
     Public Property Let PlayerControlledEjectEvent(value)
@@ -14224,9 +14269,11 @@ Class GlfBallDevice
     Public Property Let BallSwitches(value)
         m_ball_switches = value
         ReDim m_balls(Ubound(m_ball_switches))
+        ReDim m_entering(Ubound(m_ball_switches))
         Dim x
         For x=0 to UBound(m_ball_switches)
             m_balls(x) = Null
+            m_entering(x) = False
             AddPinEventListener m_ball_switches(x)&"_active", m_name & "_ball_enter", "BallDeviceEventHandler", 1000, Array("ball_entering", Me, x)
             AddPinEventListener m_ball_switches(x)&"_inactive", m_name & "_ball_exiting", "BallDeviceEventHandler", 1000, Array("ball_exiting", Me, x)
         Next
@@ -14253,11 +14300,16 @@ Class GlfBallDevice
         m_balls_to_eject = 0
         m_balls_in_device = 0
         m_lost_balls = 0
+        m_claimed_balls = 0
+        m_eject_requested = False
+        m_shifting_balls = 0
         m_mechanical_eject = False
         m_eject_timeout = 1000
         m_eject_enable_time = 0
         m_entrance_count_delay = 500
         m_incoming_balls = 0
+        m_entering = Array()
+        m_empty_eject_retries = 0
         m_exclude_from_ball_search = False
         m_auto_fire_on_unexpected_ball = True
         glf_ball_devices.Add name, Me
@@ -14267,14 +14319,53 @@ Class GlfBallDevice
     Public Sub BallEntering(ball, switch)
         Log "Ball Entering" 
         If m_default_device = False Then
+            m_entering(switch) = True
             SetDelay m_name & "_" & switch & "_ball_enter", "BallDeviceEventHandler", Array(Array("ball_enter", Me, switch), ball), m_entrance_count_delay
         Else
             BallEnter ball, switch
         End If
     End Sub
 
+    Public Sub BallEnterCancelled(switch)
+        'The ball left again before the entrance count delay ran out
+        m_entering(switch) = False
+    End Sub
+
+    Private Function BallsEntering()
+        Dim x, entering : entering = 0
+        For x = 0 to UBound(m_entering)
+            If m_entering(x) = True Then
+                entering = entering + 1
+            End If
+        Next
+        BallsEntering = entering
+    End Function
+
     Public Sub BallEnter(ball, switch)
+        m_entering(switch) = False
+        If m_shifting_balls > 0 Then
+            'A ball that left a higher position has settled here. It never left the device,
+            'so it is not a new ball: no count change, no relay and no events.
+            m_shifting_balls = m_shifting_balls - 1
+            If m_shifting_balls = 0 Then
+                RemoveDelay m_name & "_shift_timeout"
+            End If
+            Set m_balls(switch) = ball
+            Log "Ball moved to switch " & switch
+            Exit Sub
+        End If
         RemoveDelay m_name & "_switch" & switch & "_eject_timeout"
+        If m_ejecting = True And switch = 0 Then
+            'A ball is back on the eject switch before the eject was confirmed, so that eject is over.
+            'Without this the device stays in its ejecting state and HasBall never returns True again.
+            m_ejecting = False
+            Log "Eject failed, ball returned"
+            DispatchPinEvent m_name & "_ball_eject_failed", Null
+        End If
+        If switch = 0 Then
+            'Any eject from this switch is over once a ball is back on it
+            m_eject_requested = False
+        End If
         Set m_balls(switch) = ball
         m_balls_in_device = m_balls_in_device + 1
         Log "Ball Entered"
@@ -14293,6 +14384,13 @@ Class GlfBallDevice
         End If
         If unclaimed_balls > 0 Then
             unclaimed_balls = DispatchRelayPinEvent(m_name & "_ball_enter", 1)
+            If unclaimed_balls < 1 Then
+                'A ball hold or multiball lock is keeping this ball
+                m_claimed_balls = m_claimed_balls + 1
+                If m_claimed_balls > m_balls_in_device Then
+                    m_claimed_balls = m_balls_in_device
+                End If
+            End If
         End If        
         Log "Unclaimed Balls: " & unclaimed_balls
         DispatchPinEvent m_name & "_ball_entered", Null
@@ -14303,6 +14401,15 @@ Class GlfBallDevice
 
     Public Sub BallExiting(ball, switch)
         RemoveDelay m_name & "_" & switch & "_ball_enter"
+        If switch > 0 Then
+            'Switch 0 is the exit. A ball leaving any other position is rolling down inside
+            'the device to take the place of one that left. Wait for it to settle.
+            m_balls(switch) = Null
+            m_shifting_balls = m_shifting_balls + 1
+            SetDelay m_name & "_shift_timeout", "BallDeviceEventHandler", Array(Array("shift_timeout", Me), Null), 3000
+            Log "Ball leaving switch " & switch & " to move down"
+            Exit Sub
+        End If
         If m_ejecting = False And m_mechanical_eject = False Then
             Log "Ball Lost, Wasn't Ejecting"
             m_lost_balls = m_lost_balls + 1
@@ -14319,6 +14426,17 @@ Class GlfBallDevice
 
     Public Sub BallExitSuccess(ball)
         m_ejecting = False
+        If m_eject_requested = False Then
+            'A ball left that GLF did not eject. If it was one a hold or lock was keeping, report it.
+            Dim claimed_lost : claimed_lost = LostClaimedBalls()
+            If claimed_lost > 0 Then
+                PostBallMissing claimed_lost, claimed_lost
+            End If
+        Else
+            'GLF ejected the ball, so nothing is missing. Just keep the claimed count in step.
+            LostClaimedBalls
+        End If
+        m_eject_requested = False
 
         If m_incoming_balls > 0 Then
             m_incoming_balls = m_incoming_balls - 1
@@ -14327,8 +14445,9 @@ Class GlfBallDevice
         Log "Ball successfully exited"
         RemoveDelay m_name & "_eject_attempt"
         If m_ejecting_all = True Then
-            If m_balls_to_eject = 0 Then
+            If m_balls_to_eject <= 0 Or (m_balls_in_device = 0 And BallsEntering() = 0) Then
                 m_ejecting_all = False
+                m_balls_to_eject = 0
                 Exit Sub
             End If
             If Not IsNull(m_balls(0)) Then
@@ -14340,22 +14459,64 @@ Class GlfBallDevice
         End If
     End Sub
 
+    Public Sub EjectTargetHit(ball)
+        'An eject target switch confirms an eject early. Ignore it unless a ball is on its way out,
+        'and cancel the pending timeout so the same eject is not confirmed twice.
+        Dim x, pending : pending = False
+        For x = 0 to UBound(m_ball_switches)
+            If RemoveDelay(m_name & "_switch" & x & "_eject_timeout") = True Then
+                pending = True
+            End If
+        Next
+        If m_ejecting = True Or pending = True Then
+            BallExitSuccess ball
+        End If
+    End Sub
+
     Public Sub Eject
-        
+        m_empty_eject_retries = 0
+        DoEject
+    End Sub
+
+    'Called 600ms after an eject request found no ball on the eject switch.
+    Public Sub EjectRetry
+        If m_balls_in_device = 0 And BallsEntering() = 0 And m_incoming_balls = 0 Then
+            'Nothing here and nothing on its way. Allow a few seconds for a ball that is
+            'about to arrive, then drop the request so it cannot eject some later ball.
+            m_empty_eject_retries = m_empty_eject_retries + 1
+            If m_empty_eject_retries >= 5 Then
+                Log "Eject request dropped, device is empty"
+                m_empty_eject_retries = 0
+                m_ejecting_all = False
+                m_balls_to_eject = 0
+                Exit Sub
+            End If
+        Else
+            m_empty_eject_retries = 0
+        End If
+        DoEject
+    End Sub
+
+    Private Sub DoEject
         If Not IsNull(m_eject_callback) Then
             If Not IsNull(m_balls(0)) Then
                 Log "Ejecting."
+                m_empty_eject_retries = 0
                 DispatchPinEvent m_name & "_ejecting_ball", Null
                 DispatchQueuePinEvent m_name & "_ball_eject_attempt", Null
                 SetDelay m_name & "_switch0_eject_timeout", "BallDeviceEventHandler", Array(Array("eject_timeout", Me), m_balls(0)), m_eject_timeout
                 m_ejecting = True
+                m_eject_requested = True
+                If m_claimed_balls > 0 Then
+                    m_claimed_balls = m_claimed_balls - 1
+                End If
             
                 GetRef(m_eject_callback)(m_balls(0))
                 If m_eject_enable_time > 0 Then
                     SetDelay m_name & "_eject_enable_time", "BallDeviceEventHandler", Array(Array("eject_enable_complete", Me), m_balls(0)), m_eject_enable_time
                 End If
             Else
-                SetDelay m_name & "_eject_attempt", "BallDeviceEventHandler", Array(Array("ball_eject", Me), Null), 600
+                SetDelay m_name & "_eject_attempt", "BallDeviceEventHandler", Array(Array("ball_eject_retry", Me), Null), 600
             End If
         End If
     End Sub
@@ -14368,6 +14529,24 @@ Class GlfBallDevice
 
     Public Sub EjectBalls(balls)
         Log "Ejecting "&balls&" Balls."
+        If balls <= 0 Then
+            Exit Sub
+        End If
+        If m_ejecting = True Then
+            'A ball is already on its way out. Add this request to the one in progress
+            'instead of replacing its count and kicking again.
+            If m_ejecting_all = False Then
+                m_balls_to_eject = 0
+            End If
+            m_ejecting_all = True
+            m_balls_to_eject = m_balls_to_eject + balls
+            If m_balls_to_eject > m_balls_in_device + BallsEntering() Then
+                m_balls_to_eject = m_balls_in_device + BallsEntering()
+            End If
+            'Make sure the eject is picked up again even if the ball in flight never confirms
+            SetDelay m_name & "_eject_attempt", "BallDeviceEventHandler", Array(Array("ball_eject_retry", Me), Null), 600
+            Exit Sub
+        End If
         m_ejecting_all = True
         m_balls_to_eject = balls - 1
         Eject()
@@ -14375,13 +14554,64 @@ Class GlfBallDevice
 
     Public Sub EjectAll
         Log "Ejecting All." 
+        If m_ejecting = True Then
+            'A ball is already on its way out. Everything still here follows it.
+            m_ejecting_all = True
+            m_balls_to_eject = m_balls_in_device + BallsEntering()
+            'Make sure the eject is picked up again even if the ball in flight never confirms
+            SetDelay m_name & "_eject_attempt", "BallDeviceEventHandler", Array(Array("ball_eject_retry", Me), Null), 600
+            Exit Sub
+        End If
         m_ejecting_all = True
-        m_balls_to_eject = m_balls_in_device - 1 
+        'Count a ball that has hit the switch but is still inside its entrance count delay
+        m_balls_to_eject = m_balls_in_device + BallsEntering() - 1
+        If m_balls_to_eject < 0 Then
+            m_balls_to_eject = 0
+        End If
         Eject()
     End Sub
 
+    'Balls that left a higher position never arrived at a lower one, so they are gone
+    Public Sub ShiftTimeout()
+        m_balls_in_device = m_balls_in_device - m_shifting_balls
+        If m_balls_in_device < 0 Then
+            m_balls_in_device = 0
+        End If
+        Log "Balls did not settle: " & m_shifting_balls
+        Dim lost : lost = m_shifting_balls
+        m_shifting_balls = 0
+        PostBallMissing lost, LostClaimedBalls()
+    End Sub
+
     Public Sub ClearLostBalls()
+        'The balls that left without being ejected did not come back
+        Dim lost : lost = m_lost_balls
         m_lost_balls = 0
+        If lost > 0 Then
+            PostBallMissing lost, LostClaimedBalls()
+        End If
+    End Sub
+
+    'Number of balls a hold or lock was keeping that are no longer in the device
+    Private Function LostClaimedBalls()
+        LostClaimedBalls = 0
+        If m_claimed_balls > m_balls_in_device Then
+            LostClaimedBalls = m_claimed_balls - m_balls_in_device
+            m_claimed_balls = m_balls_in_device
+        End If
+    End Function
+
+    Private Sub PostBallMissing(balls, claimed_balls)
+        Log "Ball missing: " & balls & ", claimed: " & claimed_balls
+        Dim kwargs : Set kwargs = GlfKwargs()
+        With kwargs
+            .Add "balls", balls
+            .Add "claimed_balls", claimed_balls
+        End With
+        DispatchPinEvent m_name & "_ball_missing", kwargs
+        If claimed_balls > 0 Then
+            Glf_ClaimedBallMissing Replace(m_name, "balldevice_", "", 1, 1), claimed_balls
+        End If
     End Sub
 
     Public Sub BallSearch(phase)
@@ -14395,8 +14625,20 @@ Class GlfBallDevice
         If phase = 1 And HasBall() Then
             Exit Sub
         End If
+        If m_balls_in_device > 0 Then
+            If Glf_BallDeviceKeepsBalls(Replace(m_name, "balldevice_", "", 1, 1)) = True Then
+                'A held or locked ball is not the missing one. Kicking it out would only put the counts wrong.
+                Log "Ball Search skipped, device is holding or locking a ball"
+                Exit Sub
+            End If
+        End If
         If Not IsNull(m_eject_callback) Then
-            GetRef(m_eject_callback)(m_balls(0))
+            If Not IsNull(m_balls(0)) Then
+                'Use a normal eject so the device knows the ball is leaving
+                Eject()
+            Else
+                GetRef(m_eject_callback)(Null)
+            End If
         End If
     End Sub
 
@@ -14416,6 +14658,55 @@ Class GlfBallDevice
     End Sub
 End Class
 
+'A ball that a ball hold or multiball lock was keeping has left its device without being ejected.
+'Held balls are still counted in glf_BIP, so the hold only lowers its own count. Locked balls are
+'not counted in glf_BIP, so a locked ball that is back on the playfield is added to it.
+Sub Glf_ClaimedBallMissing(device_name, balls)
+    Dim ball_hold, multiball_lock, lock_device, is_lock_device
+    For Each ball_hold in glf_ball_holds.Items()
+        balls = balls - ball_hold.BallMissing(device_name)
+    Next
+    If balls <= 0 Then
+        Exit Sub
+    End If
+    is_lock_device = False
+    For Each multiball_lock in glf_multiball_locks.Items()
+        For Each lock_device in multiball_lock.LockDevices
+            If lock_device = device_name Then
+                is_lock_device = True
+            End If
+        Next
+    Next
+    If is_lock_device = True And glf_gameStarted = True And glf_gameTilted = False And glf_BIP > 0 Then
+        glf_BIP = glf_BIP + balls
+        glf_debugLog.WriteToLog "Ball Device", "Locked ball left " & device_name & " without being ejected. BIP: " & glf_BIP
+    End If
+End Sub
+
+'True if the named device belongs to a ball hold that is holding balls, or to a multiball lock.
+Function Glf_BallDeviceKeepsBalls(device_name)
+    Glf_BallDeviceKeepsBalls = False
+    Dim ball_hold, multiball_lock, device
+    For Each ball_hold in glf_ball_holds.Items()
+        If ball_hold.GetValue("balls_held") > 0 Then
+            For Each device in ball_hold.HoldDevices
+                If device = device_name Then
+                    Glf_BallDeviceKeepsBalls = True
+                    Exit Function
+                End If
+            Next
+        End If
+    Next
+    For Each multiball_lock in glf_multiball_locks.Items()
+        For Each device in multiball_lock.LockDevices
+            If device = device_name Then
+                Glf_BallDeviceKeepsBalls = True
+                Exit Function
+            End If
+        Next
+    Next
+End Function
+
 Function BallDeviceEventHandler(args)
     Dim ownProps, ball
     ownProps = args(0)
@@ -14434,6 +14725,8 @@ Function BallDeviceEventHandler(args)
             ballDevice.BallEnter ball, switch
         Case "ball_eject"
             ballDevice.Eject
+        Case "ball_eject_retry"
+            ballDevice.EjectRetry
         Case "ball_eject_all"
             ballDevice.EjectAll
         Case "ball_exiting"
@@ -14441,12 +14734,19 @@ Function BallDeviceEventHandler(args)
             If RemoveDelay(ballDevice.Name & "_" & switch & "_ball_enter") = False Then
                 Set ball = args(1)
                 ballDevice.BallExiting ball, switch
+            Else
+                ballDevice.BallEnterCancelled switch
             End If
         Case "eject_timeout"
             Set ball = args(1)
             ballDevice.BallExitSuccess ball
+        Case "eject_target"
+            Set ball = args(1)
+            ballDevice.EjectTargetHit ball
         Case "eject_enable_complete"
             ballDevice.EjectEnableComplete
+        Case "shift_timeout"
+            ballDevice.ShiftTimeout
         Case "clear_lost_balls"
             ballDevice.ClearLostBalls
     End Select
