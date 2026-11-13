@@ -35,6 +35,7 @@ Sub FrameTimer_Timer()
 	DoSTAnim
 	DoDTAnim
 	BSUpdate
+	Cor.Update         ' rubber dampener incoming-velocity tracking (was CorTimer)
 	UpdateGlfInserts   ' insert primitives follow GLF light colour
 	PscBackglassMirror ' backglass bulbs follow their PSC proxy lights
 
@@ -48,6 +49,7 @@ Sub FrameTimer_Timer()
 	If glf_pump_fallback Then Glf_GameTimer_Timer
 End Sub
 
-'The CorTimer interval should be 10. Its sole purpose is Cor calculations.
-CorTimer.Interval = 10
-Sub CorTimer_Timer(): Cor.Update: End Sub
+' Cor.Update used to run in a dedicated 10ms CorTimer (VPW default). A timer
+' faster than the frame rate breaks VPX frame pacing (table audit warning),
+' so it now runs once per frame in FrameTimer above. The CorTimer object is
+' kept in the editor but disabled.

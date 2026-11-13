@@ -4,8 +4,8 @@
     "x": 84.99999237060547,
     "y": 2382.167236328125
   },
-  "timer_enabled": true,
-  "timer_interval": 10,
+  "timer_enabled": false,
+  "timer_interval": 1000,
   "ui_locked": true,
   "ui_visible": true,
   "legacy_layer": 2,
