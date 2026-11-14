@@ -106,6 +106,9 @@ Sub ConfigureGlfDevices()
     
     AddPinEventListener "clear_multiball_locks", "clear_multiball_locks_called", "ClearMultiballLocksListener", 100, Null
     AddPinEventListener "clear_multiball_locks", "enable_subway_return", "EnableSubwayReturn", 100, Null
+    AddPinEventListener "all_balls_returned", "lock_clear_done", "LockClearDone", 100, Null
+    AddPinEventListener "balldevice_lock1_ball_entered", "lock1_clear_retry", "LockClearRetry", 90, Null
+    AddPinEventListener "balldevice_lock2_ball_entered", "lock2_clear_retry", "LockClearRetry", 90, Null
 
     AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
     AddPinEventListener "capture_captive_ball", "capture_captive_ball_called", "CaptureCaptiveBall", 100, Null
@@ -501,8 +504,8 @@ Sub ConfigureGlfDevices()
 
     With CreateGlfDiverter("subway_diverter")
         .EnableEvents = Array("ball_started")
-        .ActivateEvents = Array("clear_multiball_locks")
-        .DeactivateEvents = Array("multiball_locks_cleared")
+        .ActivateEvents = Array("clear_multiball_locks", "lock_clear_retry")
+        .DeactivateEvents = Array("multiball_locks_cleared", "lock_clear_retry_done")
         .ActionCallback = "SubwayDiverterAction"
     End With
 
@@ -688,6 +691,7 @@ Function ResetBallHandlingState(args)
     RemovePinEventListener GLF_BALL_DRAIN, "subway_return_claim"
     captiveFreePending = False
     glf_machine_vars("captive_capture_pending").Value = 0
+    LockClearDone Null
 End Function
 
 ' The Logan multiball adds one ball to whatever is in play, so it has to start after

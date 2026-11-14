@@ -223,9 +223,26 @@ Sub EnableThirdMultiballLock(ball)
 	s_Lock2.Enabled = True
 End Sub
 
+' --- Clearing the locks ---
+' The locks kick in two directions: toward the scoop (multiball start) or down the
+' subway (clearing). lockClearPending is True from the moment clearing starts until
+' every lock ball has come back through the drain, or LockClearTimeoutMs has passed.
+' While it is True:
+'   - both lock kickers kick down the subway, including any repeat kick
+'   - the multiball lock is off, so a ball that drops back into a lock kicker is not
+'     counted as a new lock. The lock device ejects it again by itself.
+'   - a ball that drops back in reopens the subway diverter for the repeat kick
+' Before this, a ball that dropped back in was kicked again with the scoop callback
+' and came out of the scoop.
+Dim lockClearPending : lockClearPending = False
+Const LockClearTimeoutMs = 8000
+Const LockClearRetryDiverterMs = 2000
+
 Sub ClearMultiballLocksListener(ball)
-    glf_ball_devices("lock1").EjectCallback = "Lock1SubwayEjectCallback"
-    glf_ball_devices("lock2").EjectCallback = "Lock2SubwayEjectCallback"
+	lockClearPending = True
+	SetDelay "lock_clear_timeout", "LockClearDone", Null, LockClearTimeoutMs
+	' lock_lit turns the multiball lock back on at the start of the next ball
+	If glf_multiball_locks.Exists("multiball_lock") Then glf_multiball_locks("multiball_lock").Disable
 
     if glf_ball_devices("lock1").HasBall() Then
 		glf_ball_devices("lock1").EjectAll()
@@ -233,31 +250,39 @@ Sub ClearMultiballLocksListener(ball)
     if glf_ball_devices("lock2").HasBall() Then
 		glf_ball_devices("lock2").EjectAll()
     End If
-
-    glf_ball_devices("lock1").EjectCallback = "Lock1EjectCallback"
-    glf_ball_devices("lock2").EjectCallback = "Lock2EjectCallback"
 End Sub
 
-Sub Lock1SubwayEjectCallback(ball)
-    s_Lock1.Kick 173, 10
+' all_balls_returned, the timeout, or a new game
+Sub LockClearDone(args)
+	lockClearPending = False
+	RemoveDelay "lock_clear_timeout"
 End Sub
 
-Sub Lock2SubwayEjectCallback(ball)
-    s_Lock2.Kick 173, 10
+' A ball is back in a lock kicker while the locks are being cleared
+Sub LockClearRetry(args)
+	If Not lockClearPending Then Exit Sub
+	DispatchPinEvent "lock_clear_retry", Null
+	SetDelay "lock_clear_retry_done", "LockClearRetryDone", Null, LockClearRetryDiverterMs
+End Sub
+
+Sub LockClearRetryDone(args)
+	DispatchPinEvent "lock_clear_retry_done", Null
 End Sub
 
 Sub Lock1EjectCallback(ball)
-	Dim ang, vel
-	ang = 262.5
-	vel = 50
-	s_Lock1.Kick ang, vel
+	If lockClearPending Then
+		s_Lock1.Kick 173, 10		' down the subway
+	Else
+		s_Lock1.Kick 262.5, 50		' toward the scoop
+	End If
 End Sub
 
 Sub Lock2EjectCallback(ball)
-	Dim ang, vel
-	ang = 262.5
-	vel = 50
-	s_Lock2.Kick ang, vel
+	If lockClearPending Then
+		s_Lock2.Kick 173, 10		' down the subway
+	Else
+		s_Lock2.Kick 262.5, 50		' toward lock 1 and the scoop
+	End If
 End Sub
 
 Sub SubwayTroughEjectCallback(ball)
