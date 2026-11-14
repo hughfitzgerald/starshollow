@@ -42,6 +42,11 @@ Sub CreateJDMultiballQualifyMode()
             .BallsToReplace = 2
             .EnableEvents = Array("lock_lit")
             .DisableEvents = Array("lock_unlit")
+            ' Starting the multiball uses up the player's locked balls, so the next one has
+            ' to be earned again. This has to be start_jd_multiball: the lock is already
+            ' disabled by the time multiball_jdmb_started is posted, and a disabled lock
+            ' does not listen for its reset events.
+            .ResetEvents = Array("start_jd_multiball")
         End With
 
         With .WidgetPlayer()

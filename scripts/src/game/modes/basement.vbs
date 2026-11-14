@@ -59,6 +59,10 @@ Sub CreateBasementMode()
             .Add "s_captive_ball_active{machine.captive_ball_captive == 0}", Array("captive_ball_is_home")
             .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker")
             .Add "ball_drain{machine.captive_ball_captive == 0 and current_player.llmb_shoot_again_active == 0}", Array("return_captive_from_drain")
+
+            ' Nothing releases the scoop hold when no ball is being played (game over, a
+            ' cancelled game, between balls), so a ball that lands there is sent straight out.
+            .Add "balldevice_scoop_ball_entered{modes.base.active == False}", Array("scoop_safety_release")
         End With
 
         ' With .QueueRelayPlayer()
@@ -80,6 +84,10 @@ Sub CreateBasementMode()
                     .Action = "set_machine"
                     .Int = 1
                 End With
+                With .Variable("captive_capture_pending")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
             End With
         End With
 
@@ -88,7 +96,7 @@ Sub CreateBasementMode()
             .HoldDevices = Array("scoop")
             .EnableEvents = Array("enable_scoop_hold") 
             .DisableEvents = Array("disable_scoop_hold") 
-            .ReleaseAllEvents = Array("scoop_eject_show_complete")
+            .ReleaseAllEvents = Array("scoop_eject_show_complete", "scoop_safety_release")
         End With
 
         With .Timers("clear_multiball_locks")
@@ -97,9 +105,12 @@ Sub CreateBasementMode()
             .StartValue = 1
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
+            ' "restart", not "start": basement never stops, so nothing else sets the timer
+            ' back to its start value. With "start" it would complete at once on every
+            ' clear after the first and close the subway diverter early.
             With .ControlEvents
                 .EventName = "clear_multiball_locks"
-                .Action = "start"
+                .Action = "restart"
             End With
         End With
 

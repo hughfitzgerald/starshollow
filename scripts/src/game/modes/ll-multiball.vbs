@@ -11,7 +11,7 @@ Sub CreateLLMultiballMode()
             .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"))
             .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
 
-            .Add "mode_ll_multiball_started", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "disable_captive_ball_kicker_hold", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
+            .Add "mode_ll_multiball_started", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             
@@ -22,7 +22,9 @@ Sub CreateLLMultiballMode()
             .Add "logan_bumper_hit{current_player.mode_llmb_score>=" & LoganScoreToWin & "}", Array("logan_totally_bashed")
 
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", Array("release_scoop_hold")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1}", Array("logan_ball_captured")
+            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==0}", Array("logan_ball_captured")
+            ' The kick to the captive spot failed and the ball is back in the scoop: kick again, no second award.
+            .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", Array("capture_captive_ball")
         End With
 
         With .SoundPlayer()
@@ -110,7 +112,9 @@ Sub CreateLLMultiballMode()
         End With
 
         With .Multiballs("llmb")
-            .StartEvents = Array("all_balls_returned")
+            ' llmb_ready is posted from _configuration.vbs once the lock balls are back
+            ' and the captive ball has been freed, so this always counts three balls.
+            .StartEvents = Array("llmb_ready")
             .BallCount = 1
             .BallCountType = "add"
             .ShootAgain = 15000
