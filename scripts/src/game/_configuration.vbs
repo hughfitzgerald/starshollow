@@ -112,6 +112,22 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "return_captive_from_drain", "return_captive_from_drain_called", "ReturnCaptiveFromDrain", 100, Null
     AddPinEventListener "disable_captive_ramp_upper_kicker", "disable_captive_ramp_upper_kicker_called", "DisableCaptiveRampUpperKicker", 100, Null
 
+    ' Freeing the captive ball: confirm the kick, or repeat it if the ball drops back in.
+    AddPinEventListener "balldevice_captive_ramp_kicker_ball_eject_success", "captive_free_confirmed", "CaptiveFreeConfirmed", 100, Null
+    AddPinEventListener "balldevice_captive_ramp_kicker_ball_eject_failed", "captive_free_failed", "CaptiveFreeFailed", 100, Null
+
+    ' Send the captive ball home after a tilt or a cancelled game (see ZKIC).
+    AddPinEventListener "ball_ended", "captive_recovery_ball_ended", "CaptiveRecoveryStart", 100, Null
+    AddPinEventListener "reset_complete", "captive_recovery_reset", "CaptiveRecoveryStart", 100, Null
+    AddPinEventListener "tilt_mode_tilt_clear", "captive_recovery_tilt_clear", "CaptiveRecoveryAfterTilt", 100, Null
+
+    ' Logan multiball starts once the lock balls are back AND the captive ball is free.
+    AddPinEventListener "mode_ll_multiball_started", "llmb_ready_reset", "LlmbReadyReset", 100, Null
+    AddPinEventListener "all_balls_returned", "llmb_ready_balls_returned", "LlmbOnBallsReturned", 50, Null
+    AddPinEventListener "free_captive_ball", "llmb_ready_captive_freed", "LlmbOnCaptiveFreed", 50, Null
+
+    AddPinEventListener "game_started", "reset_ball_handling", "ResetBallHandlingState", 100, Null
+
 	AddPinEventListener "s_LeftInlane_active",  "left_inlane_speed_limit",  "LeftInlaneSpeedLimitListener",  100, Null
 	AddPinEventListener "s_RightInlane_active", "right_inlane_speed_limit", "RightInlaneSpeedLimitListener", 100, Null
 
@@ -213,6 +229,12 @@ Sub ConfigureGlfDevices()
 
     With CreateMachineVar("captive_ball_captive")   'tracks if the captive ball is currently captured
         .InitialValue = 1
+        .ValueType = "int"
+        .Persist = False
+    End With
+
+    With CreateMachineVar("captive_capture_pending")   '1 while a ball in the scoop is on its way to become the captive ball
+        .InitialValue = 0
         .ValueType = "int"
         .Persist = False
     End With
@@ -445,7 +467,7 @@ Sub ConfigureGlfDevices()
         .Debug = True
         .AutoFireOnUnexpectedBall = True
         ' .EjectAllEvents = Array("s_CaptiveRampKicker_active")
-        .EjectCallback = "CaptiveRampKickerEjectToCaptivity"
+        .EjectCallback = "CaptiveRampKickerEjectCallback"
 		.MechanicalEject = True
     End With
 
@@ -651,11 +673,51 @@ End Function
 Function EnableSubwayReturn(args)
     glf_subwayBallsReturning = glf_machine_vars("num_balls_locked").GetValue()
     If glf_subwayBallsReturning > 0 Then
-        AddPinEventListener GLF_BALL_DRAIN, "subway_return_claim", "SubwayReturnHandler", 500, Null
+        ' Above every other ball_drain listener (GLF's tilt handler is 999999), so a lock
+        ' ball coming back is never taken for a saved ball or a tilted ball being collected.
+        AddPinEventListener GLF_BALL_DRAIN, "subway_return_claim", "SubwayReturnHandler", 1000001, Null
     Else
         DispatchPinEvent "all_balls_returned", 100
     End If
 End Function
+
+' A game that ended while lock balls were still on their way back left the subway
+' counter above zero, and it then swallowed the next game's first drain.
+Function ResetBallHandlingState(args)
+    glf_subwayBallsReturning = 0
+    RemovePinEventListener GLF_BALL_DRAIN, "subway_return_claim"
+    captiveFreePending = False
+    glf_machine_vars("captive_capture_pending").Value = 0
+End Function
+
+' The Logan multiball adds one ball to whatever is in play, so it has to start after
+' the captive ball has been freed (and counted) and after the lock balls have drained.
+' Whichever of the two happens last posts llmb_ready.
+Dim llmbBallsReturned : llmbBallsReturned = False
+Dim llmbCaptiveFreed : llmbCaptiveFreed = False
+
+Function LlmbReadyReset(args)
+    llmbBallsReturned = False
+    llmbCaptiveFreed = False
+End Function
+
+Function LlmbOnBallsReturned(args)
+    llmbBallsReturned = True
+    LlmbCheckReady
+End Function
+
+Function LlmbOnCaptiveFreed(args)
+    llmbCaptiveFreed = True
+    LlmbCheckReady
+End Function
+
+Sub LlmbCheckReady()
+    If llmbBallsReturned And llmbCaptiveFreed Then
+        llmbBallsReturned = False
+        llmbCaptiveFreed = False
+        DispatchPinEvent "llmb_ready", Null
+    End If
+End Sub
 
 '======================================================
 '  Sounds - empty until you have real assets.
