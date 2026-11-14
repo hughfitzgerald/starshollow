@@ -107,6 +107,8 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "clear_multiball_locks", "clear_multiball_locks_called", "ClearMultiballLocksListener", 100, Null
     AddPinEventListener "clear_multiball_locks", "enable_subway_return", "EnableSubwayReturn", 100, Null
     AddPinEventListener "all_balls_returned", "lock_clear_done", "LockClearDone", 100, Null
+    AddPinEventListener "balldevice_lock1_ball_exiting", "lock1_kicker_ball_left", "LockKickerBallLeft", 100, Null
+    AddPinEventListener "balldevice_lock2_ball_exiting", "lock2_kicker_ball_left", "LockKickerBallLeft", 100, Null
     AddPinEventListener "balldevice_lock1_ball_entered", "lock1_clear_retry", "LockClearRetry", 90, Null
     AddPinEventListener "balldevice_lock2_ball_entered", "lock2_clear_retry", "LockClearRetry", 90, Null
 

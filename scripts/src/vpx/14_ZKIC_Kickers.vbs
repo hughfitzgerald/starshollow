@@ -214,22 +214,43 @@ Sub KickBall(kball, kangle, kvel, kvelz, kzlift)
 	kball.vely = Sin(rangle) * kvel
 End Sub
 
+' A lock kicker is only switched off once it is empty. A kicker that is switched off
+' while its ball is still leaving never reports the ball gone: the lock device then
+' keeps counting a ball it no longer has, and num_balls_locked stays one too high.
+' lock_unlit arrives in the same moment as the kick when Logan multiball clears the
+' locks and when Jess/Dean multiball starts, so the switch-off waits for the ball.
+Dim lockKickerDisablePending : lockKickerDisablePending = False
+
 Sub DisableMultiballLock(ball)
-	s_Lock1.Enabled = False
-	s_Lock2.Enabled = False
+	lockKickerDisablePending = True
+	DisableEmptyLockKickers
+End Sub
+
+Sub DisableEmptyLockKickers()
+	If Not lockKickerDisablePending Then Exit Sub
+	If s_Lock1.BallCntOver = 0 Then s_Lock1.Enabled = False
+	If s_Lock2.BallCntOver = 0 Then s_Lock2.Enabled = False
+End Sub
+
+' balldevice_lock1_ball_exiting / balldevice_lock2_ball_exiting
+Sub LockKickerBallLeft(args)
+	DisableEmptyLockKickers
 End Sub
 
 Sub EnableInitialMultiballLock(ball)
+	lockKickerDisablePending = False
 	s_Lock1.Enabled = True
 	s_Lock2.Enabled = False
 End Sub
 
 Sub EnableSecondMultiballLock(ball)
+	If lockKickerDisablePending Then Exit Sub
 	s_Lock1.Enabled = True
 	s_Lock2.Enabled = True
 End Sub
 
 Sub EnableThirdMultiballLock(ball)
+	If lockKickerDisablePending Then Exit Sub
 	s_Lock1.Enabled = True
 	s_Lock2.Enabled = True
 End Sub
