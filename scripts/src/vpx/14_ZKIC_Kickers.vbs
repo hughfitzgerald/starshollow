@@ -80,6 +80,17 @@ Sub CaptiveRecoveryStart(args)
 	SetDelay "captive_recovery", "CaptiveRecoveryCheck", Null, 300
 End Sub
 
+' reset_complete is a queue event. GLF expects a listener on a queue event to be a
+' Function that hands back the event's arguments, so this cannot be a plain Sub.
+Function CaptiveRecoveryOnReset(args)
+	CaptiveRecoveryStart Null
+	If IsObject(args(1)) Then
+		Set CaptiveRecoveryOnReset = args(1)
+	Else
+		CaptiveRecoveryOnReset = args(1)
+	End If
+End Function
+
 Sub CaptiveRecoveryCheck(args)
 	If glf_machine_vars("captive_ball_captive").GetValue() <> 0 Then Exit Sub
 	If glf_BIP > 0 Then Exit Sub

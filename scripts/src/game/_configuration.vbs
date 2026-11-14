@@ -121,7 +121,7 @@ Sub ConfigureGlfDevices()
 
     ' Send the captive ball home after a tilt or a cancelled game (see ZKIC).
     AddPinEventListener "ball_ended", "captive_recovery_ball_ended", "CaptiveRecoveryStart", 100, Null
-    AddPinEventListener "reset_complete", "captive_recovery_reset", "CaptiveRecoveryStart", 100, Null
+    AddPinEventListener "reset_complete", "captive_recovery_reset", "CaptiveRecoveryOnReset", 100, Null
     AddPinEventListener "tilt_mode_tilt_clear", "captive_recovery_tilt_clear", "CaptiveRecoveryAfterTilt", 100, Null
 
     ' Logan multiball starts once the lock balls are back AND the captive ball is free.
