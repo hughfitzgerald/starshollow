@@ -105,9 +105,9 @@ Sub CreateBasementMode()
             .StartValue = 1
             .EndValue = 0            ' End at 0
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
-            ' "restart", not "start": basement never stops, so the timer is never set back
-            ' to its start value. With "start" it ran for a second the first time only,
-            ' and after that completed at once and closed the subway diverter early.
+            ' "restart", not "start": basement never stops, so nothing else sets the timer
+            ' back to its start value. With "start" it would complete at once on every
+            ' clear after the first and close the subway diverter early.
             With .ControlEvents
                 .EventName = "clear_multiball_locks"
                 .Action = "restart"

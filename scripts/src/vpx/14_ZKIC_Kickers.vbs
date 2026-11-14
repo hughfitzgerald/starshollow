@@ -264,8 +264,6 @@ End Sub
 '   - the multiball lock is off, so a ball that drops back into a lock kicker is not
 '     counted as a new lock. The lock device ejects it again by itself.
 '   - a ball that drops back in reopens the subway diverter for the repeat kick
-' Before this, a ball that dropped back in was kicked again with the scoop callback
-' and came out of the scoop.
 Dim lockClearPending : lockClearPending = False
 Const LockClearTimeoutMs = 8000
 Const LockClearRetryDiverterMs = 2000
