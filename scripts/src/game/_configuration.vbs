@@ -819,6 +819,8 @@ Sub CreateSounds()
 
     AddCallout     "voc_ka_mothercanhear", 7
 
+    AddMusic       "mus_tm",  114, -1
+
     AddCallout     "voc_tm_central_nervous_system", 4
     AddCallout     "voc_tm_coffee_in_an_iv", 2
     AddCallout     "voc_tm_gavel_twinkle", 8
