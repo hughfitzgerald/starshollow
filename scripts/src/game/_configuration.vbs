@@ -111,6 +111,10 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "balldevice_lock2_ball_exiting", "lock2_kicker_ball_left", "LockKickerBallLeft", 100, Null
     AddPinEventListener "balldevice_lock1_ball_entered", "lock1_clear_retry", "LockClearRetry", 90, Null
     AddPinEventListener "balldevice_lock2_ball_entered", "lock2_clear_retry", "LockClearRetry", 90, Null
+    ' GLF knows a kicked ball that drops straight back in for the same ball: it posts
+    ' ball_eject_failed, not ball_entered, and kicks again after half a second.
+    AddPinEventListener "balldevice_lock1_ball_eject_failed", "lock1_clear_retry_failed", "LockClearRetry", 90, Null
+    AddPinEventListener "balldevice_lock2_ball_eject_failed", "lock2_clear_retry_failed", "LockClearRetry", 90, Null
 
     AddPinEventListener "free_captive_ball", "set_captive_ball_free", "SetCaptiveBallFreeListener", 100, Null
     AddPinEventListener "capture_captive_ball", "capture_captive_ball_called", "CaptureCaptiveBall", 100, Null
@@ -434,7 +438,9 @@ Sub ConfigureGlfDevices()
     With CreateGlfBallDevice("lock1")
         .Debug = True
         .BallSwitches = Array("s_Lock1")
-        .EjectTargets = Array("s_VUK1")
+        ' No EjectTargets: the lock kicks toward the scoop or down the subway, and
+        ' GLF now waits for the ejected ball itself on a target switch (20s before it
+        ' gives up). Without one, an eject counts once the ball has left and stayed out.
         .EjectCallback = "Lock1EjectCallback"
 		.MechanicalEject = True
     End With
@@ -442,7 +448,6 @@ Sub ConfigureGlfDevices()
     With CreateGlfBallDevice("lock2")
         .Debug = True
         .BallSwitches = Array("s_Lock2")
-        .EjectTargets = Array("s_Lock1")
         .EjectCallback = "Lock2EjectCallback"
 		.MechanicalEject = True
     End With
