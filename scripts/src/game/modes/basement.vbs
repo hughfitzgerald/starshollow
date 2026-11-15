@@ -24,22 +24,24 @@ Sub CreateBasementMode()
             'Handle tilt
             .Add "tilt", Array("kill_flippers","backglass_off")
 
-            .Add "s_add_credit_key_active", Array("add_credit")
-            .Add "s_add_credit_key2_active", Array("add_credit")
-
             'Start button DOF (E102) - is the start button going to do anything?
             ' Re-check whenever credits, players, ball or game state change.
             ' GLF queues posted events, so check_start_button is evaluated after
             ' the VariablePlayer below has applied the change that triggered it.
-            .Add "add_credit", Array("check_start_button")
+            .Add "credits_added", Array("check_start_button")
+            .Add "enabling_free_play", Array("check_start_button")
+            .Add "enabling_credit_play", Array("check_start_button")
             .Add "player_added", Array("check_start_button")
             .Add "game_started", Array("check_start_button")
             .Add "ball_started", Array("check_start_button")
             .Add "game_ended", Array("check_start_button")
-            ' Mirrors GLF: no game -> needs a credit. In a game -> needs a credit,
-            ' fewer than 4 players, and the current player still on ball 1.
-            .Add "check_start_button{machine.credits >= 1 and (machine.game_active == 0 or (machine.num_players < 4 and current_player.ball == 1))}", Array("start_button_available")
-            .Add "check_start_button{machine.credits < 1 or (machine.game_active == 1 and (machine.num_players >= 4 or current_player.ball > 1))}", Array("start_button_unavailable")
+            ' game.num_players is 0 when no game is running (GLF clears the players
+            ' before it posts game_ended).
+            ' Mirrors GLF: no game -> needs a credit (or free play). In a game -> needs
+            ' that, room for another player, and the current player still on ball 1.
+            ' The credits and the player limit are GLF's own (credits mode, game settings).
+            .Add "check_start_button{(machine.credits_whole_num >= 1 or machine.free_play == 1) and (game.num_players == 0 or (game.num_players < game.max_players and current_player.ball == 1))}", Array("start_button_available")
+            .Add "check_start_button{(machine.credits_whole_num < 1 and machine.free_play == 0) or (game.num_players > 0 and (game.num_players >= game.max_players or current_player.ball > 1))}", Array("start_button_unavailable")
 
             .Add "balldevice_lock1_ball_entered", Array("ball_locked")
             .Add "balldevice_lock2_ball_entered", Array("ball_locked")
@@ -47,8 +49,8 @@ Sub CreateBasementMode()
             .Add "balldevice_lock1_ball_exiting", Array("ball_unlocked")
             .Add "balldevice_lock2_ball_exiting", Array("ball_unlocked")
 
-            .Add "mode_eob_bonus_started", Array("clear_multiball_locks")
-            ' eob_bonus doesn't run on a tilted ball, so clear the locks here too -
+            .Add "bonus_start", Array("clear_multiball_locks")
+            ' The bonus isn't counted on a tilted ball, so clear the locks here too -
             ' otherwise the next player inherits balls they never locked.
             .Add "ball_ending{game.tilted == True}", Array("clear_multiball_locks")
             .Add "timer_clear_multiball_locks_complete", Array("multiball_locks_cleared")
@@ -123,12 +125,6 @@ Sub CreateBasementMode()
         End With
 
         With .VariablePlayer()
-            With .EventName("add_credit")
-                With .Variable("credits")
-                    .Action = "add_machine"
-                    .Int = 1
-                End With
-            End With
             With .EventName("ball_locked")
                 With .Variable("num_balls_locked")
                     .Action = "add_machine"
@@ -139,24 +135,6 @@ Sub CreateBasementMode()
                 With .Variable("num_balls_locked")
                     .Action = "add_machine"
                     .Int = -1
-                End With
-            End With
-            With .EventName("player_added")
-                With .Variable("num_players")
-                    .Action = "set_machine"
-                    .Int = "kwargs.num"
-                End With
-            End With
-            With .EventName("game_started")
-                With .Variable("game_active")
-                    .Action = "set_machine"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("game_ended")
-                With .Variable("game_active")
-                    .Action = "set_machine"
-                    .Int = 0
                 End With
             End With
         End With

@@ -132,7 +132,7 @@ Sub DmdTick_Score(entry)
   Set activeLeftScore = scene.GetGroup("ActiveLeftScore")
   Set inactiveLeftScore = scene.GetGroup("InactiveLeftScore")
 
-  scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   CREDITS " & glf_machine_vars("credits").GetValue()
+  scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   " & glf_machine_vars("credits_string").GetValue()
   
   scene.GetLabel("P1").Alignment = FlexDMD_Align_TopRight
   scene.GetLabel("P2").Visible = False
@@ -601,7 +601,7 @@ Sub DmdTick_GameOver(entry)
     label.SetBounds 0, 1, 128, 8
     label.Alignment = FlexDMD_Align_Center
 
-    numPlayers = glf_machine_vars("num_players").GetValue()
+    numPlayers = glf_machine_vars("last_game_players").GetValue()
 
     Set label = scene.GetLabel("go_big")
     If numPlayers <= 1 Then

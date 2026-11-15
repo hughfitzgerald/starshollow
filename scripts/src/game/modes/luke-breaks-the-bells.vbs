@@ -9,7 +9,7 @@ Sub CreateLbtbMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_lbtb")
-        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_lbtb_post_mode_complete")
+        .StopEvents = Array("mode_base_stopping", "bonus_start", "timer_lbtb_post_mode_complete")
 
         With .EventPlayer()
             .Add "mode_lbtb_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", "reset_bells", "play_lbtb_luke_and_lorelei", ModeSlideEvent("play_lbtb_mode_slide", "LUKE BREAKS THE BELLS!", "BREAK BELLS TO SCORE"))

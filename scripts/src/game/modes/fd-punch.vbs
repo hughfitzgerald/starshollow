@@ -14,7 +14,7 @@ Sub CreateFdPunchMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_fd_punch")
-        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_fd_punch_post_mode_complete")
+        .StopEvents = Array("mode_base_stopping", "bonus_start", "timer_fd_punch_post_mode_complete")
 
         With .EventPlayer()
             'Scoring

@@ -29,7 +29,7 @@ Sub CreateDanceMarathonMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_dance_marathon")
-        .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping", "mode_eob_bonus_started")
+        .StopEvents = Array("timer_dm_mode_complete", "mode_base_stopping", "bonus_start")
 
         With .EventPlayer()
             'Scoring

@@ -63,7 +63,7 @@ Sub CreateScoreMode()
             '         .Action = "set"
             '         .Int = 1
             '     End With
-            '     With .Variable("bonus_multiplier")
+            '     With .Variable("bonus_x")
             '         .Action = "set"
             '         .Int = 1
             '     End With
@@ -81,32 +81,32 @@ Sub CreateScoreMode()
             '     End With
             ' End With
             ' With .EventName("double_bonus_multiplier") 
-            '     With .Variable("bonus_multiplier")
+            '     With .Variable("bonus_x")
             '         .Action = "set"
             '         .Int = 2
             '     End With
             ' End With
 
             With .EventName("2x_qualified")
-                With .Variable("bonus_multiplier")
+                With .Variable("bonus_x")
                     .Action = "set"
                     .Int = 2
                 End With
             End With
             With .EventName("3x_qualified")
-                With .Variable("bonus_multiplier")
+                With .Variable("bonus_x")
                     .Action = "set"
                     .Int = 4
                 End With
             End With
             With .EventName("4x_qualified")
-                With .Variable("bonus_multiplier")
+                With .Variable("bonus_x")
                     .Action = "set"
                     .Int = 6
                 End With
             End With
             With .EventName("5x_qualified")
-                With .Variable("bonus_multiplier")
+                With .Variable("bonus_x")
                     .Action = "set"
                     .Int = 8
                 End With

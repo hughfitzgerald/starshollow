@@ -1,4 +1,4 @@
-' GLF build: hughfitzgerald/vpx-glf starshollow @ a1957dd (2026-11-14). Do not edit; see FORK.md in that repo.
+' GLF build: hughfitzgerald/vpx-glf starshollow @ 3d4bcb9 (2026-11-15). Do not edit; see FORK.md in that repo.
 'VPX Game Logic Framework (https://mpcarr.github.io/vpx-glf/)
 
 '
@@ -1916,6 +1916,10 @@ Function Glf_GameVariable(value)
 			Glf_GameVariable = glf_game.BallsPerGame()
 		Case "balls_in_play"
 			Glf_GameVariable = glf_BIP
+		Case "max_players"
+			Glf_GameVariable = glf_game.MaxPlayers()
+		Case "num_players"
+			Glf_GameVariable = Glf_PlayerCount()
 	End Select
 End Function
 
@@ -3470,17 +3474,7 @@ End Sub
 Sub Glf_BcpAddPlayer(playerNum)
     If useBcp Then
         bcpController.Send("player_added?player_num=int:"&playerNum)
-        dim p
-        Select Case playerNum
-            Case 1:
-                p = "PLAYER 1"
-            Case 2:
-                p = "PLAYER 2"
-            Case 3:
-                p = "PLAYER 3"
-            Case 4:
-                p = "PLAYER 4"
-        End Select
+        Dim p : p = "PLAYER " & playerNum
         Dim key, player_state
         Set player_state = glf_playerState(p)
         For Each key in player_state.Keys()
@@ -3982,6 +3976,30 @@ Function AchievementsHandler(args)
     Else
         AchievementsHandler = kwargs
     End If
+End Function
+
+' Attract mode, after MPF's built-in attract mode.
+'
+' EnableGlfAttract creates a mode called "attract" that runs whenever no game is in
+' progress: it starts on reset_complete and game_ended and stops on game_start.
+' It is an ordinary mode, so shows, sounds and slides are added to it in the usual
+' way, and like MPF's it can be a carousel, to step through attract screens.
+'
+' GLF's start button already posts request_to_start_game by itself, so unlike MPF's
+' attract mode this one has no part in starting a game.
+
+Dim glf_attract : glf_attract = Null
+
+Function EnableGlfAttract()
+    If IsNull(glf_attract) Then
+        Set glf_attract = CreateGlfMode("attract", 10)
+        ' The conditions keep the mode from being started a second time while it runs,
+        ' which happens after a cancelled game: game_ended is followed by reset_complete.
+        glf_attract.StartEvents = Array("reset_complete{modes.attract.active==False}", "game_ended{modes.attract.active==False}")
+        glf_attract.StopEvents = Array("game_start", "service_mode_entered")
+        glf_attract.GameMode = False
+    End If
+    Set EnableGlfAttract = glf_attract
 End Function
 
 
@@ -4688,6 +4706,765 @@ Function BallSaveEventHandler(args)
     End Select
     BallSaveEventHandler = ballsToSave
 End Function
+' End-of-ball bonus, after MPF's built-in bonus mode.
+'
+' EnableGlfBonus creates a mode called "bonus" that starts on ball_ending and holds
+' the end of the ball until the bonus has been counted. It walks through the bonus
+' entries one at a time, posting bonus_entry for each, then the subtotal, the
+' multiplier and the total, and adds the total to the player's score.
+
+Dim glf_bonus : glf_bonus = Null
+
+Function EnableGlfBonus()
+    If Not IsNull(glf_bonus) Then
+        Set EnableGlfBonus = glf_bonus
+        Exit Function
+    End If
+    Dim bonus_mode : Set bonus_mode = CreateGlfMode("bonus", 500)
+    bonus_mode.StartEvents = Array("ball_ending")
+    bonus_mode.UseWaitQueue = True
+    Set glf_bonus = (new GlfBonus)(bonus_mode)
+    bonus_mode.AddModeSettings "bonus", glf_bonus
+    Set EnableGlfBonus = glf_bonus
+End Function
+
+Class GlfBonusEntry
+
+    Private m_entry
+    Private m_text
+    Private m_score
+    Private m_player_score_entry
+    Private m_reset_player_score_entry
+    Private m_skip_if_zero
+    Private m_skip_if_negative
+
+    Public Property Get Entry() : Entry = m_entry : End Property
+    Public Property Get Text() : Text = m_text : End Property
+    Public Property Let Text(value) : m_text = value : End Property
+    Public Property Get Score() : Score = m_score.Value : End Property
+    Public Property Get ScoreRaw() : ScoreRaw = m_score.Raw : End Property
+    Public Property Let Score(value) : Set m_score = CreateGlfInput(value) : End Property
+    Public Property Get PlayerScoreEntry() : PlayerScoreEntry = m_player_score_entry : End Property
+    Public Property Let PlayerScoreEntry(value) : m_player_score_entry = value : End Property
+    Public Property Get ResetPlayerScoreEntry() : ResetPlayerScoreEntry = m_reset_player_score_entry : End Property
+    Public Property Let ResetPlayerScoreEntry(value) : m_reset_player_score_entry = value : End Property
+    Public Property Get SkipIfZero() : SkipIfZero = m_skip_if_zero : End Property
+    Public Property Let SkipIfZero(value) : m_skip_if_zero = value : End Property
+    Public Property Get SkipIfNegative() : SkipIfNegative = m_skip_if_negative : End Property
+    Public Property Let SkipIfNegative(value) : m_skip_if_negative = value : End Property
+
+	Public default Function init(entry_name)
+        m_entry = entry_name
+        m_text = Empty
+        Set m_score = CreateGlfInput(0)
+        m_player_score_entry = Empty
+        m_reset_player_score_entry = False
+        m_skip_if_zero = True
+        m_skip_if_negative = False
+        Set Init = Me
+	End Function
+
+    Public Function ToYaml()
+        Dim yaml
+        yaml = "    - entry: " & m_entry & vbCrLf
+        yaml = yaml & "      score: " & m_score.Raw & vbCrLf
+        If Not IsEmpty(m_text) Then
+            yaml = yaml & "      text: " & m_text & vbCrLf
+        End If
+        If Not IsEmpty(m_player_score_entry) Then
+            yaml = yaml & "      player_score_entry: " & m_player_score_entry & vbCrLf
+        End If
+        If m_reset_player_score_entry = True Then
+            yaml = yaml & "      reset_player_score_entry: true" & vbCrLf
+        End If
+        If m_skip_if_zero = False Then
+            yaml = yaml & "      skip_if_zero: false" & vbCrLf
+        End If
+        If m_skip_if_negative = True Then
+            yaml = yaml & "      skip_if_negative: true" & vbCrLf
+        End If
+        ToYaml = yaml
+    End Function
+End Class
+
+Class GlfBonus
+
+    Private m_name
+    Private m_priority
+    Private m_base_device
+    Private m_debug
+
+    Private m_entries
+    Private m_display_delay_ms
+    Private m_hurry_up_delay_ms
+    Private m_hurry_up_event
+    Private m_end_bonus_event
+    Private m_keep_multiplier
+    Private m_rounding_value
+    Private m_rounding_direction
+
+    Private m_running
+    Private m_bonus_score
+    Private m_current_delay
+    Private m_next_entry
+    Private m_next_step
+
+    Public Property Get Name() : Name = m_name : End Property
+    Public Property Get Mode() : Set Mode = m_base_device.Mode : End Property
+    Public Property Get BonusScore() : BonusScore = m_bonus_score : End Property
+    Public Property Get Running() : Running = m_running : End Property
+
+    ' Entries are counted in the order they are first named
+    Public Property Get Entries(entry_name)
+        If entry_name = "subtotal" Or entry_name = "multiplier" Or entry_name = "total" Then
+            Err.Raise vbObjectError + 1, "GlfBonus", "Bonus entry cannot be the reserved word '" & entry_name & "'"
+        End If
+        If Not m_entries.Exists(entry_name) Then
+            m_entries.Add entry_name, (new GlfBonusEntry)(entry_name)
+        End If
+        Set Entries = m_entries(entry_name)
+    End Property
+
+    Public Property Let DisplayDelayMs(value) : m_display_delay_ms = value : End Property
+    Public Property Let HurryUpDelayMs(value) : m_hurry_up_delay_ms = value : End Property
+    Public Property Let HurryUpEvent(value)
+        If IsEmpty(value) Or IsNull(value) Then
+            m_hurry_up_event = Null
+        Else
+            Set m_hurry_up_event = (new GlfEvent)(value)
+        End If
+    End Property
+    Public Property Let EndBonusEvent(value)
+        If IsEmpty(value) Or IsNull(value) Then
+            m_end_bonus_event = Null
+        Else
+            Set m_end_bonus_event = (new GlfEvent)(value)
+        End If
+    End Property
+    Public Property Let KeepMultiplier(value) : m_keep_multiplier = value : End Property
+    Public Property Let RoundingValue(value) : m_rounding_value = value : End Property
+    Public Property Let RoundingDirection(value) : m_rounding_direction = LCase(value) : End Property
+
+    Public Property Let Debug(value)
+        m_debug = value
+        m_base_device.Debug = value
+    End Property
+    Public Property Get IsDebug()
+        If m_debug Then : IsDebug = 1 : Else : IsDebug = 0 : End If
+    End Property
+
+	Public default Function init(mode)
+        m_name = "bonus"
+        m_priority = mode.Priority
+        m_debug = False
+        Set m_entries = CreateObject("Scripting.Dictionary")
+        m_display_delay_ms = 2000
+        m_hurry_up_delay_ms = 500
+        Set m_hurry_up_event = (new GlfEvent)("flipper_cancel")
+        m_end_bonus_event = Null
+        m_keep_multiplier = False
+        m_rounding_value = 0
+        m_rounding_direction = "up"
+        m_running = False
+        m_bonus_score = 0
+        m_current_delay = 0
+        m_next_entry = 0
+        m_next_step = ""
+        Set m_base_device = (new GlfBaseModeDevice)(mode, "bonus", Me)
+        Set Init = Me
+	End Function
+
+    ' Called by the base mode device when the bonus mode starts
+    Public Sub Activate()
+        m_running = False
+        If glf_gameStarted = False Or IsNull(glf_currentPlayer) Then
+            Log "No game is running. Skipping bonus."
+            m_base_device.Mode.StopMode
+            Exit Sub
+        End If
+        If glf_gameTilted = True Then
+            Log "The game is tilted. Skipping bonus."
+            ResetAllScores()
+            m_base_device.Mode.StopMode
+            Exit Sub
+        End If
+
+        m_running = True
+        m_bonus_score = 0
+        m_next_entry = 0
+        m_current_delay = m_display_delay_ms
+
+        If Not IsNull(m_hurry_up_event) Then
+            AddPinEventListener m_hurry_up_event.EventName, m_name & "_hurry_up", "BonusEventHandler", m_priority+m_hurry_up_event.Priority, Array("hurry_up", Me, m_hurry_up_event)
+        End If
+        If Not IsNull(m_end_bonus_event) Then
+            AddPinEventListener m_end_bonus_event.EventName, m_name & "_end_bonus", "BonusEventHandler", m_priority+m_end_bonus_event.Priority, Array("end_bonus", Me, m_end_bonus_event)
+        End If
+
+        Glf_BcpSendEvent "bonus_start", Null
+        DispatchPinEvent "bonus_start", Null
+        Schedule "next_item"
+    End Sub
+
+    ' Called by the base mode device when the bonus mode stops
+    Public Sub Deactivate()
+        RemoveDelay m_name & "_step"
+        If Not IsNull(m_hurry_up_event) Then
+            RemovePinEventListener m_hurry_up_event.EventName, m_name & "_hurry_up"
+        End If
+        If Not IsNull(m_end_bonus_event) Then
+            RemovePinEventListener m_end_bonus_event.EventName, m_name & "_end_bonus"
+        End If
+        m_running = False
+        m_next_step = ""
+    End Sub
+
+    Public Sub Enable()
+    End Sub
+
+    Public Sub Disable()
+    End Sub
+
+    Private Sub Schedule(next_step)
+        m_next_step = next_step
+        SetDelay m_name & "_step", "BonusEventHandler", Array(Array("step", Me), Null), m_current_delay
+    End Sub
+
+    ' Runs whichever step is waiting
+    Public Sub RunStep()
+        Dim next_step : next_step = m_next_step
+        m_next_step = ""
+        Select Case next_step
+            Case "next_item"
+                NextItem()
+            Case "multiplier"
+                DoMultiplier()
+            Case "total"
+                TotalBonus()
+            Case "end"
+                EndBonus()
+        End Select
+    End Sub
+
+    ' Switch to the shorter delay and move on at once
+    Public Sub HurryUp()
+        If Not m_running Then
+            Exit Sub
+        End If
+        Log "Hurry up"
+        m_current_delay = m_hurry_up_delay_ms
+        If m_next_step <> "" Then
+            RemoveDelay m_name & "_step"
+            RunStep()
+        End If
+    End Sub
+
+    ' Entries that reset are cleared without being scored, as after a tilt
+    Private Sub ResetAllScores()
+        If IsNull(glf_currentPlayer) Then
+            Exit Sub
+        End If
+        Dim bonus_entry
+        For Each bonus_entry in m_entries.Items()
+            If bonus_entry.ResetPlayerScoreEntry = True And Not IsEmpty(bonus_entry.PlayerScoreEntry) Then
+                SetPlayerState bonus_entry.PlayerScoreEntry, 0
+            End If
+        Next
+    End Sub
+
+    Private Function PlayerNumber(var_name, default_value)
+        Dim value : value = GetPlayerState(var_name)
+        If IsEmpty(value) Or IsNull(value) Or VarType(value) = vbBoolean Or VarType(value) = vbString Then
+            If VarType(value) = vbString Then
+                If IsNumeric(value) Then
+                    PlayerNumber = CDbl(value)
+                    Exit Function
+                End If
+            End If
+            PlayerNumber = default_value
+        Else
+            PlayerNumber = value
+        End If
+    End Function
+
+    Private Sub NextItem()
+        Dim items : items = m_entries.Items()
+        Do While m_next_entry <= UBound(items)
+            Dim bonus_entry : Set bonus_entry = items(m_next_entry)
+            m_next_entry = m_next_entry + 1
+
+            Dim hits : hits = 1
+            If Not IsEmpty(bonus_entry.PlayerScoreEntry) Then
+                hits = PlayerNumber(bonus_entry.PlayerScoreEntry, 0)
+            End If
+            Dim score : score = bonus_entry.Score * hits
+
+            If (score = 0 And bonus_entry.SkipIfZero) Or (score < 0 And bonus_entry.SkipIfNegative) Then
+                Log "Skipping bonus entry '" & bonus_entry.Entry & "'"
+            Else
+                If m_rounding_value > 0 Then
+                    Dim remainder : remainder = score - (m_rounding_value * Int(score / m_rounding_value))
+                    If remainder <> 0 Then
+                        If m_rounding_direction = "down" Then
+                            score = score - remainder
+                        Else
+                            score = score + m_rounding_value - remainder
+                        End If
+                    End If
+                End If
+                m_bonus_score = m_bonus_score + score
+                Log "Bonus entry '" & bonus_entry.Entry & "': score " & score & ", hits " & hits
+
+                Dim kwargs : Set kwargs = GlfKwargs()
+                kwargs.Add "entry", bonus_entry.Entry
+                kwargs.Add "score", score
+                kwargs.Add "text", bonus_entry.Text
+                kwargs.Add "bonus_score", m_bonus_score
+                kwargs.Add "hits", hits
+                Glf_BcpSendEvent "bonus_entry", kwargs
+                DispatchPinEvent "bonus_entry", kwargs
+
+                If bonus_entry.ResetPlayerScoreEntry = True And Not IsEmpty(bonus_entry.PlayerScoreEntry) Then
+                    SetPlayerState bonus_entry.PlayerScoreEntry, 0
+                End If
+                Schedule "next_item"
+                Exit Sub
+            End If
+        Loop
+        Subtotal()
+    End Sub
+
+    Private Sub PostSummary(entry_name, text, score)
+        Dim kwargs : Set kwargs = GlfKwargs()
+        kwargs.Add "entry", entry_name
+        kwargs.Add "text", text
+        kwargs.Add "score", score
+        Glf_BcpSendEvent "bonus_entry", kwargs
+        DispatchPinEvent "bonus_entry", kwargs
+    End Sub
+
+    Private Sub Subtotal()
+        If PlayerNumber("bonus_multiplier", 1) = 1 Then
+            ' Nothing to multiply: go straight to the total
+            TotalBonus()
+        Else
+            Log "Bonus subtotal: " & m_bonus_score
+            PostSummary "subtotal", "Subtotal", m_bonus_score
+            Schedule "multiplier"
+        End If
+    End Sub
+
+    Private Sub DoMultiplier()
+        Dim multiplier : multiplier = PlayerNumber("bonus_multiplier", 1)
+        Log "Bonus multiplier: " & multiplier
+        PostSummary "multiplier", "Multiplier", multiplier
+        m_bonus_score = m_bonus_score * multiplier
+        Schedule "total"
+    End Sub
+
+    Private Sub TotalBonus()
+        SetPlayerState GLF_SCORE, GetPlayerState(GLF_SCORE) + m_bonus_score
+        Log "Bonus total: " & m_bonus_score
+        PostSummary "total", "Total Bonus", m_bonus_score
+        If IsNull(m_end_bonus_event) Then
+            Schedule "end"
+        End If
+    End Sub
+
+    Public Sub EndBonus()
+        If Not m_running Then
+            Exit Sub
+        End If
+        Log "Bonus done"
+        m_running = False
+        If m_keep_multiplier = False Then
+            SetPlayerState "bonus_multiplier", 1
+        End If
+        m_base_device.Mode.StopMode
+    End Sub
+
+    Private Sub Log(message)
+        If m_debug = True Then
+            glf_debugLog.WriteToLog m_name, message
+        End If
+    End Sub
+
+    ' Lines for the mode_settings section of the exported bonus mode
+    Public Function ModeSettingsYaml()
+        Dim yaml, bonus_entry
+        yaml = "  display_delay_ms: " & m_display_delay_ms & vbCrLf
+        yaml = yaml & "  hurry_up_delay_ms: " & m_hurry_up_delay_ms & vbCrLf
+        If Not IsNull(m_hurry_up_event) Then
+            yaml = yaml & "  hurry_up_event: " & m_hurry_up_event.Raw & vbCrLf
+        End If
+        If Not IsNull(m_end_bonus_event) Then
+            yaml = yaml & "  end_bonus_event: " & m_end_bonus_event.Raw & vbCrLf
+        End If
+        yaml = yaml & "  keep_multiplier: " & LCase(CStr(m_keep_multiplier)) & vbCrLf
+        If m_rounding_value > 0 Then
+            yaml = yaml & "  rounding_value: " & m_rounding_value & vbCrLf
+            yaml = yaml & "  rounding_direction: " & m_rounding_direction & vbCrLf
+        End If
+        yaml = yaml & "  bonus_entries:" & vbCrLf
+        For Each bonus_entry in m_entries.Items()
+            yaml = yaml & bonus_entry.ToYaml()
+        Next
+        ModeSettingsYaml = yaml
+    End Function
+End Class
+
+Function BonusEventHandler(args)
+    Dim ownProps, kwargs : ownProps = args(0)
+    If IsObject(args(1)) Then
+        Set kwargs = args(1)
+    Else
+        kwargs = args(1)
+    End If
+    Dim evt : evt = ownProps(0)
+    Dim bonus : Set bonus = ownProps(1)
+    Select Case evt
+        Case "step"
+            bonus.RunStep
+        Case "hurry_up"
+            If ownProps(2).Evaluate() Then
+                bonus.HurryUp
+            End If
+        Case "end_bonus"
+            If ownProps(2).Evaluate() Then
+                bonus.EndBonus
+            End If
+    End Select
+    If IsObject(args(1)) Then
+        Set BonusEventHandler = kwargs
+    Else
+        BonusEventHandler = kwargs
+    End If
+End Function
+
+' Carousel: a mode that lets the player step through a list of items and select one.
+' After MPF's carousel mode. Used for mode select screens, attract screens and menus.
+'
+' Any mode becomes a carousel by configuring its .Carousel(). While the mode runs,
+' one item is highlighted. Events move the highlight forwards and backwards, and an
+' event selects the highlighted item. What an item means is up to the table: start a
+' mode on carousel_item_selected, show a slide on carousel_item_highlighted.
+
+Class GlfCarousel
+
+    Private m_name
+    Private m_carousel_name
+    Private m_priority
+    Private m_base_device
+    Private m_debug
+
+    Private m_all_items
+    Private m_select_item_events
+    Private m_next_item_events
+    Private m_previous_item_events
+    Private m_block_events
+    Private m_release_events
+    Private m_wrap_items
+
+    Private m_items
+    Private m_highlighted_item_index
+    Private m_done
+    Private m_is_blocking
+    Private m_running
+
+    Public Property Get Name() : Name = m_name : End Property
+    Public Property Get Mode() : Set Mode = m_base_device.Mode : End Property
+
+    ' The name of the highlighted item, or "" when the carousel is not running
+    Public Property Get HighlightedItem()
+        HighlightedItem = ""
+        If m_running Then
+            HighlightedItem = m_items(m_highlighted_item_index)
+        End If
+    End Property
+
+    Public Property Get GetValue(value)
+        Select Case value
+            Case "highlighted_item"
+                GetValue = HighlightedItem
+            Case "done"
+                GetValue = m_done
+        End Select
+    End Property
+
+    ' Item names. An item may carry a condition, "bonus_round{current_player.level>2}",
+    ' and is then only offered when the condition is true as the mode starts.
+    Public Property Let SelectableItems(value)
+        Dim x
+        m_all_items = Array()
+        For x = 0 To UBound(value)
+            ReDim Preserve m_all_items(x)
+            Set m_all_items(x) = (new GlfEvent)(value(x))
+        Next
+    End Property
+    Public Property Let SelectItemEvents(value) : AddGlfEvents m_select_item_events, value : End Property
+    Public Property Let NextItemEvents(value) : AddGlfEvents m_next_item_events, value : End Property
+    Public Property Let PreviousItemEvents(value) : AddGlfEvents m_previous_item_events, value : End Property
+    Public Property Let BlockEvents(value) : AddGlfEvents m_block_events, value : End Property
+    Public Property Let ReleaseEvents(value) : AddGlfEvents m_release_events, value : End Property
+    Public Property Let WrapItems(value) : m_wrap_items = value : End Property
+
+    Public Property Let Debug(value)
+        m_debug = value
+        m_base_device.Debug = value
+    End Property
+    Public Property Get IsDebug()
+        If m_debug Then : IsDebug = 1 : Else : IsDebug = 0 : End If
+    End Property
+
+	Public default Function init(mode)
+        m_carousel_name = mode.ModeName
+        m_name = "carousel_" & mode.ModeName
+        m_priority = mode.Priority
+        m_debug = False
+        m_all_items = Array()
+        Set m_select_item_events = CreateObject("Scripting.Dictionary")
+        Set m_next_item_events = CreateObject("Scripting.Dictionary")
+        Set m_previous_item_events = CreateObject("Scripting.Dictionary")
+        Set m_block_events = CreateObject("Scripting.Dictionary")
+        Set m_release_events = CreateObject("Scripting.Dictionary")
+        m_wrap_items = True
+        m_items = Array()
+        m_highlighted_item_index = 0
+        m_done = False
+        m_is_blocking = False
+        m_running = False
+        Set m_base_device = (new GlfBaseModeDevice)(mode, "carousel", Me)
+        Set Init = Me
+	End Function
+
+    Private Sub AddGlfEvents(dict, value)
+        Dim x
+        For x=0 to UBound(value)
+            Dim newEvent : Set newEvent = (new GlfEvent)(value(x))
+            If Not dict.Exists(newEvent.Raw) Then
+                dict.Add newEvent.Raw, newEvent
+            End If
+        Next
+    End Sub
+
+    Private Sub AddHandlers(dict, action, priority_bump)
+        Dim evt
+        For Each evt in dict.Keys
+            AddPinEventListener dict(evt).EventName, m_name & "_" & evt & "_" & action, "CarouselEventHandler", m_priority+dict(evt).Priority+priority_bump, Array(action, Me, dict(evt))
+        Next
+    End Sub
+
+    Private Sub RemoveHandlers(dict, action)
+        Dim evt
+        For Each evt in dict.Keys
+            RemovePinEventListener dict(evt).EventName, m_name & "_" & evt & "_" & action
+        Next
+    End Sub
+
+    ' Called by the base mode device when the mode starts
+    Public Sub Activate()
+        Dim x
+        m_running = False
+        m_items = Array()
+        For x = 0 To UBound(m_all_items)
+            If m_all_items(x).Evaluate() Then
+                ReDim Preserve m_items(UBound(m_items) + 1)
+                m_items(UBound(m_items)) = m_all_items(x).EventName
+            End If
+        Next
+        If UBound(m_all_items) = -1 Then
+            ' Nothing to choose from: the mode runs as a plain mode
+            Exit Sub
+        End If
+        If UBound(m_items) = -1 Then
+            Log "Every item's condition is false. Stopping."
+            Dim kwargs : Set kwargs = GlfKwargs()
+            kwargs.Add "carousel", m_carousel_name
+            Glf_BcpSendEvent "carousel_items_empty", kwargs
+            DispatchPinEvent "carousel_items_empty", kwargs
+            m_base_device.Mode.StopMode
+            Exit Sub
+        End If
+
+        m_running = True
+        m_done = False
+        m_is_blocking = False
+        AddHandlers m_next_item_events, "next", 0
+        AddHandlers m_previous_item_events, "previous", 0
+        AddHandlers m_select_item_events, "select", 0
+        AddHandlers m_block_events, "block", 100
+        AddHandlers m_release_events, "release", 100
+        m_highlighted_item_index = 0
+        UpdateHighlightedItem Null
+    End Sub
+
+    ' Called by the base mode device when the mode stops
+    Public Sub Deactivate()
+        RemoveHandlers m_next_item_events, "next"
+        RemoveHandlers m_previous_item_events, "previous"
+        RemoveHandlers m_select_item_events, "select"
+        RemoveHandlers m_block_events, "block"
+        RemoveHandlers m_release_events, "release"
+        m_running = False
+    End Sub
+
+    Public Sub Enable()
+    End Sub
+
+    Public Sub Disable()
+    End Sub
+
+    Private Sub UpdateHighlightedItem(direction)
+        Dim item : item = m_items(m_highlighted_item_index)
+        Log "Highlighted item: " & item
+        Dim kwargs : Set kwargs = GlfKwargs()
+        kwargs.Add "carousel", m_carousel_name
+        kwargs.Add "direction", direction
+        kwargs.Add "item", item
+        Glf_BcpSendEvent "carousel_item_highlighted", kwargs
+        DispatchPinEvent "carousel_item_highlighted", kwargs
+        ' The same thing with the names in the event, which is easier to hang a player on
+        DispatchPinEvent m_carousel_name & "_" & item & "_highlighted", kwargs
+    End Sub
+
+    Public Sub NextItem()
+        If Not m_running Or m_done Or m_is_blocking Then
+            Exit Sub
+        End If
+        m_highlighted_item_index = m_highlighted_item_index + 1
+        If m_highlighted_item_index > UBound(m_items) Then
+            If Not m_wrap_items Then
+                m_highlighted_item_index = m_highlighted_item_index - 1
+                Exit Sub
+            End If
+            m_highlighted_item_index = 0
+        End If
+        UpdateHighlightedItem "forwards"
+    End Sub
+
+    Public Sub PreviousItem()
+        If Not m_running Or m_done Or m_is_blocking Then
+            Exit Sub
+        End If
+        m_highlighted_item_index = m_highlighted_item_index - 1
+        If m_highlighted_item_index < 0 Then
+            If Not m_wrap_items Then
+                m_highlighted_item_index = 0
+                Exit Sub
+            End If
+            m_highlighted_item_index = UBound(m_items)
+        End If
+        UpdateHighlightedItem "backwards"
+    End Sub
+
+    Public Sub SelectItem()
+        If Not m_running Or m_done Then
+            Exit Sub
+        End If
+        Dim item : item = m_items(m_highlighted_item_index)
+        Log "Selected item: " & item
+        m_done = True
+        Dim kwargs : Set kwargs = GlfKwargs()
+        kwargs.Add "carousel", m_carousel_name
+        kwargs.Add "item", item
+        Glf_BcpSendEvent "carousel_item_selected", kwargs
+        DispatchPinEvent "carousel_item_selected", kwargs
+        DispatchPinEvent m_carousel_name & "_" & item & "_selected", kwargs
+    End Sub
+
+    ' While blocked the highlight does not move. Selecting still works.
+    Public Sub Block()
+        m_is_blocking = True
+    End Sub
+
+    Public Sub Release()
+        m_is_blocking = False
+    End Sub
+
+    Private Sub Log(message)
+        If m_debug = True Then
+            glf_debugLog.WriteToLog m_name, message
+        End If
+    End Sub
+
+    Private Function EventsYaml(dict)
+        Dim yaml, key, y : y = 0
+        For Each key in dict.Keys
+            yaml = yaml & Replace(Replace(key, "&&", "and"), "||", "or")
+            If y <> UBound(dict.Keys) Then
+                yaml = yaml & ", "
+            End If
+            y = y + 1
+        Next
+        EventsYaml = yaml
+    End Function
+
+    ' Lines for the mode_settings section of the exported mode
+    Public Function ModeSettingsYaml()
+        Dim yaml, x
+        yaml = ""
+        If UBound(m_all_items) > -1 Then
+            yaml = yaml & "  selectable_items: "
+            For x = 0 To UBound(m_all_items)
+                yaml = yaml & Replace(Replace(m_all_items(x).Raw, "&&", "and"), "||", "or")
+                If x <> UBound(m_all_items) Then
+                    yaml = yaml & ", "
+                End If
+            Next
+            yaml = yaml & vbCrLf
+        End If
+        If UBound(m_select_item_events.Keys) > -1 Then
+            yaml = yaml & "  select_item_events: " & EventsYaml(m_select_item_events) & vbCrLf
+        End If
+        If UBound(m_next_item_events.Keys) > -1 Then
+            yaml = yaml & "  next_item_events: " & EventsYaml(m_next_item_events) & vbCrLf
+        End If
+        If UBound(m_previous_item_events.Keys) > -1 Then
+            yaml = yaml & "  previous_item_events: " & EventsYaml(m_previous_item_events) & vbCrLf
+        End If
+        If UBound(m_block_events.Keys) > -1 Then
+            yaml = yaml & "  block_events: " & EventsYaml(m_block_events) & vbCrLf
+        End If
+        If UBound(m_release_events.Keys) > -1 Then
+            yaml = yaml & "  release_events: " & EventsYaml(m_release_events) & vbCrLf
+        End If
+        If m_wrap_items = False Then
+            yaml = yaml & "  wrap_items: false" & vbCrLf
+        End If
+        ModeSettingsYaml = yaml
+    End Function
+End Class
+
+Function CarouselEventHandler(args)
+    Dim ownProps, kwargs : ownProps = args(0)
+    If IsObject(args(1)) Then
+        Set kwargs = args(1)
+    Else
+        kwargs = args(1)
+    End If
+    Dim evt : evt = ownProps(0)
+    Dim carousel : Set carousel = ownProps(1)
+    If ownProps(2).Evaluate() Then
+        Select Case evt
+            Case "next"
+                carousel.NextItem
+            Case "previous"
+                carousel.PreviousItem
+            Case "select"
+                carousel.SelectItem
+            Case "block"
+                carousel.Block
+            Case "release"
+                carousel.Release
+        End Select
+    End If
+    If IsObject(args(1)) Then
+        Set CarouselEventHandler = kwargs
+    Else
+        CarouselEventHandler = kwargs
+    End If
+End Function
+
 
 
 Class GlfComboSwitches
@@ -5546,6 +6323,722 @@ Class GlfCounterControlEvent
     End Function
 
 End Class
+' Credits (coin play), after MPF's built-in credits mode.
+'
+' EnableGlfCredits creates a mode called "credits" that runs from reset_complete. On
+' free play it only keeps the credit strings up to date. On credit play it counts money
+' from the coin switches, turns it into credits through the pricing tiers, refuses to
+' start a game or add a player without a credit, and takes one credit per player.
+'
+' Not carried over from MPF: the earnings audits and the coin inhibit output.
+
+Dim glf_credits : glf_credits = Null
+
+Function EnableGlfCredits()
+    If Not IsNull(glf_credits) Then
+        Set EnableGlfCredits = glf_credits
+        Exit Function
+    End If
+    Dim credits_mode : Set credits_mode = CreateGlfMode("credits", 1000010)
+    credits_mode.StartEvents = Array("reset_complete")
+    credits_mode.GameMode = False
+    Set glf_credits = (new GlfCredits)(credits_mode)
+    Set EnableGlfCredits = glf_credits
+End Function
+
+' A coin switch: each closure is worth Value in money
+Class GlfCreditsSwitch
+    Private m_switch, m_value, m_type, m_label
+    Public Property Get Switch() : Switch = m_switch : End Property
+    Public Property Get Value() : Value = m_value : End Property
+    Public Property Let Value(input) : m_value = input : End Property
+    Public Property Get SwitchType() : SwitchType = m_type : End Property
+    Public Property Let SwitchType(input) : m_type = input : End Property
+    Public Property Get Label() : Label = m_label : End Property
+    Public Property Let Label(input) : m_label = input : End Property
+	Public default Function init(switch_name)
+        m_switch = switch_name
+        m_value = 0.25
+        m_type = "money"
+        m_label = Empty
+        Set Init = Me
+	End Function
+End Class
+
+' An event that awards credits directly, such as a replay or a match
+Class GlfCreditsEvent
+    Private m_event, m_credits, m_type
+    Public Property Get EventObject() : Set EventObject = m_event : End Property
+    Public Property Get Credits() : Credits = m_credits : End Property
+    Public Property Let Credits(input) : m_credits = input : End Property
+    Public Property Get EventType() : EventType = m_type : End Property
+    Public Property Let EventType(input) : m_type = input : End Property
+	Public default Function init(event_name)
+        Set m_event = (new GlfEvent)(event_name)
+        m_credits = 0.25
+        m_type = "replay"
+        Set Init = Me
+	End Function
+End Class
+
+Class GlfCredits
+
+    Private m_name
+    Private m_priority
+    Private m_base_device
+    Private m_debug
+
+    Private m_max_credits
+    Private m_free_play
+    Private m_service_credits_switches
+    Private m_fractional_credit_expiration_time
+    Private m_credit_expiration_time
+    Private m_persist_credits
+    Private m_free_play_string
+    Private m_credits_string
+    Private m_price_tier_template
+    Private m_switches
+    Private m_events
+    Private m_tier_prices
+    Private m_tier_credits
+    Private m_reset_credits_events
+
+    Private m_active
+    Private m_credit_play_active
+    Private m_credit_unit
+    Private m_credit_units_per_game
+    Private m_pricing_table
+    Private m_pricing_tiers_wrap_around
+    Private m_credit_units_for_pricing_tiers
+    Private m_reset_pricing_tier_count_this_game
+
+    Public Property Get Name() : Name = m_name : End Property
+    Public Property Get Mode() : Set Mode = m_base_device.Mode : End Property
+    Public Property Get FreePlay() : FreePlay = m_free_play : End Property
+    Public Property Get CreditUnits() : CreditUnits = GetCreditUnits() : End Property
+    Public Property Get CreditUnitsPerGame() : CreditUnitsPerGame = m_credit_units_per_game : End Property
+
+    Public Property Get GetValue(value)
+        Select Case value
+            Case "free_play"
+                GetValue = m_free_play
+            Case "credit_units"
+                GetValue = GetCreditUnits()
+            Case "credits"
+                GetValue = glf_machine_vars("credits_whole_num").Value
+        End Select
+    End Property
+
+    Public Property Let MaxCredits(value) : m_max_credits = value : End Property
+    Public Property Let FreePlay(value) : m_free_play = value : End Property
+    Public Property Let ServiceCreditsSwitch(value)
+        If IsArray(value) Then
+            m_service_credits_switches = value
+        Else
+            m_service_credits_switches = Array(value)
+        End If
+    End Property
+    Public Property Let FractionalCreditExpirationTime(value) : m_fractional_credit_expiration_time = value : End Property
+    Public Property Let CreditExpirationTime(value) : m_credit_expiration_time = value : End Property
+    ' Keep the credits on the machine when the table is closed
+    Public Property Let PersistCredits(value)
+        m_persist_credits = value
+        glf_machine_vars("credit_units").Persist = value
+    End Property
+    Public Property Let FreePlayString(value) : m_free_play_string = value : End Property
+    Public Property Let CreditsString(value) : m_credits_string = value : End Property
+    Public Property Let PriceTierTemplate(value) : m_price_tier_template = value : End Property
+    Public Property Let ResetCreditsEvents(value) : m_reset_credits_events = value : End Property
+
+    Public Property Get Switches(switch_name)
+        If Not m_switches.Exists(switch_name) Then
+            m_switches.Add switch_name, (new GlfCreditsSwitch)(switch_name)
+        End If
+        Set Switches = m_switches(switch_name)
+    End Property
+
+    Public Property Get Events(event_name)
+        If Not m_events.Exists(event_name) Then
+            m_events.Add event_name, (new GlfCreditsEvent)(event_name)
+        End If
+        Set Events = m_events(event_name)
+    End Property
+
+    ' Tiers must be added from the cheapest up, and the first must buy exactly one credit
+    Public Sub AddPricingTier(price, credits_for_price)
+        ReDim Preserve m_tier_prices(UBound(m_tier_prices) + 1)
+        ReDim Preserve m_tier_credits(UBound(m_tier_credits) + 1)
+        m_tier_prices(UBound(m_tier_prices)) = price
+        m_tier_credits(UBound(m_tier_credits)) = credits_for_price
+    End Sub
+
+    Public Property Let Debug(value)
+        m_debug = value
+        m_base_device.Debug = value
+    End Property
+    Public Property Get IsDebug()
+        If m_debug Then : IsDebug = 1 : Else : IsDebug = 0 : End If
+    End Property
+
+	Public default Function init(mode)
+        m_name = "credits"
+        m_priority = mode.Priority
+        m_debug = False
+
+        m_max_credits = 0
+        m_free_play = True
+        m_service_credits_switches = Array()
+        m_fractional_credit_expiration_time = 0
+        m_credit_expiration_time = 0
+        m_persist_credits = True
+        m_free_play_string = "FREE PLAY"
+        m_credits_string = "CREDITS"
+        m_price_tier_template = "{credits} CREDITS ${price}"
+        Set m_switches = CreateObject("Scripting.Dictionary")
+        Set m_events = CreateObject("Scripting.Dictionary")
+        m_tier_prices = Array()
+        m_tier_credits = Array()
+        m_reset_credits_events = Array("credits_reset", "factory_reset")
+
+        m_active = False
+        m_credit_play_active = False
+        m_credit_unit = 1
+        m_credit_units_per_game = 1
+        Set m_pricing_table = CreateObject("Scripting.Dictionary")
+        m_pricing_tiers_wrap_around = 1
+        m_credit_units_for_pricing_tiers = 0
+        m_reset_pricing_tier_count_this_game = False
+
+        NewMachineVar "credit_units", 0, "int", True
+        NewMachineVar "credits_string", " ", "string", False
+        NewMachineVar "credits_value", "0", "string", False
+        NewMachineVar "credits_whole_num", 0, "int", False
+        NewMachineVar "credits_numerator", 0, "int", False
+        NewMachineVar "credits_denominator", 0, "int", False
+        NewMachineVar "free_play", 1, "int", False
+
+        Set m_base_device = (new GlfBaseModeDevice)(mode, "credits", Me)
+        Set Init = Me
+	End Function
+
+    Private Sub NewMachineVar(var_name, initial_value, value_type, persist_value)
+        If glf_machine_vars.Exists(var_name) Then
+            Exit Sub
+        End If
+        With CreateMachineVar(var_name)
+            .InitialValue = initial_value
+            .ValueType = value_type
+            .Persist = persist_value
+        End With
+    End Sub
+
+    Private Sub SetMachineVar(var_name, value)
+        Dim previous : previous = glf_machine_vars(var_name).Value
+        glf_machine_vars(var_name).Value = value
+        Glf_BcpSendMachineVar var_name, value, previous
+    End Sub
+
+    ' ----- Mode start and stop -----
+
+    Public Sub Activate()
+        m_active = True
+        Dim evt
+        AddPinEventListener "enable_free_play", m_name & "_enable_free_play", "CreditsEventHandler", m_priority, Array("enable_free_play", Me)
+        AddPinEventListener "enable_credit_play", m_name & "_enable_credit_play", "CreditsEventHandler", m_priority, Array("enable_credit_play", Me)
+        AddPinEventListener "toggle_credit_play", m_name & "_toggle_credit_play", "CreditsEventHandler", m_priority, Array("toggle_credit_play", Me)
+        AddPinEventListener "slam_tilt", m_name & "_slam_tilt", "CreditsEventHandler", m_priority, Array("clear_all_credits", Me)
+        For Each evt in m_reset_credits_events
+            AddPinEventListener evt, m_name & "_reset_credits", "CreditsEventHandler", m_priority, Array("clear_all_credits", Me)
+        Next
+        If m_free_play Then
+            EnableFreePlay False
+        Else
+            EnableCreditPlay False
+        End If
+    End Sub
+
+    Public Sub Deactivate()
+        Dim evt
+        RemovePinEventListener "enable_free_play", m_name & "_enable_free_play"
+        RemovePinEventListener "enable_credit_play", m_name & "_enable_credit_play"
+        RemovePinEventListener "toggle_credit_play", m_name & "_toggle_credit_play"
+        RemovePinEventListener "slam_tilt", m_name & "_slam_tilt"
+        For Each evt in m_reset_credits_events
+            RemovePinEventListener evt, m_name & "_reset_credits"
+        Next
+        RemoveGameHandlers()
+        DisableCreditHandlers()
+        SetMachineVar "credits_string", m_free_play_string
+        m_active = False
+    End Sub
+
+    Public Sub Enable()
+    End Sub
+
+    Public Sub Disable()
+    End Sub
+
+    ' ----- Credit units -----
+    ' Money is counted in credit units: the largest unit that both the smallest coin
+    ' and the price of a game are whole multiples of. Half credits and the like are
+    ' whole numbers of units.
+
+    Private Function AsWhole(value)
+        AsWhole = CLng(Round(value, 6))
+    End Function
+
+    Private Sub CalculateCreditUnits()
+        Dim min_currency_value, price_per_game, coin_switch, first
+        If UBound(m_switches.Keys) > -1 Then
+            first = True
+            For Each coin_switch in m_switches.Items()
+                If first Or coin_switch.Value < min_currency_value Then
+                    min_currency_value = coin_switch.Value
+                End If
+                first = False
+            Next
+        ElseIf UBound(m_tier_prices) > -1 Then
+            min_currency_value = m_tier_prices(0)
+        Else
+            min_currency_value = 1
+        End If
+
+        If UBound(m_tier_prices) > -1 Then
+            price_per_game = m_tier_prices(0)
+            If m_tier_credits(0) <> 1 Then
+                Err.Raise vbObjectError + 2, "GlfCredits", "The first pricing tier has to give exactly one credit."
+            End If
+        Else
+            price_per_game = 1
+        End If
+
+        If min_currency_value = price_per_game Then
+            m_credit_unit = min_currency_value
+        ElseIf min_currency_value < price_per_game Then
+            m_credit_unit = price_per_game - min_currency_value
+            If m_credit_unit > min_currency_value Then
+                m_credit_unit = min_currency_value
+            End If
+        Else
+            m_credit_unit = min_currency_value - price_per_game
+            If m_credit_unit > price_per_game Then
+                m_credit_unit = price_per_game
+            End If
+        End If
+        m_credit_units_per_game = AsWhole(price_per_game / m_credit_unit)
+        Log "Credit unit: " & m_credit_unit & ", credit units per game: " & m_credit_units_per_game
+    End Sub
+
+    ' Builds the table of bonus credit units: how many extra units the Nth unit paid
+    ' in brings, so that a higher tier gives its discount.
+    Private Sub CalculatePricingTiers()
+        m_pricing_table.RemoveAll
+        If UBound(m_tier_prices) = -1 Then
+            m_pricing_tiers_wrap_around = 1
+            m_pricing_table.Add "1", 0
+            Exit Sub
+        End If
+
+        m_pricing_tiers_wrap_around = 0
+        Dim tier_units, tier_bonus, index, credit_units, actual_credit_units
+        tier_units = Array()
+        tier_bonus = Array()
+        For index = 0 To UBound(m_tier_prices)
+            credit_units = AsWhole(m_tier_prices(index) / m_credit_unit)
+            actual_credit_units = m_credit_units_per_game * m_tier_credits(index)
+            If m_pricing_tiers_wrap_around > credit_units Then
+                Log "Pricing tier " & index & " has to cost more than the one before it. Skipping it."
+            Else
+                m_pricing_tiers_wrap_around = credit_units
+                ReDim Preserve tier_units(UBound(tier_units) + 1)
+                ReDim Preserve tier_bonus(UBound(tier_bonus) + 1)
+                tier_units(UBound(tier_units)) = credit_units
+                tier_bonus(UBound(tier_bonus)) = actual_credit_units - credit_units
+                NewMachineVar "price_per_game_raw_" & index, 0, "string", False
+                NewMachineVar "price_per_game_string_" & index, "", "string", False
+                SetMachineVar "price_per_game_raw_" & index, m_tier_prices(index)
+                SetMachineVar "price_per_game_string_" & index, Replace(Replace(m_price_tier_template, "{price}", CStr(m_tier_prices(index))), "{credits}", CStr(m_tier_credits(index)))
+            End If
+        Next
+
+        Dim units, accounted_units, bonus, old_bonus, t
+        old_bonus = 0
+        For units = 0 To m_pricing_tiers_wrap_around
+            accounted_units = 0
+            bonus = 0
+            For t = UBound(tier_units) To 0 Step -1
+                Do While units - accounted_units >= tier_units(t)
+                    accounted_units = accounted_units + tier_units(t)
+                    bonus = bonus + tier_bonus(t)
+                Loop
+            Next
+            m_pricing_table.Add CStr(units), bonus - old_bonus
+            old_bonus = bonus
+        Next
+    End Sub
+
+    Private Function GetCreditUnits()
+        Dim units : units = glf_machine_vars("credit_units").Value
+        If IsEmpty(units) Or IsNull(units) Then
+            units = 0
+        ElseIf VarType(units) = vbString Then
+            If IsNumeric(units) Then units = CLng(units) Else units = 0
+        End If
+        GetCreditUnits = units
+    End Function
+
+    ' ----- Free play and credit play -----
+
+    Public Sub EnableCreditPlay(post_event)
+        m_free_play = False
+        SetMachineVar "free_play", 0
+        If m_credit_play_active = False Then
+            CalculateCreditUnits()
+            CalculatePricingTiers()
+        End If
+        SetMachineVar "credit_units", GetCreditUnits()
+        UpdateCreditStrings()
+        EnableCreditHandlers()
+        RemoveGameHandlers()
+        AddPinEventListener "player_add_request", m_name & "_player_add_request", "CreditsEventHandler", 25, Array("player_add_request", Me)
+        AddPinEventListener "request_to_start_game", m_name & "_request_to_start_game", "CreditsEventHandler", 25, Array("request_to_start_game", Me)
+        AddPinEventListener "player_added", m_name & "_player_added", "CreditsEventHandler", m_priority, Array("player_added", Me)
+        AddPinEventListener "game_started", m_name & "_game_started", "CreditsEventHandler", m_priority, Array("game_started", Me)
+        AddPinEventListener "ball_starting", m_name & "_ball_starting", "CreditsEventHandler", m_priority, Array("ball_starting", Me)
+        m_credit_play_active = True
+        If post_event Then
+            Glf_BcpSendEvent "enabling_credit_play", Null
+            DispatchPinEvent "enabling_credit_play", Null
+        End If
+    End Sub
+
+    Public Sub EnableFreePlay(post_event)
+        m_free_play = True
+        SetMachineVar "free_play", 1
+        RemoveGameHandlers()
+        DisableCreditHandlers()
+        m_credit_play_active = False
+        UpdateCreditStrings()
+        If post_event Then
+            Glf_BcpSendEvent "enabling_free_play", Null
+            DispatchPinEvent "enabling_free_play", Null
+        End If
+    End Sub
+
+    Public Sub ToggleCreditPlay()
+        If m_free_play Then
+            EnableCreditPlay True
+        Else
+            EnableFreePlay True
+        End If
+    End Sub
+
+    Private Sub RemoveGameHandlers()
+        RemovePinEventListener "player_add_request", m_name & "_player_add_request"
+        RemovePinEventListener "request_to_start_game", m_name & "_request_to_start_game"
+        RemovePinEventListener "player_added", m_name & "_player_added"
+        RemovePinEventListener "game_started", m_name & "_game_started"
+        RemovePinEventListener "ball_starting", m_name & "_ball_starting"
+    End Sub
+
+    Private Sub EnableCreditHandlers()
+        Dim coin_switch, service_switch, credit_event
+        For Each coin_switch in m_switches.Items()
+            AddPinEventListener coin_switch.Switch & "_active", m_name & "_coin_" & coin_switch.Switch, "CreditsEventHandler", m_priority, Array("coin", Me, coin_switch)
+        Next
+        For Each service_switch in m_service_credits_switches
+            AddPinEventListener service_switch & "_active", m_name & "_service_" & service_switch, "CreditsEventHandler", m_priority, Array("service_credit", Me)
+        Next
+        For Each credit_event in m_events.Items()
+            AddPinEventListener credit_event.EventObject.EventName, m_name & "_event_" & credit_event.EventObject.Name, "CreditsEventHandler", m_priority, Array("credit_event", Me, credit_event)
+        Next
+    End Sub
+
+    Private Sub DisableCreditHandlers()
+        Dim coin_switch, service_switch, credit_event
+        For Each coin_switch in m_switches.Items()
+            RemovePinEventListener coin_switch.Switch & "_active", m_name & "_coin_" & coin_switch.Switch
+        Next
+        For Each service_switch in m_service_credits_switches
+            RemovePinEventListener service_switch & "_active", m_name & "_service_" & service_switch
+        Next
+        For Each credit_event in m_events.Items()
+            RemovePinEventListener credit_event.EventObject.EventName, m_name & "_event_" & credit_event.EventObject.Name
+        Next
+    End Sub
+
+    ' ----- Game hooks -----
+
+    ' Both requests are relays. Returns True when there is a credit to pay with.
+    Public Function HasCreditForPlayer()
+        If GetCreditUnits() >= m_credit_units_per_game Then
+            HasCreditForPlayer = True
+        Else
+            Log "Request denied. Not enough credits."
+            Glf_BcpSendEvent "not_enough_credits", Null
+            DispatchPinEvent "not_enough_credits", Null
+            HasCreditForPlayer = False
+        End If
+    End Function
+
+    Public Sub PlayerAdded()
+        Dim new_credit_units : new_credit_units = GetCreditUnits() - m_credit_units_per_game
+        If new_credit_units < 0 Then
+            new_credit_units = 0
+        End If
+        SetMachineVar "credit_units", new_credit_units
+        UpdateCreditStrings()
+    End Sub
+
+    Public Sub GameStarted()
+        RemoveDelay m_name & "_clear_fractional_credits"
+        RemoveDelay m_name & "_clear_all_credits"
+        m_credit_units_for_pricing_tiers = 0
+        m_reset_pricing_tier_count_this_game = False
+    End Sub
+
+    ' Money put in during a game counts toward the pricing tiers only until the second ball
+    Public Sub BallStarting(kwargs)
+        If Not IsObject(kwargs) Then
+            Exit Sub
+        End If
+        If kwargs("player") = 1 And kwargs("ball") = 2 Then
+            If Not m_reset_pricing_tier_count_this_game Then
+                m_credit_units_for_pricing_tiers = 0
+                m_reset_pricing_tier_count_this_game = True
+            End If
+        End If
+    End Sub
+
+    ' ----- Adding credits -----
+
+    Public Sub CoinSwitch(coin_switch)
+        Log "Coin switch " & coin_switch.Switch & ". Value: " & coin_switch.Value
+        AddCreditUnits AsWhole(coin_switch.Value / m_credit_unit), True
+        ResetTimeouts()
+    End Sub
+
+    Public Sub CreditEvent(credit_event)
+        If credit_event.EventObject.Evaluate() = False Then
+            Exit Sub
+        End If
+        Log "Credit event. Credits: " & credit_event.Credits
+        AddCreditUnits AsWhole(credit_event.Credits * m_credit_units_per_game), False
+        ResetTimeouts()
+    End Sub
+
+    Public Sub ServiceCredit()
+        Log "Service credit added"
+        AddCredit False
+    End Sub
+
+    ' One whole credit. price_tiering says whether it counts toward the tier discounts.
+    Public Sub AddCredit(price_tiering)
+        AddCreditUnits m_credit_units_per_game, price_tiering
+    End Sub
+
+    Private Sub AddCreditUnits(credit_units, price_tiering)
+        Dim previous_credit_units, total_credit_units, max_credit_units, i
+        previous_credit_units = GetCreditUnits()
+        total_credit_units = credit_units + previous_credit_units
+
+        m_credit_units_for_pricing_tiers = m_credit_units_for_pricing_tiers Mod m_pricing_tiers_wrap_around
+        If price_tiering Then
+            For i = 1 To credit_units
+                m_credit_units_for_pricing_tiers = m_credit_units_for_pricing_tiers + 1
+                total_credit_units = total_credit_units + m_pricing_table(CStr(m_credit_units_for_pricing_tiers))
+                m_credit_units_for_pricing_tiers = m_credit_units_for_pricing_tiers Mod m_pricing_tiers_wrap_around
+            Next
+        End If
+
+        max_credit_units = m_max_credits * m_credit_units_per_game
+        If max_credit_units > 0 And total_credit_units > max_credit_units Then
+            Log "Max credits reached"
+            Glf_BcpSendEvent "max_credits_reached", Null
+            DispatchPinEvent "max_credits_reached", Null
+            SetMachineVar "credit_units", max_credit_units
+            UpdateCreditStrings()
+        End If
+        If max_credit_units <= 0 Or max_credit_units > previous_credit_units Then
+            If max_credit_units <= 0 Or total_credit_units <= max_credit_units Then
+                SetMachineVar "credit_units", total_credit_units
+            End If
+            UpdateCreditStrings()
+            Glf_BcpSendEvent "credits_added", Null
+            DispatchPinEvent "credits_added", Null
+        End If
+    End Sub
+
+    ' ----- Expiry -----
+
+    Private Sub ResetTimeouts()
+        If m_fractional_credit_expiration_time > 0 Then
+            SetDelay m_name & "_clear_fractional_credits", "CreditsEventHandler", Array(Array("clear_fractional_credits", Me), Null), m_fractional_credit_expiration_time
+        End If
+        If m_credit_expiration_time > 0 Then
+            SetDelay m_name & "_clear_all_credits", "CreditsEventHandler", Array(Array("clear_all_credits", Me), Null), m_credit_expiration_time
+        End If
+    End Sub
+
+    Public Sub ClearFractionalCredits()
+        Log "Clearing fractional credits"
+        Dim units : units = GetCreditUnits()
+        SetMachineVar "credit_units", units - (units Mod m_credit_units_per_game)
+        UpdateCreditStrings()
+    End Sub
+
+    Public Sub ClearAllCredits()
+        Log "Removing all credits"
+        SetMachineVar "credit_units", 0
+        m_credit_units_for_pricing_tiers = 0
+        UpdateCreditStrings()
+    End Sub
+
+    ' ----- Display strings -----
+
+    Private Sub UpdateCreditStrings()
+        If m_free_play Then
+            SetMachineVar "credits_string", m_free_play_string
+            Exit Sub
+        End If
+        Dim units, whole_num, numerator, denominator, display_fraction
+        units = GetCreditUnits()
+        If m_credit_units_per_game > 0 Then
+            whole_num = units \ m_credit_units_per_game
+            numerator = units Mod m_credit_units_per_game
+            denominator = m_credit_units_per_game
+        Else
+            whole_num = 0
+            numerator = 0
+            denominator = 0
+        End If
+        If numerator <> 0 Then
+            If whole_num <> 0 Then
+                display_fraction = whole_num & " " & numerator & "/" & denominator
+            Else
+                display_fraction = numerator & "/" & denominator
+            End If
+        Else
+            display_fraction = CStr(whole_num)
+        End If
+        SetMachineVar "credits_string", m_credits_string & " " & display_fraction
+        SetMachineVar "credits_value", display_fraction
+        SetMachineVar "credits_whole_num", whole_num
+        SetMachineVar "credits_numerator", numerator
+        SetMachineVar "credits_denominator", denominator
+    End Sub
+
+    Private Sub Log(message)
+        If m_debug = True Then
+            glf_debugLog.WriteToLog m_name, message
+        End If
+    End Sub
+
+    ' The machine-wide credits: section of an MPF config
+    Public Function ToYaml()
+        Dim yaml, item, index
+        yaml = "credits:" & vbCrLf
+        yaml = yaml & "  max_credits: " & m_max_credits & vbCrLf
+        If m_free_play Then
+            yaml = yaml & "  free_play: yes" & vbCrLf
+        Else
+            yaml = yaml & "  free_play: no" & vbCrLf
+        End If
+        If UBound(m_service_credits_switches) > -1 Then
+            yaml = yaml & "  service_credits_switch: " & Join(m_service_credits_switches, ", ") & vbCrLf
+        End If
+        If UBound(m_switches.Keys) > -1 Then
+            yaml = yaml & "  switches:" & vbCrLf
+            For Each item in m_switches.Items()
+                yaml = yaml & "    - switch: " & item.Switch & vbCrLf
+                yaml = yaml & "      type: " & item.SwitchType & vbCrLf
+                yaml = yaml & "      value: " & item.Value & vbCrLf
+                If Not IsEmpty(item.Label) Then
+                    yaml = yaml & "      label: " & item.Label & vbCrLf
+                End If
+            Next
+        End If
+        If UBound(m_events.Keys) > -1 Then
+            yaml = yaml & "  events:" & vbCrLf
+            For Each item in m_events.Items()
+                yaml = yaml & "    - event: " & item.EventObject.Raw & vbCrLf
+                yaml = yaml & "      type: " & item.EventType & vbCrLf
+                yaml = yaml & "      credits: " & item.Credits & vbCrLf
+            Next
+        End If
+        If UBound(m_tier_prices) > -1 Then
+            yaml = yaml & "  pricing_tiers:" & vbCrLf
+            For index = 0 To UBound(m_tier_prices)
+                yaml = yaml & "    - price: " & m_tier_prices(index) & vbCrLf
+                yaml = yaml & "      credits: " & m_tier_credits(index) & vbCrLf
+            Next
+        End If
+        If m_fractional_credit_expiration_time > 0 Then
+            yaml = yaml & "  fractional_credit_expiration_time: " & m_fractional_credit_expiration_time & "ms" & vbCrLf
+        End If
+        If m_credit_expiration_time > 0 Then
+            yaml = yaml & "  credit_expiration_time: " & m_credit_expiration_time & "ms" & vbCrLf
+        End If
+        yaml = yaml & "  free_play_string: " & m_free_play_string & vbCrLf
+        yaml = yaml & "  credits_string: " & m_credits_string & vbCrLf
+        ToYaml = yaml
+    End Function
+End Class
+
+Function CreditsEventHandler(args)
+    Dim ownProps, kwargs : ownProps = args(0)
+    If IsObject(args(1)) Then
+        Set kwargs = args(1)
+    Else
+        kwargs = args(1)
+    End If
+    Dim evt : evt = ownProps(0)
+    Dim credits_device : Set credits_device = ownProps(1)
+    Select Case evt
+        Case "enable_free_play"
+            credits_device.EnableFreePlay True
+        Case "enable_credit_play"
+            credits_device.EnableCreditPlay True
+        Case "toggle_credit_play"
+            credits_device.ToggleCreditPlay
+        Case "clear_all_credits"
+            credits_device.ClearAllCredits
+        Case "clear_fractional_credits"
+            credits_device.ClearFractionalCredits
+        Case "coin"
+            credits_device.CoinSwitch ownProps(2)
+        Case "credit_event"
+            credits_device.CreditEvent ownProps(2)
+        Case "service_credit"
+            credits_device.ServiceCredit
+        Case "player_added"
+            credits_device.PlayerAdded
+        Case "game_started"
+            credits_device.GameStarted
+        Case "ball_starting"
+            credits_device.BallStarting kwargs
+        Case "player_add_request"
+            ' A relay: pass a refusal from an earlier listener straight on
+            If VarType(kwargs) = vbBoolean Then
+                If kwargs = True Then
+                    kwargs = credits_device.HasCreditForPlayer()
+                End If
+            End If
+        Case "request_to_start_game"
+            ' Also a relay. The start button posts it during a game as well, where it does nothing.
+            If VarType(kwargs) = vbBoolean And glf_gameStarted = False Then
+                If kwargs = True Then
+                    kwargs = credits_device.HasCreditForPlayer()
+                End If
+            End If
+    End Select
+    If IsObject(args(1)) Then
+        Set CreditsEventHandler = kwargs
+    Else
+        CreditsEventHandler = kwargs
+    End If
+End Function
+
 
 
 Class GlfDofPlayer
@@ -5947,14 +7440,19 @@ Function ExtraBallsHandler(args)
         ExtraBallsHandler = kwargs
     End If
 End Function
+' The game settings. A table sets them in its device configuration, before Glf_Init,
+' so the settings object is created once and kept.
 Function GlfGameSettings()
-    Set glf_game = (new GlfGame)()
+    If Not IsObject(glf_game) Then
+        Set glf_game = (new GlfGame)()
+    End If
 	Set GlfGameSettings = glf_game
 End Function
 
 Class GlfGame
 
     Private m_balls_per_game
+    Private m_max_players
 
     Public Property Get BallsPerGame()
         BallsPerGame = m_balls_per_game.Value()
@@ -5963,15 +7461,27 @@ Class GlfGame
         Set m_balls_per_game = CreateGlfInput(input)
     End Property
 
+    ' The most players one game can have. MPF's default is 4.
+    Public Property Get MaxPlayers()
+        MaxPlayers = m_max_players.Value()
+    End Property
+    Public Property Let MaxPlayers(input)
+        Set m_max_players = CreateGlfInput(input)
+    End Property
+
 	Public default Function init()
 
         Set m_balls_per_game = CreateGlfInput(3)
+        Set m_max_players = CreateGlfInput(4)
        
         Set Init = Me
 	End Function
 
     Public Function ToYaml()
         Dim yaml : yaml = ""
+        yaml = yaml & "game:" & vbCrLf
+        yaml = yaml & "  balls_per_game: " & m_balls_per_game.Raw & vbCrLf
+        yaml = yaml & "  max_players: " & m_max_players.Raw & vbCrLf
         ToYaml = yaml
     End Function
 
@@ -7027,6 +8537,844 @@ Class GlfLightStack
     End Sub
 End Class
 
+' Accruals and sequences: the two step-based logic blocks from MPF.
+'
+' Both track a list of steps. Each step is one event, or several alternative events.
+'   Accrual:  the steps may be completed in any order.
+'   Sequence: the steps must be completed in order.
+' The counter, MPF's third logic block, lives in counter.vbs.
+
+Dim glf_accruals : Set glf_accruals = CreateObject("Scripting.Dictionary")
+Dim glf_sequences : Set glf_sequences = CreateObject("Scripting.Dictionary")
+
+Class GlfStepLogicBlock
+
+    Private m_name
+    Private m_block_name
+    Private m_kind
+    Private m_ordered
+    Private m_priority
+    Private m_mode
+    Private m_base_device
+    Private m_debug
+
+    Private m_steps
+    Private m_reset_events
+    Private m_restart_events
+    Private m_advance_random_events
+    Private m_events_when_complete
+    Private m_events_when_hit
+    Private m_disable_on_complete
+    Private m_reset_on_complete
+    Private m_persist_state
+    Private m_start_enabled
+    Private m_timeout
+
+    Private m_value
+    Private m_enabled
+    Private m_completed
+
+    Public Property Get Name() : Name = m_name : End Property
+    Public Property Get Kind() : Kind = m_kind : End Property
+    Public Property Get Enabled() : Enabled = m_enabled : End Property
+    Public Property Get Completed() : Completed = m_completed : End Property
+
+    ' Accrual: an array of True/False, one per step. Sequence: the number of steps done.
+    Public Property Get Value() : Value = m_value : End Property
+
+    Public Property Get GetValue(value)
+        Select Case value
+            Case "value"
+                GetValue = m_value
+            Case "completed_steps"
+                GetValue = CompletedSteps()
+            Case "enabled"
+                GetValue = m_enabled
+            Case "completed"
+                GetValue = m_completed
+        End Select
+    End Property
+
+    ' Each entry is one step: an event name, several names separated by commas,
+    ' or an array of names. Any one of a step's events completes that step.
+    Public Property Let Events(value)
+        Dim x, y, step_events, parts
+        m_steps = Array()
+        For x = 0 To UBound(value)
+            Set step_events = CreateObject("Scripting.Dictionary")
+            If IsArray(value(x)) Then
+                parts = value(x)
+            Else
+                parts = Split(value(x), ",")
+            End If
+            For y = 0 To UBound(parts)
+                If Trim(parts(y)) <> "" Then
+                    Dim newEvent : Set newEvent = (new GlfEvent)(Trim(parts(y)))
+                    If Not step_events.Exists(newEvent.Raw) Then
+                        step_events.Add newEvent.Raw, newEvent
+                    End If
+                End If
+            Next
+            ReDim Preserve m_steps(x)
+            Set m_steps(x) = step_events
+        Next
+    End Property
+
+    Public Property Let EnableEvents(value) : m_base_device.EnableEvents = value : End Property
+    Public Property Let DisableEvents(value) : m_base_device.DisableEvents = value : End Property
+    Public Property Let ResetEvents(value) : AddGlfEvents m_reset_events, value : End Property
+    Public Property Let RestartEvents(value) : AddGlfEvents m_restart_events, value : End Property
+    Public Property Let AdvanceRandomEvents(value) : AddGlfEvents m_advance_random_events, value : End Property
+    Public Property Let EventsWhenComplete(value) : AddGlfEvents m_events_when_complete, value : End Property
+    Public Property Let EventsWhenHit(value) : AddGlfEvents m_events_when_hit, value : End Property
+    Public Property Let DisableOnComplete(value) : m_disable_on_complete = value : End Property
+    Public Property Let ResetOnComplete(value) : m_reset_on_complete = value : End Property
+    Public Property Let PersistState(value) : m_persist_state = value : End Property
+    Public Property Let StartEnabled(value) : m_start_enabled = value : End Property
+    Public Property Let LogicBlockTimeout(value)
+        If VarType(value) = vbString Then
+            value = Replace(LCase(value), "ms", "")
+        End If
+        m_timeout = CLng(value)
+    End Property
+
+    Public Property Let Debug(value)
+        m_debug = value
+        m_base_device.Debug = value
+    End Property
+    Public Property Get IsDebug()
+        If m_debug Then : IsDebug = 1 : Else : IsDebug = 0 : End If
+    End Property
+
+	Public default Function init(name, mode, kind)
+        m_block_name = name
+        m_kind = kind
+        m_ordered = (kind = "sequence")
+        m_name = kind & "_" & name
+        m_mode = mode.Name
+        m_priority = mode.Priority
+        m_debug = False
+
+        m_steps = Array()
+        Set m_reset_events = CreateObject("Scripting.Dictionary")
+        Set m_restart_events = CreateObject("Scripting.Dictionary")
+        Set m_advance_random_events = CreateObject("Scripting.Dictionary")
+        Set m_events_when_complete = CreateObject("Scripting.Dictionary")
+        Set m_events_when_hit = CreateObject("Scripting.Dictionary")
+        m_disable_on_complete = True
+        m_reset_on_complete = True
+        m_persist_state = False
+        m_start_enabled = Empty
+        m_timeout = 0
+
+        m_value = StartValue()
+        m_enabled = False
+        m_completed = False
+
+        Set m_base_device = (new GlfBaseModeDevice)(mode, kind, Me)
+        If m_ordered Then
+            Set glf_sequences(name) = Me
+        Else
+            Set glf_accruals(name) = Me
+        End If
+        Set Init = Me
+	End Function
+
+    Private Sub AddGlfEvents(dict, value)
+        Dim x
+        For x=0 to UBound(value)
+            Dim newEvent : Set newEvent = (new GlfEvent)(value(x))
+            If Not dict.Exists(newEvent.Raw) Then
+                dict.Add newEvent.Raw, newEvent
+            End If
+        Next
+    End Sub
+
+    Private Function StartValue()
+        If m_ordered Then
+            StartValue = 0
+        Else
+            Dim x, steps
+            steps = Array()
+            If UBound(m_steps) > -1 Then
+                ReDim steps(UBound(m_steps))
+                For x = 0 To UBound(m_steps)
+                    steps(x) = False
+                Next
+            End If
+            StartValue = steps
+        End If
+    End Function
+
+    Public Function CompletedSteps()
+        If m_ordered Then
+            CompletedSteps = m_value
+        Else
+            Dim x, done : done = 0
+            For x = 0 To UBound(m_value)
+                If m_value(x) = True Then
+                    done = done + 1
+                End If
+            Next
+            CompletedSteps = done
+        End If
+    End Function
+
+    ' Called by the base mode device when the mode starts
+    Public Sub Activate()
+        Dim evt, x
+        For x = 0 To UBound(m_steps)
+            For Each evt in m_steps(x).Keys
+                ' A later step gets a higher priority, as in MPF, so one event shared by
+                ' two steps of a sequence cannot advance it twice.
+                AddPinEventListener m_steps(x)(evt).EventName, m_name & "_step" & x & "_" & evt & "_hit", "StepLogicBlockEventHandler", m_priority+m_steps(x)(evt).Priority+x, Array("hit", Me, m_steps(x)(evt), x)
+            Next
+        Next
+        For Each evt in m_reset_events.Keys
+            AddPinEventListener m_reset_events(evt).EventName, m_name & "_" & evt & "_reset", "StepLogicBlockEventHandler", m_priority+m_reset_events(evt).Priority, Array("reset", Me, m_reset_events(evt))
+        Next
+        For Each evt in m_restart_events.Keys
+            AddPinEventListener m_restart_events(evt).EventName, m_name & "_" & evt & "_restart", "StepLogicBlockEventHandler", m_priority+m_restart_events(evt).Priority, Array("restart", Me, m_restart_events(evt))
+        Next
+        For Each evt in m_advance_random_events.Keys
+            AddPinEventListener m_advance_random_events(evt).EventName, m_name & "_" & evt & "_advance_random", "StepLogicBlockEventHandler", m_priority+m_advance_random_events(evt).Priority, Array("advance_random", Me, m_advance_random_events(evt))
+        Next
+
+        Dim start_enabled : start_enabled = m_start_enabled
+        If IsEmpty(start_enabled) Then
+            start_enabled = (UBound(m_base_device.EnableEvents.Keys) = -1)
+        End If
+
+        If m_persist_state And HasPersistedState() Then
+            ' A block that persists keeps its progress and its enabled state per player
+            RestoreState()
+            Log "Restored. Completed steps: " & CompletedSteps() & ", Enabled: " & m_enabled & ", Completed: " & m_completed
+            PostUpdateEvent()
+            If m_enabled Then
+                StartTimeout()
+            End If
+        Else
+            m_completed = False
+            m_enabled = False
+            m_value = StartValue()
+            SaveState()
+            If start_enabled Then
+                Enable()
+            Else
+                PostUpdateEvent()
+            End If
+        End If
+    End Sub
+
+    ' Called by the base mode device when the mode stops
+    Public Sub Deactivate()
+        Dim evt, x
+        For x = 0 To UBound(m_steps)
+            For Each evt in m_steps(x).Keys
+                RemovePinEventListener m_steps(x)(evt).EventName, m_name & "_step" & x & "_" & evt & "_hit"
+            Next
+        Next
+        For Each evt in m_reset_events.Keys
+            RemovePinEventListener m_reset_events(evt).EventName, m_name & "_" & evt & "_reset"
+        Next
+        For Each evt in m_restart_events.Keys
+            RemovePinEventListener m_restart_events(evt).EventName, m_name & "_" & evt & "_restart"
+        Next
+        For Each evt in m_advance_random_events.Keys
+            RemovePinEventListener m_advance_random_events(evt).EventName, m_name & "_" & evt & "_advance_random"
+        Next
+        RemoveDelay m_name & "_timeout"
+        ' The saved state keeps the enabled flag; only the running copy is switched off
+        m_enabled = False
+    End Sub
+
+    Public Sub Enable()
+        Log "Enabling"
+        m_enabled = True
+        SaveState()
+        PostUpdateEvent()
+        StartTimeout()
+    End Sub
+
+    Public Sub Disable()
+        Log "Disabling"
+        m_enabled = False
+        SaveState()
+        PostUpdateEvent()
+        RemoveDelay m_name & "_timeout"
+    End Sub
+
+    Public Sub Reset()
+        Log "Resetting"
+        m_completed = False
+        m_value = StartValue()
+        SaveState()
+        PostUpdateEvent()
+        StartTimeout()
+    End Sub
+
+    Public Sub Restart()
+        Log "Restarting"
+        Reset()
+        Enable()
+    End Sub
+
+    Public Sub Timeout()
+        Log "Timed out"
+        DispatchPinEvent m_block_name & "_timeout", Null
+        Reset()
+    End Sub
+
+    Private Sub StartTimeout()
+        If m_timeout > 0 Then
+            SetDelay m_name & "_timeout", "StepLogicBlockEventHandler", Array(Array("timeout", Me), Null), m_timeout
+        End If
+    End Sub
+
+    ' step is zero based
+    Public Sub Hit(step_index)
+        If Not m_enabled Then
+            Exit Sub
+        End If
+        Dim kwargs : Set kwargs = GlfKwargs()
+        If m_ordered Then
+            If step_index <> m_value Then
+                ' An event for another step of the sequence
+                Exit Sub
+            End If
+            m_value = m_value + 1
+            Log "Step " & step_index & " hit. Steps done: " & m_value
+            SaveState()
+            kwargs.Add "step", m_value
+            PostHitEvents kwargs
+            If m_value >= UBound(m_steps) + 1 Then
+                Complete()
+            End If
+        Else
+            If m_value(step_index) = False Then
+                m_value(step_index) = True
+                Log "Step " & step_index & " hit. Steps done: " & CompletedSteps()
+                SaveState()
+                kwargs.Add "step", step_index
+                PostHitEvents kwargs
+            End If
+            If CompletedSteps() = UBound(m_steps) + 1 Then
+                Complete()
+            End If
+        End If
+    End Sub
+
+    ' Accruals only: complete one of the steps that is still open, picked at random
+    Public Sub AdvanceRandom()
+        If Not m_enabled Or m_ordered Then
+            Exit Sub
+        End If
+        Dim x, open_steps : open_steps = Array()
+        For x = 0 To UBound(m_value)
+            If m_value(x) = False Then
+                ReDim Preserve open_steps(UBound(open_steps) + 1)
+                open_steps(UBound(open_steps)) = x
+            End If
+        Next
+        If UBound(open_steps) = -1 Then
+            Exit Sub
+        End If
+        Hit open_steps(Int(Rnd() * (UBound(open_steps) + 1)))
+    End Sub
+
+    Private Sub Complete()
+        If m_completed Then
+            Exit Sub
+        End If
+        Log "Complete"
+        m_completed = True
+        RemoveDelay m_name & "_timeout"
+        SaveState()
+        If UBound(m_events_when_complete.Keys) > -1 Then
+            Dim evt
+            For Each evt in m_events_when_complete.Items()
+                If evt.Evaluate() Then
+                    Glf_BcpSendEvent evt.EventName, Null
+                    DispatchPinEvent evt.EventName, Null
+                End If
+            Next
+        Else
+            Glf_BcpSendEvent "logicblock_" & m_block_name & "_complete", Null
+            DispatchPinEvent "logicblock_" & m_block_name & "_complete", Null
+        End If
+        If m_reset_on_complete Then
+            Reset()
+        End If
+        If m_disable_on_complete Then
+            Disable()
+        End If
+    End Sub
+
+    Private Sub PostHitEvents(kwargs)
+        PostUpdateEvent()
+        If UBound(m_events_when_hit.Keys) > -1 Then
+            Dim evt
+            For Each evt in m_events_when_hit.Items()
+                If evt.Evaluate() Then
+                    Glf_BcpSendEvent evt.EventName, kwargs
+                    DispatchPinEvent evt.EventName, kwargs
+                End If
+            Next
+        Else
+            Glf_BcpSendEvent "logicblock_" & m_block_name & "_hit", kwargs
+            DispatchPinEvent "logicblock_" & m_block_name & "_hit", kwargs
+        End If
+    End Sub
+
+    Private Sub PostUpdateEvent()
+        Dim kwargs : Set kwargs = GlfKwargs()
+        kwargs.Add "value", m_value
+        kwargs.Add "enabled", m_enabled
+        Glf_BcpSendEvent "logicblock_" & m_block_name & "_updated", kwargs
+        DispatchPinEvent "logicblock_" & m_block_name & "_updated", kwargs
+    End Sub
+
+    ' ----- Per-player state, used when PersistState is True -----
+
+    Private Function HasPersistedState()
+        HasPersistedState = False
+        If IsNull(glf_currentPlayer) Then
+            Exit Function
+        End If
+        HasPersistedState = glf_playerState(glf_currentPlayer).Exists(m_name & "_state_value")
+    End Function
+
+    Private Sub SaveState()
+        If Not m_persist_state Then
+            Exit Sub
+        End If
+        If m_ordered Then
+            SetPlayerState m_name & "_state_value", m_value
+        Else
+            Dim x, text : text = ""
+            For x = 0 To UBound(m_value)
+                If m_value(x) = True Then
+                    text = text & "1"
+                Else
+                    text = text & "0"
+                End If
+            Next
+            SetPlayerState m_name & "_state_value", text
+        End If
+        SetPlayerState m_name & "_state_enabled", m_enabled
+        SetPlayerState m_name & "_state_completed", m_completed
+    End Sub
+
+    Private Sub RestoreState()
+        Dim saved : saved = GetPlayerState(m_name & "_state_value")
+        If m_ordered Then
+            m_value = saved
+        Else
+            Dim x
+            m_value = StartValue()
+            For x = 0 To UBound(m_value)
+                If x < Len(saved) Then
+                    m_value(x) = (Mid(saved, x + 1, 1) = "1")
+                End If
+            Next
+        End If
+        m_enabled = (GetPlayerState(m_name & "_state_enabled") = True)
+        m_completed = (GetPlayerState(m_name & "_state_completed") = True)
+    End Sub
+
+    Private Sub Log(message)
+        If m_debug = True Then
+            glf_debugLog.WriteToLog m_name, message
+        End If
+    End Sub
+
+    Private Function EventsYaml(dict)
+        Dim yaml, key, y : y = 0
+        For Each key in dict.Keys
+            yaml = yaml & Replace(Replace(key, "&&", "and"), "||", "or")
+            If y <> UBound(dict.Keys) Then
+                yaml = yaml & ", "
+            End If
+            y = y + 1
+        Next
+        EventsYaml = yaml
+    End Function
+
+    Public Function ToYaml
+        Dim yaml, x
+        yaml = "  " & m_block_name & ":" & vbCrLf
+        yaml = yaml & "    events:" & vbCrLf
+        For x = 0 To UBound(m_steps)
+            yaml = yaml & "      - " & EventsYaml(m_steps(x)) & vbCrLf
+        Next
+        If UBound(m_base_device.EnableEvents.Keys) > -1 Then
+            yaml = yaml & "    enable_events: " & EventsYaml(m_base_device.EnableEvents) & vbCrLf
+        End If
+        If UBound(m_base_device.DisableEvents.Keys) > -1 Then
+            yaml = yaml & "    disable_events: " & EventsYaml(m_base_device.DisableEvents) & vbCrLf
+        End If
+        If UBound(m_reset_events.Keys) > -1 Then
+            yaml = yaml & "    reset_events: " & EventsYaml(m_reset_events) & vbCrLf
+        End If
+        If UBound(m_restart_events.Keys) > -1 Then
+            yaml = yaml & "    restart_events: " & EventsYaml(m_restart_events) & vbCrLf
+        End If
+        If UBound(m_advance_random_events.Keys) > -1 Then
+            yaml = yaml & "    advance_random_events: " & EventsYaml(m_advance_random_events) & vbCrLf
+        End If
+        If UBound(m_events_when_hit.Keys) > -1 Then
+            yaml = yaml & "    events_when_hit: " & EventsYaml(m_events_when_hit) & vbCrLf
+        End If
+        If UBound(m_events_when_complete.Keys) > -1 Then
+            yaml = yaml & "    events_when_complete: " & EventsYaml(m_events_when_complete) & vbCrLf
+        End If
+        If m_reset_on_complete = False Then
+            yaml = yaml & "    reset_on_complete: false" & vbCrLf
+        End If
+        If m_disable_on_complete = False Then
+            yaml = yaml & "    disable_on_complete: false" & vbCrLf
+        End If
+        If m_persist_state = True Then
+            yaml = yaml & "    persist_state: true" & vbCrLf
+        End If
+        If Not IsEmpty(m_start_enabled) Then
+            yaml = yaml & "    start_enabled: " & LCase(CStr(m_start_enabled)) & vbCrLf
+        End If
+        If m_timeout > 0 Then
+            yaml = yaml & "    logic_block_timeout: " & m_timeout & "ms" & vbCrLf
+        End If
+        ToYaml = yaml
+    End Function
+End Class
+
+Function StepLogicBlockEventHandler(args)
+    Dim ownProps, kwargs : ownProps = args(0)
+    If IsObject(args(1)) Then
+        Set kwargs = args(1)
+    Else
+        kwargs = args(1)
+    End If
+    Dim evt : evt = ownProps(0)
+    Dim block : Set block = ownProps(1)
+    Dim run : run = True
+    If evt <> "timeout" Then
+        run = ownProps(2).Evaluate()
+    End If
+    If run Then
+        Select Case evt
+            Case "hit"
+                block.Hit ownProps(3)
+            Case "reset"
+                block.Reset
+            Case "restart"
+                block.Restart
+            Case "advance_random"
+                block.AdvanceRandom
+            Case "timeout"
+                block.Timeout
+        End Select
+    End If
+    If IsObject(args(1)) Then
+        Set StepLogicBlockEventHandler = kwargs
+    Else
+        StepLogicBlockEventHandler = kwargs
+    End If
+End Function
+
+' Match: the end-of-game number match, after MPF's built-in match mode.
+'
+' EnableGlfMatch creates a mode called "match" that starts on game_ending and holds
+' the end of the game. Each player's match number is the last two digits of their
+' score. The mode draws a winning number and posts match_has_match or match_no_match
+' with every player's number. Both are queue events, as in MPF: the mode ends once
+' every listener is done, so a show or slide that blocks the queue holds it open.
+'
+' Awarding something for a match is left to the table: the credits mode can give a
+' credit on match_has_match.
+
+Dim glf_match : glf_match = Null
+
+Function EnableGlfMatch()
+    If Not IsNull(glf_match) Then
+        Set EnableGlfMatch = glf_match
+        Exit Function
+    End If
+    Dim match_mode : Set match_mode = CreateGlfMode("match", 1000)
+    match_mode.StartEvents = Array("game_ending")
+    match_mode.GameMode = False
+    match_mode.UseWaitQueue = True
+    Set glf_match = (new GlfMatch)(match_mode)
+    match_mode.AddModeSettings "match", glf_match
+    Set EnableGlfMatch = glf_match
+End Function
+
+Class GlfMatch
+
+    Private m_name
+    Private m_priority
+    Private m_base_device
+    Private m_debug
+
+    Private m_match_percentage
+    Private m_non_match_number_step
+    Private m_display_time_ms
+    Private m_end_match_event
+
+    Private m_running
+    Private m_winner_number
+    Private m_winners
+    Private m_forced_roll
+    Private m_result_event
+
+    Public Property Get Name() : Name = m_name : End Property
+    Public Property Get Mode() : Set Mode = m_base_device.Mode : End Property
+    Public Property Get WinnerNumber() : WinnerNumber = m_winner_number : End Property
+    Public Property Get Winners() : Winners = m_winners : End Property
+
+    ' Chance, in percent, that the winning number is one of the players' numbers
+    Public Property Let MatchPercentage(value) : m_match_percentage = value : End Property
+    ' Losing numbers are drawn from 0, step, 2 x step ... Scores usually end in 0, so the default is 10
+    Public Property Let NonMatchNumberStep(value) : m_non_match_number_step = value : End Property
+    ' The least time the mode stays up after the result, on top of any listener that waits
+    Public Property Let DisplayTimeMs(value) : m_display_time_ms = value : End Property
+    Public Property Let EndMatchEvent(value)
+        If IsEmpty(value) Or IsNull(value) Then
+            m_end_match_event = Null
+        Else
+            Set m_end_match_event = (new GlfEvent)(value)
+        End If
+    End Property
+    ' For tests: a number from 0 to 99 used in place of the random roll for the next match
+    Public Property Let ForceRoll(value) : m_forced_roll = value : End Property
+
+    Public Property Let Debug(value)
+        m_debug = value
+        m_base_device.Debug = value
+    End Property
+    Public Property Get IsDebug()
+        If m_debug Then : IsDebug = 1 : Else : IsDebug = 0 : End If
+    End Property
+
+	Public default Function init(mode)
+        m_name = "match"
+        m_priority = mode.Priority
+        m_debug = False
+        m_match_percentage = 10
+        m_non_match_number_step = 10
+        m_display_time_ms = 0
+        m_end_match_event = Null
+        m_running = False
+        m_winner_number = Empty
+        m_winners = 0
+        m_forced_roll = Empty
+        m_result_event = Empty
+        If Not glf_machine_vars.Exists("match_number") Then
+            With CreateMachineVar("match_number")
+                .InitialValue = 0
+                .ValueType = "int"
+                .Persist = False
+            End With
+        End If
+        Set m_base_device = (new GlfBaseModeDevice)(mode, "match", Me)
+        Set Init = Me
+	End Function
+
+    ' Called by the base mode device when the match mode starts
+    Public Sub Activate()
+        m_running = False
+        Dim player_count : player_count = UBound(glf_playerState.Keys()) + 1
+        If player_count = 0 Then
+            Log "No players. Skipping match."
+            m_base_device.Mode.StopMode
+            Exit Sub
+        End If
+        m_running = True
+
+        Dim match_numbers(), i, score
+        ReDim match_numbers(player_count - 1)
+        For i = 0 To player_count - 1
+            score = glf_playerState("PLAYER " & (i + 1))(GLF_SCORE)
+            match_numbers(i) = CLng(score - (100 * Int(score / 100)))
+        Next
+
+        ' Draw the winning number
+        Dim roll
+        If IsEmpty(m_forced_roll) Then
+            roll = Int(Rnd() * 100)
+        Else
+            roll = m_forced_roll
+            m_forced_roll = Empty
+        End If
+        If roll < m_match_percentage Then
+            m_winner_number = match_numbers(Int(Rnd() * player_count))
+        Else
+            m_winner_number = LosingNumber(match_numbers)
+        End If
+
+        m_winners = 0
+        Dim kwargs : Set kwargs = GlfKwargs()
+        Dim slots : slots = 4
+        If player_count > slots Then
+            slots = player_count
+        End If
+        For i = 0 To slots - 1
+            If i < player_count Then
+                kwargs.Add "match_number" & i, match_numbers(i)
+                kwargs.Add "match_number" & i & "_won", (match_numbers(i) = m_winner_number)
+                If match_numbers(i) = m_winner_number Then
+                    m_winners = m_winners + 1
+                End If
+            Else
+                kwargs.Add "match_number" & i, ""
+                kwargs.Add "match_number" & i & "_won", False
+            End If
+        Next
+        kwargs.Add "winner_number", m_winner_number
+        kwargs.Add "winners", m_winners
+
+        Dim previous : previous = glf_machine_vars("match_number").Value
+        glf_machine_vars("match_number").Value = m_winner_number
+        Glf_BcpSendMachineVar "match_number", m_winner_number, previous
+
+        If Not IsNull(m_end_match_event) Then
+            AddPinEventListener m_end_match_event.EventName, m_name & "_end_match", "MatchEventHandler", m_priority+m_end_match_event.Priority, Array("end_match", Me, m_end_match_event)
+        End If
+
+        ' The result is a queue event. This mode listens last, so it hears of it only
+        ' after every other listener has finished, including any that made the event wait.
+        Dim result_event
+        If m_winners = 0 Then
+            Log "No match. Winning number: " & m_winner_number
+            result_event = "match_no_match"
+        Else
+            Log "Match. Winning number: " & m_winner_number & ", winners: " & m_winners
+            result_event = "match_has_match"
+        End If
+        m_result_event = result_event
+        AddPinEventListener result_event, m_name & "_result_done", "MatchEventHandler", -1000, Array("result_done", Me)
+        Glf_BcpSendEvent result_event, kwargs
+        DispatchQueuePinEvent result_event, kwargs
+    End Sub
+
+    ' Every listener of the result event is done
+    Public Sub ResultDone()
+        If Not m_running Then
+            Exit Sub
+        End If
+        If m_display_time_ms > 0 Then
+            SetDelay m_name & "_end", "MatchEventHandler", Array(Array("end", Me), Null), m_display_time_ms
+        Else
+            EndMatch()
+        End If
+    End Sub
+
+    ' A number nobody has, from 0, step, 2 x step ...
+    Private Function LosingNumber(match_numbers)
+        Dim candidates, n, i, taken, step_size
+        step_size = m_non_match_number_step
+        If step_size < 1 Then
+            step_size = 1
+        End If
+        candidates = Array()
+        For n = 0 To 99 Step step_size
+            taken = False
+            For i = 0 To UBound(match_numbers)
+                If match_numbers(i) = n Then
+                    taken = True
+                End If
+            Next
+            If Not taken Then
+                ReDim Preserve candidates(UBound(candidates) + 1)
+                candidates(UBound(candidates)) = n
+            End If
+        Next
+        If UBound(candidates) = -1 Then
+            ' The players hold every number on offer. Fall back to any number nobody has.
+            For n = 0 To 99
+                taken = False
+                For i = 0 To UBound(match_numbers)
+                    If match_numbers(i) = n Then
+                        taken = True
+                    End If
+                Next
+                If Not taken Then
+                    ReDim Preserve candidates(UBound(candidates) + 1)
+                    candidates(UBound(candidates)) = n
+                End If
+            Next
+        End If
+        If UBound(candidates) = -1 Then
+            LosingNumber = match_numbers(0)
+        Else
+            LosingNumber = candidates(Int(Rnd() * (UBound(candidates) + 1)))
+        End If
+    End Function
+
+    Public Sub EndMatch()
+        If Not m_running Then
+            Exit Sub
+        End If
+        m_running = False
+        m_base_device.Mode.StopMode
+    End Sub
+
+    ' Called by the base mode device when the match mode stops
+    Public Sub Deactivate()
+        RemoveDelay m_name & "_end"
+        If Not IsEmpty(m_result_event) Then
+            RemovePinEventListener m_result_event, m_name & "_result_done"
+            m_result_event = Empty
+        End If
+        If Not IsNull(m_end_match_event) Then
+            RemovePinEventListener m_end_match_event.EventName, m_name & "_end_match"
+        End If
+        m_running = False
+    End Sub
+
+    Public Sub Enable()
+    End Sub
+
+    Public Sub Disable()
+    End Sub
+
+    Private Sub Log(message)
+        If m_debug = True Then
+            glf_debugLog.WriteToLog m_name, message
+        End If
+    End Sub
+
+    ' Lines for the mode_settings section of the exported match mode
+    Public Function ModeSettingsYaml()
+        ModeSettingsYaml = "  non_match_number_step: " & m_non_match_number_step & vbCrLf
+    End Function
+End Class
+
+Function MatchEventHandler(args)
+    Dim ownProps, kwargs : ownProps = args(0)
+    If IsObject(args(1)) Then
+        Set kwargs = args(1)
+    Else
+        kwargs = args(1)
+    End If
+    Dim evt : evt = ownProps(0)
+    Dim match_device : Set match_device = ownProps(1)
+    Select Case evt
+        Case "end"
+            match_device.EndMatch
+        Case "result_done"
+            match_device.ResultDone
+        Case "end_match"
+            If ownProps(2).Evaluate() Then
+                match_device.EndMatch
+            End If
+    End Select
+    If IsObject(args(1)) Then
+        Set MatchEventHandler = kwargs
+    Else
+        MatchEventHandler = kwargs
+    End If
+End Function
+
 Class GlfBaseModeDevice
 
     Private m_mode
@@ -7156,6 +9504,8 @@ Class Mode
     Private m_started
     Private m_ballsaves
     Private m_counters
+    Private m_accruals
+    Private m_sequences
     Private m_multiball_locks
     Private m_multiballs
     Private m_shots
@@ -7181,8 +9531,10 @@ Class Mode
     Private m_combo_switches
     Private m_timed_switches
     Private m_tilt
+    Private m_carousel
     Private m_high_score
     Private m_use_wait_queue
+    Private m_mode_settings
     Private m_game_mode
 
     Public Property Get Name(): Name = m_name : End Property
@@ -7252,6 +9604,28 @@ Class Mode
             Dim new_ballsave : Set new_ballsave = (new BallSave)(name, Me)
             m_ballsaves.Add name, new_ballsave
             Set BallSaves = new_ballsave
+        End If
+    End Property
+
+    Public Property Get AccrualsItems() : AccrualsItems = m_accruals.Items() : End Property
+    Public Property Get Accruals(name)
+        If m_accruals.Exists(name) Then
+            Set Accruals = m_accruals(name)
+        Else
+            Dim new_accrual : Set new_accrual = (new GlfStepLogicBlock)(name, Me, "accrual")
+            m_accruals.Add name, new_accrual
+            Set Accruals = new_accrual
+        End If
+    End Property
+
+    Public Property Get SequencesItems() : SequencesItems = m_sequences.Items() : End Property
+    Public Property Get Sequences(name)
+        If m_sequences.Exists(name) Then
+            Set Sequences = m_sequences(name)
+        Else
+            Dim new_sequence : Set new_sequence = (new GlfStepLogicBlock)(name, Me, "sequence")
+            m_sequences.Add name, new_sequence
+            Set Sequences = new_sequence
         End If
     End Property
 
@@ -7349,6 +9723,15 @@ Class Mode
         End If
     End Property
 
+    ' Turns the mode into a carousel: a list of items the player steps through and picks from
+    Public Property Get Carousel()
+        If IsNull(m_carousel) Then
+            Set m_carousel = (new GlfCarousel)(Me)
+            AddModeSettings "carousel", m_carousel
+        End If
+        Set Carousel = m_carousel
+    End Property
+
     Public Property Get TiltConfig()
         If Not IsNull(m_tilt) Then
             Set TiltConfig = m_tilt
@@ -7429,6 +9812,13 @@ Class Mode
         Next
     End Property
 
+    ' A device that belongs to one of the built-in modes (bonus, carousel, match...) registers
+    ' here. Its ModeSettingsYaml is written under mode_settings: when the mode is exported.
+    Public Sub AddModeSettings(name, device)
+        If Not m_mode_settings.Exists(name) Then
+            m_mode_settings.Add name, device
+        End If
+    End Sub
     Public Property Get UseWaitQueue(): UseWaitQueue = m_use_wait_queue: End Property
     Public Property Let UseWaitQueue(input): m_use_wait_queue = input: End Property
 
@@ -7452,6 +9842,12 @@ Class Mode
             config_item.Debug = value
         Next
         For Each config_item in m_timers.Items()
+            config_item.Debug = value
+        Next
+        For Each config_item in m_accruals.Items()
+            config_item.Debug = value
+        Next
+        For Each config_item in m_sequences.Items()
             config_item.Debug = value
         Next
         For Each config_item in m_multiball_locks.Items()
@@ -7486,6 +9882,9 @@ Class Mode
         Next
         If Not IsNull(m_tilt) Then
             m_tilt.Debug = value
+        End If
+        If Not IsNull(m_carousel) Then
+            m_carousel.Debug = value
         End If
         If Not IsNull(m_lightplayer) Then
             m_lightplayer.Debug = value
@@ -7536,6 +9935,8 @@ Class Mode
         Set m_stop_events = CreateObject("Scripting.Dictionary")
         Set m_ballsaves = CreateObject("Scripting.Dictionary")
         Set m_counters = CreateObject("Scripting.Dictionary")
+        Set m_accruals = CreateObject("Scripting.Dictionary")
+        Set m_sequences = CreateObject("Scripting.Dictionary")
         Set m_timers = CreateObject("Scripting.Dictionary")
         Set m_multiball_locks = CreateObject("Scripting.Dictionary")
         Set m_multiballs = CreateObject("Scripting.Dictionary")
@@ -7550,8 +9951,10 @@ Class Mode
         Set m_timed_switches = CreateObject("Scripting.Dictionary")
 
         m_use_wait_queue = False
+        Set m_mode_settings = CreateObject("Scripting.Dictionary")
         m_lightplayer = Null
         m_tilt = Null
+        m_carousel = Null
         m_showplayer = Null
         m_segment_display_player = Null
         m_high_score = Null
@@ -7653,7 +10056,23 @@ Class Mode
         If m_use_wait_queue Then
             yaml = yaml & "  use_wait_queue: true" & vbCrLf
         End If
+
+        If UBound(m_mode_settings.Keys)>-1 Then
+            yaml = yaml & vbCrLf
+            yaml = yaml & "mode_settings: " & vbCrLf
+            For Each child in m_mode_settings.Keys
+                yaml = yaml & m_mode_settings(child).ModeSettingsYaml()
+            Next
+        End If
         
+        If UBound(m_accruals.Keys)>-1 Then
+            yaml = yaml & vbCrLf
+            yaml = yaml & "accruals: " & vbCrLf
+            For Each child in m_accruals.Keys
+                yaml = yaml & m_accruals(child).ToYaml
+            Next
+        End If
+
         If UBound(m_ballholds.Keys)>-1 Then
             yaml = yaml & vbCrLf
             yaml = yaml & "ball_holds: " & vbCrLf
@@ -7751,6 +10170,14 @@ Class Mode
                 yaml = yaml & "segment_display_player: " & vbCrLf
                 yaml = yaml & m_segment_display_player.ToYaml()
             End If
+        End If
+
+        If UBound(m_sequences.Keys)>-1 Then
+            yaml = yaml & vbCrLf
+            yaml = yaml & "sequences: " & vbCrLf
+            For Each child in m_sequences.Keys
+                yaml = yaml & m_sequences(child).ToYaml
+            Next
         End If
 
         If UBound(m_sequence_shots.Keys)>-1 Then
@@ -15352,6 +17779,198 @@ Function FlipperEventHandler(args)
         FlipperEventHandler = kwargs
     End If
 End Function
+' Kickback: fires a ball back into play when its switch is hit, while it is enabled.
+' After MPF's kickback device, which is an autofire coil that also posts an event
+' each time it fires.
+
+Dim glf_kickbacks : Set glf_kickbacks = CreateObject("Scripting.Dictionary")
+
+Function CreateGlfKickback(name)
+	Dim kickback : Set kickback = (new GlfKickback)(name)
+	Set CreateGlfKickback = kickback
+End Function
+
+Class GlfKickback
+
+    Private m_name
+    Private m_device_name
+    Private m_enable_events
+    Private m_disable_events
+    Private m_enabled
+    Private m_switch
+    Private m_action_cb
+    Private m_disabled_cb
+    Private m_enabled_cb
+    Private m_debug
+
+    Public Property Get Name() : Name = m_name : End Property
+    Public Property Get Enabled() : Enabled = m_enabled : End Property
+    Public Property Get GetValue(value)
+        Select Case value
+            Case "enabled"
+                GetValue = m_enabled
+        End Select
+    End Property
+
+    Public Property Let Switch(value)
+        If m_enabled = True Then
+            RemoveSwitchListeners()
+        End If
+        m_switch = value
+        If m_enabled = True Then
+            AddSwitchListeners()
+        End If
+    End Property
+    ' Called with Array(1, ball) when the kickback fires and Array(0, ball) when the ball has left
+    Public Property Let ActionCallback(value) : m_action_cb = value : End Property
+    Public Property Let DisabledCallback(value) : m_disabled_cb = value : End Property
+    Public Property Let EnabledCallback(value) : m_enabled_cb = value : End Property
+    Public Property Let EnableEvents(value)
+        Dim evt
+        If IsArray(m_enable_events) Then
+            For Each evt in m_enable_events
+                RemovePinEventListener evt, m_name & "_enable"
+            Next
+        End If
+        m_enable_events = value
+        For Each evt in m_enable_events
+            AddPinEventListener evt, m_name & "_enable", "KickbackEventHandler", 1000, Array("enable", Me)
+        Next
+    End Property
+    Public Property Let DisableEvents(value)
+        Dim evt
+        If IsArray(m_disable_events) Then
+            For Each evt in m_disable_events
+                RemovePinEventListener evt, m_name & "_disable"
+            Next
+        End If
+        m_disable_events = value
+        For Each evt in m_disable_events
+            AddPinEventListener evt, m_name & "_disable", "KickbackEventHandler", 1000, Array("disable", Me)
+        Next
+    End Property
+    Public Property Let Debug(value) : m_debug = value : End Property
+
+	Public default Function init(name)
+        m_name = "kickback_" & name
+        m_device_name = name
+        m_enabled = False
+        m_action_cb = Empty
+        m_disabled_cb = Empty
+        m_enabled_cb = Empty
+        m_switch = Empty
+        m_debug = False
+        m_enable_events = Empty
+        m_disable_events = Empty
+        ' A kickback is switched on by the table's rules, so it has no enable events until given some
+        DisableEvents = Array("ball_will_end", "service_mode_entered")
+        glf_kickbacks.Add name, Me
+        Set Init = Me
+	End Function
+
+    Private Sub AddSwitchListeners()
+        If Not IsEmpty(m_switch) Then
+            AddPinEventListener m_switch & "_active", m_name & "_active", "KickbackEventHandler", 1000, Array("activate", Me)
+            AddPinEventListener m_switch & "_inactive", m_name & "_inactive", "KickbackEventHandler", 1000, Array("deactivate", Me)
+        End If
+    End Sub
+
+    Private Sub RemoveSwitchListeners()
+        If Not IsEmpty(m_switch) Then
+            RemovePinEventListener m_switch & "_active", m_name & "_active"
+            RemovePinEventListener m_switch & "_inactive", m_name & "_inactive"
+        End If
+    End Sub
+
+    Public Sub Enable()
+        If m_enabled = True Then
+            Exit Sub
+        End If
+        Log "Enabling"
+        m_enabled = True
+        If Not IsEmpty(m_enabled_cb) Then
+            GetRef(m_enabled_cb)(Null)
+        End If
+        AddSwitchListeners()
+        DispatchPinEvent m_name & "_enabled", Null
+    End Sub
+
+    Public Sub Disable()
+        If m_enabled = False Then
+            Exit Sub
+        End If
+        Log "Disabling"
+        m_enabled = False
+        If Not IsEmpty(m_disabled_cb) Then
+            GetRef(m_disabled_cb)(Null)
+        End If
+        RemoveSwitchListeners()
+        DispatchPinEvent m_name & "_disabled", Null
+    End Sub
+
+    ' The switch was hit while the kickback is enabled
+    Public Sub Activate(active_ball)
+        Log "Firing"
+        If Not IsEmpty(m_action_cb) Then
+            GetRef(m_action_cb)(Array(1, active_ball))
+        End If
+        Glf_BcpSendEvent m_name & "_fired", Null
+        DispatchPinEvent m_name & "_fired", Null
+    End Sub
+
+    Public Sub Deactivate(active_ball)
+        If Not IsEmpty(m_action_cb) Then
+            GetRef(m_action_cb)(Array(0, active_ball))
+        End If
+    End Sub
+
+    Private Sub Log(message)
+        If m_debug = True Then
+            glf_debugLog.WriteToLog m_name, message
+        End If
+    End Sub
+
+    Public Function ToYaml()
+        Dim yaml
+        yaml = "  " & m_device_name & ":" & vbCrLf
+        yaml = yaml & "    coil: c_" & m_name & vbCrLf
+        yaml = yaml & "    switch: " & m_switch & vbCrLf
+        If IsArray(m_enable_events) Then
+            yaml = yaml & "    enable_events: " & Join(m_enable_events, ", ") & vbCrLf
+        End If
+        If IsArray(m_disable_events) Then
+            yaml = yaml & "    disable_events: " & Join(m_disable_events, ", ") & vbCrLf
+        End If
+        ToYaml = yaml
+    End Function
+End Class
+
+Function KickbackEventHandler(args)
+    Dim ownProps, kwargs : ownProps = args(0)
+    If IsObject(args(1)) Then
+        Set kwargs = args(1)
+    Else
+        kwargs = args(1)
+    End If
+    Dim evt : evt = ownProps(0)
+    Dim kickback : Set kickback = ownProps(1)
+    Select Case evt
+        Case "enable"
+            kickback.Enable
+        Case "disable"
+            kickback.Disable
+        Case "activate"
+            kickback.Activate kwargs
+        Case "deactivate"
+            kickback.Deactivate kwargs
+    End Select
+    If IsObject(args(1)) Then
+        Set KickbackEventHandler = kwargs
+    Else
+        KickbackEventHandler = kwargs
+    End If
+End Function
+
 Function CreateGlfLightSegmentDisplay(name)
 	Dim segment_display : Set segment_display = (new GlfLightSegmentDisplay)(name)
 	Set CreateGlfLightSegmentDisplay = segment_display
@@ -17680,57 +20299,47 @@ End Class
 '*****  Player Setup                               ****
 '******************************************************
 
+' Adds a player to the game, if the game has room and it is still ball 1.
+' player_add_request is a relay: any listener that returns False refuses the player
+' (the credits mode does, when there are not enough credits).
 Sub Glf_AddPlayer()
+    Dim player_count : player_count = Glf_PlayerCount()
+    If player_count >= glf_game.MaxPlayers() Then
+        glf_canAddPlayers = False
+        Exit Sub
+    End If
+    If player_count > 0 Then
+        If GetPlayerState(GLF_CURRENT_BALL) <> 1 Then
+            Exit Sub
+        End If
+    End If
+
+    If DispatchRelayPinEvent("player_add_request", True) = False Then
+        glf_debugLog.WriteToLog "Game", "Request to add a player was refused"
+        Exit Sub
+    End If
+
+    Dim new_number : new_number = player_count + 1
     Dim kwargs : Set kwargs = GlfKwargs()
-    With kwargs
-        .Add "num", -1
-    End With
-    Select Case UBound(glf_playerState.Keys())
-        Case -1:
-            kwargs("num") = 1
-            DispatchPinEvent "player_added", kwargs
-            glf_playerState.Add "PLAYER 1", Glf_InitNewPlayer()
-            SetPlayerStateByPlayer GLF_SCORE, 0, 0
-            SetPlayerStateByPlayer "number", 1, 0
-            Glf_BcpAddPlayer 1
-            glf_currentPlayer = "PLAYER 1"
-            Glf_BcpSendMachineVar "last_game_players", 1, 0
-            glf_machine_vars("last_game_players").Value = 1
-        Case 0:     
-            If GetPlayerState(GLF_CURRENT_BALL) = 1 Then
-                kwargs("num") = 2
-                DispatchPinEvent "player_added", kwargs
-                glf_playerState.Add "PLAYER 2", Glf_InitNewPlayer()
-                SetPlayerStateByPlayer GLF_SCORE, 0, 1
-                SetPlayerStateByPlayer "number", 2, 1
-                Glf_BcpAddPlayer 2
-                Glf_BcpSendMachineVar "last_game_players", 2, 1
-                glf_machine_vars("last_game_players").Value = 2
-            End If
-        Case 1:
-            If GetPlayerState(GLF_CURRENT_BALL) = 1 Then
-                kwargs("num") = 3
-                DispatchPinEvent "player_added", kwargs
-                glf_playerState.Add "PLAYER 3", Glf_InitNewPlayer()
-                SetPlayerStateByPlayer GLF_SCORE, 0, 2
-                SetPlayerStateByPlayer "number", 3, 2
-                Glf_BcpAddPlayer 3
-                Glf_BcpSendMachineVar "last_game_players", 3, 2
-                glf_machine_vars("last_game_players").Value = 3
-            End If     
-        Case 2:   
-            If GetPlayerState(GLF_CURRENT_BALL) = 1 Then
-                kwargs("num") = 4
-                DispatchPinEvent "player_added", kwargs
-                glf_playerState.Add "PLAYER 4", Glf_InitNewPlayer()
-                SetPlayerStateByPlayer GLF_SCORE, 0, 3
-                SetPlayerStateByPlayer "number", 4, 3
-                Glf_BcpAddPlayer 4
-                Glf_BcpSendMachineVar "last_game_players", 4, 3
-                glf_machine_vars("last_game_players").Value = 4
-            End If  
-            glf_canAddPlayers = False
-    End Select
+    kwargs.Add "num", new_number
+    kwargs.Add "number", new_number
+    DispatchPinEvent "player_will_add", kwargs
+    DispatchPinEvent "player_added", kwargs
+    glf_playerState.Add "PLAYER " & new_number, Glf_InitNewPlayer()
+    SetPlayerStateByPlayer GLF_SCORE, 0, player_count
+    SetPlayerStateByPlayer "number", new_number, player_count
+    Glf_BcpAddPlayer new_number
+    If new_number = 1 Then
+        glf_currentPlayer = "PLAYER 1"
+    End If
+    Glf_BcpSendMachineVar "last_game_players", new_number, player_count
+    glf_machine_vars("last_game_players").Value = new_number
+    If new_number = 2 Then
+        DispatchPinEvent "multiplayer_game", Null
+    End If
+    If new_number >= glf_game.MaxPlayers() Then
+        glf_canAddPlayers = False
+    End If
 End Sub
 
 Function Glf_InitNewPlayer()
@@ -17773,63 +20382,17 @@ End Function
 AddPinEventListener "request_to_start_game", "request_to_start_game_ball_controller", "Glf_BallController", 30, Null
 Function Glf_BallController(args)
     Dim balls_in_trough : balls_in_trough = 0
-    If glf_troughSize = 1 Then
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
+    Dim i, switch_count
+    ' An eight ball trough of the default style keeps its eighth ball in the drain
+    switch_count = glf_troughSize
+    If glf_troughSize = 8 And glf_troughStyle = "Default" Then
+        switch_count = 7
+        If Drain.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
     End If
-    If glf_troughSize = 2 Then
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-    End If
-    If glf_troughSize = 3 Then 
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough3.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-    End If
-    If glf_troughSize = 4 Then 
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough3.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough4.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-    End If
-    If glf_troughSize = 5 Then 
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough3.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough4.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough5.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-    End If
-    If glf_troughSize = 6 Then 
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough3.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough4.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough5.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough6.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-    End If
-    If glf_troughSize = 7 Then 
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough3.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough4.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough5.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough6.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough7.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-    End If
-    If glf_troughSize = 8 Then 
-        If swTrough1.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough2.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough3.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough4.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough5.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough6.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If swTrough7.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        If glf_troughStyle = "Default" Then
-            If Drain.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        ElseIf glf_troughStyle = "P3" Then
-            If swTrough8.BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
-        End If
-    End If
-  
+    For i = 1 To switch_count
+        If Eval("swTrough" & i).BallCntOver = 1 Then balls_in_trough = balls_in_trough + 1
+    Next
+
     If glf_troughSize <> balls_in_trough Then
         Glf_BallController = False
         Exit Function
@@ -17867,6 +20430,23 @@ End Sub
 
 Public Function Glf_DispatchGameStarted(args)
     DispatchPinEvent GLF_GAME_STARTED, Null
+    Glf_PostPlayerTurnStart
+End Function
+
+' player_turn_will_start, player_turn_starting (a queue event) and player_turn_started,
+' as in MPF. Posted when a player's turn begins, not for an extra ball.
+Sub Glf_PostPlayerTurnStart()
+    Dim kwargs : Set kwargs = Glf_PlayerTurnKwargs()
+    DispatchPinEvent "player_turn_will_start", kwargs
+    DispatchQueuePinEvent "player_turn_starting", kwargs
+    DispatchPinEvent "player_turn_started", kwargs
+End Sub
+
+Function Glf_PlayerTurnKwargs()
+    Dim kwargs : Set kwargs = GlfKwargs()
+    kwargs.Add "number", Getglf_currentPlayerNumber() + 1
+    kwargs.Add "player", Getglf_currentPlayerNumber() + 1
+    Set Glf_PlayerTurnKwargs = kwargs
 End Function
 
 
@@ -17886,12 +20466,40 @@ Function Glf_ReleaseBall(args)
     Set kwargs = GlfKwargs()
     If Not IsNull(args) Then
         If args(0) = True Then
-            kwargs.Add "new_ball", True
+            ' A new ball for the current player, as against a ball added to one in play.
+            ' ball_starting is a queue event: the ball is served by its last listener,
+            ' Glf_BallStartingDone, so a listener that waits holds the ball back.
+            Dim ball_kwargs : Set ball_kwargs = GlfKwargs()
+            ball_kwargs.Add "ball", GetPlayerState(GLF_CURRENT_BALL)
+            ball_kwargs.Add "player", Getglf_currentPlayerNumber() + 1
+            ball_kwargs.Add "balls_remaining", glf_game.BallsPerGame() - GetPlayerState(GLF_CURRENT_BALL)
+            DispatchPinEvent "ball_will_start", ball_kwargs
+            DispatchQueuePinEvent "ball_starting", ball_kwargs
+            Exit Function
         End If
     End If
     DispatchQueuePinEvent "balldevice_trough_ball_eject_attempt", kwargs
 End Function
 
+
+'****************************
+' Serve the new ball once every ball_starting listener is done
+' Event Listeners:
+AddPinEventListener "ball_starting", "glf_ball_starting_done", "Glf_BallStartingDone", -1000, Null
+'
+'*****************************
+Function Glf_BallStartingDone(args)
+    If glf_gameStarted = True Then
+        Dim kwargs : Set kwargs = GlfKwargs()
+        kwargs.Add "new_ball", True
+        DispatchQueuePinEvent "balldevice_trough_ball_eject_attempt", kwargs
+    End If
+    If IsObject(args(1)) Then
+        Set Glf_BallStartingDone = args(1)
+    Else
+        Glf_BallStartingDone = args(1)
+    End If
+End Function
 
 '****************************
 ' Release Ball
@@ -17906,6 +20514,12 @@ Function Glf_TroughReleaseBall(args)
             If args(1)("new_ball") = True Then
                 glf_BIP = glf_BIP + 1
                 DispatchPinEvent GLF_BALL_STARTED, Null
+                If Glf_PlayerCount() = 1 Then
+                    DispatchPinEvent "single_player_ball_started", Null
+                Else
+                    DispatchPinEvent "multi_player_ball_started", Null
+                    DispatchPinEvent "player_" & (Getglf_currentPlayerNumber() + 1) & "_ball_started", Null
+                End If
                 If useBcp Then
                     bcpController.SendPlayerVariable GLF_CURRENT_BALL, GetPlayerState(GLF_CURRENT_BALL), GetPlayerState(GLF_CURRENT_BALL)-1
                     bcpController.SendPlayerVariable GLF_SCORE, GetPlayerState(GLF_SCORE), GetPlayerState(GLF_SCORE)
@@ -18002,28 +20616,32 @@ Function Glf_EndOfBall(args)
     
     SetPlayerState GLF_CURRENT_BALL, GetPlayerState(GLF_CURRENT_BALL) + 1
 
-    Dim previousPlayerNumber : previousPlayerNumber = Getglf_currentPlayerNumber()
-    Select Case glf_currentPlayer
-        Case "PLAYER 1":
-            If UBound(glf_playerState.Keys()) > 0 Then
-                glf_currentPlayer = "PLAYER 2"
-            End If
-        Case "PLAYER 2":
-            If UBound(glf_playerState.Keys()) > 1 Then
-                glf_currentPlayer = "PLAYER 3"
-            Else
-                glf_currentPlayer = "PLAYER 1"
-            End If
-        Case "PLAYER 3":
-            If UBound(glf_playerState.Keys()) > 2 Then
-                glf_currentPlayer = "PLAYER 4"
-            Else
-                glf_currentPlayer = "PLAYER 1"
-            End If
-        Case "PLAYER 4":
-            glf_currentPlayer = "PLAYER 1"
-    End Select
-    
+    ' The turn is over. The player only changes once these events have been handled,
+    ' so their listeners still see the player whose turn it was.
+    Dim kwargs : Set kwargs = Glf_PlayerTurnKwargs()
+    DispatchPinEvent "player_turn_will_end", kwargs
+    DispatchQueuePinEvent "player_turn_ending", kwargs
+    DispatchPinEvent "player_turn_ended", kwargs
+    DispatchPinEvent "glf_player_turn_complete", Null
+
+End Function
+
+'****************************
+' Next Player
+' Event Listeners:
+AddPinEventListener "glf_player_turn_complete", "glf_rotate_players", "Glf_RotatePlayers", 20, Null
+'
+'*****************************
+Function Glf_RotatePlayers(args)
+    If glf_gameStarted = False Or IsNull(glf_currentPlayer) Then
+        Exit Function
+    End If
+    Dim next_player : next_player = Getglf_currentPlayerNumber() + 1
+    If next_player >= Glf_PlayerCount() Then
+        next_player = 0
+    End If
+    glf_currentPlayer = Getglf_PlayerName(next_player)
+
     If GetPlayerState(GLF_CURRENT_BALL) > glf_game.BallsPerGame() Then
         Dim device
         For Each device in glf_ball_devices.Items()
@@ -18034,11 +20652,17 @@ Function Glf_EndOfBall(args)
         DispatchPinEvent "game_will_end", Null
         DispatchQueuePinEvent "game_ending", Null
     Else
-        SetDelay "end_of_ball_delay", "EndOfBallNextPlayer", Null, 1000 
+        SetDelay "end_of_ball_delay", "Glf_StartPlayerTurn", Null, 1000
     End If
-    
+End Function
 
-
+' The next player's turn: the turn events, then the ball
+Public Function Glf_StartPlayerTurn(args)
+    If glf_gameStarted = False Or IsNull(glf_currentPlayer) Then
+        Exit Function
+    End If
+    Glf_PostPlayerTurnStart
+    DispatchPinEvent GLF_NEXT_PLAYER, Null
 End Function
 
 '****************************
@@ -18249,6 +20873,10 @@ Function DispatchPinHandlers(e, args)
         If IsObject(retArgs) Then
             If retArgs.Exists("wait_for") Then
                 DispatchPinHandlers = retArgs("wait_for")
+                ' The wait belongs to this handler only. Left in the arguments it is passed
+                ' on to the remaining handlers, and the first of them would start the same
+                ' wait again, for an event that has already been posted.
+                retArgs.Remove "wait_for"
             End If
         End If
     Else
@@ -18506,18 +21134,8 @@ Function GetPlayerState(key)
 End Function
 
 Function GetPlayerStateForPlayer(player, key)
-    dim p
-    Select Case player
-        Case 0:
-            p = "PLAYER 1"
-        Case 1:
-            p = "PLAYER 2"
-        Case 2:
-            p = "PLAYER 3"
-        Case 3:
-            p = "PLAYER 4"
-    End Select
-
+    ' player is zero based
+    Dim p : p = Getglf_PlayerName(player)
     If glf_playerState.Exists(p) Then
         GetPlayerStateForPlayer = glf_playerState(p)(key)
     Else
@@ -18525,30 +21143,22 @@ Function GetPlayerStateForPlayer(player, key)
     End If
 End Function
 
+' Zero based number of the player whose turn it is
 Function Getglf_currentPlayerNumber()
-    Select Case glf_currentPlayer
-        Case "PLAYER 1":
-            Getglf_currentPlayerNumber = 0
-        Case "PLAYER 2":
-            Getglf_currentPlayerNumber = 1
-        Case "PLAYER 3":
-            Getglf_currentPlayerNumber = 2
-        Case "PLAYER 4":
-            Getglf_currentPlayerNumber = 3
-    End Select
+    If IsNull(glf_currentPlayer) Or IsEmpty(glf_currentPlayer) Then
+        Exit Function
+    End If
+    Getglf_currentPlayerNumber = CInt(Mid(glf_currentPlayer, Len("PLAYER ") + 1)) - 1
 End Function
 
+' The key a player's state is stored under. player is zero based.
 Function Getglf_PlayerName(player)
-    Select Case player
-        Case 0:
-            Getglf_PlayerName = "PLAYER 1"
-        Case 1:
-            Getglf_PlayerName = "PLAYER 2"
-        Case 2:
-            Getglf_PlayerName = "PLAYER 3"
-        Case 3:
-            Getglf_PlayerName = "PLAYER 4"
-    End Select
+    Getglf_PlayerName = "PLAYER " & (CInt(player) + 1)
+End Function
+
+' How many players are in the current game
+Function Glf_PlayerCount()
+    Glf_PlayerCount = UBound(glf_playerState.Keys()) + 1
 End Function
 
 Function SetPlayerState(key, value)

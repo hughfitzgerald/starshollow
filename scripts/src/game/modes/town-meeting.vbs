@@ -20,7 +20,7 @@ Sub CreateTownMeetingMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_town_meeting")
-        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "timer_town_meeting_post_mode_complete")
+        .StopEvents = Array("mode_base_stopping", "bonus_start", "timer_town_meeting_post_mode_complete")
 
         With .EventPlayer()
             'Scoring
