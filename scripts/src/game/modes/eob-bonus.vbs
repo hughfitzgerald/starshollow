@@ -129,6 +129,15 @@ Sub CreateBonusMode
                 .Key = "key_show_bonus_total"
                 .Sound = "voc_isthatgood"
             End With
+            With .EventName("bonus_start")
+                .Key = "key_mus_shoo"
+                .Sound = "mus_shoo"
+            End With
+            With .EventName("mode_bonus_stopped")
+                .Key = "key_mus_shoo"
+                .Sound = "mus_shoo"
+                .Action = "stop"
+            End With
         End With
 
         'Skip the bonus tally animations
@@ -216,18 +225,6 @@ Sub CreateBonusMode
                     .Action = "set"
 					.Int = 1
 				End With
-            End With
-        End With
-
-        With .SoundPlayer()
-            With .EventName("bonus_start")
-                .Key = "key_mus_shoo"
-                .Sound = "mus_shoo"
-            End With
-            With .EventName("mode_bonus_stopped")
-                .Key = "key_mus_shoo"
-                .Sound = "mus_shoo"
-                .Action = "stop"
             End With
         End With
 
