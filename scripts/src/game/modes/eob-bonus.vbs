@@ -9,7 +9,7 @@
 '
 ' 1. Counted lines - GLF bonus entries. Each is worth score x count:
 '     Array(name, count, score, title, shown)
-'   name   bonus entry name; show_bonus_<name> is posted when the line is counted
+'   name   bonus entry name - GLF posts bonus_entry with kwargs.entry set to it
 '   count  player variable with the number of hits; the line is skipped when it is 0
 '   score  value of one hit - a number, or a GLF expression
 '   title  VBScript expression for the slide's text - wrap fixed text in KwargText
@@ -54,30 +54,6 @@ Function EobBonusRecapLines()
     )
 End Function
 
-' Listener on bonus_entry (added in _configuration.vbs). GLF posts it for every line
-' it counts, and at the end for the total.
-'   a counted line -> show_bonus_<name>, which plays its slide, sound and light show
-'   the total      -> the bonus is in the score now. Remember it for the TOTAL BONUS
-'                     line and start the recap - or end the bonus if it was skipped.
-Function EobBonusEntry(args)
-    If Not IsObject(args(1)) Then Exit Function
-    Dim entryName : entryName = args(1)("entry")
-    Select Case entryName
-        Case "subtotal", "multiplier"
-            'Not used: bonus_multiplier stays at 1, so GLF goes straight to the total
-        Case "total"
-            SetPlayerState "bonus_total", args(1)("score")
-            SetPlayerState "bonus_counted", 1
-            If GetPlayerState("bonus_skip") = 1 Then
-                DispatchPinEvent "bonus_finished", Null
-            Else
-                DispatchPinEvent "play_bonus_show1", Null
-            End If
-        Case Else
-            DispatchPinEvent "show_bonus_" & entryName, Null
-    End Select
-End Function
-
 Sub CreateBonusMode
     Dim x, row, score
     Dim countedLines : countedLines = EobBonusCountedLines()
@@ -105,13 +81,19 @@ Sub CreateBonusMode
         With .EventPlayer()
             .Add "bonus_start", Array("run_bonus_started", "gi_lights_off")
 
-            'Counted lines: GLF sets the pace, EobBonusEntry posts show_bonus_<name>
+            'Counted lines: GLF sets the pace and posts bonus_entry for each one
             For x = 0 To UBound(countedLines)
                 row = countedLines(x)
-                .Add "show_bonus_" & row(0), Array("bonus_count" & (x + 1) & "_show", "do_sfx_bonus", "show_bonus_slide:{text:" & row(3) & ",score:" & row(4) & "}")
+                .Add "bonus_entry{kwargs.entry == """ & row(0) & """}", Array("bonus_count" & (x + 1) & "_show", "do_sfx_bonus", "show_bonus_slide:{text:" & row(3) & ",score:" & row(4) & "}")
             Next
 
-            'Recap lines, started by EobBonusEntry on the total. Show each in turn,
+            'GLF's last bonus_entry is the total: the bonus is in the score now (the
+            'VariablePlayer below keeps it for the TOTAL BONUS line). Start the recap,
+            'or end the bonus if it was skipped.
+            .Add "bonus_entry{kwargs.entry == ""total"" && current_player.bonus_skip == 0}", Array("play_bonus_show1")
+            .Add "bonus_entry{kwargs.entry == ""total"" && current_player.bonus_skip == 1}", Array("bonus_finished")
+
+            'Recap lines. Show each in turn,
             'skipping those with nothing to show. Each one plays the eob_bonus slide
             'with its text and score as kwargs, and the light show it starts moves on
             'to the next line when it completes.
@@ -125,8 +107,8 @@ Sub CreateBonusMode
             Next
             .Add "play_bonus_show" & (bonusShows + 1), Array("bonus_finished")
             'A skip during the recap ends the bonus. During the count it only hurries
-            'GLF along - ending before the total would lose the bonus - and
-            'EobBonusEntry ends it when the total arrives.
+            'GLF along - ending before the total would lose the bonus - and the
+            'total ends it when it arrives (above).
             .Add "timer_bonus_skip_complete{current_player.bonus_counted == 1}", Array("bonus_finished")
 
             .Add "do_sfx_bonus", Array("stop_sfx_eob_bonus") 'first stop the sfx if it is already playing
@@ -216,6 +198,16 @@ Sub CreateBonusMode
 				With .Variable("bonus_counted")
                     .Action = "set"
 					.Int = 0
+				End With
+            End With
+            With .EventName("bonus_entry{kwargs.entry == ""total""}")
+				With .Variable("bonus_total")
+                    .Action = "set"
+					.Int = "kwargs.score"
+				End With
+				With .Variable("bonus_counted")
+                    .Action = "set"
+					.Int = 1
 				End With
             End With
             With .EventName("skip_bonus_tally")

@@ -35,11 +35,13 @@ Sub CreateBasementMode()
             .Add "game_started", Array("check_start_button")
             .Add "ball_started", Array("check_start_button")
             .Add "game_ended", Array("check_start_button")
+            ' game.num_players is 0 when no game is running (GLF clears the players
+            ' before it posts game_ended).
             ' Mirrors GLF: no game -> needs a credit (or free play). In a game -> needs
             ' that, room for another player, and the current player still on ball 1.
             ' The credits and the player limit are GLF's own (credits mode, game settings).
-            .Add "check_start_button{(machine.credits_whole_num >= 1 or machine.free_play == 1) and (machine.game_active == 0 or (game.num_players < game.max_players and current_player.ball == 1))}", Array("start_button_available")
-            .Add "check_start_button{(machine.credits_whole_num < 1 and machine.free_play == 0) or (machine.game_active == 1 and (game.num_players >= game.max_players or current_player.ball > 1))}", Array("start_button_unavailable")
+            .Add "check_start_button{(machine.credits_whole_num >= 1 or machine.free_play == 1) and (game.num_players == 0 or (game.num_players < game.max_players and current_player.ball == 1))}", Array("start_button_available")
+            .Add "check_start_button{(machine.credits_whole_num < 1 and machine.free_play == 0) or (game.num_players > 0 and (game.num_players >= game.max_players or current_player.ball > 1))}", Array("start_button_unavailable")
 
             .Add "balldevice_lock1_ball_entered", Array("ball_locked")
             .Add "balldevice_lock2_ball_entered", Array("ball_locked")
@@ -133,18 +135,6 @@ Sub CreateBasementMode()
                 With .Variable("num_balls_locked")
                     .Action = "add_machine"
                     .Int = -1
-                End With
-            End With
-            With .EventName("game_started")
-                With .Variable("game_active")
-                    .Action = "set_machine"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("game_ended")
-                With .Variable("game_active")
-                    .Action = "set_machine"
-                    .Int = 0
                 End With
             End With
         End With

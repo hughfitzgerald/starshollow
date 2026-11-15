@@ -158,9 +158,6 @@ Sub ConfigureGlfDevices()
         .Switches("s_add_credit_key2").Value = 1
     End With
 
-    ' Shows each counted bonus line. See modes/eob-bonus.vbs.
-    AddPinEventListener "bonus_entry", "eob_bonus_entry", "EobBonusEntry", 100, Null
-
 
     '*********** HIGH SCORES ***********
 
@@ -217,12 +214,6 @@ Sub ConfigureGlfDevices()
 
     With CreateMachineVar("num_balls_locked")         'number of balls locked
         .InitialValue = 0                               'used to maintain state of locks across players
-        .ValueType = "int"
-        .Persist = False
-    End With
-
-    With CreateMachineVar("game_active")    '1 between game_started and game_ended - used by the start button DOF (E102)
-        .InitialValue = 0
         .ValueType = "int"
         .Persist = False
     End With
