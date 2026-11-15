@@ -18,13 +18,17 @@ Sub LoadCoreFiles
 	On Error GoTo 0
 End Sub
 
-
+Dim LoganBall
 Sub Table1_Init
 	LoadCoreFiles
 	LoadEM
 	' GLF - ConfigureGlfDevices must run first; Glf_Init consumes it
 	ConfigureGlfDevices()
 	Glf_Init(Table1)
+
+	Set LoganBall = LoganBallKicker.CreateBall
+	LoganBallKicker.Kick 0, 0
+	LoganBallKicker.Enabled = False
 
 	' Turn off the Flupper bumper lights
 	FlBumperFadeTarget(1) = 0
