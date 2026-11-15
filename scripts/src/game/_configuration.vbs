@@ -221,12 +221,6 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
-    With CreateMachineVar("num_players")    'players in the current (or last) game - set on player_added
-        .InitialValue = 1
-        .ValueType = "int"
-        .Persist = False
-    End With
-
     With CreateMachineVar("game_active")    '1 between game_started and game_ended - used by the start button DOF (E102)
         .InitialValue = 0
         .ValueType = "int"

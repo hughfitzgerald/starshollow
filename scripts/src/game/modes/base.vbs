@@ -627,7 +627,7 @@ Sub CreateBaseMode()
         With .WidgetPlayer()
             ' Only once there's more than one player to tell apart
             For x = 1 To 4
-                With .EventName("mode_base_started{machine.num_players > 1 and current_player.number == " & x & "}")
+                With .EventName("mode_base_started{game.num_players > 1 and current_player.number == " & x & "}")
                     .Widget = "player_" & x & "_up"
                     .Action = "play"
                     .Expire = 2

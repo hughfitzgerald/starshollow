@@ -601,7 +601,7 @@ Sub DmdTick_GameOver(entry)
     label.SetBounds 0, 1, 128, 8
     label.Alignment = FlexDMD_Align_Center
 
-    numPlayers = glf_machine_vars("num_players").GetValue()
+    numPlayers = glf_machine_vars("last_game_players").GetValue()
 
     Set label = scene.GetLabel("go_big")
     If numPlayers <= 1 Then
