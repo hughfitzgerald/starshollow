@@ -4,14 +4,15 @@ Sub CreateLLMultiballMode()
         .StartEvents = Array("start_ll_multiball")
         .StopEvents = Array("mode_base_stopping", "captive_ball_is_home", "bonus_start")
         With .EventPlayer()
-            .Add "mode_ll_multiball_stopping", Array("open_orbit_gate2")
+            .Add "mode_ll_multiball_started", Array("base_music_stop", "close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
+            .Add "mode_ll_multiball_stopping", Array("base_music_start", "open_orbit_gate2")
             
             'Scoring
             .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
             .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"))
             .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
 
-            .Add "mode_ll_multiball_started", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
+            
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             
@@ -39,6 +40,15 @@ Sub CreateLLMultiballMode()
             With .EventName("auto_fire_coil_bumper5_activate")
                 .Key = "key_voc_logan_hit3"
                 .Sound = "voc_logan_hit3"
+            End With
+            With .EventName("mode_ll_multiball_started")
+                .Key = "key_mus_llmb"
+                .Sound = "mus_llmb"
+            End With
+            With .EventName("mode_ll_multiball_stopping")
+                .Key = "key_mus_llmb"
+                .Sound = "mus_llmb"
+                .Action = "stop"
             End With
         End With
 

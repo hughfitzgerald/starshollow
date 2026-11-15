@@ -5,7 +5,8 @@ Sub CreateJDMultiballMode()
         .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", "jess_wins", "dean_wins")
 
         With .EventPlayer()
-            .Add "mode_jd_multiball_started", Array("release_scoop_hold", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
+            .Add "mode_jd_multiball_started", Array("base_music_stop", "release_scoop_hold", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
+            .Add "mode_jd_multiball_stopping", Array("base_music_start")
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
 
@@ -50,6 +51,15 @@ Sub CreateJDMultiballMode()
             With .EventName("exboyfriend_callout")
                 .Key = "key_voc_exboyfriend"
                 .Sound = "voc_exboyfriend"
+            End With
+            With .EventName("mode_jd_multiball_started")
+                .Key = "key_mus_jdmb"
+                .Sound = "mus_jdmb"
+            End With
+            With .EventName("mode_jd_multiball_stopping")
+                .Key = "key_mus_jdmb"
+                .Sound = "mus_jdmb"
+                .Action = "stop"
             End With
         End With
 

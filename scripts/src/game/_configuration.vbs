@@ -719,8 +719,6 @@ Sub CreateSounds()
     AddCallout     "voc_truman", 2
     AddCallout     "voc_stars", 1
     AddCallout     "voc_hollow", 1
-    AddCallout     "voc_tall", 2
-    AddCallout     "voc_exboyfriend", 3
     AddCallout     "voc_wereclosed", 1
     AddCallout     "voc_richardtheyrehere", 2
 
@@ -750,7 +748,13 @@ Sub CreateSounds()
     AddCallout     "voc_sookie3", 4
     AddCallout     "voc_sookie4", 5
 
+    ' Jess/Dean Multiball
+    AddMusic       "mus_jdmb",  194, -1
+    AddCallout     "voc_tall", 2
+    AddCallout     "voc_exboyfriend", 3
+
     ' Logan Multiball
+    AddMusic       "mus_llmb",  173, -1
     AddCallout     "voc_logan_hit1", 2
     AddCallout     "voc_logan_hit2", 2
     AddCallout     "voc_logan_hit3", 1

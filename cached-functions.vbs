@@ -1658,7 +1658,7 @@ Function Glf_346(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "LOCK-AWAY LOGAN"
-	kwargs.Add "instructions", "LOCK-AWAY LOGAN IN THE SCOOP"
+	kwargs.Add "instructions", "HIT BUMPERS TO BASH LOGAN"
 	Set Glf_346 = kwargs
 	If Err Then Glf_346 = Null
 End Function
@@ -1666,7 +1666,7 @@ Function Glf_347(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "LOCK-AWAY LOGAN"
-	kwargs.Add "instructions", "HIT BUMPERS TO BASH LOGAN"
+	kwargs.Add "instructions", "LOCK-AWAY LOGAN IN THE SCOOP"
 	Set Glf_347 = kwargs
 	If Err Then Glf_347 = Null
 End Function
@@ -2344,8 +2344,8 @@ glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" 
 glf_funcRefMap.Add "{current_player.mode_jdmb_score}", "Glf_343"
 glf_funcRefMap.Add "4000000", "Glf_344"
 glf_funcRefMap.Add "7500000", "Glf_345"
-glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""LOCK-AWAY LOGAN IN THE SCOOP""}", "Glf_346"
-glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""HIT BUMPERS TO BASH LOGAN""}", "Glf_347"
+glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""HIT BUMPERS TO BASH LOGAN""}", "Glf_346"
+glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""LOCK-AWAY LOGAN IN THE SCOOP""}", "Glf_347"
 glf_funcRefMap.Add "logan_bumper_hit{current_player.mode_llmb_score>=2500000}", "Glf_348"
 glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", "Glf_349"
 glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==0}", "Glf_350"
