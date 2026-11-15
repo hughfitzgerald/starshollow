@@ -2,7 +2,7 @@
 '*******************************************
 '  Base Mode
 '*******************************************
-' Priority 110 - above attract (100), below any feature mode you add later
+' Priority 110 - above attract (10), below any feature mode you add later
 ' (use 700+ for those) and below score (2000, when you write it).
 '
 ' Runs for the whole of every ball. Owns anything that isn't specific to a
@@ -36,8 +36,7 @@ Sub CreateBaseMode()
         '--- Event routing -------------------------------------------------
         With .EventPlayer()
 
-            ' Kill the attract mode as soon as a ball starts
-            .Add "mode_base_started", Array("stop_attract_mode", "new_ball_started", "base_music_start", "backglass_on", "open_orbit_gate2")
+            .Add "mode_base_started", Array("new_ball_started", "base_music_start", "backglass_on", "open_orbit_gate2")
             .Add "mode_base_stopping", Array("base_music_stop", "backglass_off")
 
             .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))
@@ -113,13 +112,13 @@ Sub CreateBaseMode()
 
             'TODO: Add ramp rollovers, ANY OTHERS?
 
-            .Add "mode_eob_bonus_started", Array("base_music_stop")
+            .Add "bonus_start", Array("base_music_stop")
             .Add "base_music_stop", baseMusicStopEvents
 
             .Add "release_scoop_hold", Array("play_scoop_eject_show")
 
             ' When a sub-mode has its own music, we don't want a new song start based on the timer!!!
-            .Add "timer_base_music_complete{modes.eob_bonus.active == False and modes.dance_marathon.active == False and modes.town_meeting.active == False and modes.dinner.active == False and modes.fd_punch.active == False and modes.kims_antiques.active == False and modes.lbtb.active == False}", Array("base_music_stop","start_new_song")
+            .Add "timer_base_music_complete{modes.bonus.active == False and modes.dance_marathon.active == False and modes.town_meeting.active == False and modes.dinner.active == False and modes.fd_punch.active == False and modes.kims_antiques.active == False and modes.lbtb.active == False}", Array("base_music_stop","start_new_song")
             .Add "start_new_song", Array("base_music_start")
 
             For Each bm in baseMusicArray

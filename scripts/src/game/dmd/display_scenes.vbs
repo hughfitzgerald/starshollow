@@ -132,7 +132,7 @@ Sub DmdTick_Score(entry)
   Set activeLeftScore = scene.GetGroup("ActiveLeftScore")
   Set inactiveLeftScore = scene.GetGroup("InactiveLeftScore")
 
-  scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   CREDITS " & glf_machine_vars("credits").GetValue()
+  scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   " & glf_machine_vars("credits_string").GetValue()
   
   scene.GetLabel("P1").Alignment = FlexDMD_Align_TopRight
   scene.GetLabel("P2").Visible = False

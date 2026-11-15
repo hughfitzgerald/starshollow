@@ -2,7 +2,14 @@
 '*******************************************
 '  Attract Mode
 '*******************************************
-' Priority 100 - lowest of everything. Runs whenever no game is in play.
+' GLF's built-in attract mode (EnableGlfAttract): priority 10, lowest of
+' everything, not a game mode. GLF starts it on reset_complete and game_ended
+' and stops it on game_start. This file only adds the table's presentation.
+'
+' The mode is running again as soon as a game ends, but the post-game mode
+' has the stage first, so the presentation waits for attract_intro: posted
+' at once when there is no post-game (table start), otherwise when the
+' post-game mode is done.
 '
 ' Deliberately minimal: it does NOT need to do anything to let you start a
 ' game. GLF handles that entirely on its own:
@@ -10,7 +17,7 @@
 '   Glf_KeyUp(StartGameKey)
 '     -> DispatchRelayPinEvent "request_to_start_game"
 '        -> Glf_BallController  (verifies all 5 balls are in the trough)
-'        -> CreditCheckStartGame (ours, _configuration.vbs: needs >= 1 credit)
+'        -> GLF credits mode     (needs >= 1 credit, see _configuration.vbs)
 '        -> Glf_StartGame       (adds player 1, dispatches game_start)
 '        -> Glf_ReleaseBall     (kicks a ball to the plunger lane)
 '
@@ -27,15 +34,12 @@ Sub CreateAttractMode()
 
     Dim giName
 
-    With CreateGlfMode("attract", 100)
-
-        .StartEvents = Array("start_attract_mode","reset_complete")
-        .StopEvents  = Array("game_started", "stop_attract_mode")
+    With EnableGlfAttract()
 
 
 
         With .ShowPlayer()
-            With .EventName("mode_attract_started")
+            With .EventName("attract_intro")
                 .Key = "key_mode_attract_started"
                 .Show = "psc_attract"
                 ' .Show = "generated_flash"
@@ -46,7 +50,7 @@ Sub CreateAttractMode()
         With .SlidePlayer()
             ' The scoreboard, for the whole ball. Cleared from the slide
             ' stack when base mode stops - the scene itself stays up.
-            With .EventName("mode_attract_started")
+            With .EventName("attract_intro")
                 .Slide  = "welcome"
                 .Action = "play"
             End With
@@ -56,7 +60,7 @@ Sub CreateAttractMode()
         ' GI lights are addressed by name, not by tag - see the long note in
         ' _configuration.vbs for why .Lights("GI") would crash Glf_Init.
         With .LightPlayer()
-            With .EventName("mode_attract_started")
+            With .EventName("attract_intro")
                 With .Lights("GI")
                     .Color = GIColorAttract
                     .Fade  = 1200
@@ -77,8 +81,9 @@ Sub CreateAttractMode()
         End With
 
         With .EventPlayer()
-            .Add "mode_attract_started", Array("play_mus_married")
-            .Add "stop_attract_mode", Array("stop_mus_married")
+            .Add "mode_attract_started{modes.post_game.active == False}", Array("attract_intro")
+            .Add "stop_post_game_mode", Array("attract_intro")
+            .Add "attract_intro", Array("play_mus_married")
 
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", Array("attract_gi_dim")
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", Array("attract_gi_bright")
@@ -89,7 +94,7 @@ Sub CreateAttractMode()
             .StartValue = 0
             .EndValue = 4
             With .ControlEvents()
-                .EventName = "mode_attract_started"
+                .EventName = "attract_intro"
                 .Action = "start"
             End With
             With .ControlEvents()
@@ -107,7 +112,7 @@ Sub CreateAttractMode()
                 .Key = "key_mus_married"
                 .Sound = "mus_married"
             End With
-            With .EventName("stop_mus_married")
+            With .EventName("mode_attract_stopped")
                 .Key = "key_mus_married"
                 .Sound = "mus_married"
                 .Action = "stop"

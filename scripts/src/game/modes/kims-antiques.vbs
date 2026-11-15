@@ -21,7 +21,7 @@ Sub CreateKimsAntiquesMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_kims_antiques")
-        .StopEvents = Array("timer_kims_antiques_mode_complete", "miss_kim_shot_hit", "mode_base_stopping", "mode_eob_bonus_started")
+        .StopEvents = Array("timer_kims_antiques_mode_complete", "miss_kim_shot_hit", "mode_base_stopping", "bonus_start")
 
         With .EventPlayer()
             'Scoring

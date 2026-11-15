@@ -12,7 +12,7 @@ Sub CreatePostGameMode()
             .Add "mus_sad_stopped", Array("stop_post_game_mode")
             .Add "timer_post_game_complete", Array("stop_post_game_mode")
 
-            .Add "stop_post_game_mode", Array("stop_mus_sad", "start_attract_mode")
+            .Add "stop_post_game_mode", Array("stop_mus_sad")   'the attract mode starts its intro on this event too
         End With
 
         With .SoundPlayer()

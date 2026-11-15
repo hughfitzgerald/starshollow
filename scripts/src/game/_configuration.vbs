@@ -144,15 +144,22 @@ Sub ConfigureGlfDevices()
     AddPinEventListener "s_Trigger1_active",   "plunger_ball_in",  "PlungerBallIn",  100, Null
     AddPinEventListener "s_Trigger1_inactive", "plunger_ball_out", "PlungerBallOut", 100, Null
 
-    ' Credits. A game (player 1) and every extra player cost one credit.
-    '  - request_to_start_game is a relay: Glf_BallController (30) checks the trough,
-    '    then Glf_StartGame (20) starts if it gets True. Priority 25 slots between
-    '    them so a game with no credits is refused the same way an empty trough is.
-    '  - Mid-game "add player" presses are gated in Table1_KeyDown (05_ZKEY).
-    '  - player_added fires for every player GLF actually adds (p1 included), so
-    '    one listener takes the credit for both game start and add-player.
-    AddPinEventListener "request_to_start_game", "credit_check", "CreditCheckStartGame", 25, Null
-    AddPinEventListener "player_added", "deduct_credit", "DeductCreditForPlayer", 100, Null
+    ' Credits: GLF's built-in credits mode. Each coin key is worth one credit, and a
+    ' game (player 1) and every extra player cost one. GLF refuses the start button
+    ' and the add-player press when there is no credit, and takes the credit when
+    ' the player is added. The count is kept between sessions.
+    '   machine.credits_whole_num   whole credits (start button DOF, basement.vbs)
+    '   machine.credits_string      "CREDITS 2" or "FREE PLAY" (score slide)
+    '   machine.free_play           1 on free play
+    ' Set .FreePlay = True for free play, or post enable_free_play / enable_credit_play.
+    With EnableGlfCredits()
+        .FreePlay = False
+        .Switches("s_add_credit_key").Value = 1
+        .Switches("s_add_credit_key2").Value = 1
+    End With
+
+    ' Shows each counted bonus line. See modes/eob-bonus.vbs.
+    AddPinEventListener "bonus_entry", "eob_bonus_entry", "EobBonusEntry", 100, Null
 
 
     '*********** HIGH SCORES ***********
@@ -226,12 +233,6 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
-    With CreateMachineVar("credits")
-        .InitialValue = 0
-        .ValueType = "int"
-        .Persist = True
-    End With
-
     With CreateMachineVar("captive_ball_captive")   'tracks if the captive ball is currently captured
         .InitialValue = 1
         .ValueType = "int"
@@ -251,13 +252,15 @@ Sub ConfigureGlfDevices()
 
     Glf_SetInitialPlayerVar "ss1_started", 0
 
-    Glf_SetInitialPlayerVar "bonus_multiplier", 1
+    Glf_SetInitialPlayerVar "bonus_x", 1
     Glf_SetInitialPlayerVar "total_switches_hit", 0
     Glf_SetInitialPlayerVar "bumper_count", 0
     Glf_SetInitialPlayerVar "spinner_count", 0
     Glf_SetInitialPlayerVar "diner_count", 0
     Glf_SetInitialPlayerVar "grandparents_count", 0
     Glf_SetInitialPlayerVar "bonus_total", 0
+    Glf_SetInitialPlayerVar "bonus_skip", 0
+    Glf_SetInitialPlayerVar "bonus_counted", 0
 
 
     Glf_SetInitialPlayerVar "mode_display_score", 0
@@ -287,14 +290,14 @@ Sub ConfigureGlfDevices()
     '*********** MODES ***********
     ' Order here does not matter - each mode registers its own start/stop
     ' events and GLF sorts them by priority at dispatch time.
-    CreateAttractMode()      ' priority 100
+    CreateAttractMode()      ' priority 10 (GLF's built-in attract mode)
     CreateBasementMode()      ' priority 100
     CreatePostGameMode()    ' priority 105
 
     CreateBaseMode()         ' priority 110
 
     CreateHighScoreMode()    ' priority 120
-    CreateBonusMode()        ' priority 150
+    CreateBonusMode()        ' priority 500 (GLF's built-in bonus mode)
 
     CreateJDMultiballQualifyMode()    ' priority 200
     CreateBonusLanesMode()  ' priority 210
@@ -636,29 +639,6 @@ Function PlungerBallOut(args)
     PlungerHasBall = False
 End Function
 
-' Relay handler on request_to_start_game. args(1) is the trough check result.
-Function CreditCheckStartGame(args)
-    If args(1) <> True Then
-        CreditCheckStartGame = args(1)
-    ElseIf HasCreditForPlayer() Then
-        CreditCheckStartGame = True
-    Else
-        Glf_WriteDebugLog "CreditCheckStartGame", "start refused - no credits"
-        CreditCheckStartGame = False
-    End If
-End Function
-
-Function HasCreditForPlayer()
-    HasCreditForPlayer = (glf_machine_vars("credits").GetValue() >= 1)
-End Function
-
-Function DeductCreditForPlayer(args)
-    Dim prev : prev = glf_machine_vars("credits").GetValue()
-    If prev >= 1 Then
-        glf_machine_vars("credits").Value = prev - 1
-        Glf_BcpSendMachineVar "credits", prev - 1, prev
-    End If
-End Function
 
 Dim glf_subwayBallsReturning : glf_subwayBallsReturning = 0
 

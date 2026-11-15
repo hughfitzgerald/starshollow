@@ -2,7 +2,7 @@
 Sub CreateJDMultiballMode()
     With CreateGlfMode("jd_multiball", 1000)
         .StartEvents = Array("start_jd_multiball")
-        .StopEvents = Array("mode_base_stopping", "mode_eob_bonus_started", "multiball_jdmb_ended", "jess_wins", "dean_wins")
+        .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", "jess_wins", "dean_wins")
 
         With .EventPlayer()
             .Add "mode_jd_multiball_started", Array("release_scoop_hold", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))

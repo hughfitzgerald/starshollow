@@ -20,7 +20,7 @@ Sub CreateMiniGameMode
         .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
         With .EventPlayer()
-            .Add "mode_eob_bonus_started", Array("clear_selected_minigame")
+            .Add "bonus_start", Array("clear_selected_minigame")
             .Add "mode_skillshots_stopped", Array("select_minigame")
             .Add "select_minigame", Array("clear_selected_minigame", "choose_new_minigame")
 
@@ -62,7 +62,7 @@ Sub CreateMiniGameMode
         End With
 
         With .RandomEventPlayer()
-            With .EventName("choose_new_minigame{modes.eob_bonus.active == False}")
+            With .EventName("choose_new_minigame{modes.bonus.active == False}")
                 For Each minigame In minigames
                     .Add minigame.ModeName & "_minigame_lit{current_player.shot_" & minigame.ModeName & "_minigame == 0}", 1
                 Next
