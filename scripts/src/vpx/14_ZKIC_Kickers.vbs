@@ -124,7 +124,7 @@ End Sub
 ' The ball in the scoop becomes the captive ball. It stops counting as in play when it
 ' is chosen, not when it arrives, so the ball can still end normally if the other
 ' balls drain while it is on its way. If the kick fails and the ball drops back into
-' the scoop, this runs again and only repeats the kick.
+' the scoop, the scoop device kicks it again by itself, in the same direction.
 Sub CaptureCaptiveBall(ball)
 	If Not glf_ball_devices("scoop").HasBall() Then Exit Sub
 	If glf_machine_vars("captive_capture_pending").GetValue() = 0 Then
@@ -157,9 +157,11 @@ Sub CaptiveFreeConfirmed(args)
 	captiveFreePending = False
 End Sub
 
-' The ball dropped back into the kicker. The hold has caught it again, so release it
-' again. After CaptiveFreeMaxTries the ball is sent back to the captive spot instead
-' and taken out of play, which also ends the multiball mode.
+' The ball dropped back into the kicker. The device kicks it again by itself half a
+' second later, in whichever direction captiveFreePending says. After
+' CaptiveFreeMaxTries that is back up to the captive spot, and the ball is taken out
+' of play, which also ends the multiball mode. (ReleaseAll covers a ball the hold
+' caught again because it came back after the eject had been confirmed.)
 Sub CaptiveFreeFailed(args)
 	If Not captiveFreePending Then Exit Sub
 	captiveFreeTries = captiveFreeTries + 1
