@@ -55,17 +55,6 @@ Sub CreateHighScoreMode()
             End With
         End With
 
-        With .SlidePlayer()
-            With .EventName("high_score_enter_initials")
-                .Slide = "high_score"
-                .Action = "play"
-            End With
-            With .EventName("high_score_award_display")
-                .Slide = "high_score_award"
-                .Action = "play"
-            End With
-        End With
-
         With .Timers("hs_cooldown")
             .TickInterval = 200
             .StartValue = 0
@@ -97,13 +86,6 @@ Sub CreateHighScoreMode()
                 End With
             End With
         End With
-
-        ' With .SlidePlayer()
-        '     With .EventName("mode_high_score_started")
-        '         .Slide = "high_score"
-        '         .Action = "play"
-        '     End With
-        ' End With
 
         With .VariablePlayer()
             With .EventName("mode_high_score_started")
