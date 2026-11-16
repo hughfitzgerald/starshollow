@@ -32,7 +32,7 @@ Sub CreateKimsAntiquesMode()
             'Survived the full timer without hitting Miss Kim
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(KimsAntiquesCompleteScore, NoMultiplier))
 
-            .Add "timer_kims_antiques_intro_delay_complete", Array("release_scoop_hold", "start_kims_antiques_music", "move_miss_kim")
+            .Add "timer_kims_antiques_intro_delay_complete", Array("release_scoop_hold", "start_kims_antiques_music", "move_miss_kim", "play_voc_ka_kimsantiques")
 
             
 
@@ -78,6 +78,10 @@ Sub CreateKimsAntiquesMode()
             With .EventName("mode_kims_antiques_started")
                 .Key = "key_voc_ka_mothercanhear"
                 .Sound = "voc_ka_mothercanhear"
+            End With
+            With .EventName("play_voc_ka_kimsantiques")
+                .Key = "key_voc_ka_kimsantiques"
+                .Sound = "voc_ka_kimsantiques"
                 .Priority = 100
             End With
             With .EventName("start_kims_antiques_music")
@@ -89,18 +93,18 @@ Sub CreateKimsAntiquesMode()
                 .Sound = "mus_ka"
                 .Action = "stop"
             End With
-            ' With .EventName("kims_antiques_voc_1")
-            '     .Key = "key_voc_dancingfun"
-            '     .Sound = "voc_dancingfun"
-            ' End With
-            ' With .EventName("kims_antiques_voc_2")
-            '     .Key = "key_voc_flipallyouwant"
-            '     .Sound = "voc_flipallyouwant"
-            ' End With
-            ' With .EventName("kims_antiques_voc_3")
-            '     .Key = "key_voc_justkeepdancing"
-            '     .Sound = "voc_justkeepdancing"
-            ' End With
+            With .EventName("kims_antiques_voc_1")
+                .Key = "key_voc_ka_belleandsebastian"
+                .Sound = "voc_ka_belleandsebastian"
+            End With
+            With .EventName("kims_antiques_voc_2")
+                .Key = "key_voc_ka_cage"
+                .Sound = "voc_ka_cage"
+            End With
+            With .EventName("kims_antiques_voc_3")
+                .Key = "key_voc_ka_cautionarytale"
+                .Sound = "voc_ka_cautionarytale"
+            End With
             ' With .EventName("kims_antiques_voc_4")
             '     .Key = "key_voc_lekims_antiqueseflipyou"
             '     .Sound = "voc_lekims_antiqueseflipyou"
@@ -192,10 +196,10 @@ Sub CreateKimsAntiquesMode()
                 .Add "kims_antiques_voc_1", 1
                 .Add "kims_antiques_voc_2", 1
                 .Add "kims_antiques_voc_3", 1
-                .Add "kims_antiques_voc_4", 1
-                .Add "kims_antiques_voc_5", 1
-                .Add "kims_antiques_voc_6", 1
-                .Add "kims_antiques_voc_7", 1
+                ' .Add "kims_antiques_voc_4", 1
+                ' .Add "kims_antiques_voc_5", 1
+                ' .Add "kims_antiques_voc_6", 1
+                ' .Add "kims_antiques_voc_7", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With

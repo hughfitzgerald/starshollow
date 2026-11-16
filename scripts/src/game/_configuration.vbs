@@ -827,7 +827,11 @@ Sub CreateSounds()
     AddCallout     "voc_fd_punch_wherehewasgoing", 5
     AddCallout     "voc_fd_punch_atmisspattys", 3
 
-    AddCallout     "voc_ka_mothercanhear", 7
+    AddCallout     "voc_ka_mothercanhear", 7.106042
+    AddCallout     "voc_ka_belleandsebastian", 8.469604
+    AddCallout     "voc_ka_cage", 2.240250
+    AddCallout     "voc_ka_cautionarytale", 5.506063
+    AddCallout     "voc_ka_kimsantiques", 0.675063
 
     AddMusic       "mus_tm",  114, -1
 
