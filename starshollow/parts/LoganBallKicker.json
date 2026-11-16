@@ -1,25 +1,25 @@
 {
-    "$type": "kicker",
-    "center": {
-        "x": 684.0887451171875,
-        "y": 890.1136474609375
-    },
-    "timer_enabled": false,
-    "timer_interval": 256,
-    "ui_locked": true,
-    "ui_visible": true,
-    "legacy_layer": 11,
-    "named_layer": "Captive Balls",
-    "part_group": "Captive Balls",
-    "enabled": true,
-    "fall_through": false,
-    "hit_accuracy": 0.8999999761581421,
-    "hit_height": 40.0,
-    "orientation": 0.0,
-    "scatter": 0.0,
-    "legacy_mode": true,
-    "material": "",
-    "radius": 25.0,
-    "surface": "",
-    "type": 0
+  "$type": "kicker",
+  "center": {
+    "x": 684.0887451171875,
+    "y": 890.1136474609375
+  },
+  "timer_enabled": false,
+  "timer_interval": 256,
+  "ui_locked": true,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "Captive Balls",
+  "part_group": "Captive Balls",
+  "enabled": true,
+  "fall_through": false,
+  "hit_accuracy": 0.8999999761581421,
+  "hit_height": 40.0,
+  "orientation": 0.0,
+  "scatter": 0.0,
+  "legacy_mode": true,
+  "material": "",
+  "radius": 25.0,
+  "surface": "",
+  "type": 0
 }
