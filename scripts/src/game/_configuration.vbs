@@ -772,7 +772,7 @@ Sub CreateSounds()
 
     AddCallout     "voc_dinner_lastchancetorun", 10
     AddCallout     "voc_dinner_menken", 6
-    AddCallout     "voc_dinner_reno", 2
+    AddCallout     "voc_dinner_reno", 3
     AddCallout     "voc_dinner_ruthless", 4
     AddCallout     "voc_dinner_sorbet", 10
     AddCallout     "voc_dinner_spaghetti", 5

@@ -12,22 +12,35 @@ Sub CreateDinnerMode()
 
         'Define the events that start and stop this mode
         .StartEvents = Array("start_dinner")
-        .StopEvents = Array("timer_dinner_mode_complete", "mode_base_stopping", "bonus_start")
+        .StopEvents = Array("timer_dinner_post_mode_complete", "mode_base_stopping", "bonus_start")
 
         With .EventPlayer()
             'Scoring
             .Add "dinner_shot_hit", Array(ScoreEvent(DinnerShotScore, NoMultiplier))
 
             .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_dinner_mode_slide", "FRIDAY NIGHT DINNER", "SHOOT ORBITS TO SCORE"))
-            .Add "mode_dinner_stopping", Array("dinner_shots_off")
             'Lasted the full timer without draining
-            .Add "timer_dinner_mode_complete", Array("base_music_start", ScoreEvent(ModeCompleteScore, NoMultiplier))
+            .Add "timer_dinner_mode_complete", Array("dinner_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
+            .Add "dinner_post_mode", Array("dinner_shots_off", "stop_dinner_music", "play_dinner_post_mode")
+            .Add "timer_dinner_post_mode_complete", Array("base_music_start")
 
             .Add "timer_dinner_intro_delay_complete", Array("release_scoop_hold","start_dinner_music")
 
             For Each shot In dinner_shots
                 .Add shot.Name & "_hit", Array("dinner_shot_hit")
             Next
+        End With
+
+        With .Timers("dinner_post_mode")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 6
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "dinner_post_mode"
+                .Action = "start"
+            End With
         End With
 
         With .Timers("dinner_intro_delay")
@@ -53,7 +66,7 @@ Sub CreateDinnerMode()
                 .Key = "key_mus_dinner"
                 .Sound = "mus_dinner"
             End With
-            With .EventName("mode_dinner_stopping")
+            With .EventName("stop_dinner_music")
                 .Key = "key_mus_dinner"
                 .Sound = "mus_dinner"
                 .Action = "stop"
@@ -98,9 +111,10 @@ Sub CreateDinnerMode()
                 .Key = "key_voc_dinner_heartfelt"
                 .Sound = "voc_dinner_heartfelt"
             End With
-            With .EventName("play_dinner_outro")
+            With .EventName("play_dinner_post_mode")
                 .Key = "key_voc_dinner_outro"
                 .Sound = "voc_dinner_outro"
+                .Priority = 100
             End With
         End With
 
