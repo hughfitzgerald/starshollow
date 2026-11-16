@@ -140,25 +140,25 @@ Function Glf_30(args)
 	Glf_30 = 200
 End Function
 Function Glf_31(args)
-	Glf_31 = 244
+	Glf_31 = 244.8
 End Function
 Function Glf_32(args)
-	Glf_32 = 50
+	Glf_32 = 51.293333
 End Function
 Function Glf_33(args)
-	Glf_33 = 36
+	Glf_33 = 36.506667
 End Function
 Function Glf_34(args)
-	Glf_34 = 188
+	Glf_34 = 188.866667
 End Function
 Function Glf_35(args)
-	Glf_35 = 52
+	Glf_35 = 53.04
 End Function
 Function Glf_36(args)
-	Glf_36 = 234
+	Glf_36 = 234.826667
 End Function
 Function Glf_37(args)
-	Glf_37 = 332
+	Glf_37 = 332.76
 End Function
 Function Glf_38(args)
 	On Error Resume Next
@@ -1086,54 +1086,50 @@ Function Glf_228(args)
 	If Err Then Glf_228 = False
 End Function
 Function Glf_229(args)
-	On Error Resume Next
-	    Glf_229 = glf_dispatch_current_kwargs("light") = 1
-	If Err Then Glf_229 = False
+	Glf_229 = 50
 End Function
 Function Glf_230(args)
 	On Error Resume Next
-	    Glf_230 = glf_dispatch_current_kwargs("light") = 2
+	    Glf_230 = glf_dispatch_current_kwargs("light") = 1
 	If Err Then Glf_230 = False
 End Function
 Function Glf_231(args)
 	On Error Resume Next
-	    Glf_231 = glf_dispatch_current_kwargs("light") = 1
+	    Glf_231 = glf_dispatch_current_kwargs("light") = 2
 	If Err Then Glf_231 = False
 End Function
 Function Glf_232(args)
 	On Error Resume Next
-	    Glf_232 = glf_dispatch_current_kwargs("light") = 2
+	    Glf_232 = glf_dispatch_current_kwargs("light") = 1
 	If Err Then Glf_232 = False
 End Function
 Function Glf_233(args)
 	On Error Resume Next
-	    Glf_233 = glf_dispatch_current_kwargs("light") = 1
+	    Glf_233 = glf_dispatch_current_kwargs("light") = 2
 	If Err Then Glf_233 = False
 End Function
 Function Glf_234(args)
 	On Error Resume Next
-	    Glf_234 = glf_dispatch_current_kwargs("light") = 2
+	    Glf_234 = glf_dispatch_current_kwargs("light") = 1
 	If Err Then Glf_234 = False
 End Function
 Function Glf_235(args)
 	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "text", "HURRY-UP"
-	kwargs.Add "instructions", "SHOOT LUKE'S TO COLLECT JACKPOT"
-	Set Glf_235 = kwargs
-	If Err Then Glf_235 = Null
+	    Glf_235 = glf_dispatch_current_kwargs("light") = 2
+	If Err Then Glf_235 = False
 End Function
 Function Glf_236(args)
 	On Error Resume Next
-	    Glf_236 = glf_timers("hurryup").GetValue("ticks") <> 0
-	If Err Then Glf_236 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "text", "HURRY-UP"
+	kwargs.Add "instructions", "SHOOT LUKE'S TO COLLECT JACKPOT"
+	Set Glf_236 = kwargs
+	If Err Then Glf_236 = Null
 End Function
 Function Glf_237(args)
 	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "points", 500000 + glf_timers("hurryup").GetValue("ticks") * 7500
-	Set Glf_237 = kwargs
-	If Err Then Glf_237 = Null
+	    Glf_237 = glf_timers("hurryup").GetValue("ticks") <> 0
+	If Err Then Glf_237 = False
 End Function
 Function Glf_238(args)
 	On Error Resume Next
@@ -1143,427 +1139,429 @@ Function Glf_238(args)
 	If Err Then Glf_238 = Null
 End Function
 Function Glf_239(args)
-	Glf_239 = 500000 + glf_dispatch_current_kwargs("ticks") * 7500
+	On Error Resume Next
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "points", 500000 + glf_timers("hurryup").GetValue("ticks") * 7500
+	Set Glf_239 = kwargs
+	If Err Then Glf_239 = Null
 End Function
 Function Glf_240(args)
-	On Error Resume Next
-	    Glf_240 = glf_machine_vars("game_modes_enabled").GetValue() = 1
-	If Err Then Glf_240 = False
+	Glf_240 = 500000 + glf_dispatch_current_kwargs("ticks") * 7500
 End Function
 Function Glf_241(args)
 	On Error Resume Next
-	    Glf_241 = GetPlayerState("ball_just_started") = 1
+	    Glf_241 = glf_machine_vars("game_modes_enabled").GetValue() = 1
 	If Err Then Glf_241 = False
 End Function
 Function Glf_242(args)
 	On Error Resume Next
-	    Glf_242 = GetPlayerState("ball_just_started") = 0
+	    Glf_242 = GetPlayerState("ball_just_started") = 1
 	If Err Then Glf_242 = False
 End Function
 Function Glf_243(args)
 	On Error Resume Next
-	    Glf_243 = GetPlayerState("ss1_started") = 1
+	    Glf_243 = GetPlayerState("ball_just_started") = 0
 	If Err Then Glf_243 = False
 End Function
 Function Glf_244(args)
 	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "points", 750000
-	Set Glf_244 = kwargs
-	If Err Then Glf_244 = Null
+	    Glf_244 = GetPlayerState("ss1_started") = 1
+	If Err Then Glf_244 = False
 End Function
 Function Glf_245(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "points", 200000
+	kwargs.Add "points", 750000
 	Set Glf_245 = kwargs
 	If Err Then Glf_245 = Null
 End Function
 Function Glf_246(args)
 	On Error Resume Next
-	    Glf_246 = GetPlayerState("shot_ss_bonus_lane_7") = 1
-	If Err Then Glf_246 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "points", 200000
+	Set Glf_246 = kwargs
+	If Err Then Glf_246 = Null
 End Function
 Function Glf_247(args)
 	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "points", 400000
-	Set Glf_247 = kwargs
-	If Err Then Glf_247 = Null
+	    Glf_247 = GetPlayerState("shot_ss_bonus_lane_7") = 1
+	If Err Then Glf_247 = False
 End Function
 Function Glf_248(args)
 	On Error Resume Next
-	    Glf_248 = GetPlayerState("shot_ss_bonus_lane_8") = 1
-	If Err Then Glf_248 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "points", 400000
+	Set Glf_248 = kwargs
+	If Err Then Glf_248 = Null
 End Function
 Function Glf_249(args)
 	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "points", 400000
-	Set Glf_249 = kwargs
-	If Err Then Glf_249 = Null
+	    Glf_249 = GetPlayerState("shot_ss_bonus_lane_8") = 1
+	If Err Then Glf_249 = False
 End Function
 Function Glf_250(args)
 	On Error Resume Next
-	    Glf_250 = GetPlayerState("shot_ss_bonus_lane_9") = 1
-	If Err Then Glf_250 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "points", 400000
+	Set Glf_250 = kwargs
+	If Err Then Glf_250 = Null
 End Function
 Function Glf_251(args)
 	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "points", 400000
-	Set Glf_251 = kwargs
-	If Err Then Glf_251 = Null
+	    Glf_251 = GetPlayerState("shot_ss_bonus_lane_9") = 1
+	If Err Then Glf_251 = False
 End Function
 Function Glf_252(args)
 	On Error Resume Next
-	    Glf_252 = GetPlayerState("shot_bonus_lane_7") = 0
-	If Err Then Glf_252 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "points", 400000
+	Set Glf_252 = kwargs
+	If Err Then Glf_252 = Null
 End Function
 Function Glf_253(args)
 	On Error Resume Next
-	    Glf_253 = GetPlayerState("shot_bonus_lane_8") = 0
+	    Glf_253 = GetPlayerState("shot_bonus_lane_7") = 0
 	If Err Then Glf_253 = False
 End Function
 Function Glf_254(args)
 	On Error Resume Next
-	    Glf_254 = GetPlayerState("shot_bonus_lane_9") = 0
+	    Glf_254 = GetPlayerState("shot_bonus_lane_8") = 0
 	If Err Then Glf_254 = False
 End Function
 Function Glf_255(args)
 	On Error Resume Next
-	    Glf_255 = GetPlayerState("shot_logan_light") = 1
+	    Glf_255 = GetPlayerState("shot_bonus_lane_9") = 0
 	If Err Then Glf_255 = False
 End Function
 Function Glf_256(args)
 	On Error Resume Next
-	    Glf_256 = GetPlayerState("shot_dance_marathon_minigame") <> 1 and GetPlayerState("shot_town_meeting_minigame") <> 1 and GetPlayerState("shot_dinner_minigame") <> 1 and GetPlayerState("shot_kims_antiques_minigame") <> 1 and GetPlayerState("shot_lbtb_minigame") <> 1 and GetPlayerState("shot_fd_punch_minigame") <> 1
+	    Glf_256 = GetPlayerState("shot_logan_light") = 1
 	If Err Then Glf_256 = False
 End Function
 Function Glf_257(args)
 	On Error Resume Next
-	    Glf_257 = GetPlayerState("shot_dance_marathon_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
+	    Glf_257 = GetPlayerState("shot_dance_marathon_minigame") <> 1 and GetPlayerState("shot_town_meeting_minigame") <> 1 and GetPlayerState("shot_dinner_minigame") <> 1 and GetPlayerState("shot_kims_antiques_minigame") <> 1 and GetPlayerState("shot_lbtb_minigame") <> 1 and GetPlayerState("shot_fd_punch_minigame") <> 1
 	If Err Then Glf_257 = False
 End Function
 Function Glf_258(args)
 	On Error Resume Next
-	    Glf_258 = GetPlayerState("shot_dance_marathon_minigame") = 1
+	    Glf_258 = GetPlayerState("shot_dance_marathon_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
 	If Err Then Glf_258 = False
 End Function
 Function Glf_259(args)
 	On Error Resume Next
-	    Glf_259 = GetPlayerState("shot_town_meeting_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
+	    Glf_259 = GetPlayerState("shot_dance_marathon_minigame") = 1
 	If Err Then Glf_259 = False
 End Function
 Function Glf_260(args)
 	On Error Resume Next
-	    Glf_260 = GetPlayerState("shot_town_meeting_minigame") = 1
+	    Glf_260 = GetPlayerState("shot_town_meeting_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
 	If Err Then Glf_260 = False
 End Function
 Function Glf_261(args)
 	On Error Resume Next
-	    Glf_261 = GetPlayerState("shot_dinner_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
+	    Glf_261 = GetPlayerState("shot_town_meeting_minigame") = 1
 	If Err Then Glf_261 = False
 End Function
 Function Glf_262(args)
 	On Error Resume Next
-	    Glf_262 = GetPlayerState("shot_dinner_minigame") = 1
+	    Glf_262 = GetPlayerState("shot_dinner_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
 	If Err Then Glf_262 = False
 End Function
 Function Glf_263(args)
 	On Error Resume Next
-	    Glf_263 = GetPlayerState("shot_kims_antiques_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
+	    Glf_263 = GetPlayerState("shot_dinner_minigame") = 1
 	If Err Then Glf_263 = False
 End Function
 Function Glf_264(args)
 	On Error Resume Next
-	    Glf_264 = GetPlayerState("shot_kims_antiques_minigame") = 1
+	    Glf_264 = GetPlayerState("shot_kims_antiques_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
 	If Err Then Glf_264 = False
 End Function
 Function Glf_265(args)
 	On Error Resume Next
-	    Glf_265 = GetPlayerState("shot_lbtb_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
+	    Glf_265 = GetPlayerState("shot_kims_antiques_minigame") = 1
 	If Err Then Glf_265 = False
 End Function
 Function Glf_266(args)
 	On Error Resume Next
-	    Glf_266 = GetPlayerState("shot_lbtb_minigame") = 1
+	    Glf_266 = GetPlayerState("shot_lbtb_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
 	If Err Then Glf_266 = False
 End Function
 Function Glf_267(args)
 	On Error Resume Next
-	    Glf_267 = GetPlayerState("shot_fd_punch_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
+	    Glf_267 = GetPlayerState("shot_lbtb_minigame") = 1
 	If Err Then Glf_267 = False
 End Function
 Function Glf_268(args)
 	On Error Resume Next
-	    Glf_268 = GetPlayerState("shot_fd_punch_minigame") = 1
+	    Glf_268 = GetPlayerState("shot_fd_punch_minigame") = 1 and GetPlayerState("shot_logan_light") = 0 and glf_modes("ll_multiball").GetValue("active") = False and glf_modes("jd_multiball").GetValue("active") = False
 	If Err Then Glf_268 = False
 End Function
 Function Glf_269(args)
 	On Error Resume Next
-	    Glf_269 = glf_modes("bonus").GetValue("active") = False
+	    Glf_269 = GetPlayerState("shot_fd_punch_minigame") = 1
 	If Err Then Glf_269 = False
 End Function
 Function Glf_270(args)
 	On Error Resume Next
-	    Glf_270 = GetPlayerState("shot_dance_marathon_minigame") = 0
+	    Glf_270 = glf_modes("bonus").GetValue("active") = False
 	If Err Then Glf_270 = False
 End Function
 Function Glf_271(args)
 	On Error Resume Next
-	    Glf_271 = GetPlayerState("shot_town_meeting_minigame") = 0
+	    Glf_271 = GetPlayerState("shot_dance_marathon_minigame") = 0
 	If Err Then Glf_271 = False
 End Function
 Function Glf_272(args)
 	On Error Resume Next
-	    Glf_272 = GetPlayerState("shot_dinner_minigame") = 0
+	    Glf_272 = GetPlayerState("shot_town_meeting_minigame") = 0
 	If Err Then Glf_272 = False
 End Function
 Function Glf_273(args)
 	On Error Resume Next
-	    Glf_273 = GetPlayerState("shot_kims_antiques_minigame") = 0
+	    Glf_273 = GetPlayerState("shot_dinner_minigame") = 0
 	If Err Then Glf_273 = False
 End Function
 Function Glf_274(args)
 	On Error Resume Next
-	    Glf_274 = GetPlayerState("shot_lbtb_minigame") = 0
+	    Glf_274 = GetPlayerState("shot_kims_antiques_minigame") = 0
 	If Err Then Glf_274 = False
 End Function
 Function Glf_275(args)
 	On Error Resume Next
-	    Glf_275 = GetPlayerState("shot_fd_punch_minigame") = 0
+	    Glf_275 = GetPlayerState("shot_lbtb_minigame") = 0
 	If Err Then Glf_275 = False
 End Function
 Function Glf_276(args)
 	On Error Resume Next
-	    Glf_276 = GetPlayerState("extra_balls") = 0
+	    Glf_276 = GetPlayerState("shot_fd_punch_minigame") = 0
 	If Err Then Glf_276 = False
 End Function
 Function Glf_277(args)
 	On Error Resume Next
-	    Glf_277 = GetPlayerState("extra_balls") > 0
+	    Glf_277 = GetPlayerState("extra_balls") = 0
 	If Err Then Glf_277 = False
 End Function
 Function Glf_278(args)
 	On Error Resume Next
-	    Glf_278 = GetPlayerState("shot_eb_ready") = 1
+	    Glf_278 = GetPlayerState("extra_balls") > 0
 	If Err Then Glf_278 = False
 End Function
 Function Glf_279(args)
-	Glf_279 = 3
+	On Error Resume Next
+	    Glf_279 = GetPlayerState("shot_eb_ready") = 1
+	If Err Then Glf_279 = False
 End Function
 Function Glf_280(args)
-	On Error Resume Next
-	    Glf_280 = GetPlayerState("extra_ball_eb_awarded") < 3
-	If Err Then Glf_280 = False
+	Glf_280 = 3
 End Function
 Function Glf_281(args)
 	On Error Resume Next
-	    Glf_281 = GetPlayerState("shot_mystery_ready")=0
+	    Glf_281 = GetPlayerState("extra_ball_eb_awarded") < 3
 	If Err Then Glf_281 = False
 End Function
 Function Glf_282(args)
 	On Error Resume Next
-	    Glf_282 = GetPlayerState("shot_mystery_ready")=1 and glf_modes("jd_multiball").GetValue("active")=False and glf_modes("ll_multiball").GetValue("active")=False
+	    Glf_282 = GetPlayerState("shot_mystery_ready")=0
 	If Err Then Glf_282 = False
 End Function
 Function Glf_283(args)
 	On Error Resume Next
-	    Glf_283 = devices.timers.mystery_show.ticks = 1
+	    Glf_283 = GetPlayerState("shot_mystery_ready")=1 and glf_modes("jd_multiball").GetValue("active")=False and glf_modes("ll_multiball").GetValue("active")=False
 	If Err Then Glf_283 = False
 End Function
 Function Glf_284(args)
 	On Error Resume Next
-	    Glf_284 = glf_modes("jd_multiball").GetValue("active")=False
+	    Glf_284 = devices.timers.mystery_show.ticks = 1
 	If Err Then Glf_284 = False
 End Function
 Function Glf_285(args)
 	On Error Resume Next
-	    Glf_285 = GetPlayerState("mystery_award") = 0
+	    Glf_285 = glf_modes("jd_multiball").GetValue("active")=False
 	If Err Then Glf_285 = False
 End Function
 Function Glf_286(args)
 	On Error Resume Next
-	    Glf_286 = GetPlayerState("mystery_award") = 1
+	    Glf_286 = GetPlayerState("mystery_award") = 0
 	If Err Then Glf_286 = False
 End Function
 Function Glf_287(args)
 	On Error Resume Next
-	    Glf_287 = GetPlayerState("mystery_award") = 2
+	    Glf_287 = GetPlayerState("mystery_award") = 1
 	If Err Then Glf_287 = False
 End Function
 Function Glf_288(args)
 	On Error Resume Next
-	    Glf_288 = GetPlayerState("mystery_award") = 3
+	    Glf_288 = GetPlayerState("mystery_award") = 2
 	If Err Then Glf_288 = False
 End Function
 Function Glf_289(args)
 	On Error Resume Next
-	    Glf_289 = GetPlayerState("mystery_award") = 4
+	    Glf_289 = GetPlayerState("mystery_award") = 3
 	If Err Then Glf_289 = False
 End Function
 Function Glf_290(args)
 	On Error Resume Next
-	    Glf_290 = GetPlayerState("mystery_award") = 5
+	    Glf_290 = GetPlayerState("mystery_award") = 4
 	If Err Then Glf_290 = False
 End Function
 Function Glf_291(args)
 	On Error Resume Next
-	    Glf_291 = GetPlayerState("mystery_award") = 6
+	    Glf_291 = GetPlayerState("mystery_award") = 5
 	If Err Then Glf_291 = False
 End Function
 Function Glf_292(args)
 	On Error Resume Next
-	    Glf_292 = GetPlayerState("mystery_award") = 7
+	    Glf_292 = GetPlayerState("mystery_award") = 6
 	If Err Then Glf_292 = False
 End Function
 Function Glf_293(args)
-	Glf_293 = 10000
+	On Error Resume Next
+	    Glf_293 = GetPlayerState("mystery_award") = 7
+	If Err Then Glf_293 = False
 End Function
 Function Glf_294(args)
-	Glf_294 = 6
+	Glf_294 = 10000
 End Function
 Function Glf_295(args)
-	Glf_295 = 7
+	Glf_295 = 6
 End Function
 Function Glf_296(args)
-	On Error Resume Next
-	    Glf_296 = glf_machine_vars("game_modes_enabled").GetValue() = 1
-	If Err Then Glf_296 = False
+	Glf_296 = 7
 End Function
 Function Glf_297(args)
 	On Error Resume Next
-	    Glf_297 = GetPlayerState("shot_ramp") = 1
+	    Glf_297 = glf_machine_vars("game_modes_enabled").GetValue() = 1
 	If Err Then Glf_297 = False
 End Function
 Function Glf_298(args)
 	On Error Resume Next
-	    Glf_298 = glf_timers("dm_intro_delay").GetValue("ticks") = 27
+	    Glf_298 = GetPlayerState("shot_ramp") = 1
 	If Err Then Glf_298 = False
 End Function
 Function Glf_299(args)
 	On Error Resume Next
+	    Glf_299 = glf_timers("dm_intro_delay").GetValue("ticks") = 27
+	If Err Then Glf_299 = False
+End Function
+Function Glf_300(args)
+	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "DANCE MARATHON"
 	kwargs.Add "instructions", "HIT FLASHING SHOTS TO SCORE"
-	Set Glf_299 = kwargs
-	If Err Then Glf_299 = Null
-End Function
-Function Glf_300(args)
-	Glf_300 = 500000
+	Set Glf_300 = kwargs
+	If Err Then Glf_300 = Null
 End Function
 Function Glf_301(args)
-	Glf_301 = 100000
+	Glf_301 = 500000
 End Function
 Function Glf_302(args)
-	Glf_302 = GetPlayerState("mode_dance_marathon_score")
+	Glf_302 = 100000
 End Function
 Function Glf_303(args)
-	Glf_303 = glf_dispatch_current_kwargs("ticks_remaining")
+	Glf_303 = GetPlayerState("mode_dance_marathon_score")
 End Function
 Function Glf_304(args)
-	Glf_304 = 250000
+	Glf_304 = glf_dispatch_current_kwargs("ticks_remaining")
 End Function
 Function Glf_305(args)
-	Glf_305 = 1250000
+	Glf_305 = 250000
 End Function
 Function Glf_306(args)
-	Glf_306 = 28
+	Glf_306 = 1250000
 End Function
 Function Glf_307(args)
-	On Error Resume Next
-	    Glf_307 = glf_timers("dm_intro_delay").GetValue("ticks") > 0
-	If Err Then Glf_307 = False
+	Glf_307 = 28
 End Function
 Function Glf_308(args)
-	Glf_308 = 15
+	On Error Resume Next
+	    Glf_308 = glf_timers("dm_intro_delay").GetValue("ticks") > 0
+	If Err Then Glf_308 = False
 End Function
 Function Glf_309(args)
+	Glf_309 = 15
+End Function
+Function Glf_310(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "TOWN MEETING"
 	kwargs.Add "instructions", "HIT FLASHING SHOTS TO SCORE"
-	Set Glf_309 = kwargs
-	If Err Then Glf_309 = Null
-End Function
-Function Glf_310(args)
-	On Error Resume Next
-	    Glf_310 = glf_timers("town_meeting_intro_delay").GetValue("ticks") > 0
-	If Err Then Glf_310 = False
+	Set Glf_310 = kwargs
+	If Err Then Glf_310 = Null
 End Function
 Function Glf_311(args)
-	Glf_311 = 20
+	On Error Resume Next
+	    Glf_311 = glf_timers("town_meeting_intro_delay").GetValue("ticks") > 0
+	If Err Then Glf_311 = False
 End Function
 Function Glf_312(args)
-	Glf_312 = GetPlayerState("mode_town_meeting_score")
+	Glf_312 = 20
 End Function
 Function Glf_313(args)
-	Glf_313 = 750000
+	Glf_313 = GetPlayerState("mode_town_meeting_score")
 End Function
 Function Glf_314(args)
+	Glf_314 = 750000
+End Function
+Function Glf_315(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "FRIDAY NIGHT DINNER"
 	kwargs.Add "instructions", "SHOOT ORBITS TO SCORE"
-	Set Glf_314 = kwargs
-	If Err Then Glf_314 = Null
-End Function
-Function Glf_315(args)
-	Glf_315 = 9
+	Set Glf_315 = kwargs
+	If Err Then Glf_315 = Null
 End Function
 Function Glf_316(args)
-	On Error Resume Next
-	    Glf_316 = glf_timers("dinner_intro_delay").GetValue("ticks") > 0
-	If Err Then Glf_316 = False
+	Glf_316 = 9
 End Function
 Function Glf_317(args)
-	Glf_317 = GetPlayerState("mode_dinner_score")
+	On Error Resume Next
+	    Glf_317 = glf_timers("dinner_intro_delay").GetValue("ticks") > 0
+	If Err Then Glf_317 = False
 End Function
 Function Glf_318(args)
+	Glf_318 = GetPlayerState("mode_dinner_score")
+End Function
+Function Glf_319(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "FOUNDER'S DAY PUNCH"
 	kwargs.Add "instructions", "SHOOT LUKE'S OR MANSION TO SCORE"
-	Set Glf_318 = kwargs
-	If Err Then Glf_318 = Null
-End Function
-Function Glf_319(args)
-	On Error Resume Next
-	    Glf_319 = glf_timers("fd_punch_intro_delay").GetValue("ticks") > 0
-	If Err Then Glf_319 = False
+	Set Glf_319 = kwargs
+	If Err Then Glf_319 = Null
 End Function
 Function Glf_320(args)
-	Glf_320 = GetPlayerState("mode_fd_punch_score")
+	On Error Resume Next
+	    Glf_320 = glf_timers("fd_punch_intro_delay").GetValue("ticks") > 0
+	If Err Then Glf_320 = False
 End Function
 Function Glf_321(args)
+	Glf_321 = GetPlayerState("mode_fd_punch_score")
+End Function
+Function Glf_322(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "KIM'S ANTIQUES"
 	kwargs.Add "instructions", "AVOID MISS KIM (SOLID LIGHT)"
-	Set Glf_321 = kwargs
-	If Err Then Glf_321 = Null
-End Function
-Function Glf_322(args)
-	On Error Resume Next
-	    Glf_322 = glf_timers("kims_antiques_intro_delay").GetValue("ticks") > 0
-	If Err Then Glf_322 = False
+	Set Glf_322 = kwargs
+	If Err Then Glf_322 = Null
 End Function
 Function Glf_323(args)
-	Glf_323 = GetPlayerState("mode_kims_antiques_score")
+	On Error Resume Next
+	    Glf_323 = glf_timers("kims_antiques_intro_delay").GetValue("ticks") > 0
+	If Err Then Glf_323 = False
 End Function
 Function Glf_324(args)
+	Glf_324 = GetPlayerState("mode_kims_antiques_score")
+End Function
+Function Glf_325(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "LUKE BREAKS THE BELLS!"
 	kwargs.Add "instructions", "BREAK BELLS TO SCORE"
-	Set Glf_324 = kwargs
-	If Err Then Glf_324 = Null
-End Function
-Function Glf_325(args)
-	On Error Resume Next
-	    Glf_325 = GetPlayerState("bells_not_hit") = 0
-	If Err Then Glf_325 = False
+	Set Glf_325 = kwargs
+	If Err Then Glf_325 = Null
 End Function
 Function Glf_326(args)
 	On Error Resume Next
@@ -1591,230 +1589,235 @@ Function Glf_330(args)
 	If Err Then Glf_330 = False
 End Function
 Function Glf_331(args)
-	Glf_331 = 11.5
+	On Error Resume Next
+	    Glf_331 = GetPlayerState("bells_not_hit") = 0
+	If Err Then Glf_331 = False
 End Function
 Function Glf_332(args)
-	On Error Resume Next
-	    Glf_332 = glf_timers("lbtb_intro_delay").GetValue("ticks") > 0
-	If Err Then Glf_332 = False
+	Glf_332 = 11.5
 End Function
 Function Glf_333(args)
 	On Error Resume Next
-	    Glf_333 = glf_drop_targets("drop3").GetValue("state") = 1
+	    Glf_333 = glf_timers("lbtb_intro_delay").GetValue("ticks") > 0
 	If Err Then Glf_333 = False
 End Function
 Function Glf_334(args)
 	On Error Resume Next
-	    Glf_334 = glf_drop_targets("drop4").GetValue("state") = 1
+	    Glf_334 = glf_drop_targets("drop3").GetValue("state") = 1
 	If Err Then Glf_334 = False
 End Function
 Function Glf_335(args)
 	On Error Resume Next
-	    Glf_335 = glf_drop_targets("drop5").GetValue("state") = 1
+	    Glf_335 = glf_drop_targets("drop4").GetValue("state") = 1
 	If Err Then Glf_335 = False
 End Function
 Function Glf_336(args)
 	On Error Resume Next
-	    Glf_336 = glf_drop_targets("drop6").GetValue("state") = 1
+	    Glf_336 = glf_drop_targets("drop5").GetValue("state") = 1
 	If Err Then Glf_336 = False
 End Function
 Function Glf_337(args)
 	On Error Resume Next
-	    Glf_337 = glf_drop_targets("drop7").GetValue("state") = 1
+	    Glf_337 = glf_drop_targets("drop6").GetValue("state") = 1
 	If Err Then Glf_337 = False
 End Function
 Function Glf_338(args)
 	On Error Resume Next
-	    Glf_338 = glf_drop_targets("drop8").GetValue("state") = 1
+	    Glf_338 = glf_drop_targets("drop7").GetValue("state") = 1
 	If Err Then Glf_338 = False
 End Function
 Function Glf_339(args)
-	Glf_339 = GetPlayerState("mode_lbtb_score")
+	On Error Resume Next
+	    Glf_339 = glf_drop_targets("drop8").GetValue("state") = 1
+	If Err Then Glf_339 = False
 End Function
 Function Glf_340(args)
-	Glf_340 = LbtbTime
+	Glf_340 = GetPlayerState("mode_lbtb_score")
 End Function
 Function Glf_341(args)
+	Glf_341 = LbtbTime
+End Function
+Function Glf_342(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "JESS VS. DEAN" & Chr(58) & " TO THE DEATH"
 	kwargs.Add "instructions", "TEAM JESS" & Chr(58) & " LEFT RAMP - TEAM LOGAN" & Chr(58) & " RIGHT RAMP"
-	Set Glf_341 = kwargs
-	If Err Then Glf_341 = Null
-End Function
-Function Glf_342(args)
-	Glf_342 = GetPlayerState("mode_jdmb_score")
+	Set Glf_342 = kwargs
+	If Err Then Glf_342 = Null
 End Function
 Function Glf_343(args)
-	Glf_343 = 4000000
+	Glf_343 = GetPlayerState("mode_jdmb_score")
 End Function
 Function Glf_344(args)
-	Glf_344 = 7500000
+	Glf_344 = 4000000
 End Function
 Function Glf_345(args)
-	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "text", "LOCK-AWAY LOGAN"
-	kwargs.Add "instructions", "HIT BUMPERS TO BASH LOGAN"
-	Set Glf_345 = kwargs
-	If Err Then Glf_345 = Null
+	Glf_345 = 7500000
 End Function
 Function Glf_346(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "LOCK-AWAY LOGAN"
-	kwargs.Add "instructions", "LOCK-AWAY LOGAN IN THE SCOOP"
+	kwargs.Add "instructions", "HIT BUMPERS TO BASH LOGAN"
 	Set Glf_346 = kwargs
 	If Err Then Glf_346 = Null
 End Function
 Function Glf_347(args)
 	On Error Resume Next
-	    Glf_347 = GetPlayerState("mode_llmb_score")>=2500000
-	If Err Then Glf_347 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "text", "LOCK-AWAY LOGAN"
+	kwargs.Add "instructions", "LOCK-AWAY LOGAN IN THE SCOOP"
+	Set Glf_347 = kwargs
+	If Err Then Glf_347 = Null
 End Function
 Function Glf_348(args)
 	On Error Resume Next
-	    Glf_348 = GetPlayerState("shot_win_logan_light")=0
+	    Glf_348 = GetPlayerState("mode_llmb_score")>=2500000
 	If Err Then Glf_348 = False
 End Function
 Function Glf_349(args)
 	On Error Resume Next
-	    Glf_349 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=0
+	    Glf_349 = GetPlayerState("shot_win_logan_light")=0
 	If Err Then Glf_349 = False
 End Function
 Function Glf_350(args)
 	On Error Resume Next
-	    Glf_350 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=1
+	    Glf_350 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=0
 	If Err Then Glf_350 = False
 End Function
 Function Glf_351(args)
-	Glf_351 = GetPlayerState("mode_llmb_score")
+	On Error Resume Next
+	    Glf_351 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=1
+	If Err Then Glf_351 = False
 End Function
 Function Glf_352(args)
-	Glf_352 = 50000
+	Glf_352 = GetPlayerState("mode_llmb_score")
 End Function
 Function Glf_353(args)
-	Glf_353 = 1000 * GetPlayerState("scoring_multiplier")
+	Glf_353 = 50000
 End Function
 Function Glf_354(args)
-	Glf_354 = 2500 * GetPlayerState("scoring_multiplier")
+	Glf_354 = 1000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_355(args)
-	Glf_355 = 2500
+	Glf_355 = 2500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_356(args)
-	Glf_356 = 5000 * GetPlayerState("scoring_multiplier")
+	Glf_356 = 2500
 End Function
 Function Glf_357(args)
-	Glf_357 = 1500 * GetPlayerState("scoring_multiplier")
+	Glf_357 = 5000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_358(args)
-	Glf_358 = 1500
+	Glf_358 = 1500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_359(args)
-	Glf_359 = 25000 * GetPlayerState("scoring_multiplier")
+	Glf_359 = 1500
 End Function
 Function Glf_360(args)
-	Glf_360 = 25000
+	Glf_360 = 25000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_361(args)
-	Glf_361 = 12500 * GetPlayerState("scoring_multiplier")
+	Glf_361 = 25000
 End Function
 Function Glf_362(args)
-	Glf_362 = 12500
+	Glf_362 = 12500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_363(args)
-	Glf_363 = 20000 * GetPlayerState("scoring_multiplier")
+	Glf_363 = 12500
 End Function
 Function Glf_364(args)
-	Glf_364 = 10000 * GetPlayerState("scoring_multiplier")
+	Glf_364 = 20000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_365(args)
-	Glf_365 = 50000 * GetPlayerState("scoring_multiplier")
+	Glf_365 = 10000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_366(args)
-	Glf_366 = 150000 * GetPlayerState("scoring_multiplier")
+	Glf_366 = 50000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_367(args)
-	Glf_367 = 150000
+	Glf_367 = 150000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_368(args)
-	Glf_368 = 100000 * GetPlayerState("scoring_multiplier")
+	Glf_368 = 150000
 End Function
 Function Glf_369(args)
-	Glf_369 = 250000 * GetPlayerState("scoring_multiplier")
+	Glf_369 = 100000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_370(args)
-	Glf_370 = 750000 * GetPlayerState("scoring_multiplier")
+	Glf_370 = 250000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_371(args)
-	Glf_371 = 200000 * GetPlayerState("scoring_multiplier")
+	Glf_371 = 750000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_372(args)
-	Glf_372 = 200000
+	Glf_372 = 200000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_373(args)
-	Glf_373 = 400000 * GetPlayerState("scoring_multiplier")
+	Glf_373 = 200000
 End Function
 Function Glf_374(args)
-	Glf_374 = 400000
+	Glf_374 = 400000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_375(args)
-	Glf_375 = 1000000 * GetPlayerState("scoring_multiplier")
+	Glf_375 = 400000
 End Function
 Function Glf_376(args)
-	Glf_376 = 1000000
+	Glf_376 = 1000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_377(args)
-	Glf_377 = 2500000 * GetPlayerState("scoring_multiplier")
+	Glf_377 = 1000000
 End Function
 Function Glf_378(args)
-	Glf_378 = 2500000
+	Glf_378 = 2500000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_379(args)
-	Glf_379 = 500000 * GetPlayerState("scoring_multiplier")
+	Glf_379 = 2500000
 End Function
 Function Glf_380(args)
-	Glf_380 = 2000000 * GetPlayerState("scoring_multiplier")
+	Glf_380 = 500000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_381(args)
-	Glf_381 = 2000000
+	Glf_381 = 2000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_382(args)
-	Glf_382 = 1250000 * GetPlayerState("scoring_multiplier")
+	Glf_382 = 2000000
 End Function
 Function Glf_383(args)
-	Glf_383 = 4000000 * GetPlayerState("scoring_multiplier")
+	Glf_383 = 1250000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_384(args)
-	Glf_384 = 7500000 * GetPlayerState("scoring_multiplier")
+	Glf_384 = 4000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_385(args)
-	Glf_385 = 5000000 * GetPlayerState("scoring_multiplier")
+	Glf_385 = 7500000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_386(args)
-	Glf_386 = 5000000
+	Glf_386 = 5000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_387(args)
-	Glf_387 = 100000000 * GetPlayerState("scoring_multiplier")
+	Glf_387 = 5000000
 End Function
 Function Glf_388(args)
-	Glf_388 = 100000000
+	Glf_388 = 100000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_389(args)
-	Glf_389 = 2000 * GetPlayerState("scoring_multiplier")
+	Glf_389 = 100000000
 End Function
 Function Glf_390(args)
-	Glf_390 = 7500 * GetPlayerState("scoring_multiplier")
+	Glf_390 = 2000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_391(args)
-	Glf_391 = glf_dispatch_current_kwargs("points") * GetPlayerState("scoring_multiplier")
+	Glf_391 = 7500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_392(args)
-	Glf_392 = glf_dispatch_current_kwargs("points")
+	Glf_392 = glf_dispatch_current_kwargs("points") * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_393(args)
-	Glf_393 = 8
+	Glf_393 = glf_dispatch_current_kwargs("points")
+End Function
+Function Glf_394(args)
+	Glf_394 = 8
 End Function
 Dim glf_gi006_lmarr : glf_gi006_lmarr = Array(lm_gi006_plastics)
 glf_lightMaps.Add "gi006", glf_gi006_lmarr
@@ -2032,13 +2035,13 @@ glf_funcRefMap.Add "s_Trigger1_inactive{current_player.ball_just_started == 1}",
 glf_funcRefMap.Add "drop_target_drop1_down{modes.fd_punch.active==False}", "Glf_28"
 glf_funcRefMap.Add "timer_base_music_complete{modes.bonus.active == False and modes.dance_marathon.active == False and modes.town_meeting.active == False and modes.dinner.active == False and modes.fd_punch.active == False and modes.kims_antiques.active == False and modes.lbtb.active == False}", "Glf_29"
 glf_funcRefMap.Add "200", "Glf_30"
-glf_funcRefMap.Add "244", "Glf_31"
-glf_funcRefMap.Add "50", "Glf_32"
-glf_funcRefMap.Add "36", "Glf_33"
-glf_funcRefMap.Add "188", "Glf_34"
-glf_funcRefMap.Add "52", "Glf_35"
-glf_funcRefMap.Add "234", "Glf_36"
-glf_funcRefMap.Add "332", "Glf_37"
+glf_funcRefMap.Add "244.8", "Glf_31"
+glf_funcRefMap.Add "51.293333", "Glf_32"
+glf_funcRefMap.Add "36.506667", "Glf_33"
+glf_funcRefMap.Add "188.866667", "Glf_34"
+glf_funcRefMap.Add "53.04", "Glf_35"
+glf_funcRefMap.Add "234.826667", "Glf_36"
+glf_funcRefMap.Add "332.76", "Glf_37"
 glf_funcRefMap.Add "diner_callout{modes.fd_punch.active==False}", "Glf_38"
 glf_funcRefMap.Add "grandparents_callout{modes.fd_punch.active==False}", "Glf_39"
 glf_funcRefMap.Add "auto_fire_coil_bumper1_activate{modes.ll_multiball.active==False}", "Glf_40"
@@ -2229,167 +2232,168 @@ glf_funcRefMap.Add "lane_lit{kwargs.light < 3}", "Glf_225"
 glf_funcRefMap.Add "paris_lit{kwargs.light < 3}", "Glf_226"
 glf_funcRefMap.Add "sookie_lit{kwargs.light == 1}", "Glf_227"
 glf_funcRefMap.Add "sookie_lit{kwargs.light == 2}", "Glf_228"
-glf_funcRefMap.Add "kirk_lit{kwargs.light == 1}", "Glf_229"
-glf_funcRefMap.Add "kirk_lit{kwargs.light == 2}", "Glf_230"
-glf_funcRefMap.Add "lane_lit{kwargs.light == 1}", "Glf_231"
-glf_funcRefMap.Add "lane_lit{kwargs.light == 2}", "Glf_232"
-glf_funcRefMap.Add "paris_lit{kwargs.light == 1}", "Glf_233"
-glf_funcRefMap.Add "paris_lit{kwargs.light == 2}", "Glf_234"
-glf_funcRefMap.Add "play_hurryup_mode_slide:{text:""HURRY-UP"",instructions:""SHOOT LUKE'S TO COLLECT JACKPOT""}", "Glf_235"
-glf_funcRefMap.Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", "Glf_236"
-glf_funcRefMap.Add "score_dynamic_flat:{points:500000 + device.timers.hurryup.ticks * 7500}", "Glf_237"
-glf_funcRefMap.Add "hurryup_achieved:{points:500000 + device.timers.hurryup.ticks * 7500}", "Glf_238"
-glf_funcRefMap.Add "500000 + kwargs.ticks * 7500", "Glf_239"
-glf_funcRefMap.Add "new_ball_started{machine.game_modes_enabled == 1}", "Glf_240"
-glf_funcRefMap.Add "mode_skillshots_started{current_player.ball_just_started == 1}", "Glf_241"
-glf_funcRefMap.Add "mode_skillshots_started{current_player.ball_just_started == 0}", "Glf_242"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", "Glf_243"
-glf_funcRefMap.Add "ss_achieved:{points:750000}", "Glf_244"
-glf_funcRefMap.Add "ss_achieved:{points:200000}", "Glf_245"
-glf_funcRefMap.Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", "Glf_246"
-glf_funcRefMap.Add "ss_achieved:{points:400000}", "Glf_247"
-glf_funcRefMap.Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", "Glf_248"
-glf_funcRefMap.Add "s_sw9_active{current_player.shot_ss_bonus_lane_9 == 1}", "Glf_250"
-glf_funcRefMap.Add "light_ss_bonus_lane_7{current_player.shot_bonus_lane_7 == 0}", "Glf_252"
-glf_funcRefMap.Add "light_ss_bonus_lane_8{current_player.shot_bonus_lane_8 == 0}", "Glf_253"
-glf_funcRefMap.Add "light_ss_bonus_lane_9{current_player.shot_bonus_lane_9 == 0}", "Glf_254"
-glf_funcRefMap.Add "check_minigame{current_player.shot_logan_light == 1}", "Glf_255"
-glf_funcRefMap.Add "check_minigame{current_player.shot_dance_marathon_minigame != 1 and current_player.shot_town_meeting_minigame != 1 and current_player.shot_dinner_minigame != 1 and current_player.shot_kims_antiques_minigame != 1 and current_player.shot_lbtb_minigame != 1 and current_player.shot_fd_punch_minigame != 1}", "Glf_256"
-glf_funcRefMap.Add "check_minigame{current_player.shot_dance_marathon_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_257"
-glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_dance_marathon_minigame == 1}", "Glf_258"
-glf_funcRefMap.Add "check_minigame{current_player.shot_town_meeting_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_259"
-glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_town_meeting_minigame == 1}", "Glf_260"
-glf_funcRefMap.Add "check_minigame{current_player.shot_dinner_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_261"
-glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_dinner_minigame == 1}", "Glf_262"
-glf_funcRefMap.Add "check_minigame{current_player.shot_kims_antiques_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_263"
-glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_kims_antiques_minigame == 1}", "Glf_264"
-glf_funcRefMap.Add "check_minigame{current_player.shot_lbtb_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_265"
-glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_lbtb_minigame == 1}", "Glf_266"
-glf_funcRefMap.Add "check_minigame{current_player.shot_fd_punch_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_267"
-glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_fd_punch_minigame == 1}", "Glf_268"
-glf_funcRefMap.Add "choose_new_minigame{modes.bonus.active == False}", "Glf_269"
-glf_funcRefMap.Add "dance_marathon_minigame_lit{current_player.shot_dance_marathon_minigame == 0}", "Glf_270"
-glf_funcRefMap.Add "town_meeting_minigame_lit{current_player.shot_town_meeting_minigame == 0}", "Glf_271"
-glf_funcRefMap.Add "dinner_minigame_lit{current_player.shot_dinner_minigame == 0}", "Glf_272"
-glf_funcRefMap.Add "kims_antiques_minigame_lit{current_player.shot_kims_antiques_minigame == 0}", "Glf_273"
-glf_funcRefMap.Add "lbtb_minigame_lit{current_player.shot_lbtb_minigame == 0}", "Glf_274"
-glf_funcRefMap.Add "fd_punch_minigame_lit{current_player.shot_fd_punch_minigame == 0}", "Glf_275"
-glf_funcRefMap.Add "check_eb{current_player.extra_balls == 0}", "Glf_276"
-glf_funcRefMap.Add "check_eb{current_player.extra_balls > 0}", "Glf_277"
-glf_funcRefMap.Add "s_complete_right_ramp_active{current_player.shot_eb_ready == 1}", "Glf_278"
-glf_funcRefMap.Add "3", "Glf_279"
-glf_funcRefMap.Add "eb_now_lit{current_player.extra_ball_eb_awarded < 3}", "Glf_280"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", "Glf_281"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", "Glf_282"
-glf_funcRefMap.Add "timer_mystery_show_tick{devices.timers.mystery_show.ticks == 1}", "Glf_283"
-glf_funcRefMap.Add "restart_qualify_mystery{modes.jd_multiball.active==False}", "Glf_284"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 0}", "Glf_285"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 1}", "Glf_286"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 2}", "Glf_287"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 3}", "Glf_288"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 4}", "Glf_289"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 5}", "Glf_290"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 6}", "Glf_291"
-glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 7}", "Glf_292"
-glf_funcRefMap.Add "10000", "Glf_293"
-glf_funcRefMap.Add "6", "Glf_294"
-glf_funcRefMap.Add "7", "Glf_295"
-glf_funcRefMap.Add "ball_started{machine.game_modes_enabled == 1}", "Glf_296"
-glf_funcRefMap.Add "s_complete_right_ramp_active{current_player.shot_ramp == 1}", "Glf_297"
-glf_funcRefMap.Add "timer_dm_intro_delay_tick{device.timers.dm_intro_delay.ticks == 27}", "Glf_298"
-glf_funcRefMap.Add "play_dance_marathon_mode_slide:{text:""DANCE MARATHON"",instructions:""HIT FLASHING SHOTS TO SCORE""}", "Glf_299"
-glf_funcRefMap.Add "500000", "Glf_300"
-glf_funcRefMap.Add "100000", "Glf_301"
-glf_funcRefMap.Add "{current_player.mode_dance_marathon_score}", "Glf_302"
-glf_funcRefMap.Add "kwargs.ticks_remaining", "Glf_303"
-glf_funcRefMap.Add "250000", "Glf_304"
-glf_funcRefMap.Add "1250000", "Glf_305"
-glf_funcRefMap.Add "28", "Glf_306"
-glf_funcRefMap.Add "skip_minigame_intro{device.timers.dm_intro_delay.ticks > 0}", "Glf_307"
-glf_funcRefMap.Add "15", "Glf_308"
-glf_funcRefMap.Add "play_town_meeting_mode_slide:{text:""TOWN MEETING"",instructions:""HIT FLASHING SHOTS TO SCORE""}", "Glf_309"
-glf_funcRefMap.Add "skip_minigame_intro{device.timers.town_meeting_intro_delay.ticks > 0}", "Glf_310"
-glf_funcRefMap.Add "20", "Glf_311"
-glf_funcRefMap.Add "{current_player.mode_town_meeting_score}", "Glf_312"
-glf_funcRefMap.Add "750000", "Glf_313"
-glf_funcRefMap.Add "play_dinner_mode_slide:{text:""FRIDAY NIGHT DINNER"",instructions:""SHOOT ORBITS TO SCORE""}", "Glf_314"
-glf_funcRefMap.Add "9", "Glf_315"
-glf_funcRefMap.Add "skip_minigame_intro{device.timers.dinner_intro_delay.ticks > 0}", "Glf_316"
-glf_funcRefMap.Add "{current_player.mode_dinner_score}", "Glf_317"
-glf_funcRefMap.Add "play_fd_punch_mode_slide:{text:""FOUNDER'S DAY PUNCH"",instructions:""SHOOT LUKE'S OR MANSION TO SCORE""}", "Glf_318"
-glf_funcRefMap.Add "skip_minigame_intro{device.timers.fd_punch_intro_delay.ticks > 0}", "Glf_319"
-glf_funcRefMap.Add "{current_player.mode_fd_punch_score}", "Glf_320"
-glf_funcRefMap.Add "play_kims_antiques_mode_slide:{text:""KIM'S ANTIQUES"",instructions:""AVOID MISS KIM (SOLID LIGHT)""}", "Glf_321"
-glf_funcRefMap.Add "skip_minigame_intro{device.timers.kims_antiques_intro_delay.ticks > 0}", "Glf_322"
-glf_funcRefMap.Add "{current_player.mode_kims_antiques_score}", "Glf_323"
-glf_funcRefMap.Add "play_lbtb_mode_slide:{text:""LUKE BREAKS THE BELLS!"",instructions:""BREAK BELLS TO SCORE""}", "Glf_324"
-glf_funcRefMap.Add "drop_target_drop3_down{current_player.bells_not_hit == 0}", "Glf_325"
-glf_funcRefMap.Add "drop_target_drop4_down{current_player.bells_not_hit == 0}", "Glf_326"
-glf_funcRefMap.Add "drop_target_drop5_down{current_player.bells_not_hit == 0}", "Glf_327"
-glf_funcRefMap.Add "drop_target_drop6_down{current_player.bells_not_hit == 0}", "Glf_328"
-glf_funcRefMap.Add "drop_target_drop7_down{current_player.bells_not_hit == 0}", "Glf_329"
-glf_funcRefMap.Add "drop_target_drop8_down{current_player.bells_not_hit == 0}", "Glf_330"
-glf_funcRefMap.Add "11.5", "Glf_331"
-glf_funcRefMap.Add "skip_minigame_intro{device.timers.lbtb_intro_delay.ticks > 0}", "Glf_332"
-glf_funcRefMap.Add "drop3_reset{device.drop_targets.drop3.state == 1}", "Glf_333"
-glf_funcRefMap.Add "drop4_reset{device.drop_targets.drop4.state == 1}", "Glf_334"
-glf_funcRefMap.Add "drop5_reset{device.drop_targets.drop5.state == 1}", "Glf_335"
-glf_funcRefMap.Add "drop6_reset{device.drop_targets.drop6.state == 1}", "Glf_336"
-glf_funcRefMap.Add "drop7_reset{device.drop_targets.drop7.state == 1}", "Glf_337"
-glf_funcRefMap.Add "drop8_reset{device.drop_targets.drop8.state == 1}", "Glf_338"
-glf_funcRefMap.Add "{current_player.mode_lbtb_score}", "Glf_339"
-glf_funcRefMap.Add "LbtbTime", "Glf_340"
-glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""TEAM JESS"" & Chr(58) & "" LEFT RAMP - TEAM LOGAN"" & Chr(58) & "" RIGHT RAMP""}", "Glf_341"
-glf_funcRefMap.Add "{current_player.mode_jdmb_score}", "Glf_342"
-glf_funcRefMap.Add "4000000", "Glf_343"
-glf_funcRefMap.Add "7500000", "Glf_344"
-glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""HIT BUMPERS TO BASH LOGAN""}", "Glf_345"
-glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""LOCK-AWAY LOGAN IN THE SCOOP""}", "Glf_346"
-glf_funcRefMap.Add "logan_bumper_hit{current_player.mode_llmb_score>=2500000}", "Glf_347"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", "Glf_348"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==0}", "Glf_349"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", "Glf_350"
-glf_funcRefMap.Add "{current_player.mode_llmb_score}", "Glf_351"
-glf_funcRefMap.Add "50000", "Glf_352"
-glf_funcRefMap.Add "1000 * current_player.scoring_multiplier", "Glf_353"
-glf_funcRefMap.Add "2500 * current_player.scoring_multiplier", "Glf_354"
-glf_funcRefMap.Add "2500", "Glf_355"
-glf_funcRefMap.Add "5000 * current_player.scoring_multiplier", "Glf_356"
-glf_funcRefMap.Add "1500 * current_player.scoring_multiplier", "Glf_357"
-glf_funcRefMap.Add "1500", "Glf_358"
-glf_funcRefMap.Add "25000 * current_player.scoring_multiplier", "Glf_359"
-glf_funcRefMap.Add "25000", "Glf_360"
-glf_funcRefMap.Add "12500 * current_player.scoring_multiplier", "Glf_361"
-glf_funcRefMap.Add "12500", "Glf_362"
-glf_funcRefMap.Add "20000 * current_player.scoring_multiplier", "Glf_363"
-glf_funcRefMap.Add "10000 * current_player.scoring_multiplier", "Glf_364"
-glf_funcRefMap.Add "50000 * current_player.scoring_multiplier", "Glf_365"
-glf_funcRefMap.Add "150000 * current_player.scoring_multiplier", "Glf_366"
-glf_funcRefMap.Add "150000", "Glf_367"
-glf_funcRefMap.Add "100000 * current_player.scoring_multiplier", "Glf_368"
-glf_funcRefMap.Add "250000 * current_player.scoring_multiplier", "Glf_369"
-glf_funcRefMap.Add "750000 * current_player.scoring_multiplier", "Glf_370"
-glf_funcRefMap.Add "200000 * current_player.scoring_multiplier", "Glf_371"
-glf_funcRefMap.Add "200000", "Glf_372"
-glf_funcRefMap.Add "400000 * current_player.scoring_multiplier", "Glf_373"
-glf_funcRefMap.Add "400000", "Glf_374"
-glf_funcRefMap.Add "1000000 * current_player.scoring_multiplier", "Glf_375"
-glf_funcRefMap.Add "1000000", "Glf_376"
-glf_funcRefMap.Add "2500000 * current_player.scoring_multiplier", "Glf_377"
-glf_funcRefMap.Add "2500000", "Glf_378"
-glf_funcRefMap.Add "500000 * current_player.scoring_multiplier", "Glf_379"
-glf_funcRefMap.Add "2000000 * current_player.scoring_multiplier", "Glf_380"
-glf_funcRefMap.Add "2000000", "Glf_381"
-glf_funcRefMap.Add "1250000 * current_player.scoring_multiplier", "Glf_382"
-glf_funcRefMap.Add "4000000 * current_player.scoring_multiplier", "Glf_383"
-glf_funcRefMap.Add "7500000 * current_player.scoring_multiplier", "Glf_384"
-glf_funcRefMap.Add "5000000 * current_player.scoring_multiplier", "Glf_385"
-glf_funcRefMap.Add "5000000", "Glf_386"
-glf_funcRefMap.Add "100000000 * current_player.scoring_multiplier", "Glf_387"
-glf_funcRefMap.Add "100000000", "Glf_388"
-glf_funcRefMap.Add "2000 * current_player.scoring_multiplier", "Glf_389"
-glf_funcRefMap.Add "7500 * current_player.scoring_multiplier", "Glf_390"
-glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_391"
-glf_funcRefMap.Add "kwargs.points", "Glf_392"
-glf_funcRefMap.Add "8", "Glf_393"
+glf_funcRefMap.Add "50", "Glf_229"
+glf_funcRefMap.Add "kirk_lit{kwargs.light == 1}", "Glf_230"
+glf_funcRefMap.Add "kirk_lit{kwargs.light == 2}", "Glf_231"
+glf_funcRefMap.Add "lane_lit{kwargs.light == 1}", "Glf_232"
+glf_funcRefMap.Add "lane_lit{kwargs.light == 2}", "Glf_233"
+glf_funcRefMap.Add "paris_lit{kwargs.light == 1}", "Glf_234"
+glf_funcRefMap.Add "paris_lit{kwargs.light == 2}", "Glf_235"
+glf_funcRefMap.Add "play_hurryup_mode_slide:{text:""HURRY-UP"",instructions:""SHOOT LUKE'S TO COLLECT JACKPOT""}", "Glf_236"
+glf_funcRefMap.Add "s_DropTargetKicker_active{device.timers.hurryup.ticks != 0}", "Glf_237"
+glf_funcRefMap.Add "score_dynamic_flat:{points:500000 + device.timers.hurryup.ticks * 7500}", "Glf_238"
+glf_funcRefMap.Add "hurryup_achieved:{points:500000 + device.timers.hurryup.ticks * 7500}", "Glf_239"
+glf_funcRefMap.Add "500000 + kwargs.ticks * 7500", "Glf_240"
+glf_funcRefMap.Add "new_ball_started{machine.game_modes_enabled == 1}", "Glf_241"
+glf_funcRefMap.Add "mode_skillshots_started{current_player.ball_just_started == 1}", "Glf_242"
+glf_funcRefMap.Add "mode_skillshots_started{current_player.ball_just_started == 0}", "Glf_243"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.ss1_started == 1}", "Glf_244"
+glf_funcRefMap.Add "ss_achieved:{points:750000}", "Glf_245"
+glf_funcRefMap.Add "ss_achieved:{points:200000}", "Glf_246"
+glf_funcRefMap.Add "s_sw7_active{current_player.shot_ss_bonus_lane_7 == 1}", "Glf_247"
+glf_funcRefMap.Add "ss_achieved:{points:400000}", "Glf_248"
+glf_funcRefMap.Add "s_sw8_active{current_player.shot_ss_bonus_lane_8 == 1}", "Glf_249"
+glf_funcRefMap.Add "s_sw9_active{current_player.shot_ss_bonus_lane_9 == 1}", "Glf_251"
+glf_funcRefMap.Add "light_ss_bonus_lane_7{current_player.shot_bonus_lane_7 == 0}", "Glf_253"
+glf_funcRefMap.Add "light_ss_bonus_lane_8{current_player.shot_bonus_lane_8 == 0}", "Glf_254"
+glf_funcRefMap.Add "light_ss_bonus_lane_9{current_player.shot_bonus_lane_9 == 0}", "Glf_255"
+glf_funcRefMap.Add "check_minigame{current_player.shot_logan_light == 1}", "Glf_256"
+glf_funcRefMap.Add "check_minigame{current_player.shot_dance_marathon_minigame != 1 and current_player.shot_town_meeting_minigame != 1 and current_player.shot_dinner_minigame != 1 and current_player.shot_kims_antiques_minigame != 1 and current_player.shot_lbtb_minigame != 1 and current_player.shot_fd_punch_minigame != 1}", "Glf_257"
+glf_funcRefMap.Add "check_minigame{current_player.shot_dance_marathon_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_258"
+glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_dance_marathon_minigame == 1}", "Glf_259"
+glf_funcRefMap.Add "check_minigame{current_player.shot_town_meeting_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_260"
+glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_town_meeting_minigame == 1}", "Glf_261"
+glf_funcRefMap.Add "check_minigame{current_player.shot_dinner_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_262"
+glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_dinner_minigame == 1}", "Glf_263"
+glf_funcRefMap.Add "check_minigame{current_player.shot_kims_antiques_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_264"
+glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_kims_antiques_minigame == 1}", "Glf_265"
+glf_funcRefMap.Add "check_minigame{current_player.shot_lbtb_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_266"
+glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_lbtb_minigame == 1}", "Glf_267"
+glf_funcRefMap.Add "check_minigame{current_player.shot_fd_punch_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_268"
+glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_fd_punch_minigame == 1}", "Glf_269"
+glf_funcRefMap.Add "choose_new_minigame{modes.bonus.active == False}", "Glf_270"
+glf_funcRefMap.Add "dance_marathon_minigame_lit{current_player.shot_dance_marathon_minigame == 0}", "Glf_271"
+glf_funcRefMap.Add "town_meeting_minigame_lit{current_player.shot_town_meeting_minigame == 0}", "Glf_272"
+glf_funcRefMap.Add "dinner_minigame_lit{current_player.shot_dinner_minigame == 0}", "Glf_273"
+glf_funcRefMap.Add "kims_antiques_minigame_lit{current_player.shot_kims_antiques_minigame == 0}", "Glf_274"
+glf_funcRefMap.Add "lbtb_minigame_lit{current_player.shot_lbtb_minigame == 0}", "Glf_275"
+glf_funcRefMap.Add "fd_punch_minigame_lit{current_player.shot_fd_punch_minigame == 0}", "Glf_276"
+glf_funcRefMap.Add "check_eb{current_player.extra_balls == 0}", "Glf_277"
+glf_funcRefMap.Add "check_eb{current_player.extra_balls > 0}", "Glf_278"
+glf_funcRefMap.Add "s_complete_right_ramp_active{current_player.shot_eb_ready == 1}", "Glf_279"
+glf_funcRefMap.Add "3", "Glf_280"
+glf_funcRefMap.Add "eb_now_lit{current_player.extra_ball_eb_awarded < 3}", "Glf_281"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", "Glf_282"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", "Glf_283"
+glf_funcRefMap.Add "timer_mystery_show_tick{devices.timers.mystery_show.ticks == 1}", "Glf_284"
+glf_funcRefMap.Add "restart_qualify_mystery{modes.jd_multiball.active==False}", "Glf_285"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 0}", "Glf_286"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 1}", "Glf_287"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 2}", "Glf_288"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 3}", "Glf_289"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 4}", "Glf_290"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 5}", "Glf_291"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 6}", "Glf_292"
+glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 7}", "Glf_293"
+glf_funcRefMap.Add "10000", "Glf_294"
+glf_funcRefMap.Add "6", "Glf_295"
+glf_funcRefMap.Add "7", "Glf_296"
+glf_funcRefMap.Add "ball_started{machine.game_modes_enabled == 1}", "Glf_297"
+glf_funcRefMap.Add "s_complete_right_ramp_active{current_player.shot_ramp == 1}", "Glf_298"
+glf_funcRefMap.Add "timer_dm_intro_delay_tick{device.timers.dm_intro_delay.ticks == 27}", "Glf_299"
+glf_funcRefMap.Add "play_dance_marathon_mode_slide:{text:""DANCE MARATHON"",instructions:""HIT FLASHING SHOTS TO SCORE""}", "Glf_300"
+glf_funcRefMap.Add "500000", "Glf_301"
+glf_funcRefMap.Add "100000", "Glf_302"
+glf_funcRefMap.Add "{current_player.mode_dance_marathon_score}", "Glf_303"
+glf_funcRefMap.Add "kwargs.ticks_remaining", "Glf_304"
+glf_funcRefMap.Add "250000", "Glf_305"
+glf_funcRefMap.Add "1250000", "Glf_306"
+glf_funcRefMap.Add "28", "Glf_307"
+glf_funcRefMap.Add "skip_minigame_intro{device.timers.dm_intro_delay.ticks > 0}", "Glf_308"
+glf_funcRefMap.Add "15", "Glf_309"
+glf_funcRefMap.Add "play_town_meeting_mode_slide:{text:""TOWN MEETING"",instructions:""HIT FLASHING SHOTS TO SCORE""}", "Glf_310"
+glf_funcRefMap.Add "skip_minigame_intro{device.timers.town_meeting_intro_delay.ticks > 0}", "Glf_311"
+glf_funcRefMap.Add "20", "Glf_312"
+glf_funcRefMap.Add "{current_player.mode_town_meeting_score}", "Glf_313"
+glf_funcRefMap.Add "750000", "Glf_314"
+glf_funcRefMap.Add "play_dinner_mode_slide:{text:""FRIDAY NIGHT DINNER"",instructions:""SHOOT ORBITS TO SCORE""}", "Glf_315"
+glf_funcRefMap.Add "9", "Glf_316"
+glf_funcRefMap.Add "skip_minigame_intro{device.timers.dinner_intro_delay.ticks > 0}", "Glf_317"
+glf_funcRefMap.Add "{current_player.mode_dinner_score}", "Glf_318"
+glf_funcRefMap.Add "play_fd_punch_mode_slide:{text:""FOUNDER'S DAY PUNCH"",instructions:""SHOOT LUKE'S OR MANSION TO SCORE""}", "Glf_319"
+glf_funcRefMap.Add "skip_minigame_intro{device.timers.fd_punch_intro_delay.ticks > 0}", "Glf_320"
+glf_funcRefMap.Add "{current_player.mode_fd_punch_score}", "Glf_321"
+glf_funcRefMap.Add "play_kims_antiques_mode_slide:{text:""KIM'S ANTIQUES"",instructions:""AVOID MISS KIM (SOLID LIGHT)""}", "Glf_322"
+glf_funcRefMap.Add "skip_minigame_intro{device.timers.kims_antiques_intro_delay.ticks > 0}", "Glf_323"
+glf_funcRefMap.Add "{current_player.mode_kims_antiques_score}", "Glf_324"
+glf_funcRefMap.Add "play_lbtb_mode_slide:{text:""LUKE BREAKS THE BELLS!"",instructions:""BREAK BELLS TO SCORE""}", "Glf_325"
+glf_funcRefMap.Add "drop_target_drop3_down{current_player.bells_not_hit == 0}", "Glf_326"
+glf_funcRefMap.Add "drop_target_drop4_down{current_player.bells_not_hit == 0}", "Glf_327"
+glf_funcRefMap.Add "drop_target_drop5_down{current_player.bells_not_hit == 0}", "Glf_328"
+glf_funcRefMap.Add "drop_target_drop6_down{current_player.bells_not_hit == 0}", "Glf_329"
+glf_funcRefMap.Add "drop_target_drop7_down{current_player.bells_not_hit == 0}", "Glf_330"
+glf_funcRefMap.Add "drop_target_drop8_down{current_player.bells_not_hit == 0}", "Glf_331"
+glf_funcRefMap.Add "11.5", "Glf_332"
+glf_funcRefMap.Add "skip_minigame_intro{device.timers.lbtb_intro_delay.ticks > 0}", "Glf_333"
+glf_funcRefMap.Add "drop3_reset{device.drop_targets.drop3.state == 1}", "Glf_334"
+glf_funcRefMap.Add "drop4_reset{device.drop_targets.drop4.state == 1}", "Glf_335"
+glf_funcRefMap.Add "drop5_reset{device.drop_targets.drop5.state == 1}", "Glf_336"
+glf_funcRefMap.Add "drop6_reset{device.drop_targets.drop6.state == 1}", "Glf_337"
+glf_funcRefMap.Add "drop7_reset{device.drop_targets.drop7.state == 1}", "Glf_338"
+glf_funcRefMap.Add "drop8_reset{device.drop_targets.drop8.state == 1}", "Glf_339"
+glf_funcRefMap.Add "{current_player.mode_lbtb_score}", "Glf_340"
+glf_funcRefMap.Add "LbtbTime", "Glf_341"
+glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""TEAM JESS"" & Chr(58) & "" LEFT RAMP - TEAM LOGAN"" & Chr(58) & "" RIGHT RAMP""}", "Glf_342"
+glf_funcRefMap.Add "{current_player.mode_jdmb_score}", "Glf_343"
+glf_funcRefMap.Add "4000000", "Glf_344"
+glf_funcRefMap.Add "7500000", "Glf_345"
+glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""HIT BUMPERS TO BASH LOGAN""}", "Glf_346"
+glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""LOCK-AWAY LOGAN IN THE SCOOP""}", "Glf_347"
+glf_funcRefMap.Add "logan_bumper_hit{current_player.mode_llmb_score>=2500000}", "Glf_348"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", "Glf_349"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==0}", "Glf_350"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", "Glf_351"
+glf_funcRefMap.Add "{current_player.mode_llmb_score}", "Glf_352"
+glf_funcRefMap.Add "50000", "Glf_353"
+glf_funcRefMap.Add "1000 * current_player.scoring_multiplier", "Glf_354"
+glf_funcRefMap.Add "2500 * current_player.scoring_multiplier", "Glf_355"
+glf_funcRefMap.Add "2500", "Glf_356"
+glf_funcRefMap.Add "5000 * current_player.scoring_multiplier", "Glf_357"
+glf_funcRefMap.Add "1500 * current_player.scoring_multiplier", "Glf_358"
+glf_funcRefMap.Add "1500", "Glf_359"
+glf_funcRefMap.Add "25000 * current_player.scoring_multiplier", "Glf_360"
+glf_funcRefMap.Add "25000", "Glf_361"
+glf_funcRefMap.Add "12500 * current_player.scoring_multiplier", "Glf_362"
+glf_funcRefMap.Add "12500", "Glf_363"
+glf_funcRefMap.Add "20000 * current_player.scoring_multiplier", "Glf_364"
+glf_funcRefMap.Add "10000 * current_player.scoring_multiplier", "Glf_365"
+glf_funcRefMap.Add "50000 * current_player.scoring_multiplier", "Glf_366"
+glf_funcRefMap.Add "150000 * current_player.scoring_multiplier", "Glf_367"
+glf_funcRefMap.Add "150000", "Glf_368"
+glf_funcRefMap.Add "100000 * current_player.scoring_multiplier", "Glf_369"
+glf_funcRefMap.Add "250000 * current_player.scoring_multiplier", "Glf_370"
+glf_funcRefMap.Add "750000 * current_player.scoring_multiplier", "Glf_371"
+glf_funcRefMap.Add "200000 * current_player.scoring_multiplier", "Glf_372"
+glf_funcRefMap.Add "200000", "Glf_373"
+glf_funcRefMap.Add "400000 * current_player.scoring_multiplier", "Glf_374"
+glf_funcRefMap.Add "400000", "Glf_375"
+glf_funcRefMap.Add "1000000 * current_player.scoring_multiplier", "Glf_376"
+glf_funcRefMap.Add "1000000", "Glf_377"
+glf_funcRefMap.Add "2500000 * current_player.scoring_multiplier", "Glf_378"
+glf_funcRefMap.Add "2500000", "Glf_379"
+glf_funcRefMap.Add "500000 * current_player.scoring_multiplier", "Glf_380"
+glf_funcRefMap.Add "2000000 * current_player.scoring_multiplier", "Glf_381"
+glf_funcRefMap.Add "2000000", "Glf_382"
+glf_funcRefMap.Add "1250000 * current_player.scoring_multiplier", "Glf_383"
+glf_funcRefMap.Add "4000000 * current_player.scoring_multiplier", "Glf_384"
+glf_funcRefMap.Add "7500000 * current_player.scoring_multiplier", "Glf_385"
+glf_funcRefMap.Add "5000000 * current_player.scoring_multiplier", "Glf_386"
+glf_funcRefMap.Add "5000000", "Glf_387"
+glf_funcRefMap.Add "100000000 * current_player.scoring_multiplier", "Glf_388"
+glf_funcRefMap.Add "100000000", "Glf_389"
+glf_funcRefMap.Add "2000 * current_player.scoring_multiplier", "Glf_390"
+glf_funcRefMap.Add "7500 * current_player.scoring_multiplier", "Glf_391"
+glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_392"
+glf_funcRefMap.Add "kwargs.points", "Glf_393"
+glf_funcRefMap.Add "8", "Glf_394"
 

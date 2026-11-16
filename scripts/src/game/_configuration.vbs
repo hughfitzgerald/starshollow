@@ -50,13 +50,13 @@ End Function
 
 Dim baseMusicArray
 baseMusicArray = Array( _
-    CreateBaseMusic("mus_go", 244), _
-    CreateBaseMusic("mus_happy", 50), _
-    CreateBaseMusic("mus_alternate", 36), _
-    CreateBaseMusic("mus_book", 188), _
-    CreateBaseMusic("mus_longer", 52), _
-    CreateBaseMusic("mus_maybe", 234), _
-    CreateBaseMusic("mus_popcorn", 332) _
+    CreateBaseMusic("mus_go", 244.8), _
+    CreateBaseMusic("mus_happy", 51.293333), _
+    CreateBaseMusic("mus_alternate", 36.506667), _
+    CreateBaseMusic("mus_book", 188.866667), _
+    CreateBaseMusic("mus_longer", 53.04), _
+    CreateBaseMusic("mus_maybe", 234.826667), _
+    CreateBaseMusic("mus_popcorn", 332.76) _
 )
 
 Sub ConfigureGlfDevices()
@@ -706,157 +706,158 @@ Sub CreateSounds()
         AddMusic bm.Name, bm.Duration, 0
     Next
 
-    AddMusic       "mus_married",  217, -1
-    AddMusic       "mus_sad",  93, 0
-    AddMusic       "mus_shoo",  48, 0
-    AddMusic       "mus_guitarmode", 33.882, -1
+    AddMusic       "mus_married",  216.706667, -1
+    AddMusic       "mus_sad",  93.346667, 0
+    AddMusic       "mus_shoo",  47.64, 0
+    AddMusic       "mus_guitarmode", 33.882359, -1
 
-    AddCallout     "voc_poodles1",  2
-    AddCallout     "voc_poodles2",  2
-    AddCallout     "voc_poodles3",  2
-    AddCallout     "voc_mystery", 3
-    AddCallout     "voc_coffeecoffeecoffee", 1
-    AddCallout     "voc_truman", 2
-    AddCallout     "voc_stars", 1
-    AddCallout     "voc_hollow", 1
-    AddCallout     "voc_wereclosed", 1
-    AddCallout     "voc_richardtheyrehere", 2
+    AddCallout     "voc_poodles1",  1.380031
+    AddCallout     "voc_poodles2",  1.459448
+    AddCallout     "voc_poodles3",  1.409625
+    AddCallout     "voc_mystery", 2.633333
+    AddCallout     "voc_coffeecoffeecoffee", 0.782224
+    AddCallout     "voc_truman", 1.908391
+    AddCallout     "voc_stars", 0.860068
+    AddCallout     "voc_hollow", 0.496916
+    AddCallout     "voc_wereclosed", 0.83424
+    AddCallout     "voc_richardtheyrehere", 1.217667
 
-    AddSoundEffect "sfx_copperboom1", 1
-    AddSoundEffect "sfx_copperboom2", 1
-    AddSoundEffect "sfx_dinerdoor", 5
-    AddSoundEffect "sfx_bumper1", 1
-    AddSoundEffect "sfx_bumper2", 1
-    AddSoundEffect "sfx_bumper3", 1
-    AddSoundEffect "sfx_eob_bonus", 2
-    AddSoundEffect "sfx_bonuslane", 1
-    AddSoundEffect "sfx_bonuslanecomplete", 1
-    AddSoundEffect "sfx_lowtrill", 1
-    AddSoundEffect "sfx_lowdouble", 1
-    AddSoundEffect "sfx_whoosh1", 1
-    AddSoundEffect "sfx_whoosh2", 1
+    AddSoundEffect "sfx_copperboom1", 0.547521
+    AddSoundEffect "sfx_copperboom2", 0.56451
+    AddSoundEffect "sfx_dinerdoor", 4.875
+    AddSoundEffect "sfx_bumper1", 0.533229
+    AddSoundEffect "sfx_bumper2", 0.717583
+    AddSoundEffect "sfx_bumper3", 0.493729
+    AddSoundEffect "sfx_eob_bonus", 4
+    AddSoundEffect "sfx_bonuslane", 0.458688
+    AddSoundEffect "sfx_bonuslanecomplete", 0.781
+    AddSoundEffect "sfx_lowtrill", 1.07313
+    AddSoundEffect "sfx_lowdouble", 1.060911
+    AddSoundEffect "sfx_whoosh1", 0.574698
+    AddSoundEffect "sfx_whoosh2", 0.574698
+    AddSoundEffect "sfx_victory", 1.431089
 
-    AddCallout     "voc_justhurry", 2
-    AddCallout     "voc_pureskill", 4
-    AddCallout     "voc_youaimedforme", 2
-    AddCallout     "voc_shocksme", 3
-    AddCallout     "voc_isthatgood", 2
-    AddCallout     "voc_yousavedme", 4
+    AddCallout     "voc_justhurry", 1.018438
+    AddCallout     "voc_pureskill", 3.091
+    AddCallout     "voc_youaimedforme", 1.458375
+    AddCallout     "voc_shocksme", 3.077528
+    AddCallout     "voc_isthatgood", 1.777057
+    AddCallout     "voc_yousavedme", 3.740354
 
-    AddCallout     "voc_sookie1", 6
-    AddCallout     "voc_sookie2", 3
-    AddCallout     "voc_sookie3", 4
-    AddCallout     "voc_sookie4", 5
+    AddCallout     "voc_sookie1", 6.291202
+    AddCallout     "voc_sookie2", 3.275986
+    AddCallout     "voc_sookie3", 3.960499
+    AddCallout     "voc_sookie4", 4.815941
 
     ' Jess/Dean Multiball
-    AddMusic       "mus_jdmb",  194, -1
-    AddCallout     "voc_tall", 2
-    AddCallout     "voc_exboyfriend", 3
+    AddMusic       "mus_jdmb",  194.339833, -1
+    AddCallout     "voc_tall", 2.198641
+    AddCallout     "voc_exboyfriend", 2.998188
 
     ' Logan Multiball
-    AddMusic       "mus_llmb",  173, -1
-    AddCallout     "voc_logan_hit1", 2
-    AddCallout     "voc_logan_hit2", 2
-    AddCallout     "voc_logan_hit3", 1
-    AddCallout     "voc_buttfacedmiscreant_full", 7
+    AddMusic       "mus_llmb",  172.649771, -1
+    AddCallout     "voc_logan_hit1", 0.506693
+    AddCallout     "voc_logan_hit2", 0.877734
+    AddCallout     "voc_logan_hit3", 0.491453
+    AddCallout     "voc_buttfacedmiscreant_full", 6.294708
 
     ' Dance Marathon
-    AddMusic       "mus_dm",  305, -1
-    AddCallout     "voc_dancingfun", 2
-    AddCallout     "voc_flipallyouwant", 2
-    AddCallout     "voc_justkeepdancing", 1
-    AddCallout     "voc_letmeflipyou", 3
-    AddCallout     "voc_lookgreat", 2
-    AddCallout     "voc_neeson", 2
-    AddCallout     "voc_prostrate", 6
+    AddMusic       "mus_dm",  304.64, -1
+    AddCallout     "voc_dancingfun", 1.888
+    AddCallout     "voc_flipallyouwant", 2.289333
+    AddCallout     "voc_justkeepdancing", 1.42
+    AddCallout     "voc_letmeflipyou", 3.473333
+    AddCallout     "voc_lookgreat", 1.554667
+    AddCallout     "voc_neeson", 2.073333
+    AddCallout     "voc_prostrate", 5.582667
 
-    AddCallout     "voc_dinner_lastchancetorun", 10
-    AddCallout     "voc_dinner_menken", 6
-    AddCallout     "voc_dinner_reno", 3
-    AddCallout     "voc_dinner_ruthless", 4
-    AddCallout     "voc_dinner_sorbet", 10
-    AddCallout     "voc_dinner_spaghetti", 5
-    AddCallout     "voc_dinner_uglymen", 4
-    AddCallout     "voc_dinner_cahoots", 8
-    AddCallout     "voc_dinner_deepdown", 7
-    AddCallout     "voc_dinner_dirtylibrarian", 8
-    AddCallout     "voc_dinner_heartfelt", 7
-    AddCallout     "voc_dinner_outro", 6
+    AddCallout     "voc_dinner_lastchancetorun", 9.125833
+    AddCallout     "voc_dinner_menken", 5.254167
+    AddCallout     "voc_dinner_reno", 2.134625
+    AddCallout     "voc_dinner_ruthless", 4.477646
+    AddCallout     "voc_dinner_sorbet", 9.662896
+    AddCallout     "voc_dinner_spaghetti", 4.613375
+    AddCallout     "voc_dinner_uglymen", 4.091042
+    AddCallout     "voc_dinner_cahoots", 8.156688
+    AddCallout     "voc_dinner_deepdown", 6.694875
+    AddCallout     "voc_dinner_dirtylibrarian", 7.516458
+    AddCallout     "voc_dinner_heartfelt", 6.999146
+    AddCallout     "voc_dinner_outro", 5.585979
     
-    AddMusic       "mus_bells_loop",  3.486, -1
-    AddCallout     "voc_bells_intro", 12.088
-    AddCallout     "voc_bells_thankgod", 3
-    AddCallout     "voc_bells_what_happened", 8
-    AddCallout     "voc_bells_hammer", 4
-    AddCallout     "voc_bells_jamorwedge", 4
-    AddCallout     "voc_bells_clappers", 3
-    AddCallout     "voc_bells_dont_have_to_break_every", 2
-    AddCallout     "voc_bells_ruintheset", 3
-    AddCallout     "voc_bells_needapush", 6
-    AddCallout     "voc_bells_hunchback", 4
-    AddCallout     "voc_bells_youre_welcome", 4
-    AddSoundEffect "sfx_bells_break1", 1
-    AddSoundEffect "sfx_bells_break2", 1
-    AddSoundEffect "sfx_bells_break3", 1
+    AddMusic       "mus_bells_loop",  3.485714, -1
+    AddCallout     "voc_bells_intro", 12.088163
+    AddCallout     "voc_bells_thankgod", 1.863651
+    AddCallout     "voc_bells_what_happened", 6.561134
+    AddCallout     "voc_bells_hammer", 2.891656
+    AddCallout     "voc_bells_jamorwedge", 2.691818
+    AddCallout     "voc_bells_clappers", 2.021406
+    AddCallout     "voc_bells_dont_have_to_break_every", 1.166375
+    AddCallout     "voc_bells_ruintheset", 2.453651
+    AddCallout     "voc_bells_needapush", 4.862585
+    AddCallout     "voc_bells_hunchback", 2.514219
+    AddCallout     "voc_bells_youre_welcome", 2.698552
+    AddSoundEffect "sfx_bells_break1", 1.03399
+    AddSoundEffect "sfx_bells_break2", 0.748229
+    AddSoundEffect "sfx_bells_break3", 1.124115
 
-    AddMusic       "mus_ka",  144, -1
+    AddMusic       "mus_ka",  144.353719, -1
 
-    AddMusic       "mus_dinner", 193, -1
+    AddMusic       "mus_dinner", 192.990667, -1
 
-    AddMusic       "mus_magictodo1", 48, -1
-    AddMusic       "mus_magictodo2", 16, -1
-    AddMusic       "mus_magictodo3", 36, -1
+    AddMusic       "mus_magictodo1", 47.779188, -1
+    AddMusic       "mus_magictodo2", 15.622813, -1
+    AddMusic       "mus_magictodo3", 35.86175, -1
     
     
-    AddMusic       "mus_fd_punch", 241, -1
-    AddCallout     "voc_fd_punch_intro", 6
-    AddCallout     "voc_fd_punch_bathroom", 3
-    AddCallout     "voc_fd_punch_fallinahole", 3
-    AddCallout     "voc_fd_punch_idontfeelgood", 6
-    AddCallout     "voc_fd_punch_ifwegetmarried", 5
-    AddCallout     "voc_fd_punch_keepwalking", 2
-    AddCallout     "voc_fd_punch_myface", 9
-    AddCallout     "voc_fd_punch_pattys_punch", 3
-    AddCallout     "voc_fd_punch_spank", 4
-    AddCallout     "voc_fd_punch_spreaditaround", 3
-    AddCallout     "voc_fd_punch_takemyshoes", 6
-    AddCallout     "voc_fd_punch_tasty", 4
-    AddCallout     "voc_fd_punch_thirsty", 4
-    AddCallout     "voc_fd_punch_touchingmystuff", 3
-    AddCallout     "voc_fd_punch_twoplustwo", 8
-    AddCallout     "voc_fd_punch_wherehewasgoing", 5
-    AddCallout     "voc_fd_punch_atmisspattys", 3
+    AddMusic       "mus_fd_punch", 250.156, -1
+    AddCallout     "voc_fd_punch_intro", 4.962608
+    AddCallout     "voc_fd_punch_bathroom", 1.819458
+    AddCallout     "voc_fd_punch_fallinahole", 1.695219
+    AddCallout     "voc_fd_punch_idontfeelgood", 5.196712
+    AddCallout     "voc_fd_punch_ifwegetmarried", 3.521859
+    AddCallout     "voc_fd_punch_keepwalking", 1.35812
+    AddCallout     "voc_fd_punch_myface", 7.664921
+    AddCallout     "voc_fd_punch_pattys_punch", 2.424313
+    AddCallout     "voc_fd_punch_spank", 3.055306
+    AddCallout     "voc_fd_punch_spreaditaround", 2.18599
+    AddCallout     "voc_fd_punch_takemyshoes", 5.170544
+    AddCallout     "voc_fd_punch_tasty", 3.07644
+    AddCallout     "voc_fd_punch_thirsty", 2.779755
+    AddCallout     "voc_fd_punch_touchingmystuff", 2.059891
+    AddCallout     "voc_fd_punch_twoplustwo", 7.306757
+    AddCallout     "voc_fd_punch_wherehewasgoing", 4.431043
+    AddCallout     "voc_fd_punch_atmisspattys", 3.202789
 
     AddCallout     "voc_ka_mothercanhear", 7.106042
     AddCallout     "voc_ka_belleandsebastian", 8.469604
-    AddCallout     "voc_ka_cage", 2.240250
+    AddCallout     "voc_ka_cage", 2.24025
     AddCallout     "voc_ka_cautionarytale", 5.506063
     AddCallout     "voc_ka_kimsantiques", 0.675063
 
-    AddMusic       "mus_tm",  114, -1
+    AddMusic       "mus_tm",  114.020917, -1
 
-    AddCallout     "voc_tm_central_nervous_system", 4
-    AddCallout     "voc_tm_coffee_in_an_iv", 2
-    AddCallout     "voc_tm_gavel_twinkle", 8
-    AddCallout     "voc_tm_gavelx3", 8
-    AddCallout     "voc_tm_punctuality_dirty", 5
-    AddCallout     "voc_tm_meetingadjourned", 7
+    AddCallout     "voc_tm_central_nervous_system", 2.598938
+    AddCallout     "voc_tm_coffee_in_an_iv", 1.18912
+    AddCallout     "voc_tm_gavel_twinkle", 6.525125
+    AddCallout     "voc_tm_gavelx3", 7.678299
+    AddCallout     "voc_tm_punctuality_dirty", 4.695941
+    AddCallout     "voc_tm_meetingadjourned", 5.695692
 
-    AddCallout     "voc_tm_cartkiosk_cartkiosk1", 7
-    AddCallout     "voc_tm_cartkiosk_cartkiosk2", 6
-    AddCallout     "voc_tm_cartkiosk_hirsutehippy", 8
-    AddCallout     "voc_tm_cartkiosk_sexyornot", 6
-    AddCallout     "voc_tm_cartkiosk_sexysquash", 3
-    AddCallout     "voc_tm_cartkiosk_transcript", 5
+    AddCallout     "voc_tm_cartkiosk_cartkiosk1", 6.236077
+    AddCallout     "voc_tm_cartkiosk_cartkiosk2", 4.573333
+    AddCallout     "voc_tm_cartkiosk_hirsutehippy", 7.200068
+    AddCallout     "voc_tm_cartkiosk_sexyornot", 4.568526
+    AddCallout     "voc_tm_cartkiosk_sexysquash", 1.588438
+    AddCallout     "voc_tm_cartkiosk_transcript", 3.696349
 
-    AddCallout     "voc_tm_deer_bambies", 4
-    AddCallout     "voc_tm_deer_flying", 4
-    AddCallout     "voc_tm_deer_leavethemalone", 2
-    AddCallout     "voc_tm_deer_partialelimination", 4
-    AddCallout     "voc_tm_deer_population", 8
-    AddCallout     "voc_tm_deer_wolf", 6
+    AddCallout     "voc_tm_deer_bambies", 2.608938
+    AddCallout     "voc_tm_deer_flying", 3.487982
+    AddCallout     "voc_tm_deer_leavethemalone", 1.189641
+    AddCallout     "voc_tm_deer_partialelimination", 2.989865
+    AddCallout     "voc_tm_deer_population", 7.097234
+    AddCallout     "voc_tm_deer_wolf", 5.301111
 
-    AddSoundEffect "sfx_tm_gavel", 2
+    AddSoundEffect "sfx_tm_gavel", 0.391791
     
     ' AddSoundEffect "sfx_name", <seconds>
     ' AddCallout     "voc_name", <seconds>
