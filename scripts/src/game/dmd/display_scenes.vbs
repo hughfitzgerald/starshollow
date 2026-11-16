@@ -377,6 +377,7 @@ Sub DmdBuild_Award(entry)
 End Sub
 
 Sub DmdTick_Award(entry)
+  If Not entry.HasKwargs() Then Exit Sub
   Dim scene
   Set scene = entry.Scene()
 
