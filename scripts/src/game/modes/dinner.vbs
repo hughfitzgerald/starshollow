@@ -62,30 +62,46 @@ Sub CreateDinnerMode()
                 .Key = "key_voc_dinner_menken"
                 .Sound = "voc_dinner_menken"
             End With
-            ' With .EventName("dinner_voc_2")
-            '     .Key = "key_voc_flipallyouwant"
-            '     .Sound = "voc_flipallyouwant"
-            ' End With
-            ' With .EventName("dinner_voc_3")
-            '     .Key = "key_voc_justkeepdancing"
-            '     .Sound = "voc_justkeepdancing"
-            ' End With
-            ' With .EventName("dinner_voc_4")
-            '     .Key = "key_voc_ledinnereflipyou"
-            '     .Sound = "voc_ledinnereflipyou"
-            ' End With
-            ' With .EventName("dinner_voc_5")
-            '     .Key = "key_voc_lookgreat"
-            '     .Sound = "voc_lookgreat"
-            ' End With
-            ' With .EventName("dinner_voc_6")
-            '     .Key = "key_voc_neeson"
-            '     .Sound = "voc_neeson"
-            ' End With
-            ' With .EventName("dinner_voc_7")
-            '     .Key = "key_voc_prostrate"
-            '     .Sound = "voc_prostrate"
-            ' End With
+            With .EventName("dinner_voc_2")
+                .Key = "key_voc_dinner_reno"
+                .Sound = "voc_dinner_reno"
+            End With
+            With .EventName("dinner_voc_3")
+                .Key = "key_voc_dinner_ruthless"
+                .Sound = "voc_dinner_ruthless"
+            End With
+            With .EventName("dinner_voc_4")
+                .Key = "key_voc_dinner_sorbet"
+                .Sound = "voc_dinner_sorbet"
+            End With
+            With .EventName("dinner_voc_5")
+                .Key = "key_voc_dinner_spaghetti"
+                .Sound = "voc_dinner_spaghetti"
+            End With
+            With .EventName("dinner_voc_6")
+                .Key = "key_voc_dinner_uglymen"
+                .Sound = "voc_dinner_uglymen"
+            End With
+            With .EventName("dinner_voc_7")
+                .Key = "key_voc_dinner_cahoots"
+                .Sound = "voc_dinner_cahoots"
+            End With
+            With .EventName("dinner_voc_8")
+                .Key = "key_voc_dinner_deepdown"
+                .Sound = "voc_dinner_deepdown"
+            End With
+            With .EventName("dinner_voc_9")
+                .Key = "key_voc_dinner_dirtylibrarian"
+                .Sound = "voc_dinner_dirtylibrarian"
+            End With
+            With .EventName("dinner_voc_10")
+                .Key = "key_voc_dinner_heartfelt"
+                .Sound = "voc_dinner_heartfelt"
+            End With
+            With .EventName("play_dinner_outro")
+                .Key = "key_voc_dinner_outro"
+                .Sound = "voc_dinner_outro"
+            End With
         End With
 
         With .SlidePlayer()
@@ -165,6 +181,9 @@ Sub CreateDinnerMode()
                 .Add "dinner_voc_5", 1
                 .Add "dinner_voc_6", 1
                 .Add "dinner_voc_7", 1
+                .Add "dinner_voc_8", 1
+                .Add "dinner_voc_9", 1
+                .Add "dinner_voc_10", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
