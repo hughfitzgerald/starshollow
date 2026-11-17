@@ -79,7 +79,7 @@ Sub CreateBonusMode
     ' and stops at once, on a tilted ball - so nothing here hangs off mode_bonus_started.
     With bonus.Mode
         With .EventPlayer()
-            .Add "bonus_start", Array("gi_lights_off", "show_bonus_slide:{score:" & KwargText("BONUS") & "}")
+            .Add "bonus_start", Array("gi_lights_off", "show_bonus_text")
 
             'Counted lines: GLF sets the pace and posts bonus_entry for each one
             For x = 0 To UBound(countedLines)
@@ -229,6 +229,10 @@ Sub CreateBonusMode
         End With
 
         With .SlidePlayer()
+            With .EventName("show_bonus_text")
+                .Slide = "bonus_text"
+                .Action = "play"
+            End With
             With .EventName("show_bonus_slide")
                 .Slide = "eob_bonus"
                 .Action = "play"

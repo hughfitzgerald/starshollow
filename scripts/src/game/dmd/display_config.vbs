@@ -207,6 +207,12 @@ Sub CreateFlexDmdDisplay()
         .TransitionOut = "fade 0.5"
     End With
 
+    With CreateDmdSlide("bonus_text")
+        .Text = "BONUS"
+        .Effect = "solid"
+        .Hold = 2
+    End With
+
     ' Rises over the score at the end of a ball, and leaves the way it came.
     With CreateDmdSlide("eob_bonus")
         .Builder       = "DmdBuild_Bonus"
