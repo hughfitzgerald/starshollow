@@ -61,8 +61,6 @@ Sub CreateAttractMode()
         End With
 
         With .SlidePlayer()
-            ' The scoreboard, for the whole ball. Cleared from the slide
-            ' stack when base mode stops - the scene itself stays up.
             With .EventName("attract_score_highlighted")
                 .Slide  = "score"
                 .Action = "play"
