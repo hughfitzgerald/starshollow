@@ -662,7 +662,7 @@ Public Sub Glf_Init(ByRef table)
 	With CreateMachineVar("last_game_players")
         .InitialValue = 0
         .ValueType = "int"
-        .Persist = False
+        .Persist = True
     End With
 
 	If Not IsNull(glf_highscore) Then
@@ -20759,8 +20759,6 @@ Sub Glf_AddPlayer()
     If new_number = 1 Then
         glf_currentPlayer = "PLAYER 1"
     End If
-    Glf_BcpSendMachineVar "last_game_players", new_number, player_count
-    glf_machine_vars("last_game_players").Value = new_number
     If new_number = 2 Then
         DispatchPinEvent "multiplayer_game", Null
     End If
@@ -21124,6 +21122,9 @@ Function Glf_EndGame(args)
     Glf_BcpSendMachineVar "player2_score", glf_machine_vars("player2_score").Value, 0
     Glf_BcpSendMachineVar "player3_score", glf_machine_vars("player3_score").Value, 0
     Glf_BcpSendMachineVar "player4_score", glf_machine_vars("player4_score").Value, 0
+
+    glf_machine_vars("last_game_players").Value = Glf_PlayerCount()
+    Glf_BcpSendMachineVar "last_game_players", glf_machine_vars("last_game_players").Value, 0
 
     glf_gameStarted = False
     glf_currentPlayer = Null
