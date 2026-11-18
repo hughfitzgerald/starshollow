@@ -47,11 +47,32 @@ Sub CreateAttractMode()
             End With
         End With
 
+        With .Carousel()
+            .SelectableItems = Array("score", "title1", "gameover")
+            .NextItemEvents = Array("timer_attract_screens_complete", "s_right_flipper_active")
+            .PreviousItemEvents = Array("s_left_flipper_active")
+        End With
+
+        With .Timers("attract_screens")
+            .StartValue = 0
+            .EndValue = 6
+            .RestartOnComplete = True
+            .StartRunning = True
+        End With
+
         With .SlidePlayer()
             ' The scoreboard, for the whole ball. Cleared from the slide
             ' stack when base mode stops - the scene itself stays up.
-            With .EventName("attract_intro")
-                .Slide  = "welcome"
+            With .EventName("attract_score_highlighted")
+                .Slide  = "score"
+                .Action = "play"
+            End With
+            With .EventName("attract_title1_highlighted")
+                .Slide  = "title1"
+                .Action = "play"
+            End With
+            With .EventName("attract_gameover_highlighted")
+                .Slide  = "game_over_attract"
                 .Action = "play"
             End With
         End With

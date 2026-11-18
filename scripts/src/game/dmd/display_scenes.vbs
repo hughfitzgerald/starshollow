@@ -132,15 +132,31 @@ Sub DmdTick_Score(entry)
   Set activeLeftScore = scene.GetGroup("ActiveLeftScore")
   Set inactiveLeftScore = scene.GetGroup("InactiveLeftScore")
 
-  scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   " & glf_machine_vars("credits_string").GetValue()
-  
+  ' No players means no game is running: we're in attract, so show the
+  ' last game's scores (from machine vars) and skip the ball number.
+  Dim gameActive, numPlayers
+  gameActive = glf_playerState.Count > 0
+  If gameActive Then
+    numPlayers = glf_playerState.Count
+    scene.GetLabel("BallCredits").Text = "BALL " & GetPlayerState("ball") & "   " & glf_machine_vars("credits_string").GetValue()
+    scene.GetLabel("BallCredits").SetAlignedPosition 64, 29, 4
+  Else
+    numPlayers = glf_machine_vars("last_game_players").GetValue()
+    scene.GetLabel("BallCredits").Text = glf_machine_vars("credits_string").GetValue()
+    scene.GetLabel("BallCredits").SetAlignedPosition 64, 29, 4
+  End If
+
   scene.GetLabel("P1").Alignment = FlexDMD_Align_TopRight
   scene.GetLabel("P2").Visible = False
   scene.GetLabel("P3").Visible = False
   scene.GetLabel("P4").Visible = False
   Dim x
-  For x = 1 To glf_playerState.Count
-    scoreValue = GetPlayerStateForPlayer(x - 1, "score")
+  For x = 1 To numPlayers
+    If gameActive Then
+      scoreValue = GetPlayerStateForPlayer(x - 1, "score")
+    Else
+      scoreValue = Score2Num(glf_machine_vars("player" & x & "_score").GetValue())
+    End If
     Set scoreLabel = scene.GetLabel("P" & x)
     scoreLabel.Visible = True
     If scoreValue = 0 Then
@@ -148,7 +164,17 @@ Sub DmdTick_Score(entry)
     Else
         scoreLabel.Text = FormatNumber(scoreValue, 0, -2, -2, -1)
     End If
-    If glf_playerState.Count > 1 Then
+    If Not gameActive Then
+      If x = 1 or x = 3 Then
+        scene.RemoveActor scoreLabel
+        inactiveLeftScore.addActor scoreLabel
+      End If
+      If scoreValue > 9999999 Then
+        scoreLabel.Font = smallFontDim
+      Else
+        scoreLabel.Font = mediumFontDim
+      End If
+    ElseIf glf_playerState.Count > 1 Then
       If Getglf_currentPlayerNumber() = x - 1 Then
         If x = 1 or x = 3 Then
           scene.RemoveActor scoreLabel
@@ -181,7 +207,7 @@ Sub DmdTick_Score(entry)
 End Sub
 
 '*******************************************
-'  welcome - the attract intro
+'  title1 - the attract intro
 '*******************************************
 ' The logo slides in and then blinks, all with FlexDMD actions built
 ' here - the ticker has nothing to do. FlexDMD runs an actor's actions
@@ -189,8 +215,8 @@ End Sub
 ' first goes on the DMD (at the start of its fade-in transition) and
 ' does not restart on a later replay.
 
-Sub DmdBuild_Welcome(entry)
-    ' Dim g : Set g = FlexDMD.NewGroup("Welcome")
+Sub DmdBuild_Title1(entry)
+    ' Dim g : Set g = FlexDMD.NewGroup("Title1")
     ' With g
     '     .AddActor FlexDMD.NewImage("logo","gilmore_girls_logo_128x32.png")
     '     .Getimage("logo").visible = False
@@ -245,7 +271,7 @@ Sub DmdBuild_Welcome(entry)
 End Sub
 
 
-Sub DmdTick_Welcome(entry)
+Sub DmdTick_Title1(entry)
 End Sub
 
 '*******************************************

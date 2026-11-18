@@ -182,15 +182,13 @@ Sub CreateFlexDmdDisplay()
     ' when the scene goes on the DMD; .ResetFrame keeps FlexFrame counting
     ' from zero for anything that keys on it. Fading in and out marks
     ' attract <-> game as the big change it is.
-    With CreateDmdSlide("welcome")
-        .Builder       = "DmdBuild_Welcome"
-        .Ticker        = "DmdTick_Welcome"
+    With CreateDmdSlide("title1")
+        .Builder       = "DmdBuild_Title1"
+        .Ticker        = "DmdTick_Title1"
         .ResetFrame    = True
-        .Aliases       = Array("attract")
         .Transition    = "fade 0.5"
         .TransitionOut = "fade 0.5"
     End With
-    ' With CreateDmdSlide("welcome")   : .Image = "stars_hollow_town_dark_logo.png"   : End With
 
     With CreateDmdSlide("high_score")
         .Builder       = "DmdBuild_Initials"
@@ -236,6 +234,13 @@ Sub CreateFlexDmdDisplay()
         .Builder       = "DmdBuild_GameOver"
         .Ticker        = "DmdTick_GameOver"
         .Transition    = "fade 0.6"
+        .TransitionOut = "fade 0.5"
+    End With
+
+    ' "GAME OVER" image for attract mode
+    With CreateDmdSlide("game_over_attract")
+        .Image        = "game_over_128x32_gray.png"
+        .Transition   = "fade 0.5"
         .TransitionOut = "fade 0.5"
     End With
 
