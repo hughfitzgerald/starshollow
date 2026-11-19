@@ -43,40 +43,40 @@ Function Glf_8(args)
 End Function
 Function Glf_9(args)
 	On Error Resume Next
-	    Glf_9 = glf_timers("attract_insert_coins").GetValue("ticks") = 4
+	    Glf_9 = glf_modes("post_game").GetValue("active") = False
 	If Err Then Glf_9 = False
 End Function
 Function Glf_10(args)
 	On Error Resume Next
-	    Glf_10 = glf_timers("attract_insert_coins").GetValue("ticks") = 4
+	    Glf_10 = devices.timers.attract_pulse.ticks = 1
 	If Err Then Glf_10 = False
 End Function
 Function Glf_11(args)
-	Glf_11 = 0
+	On Error Resume Next
+	    Glf_11 = devices.timers.attract_pulse.ticks = 3
+	If Err Then Glf_11 = False
 End Function
 Function Glf_12(args)
-	Glf_12 = -1
+	On Error Resume Next
+	    Glf_12 = glf_timers("attract_insert_coins").GetValue("ticks") = 4
+	If Err Then Glf_12 = False
 End Function
 Function Glf_13(args)
-	Glf_13 = 6
+	On Error Resume Next
+	    Glf_13 = glf_timers("attract_insert_coins").GetValue("ticks") = 4
+	If Err Then Glf_13 = False
 End Function
 Function Glf_14(args)
-	Glf_14 = 4
+	Glf_14 = 0
 End Function
 Function Glf_15(args)
-	On Error Resume Next
-	    Glf_15 = glf_modes("post_game").GetValue("active") = False
-	If Err Then Glf_15 = False
+	Glf_15 = -1
 End Function
 Function Glf_16(args)
-	On Error Resume Next
-	    Glf_16 = devices.timers.attract_pulse.ticks = 1
-	If Err Then Glf_16 = False
+	Glf_16 = 6
 End Function
 Function Glf_17(args)
-	On Error Resume Next
-	    Glf_17 = devices.timers.attract_pulse.ticks = 3
-	If Err Then Glf_17 = False
+	Glf_17 = 4
 End Function
 Function Glf_18(args)
 	On Error Resume Next
@@ -2022,15 +2022,15 @@ glf_funcRefMap.Add "45000", "Glf_5"
 glf_funcRefMap.Add "6000", "Glf_6"
 glf_funcRefMap.Add "reset_complete{modes.attract.active==False}", "Glf_7"
 glf_funcRefMap.Add "game_ended{modes.attract.active==False}", "Glf_8"
-glf_funcRefMap.Add "not_enough_credits{device.timers.attract_insert_coins.ticks == 4}", "Glf_9"
-glf_funcRefMap.Add "s_right_flipper_active{device.timers.attract_insert_coins.ticks == 4}", "Glf_10"
-glf_funcRefMap.Add "0", "Glf_11"
-glf_funcRefMap.Add "-1", "Glf_12"
-glf_funcRefMap.Add "6", "Glf_13"
-glf_funcRefMap.Add "4", "Glf_14"
-glf_funcRefMap.Add "mode_attract_started{modes.post_game.active == False}", "Glf_15"
-glf_funcRefMap.Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", "Glf_16"
-glf_funcRefMap.Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", "Glf_17"
+glf_funcRefMap.Add "mode_attract_started{modes.post_game.active == False}", "Glf_9"
+glf_funcRefMap.Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", "Glf_10"
+glf_funcRefMap.Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", "Glf_11"
+glf_funcRefMap.Add "not_enough_credits{device.timers.attract_insert_coins.ticks == 4}", "Glf_12"
+glf_funcRefMap.Add "s_right_flipper_active{device.timers.attract_insert_coins.ticks == 4}", "Glf_13"
+glf_funcRefMap.Add "0", "Glf_14"
+glf_funcRefMap.Add "-1", "Glf_15"
+glf_funcRefMap.Add "6", "Glf_16"
+glf_funcRefMap.Add "4", "Glf_17"
 glf_funcRefMap.Add "check_start_button{(machine.credits_whole_num >= 1 or machine.free_play == 1) and (game.num_players == 0 or (game.num_players < game.max_players and current_player.ball == 1))}", "Glf_18"
 glf_funcRefMap.Add "check_start_button{(machine.credits_whole_num < 1 and machine.free_play == 0) or (game.num_players > 0 and (game.num_players >= game.max_players or current_player.ball > 1))}", "Glf_19"
 glf_funcRefMap.Add "ball_ending{game.tilted == True}", "Glf_20"
