@@ -330,6 +330,7 @@ Sub CreateFlexDmdDisplay()
     ' With CreateDmdWidget("skillshot")            : .Text = "SKILLSHOT HIT"           : End With
     With CreateDmdWidget("extra_ball_lit")       : .Text = "EXTRA BALL LIT"          : End With
     With CreateDmdWidget("extra_ball")           : .Text = "EXTRA BALL"              : End With
+    With CreateDmdWidget("replay")               : .Text = "REPLAY"                  : End With
     With CreateDmdWidget("dance_marathon")       : .Text = "DANCE MARATHON"          : End With
     With CreateDmdWidget("dance_marathon_done")  : .Text = "DANCE MARATHON COMPLETE" : End With
     With CreateDmdWidget("team_jess")            : .Text = "TEAM JESS"               : End With

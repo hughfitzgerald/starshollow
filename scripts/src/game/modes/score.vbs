@@ -115,6 +115,18 @@ Sub CreateScoreMode()
 		End With
 
         
+        'Replay (awarded by ReplayCheck in _configuration.vbs). Here rather than
+        'in base, which has stopped by the time the end of ball bonus is added.
+        'A text widget only draws over the scoreboard, though, so a replay
+        'earned by the bonus itself won't show while the bonus slide is up.
+        With .WidgetPlayer()
+            With .EventName("replay_awarded")
+                .Widget = "replay"
+                .Action = "play"
+                .Expire = 2
+            End With
+        End With
+
     End With
 
 End Sub
