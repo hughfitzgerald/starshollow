@@ -247,8 +247,6 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdSlide("insert_coins")
         .Builder       = "DmdBuild_InsertCoins"
         .Ticker        = "DmdTick_InsertCoins"
-        .Transition    = "fade 0.5"
-        .TransitionOut = "fade 0.5"
     End With
 
     ' A LAYER over the mode panel: two portraits that slide in from the
