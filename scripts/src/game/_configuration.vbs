@@ -781,6 +781,14 @@ Sub CreateSounds()
     AddCallout     "voc_lane_thelord", 2.183333
     AddCallout     "voc_lane_writingasong", 1.803625
 
+    AddCallout     "voc_kirk_15000jobs", 3.917417
+    AddCallout     "voc_kirk_animal", 3.080729
+    AddCallout     "voc_kirk_crazy", 2.574292
+    AddCallout     "voc_kirk_dadsuit", 3.978271
+    AddCallout     "voc_kirk_makinglove", 4.379708
+    AddCallout     "voc_kirk_naked", 9.878125
+    AddCallout     "voc_kirk_pants", 2.778896
+
     ' Jess/Dean Multiball
     AddMusic       "mus_jdmb",  194.339833, -1
     AddCallout     "voc_tall", 2.198641
