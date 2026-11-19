@@ -17,7 +17,7 @@ Sub CreateMysteryMode()
             .Add "timer_mystery_show_tick{devices.timers.mystery_show.ticks == 1}", Array("award_mystery")
             .Add "timer_mystery_show_complete", Array("restart_qualify_mystery", "remove_mystery_show")
 
-            .Add "restart_qualify_mystery{modes.jd_multiball.active==False}", Array("check_minigame")
+            .Add "restart_qualify_mystery", Array("check_minigame")
 
             .Add "inlane_1_lit_hit", Array("mystery_is_ready")
             .Add "inlane_2_lit_hit", Array("mystery_is_ready")
