@@ -37,6 +37,13 @@ Sub CreateAttractMode()
     With EnableGlfAttract()
 
         With .EventPlayer()
+            .Add "mode_attract_started{modes.post_game.active == False}", Array("attract_intro")
+            .Add "stop_post_game_mode", Array("attract_intro")
+            .Add "attract_intro", Array("play_mus_married")
+
+            .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", Array("attract_gi_dim")
+            .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", Array("attract_gi_bright")
+            
             .Add "not_enough_credits{device.timers.attract_insert_coins.ticks == 4}", Array("show_insert_coins")
             .Add "s_right_flipper_active{device.timers.attract_insert_coins.ticks == 4}", Array("manual_advance_attract_slide")
         End With
@@ -148,15 +155,6 @@ Sub CreateAttractMode()
                     .Fade  = 1200
                 End With
             End With
-        End With
-
-        With .EventPlayer()
-            .Add "mode_attract_started{modes.post_game.active == False}", Array("attract_intro")
-            .Add "stop_post_game_mode", Array("attract_intro")
-            .Add "attract_intro", Array("play_mus_married")
-
-            .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", Array("attract_gi_dim")
-            .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", Array("attract_gi_bright")
         End With
 
         With .Timers("attract_pulse")
