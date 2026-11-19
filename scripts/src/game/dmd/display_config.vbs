@@ -315,12 +315,14 @@ Sub CreateFlexDmdDisplay()
             .Text = UCase(characterNames(i)) & " LEVEL (light) ACHIEVED"
             .Image = characterImages(i)
             .Effect = "solid"
+            .Hold = 3
         End With
 
         With CreateDmdSlide(characterNames(i) & "_complete")
             .Text = UCase(characterNames(i)) & " COMPLETE"
             .Image = characterImages(i)
             .Effect = "solid"
+            .Hold = 4
         End With
     Next
 
