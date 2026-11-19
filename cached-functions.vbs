@@ -1814,13 +1814,19 @@ Function Glf_392(args)
 	Glf_392 = 7500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_393(args)
-	Glf_393 = glf_dispatch_current_kwargs("points") * GetPlayerState("scoring_multiplier")
+	Glf_393 = 15000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_394(args)
-	Glf_394 = glf_dispatch_current_kwargs("points")
+	Glf_394 = 15000000
 End Function
 Function Glf_395(args)
-	Glf_395 = 8
+	Glf_395 = glf_dispatch_current_kwargs("points") * GetPlayerState("scoring_multiplier")
+End Function
+Function Glf_396(args)
+	Glf_396 = glf_dispatch_current_kwargs("points")
+End Function
+Function Glf_397(args)
+	Glf_397 = 8
 End Function
 Dim glf_gi006_lmarr : glf_gi006_lmarr = Array(lm_gi006_plastics)
 glf_lightMaps.Add "gi006", glf_gi006_lmarr
@@ -2397,7 +2403,9 @@ glf_funcRefMap.Add "100000000 * current_player.scoring_multiplier", "Glf_389"
 glf_funcRefMap.Add "100000000", "Glf_390"
 glf_funcRefMap.Add "2000 * current_player.scoring_multiplier", "Glf_391"
 glf_funcRefMap.Add "7500 * current_player.scoring_multiplier", "Glf_392"
-glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_393"
-glf_funcRefMap.Add "kwargs.points", "Glf_394"
-glf_funcRefMap.Add "8", "Glf_395"
+glf_funcRefMap.Add "15000000 * current_player.scoring_multiplier", "Glf_393"
+glf_funcRefMap.Add "15000000", "Glf_394"
+glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_395"
+glf_funcRefMap.Add "kwargs.points", "Glf_396"
+glf_funcRefMap.Add "8", "Glf_397"
 

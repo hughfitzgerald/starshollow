@@ -249,6 +249,11 @@ Sub CreateFlexDmdDisplay()
         .Ticker        = "DmdTick_InsertCoins"
     End With
 
+    With CreateDmdSlide("replay_attract")
+        .Builder       = "DmdBuild_Replay"
+        .Ticker        = "DmdTick_Replay"
+    End With
+
     ' A LAYER over the mode panel: two portraits that slide in from the
     ' edges and sit on top of it, rather than replacing it. Played and
     ' removed like any other slide - .Action = "remove", an .Expire, or

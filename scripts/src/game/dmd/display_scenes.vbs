@@ -896,3 +896,21 @@ Sub DmdTick_InsertCoins(entry)
     credits.SetAlignedPosition     cx, topY, FlexDMD_Align_Top
     insertCoins.SetAlignedPosition cx, topY + credits.Height + ATTRACT_GAP, FlexDMD_Align_Top
 End Sub
+
+Sub DmdBuild_Replay(entry)
+    Dim scene, replay
+
+    Set scene = FlexDMD.NewGroup("Replay")
+    scene.SetSize 128, 32
+
+    Set replay = FlexDMD.NewLabel("Replay", largeFont, "REPLAY AT" & vbCrLf & FormatNumber(ReplayScore, 0))
+    replay.AutoPack = False
+    replay.FillParent = True
+    replay.Alignment = FlexDMD_Align_Center
+    scene.AddActor replay
+
+    entry.SetScene scene
+End Sub
+
+Sub DmdTick_Replay(entry)
+End Sub
