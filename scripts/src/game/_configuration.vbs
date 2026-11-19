@@ -770,6 +770,11 @@ Sub CreateSounds()
     AddCallout     "voc_sookie3", 3.960499
     AddCallout     "voc_sookie4", 4.815941
 
+    AddCallout     "voc_paris_marx", 1.828750
+    AddCallout     "voc_paris_monkey", 6.980688
+    AddCallout     "voc_paris_nothing", 2.578563
+    AddCallout     "voc_paris_patient", 2.315271
+
     ' Jess/Dean Multiball
     AddMusic       "mus_jdmb",  194.339833, -1
     AddCallout     "voc_tall", 2.198641
