@@ -129,16 +129,6 @@ Sub CreateHurryupMode()
         End With
 
         With .SoundPlayer()
-            With .EventName("stars_callout")
-                .Key = "key_voc_stars"
-                .Sound = "voc_stars"
-                .Priority = -1
-            End With
-            With .EventName("hollow_callout")
-                .Key = "key_voc_hollow"
-                .Sound = "voc_hollow"
-                .Priority = -1
-            End With
             With .EventName("start_hurryup_timer")
                 .Key = "key_voc_justhurry"
                 .Sound = "voc_justhurry"

@@ -741,7 +741,11 @@ Sub CreateSounds()
     AddCallout     "voc_stars", 0.860068
     AddCallout     "voc_hollow", 0.496916
     AddCallout     "voc_wereclosed", 0.83424
-    AddCallout     "voc_richardtheyrehere", 1.217667
+
+    AddCallout     "voc_mansion_richardtheyrehere", 1.217667
+    AddCallout     "voc_mansion_banks", 3.780188
+    AddCallout     "voc_mansion_rightontime", 2.593021
+    AddCallout     "voc_mansion_treat", 2.949958
 
     AddSoundEffect "sfx_copperboom1", 0.547521
     AddSoundEffect "sfx_copperboom2", 0.56451

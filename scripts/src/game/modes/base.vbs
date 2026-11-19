@@ -298,10 +298,20 @@ Sub CreateBaseMode()
                 .Add "poodles1_callout", 1
                 .Add "poodles2_callout", 1
                 .Add "poodles3_callout", 1
+                .ForceAll = True
+                .ForceDifferent = True
             End With
             With .EventName("ramp_sfx")
                 .Add "play_whoosh1", 1
                 .Add "play_whoosh2", 1
+            End With
+            With .EventName("grandparents_callout{modes.fd_punch.active==False}")
+                .Add "mansion1_callout", 1
+                .Add "mansion2_callout", 1
+                .Add "mansion3_callout", 1
+                .Add "mansion4_callout", 1
+                .ForceAll = True
+                .ForceDifferent = True
             End With
         End With
 
@@ -353,9 +363,25 @@ Sub CreateBaseMode()
                 .Key = "key_sfx_dinerdoor"
                 .Sound = "sfx_dinerdoor"
             End With
-            With .EventName("grandparents_callout{modes.fd_punch.active==False}")
-                .Key = "key_voc_richardtheyrehere"
-                .Sound = "voc_richardtheyrehere"
+            With .EventName("mansion1_callout")
+                .Key = "key_voc_mansion_richardtheyrehere"
+                .Sound = "voc_mansion_richardtheyrehere"
+                .Priority = 1
+            End With
+            With .EventName("mansion2_callout")
+                .Key = "key_voc_mansion_banks"
+                .Sound = "voc_mansion_banks"
+                .Priority = 1
+            End With
+            With .EventName("mansion3_callout")
+                .Key = "key_voc_mansion_rightontime"
+                .Sound = "voc_mansion_rightontime"
+                .Priority = 1
+            End With
+            With .EventName("mansion4_callout")
+                .Key = "key_voc_mansion_treat"
+                .Sound = "voc_mansion_treat"
+                .Priority = 1
             End With
             With .EventName("auto_fire_coil_bumper1_activate{modes.ll_multiball.active==False}")
                 .Key = "key_sfx_bumper1"
@@ -385,6 +411,16 @@ Sub CreateBaseMode()
                 .Key = "key_voc_pureskill"
                 .Sound = "voc_pureskill"
                 .Action = "play"
+            End With
+            With .EventName("stars_callout")
+                .Key = "key_voc_stars"
+                .Sound = "voc_stars"
+                .Priority = -1
+            End With
+            With .EventName("hollow_callout")
+                .Key = "key_voc_hollow"
+                .Sound = "voc_hollow"
+                .Priority = -1
             End With
         End With
 
