@@ -131,6 +131,10 @@ Sub CreateAttractMode()
                 .Slide = "insert_coins"
                 .Action = "remove"
             End With
+            With .EventName("player_will_add")
+                .Slide = "insert_coins"
+                .Action = "remove"
+            End With
         End With
 
         With .LightPlayer()
