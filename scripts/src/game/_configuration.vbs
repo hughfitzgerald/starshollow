@@ -646,6 +646,7 @@ Function ReplayCheck(args)
     If IsObject(glf_credits) Then
         If Not glf_credits.FreePlay Then glf_credits.AddCredit False
     End If
+    KnockerSolenoid
     DispatchPinEvent "replay_awarded", Null
 End Function
 
