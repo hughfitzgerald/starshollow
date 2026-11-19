@@ -90,35 +90,35 @@ Sub DmdBuild_Score(entry)
     scene.AddActor inactiveLeftScore
 
     Dim p1Score
-    Set p1Score = FlexDMD.NewLabel("P1", mediumFont, "00")
+    Set p1Score = FlexDMD.NewLabel("P1", mediumFont, "")
     p1Score.AutoPack = False
     p1Score.FillParent = True
     p1Score.Alignment = FlexDMD_Align_TopRight
     inactiveLeftScore.AddActor p1Score
 
     Dim p2Score
-    Set p2Score = FlexDMD.NewLabel("P2", mediumFont, "00")
+    Set p2Score = FlexDMD.NewLabel("P2", mediumFont, "")
     p2Score.AutoPack = False
     p2Score.FillParent = True
     p2Score.Alignment = FlexDMD_Align_TopRight
     scoreDisplay.AddActor p2Score
 
     Dim p3Score
-    Set p3Score = FlexDMD.NewLabel("P3", mediumFont, "00")
+    Set p3Score = FlexDMD.NewLabel("P3", mediumFont, "")
     p3Score.AutoPack = False
     p3Score.FillParent = True
     p3Score.Alignment = FlexDMD_Align_BottomRight
     inactiveLeftScore.AddActor p3Score
 
     Dim p4Score
-    Set p4Score = FlexDMD.NewLabel("P4", mediumFont, "00")
+    Set p4Score = FlexDMD.NewLabel("P4", mediumFont, "")
     p4Score.AutoPack = False
     p4Score.FillParent = True
     p4Score.Alignment = FlexDMD_Align_BottomRight
     scoreDisplay.AddActor p4Score
 
     Dim ball
-    Set ball = FlexDMD.NewLabel("BallCredits", smallFont, "BALL 2   CREDITS 1")
+    Set ball = FlexDMD.NewLabel("BallCredits", smallFont, "")
     ball.SetAlignedPosition 64, 29, 4
     scene.AddActor ball
 
