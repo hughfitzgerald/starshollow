@@ -36,7 +36,7 @@ Sub CreateBaseMode()
         '--- Event routing -------------------------------------------------
         With .EventPlayer()
 
-            .Add "mode_base_started", Array("new_ball_started", "base_music_start", "backglass_on", "open_orbit_gate2")
+            .Add "mode_base_started", Array("new_ball_started", "base_music_start", "backglass_on", "open_orbit_gate2", "close_orbit_gate")
             .Add "mode_base_stopping", Array("base_music_stop", "backglass_off")
 
             .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))
