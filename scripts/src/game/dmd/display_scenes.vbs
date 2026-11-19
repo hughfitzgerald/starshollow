@@ -54,6 +54,9 @@
 ' the top of 28_ZFBC_FlexDMD_Bcp_Controller.vbs.
 
 
+Sub DmdTick_Static(entry)
+End Sub
+
 '*******************************************
 '  score - the scoreboard
 '*******************************************
@@ -268,10 +271,6 @@ Sub DmdBuild_Title1(entry)
     img.AddAction seq
 
     entry.SetScene scene
-End Sub
-
-
-Sub DmdTick_Title1(entry)
 End Sub
 
 '*******************************************
@@ -831,9 +830,6 @@ Sub DmdBuild_Mystery_ms(entry)
   DmdBuild_Mystery entry, choice
 End Sub
 
-Sub DmdTick_Mystery(entry)
-End Sub
-
 Sub DmdBuild_InsertCoins(entry)
     Dim scene, freePlay, coinGroup, credits, insertCoins
 
@@ -910,7 +906,4 @@ Sub DmdBuild_Replay(entry)
     scene.AddActor replay
 
     entry.SetScene scene
-End Sub
-
-Sub DmdTick_Replay(entry)
 End Sub

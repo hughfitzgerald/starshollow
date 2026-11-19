@@ -184,7 +184,7 @@ Sub CreateFlexDmdDisplay()
     ' attract <-> game as the big change it is.
     With CreateDmdSlide("title1")
         .Builder       = "DmdBuild_Title1"
-        .Ticker        = "DmdTick_Title1"
+        .Ticker        = "DmdTick_Static"
         .ResetFrame    = True
         .Transition    = "fade 0.5"
         .TransitionOut = "fade 0.5"
@@ -251,7 +251,7 @@ Sub CreateFlexDmdDisplay()
 
     With CreateDmdSlide("replay_attract")
         .Builder       = "DmdBuild_Replay"
-        .Ticker        = "DmdTick_Replay"
+        .Ticker        = "DmdTick_Static"
     End With
 
     ' A LAYER over the mode panel: two portraits that slide in from the
@@ -285,7 +285,7 @@ Sub CreateFlexDmdDisplay()
     For i = 0 to UBound(mysteryAwards)
         With CreateDmdSlide("mystery_" & mysteryAwards(i).Short)
             .Builder       = "DmdBuild_Mystery_" & mysteryAwards(i).Short
-            .Ticker        = "DmdTick_Mystery"
+            .Ticker        = "DmdTick_Static"
             .Transition    = "move_in down 0.5 out_bounce"
         End With
     Next
