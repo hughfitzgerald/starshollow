@@ -133,9 +133,6 @@ Sub CreateAttractMode()
             End With
         End With
 
-        ' Slow GI pulse so the table reads as "on" but idle.
-        ' GI lights are addressed by name, not by tag - see the long note in
-        ' _configuration.vbs for why .Lights("GI") would crash Glf_Init.
         With .LightPlayer()
             With .EventName("attract_intro")
                 With .Lights("GI")
