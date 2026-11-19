@@ -36,7 +36,10 @@ Sub CreateAttractMode()
 
     With EnableGlfAttract()
 
-
+        With .EventPlayer()
+            .Add "not_enough_credits{device.timers.attract_insert_coins.ticks == 4}", Array("show_insert_coins")
+            .Add "s_right_flipper_active{device.timers.attract_insert_coins.ticks == 4}", Array("manual_advance_attract_slide")
+        End With
 
         With .ShowPlayer()
             With .EventName("attract_intro")
@@ -48,8 +51,8 @@ Sub CreateAttractMode()
         End With
 
         With .Carousel()
-            .SelectableItems = Array("score", "title1", "gameover")
-            .NextItemEvents = Array("timer_attract_screens_complete", "s_right_flipper_active")
+            .SelectableItems = Array("score", "insert_coins", "title1", "gameover")
+            .NextItemEvents = Array("timer_attract_screens_complete", "manual_advance_attract_slide")
             .PreviousItemEvents = Array("s_left_flipper_active")
         End With
 
@@ -58,11 +61,47 @@ Sub CreateAttractMode()
             .EndValue = 6
             .RestartOnComplete = True
             .StartRunning = True
+            With .ControlEvents
+                .EventName = "manual_advance_attract_slide"
+                .Action = "restart"
+            End With
+            With .ControlEvents
+                .EventName = "show_insert_coins"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "timer_attract_insert_coins_complete"
+                .Action = "start"
+            End With
+        End With
+
+        With .Timers("attract_insert_coins")
+            .StartValue = 4
+            .EndValue = 0
+            .StartRunning = False
+            .Direction = "down"
+            With .ControlEvents
+                .EventName = "show_insert_coins"
+                .Action = "restart"
+            End With
+            With .ControlEvents
+                .EventName = "mode_attract_started"
+                .Action = "jump"
+                .Value = 0
+            End With
+            With .ControlEvents
+                .EventName = "timer_attract_insert_coins_complete"
+                .Action = "reset"
+            End With
         End With
 
         With .SlidePlayer()
             With .EventName("attract_score_highlighted")
                 .Slide  = "score"
+                .Action = "play"
+            End With
+            With .EventName("attract_insert_coins_highlighted")
+                .Slide  = "insert_coins"
                 .Action = "play"
             End With
             With .EventName("attract_title1_highlighted")
@@ -72,6 +111,14 @@ Sub CreateAttractMode()
             With .EventName("attract_gameover_highlighted")
                 .Slide  = "game_over_attract"
                 .Action = "play"
+            End With
+            With .EventName("show_insert_coins")
+                .Slide = "insert_coins"
+                .Action = "play"
+            End With
+            With .EventName("timer_attract_insert_coins_complete")
+                .Slide = "insert_coins"
+                .Action = "remove"
             End With
         End With
 

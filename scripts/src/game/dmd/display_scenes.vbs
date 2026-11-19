@@ -833,3 +833,66 @@ End Sub
 
 Sub DmdTick_Mystery(entry)
 End Sub
+
+Sub DmdBuild_InsertCoins(entry)
+    Dim scene, freePlay, coinGroup, credits, insertCoins
+
+    Set scene = FlexDMD.NewGroup("Insert")
+    scene.SetSize 128, 32
+
+    Set freePlay = FlexDMD.NewLabel("FreePlay", largeFont, "FREE PLAY")
+    freePlay.AutoPack = False
+    freePlay.FillParent = True
+    freePlay.Alignment = FlexDMD_Align_Center
+    freePlay.Visible = False
+    scene.AddActor freePlay
+
+    ' Parent group for the two-line layout; the tick toggles this, not the labels
+    Set coinGroup = FlexDMD.NewGroup("CoinGroup")
+    coinGroup.SetSize 128, 32
+    coinGroup.Visible = False
+    scene.AddActor coinGroup
+
+    Set credits = FlexDMD.NewLabel("Credits", largeFont, "2 CREDITS")
+    coinGroup.AddActor credits
+
+    Set insertCoins = FlexDMD.NewLabel("InsertCoins", largeFont, "INSERT COINS")
+    coinGroup.AddActor insertCoins
+
+    insertCoins.AddAction insertCoins.ActionFactory.Blink(0.3, 0.2, -1)
+
+    entry.SetScene scene
+End Sub
+
+Const ATTRACT_GAP = 2   ' pixels between the two lines
+
+Sub DmdTick_InsertCoins(entry)
+    Dim scene, freePlay, coinGroup, credits, insertCoins
+    Set scene = entry.Scene
+    Set freePlay = scene.GetLabel("FreePlay")
+    Set coinGroup = scene.GetGroup("CoinGroup")
+    Set credits = scene.GetLabel("Credits")
+    Set insertCoins = scene.GetLabel("InsertCoins")
+
+    freePlay.Visible = glf_machine_vars("free_play").GetValue()
+    coinGroup.Visible = Not freePlay.Visible
+    If freePlay.Visible Then Exit Sub
+
+    credits.Text = glf_machine_vars("credits_string").GetValue()
+    If glf_machine_vars("credits_whole_num").GetValue() = 0 Then
+        insertCoins.Text = "INSERT COINS"
+    Else
+        insertCoins.Text = "PRESS START"
+    End If
+
+    Dim totalH, topY, cx
+    credits.Pack
+    insertCoins.Pack
+
+    cx     = coinGroup.Width / 2
+    totalH = credits.Height + ATTRACT_GAP + insertCoins.Height
+    topY   = Int((coinGroup.Height - totalH) / 2)
+
+    credits.SetAlignedPosition     cx, topY, FlexDMD_Align_Top
+    insertCoins.SetAlignedPosition cx, topY + credits.Height + ATTRACT_GAP, FlexDMD_Align_Top
+End Sub

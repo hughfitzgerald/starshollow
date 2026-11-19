@@ -244,6 +244,13 @@ Sub CreateFlexDmdDisplay()
         .TransitionOut = "fade 0.5"
     End With
 
+    With CreateDmdSlide("insert_coins")
+        .Builder       = "DmdBuild_InsertCoins"
+        .Ticker        = "DmdTick_InsertCoins"
+        .Transition    = "fade 0.5"
+        .TransitionOut = "fade 0.5"
+    End With
+
     ' A LAYER over the mode panel: two portraits that slide in from the
     ' edges and sit on top of it, rather than replacing it. Played and
     ' removed like any other slide - .Action = "remove", an .Expire, or
@@ -331,6 +338,8 @@ Sub CreateFlexDmdDisplay()
     With CreateDmdWidget("team_dean")            : .Text = "TEAM DEAN"               : End With
     With CreateDmdWidget("jess_wins")            : .Text = "TEAM JESS WINS"          : End With
     With CreateDmdWidget("dean_wins")            : .Text = "TEAM DEAN WINS"          : End With
+
+    ' With CreateDmdWidget("insert_coins")         : .Text = "INSERT COINS" : End With
 
     ' Multiplayer: whose turn it is, and a player joining mid ball 1
     For x = 1 To 4
