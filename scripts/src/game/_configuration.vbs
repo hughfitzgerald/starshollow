@@ -775,6 +775,12 @@ Sub CreateSounds()
     AddCallout     "voc_paris_nothing", 2.578563
     AddCallout     "voc_paris_patient", 2.315271
 
+    AddCallout     "voc_lane_damnation", 3.845188
+    AddCallout     "voc_lane_musicstore", 2.258167
+    AddCallout     "voc_lane_stereos", 2.547000
+    AddCallout     "voc_lane_thelord", 2.183333
+    AddCallout     "voc_lane_writingasong", 1.803625
+
     ' Jess/Dean Multiball
     AddMusic       "mus_jdmb",  194.339833, -1
     AddCallout     "voc_tall", 2.198641
