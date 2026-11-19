@@ -94,6 +94,9 @@ Sub ConfigureGlfDevices()
     '*********** EVENT LISTENERS ***********
 
     AddPinEventListener "trough_eject", "on_trough_eject", "OnTroughEject", 2000, Null
+
+    ' Replay: runs after every change to the current player's score
+    AddPlayerStateEventListener "score", "replay_check", -1, "ReplayCheck", 100, Null
     AddPinEventListener GLF_BALL_DRAIN, "ball_drain_sound", "BallDrainSound", 100, Null
 
     ' TODO: You probably don't want to use balldevice ball entered events to do this! because do they fire during the multiball relay?
@@ -237,6 +240,7 @@ Sub ConfigureGlfDevices()
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1
+    Glf_SetInitialPlayerVar "replay_awarded", 0       ' set once this player has earned the replay this game
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
 
     Glf_SetInitialPlayerVar "ss1_started", 0
@@ -627,6 +631,23 @@ End Function
 
 Function PlungerBallOut(args)
     PlungerHasBall = False
+End Function
+
+' Replay. GLF calls this a short delay after the score changes, and a newer
+' change in that window replaces the pending call, so its previous value can
+' already be over the line. Hence the replay_awarded flag rather than checking
+' for the moment the score crosses ReplayScore.
+' args(1) is Array(variable name, new value, previous value).
+Function ReplayCheck(args)
+    If args(1)(1) < ReplayScore Then Exit Function
+    If GetPlayerState("replay_awarded") = 1 Then Exit Function
+    SetPlayerState "replay_awarded", 1
+    ' No credit on free play; the replay_awarded event still fires for the widget
+    If IsObject(glf_credits) Then
+        If Not glf_credits.FreePlay Then glf_credits.AddCredit False
+    End If
+    KnockerSolenoid
+    DispatchPinEvent "replay_awarded", Null
 End Function
 
 

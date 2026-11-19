@@ -163,6 +163,11 @@ Dim BonusGrandparentsFactor : BonusGrandparentsFactor = ScoreX(0.15)
 Dim BonusModePlayedFactor   : BonusModePlayedFactor   = ScoreX(20)    ' per mode played this ball
 Dim BonusMultiballWonFactor : BonusMultiballWonFactor = ScoreX(20)    ' per Jess/Dean or Logan win this ball
 
+'*********** REPLAY ***********
+' Score that earns a replay (a threshold, not an award). Checked by
+' ReplayCheck in _configuration.vbs; one replay per player per game.
+Dim ReplayScore             : ReplayScore             = ScoreX(300)
+
 
 Class MysteryAward
     Public Short
