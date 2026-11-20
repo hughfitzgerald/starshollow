@@ -831,79 +831,93 @@ Sub DmdBuild_Mystery_ms(entry)
 End Sub
 
 Sub DmdBuild_InsertCoins(entry)
-    Dim scene, freePlay, coinGroup, credits, insertCoins
+    Dim scene, freePlay, coinGroup
 
     Set scene = FlexDMD.NewGroup("Insert")
-    scene.SetSize 128, 32
+    scene.SetSize FlexDMD.Width, FlexDMD.Height
 
-    Set freePlay = FlexDMD.NewLabel("FreePlay", largeFont, "FREE PLAY")
-    freePlay.AutoPack = False
-    freePlay.FillParent = True
-    freePlay.Alignment = FlexDMD_Align_Center
+    Set freePlay = NewTwoLineGroup("FreePlay", "FREE PLAY", largeFont, "", largeFont)
     freePlay.Visible = False
     scene.AddActor freePlay
 
-    ' Parent group for the two-line layout; the tick toggles this, not the labels
-    Set coinGroup = FlexDMD.NewGroup("CoinGroup")
-    coinGroup.SetSize 128, 32
+    Set coinGroup = NewTwoLineGroup("CoinGroup", "2 CREDITS", largeFont, "INSERT COINS", largeFont)
     coinGroup.Visible = False
     scene.AddActor coinGroup
 
-    Set credits = FlexDMD.NewLabel("Credits", largeFont, "2 CREDITS")
-    coinGroup.AddActor credits
-
-    Set insertCoins = FlexDMD.NewLabel("InsertCoins", largeFont, "INSERT COINS")
-    coinGroup.AddActor insertCoins
-
-    insertCoins.AddAction insertCoins.ActionFactory.Blink(0.3, 0.2, -1)
+    With coinGroup.GetLabel("Line2")
+        .AddAction .ActionFactory.Blink(0.3, 0.2, -1)
+    End With
 
     entry.SetScene scene
 End Sub
 
-Const ATTRACT_GAP = 2   ' pixels between the two lines
-
 Sub DmdTick_InsertCoins(entry)
-    Dim scene, freePlay, coinGroup, credits, insertCoins
-    Set scene = entry.Scene
-    Set freePlay = scene.GetLabel("FreePlay")
-    Set coinGroup = scene.GetGroup("CoinGroup")
-    Set credits = scene.GetLabel("Credits")
-    Set insertCoins = scene.GetLabel("InsertCoins")
+    Dim freePlay, coinGroup
+    Set freePlay  = entry.Scene.GetGroup("FreePlay")
+    Set coinGroup = entry.Scene.GetGroup("CoinGroup")
 
-    freePlay.Visible = glf_machine_vars("free_play").GetValue()
+    freePlay.Visible  = glf_machine_vars("free_play").GetValue()
     coinGroup.Visible = Not freePlay.Visible
     If freePlay.Visible Then Exit Sub
 
-    credits.Text = glf_machine_vars("credits_string").GetValue()
+    coinGroup.GetLabel("Line1").Text = glf_machine_vars("credits_string").GetValue()
     If glf_machine_vars("credits_whole_num").GetValue() = 0 Then
-        insertCoins.Text = "INSERT COINS"
+        coinGroup.GetLabel("Line2").Text = "INSERT COINS"
     Else
-        insertCoins.Text = "PRESS START"
+        coinGroup.GetLabel("Line2").Text = "PRESS START"
     End If
 
-    Dim totalH, topY, cx
-    credits.Pack
-    insertCoins.Pack
+    LayoutTwoLine coinGroup
+End Sub
 
-    cx     = coinGroup.Width / 2
-    totalH = credits.Height + ATTRACT_GAP + insertCoins.Height
-    topY   = Int((coinGroup.Height - totalH) / 2)
+Const SLIDE_GAP = 2   ' pixels between the two lines
 
-    credits.SetAlignedPosition     cx, topY, FlexDMD_Align_Top
-    insertCoins.SetAlignedPosition cx, topY + credits.Height + ATTRACT_GAP, FlexDMD_Align_Top
+' Builds a full-screen group holding Line1/Line2, already laid out
+Function NewTwoLineGroup(name, text1, font1, text2, font2)
+    Dim grp
+    Set grp = FlexDMD.NewGroup(name)
+    grp.SetSize FlexDMD.Width, FlexDMD.Height
+    grp.AddActor FlexDMD.NewLabel("Line1", font1, text1)
+    grp.AddActor FlexDMD.NewLabel("Line2", font2, text2)
+    LayoutTwoLine grp
+    Set NewTwoLineGroup = grp
+End Function
+
+Sub LayoutTwoLine(grp)
+    Dim line1, line2, totalH, topY, cx
+    Set line1 = grp.GetLabel("Line1")
+    Set line2 = grp.GetLabel("Line2")
+    line1.Pack
+    line2.Pack
+    cx = grp.Width / 2
+
+    If line2.Text = "" Then
+        line1.SetAlignedPosition cx, grp.Height / 2, FlexDMD_Align_Center
+    Else
+        totalH = line1.Height + SLIDE_GAP + line2.Height
+        topY   = Int((grp.Height - totalH) / 2)
+        line1.SetAlignedPosition cx, topY, FlexDMD_Align_Top
+        line2.SetAlignedPosition cx, topY + line1.Height + SLIDE_GAP, FlexDMD_Align_Top
+    End If
+End Sub
+
+' Static slides
+Sub DmdBuild_TwoLine(entry, text1, font1, text2, font2, withBorder)
+    Dim scene, border
+    Set scene = FlexDMD.NewGroup("Slide")
+    scene.SetSize FlexDMD.Width, FlexDMD.Height
+
+    If withBorder Then
+        Set border = FlexDMD.NewFrame("Border")
+        border.Thickness = 1
+        border.SetBounds 0, 0, scene.Width, scene.Height
+        scene.AddActor border
+    End If
+
+    scene.AddActor NewTwoLineGroup("Text", text1, font1, text2, font2)
+    entry.SetScene scene
 End Sub
 
 Sub DmdBuild_Replay(entry)
-    Dim scene, replay
-
-    Set scene = FlexDMD.NewGroup("Replay")
-    scene.SetSize 128, 32
-
-    Set replay = FlexDMD.NewLabel("Replay", largeFont, "REPLAY AT" & vbCrLf & FormatNumber(ReplayScore, 0))
-    replay.AutoPack = False
-    replay.FillParent = True
-    replay.Alignment = FlexDMD_Align_Center
-    scene.AddActor replay
-
-    entry.SetScene scene
+    DmdBuild_TwoLine entry, "REPLAY AT", mediumFont, FormatNumber(ReplayScore, 0), largeFont, True
 End Sub
