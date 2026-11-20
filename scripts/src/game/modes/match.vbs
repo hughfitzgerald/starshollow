@@ -1,6 +1,6 @@
 Sub CreateMatchMode()
     With EnableGlfMatch()
-        .MatchPercentage = 100
+        .MatchPercentage = 15
         .DisplayTimeMs = 4000   'hold game_ending (and the match slide) before game_ended fires
 
         With .Mode.Timers("match")
