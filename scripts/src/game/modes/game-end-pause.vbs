@@ -7,7 +7,7 @@
 ' than both, so they don't start until this mode stops. It stops when its timer
 ' completes, posting game_end_pause_done (the table's high_score mode starts on that).
 
-Const GameEndPauseMs = 1500
+Const GameEndPauseMs = 1000
 
 Sub CreateGameEndPauseMode()
     With CreateGlfMode("game_end_pause", 1600)

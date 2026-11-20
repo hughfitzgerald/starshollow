@@ -33,10 +33,14 @@ Sub CreateHighScoreMode()
 
             .Add "high_score_award_display", Array("stop_magictodo", "restart_magictodo", "play_truman")
 
+            'Start the music and lights with the first initials prompt, not with the mode:
+            'the mode also starts (and stops at once) when there's no high score.
+            .Add "high_score_enter_initials{machine.high_score_music_started == 0}", Array("high_score_music_start")
+
         End With
 
         With .SoundPlayer()
-            With .EventName("mode_high_score_started")
+            With .EventName("high_score_music_start")
                 .Key = "key_mus_magictodo3"
                 .Sound = "mus_magictodo3"
             End With
@@ -77,7 +81,7 @@ Sub CreateHighScoreMode()
         ' End With
 
         With .ShowPlayer()
-            With .EventName("mode_high_score_started")
+            With .EventName("high_score_music_start")
                 .Key = "key_hs_show"
                 .Show = "rainbow"
                 .Speed = 1
@@ -92,6 +96,16 @@ Sub CreateHighScoreMode()
                 With .Variable("last_score")
                     .Action = "set_machine"
                     .Int = "players[0].score"
+                End With
+                With .Variable("high_score_music_started")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
+            With .EventName("high_score_music_start")
+                With .Variable("high_score_music_started")
+                    .Action = "set_machine"
+                    .Int = 1
                 End With
             End With
             With .EventName("s_left_flipper_active.2{current_player.hs_input_ready == 1}")

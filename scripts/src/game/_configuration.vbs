@@ -218,6 +218,11 @@ Sub ConfigureGlfDevices()
         .ValueType = "int"
         .Persist = False
     End With
+    With CreateMachineVar("high_score_music_started")  'set once the high score music starts, so a second player's initials don't restart it
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
     With CreateMachineVar("high_score_player_num")  'tracks which player is entering initials
         .InitialValue = 1
         .ValueType = "int"
