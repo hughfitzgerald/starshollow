@@ -1,4 +1,4 @@
-' GLF build: hughfitzgerald/vpx-glf starshollow @ 2892ffc (2026-11-16). Do not edit; see FORK.md in that repo.
+' GLF build: hughfitzgerald/vpx-glf starshollow @ f0406ea (2026-11-20). Do not edit; see FORK.md in that repo.
 'VPX Game Logic Framework (https://mpcarr.github.io/vpx-glf/)
 
 '
@@ -82,6 +82,7 @@ Dim bcpExeName : bcpExeName = CGameName & "_gmc"
 Dim bcpLocalPathToGodot : bcpLocalPathToGodot = ""
 Dim bcpLocalPathToProject : bcpLocalPathToProject = ""
 Dim bcpDebug : bcpDebug = False
+Dim bcpDisplaySettings : Set bcpDisplaySettings = CreateObject("Scripting.Dictionary")
 Dim glf_monitor_player_vars : glf_monitor_player_vars = false
 Dim glf_BIP : glf_BIP = 0
 Dim glf_FuncCount : glf_FuncCount = 0
@@ -116,6 +117,9 @@ Public Sub Glf_ConnectToBCPMediaController(args)
 	Else
 		Set bcpController = (new GlfVpxBcpController)(bcpPort, "")
 	End If
+	If bcpDisplaySettings.Count > 0 Then
+        bcpController.RegisterDisplay bcpDisplaySettings("name"), bcpDisplaySettings("width"), bcpDisplaySettings("height"), bcpDisplaySettings("id"), bcpDisplaySettings("dmdstyle")
+    End If
 End Sub
 
 Public Sub Glf_ConnectToDebugBCPMediaController(args)
@@ -3269,6 +3273,12 @@ Class GlfVpxBcpController
         If Err Then MsgBox("Can not start VPX BCP Controller") : m_connected = False
         Set Init = Me
 	End Function
+
+    Public Sub RegisterDisplay(name, width, height, id, dmdstyle)
+        If m_connected Then
+            m_bcpController.RegisterDisplay name, width, height, id, dmdstyle
+        End If
+    End Sub
 
 	Public Sub Send(commandMessage)
 		If m_connected = True Then
@@ -20739,6 +20749,11 @@ Sub Glf_AddPlayer()
         If GetPlayerState(GLF_CURRENT_BALL) <> 1 Then
             Exit Sub
         End If
+        ' Turned off once play has gone back round to player 1, which can be before
+        ' player 1's ball number goes up (that happens when the next turn starts).
+        If glf_canAddPlayers = False Then
+            Exit Sub
+        End If
     End If
 
     If DispatchRelayPinEvent("player_add_request", True) = False Then
@@ -20759,6 +20774,8 @@ Sub Glf_AddPlayer()
     If new_number = 1 Then
         glf_currentPlayer = "PLAYER 1"
     End If
+    Glf_BcpSendMachineVar "last_game_players", new_number, player_count
+    glf_machine_vars("last_game_players").Value = new_number
     If new_number = 2 Then
         DispatchPinEvent "multiplayer_game", Null
     End If
@@ -20855,15 +20872,21 @@ End Sub
 
 Public Function Glf_DispatchGameStarted(args)
     DispatchPinEvent GLF_GAME_STARTED, Null
-    Glf_PostPlayerTurnStart
+    Glf_PostPlayerTurnStart 1
 End Function
 
 ' player_turn_will_start, player_turn_starting (a queue event) and player_turn_started,
 ' as in MPF. Posted when a player's turn begins, not for an extra ball.
-Sub Glf_PostPlayerTurnStart()
+' ball is the ball number this turn is for. As in MPF, the player's ball number goes up
+' between player_turn_starting and player_turn_started, so until then the player still
+' shows the ball they last played.
+Sub Glf_PostPlayerTurnStart(ball)
     Dim kwargs : Set kwargs = Glf_PlayerTurnKwargs()
     DispatchPinEvent "player_turn_will_start", kwargs
     DispatchQueuePinEvent "player_turn_starting", kwargs
+    If GetPlayerState(GLF_CURRENT_BALL) < ball Then
+        SetPlayerState GLF_CURRENT_BALL, ball
+    End If
     DispatchPinEvent "player_turn_started", kwargs
 End Sub
 
@@ -21038,8 +21061,6 @@ Function Glf_EndOfBall(args)
         SetDelay "end_of_ball_delay", "EndOfBallNextPlayer", Null, 1000
         Exit Function
     End If
-    
-    SetPlayerState GLF_CURRENT_BALL, GetPlayerState(GLF_CURRENT_BALL) + 1
 
     ' The turn is over. The player only changes once these events have been handled,
     ' so their listeners still see the player whose turn it was.
@@ -21061,13 +21082,11 @@ Function Glf_RotatePlayers(args)
     If glf_gameStarted = False Or IsNull(glf_currentPlayer) Then
         Exit Function
     End If
-    Dim next_player : next_player = Getglf_currentPlayerNumber() + 1
-    If next_player >= Glf_PlayerCount() Then
-        next_player = 0
-    End If
-    glf_currentPlayer = Getglf_PlayerName(next_player)
-
-    If GetPlayerState(GLF_CURRENT_BALL) > glf_game.BallsPerGame() Then
+    ' As in MPF: the game is over when the last player has played the last ball.
+    ' The ball number still holds the ball that just finished.
+    Dim this_player : this_player = Getglf_currentPlayerNumber()
+    Dim this_ball : this_ball = GetPlayerState(GLF_CURRENT_BALL)
+    If this_player + 1 >= Glf_PlayerCount() And this_ball >= glf_game.BallsPerGame() Then
         Dim device
         For Each device in glf_ball_devices.Items()
             If device.HasBall() Then
@@ -21076,17 +21095,29 @@ Function Glf_RotatePlayers(args)
         Next
         DispatchPinEvent "game_will_end", Null
         DispatchQueuePinEvent "game_ending", Null
-    Else
-        SetDelay "end_of_ball_delay", "Glf_StartPlayerTurn", Null, 1000
+        Exit Function
     End If
+
+    ' The next player plays the same ball, or the next ball once play goes back round
+    ' to player 1. The ball number changes when that turn starts, not now.
+    Dim next_player : next_player = this_player + 1
+    Dim next_ball : next_ball = this_ball
+    If next_player >= Glf_PlayerCount() Then
+        next_player = 0
+        next_ball = this_ball + 1
+        ' Ball 1 is over for everyone, so no more players can join.
+        glf_canAddPlayers = False
+    End If
+    glf_currentPlayer = Getglf_PlayerName(next_player)
+    SetDelay "end_of_ball_delay", "Glf_StartPlayerTurn", next_ball, 1000
 End Function
 
-' The next player's turn: the turn events, then the ball
+' The next player's turn: the turn events, then the ball. args is the ball number.
 Public Function Glf_StartPlayerTurn(args)
     If glf_gameStarted = False Or IsNull(glf_currentPlayer) Then
         Exit Function
     End If
-    Glf_PostPlayerTurnStart
+    Glf_PostPlayerTurnStart args
     DispatchPinEvent GLF_NEXT_PLAYER, Null
 End Function
 
@@ -21122,9 +21153,6 @@ Function Glf_EndGame(args)
     Glf_BcpSendMachineVar "player2_score", glf_machine_vars("player2_score").Value, 0
     Glf_BcpSendMachineVar "player3_score", glf_machine_vars("player3_score").Value, 0
     Glf_BcpSendMachineVar "player4_score", glf_machine_vars("player4_score").Value, 0
-
-    glf_machine_vars("last_game_players").Value = Glf_PlayerCount()
-    Glf_BcpSendMachineVar "last_game_players", glf_machine_vars("last_game_players").Value, 0
 
     glf_gameStarted = False
     glf_currentPlayer = Null
