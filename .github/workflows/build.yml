@@ -93,8 +93,9 @@ jobs:
           [ -f "$b2s" ] || { echo "::error::Backglass not found at $b2s"; exit 1; }
           cp "$b2s" "release/$GAME$BUILD.directb2s"
 
-          # Add default ini settings
-          if [ -f default_ini_settings.txt ]; then cp default_ini_settings.txt "release/$GAME$BUILD.ini"; fi
+          # Add an ini only if release_ini_overrides.txt has entries; otherwise the
+          # Table1.Option defaults in the script apply. Also fails on a bad override.
+          node scripts/table-options.js --out "release/$GAME$BUILD.ini"
 
           # Add DMD assets
           cp -r StarsHollowDMD release/

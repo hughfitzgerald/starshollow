@@ -10,12 +10,15 @@ Const FlexONPlayfield = False	   'False = off, True=DMD on playfield ( vrroom ov
 '----- VR Room -----
 Const VRRoomChoice = 0			  ' 1 - Minimal Room, 2 - Ultra Minimal Room
 
-Dim LightLevel : LightLevel = 0.25				' Level of room lighting (0 to 1), where 0 is dark and 100 is brightest
-Dim ColorLUT : ColorLUT = 1						' Color desaturation LUTs: 1 to 11, where 1 is normal and 11 is black'n'white
-Dim VolumeDial : VolumeDial = 0.8           	' Overall Mechanical sound effect volume. Recommended values should be no greater than 1.
-Dim BallRollVolume : BallRollVolume = 0.5   	' Level of ball rolling volume. Value between 0 and 1
-Dim RampRollVolume : RampRollVolume = 0.5 		' Level of ramp rolling volume. Value between 0 and 1
-Dim StagedFlippers : StagedFlippers = 0         ' Staged Flippers. 0 = Disabled, 1 = Enabled
+' Set in Table1_OptionEvent below. Each option's default is the 5th argument
+' of its Table1.Option(...) call and nowhere else; the player's saved value
+' in <table>.ini wins over it. See docs/settings-and-defaults.md.
+Dim LightLevel         ' Room lighting, 0 to 1 (from VPX's day/night slider)
+Dim ColorLUT           ' Color desaturation LUT: 1 = normal ... 11 = black'n'white
+Dim VolumeDial         ' Overall mechanical sound volume, 0 to 1
+Dim BallRollVolume     ' Ball rolling volume, 0 to 1
+Dim RampRollVolume     ' Ramp rolling volume, 0 to 1
+Dim StagedFlippers     ' 0 = Disabled, 1 = Enabled
 
 ' Called when options are tweaked by the player. 
 ' - 0: game has started, good time to load options and adjust accordingly
@@ -50,7 +53,6 @@ Sub Table1_OptionEvent(ByVal eventId)
 	RampRollVolume = Table1.Option("Ramp Roll Volume", 0, 1, 0.01, 0.5, 1)
 
 	' Room brightness
-'	LightLevel = Table1.Option("Table Brightness (Ambient Light Level)", 0, 1, 0.01, .5, 1)
 	LightLevel = NightDay/100
 '	SetRoomBrightness LightLevel   'Uncomment this line for lightmapped tables.
 

@@ -11,6 +11,16 @@ const projectRoot = path.join(__dirname, '..');
 const buildRoot = path.join(projectRoot, 'build');
 const stageDir = path.join(buildRoot, 'dev');
 const { VPINBALL } = require('./vpinball');
+const { buildIni } = require('./table-options');
+
+function buildIniOrExit(extra) {
+    const result = buildIni({ extra });
+    if (result.errors.length) {
+        for (const e of result.errors) console.error(`error: ${e}`);
+        process.exit(1);
+    }
+    return result;
+}
 
 function run(cmd, args, options = {}) {
     const result = spawnSync(cmd, args, {
@@ -70,21 +80,10 @@ function main() {
     }
     fs.copyFileSync(b2s, path.join(releaseDir, `${name}.directb2s`));
 
-    const ini = path.join(projectRoot, 'default_ini_settings.txt');
-    if (fs.existsSync(ini)) {
-        // Dev builds ship with glf debug logging on at Debug level; release defaults stay off
-        const devOverrides = { Glf_Debug_Log: '1', Glf_Debug_Log_Level: '1' };
-        let text = fs.readFileSync(ini, 'utf8');
-        for (const [key, value] of Object.entries(devOverrides)) {
-            const re = new RegExp(`^${key}\\s*=.*$`, 'm');
-            if (!re.test(text)) {
-                console.error(`${key} not found in ${path.basename(ini)}`);
-                process.exit(1);
-            }
-            text = text.replace(re, `${key} = ${value}`);
-        }
-        fs.writeFileSync(path.join(releaseDir, `${name}.ini`), text.replace(/\r?\n/g, '\r\n'));
-    }
+    // Release overrides (release_ini_overrides.txt) plus glf debug logging at Debug
+    // level, which only dev builds turn on. See table-options.js.
+    const { text: iniText } = buildIniOrExit({ 'Glf Debug Log': 1, 'Glf Debug Log Level': 1 });
+    if (iniText) fs.writeFileSync(path.join(releaseDir, `${name}.ini`), iniText);
 
     fs.cpSync(path.join(projectRoot, 'StarsHollowDMD'), path.join(releaseDir, 'StarsHollowDMD'), { recursive: true });
 

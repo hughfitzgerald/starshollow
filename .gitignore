@@ -49,6 +49,7 @@ crash.txt
 mpf-vpcom-bridge.txt
 *.vpx
 *.ini
+*.ini.bak
 mpf080/
 *.lnk
 *.log

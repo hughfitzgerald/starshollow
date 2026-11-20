@@ -1,0 +1,18 @@
+; Table options that should ship with a value different from the script's default.
+;
+; Leave this empty unless you have a reason not to just change the default in
+; the Table1.Option(...) call. That call is the one source of truth; VPX uses
+; its default for any option not listed here. If this file has no entries, the
+; release ships without an ini at all.
+;
+; The usual reason to use it: a GLF option (scripts/src/glf/glf.vbs is upstream
+; and gets overwritten by `npm run update-glf`) whose default should differ here.
+;
+; Format: one "Option Name = value" per line. The display name ("Mech Volume")
+; or the VPX ini key ("Mech_Volume") both work. The build fails if a name
+; doesn't match a Table1.Option call or a value is outside its range.
+;
+; Dev builds (npm run build-dev) also turn on Glf Debug Log at Debug level;
+; that lives in build-dev.js, not here.
+
+[TableOption]

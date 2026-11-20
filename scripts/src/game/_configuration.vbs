@@ -188,11 +188,14 @@ Sub ConfigureGlfDevices()
     End With
 
     '*********** INITALIZE MACHINE VARIABLES ***********
-    ' These variables are tracked for this machine. 
-    ' Initial values are set first time the machine turns on. After that, values are read from the machines ini file.
+    ' InitialValue is the starting value each session. For a var with .Persist = True,
+    ' it only applies until the first save: after that the value saved in
+    ' starshollow_glf.ini [MachineVars] wins, so a changed InitialValue won't show
+    ' locally until you run `npm run reset-local-state`. The same goes for the
+    ' high score defaults above ([HighScores]). See docs/settings-and-defaults.md.
 
     With CreateMachineVar("game_modes_enabled")         'tracks if game modes are enabled
-        .InitialValue = 0
+        .InitialValue = 1                               'placeholder; the "Game Modes Enabled" table option sets this (ZOPT)
         .ValueType = "int"
         .Persist = False
     End With
