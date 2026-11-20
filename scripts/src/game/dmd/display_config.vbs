@@ -254,6 +254,21 @@ Sub CreateFlexDmdDisplay()
         .Ticker        = "DmdTick_Static"
     End With
 
+    With CreateDmdSlide("grand_champion")
+        .Builder       = "DmdBuild_GrandChampion"
+        .Ticker        = "DmdTick_Static"
+    End With
+
+    With CreateDmdSlide("high_scores_1")
+        .Builder       = "DmdBuild_HighScores1"
+        .Ticker        = "DmdTick_Static"
+    End With
+
+    With CreateDmdSlide("high_scores_2")
+        .Builder       = "DmdBuild_HighScores2"
+        .Ticker        = "DmdTick_Static"
+    End With
+
     ' A LAYER over the mode panel: two portraits that slide in from the
     ' edges and sit on top of it, rather than replacing it. Played and
     ' removed like any other slide - .Action = "remove", an .Expire, or

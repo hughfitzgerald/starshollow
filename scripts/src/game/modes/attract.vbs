@@ -58,7 +58,7 @@ Sub CreateAttractMode()
         End With
 
         With .Carousel()
-            .SelectableItems = Array("score", "title1", "insert_coins", "replay", "gameover")
+            .SelectableItems = Array("score", "title1", "insert_coins", "grand_champion", "high_scores_1", "high_scores_2", "replay", "game_over")
             .NextItemEvents = Array("timer_attract_screens_complete", "manual_advance_attract_slide")
             .PreviousItemEvents = Array("s_left_flipper_active")
         End With
@@ -120,8 +120,20 @@ Sub CreateAttractMode()
                 .Slide  = "title1"
                 .Action = "play"
             End With
-            With .EventName("attract_gameover_highlighted")
+            With .EventName("attract_game_over_highlighted")
                 .Slide  = "game_over_attract"
+                .Action = "play"
+            End With
+            With .EventName("attract_grand_champion_highlighted")
+                .Slide  = "grand_champion"
+                .Action = "play"
+            End With
+            With .EventName("attract_high_scores_1_highlighted")
+                .Slide  = "high_scores_1"
+                .Action = "play"
+            End With
+            With .EventName("attract_high_scores_2_highlighted")
+                .Slide  = "high_scores_2"
                 .Action = "play"
             End With
             With .EventName("attract_replay_highlighted")

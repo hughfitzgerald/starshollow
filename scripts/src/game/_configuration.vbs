@@ -172,13 +172,14 @@ Sub ConfigureGlfDevices()
         .EnterInitialsTimeout = 45000
         .AwardSlideDisplayTime = 6000
         With .Categories()
-            .Add "score", Array("GRAND CHAMPION", "HIGH SCORE 1", "HIGH SCORE 2", "HIGH SCORE 3")
+            .Add "score", Array("GRAND CHAMPION", "HIGH SCORE 1", "HIGH SCORE 2", "HIGH SCORE 3", "HIGH SCORE 4")
         End With
         With .Defaults("score")
             .Add "LOR", 5000000
             .Add "ROR", 2000000
             .Add "LUK", 1000000
             .Add "SOO", 500000
+            .Add "KIR", 250000
         End With
     End With
 

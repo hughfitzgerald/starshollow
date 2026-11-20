@@ -919,5 +919,26 @@ Sub DmdBuild_TwoLine(entry, text1, font1, text2, font2, withBorder)
 End Sub
 
 Sub DmdBuild_Replay(entry)
-    DmdBuild_TwoLine entry, "REPLAY AT", mediumFont, FormatNumber(ReplayScore, 0), largeFont, True
+    Dim border
+    border = True
+    DmdBuild_TwoLine entry, "REPLAY AT", mediumFont, FormatNumber(ReplayScore, 0), largeFont, border
+End Sub
+
+Sub DmdBuild_GrandChampion(entry)
+    Dim border
+    border = False
+    DmdBuild_TwoLine entry, glf_machine_vars("score_1_label").GetValue(), mediumFont, glf_machine_vars("score_1_name").GetValue() & "  " & FormatNumber(glf_machine_vars("score_1_value").GetValue(), 0), largeFont, border
+End Sub
+
+Sub DmdBuild_HighScores1(entry)
+    Dim border
+    border = False
+    DmdBuild_TwoLine entry, "1)" & glf_machine_vars("score_2_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_2_value").GetValue(), 0), largeFont, "2)" & glf_machine_vars("score_3_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_3_value").GetValue(), 0), largeFont, border
+
+End Sub
+
+Sub DmdBuild_HighScores2(entry)
+    Dim border
+    border = False
+    DmdBuild_TwoLine entry, "3)" & glf_machine_vars("score_4_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_4_value").GetValue(), 0), largeFont, "4)" & glf_machine_vars("score_5_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_5_value").GetValue(), 0), largeFont, border
 End Sub
