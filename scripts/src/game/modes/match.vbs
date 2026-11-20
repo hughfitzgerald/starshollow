@@ -1,12 +1,16 @@
 Sub CreateMatchMode()
     With EnableGlfMatch()
-        .MatchPercentage = 15
+        .MatchPercentage = 100
         .DisplayTimeMs = 4000   'hold game_ending (and the match slide) before game_ended fires
 
         With .Mode.Timers("match")
             .StartValue = 0
             .EndValue = 2
-            .StartRunning = True
+            .StartRunning = False
+            With .ControlEvents
+                .EventName = "match_has_match"
+                .Action = "restart"
+            End With
         End With
 
         With .Mode.EventPlayer()
