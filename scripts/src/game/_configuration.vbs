@@ -320,6 +320,7 @@ Sub ConfigureGlfDevices()
     CreateTownMeetingCartKioskMode()    ' priority 905
 
     CreateMatchMode()          ' priority 1000 (GLF's built-in match mode)
+    CreateGameEndPauseMode()   ' priority 1600 (holds game_ending before high scores and match)
     CreateLLMultiballMode()    ' priority 1005
     CreateJDMultiballMode()    ' priority 1020
 
