@@ -79,17 +79,25 @@ Function ScoreEventExpr(expression, applyMultiplier)
     End If
 End Function
 
+' A tier-1 switch value: ScoreX plus 10, so the tens digit of the final score
+' varies from game to game (for match).
+Function SwitchScore(multiplier)
+    Dim points : points = Round(BaseScore * multiplier) + 10
+    If Not ScoreValues.Exists(CStr(points)) Then ScoreValues.Add CStr(points), points
+    SwitchScore = points
+End Function
+
 
 '*********** PLAYFIELD (base mode) ***********
 ' Live value per hit. Totals in comments include the item bonus factor and the
 ' per-switch bonus at 1x bonus X (see END OF BALL BONUS).
-Dim InlaneScore         : InlaneScore         = ScoreX(0.02)
-Dim TopLaneScore        : TopLaneScore        = ScoreX(0.05)   ' each bonus lane rollover
-Dim OutlaneScore        : OutlaneScore        = ScoreX(0.1)
-Dim SlingScore          : SlingScore          = ScoreX(0.05)
-Dim SpinnerScore        : SpinnerScore        = ScoreX(0.03)   ' total 0.07x: 0.03 live + 0.02 item bonus + 0.02 switch bonus
-Dim BumperScore         : BumperScore         = ScoreX(0.1)    ' total 0.16x: 0.1 live + 0.04 item bonus + 0.02 switch bonus
-Dim StarTargetScore     : StarTargetScore     = ScoreX(0.1)
+Dim InlaneScore         : InlaneScore         = SwitchScore(0.02)
+Dim TopLaneScore        : TopLaneScore        = SwitchScore(0.05)   ' each bonus lane rollover
+Dim OutlaneScore        : OutlaneScore        = SwitchScore(0.1)
+Dim SlingScore          : SlingScore          = SwitchScore(0.05)
+Dim SpinnerScore        : SpinnerScore        = SwitchScore(0.03)
+Dim BumperScore         : BumperScore         = SwitchScore(0.1)
+Dim StarTargetScore     : StarTargetScore     = SwitchScore(0.1)
 Dim UnlitRampScore      : UnlitRampScore      = ScoreX(0.5)
 Dim DinerDropTargetScore: DinerDropTargetScore= ScoreX(0.25)   ' drop target guarding Luke's kicker
 Dim DinerKickerScore    : DinerKickerScore    = ScoreX(0.4)    ' Luke's kicker; total 0.52x: 0.4 + 0.1 + 0.02
@@ -98,7 +106,7 @@ Dim LoganCaptiveScore   : LoganCaptiveScore   = ScoreX(0.5)    ' captive ball ou
 
 '*********** JESS / DEAN TARGETS ***********
 ' Separate from the Star targets.
-Dim JessDeanTargetScore : JessDeanTargetScore = ScoreX(0.2)    ' each standup
+Dim JessDeanTargetScore : JessDeanTargetScore = SwitchScore(0.2)    ' each standup
 Dim JessDeanBankScore   : JessDeanBankScore   = ScoreX(1)      ' all four of one bank
 
 '*********** RAMP SHOT / EXTRA BALL / LOCK / COMBOS ***********
