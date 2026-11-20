@@ -1,6 +1,6 @@
 
 Sub CreateJDMultiballMode()
-    With CreateGlfMode("jd_multiball", 1000)
+    With CreateGlfMode("jd_multiball", 1020)
         .StartEvents = Array("start_jd_multiball")
         .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", "jess_wins", "dean_wins")
 

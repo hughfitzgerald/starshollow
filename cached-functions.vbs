@@ -1638,61 +1638,61 @@ End Function
 Function Glf_342(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "text", "JESS VS. DEAN" & Chr(58) & " TO THE DEATH"
-	kwargs.Add "instructions", "TEAM JESS" & Chr(58) & " LEFT RAMP - TEAM LOGAN" & Chr(58) & " RIGHT RAMP"
+	kwargs.Add "text", "LOCK-AWAY LOGAN"
+	kwargs.Add "instructions", "HIT BUMPERS TO BASH LOGAN"
 	Set Glf_342 = kwargs
 	If Err Then Glf_342 = Null
 End Function
 Function Glf_343(args)
-	Glf_343 = GetPlayerState("mode_jdmb_score")
-End Function
-Function Glf_344(args)
-	Glf_344 = 4000000
-End Function
-Function Glf_345(args)
-	Glf_345 = 7500000
-End Function
-Function Glf_346(args)
-	On Error Resume Next
-		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "text", "LOCK-AWAY LOGAN"
-	kwargs.Add "instructions", "HIT BUMPERS TO BASH LOGAN"
-	Set Glf_346 = kwargs
-	If Err Then Glf_346 = Null
-End Function
-Function Glf_347(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "LOCK-AWAY LOGAN"
 	kwargs.Add "instructions", "LOCK-AWAY LOGAN IN THE SCOOP"
-	Set Glf_347 = kwargs
-	If Err Then Glf_347 = Null
+	Set Glf_343 = kwargs
+	If Err Then Glf_343 = Null
+End Function
+Function Glf_344(args)
+	On Error Resume Next
+	    Glf_344 = GetPlayerState("mode_llmb_score")>=2500000
+	If Err Then Glf_344 = False
+End Function
+Function Glf_345(args)
+	On Error Resume Next
+	    Glf_345 = GetPlayerState("shot_win_logan_light")=0
+	If Err Then Glf_345 = False
+End Function
+Function Glf_346(args)
+	On Error Resume Next
+	    Glf_346 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=0
+	If Err Then Glf_346 = False
+End Function
+Function Glf_347(args)
+	On Error Resume Next
+	    Glf_347 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=1
+	If Err Then Glf_347 = False
 End Function
 Function Glf_348(args)
-	On Error Resume Next
-	    Glf_348 = GetPlayerState("mode_llmb_score")>=2500000
-	If Err Then Glf_348 = False
+	Glf_348 = GetPlayerState("mode_llmb_score")
 End Function
 Function Glf_349(args)
-	On Error Resume Next
-	    Glf_349 = GetPlayerState("shot_win_logan_light")=0
-	If Err Then Glf_349 = False
+	Glf_349 = 7500000
 End Function
 Function Glf_350(args)
-	On Error Resume Next
-	    Glf_350 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=0
-	If Err Then Glf_350 = False
+	Glf_350 = 50000
 End Function
 Function Glf_351(args)
 	On Error Resume Next
-	    Glf_351 = GetPlayerState("shot_win_logan_light")=1 and glf_machine_vars("captive_capture_pending").GetValue()=1
-	If Err Then Glf_351 = False
+		Dim kwargs : Set kwargs = GlfKwargs()
+	kwargs.Add "text", "JESS VS. DEAN" & Chr(58) & " TO THE DEATH"
+	kwargs.Add "instructions", "TEAM JESS" & Chr(58) & " LEFT RAMP - TEAM LOGAN" & Chr(58) & " RIGHT RAMP"
+	Set Glf_351 = kwargs
+	If Err Then Glf_351 = Null
 End Function
 Function Glf_352(args)
-	Glf_352 = GetPlayerState("mode_llmb_score")
+	Glf_352 = GetPlayerState("mode_jdmb_score")
 End Function
 Function Glf_353(args)
-	Glf_353 = 50000
+	Glf_353 = 4000000
 End Function
 Function Glf_354(args)
 	Glf_354 = 1010 * GetPlayerState("scoring_multiplier")
@@ -2362,18 +2362,18 @@ glf_funcRefMap.Add "drop7_reset{device.drop_targets.drop7.state == 1}", "Glf_338
 glf_funcRefMap.Add "drop8_reset{device.drop_targets.drop8.state == 1}", "Glf_339"
 glf_funcRefMap.Add "{current_player.mode_lbtb_score}", "Glf_340"
 glf_funcRefMap.Add "LbtbTime", "Glf_341"
-glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""TEAM JESS"" & Chr(58) & "" LEFT RAMP - TEAM LOGAN"" & Chr(58) & "" RIGHT RAMP""}", "Glf_342"
-glf_funcRefMap.Add "{current_player.mode_jdmb_score}", "Glf_343"
-glf_funcRefMap.Add "4000000", "Glf_344"
-glf_funcRefMap.Add "7500000", "Glf_345"
-glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""HIT BUMPERS TO BASH LOGAN""}", "Glf_346"
-glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""LOCK-AWAY LOGAN IN THE SCOOP""}", "Glf_347"
-glf_funcRefMap.Add "logan_bumper_hit{current_player.mode_llmb_score>=2500000}", "Glf_348"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", "Glf_349"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==0}", "Glf_350"
-glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", "Glf_351"
-glf_funcRefMap.Add "{current_player.mode_llmb_score}", "Glf_352"
-glf_funcRefMap.Add "50000", "Glf_353"
+glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""HIT BUMPERS TO BASH LOGAN""}", "Glf_342"
+glf_funcRefMap.Add "play_llmb_mode_slide:{text:""LOCK-AWAY LOGAN"",instructions:""LOCK-AWAY LOGAN IN THE SCOOP""}", "Glf_343"
+glf_funcRefMap.Add "logan_bumper_hit{current_player.mode_llmb_score>=2500000}", "Glf_344"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==0}", "Glf_345"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==0}", "Glf_346"
+glf_funcRefMap.Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", "Glf_347"
+glf_funcRefMap.Add "{current_player.mode_llmb_score}", "Glf_348"
+glf_funcRefMap.Add "7500000", "Glf_349"
+glf_funcRefMap.Add "50000", "Glf_350"
+glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""TEAM JESS"" & Chr(58) & "" LEFT RAMP - TEAM LOGAN"" & Chr(58) & "" RIGHT RAMP""}", "Glf_351"
+glf_funcRefMap.Add "{current_player.mode_jdmb_score}", "Glf_352"
+glf_funcRefMap.Add "4000000", "Glf_353"
 glf_funcRefMap.Add "1010 * current_player.scoring_multiplier", "Glf_354"
 glf_funcRefMap.Add "1010", "Glf_355"
 glf_funcRefMap.Add "2510 * current_player.scoring_multiplier", "Glf_356"

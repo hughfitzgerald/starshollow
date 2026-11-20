@@ -97,6 +97,7 @@ Sub ConfigureGlfDevices()
 
     ' Replay: runs after every change to the current player's score
     AddPlayerStateEventListener "score", "replay_check", -1, "ReplayCheck", 100, Null
+    AddPinEventListener "play_match_knocker", "play_match_knocker_called", "PlayMatchKnocker", 100, Null
     AddPinEventListener GLF_BALL_DRAIN, "ball_drain_sound", "BallDrainSound", 100, Null
 
     ' TODO: You probably don't want to use balldevice ball entered events to do this! because do they fire during the multiball relay?
@@ -163,6 +164,9 @@ Sub ConfigureGlfDevices()
         .FreePlay = False
         .Switches("s_add_credit_key").Value = 1
         .Switches("s_add_credit_key2").Value = 1
+        With .Events("match_has_match")
+            .Credits = 1
+        End With
     End With
 
 
@@ -315,8 +319,9 @@ Sub ConfigureGlfDevices()
     CreateTownMeetingDeerMode()    ' priority 900
     CreateTownMeetingCartKioskMode()    ' priority 905
 
-    CreateJDMultiballMode()    ' priority 1000
+    CreateMatchMode()          ' priority 1000 (GLF's built-in match mode)
     CreateLLMultiballMode()    ' priority 1005
+    CreateJDMultiballMode()    ' priority 1020
 
     CreateScoreMode()        ' priority 2000
     CreateTiltMode()         ' priority 10000
@@ -651,6 +656,9 @@ Function ReplayCheck(args)
     DispatchPinEvent "replay_awarded", Null
 End Function
 
+Function PlayMatchKnocker(args)
+    KnockerSolenoid
+End Function
 
 Dim glf_subwayBallsReturning : glf_subwayBallsReturning = 0
 

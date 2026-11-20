@@ -942,3 +942,81 @@ Sub DmdBuild_HighScores2(entry)
     border = False
     DmdBuild_TwoLine entry, "3)" & glf_machine_vars("score_4_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_4_value").GetValue(), 0), largeFont, "4)" & glf_machine_vars("score_5_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_5_value").GetValue(), 0), largeFont, border
 End Sub
+
+
+Sub DmdBuild_Match(entry)
+    Dim scene, frame, scores, label, i, aligns
+    Set scene = FlexDMD.NewGroup("Match")
+    scene.SetSize 128, 32
+
+    Set frame = FlexDMD.NewFrame("Border")
+    frame.SetBounds 0, 0, 128, 32
+    frame.Thickness = 1
+    frame.BorderColor = RGB(90, 90, 90)
+    scene.AddActor frame
+
+    ' One group inset from the border; each score label fills it and is
+    ' pinned to its own corner, so nothing ever needs to be moved.
+    Set scores = FlexDMD.NewGroup("MatchScores")
+    scores.SetBounds 2, 1, 124, 30
+    scene.AddActor scores
+
+    aligns = Array(FlexDMD_Align_TopLeft, FlexDMD_Align_TopRight, _
+                   FlexDMD_Align_BottomLeft, FlexDMD_Align_BottomRight)
+    For i = 1 To 4
+        Set label = FlexDMD.NewLabel("P" & i, mediumFontDim, "")
+        label.AutoPack = False
+        label.FillParent = True
+        label.Alignment = aligns(i - 1)
+        scores.AddActor label
+    Next
+
+    Set label = FlexDMD.NewLabel("MatchValue", bigFont, "00")
+    label.SetAlignedPosition 64, 16, FlexDMD_Align_Center
+    scene.AddActor label
+
+    entry.SetScene scene
+End Sub
+
+Sub DmdTick_Match(entry)
+    Dim scene, inGame, numPlayers, x, scoreValue, scoreLabel
+    Set scene = entry.Scene()
+
+    ' Match usually runs while the game is ending, so player state may still
+    ' exist; fall back to the saved last-game scores if it doesn't.
+    inGame = glf_playerState.Count > 0
+    If inGame Then
+        numPlayers = glf_playerState.Count
+    Else
+        numPlayers = glf_machine_vars("last_game_players").GetValue()
+    End If
+
+    For x = 1 To 4
+        Set scoreLabel = scene.GetLabel("P" & x)
+        scoreLabel.Visible = (x <= numPlayers)
+        If x <= numPlayers Then
+            If inGame Then
+                scoreValue = GetPlayerStateForPlayer(x - 1, "score")
+            Else
+                scoreValue = Score2Num(glf_machine_vars("player" & x & "_score").GetValue())
+            End If
+
+            If scoreValue = 0 Then
+                scoreLabel.Text = "00"
+            Else
+                scoreLabel.Text = FormatNumber(scoreValue, 0, -2, -2, -1)
+            End If
+
+            If scoreValue > 9999999 Then
+                scoreLabel.Font = smallFontDim
+            Else
+                scoreLabel.Font = mediumFontDim
+            End If
+        End If
+    Next
+
+    With scene.GetLabel("MatchValue")
+        .Text = Right("0" & glf_machine_vars("match_number").GetValue(), 2)
+        .SetAlignedPosition 64, 16, FlexDMD_Align_Center
+    End With
+End Sub
