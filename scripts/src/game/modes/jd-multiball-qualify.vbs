@@ -33,6 +33,9 @@ Sub CreateJDMultiballQualifyMode()
             .Add "s_lock3_trigger_active{current_player.multiball_lock_locked_balls == 2}", Array("start_jd_multiball")
 
             .Add "multiball_lock_multiball_lock_locked_ball", Array(ScoreEvent(BallLockScore, WithMultiplier))
+
+            .Add "multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 1}", Array("ball_1_locked", "ball_locked")
+            .Add "multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 2}", Array("ball_2_locked", "ball_locked")
         End With
 
         With .MultiballLocks("multiball_lock")
@@ -50,15 +53,40 @@ Sub CreateJDMultiballQualifyMode()
         End With
 
         With .WidgetPlayer()
-            With .EventName("multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 1}")
+            With .EventName("ball_1_locked")
                 .Widget = "ball_1_locked"
                 .Action = "play"
                 .Expire = 1.3
             End With
-            With .EventName("multiball_lock_multiball_lock_locked_ball{kwargs.total_balls_locked == 2}")
+            With .EventName("ball_2_locked")
                 .Widget = "ball_2_locked"
                 .Action = "play"
                 .Expire = 1.3
+            End With
+        End With
+
+        With .RandomEventPlayer()
+            With .EventName("ball_locked")
+                .Add "ball_locked_callout1", 1
+                .Add "ball_locked_callout2", 1
+                .Add "ball_locked_callout3", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+        End With
+
+        With .SoundPlayer()
+            With .EventName("ball_locked_callout1")
+                .Key = "key_voc_jess_notgonnafightyadean"
+                .Sound = "voc_jess_notgonnafightyadean"
+            End With
+            With .EventName("ball_locked_callout2")
+                .Key = "key_voc_dean_imnotfightingyou"
+                .Sound = "voc_dean_imnotfightingyou"
+            End With
+            With .EventName("ball_locked_callout3")
+                .Key = "key_voc_lane_jessanddean"
+                .Sound = "voc_lane_jessanddean"
             End With
         End With
 

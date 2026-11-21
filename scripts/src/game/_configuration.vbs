@@ -813,8 +813,60 @@ Sub CreateSounds()
 
     ' Jess/Dean Multiball
     AddMusic       "mus_jdmb",  194.339833, -1
+
+    AddCallout     "voc_lane_jessanddean", 3.558625
+    AddCallout     "voc_rory_deanmeetjess", 4.787333
+
     AddCallout     "voc_tall", 2.198641
     AddCallout     "voc_exboyfriend", 2.998188
+    AddCallout     "voc_dean_causeidkillyou", 3.547438
+    AddCallout     "voc_dean_gladyouenjoyedit", 1.679313
+    AddCallout     "voc_dean_imnotfightingyou", 4.850063
+
+    AddCallout     "voc_jess_andyouloveit", 3.395208
+    AddCallout     "voc_jess_areyounervous", 3.511021
+    AddCallout     "voc_jess_areyouupset", 1.216667
+    AddCallout     "voc_jess_asyouwish", 0.819729
+    AddCallout     "voc_jess_couldnthavedoneitwithoutyou", 4.693917
+    AddCallout     "voc_jess_crazyprobably", 3.147875
+    AddCallout     "voc_jess_dayofsurprises", 1.694563
+    AddCallout     "voc_jess_didntbringasmiletoyourface", 3.292438
+    AddCallout     "voc_jess_doesheknowbjork", 3.417604
+    AddCallout     "voc_jess_drivingaround", 10.406750
+    AddCallout     "voc_jess_dropoutofyale", 2.606271
+    AddCallout     "voc_jess_gladyourehere", 2.841021
+    AddCallout     "voc_jess_hihilater", 2.682354
+    AddCallout     "voc_jess_howyadoin", 0.803917
+    AddCallout     "voc_jess_idontdeservethisrory", 3.368938
+    AddCallout     "voc_jess_iknowyoubetterthananyone", 1.907375
+    AddCallout     "voc_jess_iloveyou", 4.148917
+    AddCallout     "voc_jess_innocentboylikeme", 3.998750
+    AddCallout     "voc_jess_iwannabegood", 1.937500
+    AddCallout     "voc_jess_jeez", 1.232792
+    AddCallout     "voc_jess_jeezman", 0.916167
+    AddCallout     "voc_jess_lovehuh", 8.697167
+    AddCallout     "voc_jess_manipulator", 0.852188
+    AddCallout     "voc_jess_meanttobetogether", 4.766979
+    AddCallout     "voc_jess_missyaleeditor", 5.298604
+    AddCallout     "voc_jess_notgonnafightyadean", 1.480708
+    AddCallout     "voc_jess_rory", 0.474625
+    AddCallout     "voc_jess_rorywhatdoyouwant", 1.234896
+    AddCallout     "voc_jess_seeyoucomewithme", 6.001271
+    AddCallout     "voc_jess_shegotyouuncleluke", 2.623125
+    AddCallout     "voc_jess_shetriedtokissme", 0.887771
+    AddCallout     "voc_jess_thisonewasnthalfbad", 4.744167
+    AddCallout     "voc_jess_wemadefunofguyslikethis", 1.541750
+    AddCallout     "voc_jess_westsidestorydean", 1.593417
+    AddCallout     "voc_jess_whataboutdean", 3.218458
+    AddCallout     "voc_jess_whatdoyouthinksgoingtohappen", 3.626792
+    AddCallout     "voc_jess_youcancountonmenow", 6.907188
+    AddCallout     "voc_jess_yougilmores", 1.884646
+    AddCallout     "voc_jess_youherealone", 3.088875
+    AddCallout     "voc_jess_youkissedme", 1.815271
+    AddCallout     "voc_jess_youlookgood", 1.046250
+    AddCallout     "voc_jess_youlooknice", 1.004063
+    AddCallout     "voc_jess_yourhairlooksdifferent", 2.117188
+
 
     ' Logan Multiball
     AddMusic       "mus_llmb",  172.649771, -1

@@ -101,9 +101,14 @@ Sub CreateBaseMode()
             .Add "s_ST17_active", Array("play_dean_letter_show")
             .Add "s_ST18_active", Array("play_dean_letter_show")
             'Each standup scores only when hit unlit (shots defined below)
-            For x = 11 To 18
-                .Add "jd_target_" & x & "_unlit_hit", Array(ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            For x = 11 To 14
+                .Add "jd_target_" & x & "_unlit_hit", Array("jess_target_unlit_hit")
             Next
+            For x = 15 To 18
+                .Add "jd_target_" & x & "_unlit_hit", Array("dean_target_unlit_hit")
+            Next
+            .Add "jess_target_unlit_hit", Array(ScoreEvent(JessDeanTargetScore, WithMultiplier))
+            .Add "dean_target_unlit_hit", Array(ScoreEvent(JessDeanTargetScore, WithMultiplier))
             .Add "jess_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
             .Add "dean_targets_lit_complete", Array(ScoreEvent(JessDeanBankScore, WithMultiplier))
 
@@ -313,6 +318,31 @@ Sub CreateBaseMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
+            With .EventName("jess_target_unlit_hit")
+                .Add "jess_target_callout1", 1
+                .Add "jess_target_callout2", 1
+                .Add "jess_target_callout3", 1
+                .Add "jess_target_callout4", 1
+                .Add "jess_target_callout5", 1
+                .Add "jess_target_callout6", 1
+                .Add "jess_target_callout7", 1
+                .Add "jess_target_callout8", 1
+                .Add "jess_target_callout9", 1
+                .Add "jess_target_callout10", 1
+                .Add "jess_target_callout11", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("jess_targets_lit_complete")
+                .Add "jess_targets_complete_callout1", 1
+                .Add "jess_targets_complete_callout2", 1
+                .Add "jess_targets_complete_callout3", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("dean_target_unlit_hit")
+                .Add "dean_target_callout", 1
+            End With
         End With
 
         With .SoundPlayer()
@@ -381,6 +411,65 @@ Sub CreateBaseMode()
             With .EventName("mansion4_callout")
                 .Key = "key_voc_mansion_treat"
                 .Sound = "voc_mansion_treat"
+                .Priority = 1
+            End With
+            With .EventName("jess_target_callout1")
+                .Key = "key_voc_jess_dayofsurprises"
+                .Sound = "voc_jess_dayofsurprises"
+            End With
+            With .EventName("jess_target_callout2")
+                .Key = "key_voc_jess_hihilater"
+                .Sound = "voc_jess_hihilater"
+            End With
+            With .EventName("jess_target_callout3")
+                .Key = "key_voc_jess_howyadoin"
+                .Sound = "voc_jess_howyadoin"
+            End With
+            With .EventName("jess_target_callout4")
+                .Key = "key_voc_jess_iwannabegood"
+                .Sound = "voc_jess_iwannabegood"
+            End With
+            With .EventName("jess_target_callout5")
+                .Key = "key_voc_jess_jeez"
+                .Sound = "voc_jess_jeez"
+            End With
+            With .EventName("jess_target_callout6")
+                .Key = "key_voc_jess_jeezman"
+                .Sound = "voc_jess_jeezman"
+            End With
+            With .EventName("jess_target_callout7")
+                .Key = "key_voc_jess_rory"
+                .Sound = "voc_jess_rory"
+            End With
+            With .EventName("jess_target_callout8")
+                .Key = "key_voc_jess_rorywhatdoyouwant"
+                .Sound = "voc_jess_rorywhatdoyouwant"
+            End With
+            With .EventName("jess_target_callout9")
+                .Key = "key_voc_jess_shetriedtokissme"
+                .Sound = "voc_jess_shetriedtokissme"
+            End With
+            With .EventName("jess_target_callout10")
+                .Key = "key_voc_jess_youlookgood"
+                .Sound = "voc_jess_youlookgood"
+            End With
+            With .EventName("jess_target_callout11")
+                .Key = "key_voc_jess_youlooknice"
+                .Sound = "voc_jess_youlooknice"
+            End With
+            With .EventName("jess_targets_complete_callout1")
+                .Key = "key_voc_jess_iloveyou"
+                .Sound = "voc_jess_iloveyou"
+                .Priority = 1
+            End With
+            With .EventName("jess_targets_complete_callout2")
+                .Key = "key_voc_jess_seeyoucomewithme"
+                .Sound = "voc_jess_seeyoucomewithme"
+                .Priority = 1
+            End With
+            With .EventName("jess_targets_complete_callout3")
+                .Key = "key_voc_jess_whataboutdean"
+                .Sound = "voc_jess_whataboutdean"
                 .Priority = 1
             End With
             With .EventName("auto_fire_coil_bumper1_activate{modes.ll_multiball.active==False}")

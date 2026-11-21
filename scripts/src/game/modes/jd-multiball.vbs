@@ -2,10 +2,11 @@
 Sub CreateJDMultiballMode()
     With CreateGlfMode("jd_multiball", 1020)
         .StartEvents = Array("start_jd_multiball")
-        .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", "jess_wins", "dean_wins")
+        .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", "end_jd_multiball")
 
         With .EventPlayer()
-            .Add "mode_jd_multiball_started", Array("base_music_stop", "release_scoop_hold", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
+            .Add "mode_jd_multiball_started", Array("base_music_stop", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
+            .Add "initiate_jd_multiball", Array("release_scoop_hold")
             .Add "mode_jd_multiball_stopping", Array("base_music_start")
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
@@ -27,7 +28,7 @@ Sub CreateJDMultiballMode()
         End With
 
         With .Multiballs("jdmb")
-            .StartEvents = Array("mode_jd_multiball_started")
+            .StartEvents = Array("initiate_jd_multiball")
             .BallCount = 3
             .BallCountType = "total"
             .ShootAgain = 15000
@@ -40,10 +41,37 @@ Sub CreateJDMultiballMode()
             With .EventName("dean_ramp")
                 .Add "tall_callout", 1
                 .Add "exboyfriend_callout", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("jess_ramp")
+                .Add "jess_ramp_callout1", 1
+                .Add "jess_ramp_callout2", 1
+                .Add "jess_ramp_callout3", 1
+                .Add "jess_ramp_callout4", 1
+                .Add "jess_ramp_callout5", 1
+                .Add "jess_ramp_callout6", 1
+                .Add "jess_ramp_callout7", 1
+                .Add "jess_ramp_callout8", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("jess_wins")
+                .Add "jess_wins_callout1", 1
+                .Add "jess_wins_callout2", 1
+                .Add "jess_wins_callout3", 1
+                .Add "jess_wins_callout4", 1
+                .ForceAll = True
+                .ForceDifferent = True
             End With
         End With
 
         With .SoundPlayer()
+            With .EventName("mode_jd_multiball_started")
+                .Key = "key_voc_rory_deanmeetjess"
+                .Sound = "voc_rory_deanmeetjess"
+                .EventsWhenStopped = Array("initiate_jd_multiball")
+            End With
             With .EventName("tall_callout")
                 .Key = "key_voc_tall"
                 .Sound = "voc_tall"
@@ -52,7 +80,7 @@ Sub CreateJDMultiballMode()
                 .Key = "key_voc_exboyfriend"
                 .Sound = "voc_exboyfriend"
             End With
-            With .EventName("mode_jd_multiball_started")
+            With .EventName("initiate_jd_multiball")
                 .Key = "key_mus_jdmb"
                 .Sound = "mus_jdmb"
             End With
@@ -60,6 +88,62 @@ Sub CreateJDMultiballMode()
                 .Key = "key_mus_jdmb"
                 .Sound = "mus_jdmb"
                 .Action = "stop"
+            End With
+            With .EventName("jess_ramp_callout1")
+                .Key = "key_voc_jess_areyounervous"
+                .Sound = "voc_jess_areyounervous"
+            End With
+            With .EventName("jess_ramp_callout2")
+                .Key = "key_voc_jess_crazyprobably"
+                .Sound = "voc_jess_crazyprobably"
+            End With
+            With .EventName("jess_ramp_callout3")
+                .Key = "key_voc_jess_doesheknowbjork"
+                .Sound = "voc_jess_doesheknowbjork"
+            End With
+            With .EventName("jess_ramp_callout4")
+                .Key = "key_voc_jess_dropoutofyale"
+                .Sound = "voc_jess_dropoutofyale"
+            End With
+            With .EventName("jess_ramp_callout5")
+                .Key = "key_voc_jess_gladyourehere"
+                .Sound = "voc_jess_gladyourehere"
+            End With
+            With .EventName("jess_ramp_callout6")
+                .Key = "key_voc_jess_iknowyoubetterthananyone"
+                .Sound = "voc_jess_iknowyoubetterthananyone"
+            End With
+            With .EventName("jess_ramp_callout7")
+                .Key = "key_voc_jess_meanttobetogether"
+                .Sound = "voc_jess_meanttobetogether"
+            End With
+            With .EventName("jess_ramp_callout8")
+                .Key = "key_voc_jess_youherealone"
+                .Sound = "voc_jess_youherealone"
+            End With
+            With .EventName("jess_wins_callout1")
+                .Key = "key_voc_jess_andyouloveit"
+                .Sound = "voc_jess_andyouloveit"
+                .Priority = 1
+                .EventsWhenStopped = Array("end_jd_multiball")
+            End With
+            With .EventName("jess_wins_callout2")
+                .Key = "key_voc_jess_couldnthavedoneitwithoutyou"
+                .Sound = "voc_jess_couldnthavedoneitwithoutyou"
+                .Priority = 1
+                .EventsWhenStopped = Array("end_jd_multiball")
+            End With
+            With .EventName("jess_wins_callout3")
+                .Key = "key_voc_jess_drivingaround"
+                .Sound = "voc_jess_drivingaround"
+                .Priority = 1
+                .EventsWhenStopped = Array("end_jd_multiball")
+            End With
+            With .EventName("jess_wins_callout4")
+                .Key = "key_voc_jess_thisonewasnthalfbad"
+                .Sound = "voc_jess_thisonewasnthalfbad"
+                .Priority = 1
+                .EventsWhenStopped = Array("end_jd_multiball")
             End With
         End With
 
@@ -170,6 +254,10 @@ Sub CreateJDMultiballMode()
                 .Add "color", MultiballColor
                 .Add "lights", "l53"
             End With
+            With .ControlEvents()
+                .Events = Array("multiball_jdmb_started")
+                .State = 0
+            End With
         End With
 
         With .Shots("dean")
@@ -178,6 +266,10 @@ Sub CreateJDMultiballMode()
             With .Tokens()
                 .Add "color", MultiballColor
                 .Add "lights", "l55"
+            End With
+            With .ControlEvents()
+                .Events = Array("multiball_jdmb_started")
+                .State = 0
             End With
         End With
 
