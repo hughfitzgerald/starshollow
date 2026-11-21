@@ -15,6 +15,14 @@
         {
             "label": "$(gear) Build Dev",
             "task": "build-dev"
+        },
+        {
+            "label": "$(megaphone) Sounds to Backglass",
+            "task": "sounds-to-backglass"
+        },
+        {
+            "label": "$(refresh) Reset Local State",
+            "task": "reset-local-state"
         }
     ]
 }

@@ -33,6 +33,22 @@
 			"problemMatcher": [],
 			"label": "npm: build-dev - scripts",
 			"detail": "node build-dev.js"
+		},
+		{
+			"type": "npm",
+			"script": "sounds-to-backglass",
+			"path": "scripts",
+			"problemMatcher": [],
+			"label": "npm: sounds-to-backglass - scripts",
+			"detail": "node sounds-to-backglass.js"
+		},
+		{
+			"type": "npm",
+			"script": "reset-local-state",
+			"path": "scripts",
+			"problemMatcher": [],
+			"label": "npm: reset-local-state - scripts",
+			"detail": "node reset-local-state.js"
 		}
 	]
 }

@@ -27,7 +27,8 @@
     "gi-lightmaps-render": "uv run gi_lightmaps_render.py render",
     "backwall-lightmaps": "uv run backwall_lightmaps.py",
     "reset-local-state": "node reset-local-state.js",
-    "check-table-options": "node table-options.js --check"
+    "check-table-options": "node table-options.js --check",
+    "sounds-to-backglass": "node sounds-to-backglass.js"
   },
   "author": "",
   "license": "ISC",
