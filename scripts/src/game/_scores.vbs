@@ -135,6 +135,7 @@ Dim ModeStartScore              : ModeStartScore              = ScoreX(2)    ' e
 Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(10)   ' last a timed mode's full timer without draining
 Dim KimsAntiquesCompleteScore   : KimsAntiquesCompleteScore   = ScoreX(15)   ' same, and without hitting Miss Kim (a second way to lose)
 Dim DinnerShotScore             : DinnerShotScore             = ScoreX(5)
+Dim DinnerJackpotScore          : DinnerJackpotScore          = ScoreX(20)
 Dim FdPunchShotScore            : FdPunchShotScore            = ScoreX(5)
 Dim LbtbShotScore               : LbtbShotScore               = ScoreX(5)
 Dim KimsAntiquesShotScore       : KimsAntiquesShotScore       = ScoreX(5)

@@ -132,29 +132,12 @@ Sub CreateExtraBallMode()
             End With
         End With
 
-        
-        ' With .SegmentDisplayPlayer()
-        '     With .EventName("play_eb_show")
-        '         With .Display("player1")
-        '             .Text = ""
-        '             .Expire = EBShowLength
-        '         End With
-        '         With .Display("player2")
-        '             .Text = " EXTRA "
-        '             .Flashing = "all"
-        '             .Expire = EBShowLength
-        '         End With
-        '         With .Display("player3")
-        '             .Text = " BALL "
-        '             .Flashing = "all"
-        '             .Expire = EBShowLength
-        '         End With
-        '         With .Display("player4")
-        '             .Text = ""
-        '             .Expire = EBShowLength
-        '         End With
-        '     End With
-        ' End With
+        With .SoundPlayer()
+            With .EventName("eb_achieved")
+                .Key = "key_voc_rory_lukeanotherround"
+                .Sound = "voc_rory_lukeanotherround"
+            End With
+        End With
 
 
     End With

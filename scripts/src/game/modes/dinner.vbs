@@ -18,6 +18,9 @@ Sub CreateDinnerMode()
             'Scoring
             .Add "dinner_shot_hit", Array(ScoreEvent(DinnerShotScore, NoMultiplier))
 
+            .add "s_HiddenUpperRightKicker_active", Array("dinner_jackpot_hit")
+            .Add "dinner_jackpot_hit", Array(ScoreEvent(DinnerJackpotScore, NoMultiplier))
+
             .Add "mode_dinner_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_dinner_mode_slide", "FRIDAY NIGHT DINNER", "SHOOT ORBITS TO SCORE"))
             'Lasted the full timer without draining
             .Add "timer_dinner_mode_complete", Array("dinner_post_mode", ScoreEvent(ModeCompleteScore, NoMultiplier))
@@ -111,6 +114,10 @@ Sub CreateDinnerMode()
                 .Key = "key_voc_dinner_heartfelt"
                 .Sound = "voc_dinner_heartfelt"
             End With
+            With .EventName("dinner_jackpot_voc_1")
+                .Key = "key_voc_emily_spasareexploding"
+                .Sound = "voc_emily_spasareexploding"
+            End With
             With .EventName("play_dinner_post_mode")
                 .Key = "key_voc_dinner_outro"
                 .Sound = "voc_dinner_outro"
@@ -198,6 +205,11 @@ Sub CreateDinnerMode()
                 .Add "dinner_voc_8", 1
                 .Add "dinner_voc_9", 1
                 .Add "dinner_voc_10", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("dinner_jackpot_hit")
+                .Add "dinner_jackpot_voc_1", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With

@@ -310,7 +310,7 @@ Sub CreateBaseMode()
                 .Add "play_whoosh1", 1
                 .Add "play_whoosh2", 1
             End With
-            With .EventName("grandparents_callout{modes.fd_punch.active==False}")
+            With .EventName("grandparents_callout{modes.fd_punch.active==False and modes.dinner.active==False}")
                 .Add "mansion1_callout", 1
                 .Add "mansion2_callout", 1
                 .Add "mansion3_callout", 1
@@ -330,6 +330,7 @@ Sub CreateBaseMode()
                 .Add "jess_target_callout9", 1
                 .Add "jess_target_callout10", 1
                 .Add "jess_target_callout11", 1
+                .Add "jess_target_callout12", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -456,6 +457,10 @@ Sub CreateBaseMode()
             With .EventName("jess_target_callout11")
                 .Key = "key_voc_jess_youlooknice"
                 .Sound = "voc_jess_youlooknice"
+            End With
+            With .EventName("jess_target_callout12")
+                .Key = "key_voc_jess_notesinthemargins"
+                .Sound = "voc_jess_notesinthemargins"
             End With
             With .EventName("jess_targets_complete_callout1")
                 .Key = "key_voc_jess_iloveyou"

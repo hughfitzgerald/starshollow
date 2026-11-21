@@ -178,7 +178,7 @@ Function Glf_41(args)
 End Function
 Function Glf_42(args)
 	On Error Resume Next
-	    Glf_42 = glf_modes("fd_punch").GetValue("active")=False
+	    Glf_42 = glf_modes("fd_punch").GetValue("active")=False and glf_modes("dinner").GetValue("active")=False
 	If Err Then Glf_42 = False
 End Function
 Function Glf_43(args)
@@ -2085,7 +2085,7 @@ glf_funcRefMap.Add "188.866667", "Glf_38"
 glf_funcRefMap.Add "53.04", "Glf_39"
 glf_funcRefMap.Add "234.826667", "Glf_40"
 glf_funcRefMap.Add "332.76", "Glf_41"
-glf_funcRefMap.Add "grandparents_callout{modes.fd_punch.active==False}", "Glf_42"
+glf_funcRefMap.Add "grandparents_callout{modes.fd_punch.active==False and modes.dinner.active==False}", "Glf_42"
 glf_funcRefMap.Add "diner_callout{modes.fd_punch.active==False}", "Glf_43"
 glf_funcRefMap.Add "auto_fire_coil_bumper1_activate{modes.ll_multiball.active==False}", "Glf_44"
 glf_funcRefMap.Add "auto_fire_coil_bumper5_activate{modes.ll_multiball.active==False}", "Glf_45"

@@ -760,6 +760,9 @@ Sub CreateSounds()
     AddCallout     "voc_hollow", 0.496916
     AddCallout     "voc_wereclosed", 0.83424
 
+    AddCallout     "voc_babette_meteorologists", 4.941938
+    AddCallout     "voc_rory_lukeanotherround", 3.015188
+
     AddCallout     "voc_mansion_richardtheyrehere", 1.217667
     AddCallout     "voc_mansion_banks", 3.780188
     AddCallout     "voc_mansion_rightontime", 2.593021
@@ -810,6 +813,7 @@ Sub CreateSounds()
     AddCallout     "voc_kirk_makinglove", 4.379708
     AddCallout     "voc_kirk_naked", 9.878125
     AddCallout     "voc_kirk_pants", 2.778896
+    AddCallout     "voc_kirk_townsashmaker", 10.121271
 
     ' Jess/Dean Multiball
     AddMusic       "mus_jdmb",  194.339833, -1
@@ -866,6 +870,7 @@ Sub CreateSounds()
     AddCallout     "voc_jess_youlookgood", 1.046250
     AddCallout     "voc_jess_youlooknice", 1.004063
     AddCallout     "voc_jess_yourhairlooksdifferent", 2.117188
+    AddCallout     "voc_jess_notesinthemargins", 3.708250
 
 
     ' Logan Multiball
@@ -897,6 +902,7 @@ Sub CreateSounds()
     AddCallout     "voc_dinner_dirtylibrarian", 7.516458
     AddCallout     "voc_dinner_heartfelt", 6.999146
     AddCallout     "voc_dinner_outro", 5.585979
+    AddCallout     "voc_emily_spasareexploding", 3.856333
     
     AddMusic       "mus_bells_loop",  3.485714, -1
     AddCallout     "voc_bells_intro", 12.088163

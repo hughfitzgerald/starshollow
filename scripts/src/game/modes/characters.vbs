@@ -21,7 +21,7 @@ End Function
 
 Dim sookie, kirk, lane, paris
 Set sookie = NewCharacter("sookie", Array("Light001", "Light002", "Light003"), "78bec0", "any_spinner_hit", 50, Array("voc_sookie1", "voc_sookie2", "voc_sookie3", "voc_sookie4"))
-Set kirk = NewCharacter("kirk", Array("Light004", "Light005", "Light006"), "bae046", "any_bumper_hit", 10, Array("voc_kirk_15000jobs", "voc_kirk_animal", "voc_kirk_crazy", "voc_kirk_dadsuit", "voc_kirk_makinglove", "voc_kirk_naked", "voc_kirk_pants"))
+Set kirk = NewCharacter("kirk", Array("Light004", "Light005", "Light006"), "bae046", "any_bumper_hit", 10, Array("voc_kirk_15000jobs", "voc_kirk_animal", "voc_kirk_crazy", "voc_kirk_dadsuit", "voc_kirk_makinglove", "voc_kirk_naked", "voc_kirk_pants", "voc_kirk_townsashmaker"))
 Set lane = NewCharacter("lane", Array("Light007", "Light008", "Light009"), "d938c7", "any_sling_hit", 10, Array("voc_lane_damnation", "voc_lane_musicstore", "voc_lane_stereos", "voc_lane_thelord", "voc_lane_writingasong"))
 Set paris = NewCharacter("paris", Array("Light010", "Light011", "Light012"), "bf3957", "any_ramp_hit", 5, Array("voc_paris_marx", "voc_paris_monkey", "voc_paris_nothing", "voc_paris_patient"))
 
