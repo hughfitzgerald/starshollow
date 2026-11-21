@@ -903,6 +903,8 @@ Sub CreateSounds()
     AddCallout     "voc_dinner_heartfelt", 6.999146
     AddCallout     "voc_dinner_outro", 5.585979
     AddCallout     "voc_emily_spasareexploding", 3.856333
+    AddCallout     "voc_trix_imnotabee", 5.552708
+    AddCallout     "voc_richard_twoglassesofwine", 2.505500
     
     AddMusic       "mus_bells_loop",  3.485714, -1
     AddCallout     "voc_bells_intro", 12.088163

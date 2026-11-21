@@ -118,6 +118,14 @@ Sub CreateDinnerMode()
                 .Key = "key_voc_emily_spasareexploding"
                 .Sound = "voc_emily_spasareexploding"
             End With
+            With .EventName("dinner_jackpot_voc_2")
+                .Key = "key_voc_trix_imnotabee"
+                .Sound = "voc_trix_imnotabee"
+            End With
+            With .EventName("dinner_jackpot_voc_3")
+                .Key = "key_voc_richard_twoglassesofwine"
+                .Sound = "voc_richard_twoglassesofwine"
+            End With
             With .EventName("play_dinner_post_mode")
                 .Key = "key_voc_dinner_outro"
                 .Sound = "voc_dinner_outro"
@@ -210,6 +218,8 @@ Sub CreateDinnerMode()
             End With
             With .EventName("dinner_jackpot_hit")
                 .Add "dinner_jackpot_voc_1", 1
+                .Add "dinner_jackpot_voc_2", 1
+                .Add "dinner_jackpot_voc_3", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
