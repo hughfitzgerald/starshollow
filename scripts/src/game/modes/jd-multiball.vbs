@@ -2,12 +2,16 @@
 Sub CreateJDMultiballMode()
     With CreateGlfMode("jd_multiball", 1020)
         .StartEvents = Array("start_jd_multiball")
-        .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", "end_jd_multiball")
+        'A win (jess_wins / dean_wins) stops the mode like any other ending.
+        'Every stop goes through the mode_jd_multiball_stopping relay, which
+        'plays a callout picked by jd_winner and waits for it to finish.
+        .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", _
+                            "jd_multiball_stop_for_drain", "jess_wins", "dean_wins", "tilt")
 
         With .EventPlayer()
             .Add "mode_jd_multiball_started", Array("base_music_stop", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
             .Add "initiate_jd_multiball", Array("release_scoop_hold")
-            .Add "mode_jd_multiball_stopping", Array("base_music_start")
+            .Add "jd_multiball_end_callout_done", Array("base_music_start")
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
 
@@ -25,6 +29,22 @@ Sub CreateJDMultiballMode()
             .Add "dean_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jd_super_jackpot", "jd_win_score", "dean_wins")
 
             .Add "balldevice_scoop_ball_entered", Array("release_scoop_hold")
+
+            'No Dean win callouts yet, so a Dean win releases the end hold
+            'straight away. Replace this with a jd_winner == 2 entry in the
+            'RandomEventPlayer once Dean win callouts exist.
+            .Add "jd_multiball_end_callout{current_player.jd_winner == 2}", Array("jd_multiball_end_callout_done")
+        End With
+
+        With .QueueRelayPlayer()
+            With .EventName("mode_jd_multiball_stopping")
+                .Post    = "jd_multiball_end_callout"
+                .WaitFor = "jd_multiball_end_callout_done"
+            End With
+            With .EventName("ball_ending")
+                .Post    = "jd_multiball_stop_for_drain"
+                .WaitFor = "mode_jd_multiball_stopped"
+            End With
         End With
 
         With .Multiballs("jdmb")
@@ -56,11 +76,20 @@ Sub CreateJDMultiballMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
-            With .EventName("jess_wins")
+            'End callouts: jd_winner is 0 (no winner), 1 (Jess) or 2 (Dean).
+            With .EventName("jd_multiball_end_callout{current_player.jd_winner == 1}")
                 .Add "jess_wins_callout1", 1
                 .Add "jess_wins_callout2", 1
                 .Add "jess_wins_callout3", 1
                 .Add "jess_wins_callout4", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("jd_multiball_end_callout{current_player.jd_winner == 0}")
+                .Add "jd_multiball_end_callout1", 1
+                .Add "jd_multiball_end_callout2", 1
+                .Add "jd_multiball_end_callout3", 1
+                .Add "jd_multiball_end_callout4", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -84,7 +113,7 @@ Sub CreateJDMultiballMode()
                 .Key = "key_mus_jdmb"
                 .Sound = "mus_jdmb"
             End With
-            With .EventName("mode_jd_multiball_stopping")
+            With .EventName("jd_multiball_end_callout")
                 .Key = "key_mus_jdmb"
                 .Sound = "mus_jdmb"
                 .Action = "stop"
@@ -125,25 +154,45 @@ Sub CreateJDMultiballMode()
                 .Key = "key_voc_jess_andyouloveit"
                 .Sound = "voc_jess_andyouloveit"
                 .Priority = 1
-                .EventsWhenStopped = Array("end_jd_multiball")
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jess_wins_callout2")
                 .Key = "key_voc_jess_couldnthavedoneitwithoutyou"
                 .Sound = "voc_jess_couldnthavedoneitwithoutyou"
                 .Priority = 1
-                .EventsWhenStopped = Array("end_jd_multiball")
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jess_wins_callout3")
                 .Key = "key_voc_jess_drivingaround"
                 .Sound = "voc_jess_drivingaround"
                 .Priority = 1
-                .EventsWhenStopped = Array("end_jd_multiball")
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jess_wins_callout4")
                 .Key = "key_voc_jess_thisonewasnthalfbad"
                 .Sound = "voc_jess_thisonewasnthalfbad"
                 .Priority = 1
-                .EventsWhenStopped = Array("end_jd_multiball")
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
+            With .EventName("jd_multiball_end_callout1")
+                .Key = "key_voc_jess_idontdeservethisrory"
+                .Sound = "voc_jess_idontdeservethisrory"
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
+            With .EventName("jd_multiball_end_callout2")
+                .Key = "key_voc_jess_lovehuh"
+                .Sound = "voc_jess_lovehuh"
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
+            With .EventName("jd_multiball_end_callout3")
+                .Key = "key_voc_jess_youkissedme"
+                .Sound = "voc_jess_youkissedme"
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
+            With .EventName("jd_multiball_end_callout4")
+                .Key = "key_voc_dean_gladyouenjoyedit"
+                .Sound = "voc_dean_gladyouenjoyedit"
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
         End With
 
@@ -156,6 +205,22 @@ Sub CreateJDMultiballMode()
                 With .Variable("mode_display_timer")
                     .Action = "set"
                     .String = """"""
+                End With
+                With .Variable("jd_winner")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
+            With .EventName("jess_wins")
+                With .Variable("jd_winner")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("dean_wins")
+                With .Variable("jd_winner")
+                    .Action = "set"
+                    .Int = 2
                 End With
             End With
             With .EventName("jd_jackpot")
@@ -250,6 +315,7 @@ Sub CreateJDMultiballMode()
         With .Shots("jess")
             .Profile = "jd_ramp"
             .Switch = "s_complete_left_ramp"
+            .DisableEvents = Array("mode_jd_multiball_stopping")
             With .Tokens()
                 .Add "color", MultiballColor
                 .Add "lights", "l53"
@@ -263,6 +329,8 @@ Sub CreateJDMultiballMode()
         With .Shots("dean")
             .Profile = "jd_ramp"
             .Switch = "s_complete_right_ramp"
+            .DisableEvents = Array("mode_jd_multiball_stopping")
+            
             With .Tokens()
                 .Add "color", MultiballColor
                 .Add "lights", "l55"
