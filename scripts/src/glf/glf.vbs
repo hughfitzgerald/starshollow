@@ -1,4 +1,4 @@
-' GLF build: hughfitzgerald/vpx-glf starshollow @ f0406ea (2026-11-20). Do not edit; see FORK.md in that repo.
+' GLF build: hughfitzgerald/vpx-glf starshollow @ 090c657 (2026-11-21). Do not edit; see FORK.md in that repo.
 'VPX Game Logic Framework (https://mpcarr.github.io/vpx-glf/)
 
 '
@@ -14502,7 +14502,12 @@ Class GlfSoundPlayer
     End Function
 
     Public Sub PlayOff(evt)
-        glf_sound_buses(m_eventValues(evt).Sound.Bus).StopSoundWithKey m_eventValues(evt).Sound.File
+        Dim sound_bus : Set sound_bus = glf_sound_buses(m_eventValues(evt).Sound.Bus)
+        Dim sound_key : sound_key = m_eventValues(evt).Sound.File
+        'Deactivate calls this for every item when the mode stops. Only a sound
+        'that was playing has stopped, so only then post events_when_stopped.
+        If Not sound_bus.IsPlaying(sound_key) Then Exit Sub
+        sound_bus.StopSoundWithKey sound_key
         Dim evtItem
         For Each evtItem in m_eventValues(evt).EventsWhenStopped.Items()
             If evtItem.Evaluate() Then
@@ -20166,6 +20171,11 @@ Class GlfSoundBus
 
     Public Property Get Volume(): Volume = m_volume: End Property
     Public Property Let Volume(input): m_volume = input: End Property
+
+    'True while a sound with this key is on the bus and has not stopped
+    Public Function IsPlaying(sound_key)
+        IsPlaying = m_current_sounds.Exists(sound_key)
+    End Function
 
     Public Property Let Debug(value)
         m_debug = value
