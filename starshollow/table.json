@@ -278,7 +278,8 @@
     "GM_WindowFrame",
     "Target_Albedo_White",
     "JessBulbRed",
-    "DeanBulbGreen"
+    "DeanBulbGreen",
+    "Sign Lavender Opaque"
   ],
   "renderprobes": [
     "Playfield Reflections"
@@ -312,8 +313,8 @@
   "blurb": "",
   "description": "",
   "rules": "",
-  "date_saved": "Sat Nov 21 23:37:59 2026",
-  "save_rev": 248,
+  "date_saved": "Sun Nov 22 15:13:26 2026",
+  "save_rev": 249,
   "parts": [
     "Flippers",
     "Shadows",
