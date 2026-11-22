@@ -276,7 +276,9 @@
     "Translucent_Glass_Sky_Refl",
     "SVGMat.002",
     "GM_WindowFrame",
-    "Target_Albedo_White"
+    "Target_Albedo_White",
+    "JessBulbRed",
+    "DeanBulbGreen"
   ],
   "renderprobes": [
     "Playfield Reflections"
@@ -1042,7 +1044,23 @@
     "DeanLight1",
     "DeanLight2",
     "DeanLight3",
-    "DeanLight4"
+    "DeanLight4",
+    "JessBulb1",
+    "JessBulb1Lit",
+    "JessBulb2",
+    "JessBulb2Lit",
+    "JessBulb3",
+    "JessBulb3Lit",
+    "JessBulb4",
+    "JessBulb4Lit",
+    "DeanBulb1",
+    "DeanBulb1Lit",
+    "DeanBulb2",
+    "DeanBulb2Lit",
+    "DeanBulb3",
+    "DeanBulb3Lit",
+    "DeanBulb4",
+    "DeanBulb4Lit"
   ],
   "collections": [
     "Rubbers",

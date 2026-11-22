@@ -38,9 +38,9 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="background"
-     style="opacity:0.848">
+     style="opacity:1">
     <rect
-       style="opacity:1;fill:#927ade;fill-opacity:1;stroke:none"
+       style="opacity:1;fill:#7a1420;fill-opacity:1;stroke:none"
        id="rect_bg"
        width="270"
        height="45"
@@ -53,7 +53,7 @@
      id="layer1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:14px;line-height:1;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';text-align:center;text-anchor:middle;writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke fill markers"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:14px;line-height:1;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';text-align:center;text-anchor:middle;writing-mode:lr-tb;direction:ltr;fill:#f2b632;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke fill markers"
        x="80"
        y="15"
        id="text_team"><tspan
@@ -63,7 +63,7 @@
          y="15">Team</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:28px;line-height:1;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';text-align:center;text-anchor:middle;writing-mode:lr-tb;direction:ltr;fill:#f2a93b;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke fill markers"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:28px;line-height:1;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';text-align:center;text-anchor:middle;writing-mode:lr-tb;direction:ltr;fill:#f4ead2;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke fill markers"
        x="80"
        y="40"
        id="text_name"><tspan

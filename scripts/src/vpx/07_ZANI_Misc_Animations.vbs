@@ -118,8 +118,8 @@ End Sub
 ' Driving them from FrameTimer instead makes the update unconditional and
 ' independent of VPX's light events.
 Dim GlfInsertLights, GlfInsertPrims
-GlfInsertLights = Array(l9, l8, l1, l12, l11, l13, l14, l15, l16, l17, l18, l52, l51, l53, l54, l55, l56, l21, l24, l23, l27, l28, l22, l25, l26, l31, l34, l32, l33, l7, l57, l58, l59, l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72)
-GlfInsertPrims  = Array(p9, p8, p1, p12, p11, p13, p14, p15, p16, p17, p18, p52, p51, p53, p54, p55, p56, p21, p24, p23, p27, p28, p22, p25, p26, p31, p34, p32, p33, p7, p57, p58, p59, p60, p61, p62, p63, p64, p65, p66, p67, p68, p69, p70, p71, p72)
+GlfInsertLights = Array(l9, l8, l1, l12, l11, l13, l14, l15, l16, l17, l18, l52, l51, l53, l54, l55, l56, l21, l24, l23, l27, l28, l22, l25, l26, l31, l34, l32, l33, l7, l57, l58, l59, l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72, JessLight1, JessLight2, JessLight3, JessLight4, DeanLight1, DeanLight2, DeanLight3, DeanLight4)
+GlfInsertPrims  = Array(p9, p8, p1, p12, p11, p13, p14, p15, p16, p17, p18, p52, p51, p53, p54, p55, p56, p21, p24, p23, p27, p28, p22, p25, p26, p31, p34, p32, p33, p7, p57, p58, p59, p60, p61, p62, p63, p64, p65, p66, p67, p68, p69, p70, p71, p72, JessBulb1Lit, JessBulb2Lit, JessBulb3Lit, JessBulb4Lit, DeanBulb1Lit, DeanBulb2Lit, DeanBulb3Lit, DeanBulb4Lit)
 
 Sub UpdateGlfInserts()
     Dim i, g
@@ -153,6 +153,34 @@ Function GlfInsertGlow(lgt)
     If b > m Then m = b
     GlfInsertGlow = 200 * (m / 255)
 End Function
+
+' --- Jess / Dean sign bulbs ---------------------------------------
+' Each sign bulb is a dark sleeve primitive (JessBulbN / DeanBulbN) plus an
+' additive overlay (JessBulbNLit / DeanBulbNLit). The overlay's colour is
+' set from the GLF light colour every frame, scaled by GlfBulbGain, so it
+' follows GLF brightness and fades instead of snapping to full.
+' GLF "off" (000000) gives colour 0, and VPX skips drawing an additive
+' primitive with colour 0.
+Const GlfBulbGain = 0.7
+Dim GlfBulbLights, GlfBulbPrims, GlfBulbLast(7)   ' last colour written (primitive .Color cannot be read from VBScript)
+GlfBulbLights = Array(JessLight1, JessLight2, JessLight3, JessLight4, DeanLight1, DeanLight2, DeanLight3, DeanLight4)
+GlfBulbPrims  = Array(JessBulb1Lit, JessBulb2Lit, JessBulb3Lit, JessBulb4Lit, DeanBulb1Lit, DeanBulb2Lit, DeanBulb3Lit, DeanBulb4Lit)
+
+Sub UpdateGlfBulbs()
+    Dim i, c, r, g, b
+    For i = 0 To UBound(GlfBulbLights)
+        c = CLng(GlfBulbLights(i).Color)
+        r = c And 255
+        g = (c \ 256) And 255
+        b = (c \ 65536) And 255
+        c = RGB(Int(r * GlfBulbGain), Int(g * GlfBulbGain), Int(b * GlfBulbGain))
+        If IsEmpty(GlfBulbLast(i)) Or GlfBulbLast(i) <> c Then
+            GlfBulbPrims(i).Color = c
+            GlfBulbLast(i) = c
+        End If
+    Next
+End Sub
+
 
 ' ' 
 ' 

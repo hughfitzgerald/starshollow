@@ -37,6 +37,7 @@ Sub FrameTimer_Timer()
 	BSUpdate
 	Cor.Update         ' rubber dampener incoming-velocity tracking (was CorTimer)
 	UpdateGlfInserts   ' insert primitives follow GLF light colour
+	UpdateGlfBulbs   ' sign bulb overlays follow GLF light colour
 	PscBackglassMirror ' backglass bulbs follow their PSC proxy lights
 
 	If Not glf_pump_checked And GameTime > 2000 Then

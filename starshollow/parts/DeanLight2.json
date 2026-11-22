@@ -1,8 +1,8 @@
 {
   "$type": "light",
   "center": {
-    "x": 564.1893920898438,
-    "y": 893.5757446289063
+    "x": 564.7041350046845,
+    "y": 891.1540693856618
   },
   "timer_enabled": false,
   "timer_interval": 100,
@@ -14,8 +14,8 @@
   "dragpoints": [
     {
       "center": {
-        "x": 564.1893920898438,
-        "y": 843.5757446289063
+        "x": 564.7041350046845,
+        "y": 841.1540693856618
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -27,8 +27,8 @@
     },
     {
       "center": {
-        "x": 528.8340454101563,
-        "y": 858.2203979492188
+        "x": 529.348788324997,
+        "y": 855.7987227059743
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -40,8 +40,8 @@
     },
     {
       "center": {
-        "x": 514.1893310546875,
-        "y": 893.5757446289063
+        "x": 514.7040739695283,
+        "y": 891.1540693856618
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -53,8 +53,8 @@
     },
     {
       "center": {
-        "x": 528.8340454101563,
-        "y": 928.9310913085938
+        "x": 529.348788324997,
+        "y": 926.5094160653493
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -66,8 +66,8 @@
     },
     {
       "center": {
-        "x": 564.1893920898438,
-        "y": 943.5757446289063
+        "x": 564.7041350046845,
+        "y": 941.1540693856618
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -79,8 +79,8 @@
     },
     {
       "center": {
-        "x": 599.5447387695313,
-        "y": 928.9310913085938
+        "x": 600.059481684372,
+        "y": 926.5094160653493
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -92,8 +92,8 @@
     },
     {
       "center": {
-        "x": 614.1893920898438,
-        "y": 893.5757446289063
+        "x": 614.7041350046845,
+        "y": 891.1540693856618
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -105,8 +105,8 @@
     },
     {
       "center": {
-        "x": 599.5447387695313,
-        "y": 858.2203979492188
+        "x": 600.059481684372,
+        "y": 855.7987227059743
       },
       "ui_locked": false,
       "ui_visible": true,
@@ -118,13 +118,13 @@
     }
   ],
   "desktop_backdrop": false,
-  "bulb_halo_height": 28.0,
+  "bulb_halo_height": 8.0,
   "blink_interval": 125,
   "mesh_radius": 20.0,
   "modulate_vs_add": 0.8999999761581421,
   "blink_pattern": "all_lights,all_lights_no_flashers,all_lights_no_gi,groove_mid_right",
   "bulb_light": true,
-  "intensity": 10.0,
+  "intensity": 4.0,
   "color2": 65280,
   "color": 65280,
   "fader": 1,
@@ -136,8 +136,8 @@
   "image_mode": false,
   "depth_bias": 0.0,
   "state_src_link": "",
-  "radius": 50.0,
-  "show_bulb_mesh": true,
+  "radius": 20.0,
+  "show_bulb_mesh": false,
   "shadows": 0,
   "show_reflection_on_ball": true,
   "state_legacy": 0,
