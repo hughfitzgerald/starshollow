@@ -565,6 +565,15 @@ Sub ConfigureGlfDevices()
         .ActionCallback = "OrbitGate2Action"
     End With
 
+    ' Magnet
+    With CreateGlfMagnet("mag1")
+        .EnableEvents = Array("none")
+        .DisableEvents = Array("ball_ended")
+        .GrabSwitch = "s_TriggerLF2"
+        .GrabTime = 2000
+        .ActionCallback = "GrabMagnetAction"
+    End With
+
     ' --- Standup targets s_ST11..s_ST18 ---
     ' MUST NOT be in any collection. RothSTSwitchID must match the 3rd
     ' argument of the Set STnn = (new StandupTarget)(...) lines in ZRST.

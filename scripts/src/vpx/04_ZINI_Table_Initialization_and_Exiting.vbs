@@ -22,6 +22,15 @@ Dim LoganBall
 Sub Table1_Init
 	LoadCoreFiles
 	LoadEM
+
+    Set GrabMag = New cvpmMagnet
+    With GrabMag
+        .InitMagnet GrabMagnet, 100
+        .GrabCenter = True
+		.strength = 15
+        .CreateEvents "GrabMag"
+    End With
+
 	' GLF - ConfigureGlfDevices must run first; Glf_Init consumes it
 	ConfigureGlfDevices()
 	Glf_Init(Table1)

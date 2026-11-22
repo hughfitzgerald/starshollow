@@ -1964,6 +1964,15 @@ End Function
 Function Glf_423(args)
 	Glf_423 = 8
 End Function
+Function Glf_424(args)
+	Glf_424 = 250
+End Function
+Function Glf_425(args)
+	Glf_425 = 1500
+End Function
+Function Glf_426(args)
+	Glf_426 = 500
+End Function
 Dim glf_gi006_lmarr : glf_gi006_lmarr = Array(lm_gi006_plastics)
 glf_lightMaps.Add "gi006", glf_gi006_lmarr
 Dim glf_gi007_lmarr : glf_gi007_lmarr = Array(lm_gi007_plastics)
@@ -2586,4 +2595,7 @@ glf_funcRefMap.Add "15000000", "Glf_420"
 glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_421"
 glf_funcRefMap.Add "kwargs.points", "Glf_422"
 glf_funcRefMap.Add "8", "Glf_423"
+glf_funcRefMap.Add "250", "Glf_424"
+glf_funcRefMap.Add "1500", "Glf_425"
+glf_funcRefMap.Add "500", "Glf_426"
 

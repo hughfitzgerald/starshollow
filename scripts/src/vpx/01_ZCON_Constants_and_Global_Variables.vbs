@@ -17,6 +17,7 @@ Const lob       = 1                 'Locked / captive balls
 Dim gBOT                            'GLF fills this; use instead of GetBalls
 Dim tablewidth  : tablewidth  = Table1.width
 Dim tableheight : tableheight = Table1.height
+Dim GrabMag
 
 ' --- Table state ---
 Dim DesktopMode : DesktopMode = Table1.ShowDT

@@ -79,3 +79,10 @@ Sub OrbitGate2Action(Enabled)
 		OrbitGate2.Open = False
 	End If
 End Sub
+
+'  Grab Magnet
+'******************************************* 
+
+Sub GrabMagnetAction(Enabled)
+	GrabMag.MagnetOn = Enabled
+end sub

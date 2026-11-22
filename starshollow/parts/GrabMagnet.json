@@ -1,0 +1,82 @@
+{
+  "$type": "trigger",
+  "center": {
+    "x": 136.9622344970703,
+    "y": 1037.2049560546875
+  },
+  "timer_enabled": false,
+  "timer_interval": 100,
+  "ui_locked": false,
+  "ui_visible": true,
+  "legacy_layer": 11,
+  "named_layer": "Collidable_Ramps",
+  "part_group": "Collidable_Ramps",
+  "dragpoints": [
+    {
+      "center": {
+        "x": 106.96223449707031,
+        "y": 1007.2049560546875
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 106.96223449707031,
+        "y": 1067.2034912109375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 166.9623565673828,
+        "y": 1067.2034912109375
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    },
+    {
+      "center": {
+        "x": 166.9623565673828,
+        "y": 1007.2049560546875
+      },
+      "ui_locked": false,
+      "ui_visible": true,
+      "position_z": 0.0,
+      "smooth": false,
+      "slingshot": false,
+      "auto_texture": true,
+      "texture_coordinate": 0.0
+    }
+  ],
+  "anim_speed": 1.0,
+  "enabled": true,
+  "state_src_link": "",
+  "material": "",
+  "radius": 120.0,
+  "reflection_enabled": true,
+  "rotation": 0.0,
+  "scale_x": 1.0,
+  "scale_y": 1.0,
+  "shape": 2,
+  "surface": "",
+  "hit_height": 50.0,
+  "visible": false,
+  "wire_thickness": 0.0
+}
