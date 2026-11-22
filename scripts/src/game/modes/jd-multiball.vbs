@@ -29,11 +29,6 @@ Sub CreateJDMultiballMode()
             .Add "dean_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jd_super_jackpot", "jd_win_score", "dean_wins")
 
             .Add "balldevice_scoop_ball_entered", Array("release_scoop_hold")
-
-            'No Dean win callouts yet, so a Dean win releases the end hold
-            'straight away. Replace this with a jd_winner == 2 entry in the
-            'RandomEventPlayer once Dean win callouts exist.
-            .Add "jd_multiball_end_callout{current_player.jd_winner == 2}", Array("jd_multiball_end_callout_done")
         End With
 
         With .QueueRelayPlayer()
@@ -59,8 +54,16 @@ Sub CreateJDMultiballMode()
 
         With .RandomEventPlayer()
             With .EventName("dean_ramp")
-                .Add "tall_callout", 1
-                .Add "exboyfriend_callout", 1
+                .Add "dean_ramp_callout1", 1
+                .Add "dean_ramp_callout2", 1
+                .Add "dean_ramp_callout3", 1
+                .Add "dean_ramp_callout4", 1
+                .Add "dean_ramp_callout5", 1
+                .Add "dean_ramp_callout6", 1
+                .Add "dean_ramp_callout7", 1
+                .Add "dean_ramp_callout8", 1
+                .Add "dean_ramp_callout9", 1
+                .Add "dean_ramp_callout10", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -85,11 +88,18 @@ Sub CreateJDMultiballMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
+            With .EventName("jd_multiball_end_callout{current_player.jd_winner == 2}")
+                .Add "dean_wins_callout1", 1
+                .Add "dean_wins_callout2", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
             With .EventName("jd_multiball_end_callout{current_player.jd_winner == 0}")
                 .Add "jd_multiball_end_callout1", 1
                 .Add "jd_multiball_end_callout2", 1
                 .Add "jd_multiball_end_callout3", 1
                 .Add "jd_multiball_end_callout4", 1
+                .Add "jd_multiball_end_callout5", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -101,13 +111,45 @@ Sub CreateJDMultiballMode()
                 .Sound = "voc_rory_deanmeetjess"
                 .EventsWhenStopped = Array("initiate_jd_multiball")
             End With
-            With .EventName("tall_callout")
+            With .EventName("dean_ramp_callout1")
                 .Key = "key_voc_tall"
                 .Sound = "voc_tall"
             End With
-            With .EventName("exboyfriend_callout")
+            With .EventName("dean_ramp_callout2")
                 .Key = "key_voc_exboyfriend"
                 .Sound = "voc_exboyfriend"
+            End With
+            With .EventName("dean_ramp_callout3")
+                .Key = "key_voc_dean_yousaidboyfriend"
+                .Sound = "voc_dean_yousaidboyfriend"
+            End With
+            With .EventName("dean_ramp_callout4")
+                .Key = "key_voc_dean_imgoingwithyou"
+                .Sound = "voc_dean_imgoingwithyou"
+            End With
+            With .EventName("dean_ramp_callout5")
+                .Key = "key_voc_dean_sawyoustandinginline"
+                .Sound = "voc_dean_sawyoustandinginline"
+            End With
+            With .EventName("dean_ramp_callout6")
+                .Key = "key_voc_dean_necklace"
+                .Sound = "voc_dean_necklace"
+            End With
+            With .EventName("dean_ramp_callout7")
+                .Key = "key_voc_dean_pinkmoon"
+                .Sound = "voc_dean_pinkmoon"
+            End With
+            With .EventName("dean_ramp_callout8")
+                .Key = "key_voc_dean_notgoinganywhere"
+                .Sound = "voc_dean_notgoinganywhere"
+            End With
+            With .EventName("dean_ramp_callout9")
+                .Key = "key_voc_dean_ifyouhateme"
+                .Sound = "voc_dean_ifyouhateme"
+            End With
+            With .EventName("dean_ramp_callout10")
+                .Key = "key_voc_dean_dontyoudaremove"
+                .Sound = "voc_dean_dontyoudaremove"
             End With
             With .EventName("initiate_jd_multiball")
                 .Key = "key_mus_jdmb"
@@ -174,6 +216,18 @@ Sub CreateJDMultiballMode()
                 .Priority = 1
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
+            With .EventName("dean_wins_callout1")
+                .Key = "key_voc_dean_iloveyourory"
+                .Sound = "voc_dean_iloveyourory"
+                .Priority = 1
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
+            With .EventName("dean_wins_callout2")
+                .Key = "key_voc_dean_perfectmoment"
+                .Sound = "voc_dean_perfectmoment"
+                .Priority = 1
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
             With .EventName("jd_multiball_end_callout1")
                 .Key = "key_voc_jess_idontdeservethisrory"
                 .Sound = "voc_jess_idontdeservethisrory"
@@ -192,6 +246,11 @@ Sub CreateJDMultiballMode()
             With .EventName("jd_multiball_end_callout4")
                 .Key = "key_voc_dean_gladyouenjoyedit"
                 .Sound = "voc_dean_gladyouenjoyedit"
+                .EventsWhenStopped = Array("jd_multiball_end_callout_done")
+            End With
+            With .EventName("jd_multiball_end_callout5")
+                .Key = "key_voc_dean_goodbyelorelaigilmore"
+                .Sound = "voc_dean_goodbyelorelaigilmore"
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
         End With

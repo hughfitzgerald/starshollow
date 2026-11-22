@@ -334,6 +334,22 @@ Sub CreateBaseMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
+            With .EventName("dean_target_unlit_hit")
+                .Add "dean_target_callout1", 1
+                .Add "dean_target_callout2", 1
+                .Add "dean_target_callout3", 1
+                .Add "dean_target_callout4", 1
+                .Add "dean_target_callout5", 1
+                .Add "dean_target_callout6", 1
+                .Add "dean_target_callout7", 1
+                .Add "dean_target_callout8", 1
+                .Add "dean_target_callout9", 1
+                .Add "dean_target_callout10", 1
+                .Add "dean_target_callout11", 1
+                .Add "dean_target_callout12", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
             With .EventName("jess_targets_lit_complete")
                 .Add "jess_targets_complete_callout1", 1
                 .Add "jess_targets_complete_callout2", 1
@@ -341,8 +357,12 @@ Sub CreateBaseMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
-            With .EventName("dean_target_unlit_hit")
-                .Add "dean_target_callout", 1
+            With .EventName("dean_targets_lit_complete")
+                .Add "dean_targets_complete_callout1", 1
+                .Add "dean_targets_complete_callout2", 1
+                .Add "dean_targets_complete_callout3", 1
+                .ForceAll = True
+                .ForceDifferent = True
             End With
         End With
 
@@ -475,6 +495,69 @@ Sub CreateBaseMode()
             With .EventName("jess_targets_complete_callout3")
                 .Key = "key_voc_jess_whataboutdean"
                 .Sound = "voc_jess_whataboutdean"
+                .Priority = 1
+            End With
+            With .EventName("dean_target_callout1")
+                .Key = "key_voc_dean_roryiloveyou"
+                .Sound = "voc_dean_roryiloveyou"
+            End With
+            With .EventName("dean_target_callout2")
+                .Key = "key_voc_dean_rory"
+                .Sound = "voc_dean_rory"
+            End With
+            With .EventName("dean_target_callout3")
+                .Key = "key_voc_dean_nicetomeetyou"
+                .Sound = "voc_dean_nicetomeetyou"
+            End With
+            With .EventName("dean_target_callout4")
+                .Key = "key_voc_dean_rosemarysbaby"
+                .Sound = "voc_dean_rosemarysbaby"
+            End With
+            With .EventName("dean_target_callout5")
+                .Key = "key_voc_dean_thatsagreatmovie"
+                .Sound = "voc_dean_thatsagreatmovie"
+            End With
+            With .EventName("dean_target_callout6")
+                .Key = "key_voc_dean_yougotgoodtaste"
+                .Sound = "voc_dean_yougotgoodtaste"
+            End With
+            With .EventName("dean_target_callout7")
+                .Key = "key_voc_dean_imdean"
+                .Sound = "voc_dean_imdean"
+            End With
+            With .EventName("dean_target_callout8")
+                .Key = "key_voc_dean_rory2"
+                .Sound = "voc_dean_rory2"
+            End With
+            With .EventName("dean_target_callout9")
+                .Key = "key_voc_dean_inoticedyou"
+                .Sound = "voc_dean_inoticedyou"
+            End With
+            With .EventName("dean_target_callout10")
+                .Key = "key_voc_dean_niceapron"
+                .Sound = "voc_dean_niceapron"
+            End With
+            With .EventName("dean_target_callout11")
+                .Key = "key_voc_dean_nicechicken"
+                .Sound = "voc_dean_nicechicken"
+            End With
+            With .EventName("dean_target_callout12")
+                .Key = "key_voc_dean_ilikeyourhair"
+                .Sound = "voc_dean_ilikeyourhair"
+            End With
+            With .EventName("dean_targets_complete_callout1")
+                .Key = "key_voc_dean_igotkissed"
+                .Sound = "voc_dean_igotkissed"
+                .Priority = 1
+            End With
+            With .EventName("dean_targets_complete_callout2")
+                .Key = "key_voc_dean_nicetolookat"
+                .Sound = "voc_dean_nicetolookat"
+                .Priority = 1
+            End With
+            With .EventName("dean_targets_complete_callout3")
+                .Key = "key_voc_dean_agoodaisle"
+                .Sound = "voc_dean_agoodaisle"
                 .Priority = 1
             End With
             With .EventName("auto_fire_coil_bumper1_activate{modes.ll_multiball.active==False}")

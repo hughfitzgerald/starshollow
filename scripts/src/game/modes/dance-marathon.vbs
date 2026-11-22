@@ -105,6 +105,10 @@ Sub CreateDanceMarathonMode()
                 .Key = "key_voc_prostrate"
                 .Sound = "voc_prostrate"
             End With
+            With .EventName("dm_voc_8")
+                .Key = "key_voc_dean_idontdance"
+                .Sound = "voc_dean_idontdance"
+            End With
         End With
 
         '--- DMD -----------------------------------------------------------
@@ -259,6 +263,7 @@ Sub CreateDanceMarathonMode()
                 .Add "dm_voc_5", 1
                 .Add "dm_voc_6", 1
                 .Add "dm_voc_7", 1
+                .Add "dm_voc_8", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With

@@ -826,6 +826,32 @@ Sub CreateSounds()
     AddCallout     "voc_dean_causeidkillyou", 3.547438
     AddCallout     "voc_dean_gladyouenjoyedit", 1.679313
     AddCallout     "voc_dean_imnotfightingyou", 4.850063
+    AddCallout     "voc_dean_roryiloveyou", 1.528521
+    AddCallout     "voc_dean_yousaidboyfriend", 3.364750
+    AddCallout     "voc_dean_imgoingwithyou", 2.158313
+    AddCallout     "voc_dean_rory", 0.699688
+    AddCallout     "voc_dean_nicetomeetyou", 1.121000
+    AddCallout     "voc_dean_rosemarysbaby", 0.975375
+    AddCallout     "voc_dean_thatsagreatmovie", 1.070542
+    AddCallout     "voc_dean_yougotgoodtaste", 1.036625
+    AddCallout     "voc_dean_imdean", 0.961396
+    AddCallout     "voc_dean_rory2", 0.490563
+    AddCallout     "voc_dean_inoticedyou", 0.911646
+    AddCallout     "voc_dean_nicetolookat", 1.113083
+    AddCallout     "voc_dean_sawyoustandinginline", 3.739375
+    AddCallout     "voc_dean_goodbyelorelaigilmore", 1.362021
+    AddCallout     "voc_dean_necklace", 7.498771
+    AddCallout     "voc_dean_niceapron", 1.579604
+    AddCallout     "voc_dean_igotkissed", 2.886000
+    AddCallout     "voc_dean_agoodaisle", 2.687104
+    AddCallout     "voc_dean_pinkmoon", 4.327125
+    AddCallout     "voc_dean_nicechicken", 0.796021
+    AddCallout     "voc_dean_notgoinganywhere", 2.080313
+    AddCallout     "voc_dean_ifyouhateme", 2.704229
+    AddCallout     "voc_dean_iloveyourory", 2.442833
+    AddCallout     "voc_dean_dontyoudaremove", 1.717750
+    AddCallout     "voc_dean_perfectmoment", 5.592063
+    AddCallout     "voc_dean_ilikeyourhair", 1.590583
 
     AddCallout     "voc_jess_andyouloveit", 3.395208
     AddCallout     "voc_jess_areyounervous", 3.511021
@@ -889,6 +915,7 @@ Sub CreateSounds()
     AddCallout     "voc_lookgreat", 1.554667
     AddCallout     "voc_neeson", 2.073333
     AddCallout     "voc_prostrate", 5.582667
+    AddCallout     "voc_dean_idontdance", 3.122583
 
     AddCallout     "voc_dinner_lastchancetorun", 9.125833
     AddCallout     "voc_dinner_menken", 5.254167

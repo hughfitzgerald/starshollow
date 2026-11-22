@@ -1695,12 +1695,12 @@ Function Glf_352(args)
 End Function
 Function Glf_353(args)
 	On Error Resume Next
-	    Glf_353 = GetPlayerState("jd_winner") = 2
+	    Glf_353 = GetPlayerState("jd_winner") = 1
 	If Err Then Glf_353 = False
 End Function
 Function Glf_354(args)
 	On Error Resume Next
-	    Glf_354 = GetPlayerState("jd_winner") = 1
+	    Glf_354 = GetPlayerState("jd_winner") = 2
 	If Err Then Glf_354 = False
 End Function
 Function Glf_355(args)
@@ -2393,8 +2393,8 @@ glf_funcRefMap.Add "{current_player.mode_llmb_score}", "Glf_349"
 glf_funcRefMap.Add "7500000", "Glf_350"
 glf_funcRefMap.Add "50000", "Glf_351"
 glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""TEAM JESS"" & Chr(58) & "" LEFT RAMP - TEAM LOGAN"" & Chr(58) & "" RIGHT RAMP""}", "Glf_352"
-glf_funcRefMap.Add "jd_multiball_end_callout{current_player.jd_winner == 2}", "Glf_353"
-glf_funcRefMap.Add "jd_multiball_end_callout{current_player.jd_winner == 1}", "Glf_354"
+glf_funcRefMap.Add "jd_multiball_end_callout{current_player.jd_winner == 1}", "Glf_353"
+glf_funcRefMap.Add "jd_multiball_end_callout{current_player.jd_winner == 2}", "Glf_354"
 glf_funcRefMap.Add "jd_multiball_end_callout{current_player.jd_winner == 0}", "Glf_355"
 glf_funcRefMap.Add "{current_player.mode_jdmb_score}", "Glf_356"
 glf_funcRefMap.Add "4000000", "Glf_357"
