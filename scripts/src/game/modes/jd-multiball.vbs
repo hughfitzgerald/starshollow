@@ -26,6 +26,9 @@ Sub CreateJDMultiballMode()
         'A win (jess_wins / dean_wins) stops the mode like any other ending.
         'Every stop goes through the mode_jd_multiball_stopping relay, which
         'plays a callout picked by jd_winner and waits for it to finish.
+        'Every end callout needs .Priority = 1: the voc bus holds one sound,
+        'and a callout that cannot beat the ramp callout already playing is
+        'dropped, so its events_when_stopped never fire and the relay hangs.
         .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", _
                             "jd_multiball_stop_for_drain", "jess_wins", "dean_wins", "tilt")
 
@@ -252,26 +255,31 @@ Sub CreateJDMultiballMode()
             With .EventName("jd_multiball_end_callout1")
                 .Key = "key_voc_jess_idontdeservethisrory"
                 .Sound = "voc_jess_idontdeservethisrory"
+                .Priority = 1
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jd_multiball_end_callout2")
                 .Key = "key_voc_jess_lovehuh"
                 .Sound = "voc_jess_lovehuh"
+                .Priority = 1
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jd_multiball_end_callout3")
                 .Key = "key_voc_jess_youkissedme"
                 .Sound = "voc_jess_youkissedme"
+                .Priority = 1
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jd_multiball_end_callout4")
                 .Key = "key_voc_dean_gladyouenjoyedit"
                 .Sound = "voc_dean_gladyouenjoyedit"
+                .Priority = 1
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
             With .EventName("jd_multiball_end_callout5")
                 .Key = "key_voc_dean_goodbyelorelaigilmore"
                 .Sound = "voc_dean_goodbyelorelaigilmore"
+                .Priority = 1
                 .EventsWhenStopped = Array("jd_multiball_end_callout_done")
             End With
         End With
