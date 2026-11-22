@@ -41,7 +41,7 @@ Sub CreateKimsAntiquesMode()
             .Add "kims_antiques_relight", Array("choose_new_miss_kim")
 
             For Each shot In kims_antiques_shots
-                .Add shot.Name & "_ready_hit", Array("kims_antiques_shot_hit")
+                .Add shot.Name & "_unlit_hit", Array("kims_antiques_shot_hit")
                 .Add shot.Name & "_miss_kim_hit", Array("miss_kim_shot_hit")
             Next
 
