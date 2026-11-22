@@ -1,5 +1,26 @@
+Class JDMBLights
+    Public Name
+    Public Lights
+    Public Color
+    Public HitEvent
+End Class
+
+Function CreateJDMBLight(name, lights, color, hitEvent)
+    Dim light
+    Set light = New JDMBLights
+    light.Name = name
+    light.Lights = lights
+    light.Color = color
+    light.HitEvent = hitEvent
+    Set CreateJDMBLight = light
+End Function
+
+Dim jessLights, deanLights
+Set jessLights = CreateJDMBLight("jess", Array("JessLight1", "JessLight2", "JessLight3", "JessLight4"), "ff0000", "jess_ramp")
+Set deanLights = CreateJDMBLight("dean", Array("DeanLight1", "DeanLight2", "DeanLight3", "DeanLight4"), "00ff00", "dean_ramp")
 
 Sub CreateJDMultiballMode()
+    Dim x
     With CreateGlfMode("jd_multiball", 1020)
         .StartEvents = Array("start_jd_multiball")
         'A win (jess_wins / dean_wins) stops the mode like any other ending.
@@ -19,14 +40,14 @@ Sub CreateJDMultiballMode()
             'that on the same ramp is a super jackpot, and the fourth wins.
             'Score events go out straight from the shot hits, ahead of
             'jess_wins / dean_wins, which stop this mode.
-            .Add "jess_unlit_hit", Array(ScoreEvent(JDRampScore, NoMultiplier), "jd_jackpot")
-            .Add "dean_unlit_hit", Array(ScoreEvent(JDRampScore, NoMultiplier), "jd_jackpot")
-            .Add "jess_hit1_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
-            .Add "dean_hit1_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
-            .Add "jess_hit2_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
-            .Add "dean_hit2_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot")
-            .Add "jess_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jd_super_jackpot", "jd_win_score", "jess_wins")
-            .Add "dean_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jd_super_jackpot", "jd_win_score", "dean_wins")
+            .Add "jess_unlit_hit", Array(ScoreEvent(JDRampScore, NoMultiplier), "jd_jackpot", "jess_lit:{light:1}")
+            .Add "dean_unlit_hit", Array(ScoreEvent(JDRampScore, NoMultiplier), "jd_jackpot", "dean_lit:{light:1}")
+            .Add "jess_hit1_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot", "jess_lit:{light:2}")
+            .Add "dean_hit1_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot", "dean_lit:{light:2}")
+            .Add "jess_hit2_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot", "jess_lit:{light:3}")
+            .Add "dean_hit2_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), "jd_super_jackpot", "dean_lit:{light:3}")
+            .Add "jess_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "jess_lit:{light:4}", "jd_super_jackpot", "jd_win_score", "jess_wins")
+            .Add "dean_hit3_hit", Array(ScoreEvent(JDSuperJackpotScore, NoMultiplier), ScoreEvent(JDWinScore, NoMultiplier), "dean_lit:{light:4}", "jd_super_jackpot", "jd_win_score", "dean_wins")
 
             .Add "balldevice_scoop_ball_entered", Array("release_scoop_hold")
         End With
@@ -400,6 +421,86 @@ Sub CreateJDMultiballMode()
             End With
         End With
 
+        For x = 0 To UBound(jessLights.Lights)
+            With .Shots(jessLights.Name & x)
+                .Profile = "jd_sign_light"
+                .DisableEvents = Array("mode_jd_multiball_stopping")
+                With .Tokens()
+                    .Add "lights", jessLights.Lights(x)
+                    .Add "color", jessLights.Color
+                End With
+                If x = 0 Then
+                    With .ControlEvents()
+                        .Events = Array("multiball_jdmb_started")
+                        .State = 1
+                    End With
+                Else
+                    With .ControlEvents()
+                        .Events = Array("multiball_jdmb_started")
+                        .State = 0
+                    End With
+                End If
+                With .ControlEvents()
+                    .Events = Array(jessLights.Name & "_lit{kwargs.light == " & (x) & "}")
+                    .State = 1
+                End With
+                With .ControlEvents()
+                    .Events = Array(jessLights.Name & "_lit{kwargs.light == " & (x + 1) & "}")
+                    .State = 2
+                End With
+            End With
+        Next
+
+        For x = 0 To UBound(deanLights.Lights)
+            With .Shots(deanLights.Name & x)
+                .Profile = "jd_sign_light"
+                .DisableEvents = Array("mode_jd_multiball_stopping")
+                With .Tokens()
+                    .Add "lights", deanLights.Lights(x)
+                    .Add "color", deanLights.Color
+                End With
+                If x = 0 Then
+                    With .ControlEvents()
+                        .Events = Array("multiball_jdmb_started")
+                        .State = 1
+                    End With
+                Else
+                    With .ControlEvents()
+                        .Events = Array("multiball_jdmb_started")
+                        .State = 0
+                    End With
+                End If
+                With .ControlEvents()
+                    .Events = Array(deanLights.Name & "_lit{kwargs.light == " & (x) & "}")
+                    .State = 1
+                End With
+                With .ControlEvents()
+                    .Events = Array(deanLights.Name & "_lit{kwargs.light == " & (x + 1) & "}")
+                    .State = 2
+                End With
+            End With
+        Next
+
+        With .ShotProfiles("jd_sign_light")
+            With .States("unlit")
+                .Key = "key_jd_sign_light_unlit"
+                .Show = "off"
+            End With
+            With .States("flash")
+                .Key = "key_jd_sign_light_lit"
+                .Show = "flash_color_with_fade"
+                .Speed = 5
+                With .Tokens()
+                    .Add "fade", 500
+                End With
+            End With
+            With .States("lit")
+                .Key = "key_jd_sign_light_lit"
+                .Show = "flicker_color_on"
+                .Speed = 4
+            End With
+        End With
+        
         With .ShotProfiles("jd_ramp")
             With .States("unlit")
                 .Key = "key_jd_ramp_unlit"
