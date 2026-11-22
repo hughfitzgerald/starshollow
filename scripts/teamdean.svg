@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="270mm"
+   height="45mm"
+   viewBox="0 0 270 45"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="teamDean.svg"
+   inkscape:export-filename="../starshollow/images/teamdean.webp"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     showgrid="false">
+    <!-- VPX wraps the side image around the outline starting at drag point 0:
+         left end 0-25, front 25-135, right end 135-160, back 160-270 -->
+    <sodipodi:guide position="25,45" orientation="1,0" id="guide_front_start" inkscape:label="left end | front" inkscape:locked="false" />
+    <sodipodi:guide position="80,45" orientation="1,0" id="guide_front_center" inkscape:label="front center" inkscape:locked="false" />
+    <sodipodi:guide position="135,45" orientation="1,0" id="guide_front_end" inkscape:label="front | right end" inkscape:locked="false" />
+    <sodipodi:guide position="160,45" orientation="1,0" id="guide_back_start" inkscape:label="right end | back" inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs id="defs1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="background"
+     style="opacity:0.848">
+    <rect
+       style="opacity:1;fill:#927ade;fill-opacity:1;stroke:none"
+       id="rect_bg"
+       width="270"
+       height="45"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:label="letters"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:14px;line-height:1;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';text-align:center;text-anchor:middle;writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="80"
+       y="15"
+       id="text_team"><tspan
+         sodipodi:role="line"
+         id="tspan_team"
+         x="80"
+         y="15">Team</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:28px;line-height:1;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold Condensed';text-align:center;text-anchor:middle;writing-mode:lr-tb;direction:ltr;fill:#3b7fd9;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke fill markers"
+       x="80"
+       y="40"
+       id="text_name"><tspan
+         sodipodi:role="line"
+         id="tspan_name"
+         x="80"
+         y="40">Dean</tspan></text>
+  </g>
+</svg>

@@ -2,7 +2,7 @@
   "$type": "ramp",
   "timer_enabled": false,
   "timer_interval": 100,
-  "ui_locked": false,
+  "ui_locked": true,
   "ui_visible": true,
   "legacy_layer": 11,
   "named_layer": "Collidable_Ramps",

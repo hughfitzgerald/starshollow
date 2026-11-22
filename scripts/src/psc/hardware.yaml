@@ -37,6 +37,15 @@ lights:
   l9: fc7703
   SkillshotLight: fc7703 # SkillshotColor
 
+  DeanLight1: 00ff00
+  DeanLight2: 00ff00
+  DeanLight3: 00ff00
+  DeanLight4: 00ff00
+  JessLight1: ff0000
+  JessLight2: ff0000
+  JessLight3: ff0000
+  JessLight4: ff0000
+
   l11: 0023cc # standups (StandupColor)
   l12: 0023cc
   l13: 0023cc

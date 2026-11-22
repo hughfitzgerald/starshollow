@@ -2000,6 +2000,22 @@ Dim glf_FL5_lmarr : glf_FL5_lmarr = Array(f_fl5_,p_fl5_)
 glf_lightMaps.Add "FL5", glf_FL5_lmarr
 Dim glf_SkillshotLight_lmarr : glf_SkillshotLight_lmarr = Array()
 glf_lightMaps.Add "SkillshotLight", glf_SkillshotLight_lmarr
+Dim glf_DeanLight1_lmarr : glf_DeanLight1_lmarr = Array()
+glf_lightMaps.Add "DeanLight1", glf_DeanLight1_lmarr
+Dim glf_DeanLight2_lmarr : glf_DeanLight2_lmarr = Array()
+glf_lightMaps.Add "DeanLight2", glf_DeanLight2_lmarr
+Dim glf_DeanLight3_lmarr : glf_DeanLight3_lmarr = Array()
+glf_lightMaps.Add "DeanLight3", glf_DeanLight3_lmarr
+Dim glf_DeanLight4_lmarr : glf_DeanLight4_lmarr = Array()
+glf_lightMaps.Add "DeanLight4", glf_DeanLight4_lmarr
+Dim glf_JessLight1_lmarr : glf_JessLight1_lmarr = Array()
+glf_lightMaps.Add "JessLight1", glf_JessLight1_lmarr
+Dim glf_JessLight2_lmarr : glf_JessLight2_lmarr = Array()
+glf_lightMaps.Add "JessLight2", glf_JessLight2_lmarr
+Dim glf_JessLight3_lmarr : glf_JessLight3_lmarr = Array()
+glf_lightMaps.Add "JessLight3", glf_JessLight3_lmarr
+Dim glf_JessLight4_lmarr : glf_JessLight4_lmarr = Array()
+glf_lightMaps.Add "JessLight4", glf_JessLight4_lmarr
 Dim glf_l72_lmarr : glf_l72_lmarr = Array()
 glf_lightMaps.Add "l72", glf_l72_lmarr
 Dim glf_l28_lmarr : glf_l28_lmarr = Array()

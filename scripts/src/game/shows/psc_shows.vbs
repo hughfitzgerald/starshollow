@@ -88,6 +88,14 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "bg_logo|100|stop", _
@@ -325,6 +333,10 @@ Sub CreatePscShows()
                 "l65|100|000000", _
                 "l67|100|ffff00", _
                 "FL2|80|00ff00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "l28|20|ffffff", _
                 "gi025|100|ffa957", _
                 "gi027|100|ffa957")
@@ -365,6 +377,10 @@ Sub CreatePscShows()
                 "l69|100|ffff00", _
                 "FL1|80|ff0000", _
                 "FL2|60|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|80|8800ff", _
                 "l28|100|000000")
         End With
@@ -444,6 +460,10 @@ Sub CreatePscShows()
                 "l70|100|ffff00", _
                 "FL1|40|ff0000", _
                 "FL2|20|00ff00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l72|40|8800ff", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
@@ -481,6 +501,14 @@ Sub CreatePscShows()
                 "l71|100|ffff00", _
                 "FL1|20|ff0000", _
                 "FL2|100|000000", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|20|8800ff", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
@@ -511,6 +539,14 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL2|100|stop", _
                 "FL5|80|ffea00", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|000000", _
                 "gi025|40|ffa957", _
                 "gi027|40|ffa957")
@@ -538,6 +574,14 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "FL1|100|stop", _
                 "FL5|60|ffea00", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "l72|100|stop", _
                 "gi025|20|ffa957", _
                 "gi027|20|ffa957")
@@ -568,6 +612,14 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|80|ffff00", _
                 "FL5|40|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "gi025|100|000000", _
                 "gi027|100|000000")
         End With
@@ -591,6 +643,14 @@ Sub CreatePscShows()
                 "l71|60|ffff00", _
                 "FL5|20|ffea00", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "gi025|100|stop", _
                 "gi027|100|stop")
         End With
@@ -606,7 +666,11 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l70|20|ffff00", _
                 "l71|40|ffff00", _
-                "FL5|100|000000")
+                "FL5|100|000000", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.63s
             .Lights = Array( _
@@ -1056,6 +1120,7 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight4|100|ff0000", _
                 "Light001|100|stop", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
@@ -1089,7 +1154,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
                 "l71|60|ffff00", _
-                "SkillshotLight|100|stop")
+                "SkillshotLight|100|stop", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.35s
             .Lights = Array( _
@@ -1114,6 +1182,10 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "l71|40|ffff00", _
                 "FL5|80|ffea00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "gi025|100|ffa957", _
                 "gi027|100|ffa957")
         End With
@@ -1135,6 +1207,9 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|20|ffff00", _
                 "FL5|60|ffea00", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|100|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.41s
@@ -1158,6 +1233,13 @@ Sub CreatePscShows()
                 "l71|100|000000", _
                 "FL1|100|ff0000", _
                 "FL5|40|ffea00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
             With .DOFEvent(125)
@@ -1190,6 +1272,14 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "FL2|100|00ff00", _
                 "FL5|20|ffea00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|80|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
             With .DOFEvent(126)
@@ -1224,6 +1314,14 @@ Sub CreatePscShows()
                 "l70|100|000000", _
                 "FL1|80|ff0000", _
                 "FL5|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "l72|80|8800ff", _
                 "gi025|40|ffa957", _
                 "gi027|40|ffa957")
@@ -1258,6 +1356,14 @@ Sub CreatePscShows()
                 "FL1|60|ff0000", _
                 "FL2|80|00ff00", _
                 "FL5|100|stop", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|60|8800ff", _
                 "l28|100|ffffff", _
                 "gi025|20|ffa957", _
@@ -1299,6 +1405,14 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "FL1|40|ff0000", _
                 "FL2|60|00ff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|40|8800ff", _
                 "gi025|100|000000", _
                 "gi027|100|000000")
@@ -1340,6 +1454,11 @@ Sub CreatePscShows()
                 "l68|100|stop", _
                 "FL1|20|ff0000", _
                 "FL2|40|00ff00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|000000", _
+                "JessLight1|100|stop", _
                 "l72|20|8800ff", _
                 "gi025|100|stop", _
                 "gi027|100|stop")
@@ -1377,6 +1496,7 @@ Sub CreatePscShows()
                 "l66|100|stop", _
                 "FL1|100|000000", _
                 "FL2|20|00ff00", _
+                "DeanLight4|100|stop", _
                 "l72|100|000000", _
                 "l28|80|ffffff")
         End With
@@ -1683,6 +1803,7 @@ Sub CreatePscShows()
                 "FL2|20|00ff00", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight4|100|00ff00", _
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|20|ffa957", _
@@ -1714,6 +1835,8 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "l71|80|ffff00", _
                 "FL2|100|000000", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
                 "bg_flash_upper_right|20|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|100|000000", _
@@ -1749,6 +1872,7 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|60|ffff00", _
                 "FL2|100|stop", _
+                "DeanLight1|100|00ff00", _
                 "bg_flash_upper_right|100|000000", _
                 "bg_flash_lower_right|100|000000", _
                 "gi027|100|stop", _
@@ -1785,6 +1909,7 @@ Sub CreatePscShows()
                 "l70|40|ffff00", _
                 "l71|40|ffff00", _
                 "SkillshotLight|80|fc7703", _
+                "DeanLight4|80|00ff00", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "Light010|20|bf3957", _
@@ -1816,6 +1941,8 @@ Sub CreatePscShows()
                 "l70|20|ffff00", _
                 "l71|20|ffff00", _
                 "SkillshotLight|60|fc7703", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "bg_logo|100|ffffff", _
                 "Light008|80|d938c7", _
                 "Light009|80|d938c7", _
@@ -1851,6 +1978,10 @@ Sub CreatePscShows()
                 "l70|100|000000", _
                 "l71|100|000000", _
                 "SkillshotLight|40|fc7703", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|40|00ff00", _
                 "l28|100|ffffff", _
                 "Light006|100|bae046", _
                 "Light007|80|d938c7", _
@@ -1882,6 +2013,10 @@ Sub CreatePscShows()
                 "l70|100|stop", _
                 "l71|100|stop", _
                 "SkillshotLight|20|fc7703", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|20|00ff00", _
                 "Light005|100|bae046", _
                 "Light007|60|d938c7", _
                 "Light008|40|d938c7", _
@@ -1910,6 +2045,10 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|60|ffff00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|100|000000", _
                 "l72|100|8800ff", _
                 "bg_logo|80|ffffff", _
                 "Light004|100|bae046", _
@@ -1943,6 +2082,10 @@ Sub CreatePscShows()
                 "l68|60|ffff00", _
                 "l69|40|ffff00", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|stop", _
                 "l28|80|ffffff", _
                 "bg_logo|60|ffffff", _
                 "Light007|20|d938c7", _
@@ -1968,6 +2111,9 @@ Sub CreatePscShows()
                 "l67|40|ffff00", _
                 "l68|40|ffff00", _
                 "l69|20|ffff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|stop", _
                 "l28|60|ffffff", _
                 "bg_logo|40|ffffff", _
                 "Light005|80|bae046", _
@@ -1996,6 +2142,8 @@ Sub CreatePscShows()
                 "l68|20|ffff00", _
                 "l69|100|000000", _
                 "FL5|100|ffea00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
                 "l72|80|8800ff", _
                 "l28|40|ffffff", _
                 "bg_logo|20|ffffff", _
@@ -2031,6 +2179,7 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "l68|100|000000", _
                 "l69|100|stop", _
+                "JessLight4|100|ff0000", _
                 "l72|60|8800ff", _
                 "l28|20|ffffff", _
                 "bg_logo|100|000000", _
@@ -2058,6 +2207,8 @@ Sub CreatePscShows()
                 "l66|100|stop", _
                 "l67|100|stop", _
                 "l68|100|stop", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
                 "l72|40|8800ff", _
                 "l28|100|000000", _
                 "bg_logo|100|stop", _
@@ -2087,6 +2238,7 @@ Sub CreatePscShows()
                 "l59|40|ffffff", _
                 "l63|100|ffffff", _
                 "FL5|80|ffea00", _
+                "JessLight1|100|ff0000", _
                 "l72|20|8800ff", _
                 "l28|100|stop", _
                 "bg_flash_lower_left|100|ffffff", _
@@ -2115,6 +2267,7 @@ Sub CreatePscShows()
                 "l60|40|ffffff", _
                 "l59|20|ffffff", _
                 "FL5|60|ffea00", _
+                "JessLight4|80|ff0000", _
                 "l72|100|000000", _
                 "Light003|80|78bec0", _
                 "Light004|100|000000", _
@@ -2144,6 +2297,8 @@ Sub CreatePscShows()
                 "FL1|100|ff0000", _
                 "FL4|100|ffa500", _
                 "FL5|40|ffea00", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|stop", _
                 "Light002|80|78bec0", _
                 "Light003|60|78bec0", _
@@ -2177,6 +2332,10 @@ Sub CreatePscShows()
                 "l59|100|stop", _
                 "l62|100|ffffff", _
                 "FL5|20|ffea00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|40|ff0000", _
                 "bg_flash_lower_left|80|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "gi025|100|ffa957", _
@@ -2205,6 +2364,10 @@ Sub CreatePscShows()
                 "l60|100|stop", _
                 "l63|80|ffffff", _
                 "FL5|100|000000", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|20|ff0000", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_upper_left|60|ffffff", _
                 "Light001|60|78bec0", _
@@ -2230,6 +2393,10 @@ Sub CreatePscShows()
                 "gi026|100|000000", _
                 "l63|60|ffffff", _
                 "FL5|100|stop", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|100|000000", _
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|40|78bec0", _
@@ -2256,6 +2423,10 @@ Sub CreatePscShows()
                 "l63|40|ffffff", _
                 "FL1|100|ff0000", _
                 "FL4|100|ffa500", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|stop", _
                 "bg_flash_lower_left|20|ffffff", _
                 "bg_flash_upper_left|20|ffffff", _
                 "gi025|100|ffa957", _
@@ -2276,6 +2447,9 @@ Sub CreatePscShows()
                 "l14|20|0023cc", _
                 "l51|20|ff9c15", _
                 "l63|20|ffffff", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|stop", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
                 "Light001|100|000000", _
@@ -2290,6 +2464,8 @@ Sub CreatePscShows()
                 "l14|100|0023cc", _
                 "l51|100|ff9c15", _
                 "l63|100|ffffff", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
                 "Light001|100|stop")
@@ -2300,6 +2476,8 @@ Sub CreatePscShows()
                 "gi023|80|ffa957", _
                 "l11|100|0023cc", _
                 "l12|100|0023cc", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
                 "bg_flash_lower_left|100|ffffff", _
                 "bg_flash_upper_left|100|ffffff", _
                 "gi025|80|ffa957", _
@@ -2314,6 +2492,7 @@ Sub CreatePscShows()
                 "l62|80|ffffff", _
                 "FL1|80|ff0000", _
                 "FL4|80|ffa500", _
+                "JessLight3|100|ff0000", _
                 "gi025|60|ffa957", _
                 "Light002|100|78bec0")
         End With
@@ -2329,6 +2508,7 @@ Sub CreatePscShows()
                 "l62|60|ffffff", _
                 "FL1|60|ff0000", _
                 "FL4|60|ffa500", _
+                "JessLight4|100|ff0000", _
                 "gi025|40|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=2.79s
@@ -2348,6 +2528,7 @@ Sub CreatePscShows()
                 "FL1|40|ff0000", _
                 "FL4|40|ffa500", _
                 "FL5|100|ffea00", _
+                "JessLight1|80|ff0000", _
                 "gi025|20|ffa957", _
                 "Light001|80|78bec0", _
                 "Light003|100|78bec0")
@@ -2373,6 +2554,9 @@ Sub CreatePscShows()
                 "l63|60|ffffff", _
                 "FL1|20|ff0000", _
                 "FL4|20|ffa500", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
                 "bg_flash_lower_left|80|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "gi025|100|000000", _
@@ -2402,6 +2586,10 @@ Sub CreatePscShows()
                 "l63|40|ffffff", _
                 "FL1|100|000000", _
                 "FL4|100|000000", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|80|ff0000", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_upper_left|60|ffffff", _
                 "gi025|100|stop", _
@@ -2431,6 +2619,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|80|ffea00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|8800ff", _
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|40|ffffff", _
@@ -2459,6 +2651,10 @@ Sub CreatePscShows()
                 "gi026|40|ffa957", _
                 "l63|100|000000", _
                 "FL5|60|ffea00", _
+                "JessLight1|100|000000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|40|ff0000", _
                 "bg_flash_lower_left|20|ffffff", _
                 "bg_flash_upper_left|20|ffffff", _
                 "Light001|100|000000", _
@@ -2491,6 +2687,10 @@ Sub CreatePscShows()
                 "l59|80|ffffff", _
                 "l63|100|stop", _
                 "FL5|40|ffea00", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|20|ff0000", _
                 "l28|100|ffffff", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -2522,6 +2722,9 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
                 "FL5|20|ffea00", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|000000", _
                 "l72|80|8800ff", _
                 "bg_logo|100|ffffff", _
                 "bg_flash_lower_left|100|stop", _
@@ -2551,6 +2754,7 @@ Sub CreatePscShows()
                 "l59|40|ffffff", _
                 "l69|100|ffff00", _
                 "FL5|100|000000", _
+                "JessLight4|100|stop", _
                 "l72|60|8800ff", _
                 "Light002|100|stop", _
                 "Light003|100|000000", _
@@ -2578,6 +2782,8 @@ Sub CreatePscShows()
                 "l60|20|ffffff", _
                 "l59|20|ffffff", _
                 "FL5|100|stop", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
                 "l72|40|8800ff", _
                 "l28|80|ffffff", _
                 "Light003|100|stop", _
@@ -2604,6 +2810,7 @@ Sub CreatePscShows()
                 "l60|100|000000", _
                 "l59|100|000000", _
                 "l67|80|ffff00", _
+                "DeanLight3|100|00ff00", _
                 "l72|20|8800ff", _
                 "l28|60|ffffff", _
                 "bg_logo|80|ffffff", _
@@ -2633,6 +2840,7 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|80|ffff00", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight4|100|00ff00", _
                 "l72|100|000000", _
                 "l28|40|ffffff", _
                 "bg_logo|60|ffffff", _
@@ -2663,6 +2871,7 @@ Sub CreatePscShows()
                 "l67|40|ffff00", _
                 "l68|60|ffff00", _
                 "l69|60|ffff00", _
+                "DeanLight1|80|00ff00", _
                 "l72|100|stop", _
                 "l28|20|ffffff", _
                 "bg_logo|40|ffffff", _
@@ -2695,6 +2904,8 @@ Sub CreatePscShows()
                 "l69|40|ffff00", _
                 "l70|100|ffff00", _
                 "l71|100|ffff00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|80|00ff00", _
                 "l28|100|000000", _
                 "bg_logo|20|ffffff", _
                 "Light005|100|stop", _
@@ -2728,6 +2939,10 @@ Sub CreatePscShows()
                 "l68|20|ffff00", _
                 "l69|20|ffff00", _
                 "SkillshotLight|80|fc7703", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l28|100|stop", _
                 "bg_logo|100|000000", _
                 "Light006|100|stop", _
@@ -2756,6 +2971,10 @@ Sub CreatePscShows()
                 "l68|100|000000", _
                 "l69|100|000000", _
                 "SkillshotLight|60|fc7703", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "bg_logo|100|stop", _
                 "Light007|20|d938c7", _
                 "Light008|40|d938c7", _
@@ -2786,6 +3005,10 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l71|80|ffff00", _
                 "SkillshotLight|40|fc7703", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
                 "Light007|100|000000", _
@@ -2819,6 +3042,10 @@ Sub CreatePscShows()
                 "l71|60|ffff00", _
                 "FL2|100|00ff00", _
                 "SkillshotLight|20|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
                 "gi027|100|ffa957", _
                 "Light007|100|stop", _
                 "Light008|100|000000", _
@@ -2852,6 +3079,9 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|40|ffff00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
                 "Light008|100|stop", _
                 "Light009|100|000000", _
                 "Light010|60|bf3957", _
@@ -2881,6 +3111,8 @@ Sub CreatePscShows()
                 "l71|20|ffff00", _
                 "FL3|100|0000ff", _
                 "SkillshotLight|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
                 "Light009|100|stop", _
@@ -3099,6 +3331,14 @@ Sub CreatePscShows()
                 "FL4|100|ffa500", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|43|fc7703", _
+                "DeanLight1|43|00ff00", _
+                "DeanLight2|43|00ff00", _
+                "DeanLight3|43|00ff00", _
+                "DeanLight4|43|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "l28|100|ffffff", _
                 "bg_logo|43|ffffff", _
@@ -3166,6 +3406,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -3279,6 +3523,10 @@ Sub CreatePscShows()
                 "FL1|64|ff0000", _
                 "FL4|57|ffa500", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "bg_flash_lower_left|57|ffffff", _
                 "bg_flash_upper_left|57|ffffff", _
@@ -3334,6 +3582,10 @@ Sub CreatePscShows()
                 "FL1|86|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|86|ffea00", _
+                "JessLight1|86|ff0000", _
+                "JessLight2|86|ff0000", _
+                "JessLight3|86|ff0000", _
+                "JessLight4|86|ff0000", _
                 "l72|86|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -3362,6 +3614,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -3382,6 +3638,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -3432,6 +3692,10 @@ Sub CreatePscShows()
                 "FL4|64|ffa500", _
                 "FL5|57|ffea00", _
                 "SkillshotLight|64|fc7703", _
+                "JessLight1|57|ff0000", _
+                "JessLight2|57|ff0000", _
+                "JessLight3|57|ff0000", _
+                "JessLight4|57|ff0000", _
                 "l72|57|8800ff", _
                 "l28|64|ffffff", _
                 "bg_flash_lower_left|64|ffffff", _
@@ -3507,6 +3771,10 @@ Sub CreatePscShows()
                 "FL4|86|ffa500", _
                 "FL5|43|ffea00", _
                 "SkillshotLight|86|fc7703", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "l28|86|ffffff", _
                 "bg_flash_lower_left|86|ffffff", _
@@ -3677,6 +3945,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
                 "bg_flash_upper_left|100|ffffff|80", _
@@ -3753,6 +4029,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
                 "bg_flash_upper_left|43|ffffff|80", _
@@ -3880,6 +4164,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -3927,6 +4215,10 @@ Sub CreatePscShows()
                 "FL1|79|ff0000", _
                 "FL4|50|ffa500", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "l28|50|ffffff", _
                 "bg_flash_lower_left|50|ffffff", _
@@ -3975,6 +4267,10 @@ Sub CreatePscShows()
                 "FL1|100|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "l28|43|ffffff", _
                 "bg_flash_lower_left|43|ffffff", _
@@ -4004,6 +4300,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -4024,6 +4324,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -4098,6 +4402,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000", _
                 "FL4|79|ffa500", _
                 "FL5|43|ffea00", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "bg_flash_lower_left|79|ffffff", _
                 "bg_flash_upper_left|79|ffffff", _
@@ -4219,6 +4527,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -4296,6 +4612,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -4410,6 +4734,10 @@ Sub CreatePscShows()
                 "FL1|64|ff0000", _
                 "FL4|57|ffa500", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "bg_flash_lower_left|57|ffffff", _
                 "bg_flash_upper_left|57|ffffff", _
@@ -4465,6 +4793,10 @@ Sub CreatePscShows()
                 "FL1|86|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|86|ffea00", _
+                "JessLight1|86|ff0000", _
+                "JessLight2|86|ff0000", _
+                "JessLight3|86|ff0000", _
+                "JessLight4|86|ff0000", _
                 "l72|86|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -4493,6 +4825,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -4513,6 +4849,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -4552,6 +4892,10 @@ Sub CreatePscShows()
                 "FL1|100|ff0000|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -4642,6 +4986,14 @@ Sub CreatePscShows()
                 "FL4|100|ffa500", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|43|fc7703", _
+                "DeanLight1|43|00ff00", _
+                "DeanLight2|43|00ff00", _
+                "DeanLight3|43|00ff00", _
+                "DeanLight4|43|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "l28|100|ffffff", _
                 "bg_logo|43|ffffff", _
@@ -4700,6 +5052,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -4824,6 +5180,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -4863,6 +5223,10 @@ Sub CreatePscShows()
                 "FL1|72|ff0000", _
                 "FL4|50|ffa500", _
                 "FL5|72|ffea00", _
+                "JessLight1|72|ff0000", _
+                "JessLight2|72|ff0000", _
+                "JessLight3|72|ff0000", _
+                "JessLight4|72|ff0000", _
                 "l72|72|8800ff", _
                 "bg_flash_lower_left|50|ffffff", _
                 "bg_flash_upper_left|50|ffffff", _
@@ -4916,6 +5280,10 @@ Sub CreatePscShows()
                 "FL1|93|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|93|ffea00", _
+                "JessLight1|93|ff0000", _
+                "JessLight2|93|ff0000", _
+                "JessLight3|93|ff0000", _
+                "JessLight4|93|ff0000", _
                 "l72|93|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -4944,6 +5312,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -4964,6 +5336,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -4984,6 +5360,10 @@ Sub CreatePscShows()
                 "l67|72|ffff00", _
                 "FL1|72|ff0000", _
                 "FL5|72|ffea00", _
+                "JessLight1|72|ff0000", _
+                "JessLight2|72|ff0000", _
+                "JessLight3|72|ff0000", _
+                "JessLight4|72|ff0000", _
                 "l72|72|8800ff", _
                 "gi025|72|ffa957")
         End With
@@ -5084,6 +5464,10 @@ Sub CreatePscShows()
                 "FL4|72|ffa500", _
                 "FL5|50|ffea00", _
                 "SkillshotLight|72|fc7703", _
+                "JessLight1|50|ff0000", _
+                "JessLight2|50|ff0000", _
+                "JessLight3|50|ff0000", _
+                "JessLight4|50|ff0000", _
                 "l72|50|8800ff", _
                 "l28|72|ffffff", _
                 "bg_flash_lower_left|72|ffffff", _
@@ -5157,6 +5541,10 @@ Sub CreatePscShows()
                 "FL4|93|ffa500", _
                 "FL5|43|ffea00", _
                 "SkillshotLight|93|fc7703", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "l28|93|ffffff", _
                 "bg_flash_lower_left|93|ffffff", _
@@ -5327,6 +5715,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
                 "bg_flash_upper_left|100|ffffff|80", _
@@ -5403,6 +5799,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
                 "bg_flash_upper_left|43|ffffff|80", _
@@ -5518,6 +5922,10 @@ Sub CreatePscShows()
                 "FL1|64|ff0000", _
                 "FL4|64|ffa500", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "l28|64|ffffff", _
                 "bg_flash_lower_left|64|ffffff", _
@@ -5574,6 +5982,10 @@ Sub CreatePscShows()
                 "FL1|86|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|86|ffea00", _
+                "JessLight1|86|ff0000", _
+                "JessLight2|86|ff0000", _
+                "JessLight3|86|ff0000", _
+                "JessLight4|86|ff0000", _
                 "l72|86|8800ff", _
                 "l28|43|ffffff", _
                 "bg_flash_lower_left|43|ffffff", _
@@ -5603,6 +6015,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -5623,6 +6039,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -5662,6 +6082,10 @@ Sub CreatePscShows()
                 "FL1|57|ff0000", _
                 "FL4|64|ffa500", _
                 "FL5|57|ffea00", _
+                "JessLight1|57|ff0000", _
+                "JessLight2|57|ff0000", _
+                "JessLight3|57|ff0000", _
+                "JessLight4|57|ff0000", _
                 "l72|57|8800ff", _
                 "bg_flash_lower_left|64|ffffff", _
                 "bg_flash_upper_left|64|ffffff", _
@@ -5714,6 +6138,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000", _
                 "FL4|86|ffa500", _
                 "FL5|43|ffea00", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "bg_flash_lower_left|86|ffffff", _
                 "bg_flash_upper_left|86|ffffff", _
@@ -5835,6 +6263,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -5912,6 +6348,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -6037,6 +6481,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -6076,6 +6524,10 @@ Sub CreatePscShows()
                 "FL1|72|ff0000", _
                 "FL4|50|ffa500", _
                 "FL5|72|ffea00", _
+                "JessLight1|72|ff0000", _
+                "JessLight2|72|ff0000", _
+                "JessLight3|72|ff0000", _
+                "JessLight4|72|ff0000", _
                 "l72|72|8800ff", _
                 "bg_flash_lower_left|50|ffffff", _
                 "bg_flash_upper_left|50|ffffff", _
@@ -6129,6 +6581,10 @@ Sub CreatePscShows()
                 "FL1|93|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|93|ffea00", _
+                "JessLight1|93|ff0000", _
+                "JessLight2|93|ff0000", _
+                "JessLight3|93|ff0000", _
+                "JessLight4|93|ff0000", _
                 "l72|93|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -6157,6 +6613,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -6177,6 +6637,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -6197,6 +6661,10 @@ Sub CreatePscShows()
                 "l67|72|ffff00", _
                 "FL1|72|ff0000", _
                 "FL5|72|ffea00", _
+                "JessLight1|72|ff0000", _
+                "JessLight2|72|ff0000", _
+                "JessLight3|72|ff0000", _
+                "JessLight4|72|ff0000", _
                 "l72|72|8800ff", _
                 "gi025|72|ffa957")
         End With
@@ -6236,6 +6704,10 @@ Sub CreatePscShows()
                 "FL1|100|ff0000|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -6326,6 +6798,14 @@ Sub CreatePscShows()
                 "FL4|100|ffa500", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|43|fc7703", _
+                "DeanLight1|43|00ff00", _
+                "DeanLight2|43|00ff00", _
+                "DeanLight3|43|00ff00", _
+                "DeanLight4|43|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "l28|100|ffffff", _
                 "bg_logo|43|ffffff", _
@@ -6384,6 +6864,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -6508,6 +6992,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -6555,6 +7043,10 @@ Sub CreatePscShows()
                 "FL1|79|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -6583,6 +7075,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -6603,6 +7099,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -6623,6 +7123,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -6731,6 +7235,10 @@ Sub CreatePscShows()
                 "FL4|79|ffa500", _
                 "FL5|43|ffea00", _
                 "SkillshotLight|79|fc7703", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "l28|79|ffffff", _
                 "bg_flash_lower_left|79|ffffff", _
@@ -6901,6 +7409,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
                 "bg_flash_upper_left|100|ffffff|80", _
@@ -6977,6 +7493,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
                 "bg_flash_upper_left|43|ffffff|80", _
@@ -7073,6 +7597,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -7112,6 +7640,10 @@ Sub CreatePscShows()
                 "FL1|72|ff0000", _
                 "FL4|57|ffa500", _
                 "FL5|72|ffea00", _
+                "JessLight1|72|ff0000", _
+                "JessLight2|72|ff0000", _
+                "JessLight3|72|ff0000", _
+                "JessLight4|72|ff0000", _
                 "l72|72|8800ff", _
                 "l28|57|ffffff", _
                 "bg_flash_lower_left|57|ffffff", _
@@ -7166,6 +7698,10 @@ Sub CreatePscShows()
                 "FL1|93|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|93|ffea00", _
+                "JessLight1|93|ff0000", _
+                "JessLight2|93|ff0000", _
+                "JessLight3|93|ff0000", _
+                "JessLight4|93|ff0000", _
                 "l72|93|8800ff", _
                 "l28|43|ffffff", _
                 "bg_flash_lower_left|43|ffffff", _
@@ -7195,6 +7731,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -7215,6 +7755,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -7235,6 +7779,10 @@ Sub CreatePscShows()
                 "l67|72|ffff00", _
                 "FL1|72|ff0000", _
                 "FL5|72|ffea00", _
+                "JessLight1|72|ff0000", _
+                "JessLight2|72|ff0000", _
+                "JessLight3|72|ff0000", _
+                "JessLight4|72|ff0000", _
                 "l72|72|8800ff", _
                 "gi025|72|ffa957")
         End With
@@ -7304,6 +7852,10 @@ Sub CreatePscShows()
                 "FL1|50|ff0000", _
                 "FL4|72|ffa500", _
                 "FL5|50|ffea00", _
+                "JessLight1|50|ff0000", _
+                "JessLight2|50|ff0000", _
+                "JessLight3|50|ff0000", _
+                "JessLight4|50|ff0000", _
                 "l72|50|8800ff", _
                 "bg_flash_lower_left|72|ffffff", _
                 "bg_flash_upper_left|72|ffffff", _
@@ -7354,6 +7906,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000", _
                 "FL4|93|ffa500", _
                 "FL5|43|ffea00", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "bg_flash_lower_left|93|ffffff", _
                 "bg_flash_upper_left|93|ffffff", _
@@ -7475,6 +8031,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -7552,6 +8116,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -7677,6 +8249,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -7724,6 +8300,10 @@ Sub CreatePscShows()
                 "FL1|79|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -7752,6 +8332,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -7772,6 +8356,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -7792,6 +8380,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -7831,6 +8423,10 @@ Sub CreatePscShows()
                 "FL1|100|ff0000|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -7921,6 +8517,14 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "bg_logo|100|stop", _
@@ -8158,6 +8762,10 @@ Sub CreatePscShows()
                 "l65|100|000000", _
                 "l67|100|ffff00", _
                 "FL2|80|00ff00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "l28|20|ffffff", _
                 "gi025|100|ffa957", _
                 "gi027|100|ffa957")
@@ -8198,6 +8806,10 @@ Sub CreatePscShows()
                 "l69|100|ffff00", _
                 "FL1|80|ff0000", _
                 "FL2|60|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|80|8800ff", _
                 "l28|100|000000")
         End With
@@ -8277,6 +8889,10 @@ Sub CreatePscShows()
                 "l70|100|ffff00", _
                 "FL1|40|ff0000", _
                 "FL2|20|00ff00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l72|40|8800ff", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
@@ -8314,6 +8930,14 @@ Sub CreatePscShows()
                 "l71|100|ffff00", _
                 "FL1|20|ff0000", _
                 "FL2|100|000000", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|20|8800ff", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
@@ -8344,6 +8968,14 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL2|100|stop", _
                 "FL5|80|ffea00", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|000000", _
                 "gi025|40|ffa957", _
                 "gi027|40|ffa957")
@@ -8371,6 +9003,14 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "FL1|100|stop", _
                 "FL5|60|ffea00", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "l72|100|stop", _
                 "gi025|20|ffa957", _
                 "gi027|20|ffa957")
@@ -8401,6 +9041,14 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|80|ffff00", _
                 "FL5|40|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "gi025|100|000000", _
                 "gi027|100|000000")
         End With
@@ -8424,6 +9072,14 @@ Sub CreatePscShows()
                 "l71|60|ffff00", _
                 "FL5|20|ffea00", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "gi025|100|stop", _
                 "gi027|100|stop")
         End With
@@ -8439,7 +9095,11 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l70|20|ffff00", _
                 "l71|40|ffff00", _
-                "FL5|100|000000")
+                "FL5|100|000000", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.27s
             .Lights = Array( _
@@ -8889,6 +9549,7 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight4|100|ff0000", _
                 "Light001|100|stop", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
@@ -8922,7 +9583,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
                 "l71|60|ffff00", _
-                "SkillshotLight|100|stop")
+                "SkillshotLight|100|stop", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=6.99s
             .Lights = Array( _
@@ -8947,6 +9611,10 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "l71|40|ffff00", _
                 "FL5|80|ffea00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "gi025|100|ffa957", _
                 "gi027|100|ffa957")
         End With
@@ -8968,6 +9636,9 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|20|ffff00", _
                 "FL5|60|ffea00", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|100|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=7.05s
@@ -8991,6 +9662,13 @@ Sub CreatePscShows()
                 "l71|100|000000", _
                 "FL1|100|ff0000", _
                 "FL5|40|ffea00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
             With .DOFEvent(125)
@@ -9023,6 +9701,14 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "FL2|100|00ff00", _
                 "FL5|20|ffea00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|80|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
             With .DOFEvent(126)
@@ -9057,6 +9743,14 @@ Sub CreatePscShows()
                 "l70|100|000000", _
                 "FL1|80|ff0000", _
                 "FL5|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "l72|80|8800ff", _
                 "gi025|40|ffa957", _
                 "gi027|40|ffa957")
@@ -9091,6 +9785,14 @@ Sub CreatePscShows()
                 "FL1|60|ff0000", _
                 "FL2|80|00ff00", _
                 "FL5|100|stop", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|60|8800ff", _
                 "l28|100|ffffff", _
                 "gi025|20|ffa957", _
@@ -9132,6 +9834,14 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "FL1|40|ff0000", _
                 "FL2|60|00ff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|40|8800ff", _
                 "gi025|100|000000", _
                 "gi027|100|000000")
@@ -9173,6 +9883,11 @@ Sub CreatePscShows()
                 "l68|100|stop", _
                 "FL1|20|ff0000", _
                 "FL2|40|00ff00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|000000", _
+                "JessLight1|100|stop", _
                 "l72|20|8800ff", _
                 "gi025|100|stop", _
                 "gi027|100|stop")
@@ -9210,6 +9925,7 @@ Sub CreatePscShows()
                 "l66|100|stop", _
                 "FL1|100|000000", _
                 "FL2|20|00ff00", _
+                "DeanLight4|100|stop", _
                 "l72|100|000000", _
                 "l28|80|ffffff")
         End With
@@ -9516,6 +10232,7 @@ Sub CreatePscShows()
                 "FL2|20|00ff00", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight4|100|00ff00", _
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|20|ffa957", _
@@ -9547,6 +10264,8 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "l71|80|ffff00", _
                 "FL2|100|000000", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
                 "bg_flash_upper_right|20|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|100|000000", _
@@ -9582,6 +10301,7 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|60|ffff00", _
                 "FL2|100|stop", _
+                "DeanLight1|100|00ff00", _
                 "bg_flash_upper_right|100|000000", _
                 "bg_flash_lower_right|100|000000", _
                 "gi027|100|stop", _
@@ -9618,6 +10338,7 @@ Sub CreatePscShows()
                 "l70|40|ffff00", _
                 "l71|40|ffff00", _
                 "SkillshotLight|80|fc7703", _
+                "DeanLight4|80|00ff00", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "Light010|20|bf3957", _
@@ -9649,6 +10370,8 @@ Sub CreatePscShows()
                 "l70|20|ffff00", _
                 "l71|20|ffff00", _
                 "SkillshotLight|60|fc7703", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "bg_logo|100|ffffff", _
                 "Light008|80|d938c7", _
                 "Light009|80|d938c7", _
@@ -9684,6 +10407,10 @@ Sub CreatePscShows()
                 "l70|100|000000", _
                 "l71|100|000000", _
                 "SkillshotLight|40|fc7703", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|40|00ff00", _
                 "l28|100|ffffff", _
                 "Light006|100|bae046", _
                 "Light007|80|d938c7", _
@@ -9715,6 +10442,10 @@ Sub CreatePscShows()
                 "l70|100|stop", _
                 "l71|100|stop", _
                 "SkillshotLight|20|fc7703", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|20|00ff00", _
                 "Light005|100|bae046", _
                 "Light007|60|d938c7", _
                 "Light008|40|d938c7", _
@@ -9743,6 +10474,10 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|60|ffff00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|100|000000", _
                 "l72|100|8800ff", _
                 "bg_logo|80|ffffff", _
                 "Light004|100|bae046", _
@@ -9776,6 +10511,10 @@ Sub CreatePscShows()
                 "l68|60|ffff00", _
                 "l69|40|ffff00", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|stop", _
                 "l28|80|ffffff", _
                 "bg_logo|60|ffffff", _
                 "Light007|20|d938c7", _
@@ -9801,6 +10540,9 @@ Sub CreatePscShows()
                 "l67|40|ffff00", _
                 "l68|40|ffff00", _
                 "l69|20|ffff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|stop", _
                 "l28|60|ffffff", _
                 "bg_logo|40|ffffff", _
                 "Light005|80|bae046", _
@@ -9829,6 +10571,8 @@ Sub CreatePscShows()
                 "l68|20|ffff00", _
                 "l69|100|000000", _
                 "FL5|100|ffea00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
                 "l72|80|8800ff", _
                 "l28|40|ffffff", _
                 "bg_logo|20|ffffff", _
@@ -9864,6 +10608,7 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "l68|100|000000", _
                 "l69|100|stop", _
+                "JessLight4|100|ff0000", _
                 "l72|60|8800ff", _
                 "l28|20|ffffff", _
                 "bg_logo|100|000000", _
@@ -9891,6 +10636,8 @@ Sub CreatePscShows()
                 "l66|100|stop", _
                 "l67|100|stop", _
                 "l68|100|stop", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
                 "l72|40|8800ff", _
                 "l28|100|000000", _
                 "bg_logo|100|stop", _
@@ -9920,6 +10667,7 @@ Sub CreatePscShows()
                 "l59|40|ffffff", _
                 "l63|100|ffffff", _
                 "FL5|80|ffea00", _
+                "JessLight1|100|ff0000", _
                 "l72|20|8800ff", _
                 "l28|100|stop", _
                 "bg_flash_lower_left|100|ffffff", _
@@ -9948,6 +10696,7 @@ Sub CreatePscShows()
                 "l60|40|ffffff", _
                 "l59|20|ffffff", _
                 "FL5|60|ffea00", _
+                "JessLight4|80|ff0000", _
                 "l72|100|000000", _
                 "Light003|80|78bec0", _
                 "Light004|100|000000", _
@@ -9977,6 +10726,8 @@ Sub CreatePscShows()
                 "FL1|100|ff0000", _
                 "FL4|100|ffa500", _
                 "FL5|40|ffea00", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|stop", _
                 "Light002|80|78bec0", _
                 "Light003|60|78bec0", _
@@ -10010,6 +10761,10 @@ Sub CreatePscShows()
                 "l59|100|stop", _
                 "l62|100|ffffff", _
                 "FL5|20|ffea00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|40|ff0000", _
                 "bg_flash_lower_left|80|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "gi025|100|ffa957", _
@@ -10038,6 +10793,10 @@ Sub CreatePscShows()
                 "l60|100|stop", _
                 "l63|80|ffffff", _
                 "FL5|100|000000", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|20|ff0000", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_upper_left|60|ffffff", _
                 "Light001|60|78bec0", _
@@ -10063,6 +10822,10 @@ Sub CreatePscShows()
                 "gi026|100|000000", _
                 "l63|60|ffffff", _
                 "FL5|100|stop", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|100|000000", _
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|40|78bec0", _
@@ -10089,6 +10852,10 @@ Sub CreatePscShows()
                 "l63|40|ffffff", _
                 "FL1|100|ff0000", _
                 "FL4|100|ffa500", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|stop", _
                 "bg_flash_lower_left|20|ffffff", _
                 "bg_flash_upper_left|20|ffffff", _
                 "gi025|100|ffa957", _
@@ -10109,6 +10876,9 @@ Sub CreatePscShows()
                 "l14|20|0023cc", _
                 "l51|20|ff9c15", _
                 "l63|20|ffffff", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|stop", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
                 "Light001|100|000000", _
@@ -10123,6 +10893,8 @@ Sub CreatePscShows()
                 "l14|100|0023cc", _
                 "l51|100|ff9c15", _
                 "l63|100|ffffff", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
                 "Light001|100|stop")
@@ -10133,6 +10905,8 @@ Sub CreatePscShows()
                 "gi023|80|ffa957", _
                 "l11|100|0023cc", _
                 "l12|100|0023cc", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
                 "bg_flash_lower_left|100|ffffff", _
                 "bg_flash_upper_left|100|ffffff", _
                 "gi025|80|ffa957", _
@@ -10147,6 +10921,7 @@ Sub CreatePscShows()
                 "l62|80|ffffff", _
                 "FL1|80|ff0000", _
                 "FL4|80|ffa500", _
+                "JessLight3|100|ff0000", _
                 "gi025|60|ffa957", _
                 "Light002|100|78bec0")
         End With
@@ -10162,6 +10937,7 @@ Sub CreatePscShows()
                 "l62|60|ffffff", _
                 "FL1|60|ff0000", _
                 "FL4|60|ffa500", _
+                "JessLight4|100|ff0000", _
                 "gi025|40|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=8.43s
@@ -10181,6 +10957,7 @@ Sub CreatePscShows()
                 "FL1|40|ff0000", _
                 "FL4|40|ffa500", _
                 "FL5|100|ffea00", _
+                "JessLight1|80|ff0000", _
                 "gi025|20|ffa957", _
                 "Light001|80|78bec0", _
                 "Light003|100|78bec0")
@@ -10206,6 +10983,9 @@ Sub CreatePscShows()
                 "l63|60|ffffff", _
                 "FL1|20|ff0000", _
                 "FL4|20|ffa500", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
                 "bg_flash_lower_left|80|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "gi025|100|000000", _
@@ -10235,6 +11015,10 @@ Sub CreatePscShows()
                 "l63|40|ffffff", _
                 "FL1|100|000000", _
                 "FL4|100|000000", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|80|ff0000", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_upper_left|60|ffffff", _
                 "gi025|100|stop", _
@@ -10264,6 +11048,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|80|ffea00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|8800ff", _
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|40|ffffff", _
@@ -10292,6 +11080,10 @@ Sub CreatePscShows()
                 "gi026|40|ffa957", _
                 "l63|100|000000", _
                 "FL5|60|ffea00", _
+                "JessLight1|100|000000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|40|ff0000", _
                 "bg_flash_lower_left|20|ffffff", _
                 "bg_flash_upper_left|20|ffffff", _
                 "Light001|100|000000", _
@@ -10324,6 +11116,10 @@ Sub CreatePscShows()
                 "l59|80|ffffff", _
                 "l63|100|stop", _
                 "FL5|40|ffea00", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|20|ff0000", _
                 "l28|100|ffffff", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -10355,6 +11151,9 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
                 "FL5|20|ffea00", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|000000", _
                 "l72|80|8800ff", _
                 "bg_logo|100|ffffff", _
                 "bg_flash_lower_left|100|stop", _
@@ -10384,6 +11183,7 @@ Sub CreatePscShows()
                 "l59|40|ffffff", _
                 "l69|100|ffff00", _
                 "FL5|100|000000", _
+                "JessLight4|100|stop", _
                 "l72|60|8800ff", _
                 "Light002|100|stop", _
                 "Light003|100|000000", _
@@ -10411,6 +11211,8 @@ Sub CreatePscShows()
                 "l60|20|ffffff", _
                 "l59|20|ffffff", _
                 "FL5|100|stop", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
                 "l72|40|8800ff", _
                 "l28|80|ffffff", _
                 "Light003|100|stop", _
@@ -10437,6 +11239,7 @@ Sub CreatePscShows()
                 "l60|100|000000", _
                 "l59|100|000000", _
                 "l67|80|ffff00", _
+                "DeanLight3|100|00ff00", _
                 "l72|20|8800ff", _
                 "l28|60|ffffff", _
                 "bg_logo|80|ffffff", _
@@ -10466,6 +11269,7 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|80|ffff00", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight4|100|00ff00", _
                 "l72|100|000000", _
                 "l28|40|ffffff", _
                 "bg_logo|60|ffffff", _
@@ -10496,6 +11300,7 @@ Sub CreatePscShows()
                 "l67|40|ffff00", _
                 "l68|60|ffff00", _
                 "l69|60|ffff00", _
+                "DeanLight1|80|00ff00", _
                 "l72|100|stop", _
                 "l28|20|ffffff", _
                 "bg_logo|40|ffffff", _
@@ -10528,6 +11333,8 @@ Sub CreatePscShows()
                 "l69|40|ffff00", _
                 "l70|100|ffff00", _
                 "l71|100|ffff00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|80|00ff00", _
                 "l28|100|000000", _
                 "bg_logo|20|ffffff", _
                 "Light005|100|stop", _
@@ -10561,6 +11368,10 @@ Sub CreatePscShows()
                 "l68|20|ffff00", _
                 "l69|20|ffff00", _
                 "SkillshotLight|80|fc7703", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l28|100|stop", _
                 "bg_logo|100|000000", _
                 "Light006|100|stop", _
@@ -10589,6 +11400,10 @@ Sub CreatePscShows()
                 "l68|100|000000", _
                 "l69|100|000000", _
                 "SkillshotLight|60|fc7703", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "bg_logo|100|stop", _
                 "Light007|20|d938c7", _
                 "Light008|40|d938c7", _
@@ -10619,6 +11434,10 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l71|80|ffff00", _
                 "SkillshotLight|40|fc7703", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
                 "Light007|100|000000", _
@@ -10652,6 +11471,10 @@ Sub CreatePscShows()
                 "l71|60|ffff00", _
                 "FL2|100|00ff00", _
                 "SkillshotLight|20|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
                 "gi027|100|ffa957", _
                 "Light007|100|stop", _
                 "Light008|100|000000", _
@@ -10685,6 +11508,9 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|40|ffff00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
                 "Light008|100|stop", _
                 "Light009|100|000000", _
                 "Light010|60|bf3957", _
@@ -10714,6 +11540,8 @@ Sub CreatePscShows()
                 "l71|20|ffff00", _
                 "FL3|100|0000ff", _
                 "SkillshotLight|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
                 "Light009|100|stop", _
@@ -11072,6 +11900,10 @@ Sub CreatePscShows()
                 "l65|100|000000", _
                 "l67|100|ffff00", _
                 "FL2|80|00ff00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "l28|20|ffffff", _
                 "gi025|100|ffa957", _
                 "gi027|100|ffa957")
@@ -11112,6 +11944,10 @@ Sub CreatePscShows()
                 "l69|100|ffff00", _
                 "FL1|80|ff0000", _
                 "FL2|60|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|80|8800ff", _
                 "l28|100|000000")
         End With
@@ -11191,6 +12027,10 @@ Sub CreatePscShows()
                 "l70|100|ffff00", _
                 "FL1|40|ff0000", _
                 "FL2|20|00ff00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l72|40|8800ff", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
@@ -11228,6 +12068,14 @@ Sub CreatePscShows()
                 "l71|100|ffff00", _
                 "FL1|20|ff0000", _
                 "FL2|100|000000", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|20|8800ff", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
@@ -11258,6 +12106,14 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL2|100|stop", _
                 "FL5|80|ffea00", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|000000", _
                 "gi025|40|ffa957", _
                 "gi027|40|ffa957")
@@ -11285,6 +12141,14 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "FL1|100|stop", _
                 "FL5|60|ffea00", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "l72|100|stop", _
                 "gi025|20|ffa957", _
                 "gi027|20|ffa957")
@@ -11315,6 +12179,14 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|80|ffff00", _
                 "FL5|40|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "gi025|100|000000", _
                 "gi027|100|000000")
         End With
@@ -11338,6 +12210,14 @@ Sub CreatePscShows()
                 "l71|60|ffff00", _
                 "FL5|20|ffea00", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "gi025|100|stop", _
                 "gi027|100|stop")
         End With
@@ -11353,7 +12233,11 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l70|20|ffff00", _
                 "l71|40|ffff00", _
-                "FL5|100|000000")
+                "FL5|100|000000", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=9.84s
             .Lights = Array( _
@@ -11803,6 +12687,7 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight4|100|ff0000", _
                 "Light001|100|stop", _
                 "Light002|100|stop", _
                 "Light003|100|stop", _
@@ -11836,7 +12721,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
                 "l71|60|ffff00", _
-                "SkillshotLight|100|stop")
+                "SkillshotLight|100|stop", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.56s
             .Lights = Array( _
@@ -11861,6 +12749,10 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "l71|40|ffff00", _
                 "FL5|80|ffea00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "gi025|100|ffa957", _
                 "gi027|100|ffa957")
         End With
@@ -11882,6 +12774,9 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|20|ffff00", _
                 "FL5|60|ffea00", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|100|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=10.62s
@@ -11905,6 +12800,13 @@ Sub CreatePscShows()
                 "l71|100|000000", _
                 "FL1|100|ff0000", _
                 "FL5|40|ffea00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "gi025|80|ffa957", _
                 "gi027|80|ffa957")
             With .DOFEvent(125)
@@ -11937,6 +12839,14 @@ Sub CreatePscShows()
                 "l71|100|stop", _
                 "FL2|100|00ff00", _
                 "FL5|20|ffea00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|80|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "gi025|60|ffa957", _
                 "gi027|60|ffa957")
             With .DOFEvent(126)
@@ -11971,6 +12881,14 @@ Sub CreatePscShows()
                 "l70|100|000000", _
                 "FL1|80|ff0000", _
                 "FL5|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "l72|80|8800ff", _
                 "gi025|40|ffa957", _
                 "gi027|40|ffa957")
@@ -12005,6 +12923,14 @@ Sub CreatePscShows()
                 "FL1|60|ff0000", _
                 "FL2|80|00ff00", _
                 "FL5|100|stop", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|60|8800ff", _
                 "l28|100|ffffff", _
                 "gi025|20|ffa957", _
@@ -12046,6 +12972,14 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "FL1|40|ff0000", _
                 "FL2|60|00ff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|40|8800ff", _
                 "gi025|100|000000", _
                 "gi027|100|000000")
@@ -12087,6 +13021,11 @@ Sub CreatePscShows()
                 "l68|100|stop", _
                 "FL1|20|ff0000", _
                 "FL2|40|00ff00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|000000", _
+                "JessLight1|100|stop", _
                 "l72|20|8800ff", _
                 "gi025|100|stop", _
                 "gi027|100|stop")
@@ -12124,6 +13063,7 @@ Sub CreatePscShows()
                 "l66|100|stop", _
                 "FL1|100|000000", _
                 "FL2|20|00ff00", _
+                "DeanLight4|100|stop", _
                 "l72|100|000000", _
                 "l28|80|ffffff")
         End With
@@ -12430,6 +13370,7 @@ Sub CreatePscShows()
                 "FL2|20|00ff00", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight4|100|00ff00", _
                 "bg_flash_upper_right|40|ffffff", _
                 "bg_flash_lower_right|40|ffffff", _
                 "gi027|20|ffa957", _
@@ -12461,6 +13402,8 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "l71|80|ffff00", _
                 "FL2|100|000000", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
                 "bg_flash_upper_right|20|ffffff", _
                 "bg_flash_lower_right|20|ffffff", _
                 "gi027|100|000000", _
@@ -12496,6 +13439,7 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|60|ffff00", _
                 "FL2|100|stop", _
+                "DeanLight1|100|00ff00", _
                 "bg_flash_upper_right|100|000000", _
                 "bg_flash_lower_right|100|000000", _
                 "gi027|100|stop", _
@@ -12532,6 +13476,7 @@ Sub CreatePscShows()
                 "l70|40|ffff00", _
                 "l71|40|ffff00", _
                 "SkillshotLight|80|fc7703", _
+                "DeanLight4|80|00ff00", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "Light010|20|bf3957", _
@@ -12563,6 +13508,8 @@ Sub CreatePscShows()
                 "l70|20|ffff00", _
                 "l71|20|ffff00", _
                 "SkillshotLight|60|fc7703", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "bg_logo|100|ffffff", _
                 "Light008|80|d938c7", _
                 "Light009|80|d938c7", _
@@ -12598,6 +13545,10 @@ Sub CreatePscShows()
                 "l70|100|000000", _
                 "l71|100|000000", _
                 "SkillshotLight|40|fc7703", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|40|00ff00", _
                 "l28|100|ffffff", _
                 "Light006|100|bae046", _
                 "Light007|80|d938c7", _
@@ -12629,6 +13580,10 @@ Sub CreatePscShows()
                 "l70|100|stop", _
                 "l71|100|stop", _
                 "SkillshotLight|20|fc7703", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|20|00ff00", _
                 "Light005|100|bae046", _
                 "Light007|60|d938c7", _
                 "Light008|40|d938c7", _
@@ -12657,6 +13612,10 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|60|ffff00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|100|000000", _
                 "l72|100|8800ff", _
                 "bg_logo|80|ffffff", _
                 "Light004|100|bae046", _
@@ -12690,6 +13649,10 @@ Sub CreatePscShows()
                 "l68|60|ffff00", _
                 "l69|40|ffff00", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|stop", _
                 "l28|80|ffffff", _
                 "bg_logo|60|ffffff", _
                 "Light007|20|d938c7", _
@@ -12715,6 +13678,9 @@ Sub CreatePscShows()
                 "l67|40|ffff00", _
                 "l68|40|ffff00", _
                 "l69|20|ffff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|stop", _
                 "l28|60|ffffff", _
                 "bg_logo|40|ffffff", _
                 "Light005|80|bae046", _
@@ -12743,6 +13709,8 @@ Sub CreatePscShows()
                 "l68|20|ffff00", _
                 "l69|100|000000", _
                 "FL5|100|ffea00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
                 "l72|80|8800ff", _
                 "l28|40|ffffff", _
                 "bg_logo|20|ffffff", _
@@ -12778,6 +13746,7 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "l68|100|000000", _
                 "l69|100|stop", _
+                "JessLight4|100|ff0000", _
                 "l72|60|8800ff", _
                 "l28|20|ffffff", _
                 "bg_logo|100|000000", _
@@ -12805,6 +13774,8 @@ Sub CreatePscShows()
                 "l66|100|stop", _
                 "l67|100|stop", _
                 "l68|100|stop", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
                 "l72|40|8800ff", _
                 "l28|100|000000", _
                 "bg_logo|100|stop", _
@@ -12834,6 +13805,7 @@ Sub CreatePscShows()
                 "l59|40|ffffff", _
                 "l63|100|ffffff", _
                 "FL5|80|ffea00", _
+                "JessLight1|100|ff0000", _
                 "l72|20|8800ff", _
                 "l28|100|stop", _
                 "bg_flash_lower_left|100|ffffff", _
@@ -12862,6 +13834,7 @@ Sub CreatePscShows()
                 "l60|40|ffffff", _
                 "l59|20|ffffff", _
                 "FL5|60|ffea00", _
+                "JessLight4|80|ff0000", _
                 "l72|100|000000", _
                 "Light003|80|78bec0", _
                 "Light004|100|000000", _
@@ -12891,6 +13864,8 @@ Sub CreatePscShows()
                 "FL1|100|ff0000", _
                 "FL4|100|ffa500", _
                 "FL5|40|ffea00", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|stop", _
                 "Light002|80|78bec0", _
                 "Light003|60|78bec0", _
@@ -12924,6 +13899,10 @@ Sub CreatePscShows()
                 "l59|100|stop", _
                 "l62|100|ffffff", _
                 "FL5|20|ffea00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|40|ff0000", _
                 "bg_flash_lower_left|80|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "gi025|100|ffa957", _
@@ -12952,6 +13931,10 @@ Sub CreatePscShows()
                 "l60|100|stop", _
                 "l63|80|ffffff", _
                 "FL5|100|000000", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|20|ff0000", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_upper_left|60|ffffff", _
                 "Light001|60|78bec0", _
@@ -12977,6 +13960,10 @@ Sub CreatePscShows()
                 "gi026|100|000000", _
                 "l63|60|ffffff", _
                 "FL5|100|stop", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|100|000000", _
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|40|ffffff", _
                 "Light001|40|78bec0", _
@@ -13003,6 +13990,10 @@ Sub CreatePscShows()
                 "l63|40|ffffff", _
                 "FL1|100|ff0000", _
                 "FL4|100|ffa500", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|stop", _
                 "bg_flash_lower_left|20|ffffff", _
                 "bg_flash_upper_left|20|ffffff", _
                 "gi025|100|ffa957", _
@@ -13023,6 +14014,9 @@ Sub CreatePscShows()
                 "l14|20|0023cc", _
                 "l51|20|ff9c15", _
                 "l63|20|ffffff", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|stop", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
                 "Light001|100|000000", _
@@ -13037,6 +14031,8 @@ Sub CreatePscShows()
                 "l14|100|0023cc", _
                 "l51|100|ff9c15", _
                 "l63|100|ffffff", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
                 "Light001|100|stop")
@@ -13047,6 +14043,8 @@ Sub CreatePscShows()
                 "gi023|80|ffa957", _
                 "l11|100|0023cc", _
                 "l12|100|0023cc", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
                 "bg_flash_lower_left|100|ffffff", _
                 "bg_flash_upper_left|100|ffffff", _
                 "gi025|80|ffa957", _
@@ -13061,6 +14059,7 @@ Sub CreatePscShows()
                 "l62|80|ffffff", _
                 "FL1|80|ff0000", _
                 "FL4|80|ffa500", _
+                "JessLight3|100|ff0000", _
                 "gi025|60|ffa957", _
                 "Light002|100|78bec0")
         End With
@@ -13076,6 +14075,7 @@ Sub CreatePscShows()
                 "l62|60|ffffff", _
                 "FL1|60|ff0000", _
                 "FL4|60|ffa500", _
+                "JessLight4|100|ff0000", _
                 "gi025|40|ffa957")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=12.00s
@@ -13095,6 +14095,7 @@ Sub CreatePscShows()
                 "FL1|40|ff0000", _
                 "FL4|40|ffa500", _
                 "FL5|100|ffea00", _
+                "JessLight1|80|ff0000", _
                 "gi025|20|ffa957", _
                 "Light001|80|78bec0", _
                 "Light003|100|78bec0")
@@ -13120,6 +14121,9 @@ Sub CreatePscShows()
                 "l63|60|ffffff", _
                 "FL1|20|ff0000", _
                 "FL4|20|ffa500", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
                 "bg_flash_lower_left|80|ffffff", _
                 "bg_flash_upper_left|80|ffffff", _
                 "gi025|100|000000", _
@@ -13149,6 +14153,10 @@ Sub CreatePscShows()
                 "l63|40|ffffff", _
                 "FL1|100|000000", _
                 "FL4|100|000000", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|80|ff0000", _
                 "bg_flash_lower_left|60|ffffff", _
                 "bg_flash_upper_left|60|ffffff", _
                 "gi025|100|stop", _
@@ -13178,6 +14186,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|80|ffea00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|8800ff", _
                 "bg_flash_lower_left|40|ffffff", _
                 "bg_flash_upper_left|40|ffffff", _
@@ -13206,6 +14218,10 @@ Sub CreatePscShows()
                 "gi026|40|ffa957", _
                 "l63|100|000000", _
                 "FL5|60|ffea00", _
+                "JessLight1|100|000000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|40|ff0000", _
                 "bg_flash_lower_left|20|ffffff", _
                 "bg_flash_upper_left|20|ffffff", _
                 "Light001|100|000000", _
@@ -13238,6 +14254,10 @@ Sub CreatePscShows()
                 "l59|80|ffffff", _
                 "l63|100|stop", _
                 "FL5|40|ffea00", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|20|ff0000", _
                 "l28|100|ffffff", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -13269,6 +14289,9 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
                 "FL5|20|ffea00", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|000000", _
                 "l72|80|8800ff", _
                 "bg_logo|100|ffffff", _
                 "bg_flash_lower_left|100|stop", _
@@ -13298,6 +14321,7 @@ Sub CreatePscShows()
                 "l59|40|ffffff", _
                 "l69|100|ffff00", _
                 "FL5|100|000000", _
+                "JessLight4|100|stop", _
                 "l72|60|8800ff", _
                 "Light002|100|stop", _
                 "Light003|100|000000", _
@@ -13325,6 +14349,8 @@ Sub CreatePscShows()
                 "l60|20|ffffff", _
                 "l59|20|ffffff", _
                 "FL5|100|stop", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
                 "l72|40|8800ff", _
                 "l28|80|ffffff", _
                 "Light003|100|stop", _
@@ -13351,6 +14377,7 @@ Sub CreatePscShows()
                 "l60|100|000000", _
                 "l59|100|000000", _
                 "l67|80|ffff00", _
+                "DeanLight3|100|00ff00", _
                 "l72|20|8800ff", _
                 "l28|60|ffffff", _
                 "bg_logo|80|ffffff", _
@@ -13380,6 +14407,7 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|80|ffff00", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight4|100|00ff00", _
                 "l72|100|000000", _
                 "l28|40|ffffff", _
                 "bg_logo|60|ffffff", _
@@ -13410,6 +14438,7 @@ Sub CreatePscShows()
                 "l67|40|ffff00", _
                 "l68|60|ffff00", _
                 "l69|60|ffff00", _
+                "DeanLight1|80|00ff00", _
                 "l72|100|stop", _
                 "l28|20|ffffff", _
                 "bg_logo|40|ffffff", _
@@ -13442,6 +14471,8 @@ Sub CreatePscShows()
                 "l69|40|ffff00", _
                 "l70|100|ffff00", _
                 "l71|100|ffff00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|80|00ff00", _
                 "l28|100|000000", _
                 "bg_logo|20|ffffff", _
                 "Light005|100|stop", _
@@ -13475,6 +14506,10 @@ Sub CreatePscShows()
                 "l68|20|ffff00", _
                 "l69|20|ffff00", _
                 "SkillshotLight|80|fc7703", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l28|100|stop", _
                 "bg_logo|100|000000", _
                 "Light006|100|stop", _
@@ -13503,6 +14538,10 @@ Sub CreatePscShows()
                 "l68|100|000000", _
                 "l69|100|000000", _
                 "SkillshotLight|60|fc7703", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "bg_logo|100|stop", _
                 "Light007|20|d938c7", _
                 "Light008|40|d938c7", _
@@ -13533,6 +14572,10 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l71|80|ffff00", _
                 "SkillshotLight|40|fc7703", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
                 "bg_flash_upper_right|100|ffffff", _
                 "bg_flash_lower_right|100|ffffff", _
                 "Light007|100|000000", _
@@ -13566,6 +14609,10 @@ Sub CreatePscShows()
                 "l71|60|ffff00", _
                 "FL2|100|00ff00", _
                 "SkillshotLight|20|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
                 "gi027|100|ffa957", _
                 "Light007|100|stop", _
                 "Light008|100|000000", _
@@ -13599,6 +14646,9 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|40|ffff00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
                 "Light008|100|stop", _
                 "Light009|100|000000", _
                 "Light010|60|bf3957", _
@@ -13628,6 +14678,8 @@ Sub CreatePscShows()
                 "l71|20|ffff00", _
                 "FL3|100|0000ff", _
                 "SkillshotLight|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|80|ffffff", _
                 "bg_flash_lower_right|80|ffffff", _
                 "Light009|100|stop", _
@@ -13837,6 +14889,14 @@ Sub CreatePscShows()
                 "l71|100|ffff00", _
                 "FL3|100|stop", _
                 "SkillshotLight|30|fc7703", _
+                "DeanLight1|30|00ff00", _
+                "DeanLight2|30|00ff00", _
+                "DeanLight3|30|00ff00", _
+                "DeanLight4|30|00ff00", _
+                "JessLight1|30|ff0000", _
+                "JessLight2|30|ff0000", _
+                "JessLight3|30|ff0000", _
+                "JessLight4|30|ff0000", _
                 "l72|30|8800ff", _
                 "l28|30|ffffff", _
                 "bg_logo|30|ffffff", _
@@ -21691,6 +22751,14 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|70|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "bg_flash_lower_left|100|stop", _
@@ -21800,6 +22868,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -21828,6 +22900,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -21848,6 +22924,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -21878,6 +22958,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -21923,6 +23007,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -21960,6 +23048,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -22104,6 +23196,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "bg_flash_lower_left|52|ffffff", _
                 "bg_flash_upper_left|52|ffffff", _
@@ -22162,6 +23258,10 @@ Sub CreatePscShows()
                 "FL4|70|ffa500", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|29|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|29|ffffff", _
                 "bg_flash_lower_left|70|ffffff", _
@@ -22240,6 +23340,10 @@ Sub CreatePscShows()
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|12|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|12|ffffff", _
                 "bg_flash_lower_left|52|ffffff", _
@@ -22307,6 +23411,10 @@ Sub CreatePscShows()
                 "FL4|35|ffa500", _
                 "FL5|35|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|35|ff0000", _
+                "JessLight2|35|ff0000", _
+                "JessLight3|35|ff0000", _
+                "JessLight4|35|ff0000", _
                 "l72|35|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_lower_left|35|ffffff", _
@@ -22386,6 +23494,10 @@ Sub CreatePscShows()
                 "FL1|18|ff0000", _
                 "FL4|18|ffa500", _
                 "FL5|18|ffea00", _
+                "JessLight1|18|ff0000", _
+                "JessLight2|18|ff0000", _
+                "JessLight3|18|ff0000", _
+                "JessLight4|18|ff0000", _
                 "l72|18|8800ff", _
                 "bg_flash_lower_left|18|ffffff", _
                 "bg_flash_upper_left|18|ffffff", _
@@ -22421,6 +23533,10 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL4|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -22456,6 +23572,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -22591,6 +23711,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -22619,6 +23743,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -22639,6 +23767,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -22669,6 +23801,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -22714,6 +23850,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -22751,6 +23891,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -22888,6 +24032,10 @@ Sub CreatePscShows()
                 "FL3|41|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|41|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|41|ffffff", _
                 "bg_flash_upper_right|41|ffffff", _
@@ -22952,6 +24100,10 @@ Sub CreatePscShows()
                 "FL3|23|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|23|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|23|ffffff", _
                 "bg_flash_upper_right|23|ffffff", _
@@ -22999,6 +24151,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -23054,6 +24210,10 @@ Sub CreatePscShows()
                 "FL3|6|0000ff", _
                 "FL5|47|ffea00", _
                 "SkillshotLight|6|fc7703", _
+                "JessLight1|47|ff0000", _
+                "JessLight2|47|ff0000", _
+                "JessLight3|47|ff0000", _
+                "JessLight4|47|ff0000", _
                 "l72|47|8800ff", _
                 "l28|6|ffffff", _
                 "bg_flash_upper_right|6|ffffff", _
@@ -23118,6 +24278,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|29|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|29|ff0000", _
+                "JessLight2|29|ff0000", _
+                "JessLight3|29|ff0000", _
+                "JessLight4|29|ff0000", _
                 "l72|29|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -23194,6 +24358,10 @@ Sub CreatePscShows()
                 "l67|12|ffff00", _
                 "FL1|12|ff0000", _
                 "FL5|12|ffea00", _
+                "JessLight1|12|ff0000", _
+                "JessLight2|12|ff0000", _
+                "JessLight3|12|ff0000", _
+                "JessLight4|12|ff0000", _
                 "l72|12|8800ff", _
                 "gi025|12|ffa957")
         End With
@@ -23226,6 +24394,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -23258,6 +24430,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -23392,6 +24568,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000|40", _
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -23438,6 +24618,10 @@ Sub CreatePscShows()
                 "FL1|100|000000|120", _
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -23473,6 +24657,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -23615,6 +24803,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000|40", _
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -23661,6 +24853,10 @@ Sub CreatePscShows()
                 "FL1|100|000000|120", _
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -23696,6 +24892,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -23831,6 +25031,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -23859,6 +25063,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -23879,6 +25087,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -23909,6 +25121,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -23954,6 +25170,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -23991,6 +25211,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -24128,6 +25352,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -24171,6 +25399,10 @@ Sub CreatePscShows()
                 "FL3|29|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|29|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|29|ffffff", _
                 "bg_flash_upper_right|29|ffffff", _
@@ -24231,6 +25463,10 @@ Sub CreatePscShows()
                 "FL3|12|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|12|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|12|ffffff", _
                 "bg_flash_upper_right|12|ffffff", _
@@ -24283,6 +25519,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|35|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|35|ff0000", _
+                "JessLight2|35|ff0000", _
+                "JessLight3|35|ff0000", _
+                "JessLight4|35|ff0000", _
                 "l72|35|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -24347,6 +25587,10 @@ Sub CreatePscShows()
                 "l67|18|ffff00", _
                 "FL1|18|ff0000", _
                 "FL5|18|ffea00", _
+                "JessLight1|18|ff0000", _
+                "JessLight2|18|ff0000", _
+                "JessLight3|18|ff0000", _
+                "JessLight4|18|ff0000", _
                 "l72|18|8800ff", _
                 "gi025|18|ffa957")
         End With
@@ -24367,6 +25611,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -24387,6 +25635,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -24514,6 +25766,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -24542,6 +25798,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -24562,6 +25822,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -24592,6 +25856,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -24637,6 +25905,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -24674,6 +25946,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -24799,6 +26075,10 @@ Sub CreatePscShows()
                 "FL3|41|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|41|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|41|ffffff", _
                 "bg_flash_upper_right|41|ffffff", _
@@ -24851,6 +26131,10 @@ Sub CreatePscShows()
                 "FL3|23|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|23|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|23|ffffff", _
                 "bg_flash_upper_right|23|ffffff", _
@@ -24886,6 +26170,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -24929,6 +26217,10 @@ Sub CreatePscShows()
                 "FL3|6|0000ff", _
                 "FL5|47|ffea00", _
                 "SkillshotLight|6|fc7703", _
+                "JessLight1|47|ff0000", _
+                "JessLight2|47|ff0000", _
+                "JessLight3|47|ff0000", _
+                "JessLight4|47|ff0000", _
                 "l72|47|8800ff", _
                 "l28|6|ffffff", _
                 "bg_flash_upper_right|6|ffffff", _
@@ -24981,6 +26273,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|29|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|29|ff0000", _
+                "JessLight2|29|ff0000", _
+                "JessLight3|29|ff0000", _
+                "JessLight4|29|ff0000", _
                 "l72|29|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -25045,6 +26341,10 @@ Sub CreatePscShows()
                 "l67|12|ffff00", _
                 "FL1|12|ff0000", _
                 "FL5|12|ffea00", _
+                "JessLight1|12|ff0000", _
+                "JessLight2|12|ff0000", _
+                "JessLight3|12|ff0000", _
+                "JessLight4|12|ff0000", _
                 "l72|12|8800ff", _
                 "gi025|12|ffa957")
         End With
@@ -25065,6 +26365,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -25085,6 +26389,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -25212,6 +26520,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -25240,6 +26552,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -25260,6 +26576,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -25290,6 +26610,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -25335,6 +26659,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -25372,6 +26700,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -25421,6 +26753,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "l28|70|ffffff|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
@@ -25479,6 +26815,10 @@ Sub CreatePscShows()
                 "FL2|52|00ff00", _
                 "FL3|52|0000ff", _
                 "SkillshotLight|52|fc7703", _
+                "DeanLight1|52|00ff00", _
+                "DeanLight2|52|00ff00", _
+                "DeanLight3|52|00ff00", _
+                "DeanLight4|52|00ff00", _
                 "l28|52|ffffff", _
                 "bg_flash_upper_right|52|ffffff", _
                 "bg_flash_lower_right|52|ffffff", _
@@ -25519,6 +26859,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|67|ffffff", _
                 "gi025|52|ffa957")
@@ -25577,6 +26921,14 @@ Sub CreatePscShows()
                 "FL3|35|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|35|fc7703", _
+                "DeanLight1|35|00ff00", _
+                "DeanLight2|35|00ff00", _
+                "DeanLight3|35|00ff00", _
+                "DeanLight4|35|00ff00", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|70|ffffff", _
                 "bg_flash_upper_right|35|ffffff", _
@@ -25625,6 +26977,10 @@ Sub CreatePscShows()
                 "FL2|18|00ff00", _
                 "FL3|18|0000ff", _
                 "SkillshotLight|18|fc7703", _
+                "DeanLight1|18|00ff00", _
+                "DeanLight2|18|00ff00", _
+                "DeanLight3|18|00ff00", _
+                "DeanLight4|18|00ff00", _
                 "bg_flash_upper_right|18|ffffff", _
                 "bg_flash_lower_right|18|ffffff", _
                 "gi027|18|ffa957", _
@@ -25664,6 +27020,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|52|ffffff", _
                 "gi025|52|ffa957")
@@ -25722,6 +27082,14 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|41|ffea00", _
                 "SkillshotLight|100|000000", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|41|ff0000", _
+                "JessLight2|41|ff0000", _
+                "JessLight3|41|ff0000", _
+                "JessLight4|41|ff0000", _
                 "l72|41|8800ff", _
                 "l28|41|ffffff", _
                 "bg_flash_upper_right|100|000000", _
@@ -25789,6 +27157,14 @@ Sub CreatePscShows()
                 "FL3|100|stop", _
                 "FL5|23|ffea00", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|23|ff0000", _
+                "JessLight2|23|ff0000", _
+                "JessLight3|23|ff0000", _
+                "JessLight4|23|ff0000", _
                 "l72|23|8800ff", _
                 "l28|23|ffffff", _
                 "bg_flash_upper_right|100|stop", _
@@ -25831,6 +27207,10 @@ Sub CreatePscShows()
                 "l67|6|ffff00", _
                 "FL1|6|ff0000", _
                 "FL5|6|ffea00", _
+                "JessLight1|6|ff0000", _
+                "JessLight2|6|ff0000", _
+                "JessLight3|6|ff0000", _
+                "JessLight4|6|ff0000", _
                 "l72|6|8800ff", _
                 "l28|6|ffffff", _
                 "gi025|6|ffa957")
@@ -25864,6 +27244,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "l28|100|000000", _
                 "gi025|100|000000")
@@ -25897,6 +27281,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "gi025|100|stop")
@@ -25995,6 +27383,10 @@ Sub CreatePscShows()
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -26063,6 +27455,10 @@ Sub CreatePscShows()
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -26117,6 +27513,10 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -26208,6 +27608,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "bg_flash_lower_left|52|ffffff", _
                 "bg_flash_upper_left|52|ffffff", _
@@ -26255,6 +27659,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000", _
                 "FL4|70|ffa500", _
                 "FL5|70|ffea00", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|29|ffffff", _
                 "bg_flash_lower_left|70|ffffff", _
@@ -26314,6 +27722,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|12|ffffff", _
                 "bg_flash_lower_left|52|ffffff", _
@@ -26362,6 +27774,10 @@ Sub CreatePscShows()
                 "FL1|35|ff0000", _
                 "FL4|35|ffa500", _
                 "FL5|35|ffea00", _
+                "JessLight1|35|ff0000", _
+                "JessLight2|35|ff0000", _
+                "JessLight3|35|ff0000", _
+                "JessLight4|35|ff0000", _
                 "l72|35|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_lower_left|35|ffffff", _
@@ -26414,6 +27830,10 @@ Sub CreatePscShows()
                 "FL1|18|ff0000", _
                 "FL4|18|ffa500", _
                 "FL5|18|ffea00", _
+                "JessLight1|18|ff0000", _
+                "JessLight2|18|ff0000", _
+                "JessLight3|18|ff0000", _
+                "JessLight4|18|ff0000", _
                 "l72|18|8800ff", _
                 "bg_flash_lower_left|18|ffffff", _
                 "bg_flash_upper_left|18|ffffff", _
@@ -26449,6 +27869,10 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL4|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -26484,6 +27908,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -26619,6 +28047,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -26647,6 +28079,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -26667,6 +28103,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -26697,6 +28137,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -26742,6 +28186,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -26779,6 +28227,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -26904,6 +28356,10 @@ Sub CreatePscShows()
                 "FL3|41|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|41|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|41|ffffff", _
                 "bg_flash_upper_right|41|ffffff", _
@@ -26956,6 +28412,10 @@ Sub CreatePscShows()
                 "FL3|23|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|23|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|23|ffffff", _
                 "bg_flash_upper_right|23|ffffff", _
@@ -26991,6 +28451,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -27034,6 +28498,10 @@ Sub CreatePscShows()
                 "FL3|6|0000ff", _
                 "FL5|47|ffea00", _
                 "SkillshotLight|6|fc7703", _
+                "JessLight1|47|ff0000", _
+                "JessLight2|47|ff0000", _
+                "JessLight3|47|ff0000", _
+                "JessLight4|47|ff0000", _
                 "l72|47|8800ff", _
                 "l28|6|ffffff", _
                 "bg_flash_upper_right|6|ffffff", _
@@ -27086,6 +28554,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|29|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|29|ff0000", _
+                "JessLight2|29|ff0000", _
+                "JessLight3|29|ff0000", _
+                "JessLight4|29|ff0000", _
                 "l72|29|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -27150,6 +28622,10 @@ Sub CreatePscShows()
                 "l67|12|ffff00", _
                 "FL1|12|ff0000", _
                 "FL5|12|ffea00", _
+                "JessLight1|12|ff0000", _
+                "JessLight2|12|ff0000", _
+                "JessLight3|12|ff0000", _
+                "JessLight4|12|ff0000", _
                 "l72|12|8800ff", _
                 "gi025|12|ffa957")
         End With
@@ -27170,6 +28646,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -27190,6 +28670,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -27287,6 +28771,10 @@ Sub CreatePscShows()
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -27355,6 +28843,10 @@ Sub CreatePscShows()
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -27409,6 +28901,10 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -27456,6 +28952,10 @@ Sub CreatePscShows()
                 "l68|70|ffff00|40", _
                 "l69|70|ffff00|40", _
                 "FL2|70|00ff00|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "l28|70|ffffff|40", _
                 "gi027|70|ffa957|40")
         End With
@@ -27492,6 +28992,10 @@ Sub CreatePscShows()
                 "l68|52|ffff00", _
                 "l69|52|ffff00", _
                 "FL2|52|00ff00", _
+                "DeanLight1|52|00ff00", _
+                "DeanLight2|52|00ff00", _
+                "DeanLight3|52|00ff00", _
+                "DeanLight4|52|00ff00", _
                 "l28|52|ffffff", _
                 "gi027|52|ffa957")
         End With
@@ -27519,6 +29023,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "bg_flash_lower_left|52|ffffff", _
                 "bg_flash_upper_left|52|ffffff", _
@@ -27580,6 +29088,14 @@ Sub CreatePscShows()
                 "FL2|35|00ff00", _
                 "FL4|70|ffa500", _
                 "FL5|70|ffea00", _
+                "DeanLight1|35|00ff00", _
+                "DeanLight2|35|00ff00", _
+                "DeanLight3|35|00ff00", _
+                "DeanLight4|35|00ff00", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|35|ffffff", _
                 "bg_flash_lower_left|70|ffffff", _
@@ -27632,6 +29148,10 @@ Sub CreatePscShows()
                 "l68|18|ffff00", _
                 "l69|18|ffff00", _
                 "FL2|18|00ff00", _
+                "DeanLight1|18|00ff00", _
+                "DeanLight2|18|00ff00", _
+                "DeanLight3|18|00ff00", _
+                "DeanLight4|18|00ff00", _
                 "l28|18|ffffff", _
                 "gi027|18|ffa957")
         End With
@@ -27659,6 +29179,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "bg_flash_lower_left|52|ffffff", _
                 "bg_flash_upper_left|52|ffffff", _
@@ -27720,6 +29244,14 @@ Sub CreatePscShows()
                 "FL2|100|000000", _
                 "FL4|41|ffa500", _
                 "FL5|41|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|41|ff0000", _
+                "JessLight2|41|ff0000", _
+                "JessLight3|41|ff0000", _
+                "JessLight4|41|ff0000", _
                 "l72|41|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_lower_left|41|ffffff", _
@@ -27783,6 +29315,14 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL4|23|ffa500", _
                 "FL5|23|ffea00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|23|ff0000", _
+                "JessLight2|23|ff0000", _
+                "JessLight3|23|ff0000", _
+                "JessLight4|23|ff0000", _
                 "l72|23|8800ff", _
                 "l28|100|stop", _
                 "bg_flash_lower_left|23|ffffff", _
@@ -27820,6 +29360,10 @@ Sub CreatePscShows()
                 "FL1|6|ff0000", _
                 "FL4|6|ffa500", _
                 "FL5|6|ffea00", _
+                "JessLight1|6|ff0000", _
+                "JessLight2|6|ff0000", _
+                "JessLight3|6|ff0000", _
+                "JessLight4|6|ff0000", _
                 "l72|6|8800ff", _
                 "bg_flash_lower_left|6|ffffff", _
                 "bg_flash_upper_left|6|ffffff", _
@@ -27855,6 +29399,10 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL4|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -27890,6 +29438,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -28025,6 +29577,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -28053,6 +29609,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -28073,6 +29633,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -28103,6 +29667,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -28148,6 +29716,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -28185,6 +29757,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -28287,6 +29863,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -28330,6 +29910,10 @@ Sub CreatePscShows()
                 "FL3|35|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|35|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|35|ffffff", _
                 "bg_flash_upper_right|35|ffffff", _
@@ -28390,6 +29974,10 @@ Sub CreatePscShows()
                 "FL3|18|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|18|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|18|ffffff", _
                 "bg_flash_upper_right|18|ffffff", _
@@ -28442,6 +30030,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|35|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|35|ff0000", _
+                "JessLight2|35|ff0000", _
+                "JessLight3|35|ff0000", _
+                "JessLight4|35|ff0000", _
                 "l72|35|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -28494,6 +30086,10 @@ Sub CreatePscShows()
                 "FL3|100|stop", _
                 "FL5|18|ffea00", _
                 "SkillshotLight|100|stop", _
+                "JessLight1|18|ff0000", _
+                "JessLight2|18|ff0000", _
+                "JessLight3|18|ff0000", _
+                "JessLight4|18|ff0000", _
                 "l72|18|8800ff", _
                 "l28|100|stop", _
                 "bg_flash_upper_right|100|stop", _
@@ -28523,6 +30119,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -28543,6 +30143,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -28640,6 +30244,10 @@ Sub CreatePscShows()
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -28708,6 +30316,10 @@ Sub CreatePscShows()
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -28762,6 +30374,10 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -28849,6 +30465,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|47|ffffff", _
                 "bg_flash_lower_left|52|ffffff", _
@@ -28897,6 +30517,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000", _
                 "FL4|70|ffa500", _
                 "FL5|70|ffea00", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|29|ffffff", _
                 "bg_flash_lower_left|70|ffffff", _
@@ -28942,6 +30566,10 @@ Sub CreatePscShows()
                 "FL1|52|ff0000", _
                 "FL4|52|ffa500", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "bg_flash_lower_left|52|ffffff", _
                 "bg_flash_upper_left|52|ffffff", _
@@ -28989,6 +30617,10 @@ Sub CreatePscShows()
                 "FL1|47|ff0000", _
                 "FL4|47|ffa500", _
                 "FL5|47|ffea00", _
+                "JessLight1|47|ff0000", _
+                "JessLight2|47|ff0000", _
+                "JessLight3|47|ff0000", _
+                "JessLight4|47|ff0000", _
                 "l72|47|8800ff", _
                 "l28|12|ffffff", _
                 "bg_flash_lower_left|47|ffffff", _
@@ -29037,6 +30669,10 @@ Sub CreatePscShows()
                 "FL1|29|ff0000", _
                 "FL4|29|ffa500", _
                 "FL5|29|ffea00", _
+                "JessLight1|29|ff0000", _
+                "JessLight2|29|ff0000", _
+                "JessLight3|29|ff0000", _
+                "JessLight4|29|ff0000", _
                 "l72|29|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_lower_left|29|ffffff", _
@@ -29089,6 +30725,10 @@ Sub CreatePscShows()
                 "FL1|12|ff0000", _
                 "FL4|12|ffa500", _
                 "FL5|12|ffea00", _
+                "JessLight1|12|ff0000", _
+                "JessLight2|12|ff0000", _
+                "JessLight3|12|ff0000", _
+                "JessLight4|12|ff0000", _
                 "l72|12|8800ff", _
                 "bg_flash_lower_left|12|ffffff", _
                 "bg_flash_upper_left|12|ffffff", _
@@ -29124,6 +30764,10 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL4|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -29159,6 +30803,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -29294,6 +30942,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -29322,6 +30974,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -29342,6 +30998,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -29372,6 +31032,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -29417,6 +31081,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -29454,6 +31122,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -29579,6 +31251,10 @@ Sub CreatePscShows()
                 "FL3|41|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|41|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|41|ffffff", _
                 "bg_flash_upper_right|41|ffffff", _
@@ -29631,6 +31307,10 @@ Sub CreatePscShows()
                 "FL3|23|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|23|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|23|ffffff", _
                 "bg_flash_upper_right|23|ffffff", _
@@ -29666,6 +31346,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -29709,6 +31393,10 @@ Sub CreatePscShows()
                 "FL3|6|0000ff", _
                 "FL5|47|ffea00", _
                 "SkillshotLight|6|fc7703", _
+                "JessLight1|47|ff0000", _
+                "JessLight2|47|ff0000", _
+                "JessLight3|47|ff0000", _
+                "JessLight4|47|ff0000", _
                 "l72|47|8800ff", _
                 "l28|6|ffffff", _
                 "bg_flash_upper_right|6|ffffff", _
@@ -29761,6 +31449,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|29|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|29|ff0000", _
+                "JessLight2|29|ff0000", _
+                "JessLight3|29|ff0000", _
+                "JessLight4|29|ff0000", _
                 "l72|29|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -29825,6 +31517,10 @@ Sub CreatePscShows()
                 "l67|12|ffff00", _
                 "FL1|12|ff0000", _
                 "FL5|12|ffea00", _
+                "JessLight1|12|ff0000", _
+                "JessLight2|12|ff0000", _
+                "JessLight3|12|ff0000", _
+                "JessLight4|12|ff0000", _
                 "l72|12|8800ff", _
                 "gi025|12|ffa957")
         End With
@@ -29845,6 +31541,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -29865,6 +31565,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -29999,6 +31703,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000|40", _
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -30045,6 +31753,10 @@ Sub CreatePscShows()
                 "FL1|100|000000|120", _
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -30080,6 +31792,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -30222,6 +31938,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000|40", _
                 "FL4|70|ffa500|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "bg_flash_lower_left|70|ffffff|40", _
                 "bg_flash_upper_left|70|ffffff|40", _
@@ -30268,6 +31988,10 @@ Sub CreatePscShows()
                 "FL1|100|000000|120", _
                 "FL4|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "bg_flash_lower_left|100|000000|120", _
                 "bg_flash_upper_left|100|000000|120", _
@@ -30303,6 +32027,10 @@ Sub CreatePscShows()
                 "FL1|100|stop", _
                 "FL4|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "bg_flash_lower_left|100|stop", _
                 "bg_flash_upper_left|100|stop", _
@@ -30438,6 +32166,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -30466,6 +32198,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -30486,6 +32222,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -30516,6 +32256,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -30561,6 +32305,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -30598,6 +32346,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -30735,6 +32487,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -30778,6 +32534,10 @@ Sub CreatePscShows()
                 "FL3|29|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|29|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|29|ffffff", _
                 "bg_flash_upper_right|29|ffffff", _
@@ -30838,6 +32598,10 @@ Sub CreatePscShows()
                 "FL3|12|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|12|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|12|ffffff", _
                 "bg_flash_upper_right|12|ffffff", _
@@ -30890,6 +32654,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|35|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|35|ff0000", _
+                "JessLight2|35|ff0000", _
+                "JessLight3|35|ff0000", _
+                "JessLight4|35|ff0000", _
                 "l72|35|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -30954,6 +32722,10 @@ Sub CreatePscShows()
                 "l67|18|ffff00", _
                 "FL1|18|ff0000", _
                 "FL5|18|ffea00", _
+                "JessLight1|18|ff0000", _
+                "JessLight2|18|ff0000", _
+                "JessLight3|18|ff0000", _
+                "JessLight4|18|ff0000", _
                 "l72|18|8800ff", _
                 "gi025|18|ffa957")
         End With
@@ -30974,6 +32746,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -30994,6 +32770,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -31121,6 +32901,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -31149,6 +32933,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -31169,6 +32957,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -31199,6 +32991,10 @@ Sub CreatePscShows()
                 "FL2|70|00ff00|40", _
                 "FL3|70|0000ff|40", _
                 "SkillshotLight|70|fc7703|40", _
+                "DeanLight1|70|00ff00|40", _
+                "DeanLight2|70|00ff00|40", _
+                "DeanLight3|70|00ff00|40", _
+                "DeanLight4|70|00ff00|40", _
                 "bg_flash_upper_right|70|ffffff|40", _
                 "bg_flash_lower_right|70|ffffff|40", _
                 "gi027|70|ffa957|40", _
@@ -31244,6 +33040,10 @@ Sub CreatePscShows()
                 "FL2|100|000000|120", _
                 "FL3|100|000000|120", _
                 "SkillshotLight|100|000000|120", _
+                "DeanLight1|100|000000|120", _
+                "DeanLight2|100|000000|120", _
+                "DeanLight3|100|000000|120", _
+                "DeanLight4|100|000000|120", _
                 "bg_flash_upper_right|100|000000|120", _
                 "bg_flash_lower_right|100|000000|120", _
                 "gi027|100|000000|120", _
@@ -31281,6 +33081,10 @@ Sub CreatePscShows()
                 "FL2|100|stop", _
                 "FL3|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "bg_flash_upper_right|100|stop", _
                 "bg_flash_lower_right|100|stop", _
                 "gi027|100|stop", _
@@ -31406,6 +33210,10 @@ Sub CreatePscShows()
                 "FL3|41|0000ff", _
                 "FL5|52|ffea00", _
                 "SkillshotLight|41|fc7703", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "l28|41|ffffff", _
                 "bg_flash_upper_right|41|ffffff", _
@@ -31458,6 +33266,10 @@ Sub CreatePscShows()
                 "FL3|23|0000ff", _
                 "FL5|70|ffea00", _
                 "SkillshotLight|23|fc7703", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "l28|23|ffffff", _
                 "bg_flash_upper_right|23|ffffff", _
@@ -31493,6 +33305,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -31536,6 +33352,10 @@ Sub CreatePscShows()
                 "FL3|6|0000ff", _
                 "FL5|47|ffea00", _
                 "SkillshotLight|6|fc7703", _
+                "JessLight1|47|ff0000", _
+                "JessLight2|47|ff0000", _
+                "JessLight3|47|ff0000", _
+                "JessLight4|47|ff0000", _
                 "l72|47|8800ff", _
                 "l28|6|ffffff", _
                 "bg_flash_upper_right|6|ffffff", _
@@ -31588,6 +33408,10 @@ Sub CreatePscShows()
                 "FL3|100|000000", _
                 "FL5|29|ffea00", _
                 "SkillshotLight|100|000000", _
+                "JessLight1|29|ff0000", _
+                "JessLight2|29|ff0000", _
+                "JessLight3|29|ff0000", _
+                "JessLight4|29|ff0000", _
                 "l72|29|8800ff", _
                 "l28|100|000000", _
                 "bg_flash_upper_right|100|000000", _
@@ -31652,6 +33476,10 @@ Sub CreatePscShows()
                 "l67|12|ffff00", _
                 "FL1|12|ff0000", _
                 "FL5|12|ffea00", _
+                "JessLight1|12|ff0000", _
+                "JessLight2|12|ff0000", _
+                "JessLight3|12|ff0000", _
+                "JessLight4|12|ff0000", _
                 "l72|12|8800ff", _
                 "gi025|12|ffa957")
         End With
@@ -31672,6 +33500,10 @@ Sub CreatePscShows()
                 "l67|100|000000", _
                 "FL1|100|000000", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "gi025|100|000000")
         End With
@@ -31692,6 +33524,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -32101,6 +33937,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -32128,6 +33968,10 @@ Sub CreatePscShows()
                 "FL1|70|ff0000", _
                 "FL4|100|000000", _
                 "FL5|70|ffea00", _
+                "JessLight1|70|ff0000", _
+                "JessLight2|70|ff0000", _
+                "JessLight3|70|ff0000", _
+                "JessLight4|70|ff0000", _
                 "l72|70|8800ff", _
                 "bg_flash_lower_left|100|000000", _
                 "bg_flash_upper_left|100|000000", _
@@ -32180,6 +34024,10 @@ Sub CreatePscShows()
                 "l67|52|ffff00", _
                 "FL1|52|ff0000", _
                 "FL5|52|ffea00", _
+                "JessLight1|52|ff0000", _
+                "JessLight2|52|ff0000", _
+                "JessLight3|52|ff0000", _
+                "JessLight4|52|ff0000", _
                 "l72|52|8800ff", _
                 "gi025|52|ffa957")
         End With
@@ -32200,6 +34048,10 @@ Sub CreatePscShows()
                 "l67|41|ffff00", _
                 "FL1|41|ff0000", _
                 "FL5|41|ffea00", _
+                "JessLight1|41|ff0000", _
+                "JessLight2|41|ff0000", _
+                "JessLight3|41|ff0000", _
+                "JessLight4|41|ff0000", _
                 "l72|41|8800ff", _
                 "gi025|41|ffa957")
         End With
@@ -32220,6 +34072,10 @@ Sub CreatePscShows()
                 "l67|23|ffff00", _
                 "FL1|23|ff0000", _
                 "FL5|23|ffea00", _
+                "JessLight1|23|ff0000", _
+                "JessLight2|23|ff0000", _
+                "JessLight3|23|ff0000", _
+                "JessLight4|23|ff0000", _
                 "l72|23|8800ff", _
                 "gi025|23|ffa957")
         End With
@@ -32240,6 +34096,10 @@ Sub CreatePscShows()
                 "l67|6|ffff00", _
                 "FL1|6|ff0000", _
                 "FL5|6|ffea00", _
+                "JessLight1|6|ff0000", _
+                "JessLight2|6|ff0000", _
+                "JessLight3|6|ff0000", _
+                "JessLight4|6|ff0000", _
                 "l72|6|8800ff", _
                 "gi025|6|ffa957")
         End With
@@ -32285,6 +34145,10 @@ Sub CreatePscShows()
                 "FL1|100|000000", _
                 "FL4|70|ffa500", _
                 "FL5|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l72|100|000000", _
                 "bg_flash_lower_left|70|ffffff", _
                 "bg_flash_upper_left|70|ffffff", _
@@ -32313,6 +34177,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
             With .DOFEvent(127)
@@ -32449,6 +34317,10 @@ Sub CreatePscShows()
                 "l67|70|ffff00|40", _
                 "FL1|70|ff0000|40", _
                 "FL5|70|ffea00|40", _
+                "JessLight1|70|ff0000|40", _
+                "JessLight2|70|ff0000|40", _
+                "JessLight3|70|ff0000|40", _
+                "JessLight4|70|ff0000|40", _
                 "l72|70|8800ff|40", _
                 "gi025|70|ffa957|40")
         End With
@@ -32477,6 +34349,10 @@ Sub CreatePscShows()
                 "l67|100|000000|120", _
                 "FL1|100|000000|120", _
                 "FL5|100|000000|120", _
+                "JessLight1|100|000000|120", _
+                "JessLight2|100|000000|120", _
+                "JessLight3|100|000000|120", _
+                "JessLight4|100|000000|120", _
                 "l72|100|000000|120", _
                 "gi025|100|000000|120")
         End With
@@ -32497,6 +34373,10 @@ Sub CreatePscShows()
                 "l67|100|stop", _
                 "FL1|100|stop", _
                 "FL5|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "gi025|100|stop")
         End With
@@ -32596,6 +34476,14 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "bg_logo|100|stop", _
@@ -32798,6 +34686,10 @@ Sub CreatePscShows()
                 "l64|100|stop", _
                 "l67|100|ffff00", _
                 "FL2|60|00ff00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "l28|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.48s
@@ -32822,6 +34714,10 @@ Sub CreatePscShows()
                 "l69|100|ffff00", _
                 "FL1|80|ff0000", _
                 "FL2|40|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l28|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.51s
@@ -32877,6 +34773,10 @@ Sub CreatePscShows()
                 "l70|100|ffff00", _
                 "FL1|40|ff0000", _
                 "FL2|100|000000", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l72|60|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.57s
@@ -32901,6 +34801,10 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "FL1|20|ff0000", _
                 "FL2|100|stop", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "l72|40|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.60s
@@ -32922,6 +34826,14 @@ Sub CreatePscShows()
                 "l69|80|ffff00", _
                 "l71|100|ffff00", _
                 "FL1|100|000000", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|20|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.63s
@@ -32941,6 +34853,14 @@ Sub CreatePscShows()
                 "l69|60|ffff00", _
                 "FL1|100|stop", _
                 "FL5|80|ffea00", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.66s
@@ -32959,6 +34879,14 @@ Sub CreatePscShows()
                 "l69|40|ffff00", _
                 "l70|80|ffff00", _
                 "FL5|60|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "l72|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.69s
@@ -32972,7 +34900,15 @@ Sub CreatePscShows()
                 "l68|100|000000", _
                 "l69|20|ffff00", _
                 "l70|60|ffff00", _
-                "FL5|40|ffea00")
+                "FL5|40|ffea00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.72s
             .Lights = Array( _
@@ -32983,7 +34919,11 @@ Sub CreatePscShows()
                 "l69|100|000000", _
                 "l70|40|ffff00", _
                 "l71|80|ffff00", _
-                "FL5|20|ffea00")
+                "FL5|20|ffea00", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.75s
             .Lights = Array( _
@@ -32995,7 +34935,11 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "l70|20|ffff00", _
                 "l71|60|ffff00", _
-                "FL5|100|000000")
+                "FL5|100|000000", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.78s
             .Lights = Array( _
@@ -33270,6 +35214,14 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "bg_logo|100|stop", _
@@ -33451,6 +35403,10 @@ Sub CreatePscShows()
                 "l65|100|000000", _
                 "l66|100|ffff00", _
                 "FL2|80|00ff00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
                 "l28|20|ffffff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.42s
@@ -33481,6 +35437,8 @@ Sub CreatePscShows()
                 "l68|100|ffff00", _
                 "FL1|80|ff0000", _
                 "FL2|60|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
                 "l28|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.45s
@@ -33508,6 +35466,8 @@ Sub CreatePscShows()
                 "l69|100|ffff00", _
                 "FL1|60|ff0000", _
                 "FL2|40|00ff00", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|80|8800ff", _
                 "l28|100|stop")
         End With
@@ -33539,6 +35499,8 @@ Sub CreatePscShows()
                 "FL1|40|ff0000", _
                 "FL2|20|00ff00", _
                 "FL5|100|ffea00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
                 "l72|60|8800ff")
             With .DOFEvent(129)
                 .Action = "DOF_PULSE"
@@ -33569,6 +35531,10 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "FL1|20|ff0000", _
                 "FL2|100|000000", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
                 "l72|40|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.54s
@@ -33593,6 +35559,14 @@ Sub CreatePscShows()
                 "l71|100|ffff00", _
                 "FL1|100|000000", _
                 "FL2|100|stop", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|20|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.57s
@@ -33612,6 +35586,14 @@ Sub CreatePscShows()
                 "l69|60|ffff00", _
                 "FL1|100|stop", _
                 "FL5|80|ffea00", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.60s
@@ -33631,6 +35613,14 @@ Sub CreatePscShows()
                 "l69|40|ffff00", _
                 "l70|80|ffff00", _
                 "FL5|60|ffea00", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "l72|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.63s
@@ -33645,7 +35635,15 @@ Sub CreatePscShows()
                 "l68|100|000000", _
                 "l69|20|ffff00", _
                 "l70|60|ffff00", _
-                "FL5|40|ffea00")
+                "FL5|40|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.66s
             .Lights = Array( _
@@ -33660,7 +35658,13 @@ Sub CreatePscShows()
                 "l69|100|000000", _
                 "l70|40|ffff00", _
                 "l71|80|ffff00", _
-                "FL5|20|ffea00")
+                "FL5|20|ffea00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.69s
             .Lights = Array( _
@@ -33670,7 +35674,11 @@ Sub CreatePscShows()
                 "l70|20|ffff00", _
                 "l71|60|ffff00", _
                 "FL5|100|000000", _
-                "SkillshotLight|100|fc7703")
+                "SkillshotLight|100|fc7703", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.72s
             .Lights = Array( _
@@ -34099,7 +36107,10 @@ Sub CreatePscShows()
                 "l60|80|ffffff", _
                 "l69|100|ffff00", _
                 "l71|80|ffff00", _
-                "SkillshotLight|100|stop")
+                "SkillshotLight|100|stop", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.68s
             .Lights = Array( _
@@ -34110,7 +36121,8 @@ Sub CreatePscShows()
                 "l61|80|ffffff", _
                 "l67|100|ffff00", _
                 "l68|100|ffff00", _
-                "l71|60|ffff00")
+                "l71|60|ffff00", _
+                "JessLight1|100|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.71s
             .Lights = Array( _
@@ -34122,7 +36134,11 @@ Sub CreatePscShows()
                 "l66|100|ffff00", _
                 "l70|80|ffff00", _
                 "l71|40|ffff00", _
-                "FL5|80|ffea00")
+                "FL5|80|ffea00", _
+                "DeanLight1|100|00ff00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.74s
             .Lights = Array( _
@@ -34136,6 +36152,7 @@ Sub CreatePscShows()
                 "l70|60|ffff00", _
                 "l71|20|ffff00", _
                 "FL5|60|ffea00", _
+                "JessLight4|80|ff0000", _
                 "l72|100|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.77s
@@ -34149,7 +36166,11 @@ Sub CreatePscShows()
                 "l70|40|ffff00", _
                 "l71|100|000000", _
                 "FL1|100|ff0000", _
-                "FL5|40|ffea00")
+                "FL5|40|ffea00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|60|ff0000")
             With .DOFEvent(125)
                 .Action = "DOF_PULSE"
             End With
@@ -34169,7 +36190,15 @@ Sub CreatePscShows()
                 "l70|20|ffff00", _
                 "l71|100|stop", _
                 "FL2|100|00ff00", _
-                "FL5|20|ffea00")
+                "FL5|20|ffea00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|40|ff0000")
             With .DOFEvent(126)
                 .Action = "DOF_PULSE"
             End With
@@ -34196,7 +36225,15 @@ Sub CreatePscShows()
                 "l68|40|ffff00", _
                 "l69|40|ffff00", _
                 "l70|100|000000", _
-                "FL5|100|000000")
+                "FL5|100|000000", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|20|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.86s
             .Lights = Array( _
@@ -34221,6 +36258,14 @@ Sub CreatePscShows()
                 "l70|100|stop", _
                 "FL1|80|ff0000", _
                 "FL5|100|stop", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|100|000000", _
                 "l72|80|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.89s
@@ -34242,6 +36287,14 @@ Sub CreatePscShows()
                 "l68|100|000000", _
                 "l69|100|000000", _
                 "FL1|60|ff0000", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|stop", _
                 "l72|60|8800ff", _
                 "l28|100|ffffff")
         End With
@@ -34271,6 +36324,13 @@ Sub CreatePscShows()
                 "l69|100|stop", _
                 "FL1|40|ff0000", _
                 "FL2|80|00ff00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
                 "l72|40|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.95s
@@ -34301,6 +36361,10 @@ Sub CreatePscShows()
                 "l66|100|000000", _
                 "FL1|20|ff0000", _
                 "FL2|60|00ff00", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
                 "l72|20|8800ff")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=1.98s
@@ -34658,6 +36722,14 @@ Sub CreatePscShows()
                 "FL4|100|ffa500", _
                 "FL5|100|ffea00", _
                 "SkillshotLight|43|fc7703", _
+                "DeanLight1|43|00ff00", _
+                "DeanLight2|43|00ff00", _
+                "DeanLight3|43|00ff00", _
+                "DeanLight4|43|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "l28|100|ffffff", _
                 "bg_logo|43|ffffff", _
@@ -34725,6 +36797,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -34838,6 +36914,10 @@ Sub CreatePscShows()
                 "FL1|64|ff0000", _
                 "FL4|57|ffa500", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "bg_flash_lower_left|57|ffffff", _
                 "bg_flash_upper_left|57|ffffff", _
@@ -34893,6 +36973,10 @@ Sub CreatePscShows()
                 "FL1|86|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|86|ffea00", _
+                "JessLight1|86|ff0000", _
+                "JessLight2|86|ff0000", _
+                "JessLight3|86|ff0000", _
+                "JessLight4|86|ff0000", _
                 "l72|86|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -34921,6 +37005,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -34941,6 +37029,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -34991,6 +37083,10 @@ Sub CreatePscShows()
                 "FL4|64|ffa500", _
                 "FL5|57|ffea00", _
                 "SkillshotLight|64|fc7703", _
+                "JessLight1|57|ff0000", _
+                "JessLight2|57|ff0000", _
+                "JessLight3|57|ff0000", _
+                "JessLight4|57|ff0000", _
                 "l72|57|8800ff", _
                 "l28|64|ffffff", _
                 "bg_flash_lower_left|64|ffffff", _
@@ -35066,6 +37162,10 @@ Sub CreatePscShows()
                 "FL4|86|ffa500", _
                 "FL5|43|ffea00", _
                 "SkillshotLight|86|fc7703", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "l28|86|ffffff", _
                 "bg_flash_lower_left|86|ffffff", _
@@ -35236,6 +37336,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
                 "bg_flash_upper_left|100|ffffff|80", _
@@ -35312,6 +37420,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
                 "bg_flash_upper_left|43|ffffff|80", _
@@ -35439,6 +37555,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -35486,6 +37606,10 @@ Sub CreatePscShows()
                 "FL1|79|ff0000", _
                 "FL4|50|ffa500", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "l28|50|ffffff", _
                 "bg_flash_lower_left|50|ffffff", _
@@ -35534,6 +37658,10 @@ Sub CreatePscShows()
                 "FL1|100|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "l28|43|ffffff", _
                 "bg_flash_lower_left|43|ffffff", _
@@ -35563,6 +37691,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -35583,6 +37715,10 @@ Sub CreatePscShows()
                 "l67|64|ffff00", _
                 "FL1|64|ff0000", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "gi025|64|ffa957")
         End With
@@ -35657,6 +37793,10 @@ Sub CreatePscShows()
                 "FL1|43|ff0000", _
                 "FL4|79|ffa500", _
                 "FL5|43|ffea00", _
+                "JessLight1|43|ff0000", _
+                "JessLight2|43|ff0000", _
+                "JessLight3|43|ff0000", _
+                "JessLight4|43|ff0000", _
                 "l72|43|8800ff", _
                 "bg_flash_lower_left|79|ffffff", _
                 "bg_flash_upper_left|79|ffffff", _
@@ -35778,6 +37918,14 @@ Sub CreatePscShows()
                 "FL2|100|00ff00|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "DeanLight1|100|00ff00|80", _
+                "DeanLight2|100|00ff00|80", _
+                "DeanLight3|100|00ff00|80", _
+                "DeanLight4|100|00ff00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -35855,6 +38003,14 @@ Sub CreatePscShows()
                 "FL2|43|00ff00|80", _
                 "FL4|43|ffa500|80", _
                 "FL5|43|ffea00|80", _
+                "DeanLight1|43|00ff00|80", _
+                "DeanLight2|43|00ff00|80", _
+                "DeanLight3|43|00ff00|80", _
+                "DeanLight4|43|00ff00|80", _
+                "JessLight1|43|ff0000|80", _
+                "JessLight2|43|ff0000|80", _
+                "JessLight3|43|ff0000|80", _
+                "JessLight4|43|ff0000|80", _
                 "l72|43|8800ff|80", _
                 "l28|43|ffffff|80", _
                 "bg_flash_lower_left|43|ffffff|80", _
@@ -35969,6 +38125,10 @@ Sub CreatePscShows()
                 "FL1|64|ff0000", _
                 "FL4|57|ffa500", _
                 "FL5|64|ffea00", _
+                "JessLight1|64|ff0000", _
+                "JessLight2|64|ff0000", _
+                "JessLight3|64|ff0000", _
+                "JessLight4|64|ff0000", _
                 "l72|64|8800ff", _
                 "bg_flash_lower_left|57|ffffff", _
                 "bg_flash_upper_left|57|ffffff", _
@@ -36024,6 +38184,10 @@ Sub CreatePscShows()
                 "FL1|86|ff0000", _
                 "FL4|43|ffa500", _
                 "FL5|86|ffea00", _
+                "JessLight1|86|ff0000", _
+                "JessLight2|86|ff0000", _
+                "JessLight3|86|ff0000", _
+                "JessLight4|86|ff0000", _
                 "l72|86|8800ff", _
                 "bg_flash_lower_left|43|ffffff", _
                 "bg_flash_upper_left|43|ffffff", _
@@ -36052,6 +38216,10 @@ Sub CreatePscShows()
                 "l67|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
+                "JessLight4|100|ff0000", _
                 "l72|100|8800ff", _
                 "gi025|100|ffa957")
         End With
@@ -36072,6 +38240,10 @@ Sub CreatePscShows()
                 "l67|79|ffff00", _
                 "FL1|79|ff0000", _
                 "FL5|79|ffea00", _
+                "JessLight1|79|ff0000", _
+                "JessLight2|79|ff0000", _
+                "JessLight3|79|ff0000", _
+                "JessLight4|79|ff0000", _
                 "l72|79|8800ff", _
                 "gi025|79|ffa957")
         End With
@@ -36111,6 +38283,10 @@ Sub CreatePscShows()
                 "FL1|100|ff0000|80", _
                 "FL4|100|ffa500|80", _
                 "FL5|100|ffea00|80", _
+                "JessLight1|100|ff0000|80", _
+                "JessLight2|100|ff0000|80", _
+                "JessLight3|100|ff0000|80", _
+                "JessLight4|100|ff0000|80", _
                 "l72|100|8800ff|80", _
                 "l28|100|ffffff|80", _
                 "bg_flash_lower_left|100|ffffff|80", _
@@ -36206,6 +38382,14 @@ Sub CreatePscShows()
                 "FL4|100|stop", _
                 "FL5|100|stop", _
                 "SkillshotLight|100|stop", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l72|100|stop", _
                 "l28|100|stop", _
                 "bg_logo|100|stop", _
@@ -36239,7 +38423,9 @@ Sub CreatePscShows()
                 "l56|100|0000ff", _
                 "l66|100|ffff00", _
                 "l67|100|ffff00", _
-                "l68|100|ffff00")
+                "l68|100|ffff00", _
+                "DeanLight1|100|00ff00", _
+                "JessLight4|100|ff0000")
         End With
         With .AddStep(Null, Null, 0.03)  ' t=0.09s
             .Lights = Array( _
@@ -36253,6 +38439,12 @@ Sub CreatePscShows()
                 "l69|100|ffff00", _
                 "FL1|100|ff0000", _
                 "FL5|100|ffea00", _
+                "DeanLight2|100|00ff00", _
+                "DeanLight3|100|00ff00", _
+                "DeanLight4|100|00ff00", _
+                "JessLight1|100|ff0000", _
+                "JessLight2|100|ff0000", _
+                "JessLight3|100|ff0000", _
                 "l72|80|8800ff")
             With .DOFEvent(125)
                 .Action = "DOF_PULSE"
@@ -36301,6 +38493,11 @@ Sub CreatePscShows()
                 "l68|80|ffff00", _
                 "l69|80|ffff00", _
                 "l70|100|ffff00", _
+                "DeanLight1|80|00ff00", _
+                "DeanLight2|80|00ff00", _
+                "JessLight2|80|ff0000", _
+                "JessLight3|80|ff0000", _
+                "JessLight4|80|ff0000", _
                 "l72|40|8800ff", _
                 "l28|100|ffffff")
         End With
@@ -36336,6 +38533,14 @@ Sub CreatePscShows()
                 "FL1|80|ff0000", _
                 "FL2|100|00ff00", _
                 "FL5|80|ffea00", _
+                "DeanLight1|60|00ff00", _
+                "DeanLight2|60|00ff00", _
+                "DeanLight3|80|00ff00", _
+                "DeanLight4|80|00ff00", _
+                "JessLight1|80|ff0000", _
+                "JessLight2|60|ff0000", _
+                "JessLight3|60|ff0000", _
+                "JessLight4|60|ff0000", _
                 "l72|20|8800ff", _
                 "gi025|80|ffa957", _
                 "gi027|100|ffa957")
@@ -36380,6 +38585,14 @@ Sub CreatePscShows()
                 "l69|40|ffff00", _
                 "FL1|60|ff0000", _
                 "FL5|60|ffea00", _
+                "DeanLight1|40|00ff00", _
+                "DeanLight2|40|00ff00", _
+                "DeanLight3|60|00ff00", _
+                "DeanLight4|60|00ff00", _
+                "JessLight1|60|ff0000", _
+                "JessLight2|40|ff0000", _
+                "JessLight3|40|ff0000", _
+                "JessLight4|40|ff0000", _
                 "l72|100|000000", _
                 "gi025|60|ffa957")
         End With
@@ -36428,6 +38641,14 @@ Sub CreatePscShows()
                 "l70|80|ffff00", _
                 "FL1|40|ff0000", _
                 "FL5|40|ffea00", _
+                "DeanLight1|20|00ff00", _
+                "DeanLight2|20|00ff00", _
+                "DeanLight3|40|00ff00", _
+                "DeanLight4|40|00ff00", _
+                "JessLight1|40|ff0000", _
+                "JessLight2|20|ff0000", _
+                "JessLight3|20|ff0000", _
+                "JessLight4|20|ff0000", _
                 "l72|100|stop", _
                 "l28|80|ffffff", _
                 "gi025|40|ffa957", _
@@ -36490,6 +38711,14 @@ Sub CreatePscShows()
                 "FL1|20|ff0000", _
                 "FL2|80|00ff00", _
                 "FL5|20|ffea00", _
+                "DeanLight1|100|000000", _
+                "DeanLight2|100|000000", _
+                "DeanLight3|20|00ff00", _
+                "DeanLight4|20|00ff00", _
+                "JessLight1|20|ff0000", _
+                "JessLight2|100|000000", _
+                "JessLight3|100|000000", _
+                "JessLight4|100|000000", _
                 "l28|60|ffffff", _
                 "gi025|20|ffa957", _
                 "gi027|60|ffa957")
@@ -36546,6 +38775,14 @@ Sub CreatePscShows()
                 "FL2|60|00ff00", _
                 "FL5|100|000000", _
                 "SkillshotLight|100|fc7703", _
+                "DeanLight1|100|stop", _
+                "DeanLight2|100|stop", _
+                "DeanLight3|100|000000", _
+                "DeanLight4|100|000000", _
+                "JessLight1|100|000000", _
+                "JessLight2|100|stop", _
+                "JessLight3|100|stop", _
+                "JessLight4|100|stop", _
                 "l28|40|ffffff", _
                 "gi025|100|000000", _
                 "gi027|40|ffa957")
@@ -36604,6 +38841,9 @@ Sub CreatePscShows()
                 "FL2|40|00ff00", _
                 "FL4|100|ffa500", _
                 "FL5|100|stop", _
+                "DeanLight3|100|stop", _
+                "DeanLight4|100|stop", _
+                "JessLight1|100|stop", _
                 "l28|20|ffffff", _
                 "gi025|100|stop", _
                 "gi027|20|ffa957", _
@@ -37019,6 +39259,14 @@ Sub CreatePscShows()
                 "l70|30|ffff00", _
                 "l71|100|ffff00", _
                 "SkillshotLight|30|fc7703", _
+                "DeanLight1|30|00ff00", _
+                "DeanLight2|30|00ff00", _
+                "DeanLight3|30|00ff00", _
+                "DeanLight4|30|00ff00", _
+                "JessLight1|30|ff0000", _
+                "JessLight2|30|ff0000", _
+                "JessLight3|30|ff0000", _
+                "JessLight4|30|ff0000", _
                 "l72|30|8800ff", _
                 "l28|30|ffffff", _
                 "bg_logo|30|ffffff", _
