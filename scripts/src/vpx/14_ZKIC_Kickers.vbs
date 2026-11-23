@@ -118,7 +118,12 @@ Sub DrainSubwayKickerEject(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_DrainSubwayKicker
-	s_DrainSubwayKicker.Kick 8, 100
+	' Was 100: too hot, the ball sometimes skipped s_CaptiveRampKicker entirely.
+	s_DrainSubwayKicker.Kick 8, 90
+	' Catch-all: if the ball still skips s_CaptiveRampKicker it rolls down
+	' CaptiveRampHigh anyway, so have the upper kicker ready to send it home.
+	' captive_ball_is_home disables it again.
+	s_CaptiveRampUpperKicker.Enabled = True
 End Sub
 
 ' The ball in the scoop becomes the captive ball. It stops counting as in play when it
