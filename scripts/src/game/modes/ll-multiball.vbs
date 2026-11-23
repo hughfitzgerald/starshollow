@@ -1,17 +1,29 @@
 Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)
         .StartEvents = Array("start_ll_multiball")
-        .StopEvents = Array("mode_base_stopping", "captive_ball_is_home", "bonus_start")
+        'A win (Logan locked away) and a loss (a drain down to one ball sends the
+        'drained ball back to the captive spot) both end on captive_ball_is_home.
+        'Every stop goes through the mode_ll_multiball_stopping relay, which plays
+        'an end callout picked by llmb_won and waits for it to finish: a mode's
+        'sounds are cut off as soon as it stops. Every end callout needs
+        '.Priority = 3 to beat the priority 2 callouts on the one-sound voc bus;
+        'one that is dropped never posts ll_multiball_end_callout_done, and the
+        'll_multiball_end_callout_timeout timer is the fallback for that.
+        .StopEvents = Array("mode_base_stopping", "captive_ball_is_home", "bonus_start", _
+                            "ll_multiball_stop_for_drain", "tilt")
         With .EventPlayer()
             .Add "mode_ll_multiball_started", Array("base_music_stop", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
-            .Add "mode_ll_multiball_stopping", Array("base_music_start", "open_orbit_gate2")
+            .Add "mode_ll_multiball_stopping", Array("open_orbit_gate2")
+            .Add "ll_multiball_end_callout_done", Array("base_music_start")
+            .Add "timer_ll_multiball_end_callout_timeout_complete", Array("ll_multiball_end_callout_done")
 
             .Add "initiate_ll_multiball", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter")
             
             'Scoring
             .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
             .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"), "logan_totally_bashed_callouts")
-            .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier), "logan_totally_bashed_callouts")
+            'The win callout plays at the end of the mode, once the ball is home.
+            .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
 
             
             .Add "captive_ball_is_home", Array("close_captive_diverter")
@@ -30,6 +42,30 @@ Sub CreateLLMultiballMode()
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", Array("capture_captive_ball")
         End With
         
+        With .QueueRelayPlayer()
+            With .EventName("mode_ll_multiball_stopping")
+                .Post    = "ll_multiball_end_callout"
+                .WaitFor = "ll_multiball_end_callout_done"
+            End With
+            With .EventName("ball_ending")
+                .Post    = "ll_multiball_stop_for_drain"
+                .WaitFor = "mode_ll_multiball_stopped"
+            End With
+        End With
+
+        'Longer than the longest end callout (voc_logan_onedoor, 8.7s).
+        With .Timers("ll_multiball_end_callout_timeout")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 10
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "ll_multiball_end_callout"
+                .Action = "restart"
+            End With
+        End With
+
         With .Counters("logan_bash_progress")
             .CountEvents = Array("logan_bumper_hit")
             .CountCompleteValue = 10
@@ -60,9 +96,17 @@ Sub CreateLLMultiballMode()
                 .ForceAll = True
                 .ForceDifferent = True
             End With
-            With .EventName("ll_multiball_lost")
+            'End callouts: llmb_won is 0 (lost) or 1 (Logan locked away).
+            With .EventName("ll_multiball_end_callout{current_player.llmb_won == 0}")
                 .Add "ll_multiball_lost_callout1", 1
                 .Add "ll_multiball_lost_callout2", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("ll_multiball_end_callout{current_player.llmb_won == 1}")
+                .Add "ll_multiball_won_callout1", 1
+                .Add "ll_multiball_won_callout2", 1
+                .Add "ll_multiball_won_callout3", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -72,12 +116,32 @@ Sub CreateLLMultiballMode()
             With .EventName("ll_multiball_lost_callout1")
                 .Key = "key_voc_ll_multiball_lost_callout1"
                 .Sound = "voc_logan_cmonroryletsforget"
-                .Priority = 2
+                .Priority = 3
+                .EventsWhenStopped = Array("ll_multiball_end_callout_done")
             End With
             With .EventName("ll_multiball_lost_callout2")
                 .Key = "key_voc_ll_multiball_lost_callout2"
                 .Sound = "voc_logan_seeyaace"
-                .Priority = 2
+                .Priority = 3
+                .EventsWhenStopped = Array("ll_multiball_end_callout_done")
+            End With
+            With .EventName("ll_multiball_won_callout1")
+                .Key = "key_voc_ll_multiball_won_callout1"
+                .Sound = "voc_logan_onedoor"
+                .Priority = 3
+                .EventsWhenStopped = Array("ll_multiball_end_callout_done")
+            End With
+            With .EventName("ll_multiball_won_callout2")
+                .Key = "key_voc_ll_multiball_won_callout2"
+                .Sound = "voc_logan_porschedealer"
+                .Priority = 3
+                .EventsWhenStopped = Array("ll_multiball_end_callout_done")
+            End With
+            With .EventName("ll_multiball_won_callout3")
+                .Key = "key_voc_ll_multiball_won_callout3"
+                .Sound = "voc_logan_wasteofatrustfund"
+                .Priority = 3
+                .EventsWhenStopped = Array("ll_multiball_end_callout_done")
             End With
             With .EventName("logan_bumper_callout1")
                 .Key = "key_voc_logan_hit1"
@@ -135,7 +199,7 @@ Sub CreateLLMultiballMode()
                 .Key = "key_mus_llmb"
                 .Sound = "mus_llmb"
             End With
-            With .EventName("mode_ll_multiball_stopping")
+            With .EventName("ll_multiball_end_callout")
                 .Key = "key_mus_llmb"
                 .Sound = "mus_llmb"
                 .Action = "stop"
@@ -152,6 +216,10 @@ Sub CreateLLMultiballMode()
                     .Action = "set"
                     .String = """"""
                 End With
+                With .Variable("llmb_won")
+                    .Action = "set"
+                    .Int = 0
+                End With
             End With
             With .EventName("logan_totally_bashed")
                 With .Variable("mode_display_score")
@@ -164,6 +232,10 @@ Sub CreateLLMultiballMode()
                 End With
             End With
             With .EventName("logan_ball_captured")
+                With .Variable("llmb_won")
+                    .Action = "set"
+                    .Int = 1
+                End With
                 With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = LoganLockedAwayScore

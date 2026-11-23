@@ -284,6 +284,7 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "is_lock_qualified", 0        'flag keeps track of when a player has qualified the locks
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
     Glf_SetInitialPlayerVar "llmb_shoot_again_active", 0
+    Glf_SetInitialPlayerVar "llmb_won", 0
     Glf_SetInitialPlayerVar "logan_cooldown_active", 0
 
     Glf_SetInitialPlayerVar "bells_not_hit", 0

@@ -28,7 +28,8 @@ Sub CreateJDMultiballMode()
         'plays a callout picked by jd_winner and waits for it to finish.
         'Every end callout needs .Priority = 1: the voc bus holds one sound,
         'and a callout that cannot beat the ramp callout already playing is
-        'dropped, so its events_when_stopped never fire and the relay hangs.
+        'dropped, so its events_when_stopped never fire; the
+        'jd_multiball_end_callout_timeout timer is the fallback for that.
         .StopEvents = Array("mode_base_stopping", "bonus_start", "multiball_jdmb_ended", _
                             "jd_multiball_stop_for_drain", "jess_wins", "dean_wins", "tilt")
 
@@ -36,6 +37,7 @@ Sub CreateJDMultiballMode()
             .Add "mode_jd_multiball_started", Array("base_music_stop", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
             .Add "initiate_jd_multiball", Array("release_scoop_hold")
             .Add "jd_multiball_end_callout_done", Array("base_music_start")
+            .Add "timer_jd_multiball_end_callout_timeout_complete", Array("jd_multiball_end_callout_done")
             .Add "s_complete_left_ramp_active", Array("jess_ramp")
             .Add "s_complete_right_ramp_active", Array("dean_ramp")
 
@@ -63,6 +65,19 @@ Sub CreateJDMultiballMode()
             With .EventName("ball_ending")
                 .Post    = "jd_multiball_stop_for_drain"
                 .WaitFor = "mode_jd_multiball_stopped"
+            End With
+        End With
+
+        'Longer than the longest end callout (voc_jess_drivingaround, 10.4s).
+        With .Timers("jd_multiball_end_callout_timeout")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 12
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "jd_multiball_end_callout"
+                .Action = "restart"
             End With
         End With
 
