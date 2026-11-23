@@ -21,7 +21,13 @@ Sub CreateLLMultiballQualifyMode()
         End With
 
         With .RandomEventPlayer()
-            With .EventName("logan_captive_ball_hit{current_player.shot_logan_qualify < 2}")
+            With .EventName("logan_captive_ball_hit{current_player.shot_logan_qualify == 0}")
+                .Add "logan_captive_ball_first_callout1", 1
+                .Add "logan_captive_ball_first_callout2", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("logan_captive_ball_hit{current_player.shot_logan_qualify == 1}")
                 .Add "logan_captive_ball_callout1", 1
                 .Add "logan_captive_ball_callout2", 1
                 .Add "logan_captive_ball_callout3", 1
@@ -29,8 +35,6 @@ Sub CreateLLMultiballQualifyMode()
                 .Add "logan_captive_ball_callout5", 1
                 .Add "logan_captive_ball_callout6", 1
                 .Add "logan_captive_ball_callout7", 1
-                .Add "logan_captive_ball_callout8", 1
-                .Add "logan_captive_ball_callout9", 1
                 .ForceAll = True
                 .ForceDifferent = True
             End With
@@ -65,12 +69,12 @@ Sub CreateLLMultiballQualifyMode()
                 .Key = "key_logan_captive_ball_callout7"
                 .Sound = "voc_logan_mindless"
             End With
-            With .EventName("logan_captive_ball_callout8")
-                .Key = "key_logan_captive_ball_callout8"
+            With .EventName("logan_captive_ball_first_callout1")
+                .Key = "key_logan_captive_ball_first_callout1"
                 .Sound = "voc_logan_heyloganheyace"
             End With
-            With .EventName("logan_captive_ball_callout9")
-                .Key = "key_logan_captive_ball_callout9"
+            With .EventName("logan_captive_ball_first_callout2")
+                .Key = "key_logan_captive_ball_first_callout2"
                 .Sound = "voc_logan_ladies"
             End With
             With .EventName("logan_qualify_complete")
