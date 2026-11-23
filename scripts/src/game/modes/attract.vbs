@@ -44,6 +44,7 @@ Sub CreateAttractMode()
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 1}", Array("attract_gi_dim")
             .Add "timer_attract_pulse_tick{devices.timers.attract_pulse.ticks == 3}", Array("attract_gi_bright")
             
+            .Add "credits_added{device.timers.attract_insert_coins.ticks == 4}", Array("show_insert_coins")
             .Add "not_enough_credits{device.timers.attract_insert_coins.ticks == 4}", Array("show_insert_coins")
             .Add "s_right_flipper_active{device.timers.attract_insert_coins.ticks == 4}", Array("manual_advance_attract_slide")
         End With
