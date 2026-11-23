@@ -1,24 +1,26 @@
-' Const LoganScoreToWin = 10000
 Sub CreateLLMultiballMode()
     With CreateGlfMode("ll_multiball", 1005)
         .StartEvents = Array("start_ll_multiball")
         .StopEvents = Array("mode_base_stopping", "captive_ball_is_home", "bonus_start")
         With .EventPlayer()
-            .Add "mode_ll_multiball_started", Array("base_music_stop", "close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
+            .Add "mode_ll_multiball_started", Array("base_music_stop", "play_multiball_slide", ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "HIT BUMPERS TO BASH LOGAN"))
             .Add "mode_ll_multiball_stopping", Array("base_music_start", "open_orbit_gate2")
+
+            .Add "initiate_ll_multiball", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter")
             
             'Scoring
             .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
-            .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"))
-            .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
+            .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"), "logan_totally_bashed_callouts")
+            .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier), "logan_totally_bashed_callouts")
 
             
             .Add "captive_ball_is_home", Array("close_captive_diverter")
             .Add "multiball_locks_cleared", Array("free_captive_ball")
             
 
-            .Add "auto_fire_coil_bumper1_activate", Array("logan_bumper_hit")
-            .Add "auto_fire_coil_bumper5_activate", Array("logan_bumper_hit")
+            ' Once Logan is totally bashed (win light lit), bumpers stop feeding the mode; only the scoop lock scores from here.
+            .Add "auto_fire_coil_bumper1_activate{current_player.shot_win_logan_light==0}", Array("logan_bumper_hit")
+            .Add "auto_fire_coil_bumper5_activate{current_player.shot_win_logan_light==0}", Array("logan_bumper_hit")
 
             .Add "logan_bumper_hit{current_player.mode_llmb_score>=" & LoganScoreToWin & "}", Array("logan_totally_bashed")
 
@@ -27,21 +29,109 @@ Sub CreateLLMultiballMode()
             ' The kick to the captive spot failed and the ball is back in the scoop: kick again, no second award.
             .Add "balldevice_scoop_ball_entered{current_player.shot_win_logan_light==1 and machine.captive_capture_pending==1}", Array("capture_captive_ball")
         End With
+        
+        With .Counters("logan_bash_progress")
+            .CountEvents = Array("logan_bumper_hit")
+            .CountCompleteValue = 10
+            .EventsWhenComplete = Array("logan_bash_progress")
+            .RestartEvents = Array("logan_bash_progress")
+        End With
+
+        With .RandomEventPlayer()
+            With .EventName("logan_bumper_hit")
+                .Add "logan_bumper_callout1", 1
+                .Add "logan_bumper_callout2", 1
+                .Add "logan_bumper_callout3", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("logan_bash_progress")
+                .Add "logan_bash_progress_callout1", 1
+                .Add "logan_bash_progress_callout2", 1
+                .Add "logan_bash_progress_callout3", 1
+                .Add "logan_bash_progress_callout4", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("logan_totally_bashed_callouts")
+                .Add "logan_totally_bashed_callout1", 1
+                .Add "logan_totally_bashed_callout2", 1
+                .Add "logan_totally_bashed_callout3", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+            With .EventName("ll_multiball_lost")
+                .Add "ll_multiball_lost_callout1", 1
+                .Add "ll_multiball_lost_callout2", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+        End With
 
         With .SoundPlayer()
-            With .EventName("auto_fire_coil_bumper1_activate")
+            With .EventName("ll_multiball_lost_callout1")
+                .Key = "key_voc_ll_multiball_lost_callout1"
+                .Sound = "voc_logan_cmonroryletsforget"
+                .Priority = 2
+            End With
+            With .EventName("ll_multiball_lost_callout2")
+                .Key = "key_voc_ll_multiball_lost_callout2"
+                .Sound = "voc_logan_seeyaace"
+                .Priority = 2
+            End With
+            With .EventName("logan_bumper_callout1")
                 .Key = "key_voc_logan_hit1"
                 .Sound = "voc_logan_hit1"
             End With
-            ' With .EventName("auto_fire_coil_bumper3_activate")
-            '     .Key = "key_voc_logan_hit2"
-            '     .Sound = "voc_logan_hit2"
-            ' End With
-            With .EventName("auto_fire_coil_bumper5_activate")
+            With .EventName("logan_bumper_callout2")
+                .Key = "key_voc_logan_hit2"
+                .Sound = "voc_logan_hit2"
+            End With
+            With .EventName("logan_bumper_callout3")
                 .Key = "key_voc_logan_hit3"
                 .Sound = "voc_logan_hit3"
             End With
+            With .EventName("logan_bash_progress_callout1")
+                .Key = "key_voc_logan_bash_progress_callout1"
+                .Sound = "voc_logan_notsurehowwell"
+                .Priority = 1
+            End With
+            With .EventName("logan_bash_progress_callout2")
+                .Key = "key_voc_logan_bash_progress_callout2"
+                .Sound = "voc_logan_inmymind"
+                .Priority = 1
+            End With
+            With .EventName("logan_bash_progress_callout3")
+                .Key = "key_voc_logan_bash_progress_callout3"
+                .Sound = "voc_logan_roryiloveyou"
+                .Priority = 1
+            End With
+            With .EventName("logan_bash_progress_callout4")
+                .Key = "key_voc_logan_bash_progress_callout4"
+                .Sound = "voc_logan_ivebeenfaithful"
+                .Priority = 1
+            End With
+            With .EventName("logan_totally_bashed_callout1")
+                .Key = "key_voc_logan_totally_bashed_callout1"
+                .Sound = "voc_logan_onedoor"
+                .Priority = 2
+            End With
+            With .EventName("logan_totally_bashed_callout2")
+                .Key = "key_voc_logan_totally_bashed_callout2"
+                .Sound = "voc_logan_porschedealer"
+                .Priority = 2
+            End With
+            With .EventName("logan_totally_bashed_callout3")
+                .Key = "key_voc_logan_totally_bashed_callout3"
+                .Sound = "voc_logan_wasteofatrustfund"
+                .Priority = 2
+            End With
             With .EventName("mode_ll_multiball_started")
+                .Key = "key_voc_logan_multiballintro"
+                .Sound = "voc_logan_multiballintro"
+                .EventsWhenStopped = Array("initiate_ll_multiball")
+            End With
+            With .EventName("initiate_ll_multiball")
                 .Key = "key_mus_llmb"
                 .Sound = "mus_llmb"
             End With

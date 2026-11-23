@@ -920,6 +920,19 @@ Sub CreateSounds()
     AddCallout     "voc_logan_inconsiderate", 1.050396
     AddCallout     "voc_logan_jerk", 0.565625
     AddCallout     "voc_logan_mindless", 0.645146
+    AddCallout     "voc_logan_wasteofatrustfund", 4.164500
+    AddCallout     "voc_logan_seeyaace", 0.660813
+    AddCallout     "voc_logan_roryiloveyou", 2.086104
+    AddCallout     "voc_logan_porschedealer", 4.640458
+    AddCallout     "voc_logan_onedoor", 8.714292
+    AddCallout     "voc_logan_notsurehowwell", 2.194667
+    AddCallout     "voc_logan_multiballintro", 7.522500
+    AddCallout     "voc_logan_ladies", 3.415896
+    AddCallout     "voc_logan_ivebeenfaithful", 6.877396
+    AddCallout     "voc_logan_inmymind", 1.875708
+    AddCallout     "voc_logan_heyloganheyace", 1.096479
+    AddCallout     "voc_logan_cmonroryletsforget", 3.688521
+    AddCallout     "voc_logan_60seconds", 1.858229
 
 
     ' Dance Marathon
