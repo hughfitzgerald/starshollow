@@ -21,7 +21,7 @@
   "gravity_factor": 0.25,
   "show_bracket": true,
   "visible": true,
-  "height": 70.0,
+  "height": 76.0,
   "length": 115.0,
   "material": "Metal",
   "reflection_enabled": true,
