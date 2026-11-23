@@ -913,7 +913,14 @@ Sub CreateSounds()
     AddCallout     "voc_logan_hit1", 0.506693
     AddCallout     "voc_logan_hit2", 0.877734
     AddCallout     "voc_logan_hit3", 0.491453
-    AddCallout     "voc_buttfacedmiscreant_full", 6.294708
+    AddCallout     "voc_logan_arrogant", 0.533938
+    AddCallout     "voc_logan_ass", 0.515896
+    AddCallout     "voc_logan_buttfacedmiscreant", 1.323917
+    AddCallout     "voc_logan_fratboylowlife", 1.160313
+    AddCallout     "voc_logan_inconsiderate", 1.050396
+    AddCallout     "voc_logan_jerk", 0.565625
+    AddCallout     "voc_logan_mindless", 0.645146
+
 
     ' Dance Marathon
     AddMusic       "mus_dm",  304.64, -1

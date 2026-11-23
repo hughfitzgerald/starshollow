@@ -16,8 +16,53 @@ Sub CreateLLMultiballQualifyMode()
             .Add "advance_logan", Array("dt2_knockdown", "logan_back_to_2")
             .Add "s_CaptiveRampKicker_active", Array("logan_qualify_complete")
 
-            'Same 2 second cooldown as the logan_qualify shot, so a rattling captive ball scores once
-            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0}", Array(ScoreEvent(LoganCaptiveScore, WithMultiplier))
+            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0}", Array("logan_captive_ball_hit")
+            .Add "logan_captive_ball_hit", Array(ScoreEvent(LoganCaptiveScore, WithMultiplier))
+        End With
+
+        With .RandomEventPlayer()
+            With .EventName("logan_captive_ball_hit")
+                .Add "logan_captive_ball_callout1", 1
+                .Add "logan_captive_ball_callout2", 1
+                .Add "logan_captive_ball_callout3", 1
+                .Add "logan_captive_ball_callout4", 1
+                .Add "logan_captive_ball_callout5", 1
+                .Add "logan_captive_ball_callout6", 1
+                .Add "logan_captive_ball_callout7", 1
+                .ForceAll = True
+                .ForceDifferent = True
+            End With
+        End With
+
+        With .SoundPlayer()
+            With .EventName("logan_captive_ball_callout1")
+                .Key = "key_logan_captive_ball_callout1"
+                .Sound = "voc_logan_arrogant"
+            End With
+            With .EventName("logan_captive_ball_callout2")
+                .Key = "key_logan_captive_ball_callout2"
+                .Sound = "voc_logan_ass"
+            End With
+            With .EventName("logan_captive_ball_callout3")
+                .Key = "key_logan_captive_ball_callout3"
+                .Sound = "voc_logan_buttfacedmiscreant"
+            End With
+            With .EventName("logan_captive_ball_callout4")
+                .Key = "key_logan_captive_ball_callout4"
+                .Sound = "voc_logan_fratboylowlife"
+            End With
+            With .EventName("logan_captive_ball_callout5")
+                .Key = "key_logan_captive_ball_callout5"
+                .Sound = "voc_logan_inconsiderate"
+            End With
+            With .EventName("logan_captive_ball_callout6")
+                .Key = "key_logan_captive_ball_callout6"
+                .Sound = "voc_logan_jerk"
+            End With
+            With .EventName("logan_captive_ball_callout7")
+                .Key = "key_logan_captive_ball_callout7"
+                .Sound = "voc_logan_mindless"
+            End With
         End With
 
         With .Shots("logan_light")
@@ -65,7 +110,7 @@ Sub CreateLLMultiballQualifyMode()
 
         With .Shots("logan_qualify")
             .Persist = True
-            .HitEvents = Array("s_captive_ball_active{current_player.logan_cooldown_active == 0}")
+            .HitEvents = Array("logan_captive_ball_hit")
             .Profile = "logan_ball"
             With .Tokens()
                 .Add "lights", "l57"

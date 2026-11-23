@@ -1,6 +1,6 @@
 {
   "$type": "sound",
-  "import_path": "/Users/stephenjones/code/starshollow/callouts/voc_buttfacedmiscreant_full.ogg",
+  "import_path": "sounds/voc_logan_inconsiderate.opus",
   "output_target": "backglass",
   "volume_offset": 0,
   "left_right_offset": 0,
