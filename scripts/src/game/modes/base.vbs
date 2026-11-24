@@ -183,6 +183,12 @@ Sub CreateBaseMode()
                     .Action = "set"
                     .Int = 1
                 End With
+                'Safety net: modes that raise the playfield multiplier set it back when they
+                'stop, but never carry one into a new ball
+                With .Variable("scoring_multiplier")
+                    .Action = "set"
+                    .Int = 1
+                End With
                 With .Variable("total_switches_hit")
                     .Action = "set"
                     .Int = 0

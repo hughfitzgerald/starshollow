@@ -253,6 +253,7 @@ Sub ConfigureGlfDevices()
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1
+    Glf_SetInitialPlayerVar "kims_warning_active", 0  ' Kim's Antiques: a shot is flashing before Miss Kim moves there
     Glf_SetInitialPlayerVar "replay_awarded", 0       ' set once this player has earned the replay this game
     Glf_SetInitialPlayerVar "scoring_multiplier", 1
 

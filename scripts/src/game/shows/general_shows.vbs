@@ -272,6 +272,22 @@ Sub CreateGeneralShows()
         End With
     End With
 
+    ' One lit light walking up the Dean sign on the right ramp (Kim's Antiques jackpot)
+    With CreateGlfShow("dean_sign_chase")
+        With .AddStep(Null, Null, 0.15)
+            .Lights = Array("DeanLight1|100|(color)", "DeanLight2|100|000000", "DeanLight3|100|000000", "DeanLight4|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.15)
+            .Lights = Array("DeanLight1|100|000000", "DeanLight2|100|(color)", "DeanLight3|100|000000", "DeanLight4|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.15)
+            .Lights = Array("DeanLight1|100|000000", "DeanLight2|100|000000", "DeanLight3|100|(color)", "DeanLight4|100|000000")
+        End With
+        With .AddStep(Null, Null, 0.15)
+            .Lights = Array("DeanLight1|100|000000", "DeanLight2|100|000000", "DeanLight3|100|000000", "DeanLight4|100|(color)")
+        End With
+    End With
+
     With CreateGlfShow("on_color")
         With .AddStep(Null, Null, -1)
             .Lights = Array("(lights)|100|(color)")
