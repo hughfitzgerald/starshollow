@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `7147986`. "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `7147986`; commits through `1d433ea` reviewed (T1, T7, T11, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -23,7 +23,7 @@
 ## 1. Prioritized TODO list
 
 ### P1 — before this week's playtest
-- **T1** **Pause mode timers while the ball is held** *(bold in doc; how-to: O5)*. The mode timers (`dinner_mode`, `tm_mode`, `kims_antiques_mode`, `lbtb_mode`, `fd_punch_mode`, `dm_mode`) keep running while the scoop holds the ball, including during mystery. GLF timers already support a `pause` action (attract uses it), so add a pause on `balldevice_scoop_ball_entered` and a start on the eject.
+- **T1** → moved to D38 (done @ 1d433ea)
 - **T2** → moved to D33 (per Stephen)
 - **T18** **Rewrite the Jess/Dean MB start slide text** (per Stephen). The current text also has a typo: "TEAM LOGAN: RIGHT RAMP" should be TEAM DEAN (`jd-multiball.vbs` line 37; from O13). Still there @ 7147986.
 - **T3** → moved to D34 (done @ 7147986)
@@ -31,14 +31,14 @@
 ### P2 — if there's time this week
 - **T4** **Character modes: add rewards and points** *(first line of doc)*. The rewards are the unlocks in **I5** (per Stephen); collecting them is **I19**, and Kirk's Super Jets is **I21**. Progress, slides and callouts exist, and the mode priority (230) is already below the mission modes (660+), so the callout-priority half is done. Completing a character currently awards nothing: `<name>_complete` only plays a slide (`characters.vbs` line 41) @ 7147986.
 - **T5** **Find a home for Babette's meteorologists callout** *(bold)*. Registered but never played @ 7147986. Candidates: the secret skill shot (I20) or the tilt warning (O10).
-- **T7** **Make mystery slides outrank mode slides** *(part of the bold mystery item)*. Mystery slides have no priority set.
+- **T7** → moved to D39 (done @ 1d433ea)
 - **T8** **Post-ball callouts**: "No more talking…" and "I can't talk to you when you're like this…". Neither clip exists yet.
 - **T9** **Status report**: not started (suggestion: O11).
 
 ### P3 — after the trip
 - **T6** **Unused sounds: find a place for them or remove them** (per Stephen, most may never be used). The list is now in section 7, Sound inventory.
 - **T10** **Change which mode is about to start** *(bold, "slings?"; see O12)*. Keep the random pick, but let the flippers change it while the ball is in the plunger lane (per Stephen). Catch: no minigame is picked until skillshots stop, which keeps a mode from starting after the secret skill shot (it ends in the scoop). So the selection has to start with base mode, with conditions that block the minigame and mystery from starting after a secret skill shot. Today `choose_new_minigame` picks at random @ 7147986.
-- **T11** **More mystery awards**: video mode, hold bonus X. Done already: extra ball, add-a-ball, Jess/Dean MB, advance Logan, bonus X, scores. Dropped Grandparents' hurry-up, quick 2-ball and Super Jets (per Stephen; Super Jets is now the Kirk reward, I21).
+- **T11** **More mystery awards**: video mode, hold bonus X. Done already: extra ball, add-a-ball, Jess/Dean MB, advance Logan, bonus X, scores. Existing awards now have conditions @ 1d433ea (`_scores.vbs` line 199): Lite EB only if one isn't already lit, Add-a-Ball and Jess/Dean MB not during either multiball, Increase Bonus only below 8X, Advance Logan only at qualify stage ≤ 1. Dropped Grandparents' hurry-up, quick 2-ball and Super Jets (per Stephen; Super Jets is now the Kirk reward, I21).
 - **T12** **Founder's Day Punch jackpots**: a cross-table super jackpot (Luke's → Mansion; same thing as the "combo jackpot", per Stephen) and a roaming jackpot. Today the mode is plain Luke's/Mansion/orbit scoring.
 - **T13** **Town Meeting: more topics** *(bold)*. Done: deer, cart/kiosk, coffee IV, punctuality. Not done: Taylor's wig, greenhouse, sores-and-boils alley, gnome banishing, Kirk leaving his mom's, "I'm a-gin it", Kirk under the sheet.
 - **T14** **Kim's Antiques**: callouts for Lane, plus Mrs. Kim lines when you run into her (per Stephen).
@@ -129,6 +129,9 @@
 - **D20** Sound buses with priorities
 - **D32** (was R1) Most of the Twilight Zone–style attract details (per Stephen); the rest is T19
 - **D34** (was T3) Inserting a coin shows the insert-coins slide: `credits_added` → `show_insert_coins` (`attract.vbs` line 47) @ 7147986; verify on the table
+- **D38** (was T1) Mode timers pause while the scoop holds the ball: every mode timer (`dinner_mode`, `tm_mode`, `tm_lukes`, `kims_antiques_mode`, `move_miss_kim`, `lbtb_mode`, `shuffle_bells`, `fd_punch_mode`, `dm_mode`, `dm_shot`) pauses on `balldevice_scoop_ball_entered` and starts on `scoop_eject_show_complete` @ 1d433ea. **Verify:** the `start` also fires on the mode's own intro eject and on any scoop eject after the timer has finished (e.g. during `*_post_mode`). Check on the table that a finished timer doesn't start again.
+- **D39** (was T7) Mystery slides outrank mode slides: mystery mode moved from priority 580 to 1200 (above both multiballs), and its slides are set to priority 1200 (`mystery.vbs` lines 6 and 90) @ 1d433ea
+- **D40** Quick scoop re-shots now count as new entries: `EjectTimeout` dropped from 2000 to 300 ms (`_configuration.vbs` line 439) @ 1d433ea. **Verify** that a ball falling back out of a weak eject isn't counted as a new entry.
 - **D35** (was T16) Gameplay music separated from attract/EOB music; the loudness scripts live outside the repo (per Stephen)
 
 **Callouts and music (one line per mode)**
@@ -169,10 +172,10 @@
 ## 6. My observations and answers to your questions
 
 - **O1** **"Hurry-up slide overwrites a lot of stuff — why?!"** Hurry-up plays the shared `mode` slide at priority 1000 (`hurryup.vbs` line 58), and `star_light_group_on_complete` starts it even while a minigame or multiball is running. So it takes over that mode's own panel. Fix: don't start it while `modes.<minigame>.active` or either multiball is active, or give it its own slide at a priority below the mode slides.
-- **O2** **"When I allow mystery in Jess/Dean, it immediately shot out the ball — why?"** `jd-multiball.vbs` (priority 1020) posts `release_scoop_hold` on every scoop entry, before mystery (580) ever sees it. That's also why the current exclusion of mystery from both multiballs is the right call.
+- **O2** **"When I allow mystery in Jess/Dean, it immediately shot out the ball — why?"** `jd-multiball.vbs` (priority 1020) posts `release_scoop_hold` on every scoop entry, before mystery (580) ever sees it. **Update @ 1d433ea:** mystery is now priority 1200, so it hears the scoop entry before Jess/Dean MB (1020). Its `select_random_mystery` handler still requires both multiballs to be inactive (`mystery.vbs` line 15), so keep that condition if you ever want mystery allowed during multiball.
 - **O3** **"Do I need conditions in minigame.vbs so minigames don't start?"** They're already there: every `start_<minigame>` requires both multiballs to be inactive.
 - **O4** **"Can I stop the flashing minigame during multiball and pick a new one after?"** Yes. Post `clear_selected_minigame` on `mode_jd_multiball_started`/`mode_ll_multiball_started`, and `minigame_select_delay` on their `_stopped` events, the same way single-ball modes already do.
-- **O5** **"Just pause the timer whenever the ball is in the hold."** GLF timers take `.Action = "pause"`. Add one control event on scoop entry and one `start` on the eject. Using `scoop_eject_show_complete` for the eject means the flasher warning doesn't eat clock.
+- **O5** **"Just pause the timer whenever the ball is in the hold."** GLF timers take `.Action = "pause"`. Add one control event on scoop entry and one `start` on the eject. Using `scoop_eject_show_complete` for the eject means the flasher warning doesn't eat clock. (Done this way @ 1d433ea; see D38.)
 - **O6** **"Is the scoop-hold bug in GLF or in my usage?"** I can't be sure from the code. The symptom (the hold stops hearing `ball_enter` after its mode restarts) looks like a listener that isn't re-registered when the mode restarts, not a config mistake. Since you maintain a GLF fork, a minimal two-ball repro would settle it.
 - **O7** **"Game Over in the Gilmore Girls font at low res?"** You've already done it: attract uses `game_over_128x32_gray.png`.
 - **O8** **"Is that sneaking guitar cue Sam Phillips?"** Almost certainly. She scored the show, and those "la la" guitar cues are hers.
