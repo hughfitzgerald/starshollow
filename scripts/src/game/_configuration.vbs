@@ -315,7 +315,6 @@ Sub ConfigureGlfDevices()
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
     CreateExtraBallMode()    ' priority 510
-    CreateMysteryMode()       ' priority 580
     CreateRampshotsMode()    ' priority 660
 
     CreateDanceMarathonMode() ' priority 670
@@ -332,6 +331,7 @@ Sub ConfigureGlfDevices()
     CreateGameEndPauseMode()   ' priority 1600 (holds game_ending before high scores and match)
     CreateLLMultiballMode()    ' priority 1005
     CreateJDMultiballMode()    ' priority 1020
+    CreateMysteryMode()       ' priority 1200
 
     CreateScoreMode()        ' priority 2000
     CreateTiltMode()         ' priority 10000

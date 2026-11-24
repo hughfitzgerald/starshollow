@@ -107,6 +107,14 @@ Sub CreateTownMeetingMode()
                 .EventName = "tm_start_shots"
                 .Action = "restart"
             End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
+                .Action = "start"
+            End With
         End With
 
         With .RandomEventPlayer()
@@ -235,6 +243,14 @@ Sub CreateTownMeetingMode()
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
                 .EventName = "timer_onestepbeyond_complete"
+                .Action = "start"
+            End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
                 .Action = "start"
             End With
         End With

@@ -72,6 +72,14 @@ Sub CreateKimsAntiquesMode()
                 .EventName = "move_miss_kim"
                 .Action = "restart"
             End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
+                .Action = "start"
+            End With
         End With
 
         With .SoundPlayer()
@@ -187,6 +195,14 @@ Sub CreateKimsAntiquesMode()
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
                 .EventName = "timer_kims_antiques_intro_delay_complete"
+                .Action = "start"
+            End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
                 .Action = "start"
             End With
         End With

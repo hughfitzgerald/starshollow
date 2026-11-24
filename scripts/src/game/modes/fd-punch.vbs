@@ -246,6 +246,14 @@ Sub CreateFdPunchMode()
                 .EventName = "timer_fd_punch_intro_delay_complete"
                 .Action = "start"
             End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
+                .Action = "start"
+            End With
         End With
 
         With .RandomEventPlayer()

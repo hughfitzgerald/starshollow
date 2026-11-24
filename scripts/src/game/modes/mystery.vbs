@@ -3,7 +3,7 @@
 Sub CreateMysteryMode()
     Dim x
 
-    With CreateGlfMode("mystery", 580)
+    With CreateGlfMode("mystery", 1200)
         .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
 
@@ -87,6 +87,7 @@ Sub CreateMysteryMode()
                     .Slide = "mystery_" & mysteryAwards(x).Short
                     .Action = "play"
                     .Expire = 6
+                    .Priority = 1200
                 End With
             Next
         End With

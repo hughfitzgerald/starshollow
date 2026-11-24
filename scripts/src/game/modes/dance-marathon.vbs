@@ -229,6 +229,14 @@ Sub CreateDanceMarathonMode()
                 .EventName = "dm_start_shots"
                 .Action = "start"
             End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
+                .Action = "start"
+            End With
         End With
 
         With .Timers("dm_shot")
@@ -243,6 +251,14 @@ Sub CreateDanceMarathonMode()
             End With
             With .ControlEvents
                 .EventName = "dm_start_shots"
+                .Action = "start"
+            End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
                 .Action = "start"
             End With
         End With

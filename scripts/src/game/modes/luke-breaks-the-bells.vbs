@@ -102,6 +102,14 @@ Sub CreateLbtbMode()
                 .EventName = "lbtb_post_mode"
                 .Action = "stop"
             End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
+                .Action = "start"
+            End With
         End With
 
         With .SoundPlayer()
@@ -277,6 +285,14 @@ Sub CreateLbtbMode()
             .TickInterval = 1000     ' Tick every 1 second (1000 ms)
             With .ControlEvents
                 .EventName = "timer_lbtb_intro_delay_complete"
+                .Action = "start"
+            End With
+            With .ControlEvents
+                .EventName = "balldevice_scoop_ball_entered"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "scoop_eject_show_complete"
                 .Action = "start"
             End With
         End With
