@@ -34,7 +34,7 @@ Sub CreateJDMultiballMode()
                             "jd_multiball_stop_for_drain", "jess_wins", "dean_wins", "tilt")
 
         With .EventPlayer()
-            .Add "mode_jd_multiball_started", Array("base_music_stop", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"))
+            .Add "mode_jd_multiball_started", Array("base_music_stop", ModeSlideEvent("play_jdmb_mode_slide", "JESS VS. DEAN: TO THE DEATH", "SHOOT RAMPS TO SCORE"))
             .Add "initiate_jd_multiball", Array("release_scoop_hold")
             .Add "jd_multiball_end_callout_done", Array("base_music_start")
             .Add "timer_jd_multiball_end_callout_timeout_complete", Array("jd_multiball_end_callout_done")

@@ -1669,7 +1669,7 @@ Function Glf_348(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
 	kwargs.Add "text", "JESS VS. DEAN" & Chr(58) & " TO THE DEATH"
-	kwargs.Add "instructions", "TEAM JESS" & Chr(58) & " LEFT RAMP - TEAM LOGAN" & Chr(58) & " RIGHT RAMP"
+	kwargs.Add "instructions", "SHOOT RAMPS TO SCORE"
 	Set Glf_348 = kwargs
 	If Err Then Glf_348 = Null
 End Function
@@ -2557,7 +2557,7 @@ glf_funcRefMap.Add "{current_player.mode_llmb_score}", "Glf_344"
 glf_funcRefMap.Add "7500000", "Glf_345"
 glf_funcRefMap.Add "50000", "Glf_346"
 glf_funcRefMap.Add "10000", "Glf_347"
-glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""TEAM JESS"" & Chr(58) & "" LEFT RAMP - TEAM LOGAN"" & Chr(58) & "" RIGHT RAMP""}", "Glf_348"
+glf_funcRefMap.Add "play_jdmb_mode_slide:{text:""JESS VS. DEAN"" & Chr(58) & "" TO THE DEATH"",instructions:""SHOOT RAMPS TO SCORE""}", "Glf_348"
 glf_funcRefMap.Add "jess_lit:{light:1}", "Glf_349"
 glf_funcRefMap.Add "dean_lit:{light:1}", "Glf_350"
 glf_funcRefMap.Add "jess_lit:{light:2}", "Glf_351"
