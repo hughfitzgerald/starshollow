@@ -432,7 +432,11 @@ Sub ConfigureGlfDevices()
     With CreateGlfBallDevice("scoop")
         .Debug = True
         .BallSwitches = Array("s_VUK1")
-        .EjectTimeout = 2000
+        ' No EjectTargets (no switch between the scoop and the flippers), so an eject is
+        ' confirmed only by the ball staying out for ExitCountDelay (500) + EjectTimeout.
+        ' Any re-entry inside that window counts as the same ball falling back: no new
+        ' ball_entered, no hold, no eject show. Keep it short so quick re-shots count.
+        .EjectTimeout = 300
         .MechanicalEject = True
         .EjectCallback = "ScoopEjectCallback"
     End With
