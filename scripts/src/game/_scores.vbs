@@ -182,26 +182,32 @@ Class MysteryAward
     Public Short
     Public Text
     Public EventName
+    Public Condition
     Public Probability
 End Class
 
-Function NewMysteryAward(short, text, eventName, probability)
+' condition: a GLF condition ("" for none) that must pass for the award to be
+' picked. It goes on the random pick, not on eventName: GLF does not evaluate
+' {conditions} on posted events, so "start_jd_multiball{...}" would be posted
+' as that literal event name and nothing would listen for it.
+Function NewMysteryAward(short, text, eventName, condition, probability)
     Dim m : Set m = New MysteryAward
     m.Short = short
     m.Text = text
     m.EventName = eventName
+    m.Condition = condition
     m.Probability = probability
     Set NewMysteryAward = m
 End Function
 
 Dim mysteryAwards
 mysteryAwards = Array( _
-    NewMysteryAward("eb", "Lite Extra Ball", "eb_now_lit{current_player.shot_eb_ready < 1}", 1), _
-    NewMysteryAward("ab", "Add-a-Ball", "add_a_ball{modes.jd_multiball.active==False and modes.ll_multiball.active==False}", .6), _
-    NewMysteryAward("bs", "Big Score", ScoreEvent(MysteryBigScore, WithMultiplier), .1), _
-    NewMysteryAward("ib", "Increase Bonus", "qualify_multiplier_group_on_complete{current_player.bonus_x < 8}", 1), _
-    NewMysteryAward("jd", "Jess/Dean MB", "start_jd_multiball{modes.jd_multiball.active==False and modes.ll_multiball.active==False}", .1), _
-    NewMysteryAward("ss", "Small Score", ScoreEvent(MysterySmallScore, WithMultiplier), 1), _
-    NewMysteryAward("al", "Advance Logan", "advance_logan{current_player.shot_logan_qualify <= 1}", 1), _
-    NewMysteryAward("ms", "Medium Score", ScoreEvent(MysteryMediumScore, WithMultiplier), .5) _
+    NewMysteryAward("eb", "Lite Extra Ball", "eb_now_lit", "current_player.shot_eb_ready < 1", 1), _
+    NewMysteryAward("ab", "Add-a-Ball", "add_a_ball", "modes.jd_multiball.active==False and modes.ll_multiball.active==False", .6), _
+    NewMysteryAward("bs", "Big Score", ScoreEvent(MysteryBigScore, WithMultiplier), "", .1), _
+    NewMysteryAward("ib", "Increase Bonus", "qualify_multiplier_group_on_complete", "current_player.bonus_x < 8", 1), _
+    NewMysteryAward("jd", "Jess/Dean MB", "start_jd_multiball", "modes.jd_multiball.active==False and modes.ll_multiball.active==False", .1), _
+    NewMysteryAward("ss", "Small Score", ScoreEvent(MysterySmallScore, WithMultiplier), "", 1), _
+    NewMysteryAward("al", "Advance Logan", "advance_logan", "current_player.shot_logan_qualify <= 1", 1), _
+    NewMysteryAward("ms", "Medium Score", ScoreEvent(MysteryMediumScore, WithMultiplier), "", .5) _
 )
