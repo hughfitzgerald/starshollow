@@ -334,7 +334,26 @@ Class GlfFlexDmdBcpController
             Exit Sub
         End If
 
+        If LCase(FlexBcp_Str(action)) = "update" Then
+            UpdateSlide slide, kwargs
+            Exit Sub
+        End If
+
         Push slide, False, context, FlexBcp_Num(expire), priority, kwargs
+    End Sub
+
+    ' .Action = "update": hand a slide that is already on the stack the
+    ' new event's kwargs, and nothing else - no re-render, no restarted
+    ' transition, no change to its priority or expiry. Its Ticker picks
+    ' the new values up on the next frame. A slide that is not on the
+    ' stack is left off it; updating is not playing.
+    Public Sub UpdateSlide(slide, kwargs)
+        If m_connected = False Then Exit Sub
+        Dim key : key = FlexBcp_StackKey(slide, False)
+        If Not m_stack.Exists(key) Then Exit Sub
+        Dim item : Set item = m_stack(key)
+        item.SetKwargs kwargs
+        SyncKwargs ItemEntry(item)
     End Sub
 
     Public Sub RemoveSlide(slide)

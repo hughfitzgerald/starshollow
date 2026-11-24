@@ -229,6 +229,17 @@ Sub CreateFlexDmdDisplay()
         .TransitionOut = "push right"
     End With
 
+    ' The mode panel's layout, for the hurry-up - its own slide so it can
+    ' run on top of a mode without fighting over the mode panel. The
+    ' score comes in as the (points) kwarg, refreshed each timer tick
+    ' with .Action = "update".
+    With CreateDmdSlide("hurryup")
+        .Builder       = "DmdBuild_Hurryup"
+        .Ticker        = "DmdTick_Hurryup"
+        .Transition    = "push left"
+        .TransitionOut = "push right"
+    End With
+
     ' Final scores after the game - one big score, or every player's.
     With CreateDmdSlide("game_over")
         .Builder       = "DmdBuild_GameOver"

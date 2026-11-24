@@ -310,7 +310,6 @@ Sub ConfigureGlfDevices()
     CreateBonusLanesMode()  ' priority 210
     CreateLLMultiballQualifyMode() ' priority 220
     CreateCharactersMode()    ' priority 230
-    CreateHurryupMode()        ' priority 240
 
     CreateSkillshotsMode()   ' priority 400
     CreateMinigameMode()      ' priority 500
@@ -331,6 +330,7 @@ Sub ConfigureGlfDevices()
     CreateGameEndPauseMode()   ' priority 1600 (holds game_ending before high scores and match)
     CreateLLMultiballMode()    ' priority 1005
     CreateJDMultiballMode()    ' priority 1020
+    CreateHurryupMode()        ' priority 1100
     CreateMysteryMode()       ' priority 1200
 
     CreateScoreMode()        ' priority 2000

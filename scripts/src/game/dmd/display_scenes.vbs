@@ -599,6 +599,45 @@ Sub DmdTick_Mode(entry)
 End Sub
 
 '*******************************************
+'  hurryup - the mode panel's layout, for the hurry-up
+'*******************************************
+' Same spots as the mode panel, but nothing comes from player variables:
+' the title and instructions are fixed, and the score is the (points)
+' kwarg of whatever event last played or updated the slide (hurryup.vbs
+' updates it on every timer tick).
+
+Sub DmdBuild_Hurryup(entry)
+    Dim text, score, instructions
+    Dim g : Set g = FlexDMD.NewGroup("Hurryup")
+    With g
+        Set text = FlexDMD.NewLabel("hurryup_text", tinyFontDim, "HURRY-UP")
+        text.SetBounds 0, 1, 128, 8
+        text.Alignment = FlexDMD_Align_Center
+        .AddActor text
+
+        Set score = FlexDMD.NewLabel("hurryup_score", bigFont, "")
+        .AddActor score
+
+        Set instructions = FlexDMD.NewLabel("hurryup_instructions", tinyFontDim, "SHOOT LUKE'S TO COLLECT JACKPOT")
+        instructions.SetBounds 0, 24, 128, 8
+        instructions.Alignment = FlexDMD_Align_Center
+        .AddActor instructions
+    End With
+    entry.SetScene g
+End Sub
+
+Sub DmdTick_Hurryup(entry)
+    Dim score, points
+    points = FlexDmd_Kwarg(entry.Kwargs(), "points", 0)
+    If Not IsNumeric(points) Then points = 0
+
+    Set score = entry.Scene().GetLabel("hurryup_score")
+    score.Text = FormatNumber(points, 0)
+    score.SetBounds 0, 9, 128, 14
+    score.Alignment = FlexDMD_Align_Center
+End Sub
+
+'*******************************************
 '  game_over - final scores
 '*******************************************
 ' Reads the player1_score..player4_score machine vars, which GLF fills in

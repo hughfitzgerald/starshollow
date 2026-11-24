@@ -254,6 +254,14 @@ Sub CreateFdPunchMode()
                 .EventName = "scoop_eject_show_complete"
                 .Action = "start"
             End With
+            With .ControlEvents
+                .EventName = "start_hurryup_timer"
+                .Action = "pause"
+            End With
+            With .ControlEvents
+                .EventName = "hurryup_is_over"
+                .Action = "start"
+            End With
         End With
 
         With .RandomEventPlayer()
