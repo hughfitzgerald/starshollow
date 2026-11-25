@@ -34,7 +34,7 @@ Sub CreateKimsAntiquesMode()
             .Add "kims_antiques_shot_hit", Array(ScoreEvent(KimsAntiquesShotScore, NoMultiplier), "kims_jackpot_relight")
             .Add "kims_jackpot_hit", Array(ScoreEvent(KimsAntiquesJackpotScore, NoMultiplier))
 
-            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_kims_antiques_mode_slide", "KIM'S ANTIQUES", KimsAntiquesPlayfieldX & "X SCORING - RIGHT RAMP JACKPOT - AVOID MISS KIM"))
+            .Add "mode_kims_antiques_started", Array(ScoreEvent(ModeStartScore, NoMultiplier), "base_music_stop", ModeSlideEvent("play_kims_antiques_mode_slide", "AVOID MS. KIM", KimsAntiquesPlayfieldX & "X SCORING - RIGHT RAMP JACKPOT"))
             .Add "mode_kims_antiques_stopping", Array("kims_antiques_shots_off")
             'Survived the full timer without hitting Miss Kim
             .Add "timer_kims_antiques_mode_complete", Array("base_music_start", ScoreEvent(KimsAntiquesCompleteScore, NoMultiplier))

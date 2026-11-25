@@ -1472,8 +1472,8 @@ End Function
 Function Glf_309(args)
 	On Error Resume Next
 		Dim kwargs : Set kwargs = GlfKwargs()
-	kwargs.Add "text", "KIM'S ANTIQUES"
-	kwargs.Add "instructions", "3X SCORING - RIGHT RAMP JACKPOT - AVOID MISS KIM"
+	kwargs.Add "text", "AVOID MS. KIM"
+	kwargs.Add "instructions", "3X SCORING - RIGHT RAMP JACKPOT"
 	Set Glf_309 = kwargs
 	If Err Then Glf_309 = Null
 End Function
@@ -2626,7 +2626,7 @@ glf_funcRefMap.Add "{current_player.mode_dinner_score}", "Glf_305"
 glf_funcRefMap.Add "play_fd_punch_mode_slide:{text:""FOUNDER'S DAY PUNCH"",instructions:""SHOOT LUKE'S OR MANSION TO SCORE""}", "Glf_306"
 glf_funcRefMap.Add "skip_minigame_intro{device.timers.fd_punch_intro_delay.ticks > 0}", "Glf_307"
 glf_funcRefMap.Add "{current_player.mode_fd_punch_score}", "Glf_308"
-glf_funcRefMap.Add "play_kims_antiques_mode_slide:{text:""KIM'S ANTIQUES"",instructions:""3X SCORING - RIGHT RAMP JACKPOT - AVOID MISS KIM""}", "Glf_309"
+glf_funcRefMap.Add "play_kims_antiques_mode_slide:{text:""AVOID MS. KIM"",instructions:""3X SCORING - RIGHT RAMP JACKPOT""}", "Glf_309"
 glf_funcRefMap.Add "timer_move_miss_kim_tick{kwargs.ticks == 1 && current_player.kims_warning_active == 0}", "Glf_310"
 glf_funcRefMap.Add "kims_antiques_right_ramp_unlit_hit{current_player.shot_kims_jackpot == 1}", "Glf_311"
 glf_funcRefMap.Add "kims_antiques_right_ramp_warning_hit{current_player.shot_kims_jackpot == 1}", "Glf_312"
