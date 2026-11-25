@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `02e5871`; commits through `02e5871` reviewed (T1, T7, T11, T18, B2, I7, O1, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `fe2012f`; commits through `1d1a3dc` reviewed (T1, T7, T11, T18, B2, B12, I7, O1, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -16,7 +16,7 @@
 
 ## Inbox
 
-*(empty, triaged @ 02e5871)*
+*(empty, triaged @ fe2012f)*
 
 ---
 
@@ -64,6 +64,7 @@
 | B9 | P3 | Sound priority: can one sound on a bus cut off another? | **Mostly done.** `mus`/`sfx`/`voc` buses exist, `voc` plays one sound at a time, and GLF ranks sounds by mode priority. |
 | B10 | — | Scoop sometimes ejects at the Dance Marathon intro on ball 2 *(bold)* | **Fixed.** You moved `scoop_hold` to basement, and it's there now. |
 | B11 | — | Kim's Antiques doesn't award any shots *(bold)* | **Fixed.** Unlit shots score `KimsAntiquesShotScore`. |
+| B12 | — | Mystery Jess/Dean MB starts during a minigame | → moved to D45 (fixed @ 1d1a3dc) |
 
 ---
 
@@ -137,6 +138,7 @@
 - **D42** Mode timers pause during the hurry-up count: every timer in D38 pauses on `start_hurryup_timer` and starts again on `hurryup_is_over` @ 658829a. **Verify** the same edge as D38: a mode whose timer has already finished shouldn't start it again when `hurryup_is_over` fires.
 - **D43** (was T18) Jess/Dean MB start slide rewritten to "SHOOT RAMPS TO SCORE", which also removes the TEAM LOGAN typo (`jd-multiball.vbs` line 37) @ 65d18aa
 - **D44** (was I7) Kim's Antiques rework @ c7aac63: Miss Kim roams the six shots every 5 s, with the next shot flashing for 1 s first, and hitting her ends the mode. The right ramp is a jackpot (10X) while the Dean sign chases; collecting it unlights it, and any other safe shot scores 2X and relights it. Playfield scoring is 3X for the mode, and the survival award rose to 20X. Base mode now resets `scoring_multiplier` at every ball start.**Verify** the 3X on the table.
+- **D45** (was B12) Mystery Jess/Dean MB can't start during a minigame: the `jd` award's condition now also requires `dance_marathon`, `town_meeting`, `dinner`, `kims_antiques`, `lbtb` and `fd_punch` to be inactive (`_scores.vbs` line 211) @ 1d1a3dc. Add-a-Ball is unchanged, and the lock path was already safe (`jd-multiball-qualify.vbs` line 17). **Verify** on the table that a mystery during a minigame never gives Jess/Dean MB.
 - **D35** (was T16) Gameplay music separated from attract/EOB music; the loudness scripts live outside the repo (per Stephen)
 
 **Callouts and music (one line per mode)**
