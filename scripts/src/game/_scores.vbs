@@ -208,7 +208,7 @@ mysteryAwards = Array( _
     NewMysteryAward("ab", "Add-a-Ball", "add_a_ball", "modes.jd_multiball.active==False and modes.ll_multiball.active==False", .6), _
     NewMysteryAward("bs", "Big Score", ScoreEvent(MysteryBigScore, WithMultiplier), "", .1), _
     NewMysteryAward("ib", "Increase Bonus", "qualify_multiplier_group_on_complete", "current_player.bonus_x < 8", 1), _
-    NewMysteryAward("jd", "Jess/Dean MB", "start_jd_multiball", "modes.jd_multiball.active==False and modes.ll_multiball.active==False", .1), _
+    NewMysteryAward("jd", "Jess/Dean MB", "start_jd_multiball", "modes.jd_multiball.active==False and modes.ll_multiball.active==False and modes.dance_marathon.active==False and modes.town_meeting.active==False and modes.dinner.active==False and modes.kims_antiques.active==False and modes.lbtb.active==False and modes.fd_punch.active==False", .1), _
     NewMysteryAward("ss", "Small Score", ScoreEvent(MysterySmallScore, WithMultiplier), "", 1), _
     NewMysteryAward("al", "Advance Logan", "advance_logan", "current_player.shot_logan_qualify <= 1", 1), _
     NewMysteryAward("ms", "Medium Score", ScoreEvent(MysteryMediumScore, WithMultiplier), "", .5) _

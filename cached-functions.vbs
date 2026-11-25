@@ -1986,7 +1986,7 @@ Function Glf_408(args)
 End Function
 Function Glf_409(args)
 	On Error Resume Next
-	    Glf_409 = glf_modes("jd_multiball").GetValue("active")=False and glf_modes("ll_multiball").GetValue("active")=False
+	    Glf_409 = glf_modes("jd_multiball").GetValue("active")=False and glf_modes("ll_multiball").GetValue("active")=False and glf_modes("dance_marathon").GetValue("active")=False and glf_modes("town_meeting").GetValue("active")=False and glf_modes("dinner").GetValue("active")=False and glf_modes("kims_antiques").GetValue("active")=False and glf_modes("lbtb").GetValue("active")=False and glf_modes("fd_punch").GetValue("active")=False
 	If Err Then Glf_409 = False
 End Function
 Function Glf_410(args)
@@ -2751,7 +2751,7 @@ glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award ==
 glf_funcRefMap.Add "mystery_eb{current_player.shot_eb_ready < 1}", "Glf_406"
 glf_funcRefMap.Add "mystery_ab{modes.jd_multiball.active==False and modes.ll_multiball.active==False}", "Glf_407"
 glf_funcRefMap.Add "mystery_ib{current_player.bonus_x < 8}", "Glf_408"
-glf_funcRefMap.Add "mystery_jd{modes.jd_multiball.active==False and modes.ll_multiball.active==False}", "Glf_409"
+glf_funcRefMap.Add "mystery_jd{modes.jd_multiball.active==False and modes.ll_multiball.active==False and modes.dance_marathon.active==False and modes.town_meeting.active==False and modes.dinner.active==False and modes.kims_antiques.active==False and modes.lbtb.active==False and modes.fd_punch.active==False}", "Glf_409"
 glf_funcRefMap.Add "mystery_al{current_player.shot_logan_qualify <= 1}", "Glf_410"
 glf_funcRefMap.Add "1010 * current_player.scoring_multiplier", "Glf_411"
 glf_funcRefMap.Add "1010", "Glf_412"
