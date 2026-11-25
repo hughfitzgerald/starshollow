@@ -16,7 +16,10 @@
 
 ## Inbox
 
-*(empty, triaged @ fe2012f)*
+- Hurry up doesn't end when ball ends and hurry up slide obscures eob bonus slide
+- Small light show when you make the Mansion shot? Like, a localized flash of inserts/GI, or a localized sweep out? Maybe little bulb in the chimney, too?
+- Maybe also a slide image for the Mansion shot.
+- Go through various interactions and make list of things that should have light shows, big and small.
 
 ---
 
