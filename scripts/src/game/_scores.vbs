@@ -133,12 +133,14 @@ Dim HurryUpEndScore     : HurryUpEndScore     = ScoreX(40)
 '*********** MODES ***********
 Dim ModeStartScore              : ModeStartScore              = ScoreX(2)    ' each timed mode, when it starts
 Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(10)   ' last a timed mode's full timer without draining
-Dim KimsAntiquesCompleteScore   : KimsAntiquesCompleteScore   = ScoreX(15)   ' same, and without hitting Miss Kim (a second way to lose)
+Dim KimsAntiquesCompleteScore   : KimsAntiquesCompleteScore   = ScoreX(20)   ' same, and without hitting Miss Kim (a second way to lose)
 Dim DinnerShotScore             : DinnerShotScore             = ScoreX(5)
 Dim DinnerJackpotScore          : DinnerJackpotScore          = ScoreX(20)
 Dim FdPunchShotScore            : FdPunchShotScore            = ScoreX(5)
 Dim LbtbShotScore               : LbtbShotScore               = ScoreX(5)
-Dim KimsAntiquesShotScore       : KimsAntiquesShotScore       = ScoreX(5)
+Dim KimsAntiquesShotScore       : KimsAntiquesShotScore       = ScoreX(2)    ' any shot but the right ramp; relights the jackpot
+Dim KimsAntiquesJackpotScore    : KimsAntiquesJackpotScore    = ScoreX(10)   ' right ramp, when lit
+Const KimsAntiquesPlayfieldX = 3   ' playfield multiplier for the whole mode (a multiplier, not a score)
 Dim TownMeetingShotScore        : TownMeetingShotScore        = ScoreX(5)
 Dim TownMeetingLukesShotScore   : TownMeetingLukesShotScore   = ScoreX(15)
 Dim DanceMarathonFirstShotScore : DanceMarathonFirstShotScore = ScoreX(5)    ' jackpot
