@@ -288,6 +288,12 @@ Sub CreateGeneralShows()
         End With
     End With
 
+    With CreateGlfShow("dean_sign_off")
+        With .AddStep(Null, Null, -1)
+            .Lights = Array("DeanLight1|100|000000", "DeanLight2|100|000000", "DeanLight3|100|000000", "DeanLight4|100|000000")
+        End With
+    End With
+
     With CreateGlfShow("on_color")
         With .AddStep(Null, Null, -1)
             .Lights = Array("(lights)|100|(color)")

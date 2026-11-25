@@ -356,8 +356,8 @@ Sub CreateKimsAntiquesMode()
 
         With GlfShotProfiles("kims_jackpot")
             .AdvanceOnHit = False
-            'No show: when the chase stops the Dean lights go back to whatever is under it
             With .States("unlit")
+                .Show = "dean_sign_off"    'defined in CreateGeneralShows()
                 .Key = "key_kims_jackpot_unlit"
             End With
             With .States("lit")
