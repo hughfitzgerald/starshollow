@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `7147986`; commits through `1d433ea` reviewed (T1, T7, T11, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `02e5871`; commits through `02e5871` reviewed (T1, T7, T11, T18, B2, I7, O1, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -16,7 +16,7 @@
 
 ## Inbox
 
-- Idea: I have insert lights on the outlanes. I'd like to have some conditions to light one for a special bonus if you drain via the outlanes, and some conditions to rotate which one is lit. And maybe a special Callout different from the usual outlanes drain callout.
+*(empty, triaged @ 02e5871)*
 
 ---
 
@@ -25,7 +25,7 @@
 ### P1 — before this week's playtest
 - **T1** → moved to D38 (done @ 1d433ea)
 - **T2** → moved to D33 (per Stephen)
-- **T18** **Rewrite the Jess/Dean MB start slide text** (per Stephen). The current text also has a typo: "TEAM LOGAN: RIGHT RAMP" should be TEAM DEAN (`jd-multiball.vbs` line 37; from O13). Still there @ 7147986.
+- **T18** → moved to D43 (done @ 65d18aa)
 - **T3** → moved to D34 (done @ 7147986)
 
 ### P2 — if there's time this week
@@ -38,7 +38,7 @@
 ### P3 — after the trip
 - **T6** **Unused sounds: find a place for them or remove them** (per Stephen, most may never be used). The list is now in section 7, Sound inventory.
 - **T10** **Change which mode is about to start** *(bold, "slings?"; see O12)*. Keep the random pick, but let the flippers change it while the ball is in the plunger lane (per Stephen). Catch: no minigame is picked until skillshots stop, which keeps a mode from starting after the secret skill shot (it ends in the scoop). So the selection has to start with base mode, with conditions that block the minigame and mystery from starting after a secret skill shot. Today `choose_new_minigame` picks at random @ 7147986.
-- **T11** **More mystery awards**: video mode, hold bonus X. Done already: extra ball, add-a-ball, Jess/Dean MB, advance Logan, bonus X, scores. Existing awards now have conditions @ 1d433ea (`_scores.vbs` line 199): Lite EB only if one isn't already lit, Add-a-Ball and Jess/Dean MB not during either multiball, Increase Bonus only below 8X, Advance Logan only at qualify stage ≤ 1. Dropped Grandparents' hurry-up, quick 2-ball and Super Jets (per Stephen; Super Jets is now the Kirk reward, I21).
+- **T11** **More mystery awards**: video mode, hold bonus X. Done already: extra ball, add-a-ball, Jess/Dean MB, advance Logan, bonus X, scores. Existing awards now have conditions @ 1d433ea (`_scores.vbs` line 199): Lite EB only if one isn't already lit, Add-a-Ball and Jess/Dean MB not during either multiball, Increase Bonus only below 8X, Advance Logan only at qualify stage ≤ 1. Those conditions never fired as first written (GLF ignores `{conditions}` on posted events). They're now on the random pick instead @ a317590 (`mystery.vbs` line 99); verify on the table. Dropped Grandparents' hurry-up, quick 2-ball and Super Jets (per Stephen; Super Jets is now the Kirk reward, I21).
 - **T12** **Founder's Day Punch jackpots**: a cross-table super jackpot (Luke's → Mansion; same thing as the "combo jackpot", per Stephen) and a roaming jackpot. Today the mode is plain Luke's/Mansion/orbit scoring.
 - **T13** **Town Meeting: more topics** *(bold)*. Done: deer, cart/kiosk, coffee IV, punctuality. Not done: Taylor's wig, greenhouse, sores-and-boils alley, gnome banishing, Kirk leaving his mom's, "I'm a-gin it", Kirk under the sheet.
 - **T14** **Kim's Antiques**: callouts for Lane, plus Mrs. Kim lines when you run into her (per Stephen).
@@ -54,7 +54,7 @@
 | ID | P | Bug (from doc) | Status in code |
 |---|---|---|---|
 | B1 | **P1** | "Lock Away Logan" rectangle still flashes on the next ball | **Likely still open.** `llmb_minigame` (l22) doesn't set `.Persist`, and GLF shots persist by default. Nothing resets it when the next ball restores Logan to stage 2 (`logan_back_to_2`). |
-| B2 | **P1** | Hurry-up slide overwrites other things | **Open.** Cause: see O1. |
+| B2 | — | Hurry-up slide overwrites other things | → moved to D41 (fixed @ 658829a) |
 | B3 | **P1** | Mode insert lights flash wrongly when Logan or Jess/Dean is lit or running *(bold)* | **Partial.** Minigames won't *start* during either multiball, but the selected minigame insert keeps flashing through the multiball, and no new one is picked when the multiball ends. |
 | B4 | P2 | Mystery during a mode traps the ball forever | **Verify.** After the mystery show, `check_minigame` should now release the scoop during single-ball modes. |
 | B5 | P2 | Mystery in Jess/Dean ejected the ball immediately | **Explained, not a bug now.** Mystery is excluded during both multiballs (see O2). |
@@ -76,12 +76,13 @@
 - **I4** → moved to R11 (per Stephen)
 - **I5** Character unlocks: Kirk = super pops (Super Jets, I21), Paris = playfield multiplier. These are the T4 rewards (per Stephen), collected per I19.
 - **I6** Character toys that light up and move with progress: Lane's drum and sticks, Sookie's spoon and bowl, Luke's sign flipping to "Kirk's". The code has a comment saying you still like the idea.
-- **I7** Kim's Antiques variants (per Stephen): a whole-table playfield multiplier instead of defined shots; and a right-ramp jackpot where, because the ramp is so long, Mrs. Kim can move to the right ramp after you shoot it, so you end the mode instead of collecting.
+- **I7** → moved to D44 (built @ c7aac63)
 - **I8** → moved to D36 (per Stephen)
 - **I19** Collect a completed character's reward (T4/I5) at Luke's rather than the scoop, with a new insert in front of Luke's to show a reward is ready (there's more room there than in front of the scoop) (per Stephen).
 - **I20** Secret skill shot (`s_skillshot` → scoop, `skillshots.vbs` line 33): besides points, play a random funny minor-character callout, e.g. Babette's meteorologists (registered, unused; T5) or Tom's "I'm more of a suit guy" (no clip yet; see I15), and later a small DMD cartoon or animation of that character.
 - **I21** (was R9) Super Jets as the Kirk reward (T4/I5) treats the bumper-area slingshot as a bumper; maybe do the same in Logan multiball (per Stephen). Nothing for Super Jets exists @ 7147986.
 - **I22** (was R10) A light above the captive ball for some Logan feature (per Stephen). A Logan multiball insert has already been added among the mode inserts (per Stephen).
+- **I24** **Outlane special** (from Inbox, Nov 24): Stephen has insert lights on the outlanes. Light one for a special bonus when you drain down that outlane, with conditions for lighting it and for rotating which side is lit (e.g. on slings or a lane change), and give it its own callout instead of the usual drain callout. Today `outlane_drain` always plays the poodles callouts and `sfx_lowtrill` (`base.vbs` lines 308 and 387); nothing drives the outlane inserts @ 02e5871. A natural rotate trigger is the flipper lane change (see O12).
 - **I23** Work the weird old TV Guide ads into the table somehow (Instagram post: https://www.instagram.com/p/DeEsFYYAcWr/?img_index=5).
 
 **Callouts and DMD**
@@ -104,7 +105,7 @@
 
 **Modes**
 - **D1** All six minigames exist and rotate: Dance Marathon, Town Meeting, Friday Night Dinner, Kim's Antiques, Luke Breaks the Bells, Founder's Day Punch
-- **D2** Kim's Antiques uses the "only Miss Kim is solid" idea: avoid her, and the lit shots score
+- **D2** Kim's Antiques uses the "only Miss Kim is solid" idea: avoid her, and the other shots score (reworked, see D44)
 - **D3** Friday Night Dinner: shoot the orbits, with a hidden-kicker jackpot
 - **D4** Town Meeting: flashing shots, then a trip to Luke's for coffee, plus a timer and deer and cart/kiosk sub-topics
 - **D5** Luke Breaks the Bells: one lit bell at a time, chimes cut off on a hit, a breaking SFX, Luke's how-to intro, "Oh thank God"
@@ -132,6 +133,10 @@
 - **D38** (was T1) Mode timers pause while the scoop holds the ball: every mode timer (`dinner_mode`, `tm_mode`, `tm_lukes`, `kims_antiques_mode`, `move_miss_kim`, `lbtb_mode`, `shuffle_bells`, `fd_punch_mode`, `dm_mode`, `dm_shot`) pauses on `balldevice_scoop_ball_entered` and starts on `scoop_eject_show_complete` @ 1d433ea. **Verify:** the `start` also fires on the mode's own intro eject and on any scoop eject after the timer has finished (e.g. during `*_post_mode`). Check on the table that a finished timer doesn't start again.
 - **D39** (was T7) Mystery slides outrank mode slides: mystery mode moved from priority 580 to 1200 (above both multiballs), and its slides are set to priority 1200 (`mystery.vbs` lines 6 and 90) @ 1d433ea
 - **D40** Quick scoop re-shots now count as new entries: `EjectTimeout` dropped from 2000 to 300 ms (`_configuration.vbs` line 439) @ 1d433ea. **Verify** that a ball falling back out of a weak eject isn't counted as a new entry.
+- **D41** (was B2) Hurry-up no longer overwrites mode panels: it has its own `hurryup` slide, updated every tick, and the mode moved from priority 240 to 1100, so it shows above both multiballs (`hurryup.vbs` lines 57–70, `display_config.vbs` line 236) @ 658829a. This also settles O1. **Verify** on the table that the mode panel comes back when the hurry-up ends or is collected.
+- **D42** Mode timers pause during the hurry-up count: every timer in D38 pauses on `start_hurryup_timer` and starts again on `hurryup_is_over` @ 658829a. **Verify** the same edge as D38: a mode whose timer has already finished shouldn't start it again when `hurryup_is_over` fires.
+- **D43** (was T18) Jess/Dean MB start slide rewritten to "SHOOT RAMPS TO SCORE", which also removes the TEAM LOGAN typo (`jd-multiball.vbs` line 37) @ 65d18aa
+- **D44** (was I7) Kim's Antiques rework @ c7aac63: Miss Kim roams the six shots every 5 s, with the next shot flashing for 1 s first, and hitting her ends the mode. The right ramp is a jackpot (10X) while the Dean sign chases; collecting it unlights it, and any other safe shot scores 2X and relights it. Playfield scoring is 3X for the mode, and the survival award rose to 20X. Base mode now resets `scoring_multiplier` at every ball start.**Verify** the 3X on the table.
 - **D35** (was T16) Gameplay music separated from attract/EOB music; the loudness scripts live outside the repo (per Stephen)
 
 **Callouts and music (one line per mode)**
@@ -171,7 +176,7 @@
 
 ## 6. My observations and answers to your questions
 
-- **O1** **"Hurry-up slide overwrites a lot of stuff — why?!"** Hurry-up plays the shared `mode` slide at priority 1000 (`hurryup.vbs` line 58), and `star_light_group_on_complete` starts it even while a minigame or multiball is running. So it takes over that mode's own panel. Fix: don't start it while `modes.<minigame>.active` or either multiball is active, or give it its own slide at a priority below the mode slides.
+- **O1** **"Hurry-up slide overwrites a lot of stuff — why?!"** Hurry-up plays the shared `mode` slide at priority 1000 (`hurryup.vbs` line 58), and `star_light_group_on_complete` starts it even while a minigame or multiball is running. So it takes over that mode's own panel. Fix: don't start it while `modes.<minigame>.active` or either multiball is active, or give it its own slide at a priority below the mode slides. **Update @ 658829a:** it now has its own slide (D41).
 - **O2** **"When I allow mystery in Jess/Dean, it immediately shot out the ball — why?"** `jd-multiball.vbs` (priority 1020) posts `release_scoop_hold` on every scoop entry, before mystery (580) ever sees it. **Update @ 1d433ea:** mystery is now priority 1200, so it hears the scoop entry before Jess/Dean MB (1020). Its `select_random_mystery` handler still requires both multiballs to be inactive (`mystery.vbs` line 15), so keep that condition if you ever want mystery allowed during multiball.
 - **O3** **"Do I need conditions in minigame.vbs so minigames don't start?"** They're already there: every `start_<minigame>` requires both multiballs to be inactive.
 - **O4** **"Can I stop the flashing minigame during multiball and pick a new one after?"** Yes. Post `clear_selected_minigame` on `mode_jd_multiball_started`/`mode_ll_multiball_started`, and `minigame_select_delay` on their `_stopped` events, the same way single-ball modes already do.
@@ -183,7 +188,7 @@
 - **O10** **Babette's meteorologists**: put it on the tilt warning. "Funny meteorologists" works as a joke about shaking the table, and the tilt path has no callout yet. The hurry-up start is a second choice. (I20, the secret skill shot, is now another option.)
 - **O11** **Status report**: the usual convention is holding a flipper about 2 s during play. Both flippers together are taken by intro skip, so use one.
 - **O12** **Changing the next mode with slings**: slings fire constantly, so they'd shuffle the mode nonstop. Most games use the lane-change flipper button or an inlane rollover. Your inlanes already light mystery, so a flipper press while the ball is in the plunger lane may be the cleanest choice. (That's now the plan in T10.)
-- **O13** **Spotted in passing, worth a 10-second fix before the demo:** the Jess/Dean MB start slide says **"TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"** (`jd-multiball.vbs` line 37). It should say TEAM DEAN. (Tracked as T18.)
+- **O13** **Spotted in passing, worth a 10-second fix before the demo:** the Jess/Dean MB start slide says **"TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"** (`jd-multiball.vbs` line 37). It should say TEAM DEAN. (Fixed with the T18 rewrite, D43.)
 - **O14** **The doc repeats itself.** The POST-BALL callouts, the Sookie math line and "we've got magic to do" each appear twice. Once these lists move here, the doc could shrink to a raw quotes inbox.
 
 ---
