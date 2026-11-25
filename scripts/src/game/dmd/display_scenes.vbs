@@ -963,23 +963,58 @@ Sub DmdBuild_Replay(entry)
     DmdBuild_TwoLine entry, "REPLAY AT", mediumFont, FormatNumber(ReplayScore, 0), largeFont, border
 End Sub
 
+' Pushes new text into a DmdBuild_TwoLine scene and re-centres it - but
+' only when something actually changed, so a ticker can call it every
+' frame for free.
+Sub DmdTick_TwoLine(entry, text1, text2)
+    Dim grp, line1, line2
+    Set grp   = entry.Scene().GetGroup("Text")
+    Set line1 = grp.GetLabel("Line1")
+    Set line2 = grp.GetLabel("Line2")
+    If line1.Text = text1 And line2.Text = text2 Then Exit Sub
+    line1.Text = text1
+    line2.Text = text2
+    LayoutTwoLine grp
+End Sub
+
+' One "N)NAME SCORE" line of the high score table, from machine var score_<slot>
+Function HighScoreLine(rank, slot)
+    HighScoreLine = rank & ")" & glf_machine_vars("score_" & slot & "_name").GetValue() & " " & _
+                    FormatNumber(glf_machine_vars("score_" & slot & "_value").GetValue(), 0)
+End Function
+
+' The high score slides read their machine vars every frame, so a score
+' set mid-session (or a reset) shows up the next time they're on the DMD.
+' Each builder lays out an empty two-line scene and runs its ticker once
+' so it is never shown blank.
+
 Sub DmdBuild_GrandChampion(entry)
-    Dim border
-    border = False
-    DmdBuild_TwoLine entry, glf_machine_vars("score_1_label").GetValue(), mediumFont, glf_machine_vars("score_1_name").GetValue() & "  " & FormatNumber(glf_machine_vars("score_1_value").GetValue(), 0), largeFont, border
+    DmdBuild_TwoLine entry, "", mediumFont, "", largeFont, False
+    DmdTick_GrandChampion entry
+End Sub
+
+Sub DmdTick_GrandChampion(entry)
+    DmdTick_TwoLine entry, _
+        glf_machine_vars("score_1_label").GetValue(), _
+        glf_machine_vars("score_1_name").GetValue() & "  " & FormatNumber(glf_machine_vars("score_1_value").GetValue(), 0)
 End Sub
 
 Sub DmdBuild_HighScores1(entry)
-    Dim border
-    border = False
-    DmdBuild_TwoLine entry, "1)" & glf_machine_vars("score_2_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_2_value").GetValue(), 0), largeFont, "2)" & glf_machine_vars("score_3_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_3_value").GetValue(), 0), largeFont, border
+    DmdBuild_TwoLine entry, "", largeFont, "", largeFont, False
+    DmdTick_HighScores1 entry
+End Sub
 
+Sub DmdTick_HighScores1(entry)
+    DmdTick_TwoLine entry, HighScoreLine(1, 2), HighScoreLine(2, 3)
 End Sub
 
 Sub DmdBuild_HighScores2(entry)
-    Dim border
-    border = False
-    DmdBuild_TwoLine entry, "3)" & glf_machine_vars("score_4_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_4_value").GetValue(), 0), largeFont, "4)" & glf_machine_vars("score_5_name").GetValue() & " " & FormatNumber(glf_machine_vars("score_5_value").GetValue(), 0), largeFont, border
+    DmdBuild_TwoLine entry, "", largeFont, "", largeFont, False
+    DmdTick_HighScores2 entry
+End Sub
+
+Sub DmdTick_HighScores2(entry)
+    DmdTick_TwoLine entry, HighScoreLine(3, 4), HighScoreLine(4, 5)
 End Sub
 
 

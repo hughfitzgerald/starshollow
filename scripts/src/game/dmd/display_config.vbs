@@ -267,17 +267,17 @@ Sub CreateFlexDmdDisplay()
 
     With CreateDmdSlide("grand_champion")
         .Builder       = "DmdBuild_GrandChampion"
-        .Ticker        = "DmdTick_Static"
+        .Ticker        = "DmdTick_GrandChampion"
     End With
 
     With CreateDmdSlide("high_scores_1")
         .Builder       = "DmdBuild_HighScores1"
-        .Ticker        = "DmdTick_Static"
+        .Ticker        = "DmdTick_HighScores1"
     End With
 
     With CreateDmdSlide("high_scores_2")
         .Builder       = "DmdBuild_HighScores2"
-        .Ticker        = "DmdTick_Static"
+        .Ticker        = "DmdTick_HighScores2"
     End With
 
     With CreateDmdSlide("match")
