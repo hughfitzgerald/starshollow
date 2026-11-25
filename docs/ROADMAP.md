@@ -16,7 +16,7 @@
 
 ## Inbox
 
-*(empty — triaged @ 7147986)*
+- Idea: I have insert lights on the outlanes. I'd like to have some conditions to light one for a special bonus if you drain via the outlanes, and some conditions to rotate which one is lit. And maybe a special Callout different from the usual outlanes drain callout.
 
 ---
 
