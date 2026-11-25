@@ -96,7 +96,11 @@ Sub CreateMysteryMode()
             '.
             With .EventName("select_random_mystery")
                 For x = 0 to UBound(mysteryAwards)
-                    .Add "mystery_" & mysteryAwards(x).Short, mysteryAwards(x).Probability
+                    If mysteryAwards(x).Condition = "" Then
+                        .Add "mystery_" & mysteryAwards(x).Short, mysteryAwards(x).Probability
+                    Else
+                        .Add "mystery_" & mysteryAwards(x).Short & "{" & mysteryAwards(x).Condition & "}", mysteryAwards(x).Probability
+                    End If
                 Next
 
                 ' .Add "mystery_full_health{current_player.shot_health9_light == 0}", 1
@@ -179,4 +183,4 @@ Sub CreateMysteryMode()
             End With
         End With
     End With
-End Sub
+End Sub
