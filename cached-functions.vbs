@@ -1862,157 +1862,182 @@ Function Glf_383(args)
 	If Err Then Glf_383 = False
 End Function
 Function Glf_384(args)
-	Glf_384 = 1010 * GetPlayerState("scoring_multiplier")
+	On Error Resume Next
+	    Glf_384 = GetPlayerState("shot_eb_ready") < 1
+	If Err Then Glf_384 = False
 End Function
 Function Glf_385(args)
-	Glf_385 = 1010
+	On Error Resume Next
+	    Glf_385 = glf_modes("jd_multiball").GetValue("active")=False and glf_modes("ll_multiball").GetValue("active")=False
+	If Err Then Glf_385 = False
 End Function
 Function Glf_386(args)
-	Glf_386 = 2510 * GetPlayerState("scoring_multiplier")
+	On Error Resume Next
+	    Glf_386 = GetPlayerState("bonus_x") < 8
+	If Err Then Glf_386 = False
 End Function
 Function Glf_387(args)
-	Glf_387 = 2510
+	On Error Resume Next
+	    Glf_387 = glf_modes("jd_multiball").GetValue("active")=False and glf_modes("ll_multiball").GetValue("active")=False
+	If Err Then Glf_387 = False
 End Function
 Function Glf_388(args)
-	Glf_388 = 5010 * GetPlayerState("scoring_multiplier")
+	On Error Resume Next
+	    Glf_388 = GetPlayerState("shot_logan_qualify") <= 1
+	If Err Then Glf_388 = False
 End Function
 Function Glf_389(args)
-	Glf_389 = 5010
+	Glf_389 = 1010 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_390(args)
-	Glf_390 = 1510 * GetPlayerState("scoring_multiplier")
+	Glf_390 = 1010
 End Function
 Function Glf_391(args)
-	Glf_391 = 1510
+	Glf_391 = 2510 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_392(args)
-	Glf_392 = 25000 * GetPlayerState("scoring_multiplier")
+	Glf_392 = 2510
 End Function
 Function Glf_393(args)
-	Glf_393 = 25000
+	Glf_393 = 5010 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_394(args)
-	Glf_394 = 12500 * GetPlayerState("scoring_multiplier")
+	Glf_394 = 5010
 End Function
 Function Glf_395(args)
-	Glf_395 = 12500
+	Glf_395 = 1510 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_396(args)
-	Glf_396 = 20000 * GetPlayerState("scoring_multiplier")
+	Glf_396 = 1510
 End Function
 Function Glf_397(args)
-	Glf_397 = 10010 * GetPlayerState("scoring_multiplier")
+	Glf_397 = 25000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_398(args)
-	Glf_398 = 10010
+	Glf_398 = 25000
 End Function
 Function Glf_399(args)
-	Glf_399 = 50000 * GetPlayerState("scoring_multiplier")
+	Glf_399 = 12500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_400(args)
-	Glf_400 = 150000 * GetPlayerState("scoring_multiplier")
+	Glf_400 = 12500
 End Function
 Function Glf_401(args)
-	Glf_401 = 150000
+	Glf_401 = 20000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_402(args)
-	Glf_402 = 100000 * GetPlayerState("scoring_multiplier")
+	Glf_402 = 10010 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_403(args)
-	Glf_403 = 250000 * GetPlayerState("scoring_multiplier")
+	Glf_403 = 10010
 End Function
 Function Glf_404(args)
-	Glf_404 = 750000 * GetPlayerState("scoring_multiplier")
+	Glf_404 = 50000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_405(args)
-	Glf_405 = 200000 * GetPlayerState("scoring_multiplier")
+	Glf_405 = 150000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_406(args)
-	Glf_406 = 200000
+	Glf_406 = 150000
 End Function
 Function Glf_407(args)
-	Glf_407 = 400000 * GetPlayerState("scoring_multiplier")
+	Glf_407 = 100000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_408(args)
-	Glf_408 = 400000
+	Glf_408 = 250000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_409(args)
-	Glf_409 = 1000000 * GetPlayerState("scoring_multiplier")
+	Glf_409 = 750000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_410(args)
-	Glf_410 = 1000000
+	Glf_410 = 200000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_411(args)
-	Glf_411 = 2500000 * GetPlayerState("scoring_multiplier")
+	Glf_411 = 200000
 End Function
 Function Glf_412(args)
-	Glf_412 = 2500000
+	Glf_412 = 400000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_413(args)
-	Glf_413 = 500000 * GetPlayerState("scoring_multiplier")
+	Glf_413 = 400000
 End Function
 Function Glf_414(args)
-	Glf_414 = 2000000 * GetPlayerState("scoring_multiplier")
+	Glf_414 = 1000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_415(args)
-	Glf_415 = 2000000
+	Glf_415 = 1000000
 End Function
 Function Glf_416(args)
-	Glf_416 = 1250000 * GetPlayerState("scoring_multiplier")
+	Glf_416 = 2500000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_417(args)
-	Glf_417 = 4000000 * GetPlayerState("scoring_multiplier")
+	Glf_417 = 2500000
 End Function
 Function Glf_418(args)
-	Glf_418 = 7500000 * GetPlayerState("scoring_multiplier")
+	Glf_418 = 500000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_419(args)
-	Glf_419 = 5000000 * GetPlayerState("scoring_multiplier")
+	Glf_419 = 2000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_420(args)
-	Glf_420 = 5000000
+	Glf_420 = 2000000
 End Function
 Function Glf_421(args)
-	Glf_421 = 100000000 * GetPlayerState("scoring_multiplier")
+	Glf_421 = 1250000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_422(args)
-	Glf_422 = 100000000
+	Glf_422 = 4000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_423(args)
-	Glf_423 = 1000 * GetPlayerState("scoring_multiplier")
+	Glf_423 = 7500000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_424(args)
-	Glf_424 = 2000 * GetPlayerState("scoring_multiplier")
+	Glf_424 = 5000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_425(args)
-	Glf_425 = 5000 * GetPlayerState("scoring_multiplier")
+	Glf_425 = 5000000
 End Function
 Function Glf_426(args)
-	Glf_426 = 7500 * GetPlayerState("scoring_multiplier")
+	Glf_426 = 100000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_427(args)
-	Glf_427 = 15000000 * GetPlayerState("scoring_multiplier")
+	Glf_427 = 100000000
 End Function
 Function Glf_428(args)
-	Glf_428 = 15000000
+	Glf_428 = 1000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_429(args)
-	Glf_429 = glf_dispatch_current_kwargs("points") * GetPlayerState("scoring_multiplier")
+	Glf_429 = 2000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_430(args)
-	Glf_430 = glf_dispatch_current_kwargs("points")
+	Glf_430 = 5000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_431(args)
-	Glf_431 = 8
+	Glf_431 = 7500 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_432(args)
-	Glf_432 = 250
+	Glf_432 = 15000000 * GetPlayerState("scoring_multiplier")
 End Function
 Function Glf_433(args)
-	Glf_433 = 1500
+	Glf_433 = 15000000
 End Function
 Function Glf_434(args)
-	Glf_434 = 500
+	Glf_434 = glf_dispatch_current_kwargs("points") * GetPlayerState("scoring_multiplier")
+End Function
+Function Glf_435(args)
+	Glf_435 = glf_dispatch_current_kwargs("points")
+End Function
+Function Glf_436(args)
+	Glf_436 = 8
+End Function
+Function Glf_437(args)
+	Glf_437 = 250
+End Function
+Function Glf_438(args)
+	Glf_438 = 1500
+End Function
+Function Glf_439(args)
+	Glf_439 = 500
 End Function
 Dim glf_gi006_lmarr : glf_gi006_lmarr = Array(lm_gi006_plastics)
 glf_lightMaps.Add "gi006", glf_gi006_lmarr
@@ -2596,55 +2621,60 @@ glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award ==
 glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 5}", "Glf_381"
 glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 6}", "Glf_382"
 glf_funcRefMap.Add "timer_mystery_delay_complete{current_player.mystery_award == 7}", "Glf_383"
-glf_funcRefMap.Add "1010 * current_player.scoring_multiplier", "Glf_384"
-glf_funcRefMap.Add "1010", "Glf_385"
-glf_funcRefMap.Add "2510 * current_player.scoring_multiplier", "Glf_386"
-glf_funcRefMap.Add "2510", "Glf_387"
-glf_funcRefMap.Add "5010 * current_player.scoring_multiplier", "Glf_388"
-glf_funcRefMap.Add "5010", "Glf_389"
-glf_funcRefMap.Add "1510 * current_player.scoring_multiplier", "Glf_390"
-glf_funcRefMap.Add "1510", "Glf_391"
-glf_funcRefMap.Add "25000 * current_player.scoring_multiplier", "Glf_392"
-glf_funcRefMap.Add "25000", "Glf_393"
-glf_funcRefMap.Add "12500 * current_player.scoring_multiplier", "Glf_394"
-glf_funcRefMap.Add "12500", "Glf_395"
-glf_funcRefMap.Add "20000 * current_player.scoring_multiplier", "Glf_396"
-glf_funcRefMap.Add "10010 * current_player.scoring_multiplier", "Glf_397"
-glf_funcRefMap.Add "10010", "Glf_398"
-glf_funcRefMap.Add "50000 * current_player.scoring_multiplier", "Glf_399"
-glf_funcRefMap.Add "150000 * current_player.scoring_multiplier", "Glf_400"
-glf_funcRefMap.Add "150000", "Glf_401"
-glf_funcRefMap.Add "100000 * current_player.scoring_multiplier", "Glf_402"
-glf_funcRefMap.Add "250000 * current_player.scoring_multiplier", "Glf_403"
-glf_funcRefMap.Add "750000 * current_player.scoring_multiplier", "Glf_404"
-glf_funcRefMap.Add "200000 * current_player.scoring_multiplier", "Glf_405"
-glf_funcRefMap.Add "200000", "Glf_406"
-glf_funcRefMap.Add "400000 * current_player.scoring_multiplier", "Glf_407"
-glf_funcRefMap.Add "400000", "Glf_408"
-glf_funcRefMap.Add "1000000 * current_player.scoring_multiplier", "Glf_409"
-glf_funcRefMap.Add "1000000", "Glf_410"
-glf_funcRefMap.Add "2500000 * current_player.scoring_multiplier", "Glf_411"
-glf_funcRefMap.Add "2500000", "Glf_412"
-glf_funcRefMap.Add "500000 * current_player.scoring_multiplier", "Glf_413"
-glf_funcRefMap.Add "2000000 * current_player.scoring_multiplier", "Glf_414"
-glf_funcRefMap.Add "2000000", "Glf_415"
-glf_funcRefMap.Add "1250000 * current_player.scoring_multiplier", "Glf_416"
-glf_funcRefMap.Add "4000000 * current_player.scoring_multiplier", "Glf_417"
-glf_funcRefMap.Add "7500000 * current_player.scoring_multiplier", "Glf_418"
-glf_funcRefMap.Add "5000000 * current_player.scoring_multiplier", "Glf_419"
-glf_funcRefMap.Add "5000000", "Glf_420"
-glf_funcRefMap.Add "100000000 * current_player.scoring_multiplier", "Glf_421"
-glf_funcRefMap.Add "100000000", "Glf_422"
-glf_funcRefMap.Add "1000 * current_player.scoring_multiplier", "Glf_423"
-glf_funcRefMap.Add "2000 * current_player.scoring_multiplier", "Glf_424"
-glf_funcRefMap.Add "5000 * current_player.scoring_multiplier", "Glf_425"
-glf_funcRefMap.Add "7500 * current_player.scoring_multiplier", "Glf_426"
-glf_funcRefMap.Add "15000000 * current_player.scoring_multiplier", "Glf_427"
-glf_funcRefMap.Add "15000000", "Glf_428"
-glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_429"
-glf_funcRefMap.Add "kwargs.points", "Glf_430"
-glf_funcRefMap.Add "8", "Glf_431"
-glf_funcRefMap.Add "250", "Glf_432"
-glf_funcRefMap.Add "1500", "Glf_433"
-glf_funcRefMap.Add "500", "Glf_434"
+glf_funcRefMap.Add "mystery_eb{current_player.shot_eb_ready < 1}", "Glf_384"
+glf_funcRefMap.Add "mystery_ab{modes.jd_multiball.active==False and modes.ll_multiball.active==False}", "Glf_385"
+glf_funcRefMap.Add "mystery_ib{current_player.bonus_x < 8}", "Glf_386"
+glf_funcRefMap.Add "mystery_jd{modes.jd_multiball.active==False and modes.ll_multiball.active==False}", "Glf_387"
+glf_funcRefMap.Add "mystery_al{current_player.shot_logan_qualify <= 1}", "Glf_388"
+glf_funcRefMap.Add "1010 * current_player.scoring_multiplier", "Glf_389"
+glf_funcRefMap.Add "1010", "Glf_390"
+glf_funcRefMap.Add "2510 * current_player.scoring_multiplier", "Glf_391"
+glf_funcRefMap.Add "2510", "Glf_392"
+glf_funcRefMap.Add "5010 * current_player.scoring_multiplier", "Glf_393"
+glf_funcRefMap.Add "5010", "Glf_394"
+glf_funcRefMap.Add "1510 * current_player.scoring_multiplier", "Glf_395"
+glf_funcRefMap.Add "1510", "Glf_396"
+glf_funcRefMap.Add "25000 * current_player.scoring_multiplier", "Glf_397"
+glf_funcRefMap.Add "25000", "Glf_398"
+glf_funcRefMap.Add "12500 * current_player.scoring_multiplier", "Glf_399"
+glf_funcRefMap.Add "12500", "Glf_400"
+glf_funcRefMap.Add "20000 * current_player.scoring_multiplier", "Glf_401"
+glf_funcRefMap.Add "10010 * current_player.scoring_multiplier", "Glf_402"
+glf_funcRefMap.Add "10010", "Glf_403"
+glf_funcRefMap.Add "50000 * current_player.scoring_multiplier", "Glf_404"
+glf_funcRefMap.Add "150000 * current_player.scoring_multiplier", "Glf_405"
+glf_funcRefMap.Add "150000", "Glf_406"
+glf_funcRefMap.Add "100000 * current_player.scoring_multiplier", "Glf_407"
+glf_funcRefMap.Add "250000 * current_player.scoring_multiplier", "Glf_408"
+glf_funcRefMap.Add "750000 * current_player.scoring_multiplier", "Glf_409"
+glf_funcRefMap.Add "200000 * current_player.scoring_multiplier", "Glf_410"
+glf_funcRefMap.Add "200000", "Glf_411"
+glf_funcRefMap.Add "400000 * current_player.scoring_multiplier", "Glf_412"
+glf_funcRefMap.Add "400000", "Glf_413"
+glf_funcRefMap.Add "1000000 * current_player.scoring_multiplier", "Glf_414"
+glf_funcRefMap.Add "1000000", "Glf_415"
+glf_funcRefMap.Add "2500000 * current_player.scoring_multiplier", "Glf_416"
+glf_funcRefMap.Add "2500000", "Glf_417"
+glf_funcRefMap.Add "500000 * current_player.scoring_multiplier", "Glf_418"
+glf_funcRefMap.Add "2000000 * current_player.scoring_multiplier", "Glf_419"
+glf_funcRefMap.Add "2000000", "Glf_420"
+glf_funcRefMap.Add "1250000 * current_player.scoring_multiplier", "Glf_421"
+glf_funcRefMap.Add "4000000 * current_player.scoring_multiplier", "Glf_422"
+glf_funcRefMap.Add "7500000 * current_player.scoring_multiplier", "Glf_423"
+glf_funcRefMap.Add "5000000 * current_player.scoring_multiplier", "Glf_424"
+glf_funcRefMap.Add "5000000", "Glf_425"
+glf_funcRefMap.Add "100000000 * current_player.scoring_multiplier", "Glf_426"
+glf_funcRefMap.Add "100000000", "Glf_427"
+glf_funcRefMap.Add "1000 * current_player.scoring_multiplier", "Glf_428"
+glf_funcRefMap.Add "2000 * current_player.scoring_multiplier", "Glf_429"
+glf_funcRefMap.Add "5000 * current_player.scoring_multiplier", "Glf_430"
+glf_funcRefMap.Add "7500 * current_player.scoring_multiplier", "Glf_431"
+glf_funcRefMap.Add "15000000 * current_player.scoring_multiplier", "Glf_432"
+glf_funcRefMap.Add "15000000", "Glf_433"
+glf_funcRefMap.Add "kwargs.points * current_player.scoring_multiplier", "Glf_434"
+glf_funcRefMap.Add "kwargs.points", "Glf_435"
+glf_funcRefMap.Add "8", "Glf_436"
+glf_funcRefMap.Add "250", "Glf_437"
+glf_funcRefMap.Add "1500", "Glf_438"
+glf_funcRefMap.Add "500", "Glf_439"
 
