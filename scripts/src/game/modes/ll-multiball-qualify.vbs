@@ -7,7 +7,13 @@ Sub CreateLLMultiballQualifyMode()
         .StopEvents = Array("mode_base_stopping","mode_ll_multiball_started", "mode_jd_multiball_started", "mode_dance_marathon_started", "mode_town_meeting_started", "mode_dinner_started", "mode_fd_punch_started", "mode_kims_antiques_started", "mode_lbtb_started")
 
         With .EventPlayer()
-            .Add "mode_ll_multiball_qualify_started", Array("enable_captive_ramp_kicker_hold")
+            ' The captive ball on its way home from a drain (drain subway or captive recovery)
+            ' passes through the captive ramp kicker too. That is not a Logan lock: only hold
+            ' a ball there while the captive ball is home. Logan multiball ending on a double
+            ' drain restarts this mode during ball_ending, while that ball may be on its way.
+            .Add "mode_ll_multiball_qualify_started{machine.captive_ball_captive == 1}", Array("enable_captive_ramp_kicker_hold")
+            .Add "mode_ll_multiball_qualify_started{machine.captive_ball_captive == 0}", Array("disable_captive_ramp_kicker_hold")
+            .Add "captive_ball_is_home", Array("enable_captive_ramp_kicker_hold")
             .Add "mode_ll_multiball_qualify_started{current_player.shot_logan_qualify == 2}", Array("dt2_knockdown")
             .Add "mode_ll_multiball_qualify_started{current_player.shot_logan_qualify == 3 and device.ball_holds.captive_ramp_kicker_hold.balls_held == 0}", Array("dt2_knockdown","logan_back_to_2")
             ' A ball held in the captive ramp kicker only completes qualify when the mode
@@ -17,7 +23,7 @@ Sub CreateLLMultiballQualifyMode()
             .Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", Array("release_captive_ramp_kicker_hold")
             .Add "logan_qualify_hit1_hit", Array("dt2_knockdown")
             .Add "advance_logan", Array("dt2_knockdown", "logan_back_to_2")
-            .Add "s_CaptiveRampKicker_active", Array("logan_qualify_complete")
+            .Add "s_CaptiveRampKicker_active{machine.captive_ball_captive == 1}", Array("logan_qualify_complete")
 
             ' Captive ball switch hits count for nothing until the player's ball has left
             ' the plunger lane (new_ball_active clears ball_just_started). Before that, the
