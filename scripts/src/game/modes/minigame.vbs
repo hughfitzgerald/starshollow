@@ -65,7 +65,10 @@ Sub CreateMiniGameMode
         End With
 
         With .RandomEventPlayer()
-            With .EventName("choose_new_minigame{modes.bonus.active == False}")
+            ' Logan lit owns the scoop until Logan multiball is played (or the ball ends), so
+            ' don't light a minigame over it. Qualify can complete during the skill shot, a
+            ' moment before mode_skillshots_stopped picks the ball's first minigame.
+            With .EventName("choose_new_minigame{modes.bonus.active == False and current_player.shot_logan_light == 0}")
                 For Each minigame In minigames
                     .Add minigame.ModeName & "_minigame_lit{current_player.shot_" & minigame.ModeName & "_minigame == 0}", 1
                 Next
