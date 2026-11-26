@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `fe2012f`; commits through `1d1a3dc` reviewed (T1, T7, T11, T18, B2, B12, I7, O1, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `07ea223`; commits through `1d1a3dc` reviewed (T1, T7, T11, T18, B2, B12, I7, O1, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -16,10 +16,7 @@
 
 ## Inbox
 
-- Hurry up doesn't end when ball ends and hurry up slide obscures eob bonus slide
-- Small light show when you make the Mansion shot? Like, a localized flash of inserts/GI, or a localized sweep out? Maybe little bulb in the chimney, too?
-- Maybe also a slide image for the Mansion shot.
-- Go through various interactions and make list of things that should have light shows, big and small.
+*(empty — triaged @ 07ea223)*
 
 ---
 
@@ -48,6 +45,7 @@
 - **T15** **Arrow insert in front of the captive ball** so it's clearer when it's lit.
 - **T16** → moved to D35 (per Stephen)
 - **T17** **Sookie "math" line during the EOB tally**. The tally itself is done.
+- **T20** **List the interactions that should get light shows, big and small** (Inbox, Nov 25). Today shows exist for spinners, JESS/DEAN letters, bumpers 1 and 5, scoop eject, mystery, Dance Marathon intro, EOB sweep and attract (`base.vbs` lines 645–734); the Mansion shot has none (I25) @ 07ea223.
 - **T19** (was R1) **Attract extras still wanted** (per Stephen): a champion for each mode, "SAY NO TO DRUGS", and maybe a second title slide or animation.
 
 ---
@@ -68,6 +66,7 @@
 | B10 | — | Scoop sometimes ejects at the Dance Marathon intro on ball 2 *(bold)* | **Fixed.** You moved `scoop_hold` to basement, and it's there now. |
 | B11 | — | Kim's Antiques doesn't award any shots *(bold)* | **Fixed.** Unlit shots score `KimsAntiquesShotScore`. |
 | B12 | — | Mystery Jess/Dean MB starts during a minigame | → moved to D45 (fixed @ 1d1a3dc) |
+| B13 | **P1** | Hurry-up doesn't end when the ball ends, and its slide covers the EOB bonus slide (Inbox, Nov 25) | **Open, cause found.** GLF bonus starts on `ball_ending`, but hurry-up only stops on `mode_base_stopping`, which comes with `ball_ended` after the tally (`hurryup.vbs` line 15, `base.vbs` line 33). So it keeps running at priority 1100 over `eob_bonus`, which plays at the EOB mode's default priority (`eob-bonus.vbs` line 236). Fix: add `bonus_start` to hurry-up's `StopEvents`, as every minigame does @ 07ea223. |
 
 ---
 
@@ -87,6 +86,9 @@
 - **I21** (was R9) Super Jets as the Kirk reward (T4/I5) treats the bumper-area slingshot as a bumper; maybe do the same in Logan multiball (per Stephen). Nothing for Super Jets exists @ 7147986.
 - **I22** (was R10) A light above the captive ball for some Logan feature (per Stephen). A Logan multiball insert has already been added among the mode inserts (per Stephen).
 - **I24** **Outlane special** (from Inbox, Nov 24): Stephen has insert lights on the outlanes. Light one for a special bonus when you drain down that outlane, with conditions for lighting it and for rotating which side is lit (e.g. on slings or a lane change), and give it its own callout instead of the usual drain callout. Today `outlane_drain` always plays the poodles callouts and `sfx_lowtrill` (`base.vbs` lines 308 and 387); nothing drives the outlane inserts @ 02e5871. A natural rotate trigger is the flipper lane change (see O12).
+- **I25** **Mansion shot light show** (Inbox, Nov 25): a small localized flash of inserts/GI or a sweep outward from the Mansion, maybe a little bulb in the chimney. The shot (`s_HiddenUpperRightKicker_active`, `base.vbs` line 65) only scores and plays a callout; no show, and I found no chimney light in the parts @ 07ea223. Part of T20.
+- **I27** **Multiballs keep progress within a game** (Inbox, Nov 25): restarting Jess/Dean MB picks up where it left off. Today the ramp and sign shots reset on `multiball_jdmb_started` (`jd-multiball.vbs` ~line 427), so every start is fresh; Logan MB already saves its qualify stage (D9) @ 07ea223.
+- **I28** **Hurry-up to resume Jess/Dean MB** (Inbox, Nov 25): after the multiball ends, a timed shot to restart it. Builds on I27; not started @ 07ea223.
 - **I23** Work the weird old TV Guide ads into the table somehow (Instagram post: https://www.instagram.com/p/DeEsFYYAcWr/?img_index=5).
 
 **Callouts and DMD**
@@ -97,6 +99,7 @@
 - **I13** Kirk "pink ribbon", "Kirk, sit down…"; Lane drummer and music-taste lines
 - **I14** More Rory and Lorelai talking *about* Dean, Jess and Logan
 - **I15** Loose quotes list: Zoltan Kamenei, Cat Kirk, "That's your cross to bear", "I'm in escarow", "Jess, are you a gigolo?", "Really? Cause I'm more of a suit guy" (see I20), Trix "You are bad", Kirk "We're not supposed to be arguing, Taylor…"
+- **I26** **Mansion shot DMD image** (Inbox, Nov 25): a slide when you make the Mansion. None exists; the shot only plays a callout @ 07ea223. Pairs with I25.
 - **I16** Cannonball line ("broke through the floor…")
 
 **SFX**
