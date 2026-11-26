@@ -244,6 +244,12 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
+    With CreateMachineVar("logan_cooldown_active")   '1 for 2s after each captive ball switch hit (Logan qualify debounce)
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+
     With CreateMachineVar("captive_capture_pending")   '1 while a ball in the scoop is on its way to become the captive ball
         .InitialValue = 0
         .ValueType = "int"
@@ -286,7 +292,6 @@ Sub ConfigureGlfDevices()
     Glf_SetInitialPlayerVar "hs_input_ready", 1         'flag to capture when high score mode is ready for player input
     Glf_SetInitialPlayerVar "llmb_shoot_again_active", 0
     Glf_SetInitialPlayerVar "llmb_won", 0
-    Glf_SetInitialPlayerVar "logan_cooldown_active", 0
 
     Glf_SetInitialPlayerVar "bells_not_hit", 0
 

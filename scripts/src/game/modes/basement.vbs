@@ -116,6 +116,22 @@ Sub CreateBasementMode()
             End With
         End With
 
+        ' Captive ball debounce for Logan qualify. Lives here rather than in
+        ' ll_multiball_qualify so it keeps running across a player change: the held ball
+        ' is kicked home at the end of a ball and can bounce on s_captive_ball_active
+        ' again after the next player's qualify mode has started.
+        With .Timers("logan_cooldown")
+            .StartRunning = False
+            .StartValue = 2
+            .EndValue = 0
+            .Direction = "down"
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "s_captive_ball_active"
+                .Action = "restart"
+            End With
+        End With
+
         With .BallHolds("captive_ramp_kicker_hold")
             .BallsToHold = 1
             .HoldDevices = Array("captive_ramp_kicker")
@@ -125,6 +141,18 @@ Sub CreateBasementMode()
         End With
 
         With .VariablePlayer()
+            With .EventName("timer_logan_cooldown_started")
+                With .Variable("logan_cooldown_active")
+                    .Action = "set_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("timer_logan_cooldown_complete")
+                With .Variable("logan_cooldown_active")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
             With .EventName("ball_locked")
                 With .Variable("num_balls_locked")
                     .Action = "add_machine"

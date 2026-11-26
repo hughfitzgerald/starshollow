@@ -16,8 +16,14 @@ Sub CreateLLMultiballQualifyMode()
             .Add "advance_logan", Array("dt2_knockdown", "logan_back_to_2")
             .Add "s_CaptiveRampKicker_active", Array("logan_qualify_complete")
 
-            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0}", Array("logan_captive_ball_hit")
+            ' The cooldown is a machine variable run by basement, so a bounce of the captive
+            ' ball during a player change (after the held ball is sent home) still blocks
+            ' the next bounce from counting as a hit for the next player.
+            .Add "s_captive_ball_active{machine.logan_cooldown_active == 0}", Array("logan_captive_ball_hit")
             .Add "logan_captive_ball_hit", Array(ScoreEvent(LoganCaptiveScore, WithMultiplier))
+            ' Captive hits only advance the shot to hit2. hit3 (solid) means a ball is held
+            ' in the captive ramp kicker, so only logan_qualify_complete sets it.
+            .Add "logan_captive_ball_hit{current_player.shot_logan_qualify < 2}", Array("logan_qualify_advance")
         End With
 
         With .RandomEventPlayer()
@@ -100,36 +106,9 @@ Sub CreateLLMultiballQualifyMode()
             End With
         End With
 
-        With .VariablePlayer()
-            With .EventName("timer_logan_cooldown_started")
-                With .Variable("logan_cooldown_active")
-                    .Action = "set"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("timer_logan_cooldown_complete")
-                With .Variable("logan_cooldown_active")
-                    .Action = "set"
-                    .Int = 0
-                End With
-            End With
-        End With
-
-        With .Timers("logan_cooldown")
-            .StartRunning = False
-            .StartValue = 2
-            .EndValue = 0
-            .Direction = "down"
-            .TickInterval = 1000
-            With .ControlEvents()
-                .EventName = "s_captive_ball_active"
-                .Action = "restart"
-            End With
-        End With
-
         With .Shots("logan_qualify")
             .Persist = True
-            .HitEvents = Array("logan_captive_ball_hit")
+            .HitEvents = Array("logan_qualify_advance")
             .Profile = "logan_ball"
             With .Tokens()
                 .Add "lights", "l57"
