@@ -120,7 +120,7 @@ Sub DrainSubwayKickerEject(ball)
 	SoundSaucerKick 1, s_DrainSubwayKicker
 	DrainSubwayTrackStart ball
 	' Was 100: too hot, the ball sometimes skipped s_CaptiveRampKicker entirely.
-	s_DrainSubwayKicker.Kick 8, 90
+	s_DrainSubwayKicker.Kick 8, 85
 	' Catch-all: if the ball still skips s_CaptiveRampKicker it rolls down
 	' CaptiveRampHigh anyway, so have the upper kicker ready to send it home.
 	' captive_ball_is_home disables it again.
