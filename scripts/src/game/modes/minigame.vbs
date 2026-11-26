@@ -20,6 +20,7 @@ Sub CreateMiniGameMode
         .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
         With .EventPlayer()
+            .Add "logan_qualify_complete", Array("clear_selected_minigame")
             .Add "bonus_start", Array("clear_selected_minigame")
             .Add "mode_skillshots_stopped", Array("select_minigame")
             .Add "select_minigame", Array("clear_selected_minigame", "choose_new_minigame")
@@ -29,6 +30,8 @@ Sub CreateMiniGameMode
             .Add "check_minigame{" & minigame_conditions & "}", Array("release_scoop_hold")
 
             .Add "timer_minigame_select_delay_complete", Array("select_minigame")
+
+            .Add "mode_ll_multiball_stopped", Array("minigame_select_delay")
 
             For Each minigame In minigames
                 .Add "check_minigame{current_player.shot_" & minigame.ModeName & "_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", Array("start_" & minigame.ModeName, "stop_rampshot")
@@ -113,6 +116,10 @@ Sub CreateMiniGameMode
             .Profile = "minigame"
             With .Tokens()
                 .Add "lights", "l22"
+            End With
+            With .ControlEvents()
+                .Events = Array("mode_base_stopping{current_player.shot_llmb_minigame == 1}")
+                .State = 0
             End With
             With .ControlEvents()
                 .Events = Array("logan_qualify_complete")
