@@ -118,8 +118,9 @@ Sub DrainSubwayKickerEject(ball)
 	If IsNull(ball) Then Exit Sub
 	If Not IsObject(ball) Then Exit Sub
 	SoundSaucerKick 1, s_DrainSubwayKicker
-	' Was 100: too hot, the ball sometimes skipped s_CaptiveRampKicker entirely.
-	s_DrainSubwayKicker.Kick 8, 90
+	' 100 and 90 were too hot: the ball flew over s_CaptiveRampKicker and could stall
+	' in the dip short of s_CaptiveRampUpperKicker. At 85 it drops into the kicker.
+	s_DrainSubwayKicker.Kick 8, 85
 	' Catch-all: if the ball still skips s_CaptiveRampKicker it rolls down
 	' CaptiveRampHigh anyway, so have the upper kicker ready to send it home.
 	' captive_ball_is_home disables it again.

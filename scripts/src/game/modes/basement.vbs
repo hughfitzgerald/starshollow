@@ -59,12 +59,74 @@ Sub CreateBasementMode()
             .Add "logan_ball_captured", Array("capture_captive_ball","disable_captive_ramp_kicker_hold")
 
             .Add "s_captive_ball_active{machine.captive_ball_captive == 0}", Array("captive_ball_is_home")
-            .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker")
+            .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker", "captive_return_bounce")
+
+            ' The next ball waits (QueueRelayPlayer below) while the captive ball is on its
+            ' way home or still bouncing once there. Two ways it can be on its way when a
+            ' ball ends:
+            '  - a ball held in the captive ramp kicker, released on mode_base_stopping
+            '    (ll_multiball_qualify): captive_returning is set by the release.
+            '  - Logan multiball ending on a double drain, with one ball sent home through
+            '    the drain subway (or by captive recovery): captive_ball_captive is 0 until
+            '    captive_ball_is_home.
+            ' Arriving home starts the settle as well, and captive_return_settle restarts on
+            ' every captive switch hit after that. The failsafe ends a wait that runs too long.
+            .Add "s_captive_ball_active{machine.captive_returning == 1}", Array("captive_return_bounce")
+            .Add "timer_captive_return_settle_complete", Array("captive_return_done")
+            .Add "timer_captive_return_failsafe_complete", Array("captive_return_done")
+
+            ' Logan qualify stage 2 keeps dt2 down so the captive ball can go up the ramp to
+            ' the kicker. When another mode stops ll_multiball_qualify, put dt2 back up so
+            ' Logan can't be locked while qualify isn't running; qualify knocks it down
+            ' again when it restarts at stage 2. Not on mode_base_stopping (drop2 resets on
+            ' ball_started) or LL multiball. At stage 3 the ball is already held, so leave it.
+            For Each x In Array("jd_multiball", "dance_marathon", "town_meeting", "dinner", "fd_punch", "kims_antiques", "lbtb")
+                .Add "mode_" & x & "_started{current_player.shot_logan_qualify == 2}", Array("dt2_reset")
+            Next
             .Add "ball_drain{machine.captive_ball_captive == 0 and current_player.llmb_shoot_again_active == 0}", Array("return_captive_from_drain")
 
             ' Nothing releases the scoop hold when no ball is being played (game over, a
             ' cancelled game, between balls), so a ball that lands there is sent straight out.
             .Add "balldevice_scoop_ball_entered{modes.base.active == False}", Array("scoop_safety_release")
+        End With
+
+        With .QueueRelayPlayer()
+            With .EventName("ball_starting{machine.captive_returning == 1 or machine.captive_ball_captive == 0}")
+                .Post    = "waiting_for_captive_return"
+                .WaitFor = "captive_return_done"
+            End With
+        End With
+
+        With .Timers("captive_return_settle")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 3
+            .EndValue = 0
+            .TickInterval = 500      ' 1.5s with no captive switch hit
+            With .ControlEvents()
+                .EventName = "captive_return_bounce"
+                .Action = "restart"
+            End With
+            With .ControlEvents()
+                .EventName = "captive_return_done"
+                .Action = "stop"
+            End With
+        End With
+
+        With .Timers("captive_return_failsafe")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 12         ' the drain subway route home is the long one
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "waiting_for_captive_return"
+                .Action = "restart"
+            End With
+            With .ControlEvents()
+                .EventName = "captive_return_done"
+                .Action = "stop"
+            End With
         End With
 
         ' With .QueueRelayPlayer()
@@ -81,6 +143,18 @@ Sub CreateBasementMode()
                     .Int = 0
                 End With
             End With
+            With .EventName("release_captive_ramp_kicker_hold")
+                With .Variable("captive_returning")
+                    .Action = "set_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("captive_return_done")
+                With .Variable("captive_returning")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
             With .EventName("captive_ball_is_home")
                 With .Variable("captive_ball_captive")
                     .Action = "set_machine"
@@ -89,6 +163,11 @@ Sub CreateBasementMode()
                 With .Variable("captive_capture_pending")
                     .Action = "set_machine"
                     .Int = 0
+                End With
+                ' Arrival starts the settle, so the bounces that follow restart it.
+                With .Variable("captive_returning")
+                    .Action = "set_machine"
+                    .Int = 1
                 End With
             End With
         End With

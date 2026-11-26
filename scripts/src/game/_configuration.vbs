@@ -244,6 +244,12 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
+    With CreateMachineVar("captive_returning")   '1 from a captive ramp kicker release until the captive ball has settled back home
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+
     With CreateMachineVar("captive_capture_pending")   '1 while a ball in the scoop is on its way to become the captive ball
         .InitialValue = 0
         .ValueType = "int"
@@ -620,7 +626,7 @@ Sub ConfigureGlfDevices()
     With CreateGlfDroptarget("drop2")
         .Switch = "s_DT2"
         .KnockdownEvents = Array("dt2_knockdown")
-        .ResetEvents = Array("ball_started")
+        .ResetEvents = Array("ball_started", "dt2_reset")
         .EnableKeepUpEvents = Array("dt2_enable_keepup", "reset_complete")
         .DisableKeepUpEvents = Array("dt2_disable_keepup")
         .ActionCallback = "DT2Callback"
