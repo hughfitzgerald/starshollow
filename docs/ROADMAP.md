@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `07ea223`; commits through `1d1a3dc` reviewed (T1, T7, T11, T18, B2, B12, I7, O1, O2, O5). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `81ab26d`; commits through `81ab26d` reviewed (T4, B1, B3, B6, I5, I21, D46–D50). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -16,7 +16,7 @@
 
 ## Inbox
 
-* LoganBall has the same size and mass (CreateBall gives radius 25 and mass 1, same as BallSize/2 and BallMass), and no script refers to it after creation. Not being in gBOT only drops it from the rolling sounds and the flipper velocity tweaks in ZFLP, and neither should stop a ball in the subway. Do I need to find a way to get LoganBall into gBOT? Or do I need to make sure it gets rolling sounds anf flipper velocity tweaks???
+*(empty, triaged @ 81ab26d)*
 
 ---
 
@@ -29,7 +29,7 @@
 - **T3** → moved to D34 (done @ 7147986)
 
 ### P2 — if there's time this week
-- **T4** **Character modes: add rewards and points** *(first line of doc)*. The rewards are the unlocks in **I5** (per Stephen); collecting them is **I19**, and Kirk's Super Jets is **I21**. Progress, slides and callouts exist, and the mode priority (230) is already below the mission modes (660+), so the callout-priority half is done. Completing a character currently awards nothing: `<name>_complete` only plays a slide (`characters.vbs` line 41) @ 7147986.
+- **T4** **Character modes: add rewards and points** *(first line of doc)*. The rewards are the unlocks in **I5** (per Stephen); collecting them is **I19**, and Kirk's Super Jets is **I21**. Progress, slides and callouts exist, and the mode priority (230) is already below the mission modes (660+), so the callout-priority half is done. **Partial @ 81ab26d:** Kirk and Paris now have rewards (D47). Sookie and Lane still award nothing beyond the `_complete` slide.
 - **T5** **Find a home for Babette's meteorologists callout** *(bold)*. Registered but never played @ 7147986. Candidates: the secret skill shot (I20) or the tilt warning (O10).
 - **T7** → moved to D39 (done @ 1d433ea)
 - **T8** **Post-ball callouts**: "No more talking…" and "I can't talk to you when you're like this…". Neither clip exists yet.
@@ -54,12 +54,12 @@
 
 | ID | P | Bug (from doc) | Status in code |
 |---|---|---|---|
-| B1 | **P1** | "Lock Away Logan" rectangle still flashes on the next ball | **Likely still open.** `llmb_minigame` (l22) doesn't set `.Persist`, and GLF shots persist by default. Nothing resets it when the next ball restores Logan to stage 2 (`logan_back_to_2`). |
+| B1 | — | "Lock Away Logan" rectangle still flashes on the next ball | → moved to D46 (fixed @ 8f7c7cc) |
 | B2 | — | Hurry-up slide overwrites other things | → moved to D41 (fixed @ 658829a) |
-| B3 | **P1** | Mode insert lights flash wrongly when Logan or Jess/Dean is lit or running *(bold)* | **Partial.** Minigames won't *start* during either multiball, but the selected minigame insert keeps flashing through the multiball, and no new one is picked when the multiball ends. |
+| B3 | **P1** | Mode insert lights flash wrongly when Logan or Jess/Dean is lit or running *(bold)* | **Logan half fixed, verify; Jess/Dean half open.** @ 7628c7e: `logan_qualify_complete` clears the selected minigame, `choose_new_minigame` won't pick one while Logan is lit, and `mode_ll_multiball_stopped` starts `minigame_select_delay` (`minigame.vbs` lines 23, 34, 71). Jess/Dean MB has none of this, so a lit minigame insert still flashes through it (fix per O4). |
 | B4 | P2 | Mystery during a mode traps the ball forever | **Verify.** After the mystery show, `check_minigame` should now release the scoop during single-ball modes. |
 | B5 | P2 | Mystery in Jess/Dean ejected the ball immediately | **Explained, not a bug now.** Mystery is excluded during both multiballs (see O2). |
-| B6 | P2 | Logan qualified but not started: the captive ball isn't back before the drop target resets, or `captive_ball_is_home` never fires | **Verify.** Basement now posts `captive_ball_is_home` off the captive switch, and qualify releases a held ball on `mode_base_stopping`. |
+| B6 | P2 | Logan qualified but not started: the captive ball isn't back before the drop target resets, or `captive_ball_is_home` never fires | **Verify, reworked @ 81ab26d.** The next ball now waits (`captive_return_done`, 1.5 s settle and a 12 s failsafe) while the captive ball is on its way home (`basement.vbs` ~line 99). Qualify only holds or locks a ball when the captive ball is home, ignores captive hits from the landing and while the ball is in the plunger lane, and raises dt2 when another mode interrupts stage 2. The upper kicker is switched off once the ball has settled (4644b64). |
 | B7 | P2 | During a minigame, lock isn't lit but the ramp diverter is open | **Verify.** JD qualify now posts `lock_unlit` and `close_ramp_diverter` whenever it stops for a mode. |
 | B8 | P2 | Mode that ends by drain resumes base music instead of EOB music | **Verify.** `bonus_start` stops base music, and modes only restart it when their timer or post-mode finishes. |
 | B9 | P3 | Sound priority: can one sound on a bus cut off another? | **Mostly done.** `mus`/`sfx`/`voc` buses exist, `voc` plays one sound at a time, and GLF ranks sounds by mode priority. |
@@ -77,13 +77,13 @@
 - **I2** Video modes: egg hunt, driving the Jeep and dodging deer, Lorelai running from fiancés
 - **I3** Egg-hunt mode (find hidden shots, then a final shot)
 - **I4** → moved to R11 (per Stephen)
-- **I5** Character unlocks: Kirk = super pops (Super Jets, I21), Paris = playfield multiplier. These are the T4 rewards (per Stephen), collected per I19.
+- **I5** → moved to D47 (built @ 9cca884, 251f88b)
 - **I6** Character toys that light up and move with progress: Lane's drum and sticks, Sookie's spoon and bowl, Luke's sign flipping to "Kirk's". The code has a comment saying you still like the idea.
 - **I7** → moved to D44 (built @ c7aac63)
 - **I8** → moved to D36 (per Stephen)
 - **I19** Collect a completed character's reward (T4/I5) at Luke's rather than the scoop, with a new insert in front of Luke's to show a reward is ready (there's more room there than in front of the scoop) (per Stephen).
 - **I20** Secret skill shot (`s_skillshot` → scoop, `skillshots.vbs` line 33): besides points, play a random funny minor-character callout, e.g. Babette's meteorologists (registered, unused; T5) or Tom's "I'm more of a suit guy" (no clip yet; see I15), and later a small DMD cartoon or animation of that character.
-- **I21** (was R9) Super Jets as the Kirk reward (T4/I5) treats the bumper-area slingshot as a bumper; maybe do the same in Logan multiball (per Stephen). Nothing for Super Jets exists @ 7147986.
+- **I21** (was R9) Super Jets as the Kirk reward (T4/I5) treats the bumper-area slingshot as a bumper; maybe do the same in Logan multiball (per Stephen). **Partial @ 4d1770a:** Kirk complete makes bumpers 1 and 5 score 3× (`base.vbs` line 71), and Logan MB bumpers too (`ll-multiball.vbs` line 23). The slingshot doesn't count as a bumper yet.
 - **I22** (was R10) A light above the captive ball for some Logan feature (per Stephen). A Logan multiball insert has already been added among the mode inserts (per Stephen).
 - **I24** **Outlane special** (from Inbox, Nov 24): Stephen has insert lights on the outlanes. Light one for a special bonus when you drain down that outlane, with conditions for lighting it and for rotating which side is lit (e.g. on slings or a lane change), and give it its own callout instead of the usual drain callout. Today `outlane_drain` always plays the poodles callouts and `sfx_lowtrill` (`base.vbs` lines 308 and 387); nothing drives the outlane inserts @ 02e5871. A natural rotate trigger is the flipper lane change (see O12).
 - **I25** **Mansion shot light show** (Inbox, Nov 25): a small localized flash of inserts/GI or a sweep outward from the Mansion, maybe a little bulb in the chimney. The shot (`s_HiddenUpperRightKicker_active`, `base.vbs` line 65) only scores and plays a callout; no show, and I found no chimney light in the parts @ 07ea223. Part of T20.
@@ -145,6 +145,11 @@
 - **D43** (was T18) Jess/Dean MB start slide rewritten to "SHOOT RAMPS TO SCORE", which also removes the TEAM LOGAN typo (`jd-multiball.vbs` line 37) @ 65d18aa
 - **D44** (was I7) Kim's Antiques rework @ c7aac63: Miss Kim roams the six shots every 5 s, with the next shot flashing for 1 s first, and hitting her ends the mode. The right ramp is a jackpot (10X) while the Dean sign chases; collecting it unlights it, and any other safe shot scores 2X and relights it. Playfield scoring is 3X for the mode, and the survival award rose to 20X. Base mode now resets `scoring_multiplier` at every ball start.**Verify** the 3X on the table.
 - **D45** (was B12) Mystery Jess/Dean MB can't start during a minigame: the `jd` award's condition now also requires `dance_marathon`, `town_meeting`, `dinner`, `kims_antiques`, `lbtb` and `fd_punch` to be inactive (`_scores.vbs` line 211) @ 1d1a3dc. Add-a-Ball is unchanged, and the lock path was already safe (`jd-multiball-qualify.vbs` line 17). **Verify** on the table that a mystery during a minigame never gives Jess/Dean MB.
+- **D46** (was B1) The Lock Away Logan insert (`llmb_minigame`, l22) is cleared on `mode_base_stopping` when it's lit (`minigame.vbs` line 123) @ 8f7c7cc. **Verify** on the table that it's dark on the next ball.
+- **D47** (was I5) Character rewards for Kirk and Paris @ 251f88b, 9cca884: Kirk = super bumpers (`SuperBumperScore` 0.3 vs 0.1, and `LoganSuperBumperScore` 3X in Logan MB); Paris = 2X playfield (`ParisPlayfieldX`). Completion slides say so. Kim's Antiques puts the multiplier back to 2X, not 1X, when Paris is done. Kirk's reward lasts the game (the character shots persist), but Paris's 2X only lasts the rest of that ball, since base resets `scoring_multiplier` at ball start (`base.vbs` line 190). Is that the intent? They're awarded on the spot, not collected at Luke's (I19 still open).
+- **D48** Ball no longer sticks inside Luke's Diner: new solid wall `Wall029` @ 760af6a. **Verify.**
+- **D49** Drain subway kick lowered from 90 to 85, so the ball drops into `s_CaptiveRampKicker` instead of flying over it and stalling short of the upper kicker (`14_ZKIC_Kickers.vbs` line 123) @ 86a40a1. The temporary subway tracker is gone again @ d93c1ae. **Verify.**
+- **D50** Logan qualify no longer goes solid without a ball in the captive ramp kicker @ 974bd15. Only `logan_qualify_complete` sets hit3, and captive hits only advance it to hit2 (`ll-multiball-qualify.vbs` line 36). **Verify.**
 - **D35** (was T16) Gameplay music separated from attract/EOB music; the loudness scripts live outside the repo (per Stephen)
 
 **Callouts and music (one line per mode)**
@@ -197,6 +202,7 @@
 - **O11** **Status report**: the usual convention is holding a flipper about 2 s during play. Both flippers together are taken by intro skip, so use one.
 - **O12** **Changing the next mode with slings**: slings fire constantly, so they'd shuffle the mode nonstop. Most games use the lane-change flipper button or an inlane rollover. Your inlanes already light mystery, so a flipper press while the ball is in the plunger lane may be the cleanest choice. (That's now the plan in T10.)
 - **O13** **Spotted in passing, worth a 10-second fix before the demo:** the Jess/Dean MB start slide says **"TEAM JESS: LEFT RAMP - TEAM LOGAN: RIGHT RAMP"** (`jd-multiball.vbs` line 37). It should say TEAM DEAN. (Fixed with the T18 rewrite, D43.)
+- **O15** **"Does LoganBall need to be in gBOT?"** (Inbox, Nov 25) No, not for the subway: the stall was kick strength (D49), and nothing that moves a ball reads gBOT. Leaving LoganBall out costs three things: rolling sounds, the ZFLP flipper tweaks (moot, since it never reaches the flippers) and the drop-target "pop the ball up on raise" check (`27_ZRDT_Drop_Targets.vbs` line 292). Only the last one matters, and only if dt2 rises under the captive ball, which `dt2_reset` can now do mid-ball (D50/B6). If you want rolling sounds, add it by hand after `Glf_Init`; GLF only sets `gBot` once (`glf.vbs` lines 173–180). The rolling arrays already hold `tnob + 1` = 6 balls, but `BallShadow0`–`4` only cover 5, so the shadow loop would need a guard. **Spotted in passing:** the shadow loop starts at `lob` = 1 (`18_ZSHA_Ambient_Ball_Shadows.vbs` line 36). That's a VPW convention where gBOT(0) is the captive ball, but here gBOT(0) is a real trough ball, so one of your five balls never gets a shadow. Either set `lob = 0`, or put LoganBall at index 0 of gBOT, which would also give it rolling sounds.
 - **O14** **The doc repeats itself.** The POST-BALL callouts, the Sookie math line and "we've got magic to do" each appear twice. Once these lists move here, the doc could shrink to a raw quotes inbox.
 
 ---
