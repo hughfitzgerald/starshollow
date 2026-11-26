@@ -1037,7 +1037,7 @@ Function Glf_224(args)
 End Function
 Function Glf_225(args)
 	On Error Resume Next
-	    Glf_225 = GetPlayerState("logan_cooldown_active") = 0 and GetPlayerState("ball_just_started") = 0
+	    Glf_225 = GetPlayerState("logan_cooldown_active") = 0 and GetPlayerState("ball_just_started") = 0 and glf_machine_vars("captive_ball_captive").GetValue() = 1 and glf_machine_vars("captive_returning").GetValue() = 0
 	If Err Then Glf_225 = False
 End Function
 Function Glf_226(args)
@@ -2675,7 +2675,7 @@ glf_funcRefMap.Add "mode_ll_multiball_qualify_started{current_player.shot_logan_
 glf_funcRefMap.Add "mode_ll_multiball_qualify_started{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1 and current_player.ball_just_started == 0}", "Glf_222"
 glf_funcRefMap.Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", "Glf_223"
 glf_funcRefMap.Add "s_CaptiveRampKicker_active{machine.captive_ball_captive == 1}", "Glf_224"
-glf_funcRefMap.Add "s_captive_ball_active{current_player.logan_cooldown_active == 0 and current_player.ball_just_started == 0}", "Glf_225"
+glf_funcRefMap.Add "s_captive_ball_active{current_player.logan_cooldown_active == 0 and current_player.ball_just_started == 0 and machine.captive_ball_captive == 1 and machine.captive_returning == 0}", "Glf_225"
 glf_funcRefMap.Add "logan_captive_ball_hit{current_player.shot_logan_qualify < 2}", "Glf_226"
 glf_funcRefMap.Add "logan_captive_ball_hit{current_player.shot_logan_qualify == 0}", "Glf_227"
 glf_funcRefMap.Add "logan_captive_ball_hit{current_player.shot_logan_qualify == 1}", "Glf_228"
