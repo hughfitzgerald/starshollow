@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `81ab26d`; commits through `81ab26d` reviewed (T4, B1, B3, B6, I5, I21, D46–D50). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `d44067d`; commits through `81ab26d` reviewed (T4, B1, B3, B6, I5, I21, D46–D50). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -16,7 +16,7 @@
 
 ## Inbox
 
-*(empty, triaged @ 81ab26d)*
+*(empty, triaged @ d44067d)*
 
 ---
 
@@ -150,6 +150,7 @@
 - **D48** Ball no longer sticks inside Luke's Diner: new solid wall `Wall029` @ 760af6a. **Verify.**
 - **D49** Drain subway kick lowered from 90 to 85, so the ball drops into `s_CaptiveRampKicker` instead of flying over it and stalling short of the upper kicker (`14_ZKIC_Kickers.vbs` line 123) @ 86a40a1. The temporary subway tracker is gone again @ d93c1ae. **Verify.**
 - **D50** Logan qualify no longer goes solid without a ball in the captive ramp kicker @ 974bd15. Only `logan_qualify_complete` sets hit3, and captive hits only advance it to hit2 (`ll-multiball-qualify.vbs` line 36). **Verify.**
+- **D51** Stripped embedded cover art from .ogg files that a newer stb_vorbis choked on, using ffmpeg (per Stephen, Nov 26). The sound files are gitignored (`mus_`/`voc_`/`sfx_*.ogg`, `.gitignore` line 73), so the fix isn't in the repo: anyone with older copies needs the stripped files too. ffprobe finds no art left in the 108 local `.ogg` files @ d44067d.
 - **D35** (was T16) Gameplay music separated from attract/EOB music; the loudness scripts live outside the repo (per Stephen)
 
 **Callouts and music (one line per mode)**
