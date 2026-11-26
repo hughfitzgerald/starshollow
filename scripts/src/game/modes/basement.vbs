@@ -59,7 +59,7 @@ Sub CreateBasementMode()
             .Add "logan_ball_captured", Array("capture_captive_ball","disable_captive_ramp_kicker_hold")
 
             .Add "s_captive_ball_active{machine.captive_ball_captive == 0}", Array("captive_ball_is_home")
-            .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker")
+            .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker", "captive_return_bounce")
 
             ' The next ball waits (QueueRelayPlayer below) while the captive ball is on its
             ' way home or still bouncing once there. Two ways it can be on its way when a
@@ -72,7 +72,6 @@ Sub CreateBasementMode()
             ' Arriving home starts the settle as well, and captive_return_settle restarts on
             ' every captive switch hit after that. The failsafe ends a wait that runs too long.
             .Add "s_captive_ball_active{machine.captive_returning == 1}", Array("captive_return_bounce")
-            .Add "captive_ball_is_home", Array("captive_return_bounce")
             .Add "timer_captive_return_settle_complete", Array("captive_return_done")
             .Add "timer_captive_return_failsafe_complete", Array("captive_return_done")
 
