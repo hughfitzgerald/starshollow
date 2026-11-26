@@ -60,11 +60,59 @@ Sub CreateBasementMode()
 
             .Add "s_captive_ball_active{machine.captive_ball_captive == 0}", Array("captive_ball_is_home")
             .Add "captive_ball_is_home", Array("dt2_enable_keepup", "disable_captive_ramp_upper_kicker")
+
+            ' A captive ball held in the captive ramp kicker is released at the end of the
+            ' ball (ll_multiball_qualify, on mode_base_stopping) and goes back up to the
+            ' captive spot. The next ball waits (QueueRelayPlayer below) until it has landed
+            ' and stopped bouncing: captive_return_settle restarts on every captive switch
+            ' hit, and the failsafe ends the wait if the ball never gets there.
+            .Add "s_captive_ball_active{machine.captive_returning == 1}", Array("captive_return_bounce")
+            .Add "timer_captive_return_settle_complete", Array("captive_return_done")
+            .Add "timer_captive_return_failsafe_complete", Array("captive_return_done")
             .Add "ball_drain{machine.captive_ball_captive == 0 and current_player.llmb_shoot_again_active == 0}", Array("return_captive_from_drain")
 
             ' Nothing releases the scoop hold when no ball is being played (game over, a
             ' cancelled game, between balls), so a ball that lands there is sent straight out.
             .Add "balldevice_scoop_ball_entered{modes.base.active == False}", Array("scoop_safety_release")
+        End With
+
+        With .QueueRelayPlayer()
+            With .EventName("ball_starting{machine.captive_returning == 1}")
+                .Post    = "waiting_for_captive_return"
+                .WaitFor = "captive_return_done"
+            End With
+        End With
+
+        With .Timers("captive_return_settle")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 3
+            .EndValue = 0
+            .TickInterval = 500      ' 1.5s with no captive switch hit
+            With .ControlEvents()
+                .EventName = "captive_return_bounce"
+                .Action = "restart"
+            End With
+            With .ControlEvents()
+                .EventName = "captive_return_done"
+                .Action = "stop"
+            End With
+        End With
+
+        With .Timers("captive_return_failsafe")
+            .StartRunning = False
+            .Direction = "down"
+            .StartValue = 8
+            .EndValue = 0
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "release_captive_ramp_kicker_hold"
+                .Action = "restart"
+            End With
+            With .ControlEvents()
+                .EventName = "captive_return_done"
+                .Action = "stop"
+            End With
         End With
 
         ' With .QueueRelayPlayer()
@@ -77,6 +125,18 @@ Sub CreateBasementMode()
         With .VariablePlayer()
             With .EventName("free_captive_ball")
                 With .Variable("captive_ball_captive")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
+            With .EventName("release_captive_ramp_kicker_hold")
+                With .Variable("captive_returning")
+                    .Action = "set_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("captive_return_done")
+                With .Variable("captive_returning")
                     .Action = "set_machine"
                     .Int = 0
                 End With
@@ -116,22 +176,6 @@ Sub CreateBasementMode()
             End With
         End With
 
-        ' Captive ball debounce for Logan qualify. Lives here rather than in
-        ' ll_multiball_qualify so it keeps running across a player change: the held ball
-        ' is kicked home at the end of a ball and can bounce on s_captive_ball_active
-        ' again after the next player's qualify mode has started.
-        With .Timers("logan_cooldown")
-            .StartRunning = False
-            .StartValue = 2
-            .EndValue = 0
-            .Direction = "down"
-            .TickInterval = 1000
-            With .ControlEvents()
-                .EventName = "s_captive_ball_active"
-                .Action = "restart"
-            End With
-        End With
-
         With .BallHolds("captive_ramp_kicker_hold")
             .BallsToHold = 1
             .HoldDevices = Array("captive_ramp_kicker")
@@ -141,18 +185,6 @@ Sub CreateBasementMode()
         End With
 
         With .VariablePlayer()
-            With .EventName("timer_logan_cooldown_started")
-                With .Variable("logan_cooldown_active")
-                    .Action = "set_machine"
-                    .Int = 1
-                End With
-            End With
-            With .EventName("timer_logan_cooldown_complete")
-                With .Variable("logan_cooldown_active")
-                    .Action = "set_machine"
-                    .Int = 0
-                End With
-            End With
             With .EventName("ball_locked")
                 With .Variable("num_balls_locked")
                     .Action = "add_machine"

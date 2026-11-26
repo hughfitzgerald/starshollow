@@ -10,16 +10,19 @@ Sub CreateLLMultiballQualifyMode()
             .Add "mode_ll_multiball_qualify_started", Array("enable_captive_ramp_kicker_hold")
             .Add "mode_ll_multiball_qualify_started{current_player.shot_logan_qualify == 2}", Array("dt2_knockdown")
             .Add "mode_ll_multiball_qualify_started{current_player.shot_logan_qualify == 3 and device.ball_holds.captive_ramp_kicker_hold.balls_held == 0}", Array("dt2_knockdown","logan_back_to_2")
-            .Add "mode_ll_multiball_qualify_started{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", Array("logan_qualify_complete")
+            ' A ball held in the captive ramp kicker only completes qualify when the mode
+            ' restarts mid-ball (another mode ended). At the start of a new ball it is the
+            ' captive ball on its way home after mode_base_stopping released it.
+            .Add "mode_ll_multiball_qualify_started{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1 and current_player.ball_just_started == 0}", Array("logan_qualify_complete")
             .Add "mode_base_stopping{device.ball_holds.captive_ramp_kicker_hold.balls_held == 1}", Array("release_captive_ramp_kicker_hold")
             .Add "logan_qualify_hit1_hit", Array("dt2_knockdown")
             .Add "advance_logan", Array("dt2_knockdown", "logan_back_to_2")
             .Add "s_CaptiveRampKicker_active", Array("logan_qualify_complete")
 
-            ' The cooldown is a machine variable run by basement, so a bounce of the captive
-            ' ball during a player change (after the held ball is sent home) still blocks
-            ' the next bounce from counting as a hit for the next player.
-            .Add "s_captive_ball_active{machine.logan_cooldown_active == 0}", Array("logan_captive_ball_hit")
+            ' Captive ball switch hits count for nothing until the player's ball has left
+            ' the plunger lane (new_ball_active clears ball_just_started). Before that, the
+            ' captive ball can still be settling after being sent home at the last ball end.
+            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0 and current_player.ball_just_started == 0}", Array("logan_captive_ball_hit")
             .Add "logan_captive_ball_hit", Array(ScoreEvent(LoganCaptiveScore, WithMultiplier))
             ' Captive hits only advance the shot to hit2. hit3 (solid) means a ball is held
             ' in the captive ramp kicker, so only logan_qualify_complete sets it.
@@ -103,6 +106,33 @@ Sub CreateLLMultiballQualifyMode()
             With .ControlEvents()
                 .Events = Array("logan_qualify_complete")
                 .State = 1
+            End With
+        End With
+
+        With .VariablePlayer()
+            With .EventName("timer_logan_cooldown_started")
+                With .Variable("logan_cooldown_active")
+                    .Action = "set"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("timer_logan_cooldown_complete")
+                With .Variable("logan_cooldown_active")
+                    .Action = "set"
+                    .Int = 0
+                End With
+            End With
+        End With
+
+        With .Timers("logan_cooldown")
+            .StartRunning = False
+            .StartValue = 2
+            .EndValue = 0
+            .Direction = "down"
+            .TickInterval = 1000
+            With .ControlEvents()
+                .EventName = "s_captive_ball_active"
+                .Action = "restart"
             End With
         End With
 
