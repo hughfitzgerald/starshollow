@@ -1387,7 +1387,7 @@ Function Glf_288(args)
 End Function
 Function Glf_289(args)
 	On Error Resume Next
-	    Glf_289 = glf_modes("bonus").GetValue("active") = False
+	    Glf_289 = glf_modes("bonus").GetValue("active") = False and GetPlayerState("shot_logan_light") = 0
 	If Err Then Glf_289 = False
 End Function
 Function Glf_290(args)
@@ -2742,7 +2742,7 @@ glf_funcRefMap.Add "check_minigame{current_player.shot_lbtb_minigame == 1 and cu
 glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_lbtb_minigame == 1}", "Glf_286"
 glf_funcRefMap.Add "check_minigame{current_player.shot_fd_punch_minigame == 1 and current_player.shot_logan_light == 0 and modes.ll_multiball.active == False and modes.jd_multiball.active == False}", "Glf_287"
 glf_funcRefMap.Add "clear_selected_minigame{current_player.shot_fd_punch_minigame == 1}", "Glf_288"
-glf_funcRefMap.Add "choose_new_minigame{modes.bonus.active == False}", "Glf_289"
+glf_funcRefMap.Add "choose_new_minigame{modes.bonus.active == False and current_player.shot_logan_light == 0}", "Glf_289"
 glf_funcRefMap.Add "dance_marathon_minigame_lit{current_player.shot_dance_marathon_minigame == 0}", "Glf_290"
 glf_funcRefMap.Add "town_meeting_minigame_lit{current_player.shot_town_meeting_minigame == 0}", "Glf_291"
 glf_funcRefMap.Add "dinner_minigame_lit{current_player.shot_dinner_minigame == 0}", "Glf_292"
