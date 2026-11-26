@@ -129,30 +129,37 @@ End Sub
 
 ' --- TEMPORARY: drain subway ball tracker (debugging lost returns to the captive spot) ---
 ' Logs the kicked ball's position and speed every 50ms for 3s after the drain subway
-' kick, under "drain_subway_track" in the debug log. The ball is taken as the one
-' nearest s_DrainSubwayKicker when the kick fires; the ball GLF passed in is logged
-' too, in case they differ. Remove once the lost return is understood.
+' kick, under "drain_subway_track" in the debug log. Tracks the ball GLF passes to the
+' eject callback. The captive ball made at table init (LoganBall) is not in gBOT, so
+' all balls come from GetBalls. Remove once the lost return is understood.
 Const DrainSubwayTrackMs = 3000
 Const DrainSubwayTrackStepMs = 50
 Dim drainSubwayTrackBall : drainSubwayTrackBall = Empty
 Dim drainSubwayTrackT0 : drainSubwayTrackT0 = 0
 
+Function DrainSubwayInGBOT(ball)
+	Dim b
+	DrainSubwayInGBOT = False
+	If Not IsArray(gBOT) Then Exit Function
+	For Each b In gBOT
+		If b Is ball Then DrainSubwayInGBOT = True : Exit Function
+	Next
+End Function
+
 Sub DrainSubwayTrackStart(passedBall)
-	On Error Resume Next
-	Dim b, d, best, bestD
-	bestD = 1000000
-	If IsArray(gBOT) Then
-		For Each b In gBOT
-			d = (b.x - s_DrainSubwayKicker.x) ^ 2 + (b.y - s_DrainSubwayKicker.y) ^ 2
-			If d < bestD Then bestD = d : Set best = b
-		Next
-	End If
-	If IsObject(best) Then Set drainSubwayTrackBall = best Else drainSubwayTrackBall = Empty
+	Dim msg, b, allBalls
+	drainSubwayTrackBall = Empty
 	drainSubwayTrackT0 = gametime
-	Dim msg : msg = "kick: BIP=" & glf_BIP
-	msg = msg & " balls=" & (UBound(gBOT) + 1)
-	msg = msg & " nearest ID=" & best.ID & " dist=" & Round(Sqr(bestD), 1)
-	msg = msg & " | passed ID=" & passedBall.ID & " x=" & Round(passedBall.x, 1) & " y=" & Round(passedBall.y, 1) & " z=" & Round(passedBall.z, 1)
+	On Error Resume Next
+	Set drainSubwayTrackBall = passedBall
+	allBalls = GetBalls
+	msg = "kick: BIP=" & glf_BIP & " balls on table=" & (UBound(allBalls) + 1) & " in gBOT=" & (UBound(gBOT) + 1)
+	msg = msg & " | ball ID=" & passedBall.ID & " in gBOT=" & DrainSubwayInGBOT(passedBall) & " is LoganBall=" & (passedBall Is LoganBall)
+	msg = msg & " x=" & Round(passedBall.x, 1) & " y=" & Round(passedBall.y, 1) & " z=" & Round(passedBall.z, 1)
+	msg = msg & " | all:"
+	For Each b In allBalls
+		msg = msg & " [" & b.ID & " " & Round(b.x) & "," & Round(b.y) & "," & Round(b.z) & "]"
+	Next
 	Err.Clear
 	On Error GoTo 0
 	Glf_WriteDebugLog "drain_subway_track", msg
@@ -171,6 +178,7 @@ Sub DrainSubwayTrackTick(args)
 	msg = "t=" & t & " ID=" & b.ID & " x=" & Round(b.x, 1) & " y=" & Round(b.y, 1) & " z=" & Round(b.z, 1) & _
 		" vx=" & Round(b.velx, 2) & " vy=" & Round(b.vely, 2) & " vz=" & Round(b.velz, 2)
 	If Err.Number <> 0 Then msg = "t=" & t & " ball gone (" & Err.Description & ")"
+	Err.Clear
 	On Error GoTo 0
 	Glf_WriteDebugLog "drain_subway_track", msg
 	If t < DrainSubwayTrackMs Then SetDelay "drain_subway_track", "DrainSubwayTrackTick", Null, DrainSubwayTrackStepMs
