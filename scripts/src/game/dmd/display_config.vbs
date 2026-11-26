@@ -329,10 +329,12 @@ Sub CreateFlexDmdDisplay()
         .Text = "HURRY-UP BONUS (points:,)"
     End With
 
-    Dim characterNames, characterImages, characterHitEvents
+    Dim characterNames, characterImages, characterHitEvents, characterCompleteMessages
     characterNames = Array("sookie", "kirk", "lane", "paris")
     characterImages = Array("sookie.png", "kirk_stern.png", "lane_glasses.png", "paris.png")
     characterHitEvents = Array("SPINS", "BUMPERS", "SLINGS", "RAMPS")
+    characterCompleteMessages = Array("SOOKIE COMPLETE", "KIRK COMPLETE", "LANE COMPLETE", "PARIS COMPLETE 2x PLAYFIELD")
+
 
     For i = 0 To UBound(characterNames)
         With CreateDmdSlide(characterNames(i))
@@ -350,7 +352,7 @@ Sub CreateFlexDmdDisplay()
         End With
 
         With CreateDmdSlide(characterNames(i) & "_complete")
-            .Text = UCase(characterNames(i)) & " COMPLETE"
+            .Text = characterCompleteMessages(i)
             .Image = characterImages(i)
             .Effect = "solid"
             .Hold = 4

@@ -130,6 +130,9 @@ Dim MysteryBigScore     : MysteryBigScore     = ScoreX(50)
 Dim HurryUpStartScore   : HurryUpStartScore   = ScoreX(10)
 Dim HurryUpEndScore     : HurryUpEndScore     = ScoreX(40)
 
+'*********** CHARACTERS ***********
+Const ParisPlayfieldX = 2   ' playfield multiplier for the whole mode (a multiplier, not a score)
+
 '*********** MODES ***********
 Dim ModeStartScore              : ModeStartScore              = ScoreX(2)    ' each timed mode, when it starts
 Dim ModeCompleteScore           : ModeCompleteScore           = ScoreX(10)   ' last a timed mode's full timer without draining

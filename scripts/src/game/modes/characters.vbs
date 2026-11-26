@@ -45,6 +45,14 @@ Sub CreateCharactersMode()
             ' When you actually COMPLETE one, do a quick fun lightshow, too
             ' AND I still like the idea of a 3d mesh for each character: spoon in bowl for Sookie, snare drum (or kick drum) for lane, something for Paris, "Kirk's" sign for Kirk
         End With
+        With .VariablePlayer()
+            With .EventName("paris_complete{modes.kims_antiques.active == False}")
+                With .Variable("scoring_multiplier")
+                    .Action = "set"
+                    .Int = ParisPlayfieldX
+                End With
+            End With
+        End With
         With .SlidePlayer()
             For x = 0 To UBound(characters)
                 With .EventName(characters(x).Name & "_lit{kwargs.light == " & UBound(characters(x).Lights) + 1 & "}")

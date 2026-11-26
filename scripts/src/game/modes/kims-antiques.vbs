@@ -257,10 +257,16 @@ Sub CreateKimsAntiquesMode()
                     .Int = KimsAntiquesPlayfieldX
                 End With
             End With
-            With .EventName("mode_kims_antiques_stopping")
+            With .EventName("mode_kims_antiques_stopping{current_player.shot_3 == 0}")
                 With .Variable("scoring_multiplier")
                     .Action = "set"
                     .Int = 1
+                End With
+            End With
+            With .EventName("mode_kims_antiques_stopping{current_player.shot_3 == 1}")
+                With .Variable("scoring_multiplier")
+                    .Action = "set"
+                    .Int = ParisPlayfieldX
                 End With
             End With
         End With
