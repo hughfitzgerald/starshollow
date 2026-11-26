@@ -69,6 +69,15 @@ Sub CreateBasementMode()
             .Add "s_captive_ball_active{machine.captive_returning == 1}", Array("captive_return_bounce")
             .Add "timer_captive_return_settle_complete", Array("captive_return_done")
             .Add "timer_captive_return_failsafe_complete", Array("captive_return_done")
+
+            ' Logan qualify stage 2 keeps dt2 down so the captive ball can go up the ramp to
+            ' the kicker. When another mode stops ll_multiball_qualify, put dt2 back up so
+            ' Logan can't be locked while qualify isn't running; qualify knocks it down
+            ' again when it restarts at stage 2. Not on mode_base_stopping (drop2 resets on
+            ' ball_started) or LL multiball. At stage 3 the ball is already held, so leave it.
+            For Each x In Array("jd_multiball", "dance_marathon", "town_meeting", "dinner", "fd_punch", "kims_antiques", "lbtb")
+                .Add "mode_" & x & "_started{current_player.shot_logan_qualify == 2}", Array("dt2_reset")
+            Next
             .Add "ball_drain{machine.captive_ball_captive == 0 and current_player.llmb_shoot_again_active == 0}", Array("return_captive_from_drain")
 
             ' Nothing releases the scoop hold when no ball is being played (game over, a
