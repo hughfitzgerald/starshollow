@@ -157,6 +157,7 @@ Dim JDWinScore          : JDWinScore          = ScoreX(150)
 
 '*********** LOGAN MULTIBALL ***********
 Dim LoganBumperScore        : LoganBumperScore        = ScoreX(1)
+Dim LoganSuperBumperScore   : LoganSuperBumperScore   = ScoreX(3)
 Dim LoganTotallyBashedScore : LoganTotallyBashedScore = ScoreX(150)
 Dim LoganLockedAwayScore    : LoganLockedAwayScore    = ScoreX(150)
 ' Mode score needed to totally bash Logan (a target, not an award).

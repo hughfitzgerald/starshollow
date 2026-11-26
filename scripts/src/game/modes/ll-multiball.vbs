@@ -20,7 +20,8 @@ Sub CreateLLMultiballMode()
             .Add "initiate_ll_multiball", Array("close_orbit_gate2", "release_scoop_hold", "clear_multiball_locks", "open_captive_diverter")
             
             'Scoring
-            .Add "logan_bumper_hit", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
+            .Add "logan_bumper_hit{current_player.shot_kirk_3 == 0}", Array(ScoreEvent(LoganBumperScore, NoMultiplier))
+            .Add "logan_bumper_hit{current_player.shot_kirk_3 == 1}", Array(ScoreEvent(LoganSuperBumperScore, NoMultiplier))
             .Add "logan_totally_bashed", Array(ScoreEvent(LoganTotallyBashedScore, NoMultiplier), ModeSlideEvent("play_llmb_mode_slide", "LOCK-AWAY LOGAN", "LOCK-AWAY LOGAN IN THE SCOOP"), "logan_totally_bashed_callouts")
             'The win callout plays at the end of the mode, once the ball is home.
             .Add "logan_ball_captured", Array(ScoreEvent(LoganLockedAwayScore, NoMultiplier))
@@ -245,7 +246,7 @@ Sub CreateLLMultiballMode()
                     .Int = LoganLockedAwayScore
                 End With
             End With
-            With .EventName("logan_bumper_hit")
+            With .EventName("logan_bumper_hit{current_player.shot_kirk_3 == 0}")
                 With .Variable("mode_display_score")
                     .Action = "add"
                     .Int = LoganBumperScore
@@ -253,6 +254,16 @@ Sub CreateLLMultiballMode()
                 With .Variable("mode_llmb_score")
                     .Action = "add"
                     .Int = LoganBumperScore
+                End With
+            End With
+            With .EventName("logan_bumper_hit{current_player.shot_kirk_3 == 1}")
+                With .Variable("mode_display_score")
+                    .Action = "add"
+                    .Int = LoganSuperBumperScore
+                End With
+                With .Variable("mode_llmb_score")
+                    .Action = "add"
+                    .Int = LoganSuperBumperScore
                 End With
             End With
 
