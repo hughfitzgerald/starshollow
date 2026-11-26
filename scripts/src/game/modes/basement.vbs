@@ -74,6 +74,12 @@ Sub CreateBasementMode()
             .Add "s_captive_ball_active{machine.captive_returning == 1}", Array("captive_return_bounce")
             .Add "timer_captive_return_settle_complete", Array("captive_return_done")
             .Add "timer_captive_return_failsafe_complete", Array("captive_return_done")
+            ' A ball released from the captive ramp kicker (Logan stage 3 at ball end) is
+            ' kicked home by way of the upper kicker, but the captive ball never left
+            ' captivity, so captive_ball_is_home doesn't fire to switch the upper kicker
+            ' off. Left on, it catches the next stage 2 shot short of the captive ramp
+            ' kicker and sends the ball straight back home. Turn it off once it has settled.
+            .Add "captive_return_done", Array("disable_captive_ramp_upper_kicker")
 
             ' Logan qualify stage 2 keeps dt2 down so the captive ball can go up the ramp to
             ' the kicker. When another mode stops ll_multiball_qualify, put dt2 back up so
