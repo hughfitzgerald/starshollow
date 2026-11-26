@@ -16,7 +16,7 @@
 
 ## Inbox
 
-*(empty — triaged @ 07ea223)*
+* LoganBall has the same size and mass (CreateBall gives radius 25 and mass 1, same as BallSize/2 and BallMass), and no script refers to it after creation. Not being in gBOT only drops it from the rolling sounds and the flipper velocity tweaks in ZFLP, and neither should stop a ball in the subway. Do I need to find a way to get LoganBall into gBOT? Or do I need to make sure it gets rolling sounds anf flipper velocity tweaks???
 
 ---
 
