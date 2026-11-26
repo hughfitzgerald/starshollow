@@ -26,9 +26,10 @@ Sub CreateLLMultiballQualifyMode()
             .Add "s_CaptiveRampKicker_active{machine.captive_ball_captive == 1}", Array("logan_qualify_complete")
 
             ' Captive ball switch hits count for nothing until the player's ball has left
-            ' the plunger lane (new_ball_active clears ball_just_started). Before that, the
-            ' captive ball can still be settling after being sent home at the last ball end.
-            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0 and current_player.ball_just_started == 0}", Array("logan_captive_ball_hit")
+            ' the plunger lane (new_ball_active clears ball_just_started), nor while the
+            ' captive ball is away or still settling after landing back home: the landing
+            ' and its bounces are not shots (captive_ball_captive / captive_returning, basement).
+            .Add "s_captive_ball_active{current_player.logan_cooldown_active == 0 and current_player.ball_just_started == 0 and machine.captive_ball_captive == 1 and machine.captive_returning == 0}", Array("logan_captive_ball_hit")
             .Add "logan_captive_ball_hit", Array(ScoreEvent(LoganCaptiveScore, WithMultiplier))
             ' Captive hits only advance the shot to hit2. hit3 (solid) means a ball is held
             ' in the captive ramp kicker, so only logan_qualify_complete sets it.
