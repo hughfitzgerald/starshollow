@@ -97,6 +97,7 @@ Dim OutlaneScore        : OutlaneScore        = SwitchScore(0.1)
 Dim SlingScore          : SlingScore          = SwitchScore(0.05)
 Dim SpinnerScore        : SpinnerScore        = SwitchScore(0.03)
 Dim BumperScore         : BumperScore         = SwitchScore(0.1)
+Dim SuperBumperScore    : SuperBumperScore    = SwitchScore(0.3)
 Dim StarTargetScore     : StarTargetScore     = SwitchScore(0.1)
 Dim UnlitRampScore      : UnlitRampScore      = ScoreX(0.5)
 Dim DinerDropTargetScore: DinerDropTargetScore= ScoreX(0.25)   ' drop target guarding Luke's kicker

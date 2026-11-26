@@ -65,9 +65,11 @@ Sub CreateBaseMode()
             .Add "s_HiddenUpperRightKicker_active", Array("grandparents_callout", "grandparents_count_increment", "total_switches_hit_increment", ScoreEvent(GrandparentsScore, WithMultiplier))
 
             'Bumpers
-            .Add "s_Bumper1_active", Array(ScoreEvent(BumperScore, WithMultiplier), "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
+            .Add "s_Bumper1_active", Array("bumper_score", "play_bumper1_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash1", "any_bumper_hit")
             ' .Add "s_Bumper3_active", Array(ScoreEvent(BumperScore, WithMultiplier), "play_bumper3_show", "bumper_count_increment", "total_switches_hit_increment")
-            .Add "s_Bumper5_active", Array(ScoreEvent(BumperScore, WithMultiplier), "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
+            .Add "s_Bumper5_active", Array("bumper_score", "play_bumper5_show", "bumper_count_increment", "total_switches_hit_increment", "backglass_flash3", "any_bumper_hit")
+            .Add "bumper_score{current_player.shot_kirk_3 == 0}", Array(ScoreEvent(BumperScore, WithMultiplier))
+            .Add "bumper_score{current_player.shot_kirk_3 == 1}", Array(ScoreEvent(SuperBumperScore, WithMultiplier))
 
             'Slingshots
             .Add "s_LeftSlingShot_active", Array(ScoreEvent(SlingScore, WithMultiplier), "total_switches_hit_increment", "backglass_flash2", "any_sling_hit")

@@ -333,7 +333,7 @@ Sub CreateFlexDmdDisplay()
     characterNames = Array("sookie", "kirk", "lane", "paris")
     characterImages = Array("sookie.png", "kirk_stern.png", "lane_glasses.png", "paris.png")
     characterHitEvents = Array("SPINS", "BUMPERS", "SLINGS", "RAMPS")
-    characterCompleteMessages = Array("SOOKIE COMPLETE", "KIRK COMPLETE", "LANE COMPLETE", "PARIS COMPLETE 2x PLAYFIELD")
+    characterCompleteMessages = Array("SOOKIE COMPLETE", "KIRK COMPLETE SUPER BUMPERS", "LANE COMPLETE", "PARIS COMPLETE 2x PLAYFIELD")
 
 
     For i = 0 To UBound(characterNames)
