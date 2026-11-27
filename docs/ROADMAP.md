@@ -21,6 +21,8 @@
 * Maybe make the Mansion shot a bit easier by bringing the kicker a little bit further down?
 * Sometimes when a mode starts there's a stale timer value in the corner. Need to reset that, or something. perhaps on check_minigane event.
 * Tiers of probabilities for the mystery items, depending on how the game is going. for example, if it's third ball and below X points or haven't started any modes, then the good ones are higher probability. etc.
+* Add a high rollover switch to each orbit side and for every orbit shot require the sequence [left orbit low, left orbit high] or [right orbit low, right orbit high]
+* figure out where a "real" ramp exit gate/switch/opto/whatever would go on each ramp so we can clean that up... note that the "real" entry/exit switches for ramps get used for game logic even if I might use different "unreal" switches for something like ball roll logic
 
 ---
 
