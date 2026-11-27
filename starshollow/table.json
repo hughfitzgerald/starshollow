@@ -313,8 +313,8 @@
   "blurb": "",
   "description": "",
   "rules": "",
-  "date_saved": "Tue Nov 24 23:13:11 2026",
-  "save_rev": 250,
+  "date_saved": "Fri Nov 27 14:54:15 2026",
+  "save_rev": 251,
   "parts": [
     "Flippers",
     "Shadows",
@@ -1063,7 +1063,8 @@
     "DeanBulb4",
     "DeanBulb4Lit",
     "GrabMagnet",
-    "Wall029"
+    "Wall029",
+    "Wall030"
   ],
   "collections": [
     "Rubbers",
