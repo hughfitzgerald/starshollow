@@ -1,6 +1,6 @@
 # Stars Hollow Showdown — Roadmap
 
-*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `d44067d`; commits through `81ab26d` reviewed (T4, B1, B3, B6, I5, I21, D46–D50). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
+*Built from the "Gilmore Girls Pinball table ideas" doc, last full check against `hughfitzgerald/starshollow` @ `acda9b4` (Nov 23, 2026); Inbox triaged @ `cbbea75` (Nov 27); commits through `81ab26d` reviewed (T4, B1, B3, B6, I5, I21, D46–D50). "Done" means the code or assets show it. Items marked "verify" look handled in the code, but only playing the table will confirm it.*
 
 **Priority key:** **P1** = before this week's playtest · **P2** = nice if there's time · **P3** = after the trip
 
@@ -16,16 +16,7 @@
 
 ## Inbox
 
-* Idea: Credit for high score. 2 credits for grand champion.
-* Idea: Final wizard mode is Luke but there is one (or more) mini-wizard mode(s) along the way, like periodically (after you finish 3 and/or 5 modes or 2 modes and 2 characters unlocked or whatever), then shoot Luke's diner, it starts "A Christopher Interruption" where the entire playfield is shut down, no scoring whatsoever, until you shoot the right ramp or whatever. Maybe it's a two-ball multiball just for shits. It's an annoying interruption, but you just need to get it out of your system, just like Christopher. it happens a few times before you get to the final wizard mode.
-* Maybe make the Mansion shot a bit easier by bringing the kicker a little bit further down?
-* Sometimes when a mode starts there's a stale timer value in the corner. Need to reset that, or something. perhaps on check_minigane event.
-* Tiers of probabilities for the mystery items, depending on how the game is going. for example, if it's third ball and below X points or haven't started any modes, then the good ones are higher probability. etc.
-* Add a high rollover switch to each orbit side and for every orbit shot require the sequence [left orbit low, left orbit high] or [right orbit low, right orbit high]
-* figure out where a "real" ramp exit gate/switch/opto/whatever would go on each ramp so we can clean that up... note that the "real" entry/exit switches for ramps get used for game logic even if I might use different "unreal" switches for something like ball roll logic
-* light the start button with DOF when you can select a letter in initials mode.... turn it off after you enter the last initial
-* make the letter you're about to enter blink to indicate it hasn't been added yet. also make the rectangle around the selected letter blink
-* it is possible to get the ball in the scoop before skillshots mode is over... if that happens and we didn't hit the skillshots trigger, then end skillshots mode, check mystery and then check minigame
+*(empty — triaged Nov 27 @ cbbea75 into B14, B15, T21–T25, I29–I31)*
 
 ---
 
@@ -43,6 +34,7 @@
 - **T7** → moved to D39 (done @ 1d433ea)
 - **T8** **Post-ball callouts**: "No more talking…" and "I can't talk to you when you're like this…". Neither clip exists yet.
 - **T9** **Status report**: not started (suggestion: O11).
+- **T21** **Make the Mansion shot easier: move its kicker a little further down** (Inbox, Nov 27). Table geometry change to `s_HiddenUpperRightKicker` (eject in `14_ZKIC_Kickers.vbs` line 58); not started @ cbbea75. Re-check the eject angle/force after moving it.
 
 ### P3 — after the trip
 - **T6** **Unused sounds: find a place for them or remove them** (per Stephen, most may never be used). The list is now in section 7, Sound inventory.
@@ -55,6 +47,10 @@
 - **T16** → moved to D35 (per Stephen)
 - **T17** **Sookie "math" line during the EOB tally**. The tally itself is done.
 - **T20** **List the interactions that should get light shows, big and small** (Inbox, Nov 25). Today shows exist for spinners, JESS/DEAN letters, bumpers 1 and 5, scoop eject, mystery, Dance Marathon intro, EOB sweep and attract (`base.vbs` lines 645–734); the Mansion shot has none (I25) @ 07ea223.
+- **T22** **Credits for high scores: 1 per high score, 2 for grand champion** (Inbox, Nov 27). Not started @ cbbea75: high scores award nothing. Replay already shows the pattern (`glf_credits.AddCredit` + knocker, skipped on free play, `_configuration.vbs` line 689); the commented `high_score_award_display{kwargs.position == 1}` block (`high-score.vbs` line 295) is a natural hook.
+- **T23** **Light the start button (DOF) while an initial can be entered, off after the last one** (Inbox, Nov 27). Today E102 is only driven by `check_start_button` in basement (`basement.vbs` lines 43, 240), which high-score mode never posts; with credits left it may already be on through initials. Drive it from `hs_input_ready` and `text_input_high_score_complete` @ cbbea75.
+- **T24** **Blink the pending initial and its selection rectangle** (Inbox, Nov 27). Both are static today: the `Letter Border` frame (`display_scenes.vbs` line 472) and the pending letter appended in `DmdTick_Initials` (line 519) @ cbbea75.
+- **T25** **Place "real" ramp entry/exit switches** (Inbox, Nov 27): game logic uses the real entry/exit switches even if ball-roll logic uses others. Today each ramp has `s_enter_*_ramp` (roll sounds only, `_configuration.vbs` line 147), `s_*_ramp_gate` (`ramp_sfx` only, `base.vbs` line 89) and `s_complete_*_ramp` (all scoring, e.g. `base.vbs` line 87) @ cbbea75. Decide which of these is the real exit on each ramp.
 - **T19** (was R1) **Attract extras still wanted** (per Stephen): a champion for each mode, "SAY NO TO DRUGS", and maybe a second title slide or animation.
 
 ---
@@ -76,6 +72,8 @@
 | B11 | — | Kim's Antiques doesn't award any shots *(bold)* | **Fixed.** Unlit shots score `KimsAntiquesShotScore`. |
 | B12 | — | Mystery Jess/Dean MB starts during a minigame | → moved to D45 (fixed @ 1d1a3dc) |
 | B13 | **P1** | Hurry-up doesn't end when the ball ends, and its slide covers the EOB bonus slide (Inbox, Nov 25) | **Open, cause found.** GLF bonus starts on `ball_ending`, but hurry-up only stops on `mode_base_stopping`, which comes with `ball_ended` after the tally (`hurryup.vbs` line 15, `base.vbs` line 33). So it keeps running at priority 1100 over `eob_bonus`, which plays at the EOB mode's default priority (`eob-bonus.vbs` line 236). Fix: add `bonus_start` to hurry-up's `StopEvents`, as every minigame does @ 07ea223. |
+| B14 | **P1** | Ball reaches the scoop before skillshots ends without hitting the skillshot trigger: should end skillshots, then check mystery and minigame (Inbox, Nov 27) | **Open, cause found: the ball is held.** Mystery ignores scoop entries while skillshots is active (`mystery.vbs` line 14), and skillshots only releases the scoop if `ss1_started == 1`, i.e. `s_skillshot` was hit (`skillshots.vbs` line 34). With neither, nothing posts `check_mystery` or `release_scoop_hold`, and `balldevice_scoop_ball_exiting` (which would stop skillshots) never comes. Fix: on `balldevice_scoop_ball_entered{current_player.ss1_started == 0}` in skillshots, post `stop_skillshots` then `check_mystery` @ cbbea75. |
+| B15 | P2 | Stale timer value in the corner when a mode starts (Inbox, Nov 27) | **Open, cause found.** The mode panel shows `mode_display_timer` (`display_scenes.vbs` line 596), but Dinner, Dance Marathon, Town Meeting, Kim's Antiques and Founder's Day Punch only set it on their `timer_*_tick`, and the timer is paused while the intro holds the ball (D38). So the last mode's value shows until the first tick. Only LBTB sets it on start (`luke-breaks-the-bells.vbs` line 263), and only the multiballs clear it. Fix: set it on each mode's start, or clear it on `check_minigame` as suggested @ cbbea75. |
 
 ---
 
@@ -98,6 +96,9 @@
 - **I25** **Mansion shot light show** (Inbox, Nov 25): a small localized flash of inserts/GI or a sweep outward from the Mansion, maybe a little bulb in the chimney. The shot (`s_HiddenUpperRightKicker_active`, `base.vbs` line 65) only scores and plays a callout; no show, and I found no chimney light in the parts @ 07ea223. Part of T20.
 - **I27** **Multiballs keep progress within a game** (Inbox, Nov 25): restarting Jess/Dean MB picks up where it left off. Today the ramp and sign shots reset on `multiball_jdmb_started` (`jd-multiball.vbs` ~line 427), so every start is fresh; Logan MB already saves its qualify stage (D9) @ 07ea223.
 - **I28** **Hurry-up to resume Jess/Dean MB** (Inbox, Nov 25): after the multiball ends, a timed shot to restart it. Builds on I27; not started @ 07ea223.
+- **I29** **Mini-wizard: "A Christopher Interruption"** (Inbox, Nov 27). Final wizard is Luke (see I1), but every so often (e.g. after 3 and/or 5 modes, or 2 modes + 2 characters) shooting Luke's starts an interruption: the whole playfield stops scoring until you shoot the right ramp (or similar), maybe as a two-ball multiball. Annoying on purpose; it happens a few times before the final wizard mode. Nothing like it @ cbbea75.
+- **I30** **Mystery award tiers by how the game is going** (Inbox, Nov 27), e.g. on ball 3 below X points or with no modes started, weight the good awards up. Today weights are fixed (`_scores.vbs` lines 211–219). Since conditions are already applied on the random pick (`mystery.vbs` line 99), a tier can be a second entry for the same award with a game-state condition and a higher weight @ cbbea75.
+- **I31** **High rollover on each orbit; count an orbit only on [low, high] in order** (Inbox, Nov 27). Today each orbit is one switch (`s_left_orbit`/`s_right_orbit`, e.g. `dinner.vbs` line 8), so a ball in either direction counts. Needs two new switches in the table @ cbbea75.
 - **I23** Work the weird old TV Guide ads into the table somehow (Instagram post: https://www.instagram.com/p/DeEsFYYAcWr/?img_index=5).
 
 **Callouts and DMD**
