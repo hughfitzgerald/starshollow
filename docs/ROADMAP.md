@@ -17,6 +17,8 @@
 ## Inbox
 
 * Idea: Credit for high score. 2 credits for grand champion.
+* Idea: Final wizard mode is Luke but there is one (or more) mini-wizard mode(s) along the way, like periodically (after you finish 3 and/or 5 modes or 2 modes and 2 characters unlocked or whatever), then shoot Luke's diner, it starts "A Christopher Interruption" where the entire playfield is shut down, no scoring whatsoever, until you shoot the right ramp or whatever. Maybe it's a two-ball multiball just for shits. It's an annoying interruption, but you just need to get it out of your system, just like Christopher. it happens a few times before you get to the final wizard mode.
+* For both multinalls, there should be an opportunity to restart by going to Luke's in 15 seconds or whatever, and pick up where you left off in terms of progress?
 
 ---
 
