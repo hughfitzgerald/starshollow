@@ -25,6 +25,7 @@
 * figure out where a "real" ramp exit gate/switch/opto/whatever would go on each ramp so we can clean that up... note that the "real" entry/exit switches for ramps get used for game logic even if I might use different "unreal" switches for something like ball roll logic
 * light the start button with DOF when you can select a letter in initials mode.... turn it off after you enter the last initial
 * make the letter you're about to enter blink to indicate it hasn't been added yet. also make the rectangle around the selected letter blink
+* it is possible to get the ball in the scoop before skillshots mode is over... if that happens and we didn't hit the skillshots trigger, then end skillshots mode, check mystery and then check minigame
 
 ---
 
