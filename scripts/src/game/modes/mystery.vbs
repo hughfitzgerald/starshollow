@@ -4,15 +4,17 @@ Sub CreateMysteryMode()
     Dim x
 
     With CreateGlfMode("mystery", 1200)
-        .StartEvents = Array("mode_skillshots_stopped{machine.game_modes_enabled == 1}")
+        .StartEvents = Array("mode_base_started{machine.game_modes_enabled == 1}")
         .StopEvents = Array("mode_base_stopping")
 
         With .EventPlayer()
             .Add "mode_mystery_started", Array("light_inlanes")
             .Add "qualify_multiplier_group_on_complete", Array("light_inlanes")
 
-            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==0}", Array("check_minigame")
-            .Add "balldevice_scoop_ball_entered{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("select_random_mystery")
+            .Add "balldevice_scoop_ball_entered{modes.skillshots.active==False}", Array("check_mystery")
+
+            .Add "check_mystery{current_player.shot_mystery_ready==0}", Array("check_minigame")
+            .Add "check_mystery{current_player.shot_mystery_ready==1 and modes.jd_multiball.active==False and modes.ll_multiball.active==False}", Array("select_random_mystery")
 
             .Add "timer_mystery_show_tick{devices.timers.mystery_show.ticks == 1}", Array("award_mystery")
             .Add "timer_mystery_show_complete", Array("restart_qualify_mystery", "remove_mystery_show")
@@ -183,4 +185,4 @@ Sub CreateMysteryMode()
             End With
         End With
     End With
-End Sub
+End Sub

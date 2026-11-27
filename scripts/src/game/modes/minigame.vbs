@@ -22,7 +22,7 @@ Sub CreateMiniGameMode
         With .EventPlayer()
             .Add "logan_qualify_complete", Array("clear_selected_minigame")
             .Add "bonus_start", Array("clear_selected_minigame")
-            .Add "mode_skillshots_stopped", Array("select_minigame")
+            .Add "mode_minigame_started", Array("select_minigame")
             .Add "select_minigame", Array("clear_selected_minigame", "choose_new_minigame")
 
             .Add "check_minigame{current_player.shot_logan_light == 1}", Array("start_ll_multiball")
