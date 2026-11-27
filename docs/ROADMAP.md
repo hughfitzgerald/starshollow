@@ -23,6 +23,8 @@
 * Tiers of probabilities for the mystery items, depending on how the game is going. for example, if it's third ball and below X points or haven't started any modes, then the good ones are higher probability. etc.
 * Add a high rollover switch to each orbit side and for every orbit shot require the sequence [left orbit low, left orbit high] or [right orbit low, right orbit high]
 * figure out where a "real" ramp exit gate/switch/opto/whatever would go on each ramp so we can clean that up... note that the "real" entry/exit switches for ramps get used for game logic even if I might use different "unreal" switches for something like ball roll logic
+* light the start button with DOF when you can select a letter in initials mode.... turn it off after you enter the last initial
+* make the letter you're about to enter blink to indicate it hasn't been added yet. also make the rectangle around the selected letter blink
 
 ---
 
