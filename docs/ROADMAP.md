@@ -16,7 +16,7 @@
 
 ## Inbox
 
-*(empty, triaged @ d44067d)*
+* Idea: Credit for high score. 2 credits for grand champion.
 
 ---
 
