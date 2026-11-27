@@ -3,6 +3,7 @@
 # requires-python = ">=3.14"
 # dependencies = [
 #   "lxml",
+#   "numpy",
 #   "pillow",
 # ]
 # ///
@@ -14,12 +15,12 @@ import struct
 import subprocess
 import tempfile
 
+import numpy as np
 from lxml import etree
 from PIL import Image
 
 filename = "playfield.svg"
 output_path = "../starshollow/images/playfield.webp"
-insert_overlay_output_path = "../starshollow/images/playfield-insert-overlay.webp"
 plastics_output_path = "../starshollow/images/plastics.webp"
 apron_output_path = "../starshollow/images/ApronStarsHollow.webp"
 NS = {
@@ -58,21 +59,50 @@ def inkscape(*args):
     )
 
 
+def render(actions, png_path, grain_aging=False):
+    """Render the page to a PNG with Inkscape."""
+    inkscape(
+        filename,
+        f"--actions={actions}",
+        "--export-type=png",
+        f"--export-filename={png_path}",
+        "--export-area-page",
+        "--export-overwrite",
+    )
+    if grain_aging:
+        apply_grain_aging(png_path)
+
+
 def export(actions, output_path, grain_aging=False):
-    """Render the page to a PNG with Inkscape, then save it as a lossless WebP."""
+    """Render the page with Inkscape and save it as a lossless WebP."""
     with tempfile.TemporaryDirectory() as tmp:
         png_path = os.path.join(tmp, "export.png")
-        inkscape(
-            filename,
-            f"--actions={actions}",
-            "--export-type=png",
-            f"--export-filename={png_path}",
-            "--export-area-page",
-            "--export-overwrite",
-        )
-        if grain_aging:
-            apply_grain_aging(png_path)
+        render(actions, png_path, grain_aging)
         Image.open(png_path).save(output_path, lossless=True)
+
+
+def merge_insert_art(playfield, insert_art, erase, light_erase):
+    """Lay the insert art over the playfield and let some light through it.
+
+    `playfield` has fully transparent holes where the inserts are, so the
+    insert primitives underneath show through. `insert_art` is the insert text
+    and outlines on a transparent page. Wherever the result sits over a hole,
+    its alpha is scaled by (1 - erase - light_erase * luminance), the same as
+    going over the inserts with a low-opacity eraser in a paint program:
+    erase=0.10 leaves the ink at 90% opacity, and light_erase makes the lighter
+    ink let more light through than the dark ink. The opaque playfield art
+    around the inserts is left as it is.
+    """
+    merged = playfield.convert("RGBA").copy()
+    merged.alpha_composite(insert_art.convert("RGBA"))
+    px = np.asarray(merged).astype(np.float32) / 255.0
+    rgb, alpha = px[..., :3], px[..., 3]
+    hole = 1.0 - np.asarray(playfield.convert("RGBA"))[..., 3] / 255.0
+    luminance = rgb @ np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
+    keep = np.clip(1.0 - erase - light_erase * luminance, 0.0, 1.0)
+    alpha *= 1.0 - hole * (1.0 - keep)
+    px[..., 3] = alpha
+    return Image.fromarray(np.round(px * 255.0).astype(np.uint8), "RGBA")
 
 
 def png_size(path):
@@ -178,6 +208,20 @@ parser_cli.add_argument(
     action="store_true",
     help="export playfield.webp without clipping targets to the masks layer",
 )
+parser_cli.add_argument(
+    "--insert-erase",
+    type=float,
+    default=0.10,
+    help="how much of the insert ink's opacity to take away over the inserts, "
+    "0 to 1 (default 0.10, i.e. the ink stays 90%% opaque)",
+)
+parser_cli.add_argument(
+    "--insert-light-erase",
+    type=float,
+    default=0.0,
+    help="extra opacity taken away from lighter insert ink, scaled by its "
+    "luminance, 0 to 1 (default 0)",
+)
 args = parser_cli.parse_args()
 
 masks_id = layer_id(tree, "masks")
@@ -195,12 +239,17 @@ playfield_actions = show_only_actions("table decals", "targets")
 if not args.no_mask:
     playfield_actions = f"{masking_actions};{playfield_actions}"
 
-export(playfield_actions, output_path, grain_aging=True)
-
-export(
-    show_only_actions("insert text", "masks"),
-    insert_overlay_output_path,
-)
+with tempfile.TemporaryDirectory() as tmp:
+    playfield_png = os.path.join(tmp, "playfield.png")
+    insert_art_png = os.path.join(tmp, "insert-art.png")
+    render(playfield_actions, playfield_png, grain_aging=True)
+    render(show_only_actions("insert text", "masks"), insert_art_png)
+    merge_insert_art(
+        Image.open(playfield_png),
+        Image.open(insert_art_png),
+        args.insert_erase,
+        args.insert_light_erase,
+    ).save(output_path, lossless=True)
 
 export(
     show_only_actions("plastics"),
