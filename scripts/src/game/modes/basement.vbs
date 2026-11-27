@@ -176,6 +176,18 @@ Sub CreateBasementMode()
                     .Int = 1
                 End With
             End With
+            With .EventName("s_Trigger1_active")
+                With .Variable("plunger_has_ball")
+                    .Action = "set_machine"
+                    .Int = 1
+                End With
+            End With
+            With .EventName("s_Trigger1_inactive")
+                With .Variable("plunger_has_ball")
+                    .Action = "set_machine"
+                    .Int = 0
+                End With
+            End With
         End With
 
         With .BallHolds("scoop_hold")

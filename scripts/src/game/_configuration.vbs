@@ -256,6 +256,12 @@ Sub ConfigureGlfDevices()
         .Persist = False
     End With
 
+    With CreateMachineVar("plunger_has_ball")
+        .InitialValue = 0
+        .ValueType = "int"
+        .Persist = False
+    End With
+
     '*********** PLAYER VARIABLES ***********
 
     Glf_SetInitialPlayerVar "ball_just_started", 1

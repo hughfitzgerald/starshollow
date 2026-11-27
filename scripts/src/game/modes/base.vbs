@@ -42,6 +42,9 @@ Sub CreateBaseMode()
             .Add "s_RightOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))
             .Add "s_LeftOutlane_active", Array("outlane_drain", "total_switches_hit_increment", ScoreEvent(OutlaneScore, WithMultiplier))
 
+            .Add "s_right_flipper_active{machine.plunger_has_ball == 1}", Array("select_minigame")
+            .Add "s_left_flipper_active{machine.plunger_has_ball == 1}", Array("select_minigame")
+
             'Inlanes and top (bonus) lanes
             .Add "s_LeftInlane_active", Array(ScoreEvent(InlaneScore, WithMultiplier))
             .Add "s_RightInlane_active", Array(ScoreEvent(InlaneScore, WithMultiplier))
